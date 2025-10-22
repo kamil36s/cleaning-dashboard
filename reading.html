@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Reading Dashboard</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --panel: #111;
+            --card: #161616;
+            --border: #2d2d2d;
+            --text: #f3f3f3;
+            --muted: #a1a1a1;
+            --bar: #2a2a2a;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif
+        }
+
+        .wrap {
+            max-width: 1600px;
+            margin: auto;
+            padding: 18px;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 18px
+        }
+
+        .panel,
+        .main {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: 22px
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 16px
+        }
+
+        .kpi {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 12px
+        }
+
+        .kpi b {
+            display: block;
+            font-size: 28px
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        select,
+        button {
+            background: #0f0f0f;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px 10px;
+            cursor: pointer
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        @media(max-width:1300px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .wrap {
+                grid-template-columns: 320px 1fr
+            }
+        }
+
+        @media(max-width:900px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .wrap {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .title {
+            font-weight: 700
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        .badge {
+            font-size: 10px;
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            border-radius: 999px;
+            color: #e5e5e5
+        }
+
+        .badge.over {
+            background: #ef4444;
+            border-color: transparent;
+            color: #fff
+        }
+
+        .progress {
+            height: 10px;
+            background: var(--bar);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px 0 6px
+        }
+
+        .progress>div {
+            height: 100%;
+            width: 0;
+            transition: width .25s ease, background-color .25s ease
+        }
+
+        .green {
+            background: #22c55e
+        }
+
+        .yellow {
+            background: #facc15
+        }
+
+        .red {
+            background: #ef4444
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--muted);
+            font-size: 12px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <aside class="panel">
+            <h1>Reading Dashboard</h1>
+            <div class="kpis">
+                <div class="kpi"><span>Pages/day to next return</span><b id="ppd">0</b></div>
+                <div class="kpi"><span>Next return</span><b id="next">—</b></div>
+                <div class="kpi"><span>Active books</span><b id="active">0</b></div>
+                <div class="kpi"><span>Avg pages/day</span><b id="avg">0</b></div>
+            </div>
+            <h2>Filters</h2>
+            <div class="controls">
+                <select id="sort">
+                    <option value="due">Due soon</option>
+                    <option value="remain">Most remaining</option>
+                    <option value="completion">Completion % ↑</option>
+                    <option value="title">Title</option>
+                </select>
+                <label style="display:flex;align-items:center;gap:6px">
+                    <input type="checkbox" id="unfinished" checked> Unfinished only
+                </label>
+                <button id="refresh">Refresh</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <h2>Books</h2>
+            <div id="grid" class="grid"></div>
+        </main>
+    </div>
+
+    <script>
+        const API_BASE = 'https://script.google.com/macros/s/AKfycbxHsr6z0XaqmWoJf6B2MuVtcnHVa9OFzha9mVAEH4p7yAoTPqi2hSp2SrwxZpO_Hq35/exec';
+        const API = `${API_BASE}?type=reading`;
+
+        let BOOKS = [], STATS = {};
+        const fmt = d => d ? new Date(d).toLocaleDateString('pl-PL') : '—';
+
+        async function fetchData() {
+            const r = await fetch(API, { cache: 'no-store' });
+            const j = await r.json();
+            BOOKS = j.books || [];
+            STATS = j.stats || {};
+            render();
+        }
+
+        function colorForBook(b) {
+            const pagesLeft = Math.max(0, b.pagesAll - b.pagesRead);
+            const daysLeft = b.daysToReturn;          // może być null
+            const avg = Number(STATS.avgPagesPerDay) || 0;
+
+            if (b.returnDate && daysLeft === 0 && pagesLeft > 0) return 'red';
+            if (!b.returnDate || avg <= 0) return 'green';
+            const req = pagesLeft / Math.max(1, daysLeft);
+            if (req > 1.2 * avg) return 'red';
+            if (req > 0.8 * avg) return 'yellow';
+            return 'green';
+        }
+
+        function computePPD(list) {
+            const dated = list.filter(b => b.returnDate && (b.completedPct ?? (b.pagesRead / b.pagesAll)) < 1);
+            if (!dated.length) return { ppd: 0, nextDate: null, nextDays: null };
+
+            const earliest = Math.min(...dated.map(b => b.daysToReturn ?? 9999));
+            const totalLeft = dated.reduce((s, b) => s + Math.max(0, b.pagesAll - b.pagesRead), 0);
+            const ppd = Math.ceil(totalLeft / Math.max(1, earliest));
+            const next = dated.sort((a, b) => (a.daysToReturn ?? 9999) - (b.daysToReturn ?? 9999))[0];
+            return { ppd, nextDate: next.returnDate, nextDays: earliest };
+        }
+
+        function render() {
+            // Filtry
+            const unfinishedOnly = document.getElementById('unfinished').checked;
+            const sort = document.getElementById('sort').value;
+
+            let list = BOOKS.slice();
+            if (unfinishedOnly) list = list.filter(b => (b.completedPct ?? (b.pagesRead / b.pagesAll)) < 1);
+
+            // KPI liczone LOKALNIE jak w Sheets
+            const { ppd, nextDate, nextDays } = computePPD(list);
+            document.getElementById('ppd').textContent = ppd;
+            document.getElementById('next').textContent = nextDate ? `${fmt(nextDate)} (${nextDays}d)` : '—';
+            document.getElementById('active').textContent = list.length;
+            document.getElementById('avg').textContent = STATS.avgPagesPerDay ?? 0;
+
+            // Sortowanie
+            list.sort((a, b) => {
+                if (sort === 'title') return (a.title || '').localeCompare(b.title || '');
+                if (sort === 'remain') return (b.pagesAll - b.pagesRead) - (a.pagesAll - a.pagesRead);
+                if (sort === 'completion') {
+                    const pa = (a.pagesRead / Math.max(1, a.pagesAll)); // 0..1
+                    const pb = (b.pagesRead / Math.max(1, b.pagesAll));
+                    return pa - pb; // rosnąco: od 0% do 100%
+                }
+                // due soon domyślnie
+                const da = a.daysToReturn ?? 9999, db = b.daysToReturn ?? 9999;
+                return da - db;
+            });
+
+            // Render kart
+            const grid = document.getElementById('grid');
+            grid.innerHTML = list.map(b => {
+                const pctNum = Math.round((b.pagesRead / Math.max(1, b.pagesAll)) * 100);
+                const color = colorForBook(b);
+                const pagesLeft = Math.max(0, b.pagesAll - b.pagesRead);
+                const badge = b.returnDate
+                    ? (b.daysToReturn > 0 ? `Due in ${b.daysToReturn}d` : (pagesLeft > 0 ? 'OVERDUE' : 'Due today'))
+                    : 'No due date';
+                return `
+          <div class="card">
+            <div class="header">
+              <div>
+                <div class="title">${b.title}</div>
+                <div class="meta">${b.author}</div>
+              </div>
+              <span class="badge ${b.returnDate && b.daysToReturn <= 0 && pagesLeft > 0 ? 'over' : ''}">${badge}</span>
+            </div>
+            <div class="progress"><div class="${color}" style="width:${pctNum}%"></div></div>
+            <div class="footer">
+              <span>${b.pagesRead} / ${b.pagesAll} • ${pctNum}%</span>
+              <span></span>
+            </div>
+          </div>`;
+            }).join('');
+        }
+
+        document.getElementById('refresh').onclick = fetchData;
+        document.getElementById('unfinished').onchange = render;
+        document.getElementById('sort').onchange = render;
+        fetchData();
+    </script>
+</body>
+
+</html>

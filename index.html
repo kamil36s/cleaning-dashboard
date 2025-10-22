@@ -15,174 +15,183 @@
             <span id="hero-hhmm">00:00</span>
             <span id="hero-ss">00</span>
         </div>
-        <div class="hero-date" id="hero-date">—</div>
-
-        <div class="hero-row">
-            <!-- POGODA -->
-            <div class="card hero-card">
-                <div class="header">
-                    <div class="title">
-                        <div>Pogoda</div>
-                    </div>
-                </div>
-                
-                
-                <!-- MAIN -->
-                <div class="wx">
-                    <div class="wx-main" aria-live="polite">
-                        <div id="wx-temp" class="wx-temp"></div>
-                        <div id="wx-cond" class="wx-cond"></div>
-                    </div>
-                
-                
-                    <!-- FOOTER META -->
-                </div>
-                <div class="hero-values">
-                    <div id="now" class="hero-main"></div>
-                    <div id="next" class="meta"></div>
-                </div>
-                <div class="wx-footer">
-                    <span id="wx-loc">Batorego, Kraków</span>
-                    <span aria-hidden="true">•</span>
-                    <span id="wx-updated"></span>
-                </div>
-            </div>
-
-            <!-- AQI (dummy) -->
-            <div class="card hero-card">
-                <div class="header">
-                    <div class="title">
-                        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path>
-                        </svg>
-                        <div>
-                            Jakość powietrza
-                            <div class="meta">AQI (dummy)</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-values">
-                    <div class="hero-main">
-                        <span id="hero-aqi">42</span>
-                        <span class="pill pill-fresh" style="height:22px">Dobre</span>
-                    </div>
-                    <div class="meta">PM2.5: 11 µg/m³ • PM10: 18 µg/m³</div>
-                </div>
-            </div>
-        </div>
+        <div class="hero-date" id="hero-date"></div>
     </section>
 
-    <main class="main" style="max-width:1200px;margin:0 auto;">
-        <!-- Główne -->
-        <h2>Główne</h2>
-        <div class="grid">
-            <!-- Cleaning Dashboard -->
-            <a href="./cleaning.html" class="card" style="text-decoration:none;">
-                <div class="header">
-                    <div class="title">
-                        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M4 4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4zm2 4h12v2H6z" />
-                        </svg>
-                        <div>
-                            Cleaning Dashboard
-                            <div class="meta">Podsumowanie dzisiejszych zadań</div>
-                        </div>
-                    </div>
-                    <span class="pill pill-due">Otwórz</span>
+    <!-- SIATKA WIDGETÓW -->
+    <section class="dash">
+        <!-- 1) POGODA -->
+        <div class="card hero-card">
+            <div class="header">
+                <div class="title">
+                    <div>Pogoda</div>
                 </div>
-                <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
-                    <div><strong>Due/Overdue dziś:</strong> 3</div>
-                    <div><strong>Coming (7 dni):</strong> 5</div>
-                    <div><strong>Streak:</strong> 4 dni</div>
+            </div>
+            <div class="wx">
+                <div class="wx-main" aria-live="polite">
+                    <div id="wx-temp" class="wx-temp"></div>
+                    <div id="wx-cond" class="wx-cond"></div>
                 </div>
-                <div class="progress">
-                    <div class="yellow" style="width:40%"></div>
-                </div>
-                <div class="footer"><span>Status</span><span>dummy</span></div>
-            </a>
+            </div>
+            <div class="hero-values">
+                <div id="now" class="hero-main"></div>
+                <div id="next" class="meta"></div>
+            </div>
+            <div class="wx-footer">
+                <span id="wx-loc">Batorego, Kraków</span>
+                <span aria-hidden="true">•</span>
+                <span id="wx-updated"></span>
+            </div>
         </div>
 
-        <!-- Kalendarz i wydarzenia -->
-        <h2>Kalendarz i wydarzenia</h2>
-        <div class="grid">
-            <a href="./events.html" class="card" style="text-decoration:none;">
-                <div class="header">
-                    <div class="title">
-                        <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zM5 8h14v12H5V8z" />
-                        </svg>
-                        <div>
-                            Święta i wydarzenia
-                            <div class="meta">Nadchodzące dni wolne + GCal</div>
-                        </div>
-                    </div>
-                    <span class="pill">Wejdź</span>
+        <!-- 2) AQI -->
+        <section id="aq-card" class="card aqi">
+<header class="aqi-head with-sep">
+    <div>
+        <h3>Jakość powietrza</h3>
+        
+    </div>
+</header>
+            <div class="aqi-main">
+                <div class="aqi-value" id="aq-index">—</div>
+                <div class="aqi-desc" id="aq-desc">—</div>
+                <div class="aqi-dominant" id="aq-dominant">Dominujące: —</div>
+            </div>
+            <div class="aqi-bars">
+                <div class="aqi-bar"><span>PM2.5</span>
+                    <div><i id="bar-pm25" style="width:0%"></i><em id="val-pm25">— µg/m³</em></div>
                 </div>
-                <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
-                    <div><strong>Najbliższe święto:</strong> 11.11 • za 20 dni</div>
-                    <div><strong>Event:</strong> Demo Altera • jutro</div>
+                <div class="aqi-bar"><span>PM10</span>
+                    <div><i id="bar-pm10" style="width:0%"></i><em id="val-pm10">— µg/m³</em></div>
                 </div>
-            </a>
-        </div>
+                <div class="aqi-bar"><span>NO₂</span>
+                    <div><i id="bar-no2" style="width:0%"></i><em id="val-no2">— µg/m³</em></div>
+                </div>
+                <div class="aqi-bar"><span>O₃</span>
+                    <div><i id="bar-o3" style="width:0%"></i><em id="val-o3">— µg/m³</em></div>
+                </div>
+            </div>
+            <br/>
+            <div id="aq-location" class="muted">Kraków, al. Krasińskiego</div>
+            <div class="aqi-head with-sep"></div>
+            <footer class="aqi-foot"><span id="aq-updated" class="muted">—</span></footer>
+        </section>
 
-        <!-- Otoczenie i czujniki -->
-        <h2>Otoczenie i czujniki</h2>
-        <div class="grid">
-            <a href="./sensors.html" class="card" style="text-decoration:none;">
-                <div class="header">
-                    <div class="title">
-                        <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M15 17a3 3 0 1 1-6 0c0-1.3.84-2.4 2-2.82V6a1 1 0 0 1 2 0v8.18A3.001 3.001 0 0 1 15 17z" />
-                        </svg>
-                        <div>
-                            Temperatura i wilgotność
-                            <div class="meta">Live z termometru (dummy)</div>
-                        </div>
-                    </div>
-                    <span class="pill">Wejdź</span>
-                </div>
-                <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
-                    <div><strong>Temp:</strong> 21.4°C</div>
-                    <div><strong>Wilgotność:</strong> 52%</div>
-                    <div><strong>Komfort:</strong> Zielony • OK</div>
-                </div>
-            </a>
+<!-- 3) CLEANING -->
+<div class="card cleaning" role="region" aria-labelledby="cl-title">
+    <div class="header">
+        <div class="title" id="cl-title">
+            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4 4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4zm2 4h12v2H6z" />
+            </svg>
+            <div>
+                Cleaning Dashboard
+                <div class="meta">Dzisiejszy status sprzątania</div>
+            </div>
         </div>
+        <a class="pill" href="./cleaning.html">Otwórz</a>
+    </div>
 
-        <!-- Czytanie -->
-        <h2>Czytanie</h2>
-        <div class="grid">
-            <a href="./reading.html" class="card" style="text-decoration:none;">
-                <div class="header">
-                    <div class="title">
-                        <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M4 6h16v12H4zM6 8v8h12V8z" />
-                        </svg>
-                        <div>
-                            Reading Progress
-                            <div class="meta">Skrót do czytelniczego panelu</div>
-                        </div>
-                    </div>
-                    <span class="pill">Otwórz</span>
-                </div>
-                <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
-                    <div><strong>Aktualnie:</strong> “Agile Testing”</div>
-                    <div style="flex:1;min-width:180px;">
-                        <div class="progress">
-                            <div class="yellow" style="width:65%"></div>
-                        </div>
-                        <div class="meta">65% • 195/300 stron</div>
-                    </div>
-                </div>
-            </a>
+    <!-- liczniki jako pille -->
+    <div class="cleaning-counters">
+        <div class="cc">
+            <div class="cc-value" id="cl-overdue">0</div>
+            <span class="pill pill-over">OVERDUE</span>
         </div>
-    </main>
+        <div class="cc">
+            <div class="cc-value" id="cl-due">0</div>
+            <span class="pill pill-due">DUE</span>
+        </div>
+        <div class="cc">
+            <div class="cc-value" id="cl-coming">0</div>
+            <span class="pill pill-coming">COMING</span>
+        </div>
+    </div>
 
-    <!-- Moduły JS -->
+    <div id="cl-list" class="cl-list"></div>
+
+    <!-- zero-state -->
+    <div id="cl-zerostate" class="cl-zerostate meta" hidden>
+        zajebiście ogarnięte, nie ma nic do roboty, elo
+    </div>
+</div>
+
+
+
+        <!-- 4) READING -->
+        <a href="./reading.html" class="card" style="text-decoration:none;">
+            <div class="header">
+                <div class="title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 6h16v12H4zM6 8v8h12V8z" />
+                    </svg>
+                    <div>
+                        Reading Progress
+                        <div class="meta">Skrót do czytelniczego panelu</div>
+                    </div>
+                </div>
+                <span class="pill">Otwórz</span>
+            </div>
+            <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
+                <div><strong>Aktualnie:</strong> “Agile Testing”</div>
+                <div style="flex:1;min-width:180px;">
+                    <div class="progress">
+                        <div class="yellow" style="width:65%"></div>
+                    </div>
+                    <div class="meta">65% • 195/300 stron</div>
+                </div>
+            </div>
+        </a>
+
+        <!-- 5) HOLIDAYS -->
+        <a href="./events.html" class="card" style="text-decoration:none;">
+            <div class="header">
+                <div class="title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zM5 8h14v12H5V8z" />
+                    </svg>
+                    <div>
+                        Święta i wydarzenia
+                        <div class="meta">Nadchodzące dni wolne + GCal</div>
+                    </div>
+                </div>
+                <span class="pill">Wejdź</span>
+            </div>
+            <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
+                <div><strong>Najbliższe święto:</strong> 11.11 • za 20 dni</div>
+                <div><strong>Event:</strong> Demo Altera • jutro</div>
+            </div>
+        </a>
+
+        <!-- 6) TEMPERATURA I WILGOTNOŚĆ -->
+        <a href="./sensors.html" class="card" style="text-decoration:none;">
+            <div class="header">
+                <div class="title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M15 17a3 3 0 1 1-6 0c0-1.3.84-2.4 2-2.82V6a1 1 0 0 1 2 0v8.18A3.001 3.001 0 0 1 15 17z" />
+                    </svg>
+                    <div>
+                        Temperatura i wilgotność
+                        <div class="meta">Live z termometru (dummy)</div>
+                    </div>
+                </div>
+                <span class="pill">Wejdź</span>
+            </div>
+            <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
+                <div><strong>Temp:</strong> 21.4°C</div>
+                <div><strong>Wilgotność:</strong> 52%</div>
+                <div><strong>Komfort:</strong> Zielony • OK</div>
+            </div>
+        </a>
+    </section>
+
+    <!-- JS -->
     <script type="module" src="./js/heroClock.js"></script>
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/main_weather.js"></script>
+    <script type="module" src="./js/init-aqi.js"></script>
+    <script type="module" src="./js/widget-cleaning.js"></script>
 </body>
 
 </html>

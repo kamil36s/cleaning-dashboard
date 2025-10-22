@@ -7,6 +7,8 @@ import { OPENAI_PROXY } from './config.js';
 bootDebug();
 
 // UI events
+
+/*
 const grid = document.getElementById('grid');
 const refreshBtn = document.getElementById('refresh');
 const dueOnly = document.getElementById('dueOnly');
@@ -29,6 +31,35 @@ grid.addEventListener('click', async (ev) => {
   btn.disabled = true; btn.textContent = '...';
   try { await markDone(row); } finally { btn.disabled = false; btn.textContent = prev; }
 });
+*/
+
+// UI events  — null-safe
+const $ = (id) => document.getElementById(id);
+const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
+
+const grid     = $('grid');
+const refreshBtn = $('refresh');   // upewnij się, że ID istnieje na tej stronie
+const dueOnly  = $('dueOnly');
+const roomSel  = $('room');
+const sortSel  = $('sort');
+const catSel   = $('category');
+
+on(refreshBtn, 'click', fetchData);
+on(dueOnly,   'change', render);
+on(roomSel,   'change', render);
+on(sortSel,   'change', render);
+on(catSel,    'change', render);
+
+on(grid, 'click', async (ev) => {
+  const btn = ev.target.closest('button.pill');
+  if (!btn) return;
+  const row = Number(btn.dataset.row || 0);
+  if (!row) return;
+  const prev = btn.textContent;
+  btn.disabled = true; btn.textContent = '...';
+  try { await markDone(row); } finally { btn.disabled = false; btn.textContent = prev; }
+});
+
 
 function summarizeVisible(){
   const box = document.getElementById('ai-box');
@@ -64,8 +95,7 @@ function summarizeVisible(){
 .finally(()=> box.classList.remove('loading'));
 }
 
-document.getElementById('gen-tips')
-  .addEventListener('click', summarizeVisible);
+document.getElementById('gen-tips')?.addEventListener('click', summarizeVisible);
 
 // Start
 fetchData();

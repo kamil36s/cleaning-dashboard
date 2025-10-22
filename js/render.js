@@ -3,55 +3,64 @@ import { fmtDate } from './utils.js';
 import { iconFor } from './icons.js';
 export let LAST_LIST = [];
 
-function metrics(arr){
-  const today = arr.filter(t => !t.overdue && t.nextDueIn === 0).length;
-  const ov = arr.filter(t => t.overdue).length;
+// --- CONFIG + HELPERS ---
+const COMING_FRAC = 0.95;                 // Jeden próg dla COMING
+const N = v => (v==null || v==='') ? null : Number(v);
+
+const daysOver = t => t.overdue ? Math.max(0, (N(t.daysSince)||0) - (N(t.freq)||0)) : 0;
+const usedFrac = t => (
+  t.overdue ? 1.01 :
+  (Number.isFinite(N(t.freq)) && N(t.freq) > 0 && Number.isFinite(N(t.daysSince))) ? (N(t.daysSince)/N(t.freq)) : 0
+);
+
+const isDue  = t => !t.overdue && N(t.nextDueIn) === 0;
+const isDead = t => t.overdue && daysOver(t) > 7;
+const isComing = t => !t.overdue && !isDue(t) && usedFrac(t) >= COMING_FRAC;
+
+const pctOf = t => Math.min(100, Math.max(0, Math.round(usedFrac(t) * 100)));
+const keyOf = t => [t.room||'', t.category||'', t.task||''].join('|');
+
+const colorOf = t => {
+  if (isDead(t))   return 'dead';
+  if (t.overdue)   return 'red';
+  if (isDue(t))    return 'yellow';
+  if (isComing(t)) return 'lime';   // spójnie z progiem
+  return 'green';
+};
+
+// --- KPI METRYKI ---
+export function metrics(arr){
+  const today = arr.filter(t => !t.overdue && N(t.nextDueIn) === 0).length;
+  const ov    = arr.filter(t => t.overdue).length;
   const total = arr.length;
   const delays = arr
-    .filter(t => t.overdue && t.daysSince != null)
-    .map(t => (t.daysSince || 0) - (t.freq || 0));
+    .filter(t => t.overdue && N(t.daysSince) != null)
+    .map(t => (N(t.daysSince) || 0) - (N(t.freq) || 0));
   const avg = delays.length ? (delays.reduce((a,b)=>a+b,0) / delays.length) : 0;
   return { today, ov, total, avg: Math.max(0, Math.round(avg * 10) / 10) };
 }
 
-const daysOver = t => t.overdue ? Math.max(0, (t.daysSince || 0) - (t.freq || 0)) : 0;
-const isDue = t => !t.overdue && t.nextDueIn === 0;
-const isDead = t => t.overdue && daysOver(t) > 7;
-const usedFrac = t => (t.daysSince != null && t.freq > 0) ? (t.daysSince / t.freq) : (t.overdue ? 1.01 : 0);
-const pctOf = t => Math.min(100, Math.max(0, Math.round(usedFrac(t) * 100)));
-const colorOf = t => {
-  if (isDead(t)) return 'dead';
-  if (t.overdue) return 'red';
-  if (isDue(t)) return 'yellow';
-  if (usedFrac(t) >= 0.8) return 'lime';
-  return 'green';
-};
-const keyOf = t => [t.room||'', t.category||'', t.task||''].join('|');
-
 // DEAD(0) -> OVERDUE(1) -> DUE(2) -> COMING(3) -> FRESH(4)
 function statusRank(t) {
-  const over   = t.overdue;
-  const dead   = isDead(t);
-  const due    = isDue(t);
-  const coming = !over && !due && usedFrac(t) >= 0.8;
-
-  if (dead)   return 0;
-  if (over)   return 1;
-  if (due)    return 2;
-  if (coming) return 3;
-  return 4; // fresh
+  if (isDead(t))   return 0;
+  if (t.overdue)   return 1;
+  if (isDue(t))    return 2;
+  if (isComing(t)) return 3;
+  return 4;
 }
 
 function cardHTML(t){
-  const id = (t.row ?? t.row_id ?? null);
-  const pct = pctOf(t);
-  const color = colorOf(t);
+  const id   = (t.row ?? t.row_id ?? null);
+  const pct  = pctOf(t);
   const over = t.overdue;
   const dead = isDead(t);
-  const due = isDue(t);
-  const coming = !over && !due && usedFrac(t) >= 0.8;
+  const due  = isDue(t);
+  const coming = isComing(t); // UJEDNOLICONE
+
   const frameClass = dead ? 'dead' : (over ? 'overdue' : (due ? 'due' : (coming ? 'coming' : '')));
-  const dueLabel = over ? `OVERDUE by ${(t.daysSince||0)-(t.freq||0)}d` : (due ? 'DUE today' : `Next in ${t.nextDueIn}d`);
+  const dueLabel = over
+    ? `OVERDUE by ${(N(t.daysSince)||0)-(N(t.freq)||0)}d`
+    : (due ? 'DUE today' : `Next in ${N(t.nextDueIn) ?? '—'}d`);
 
   return `
   <div class="card ${frameClass}" data-key="${keyOf(t)}">
@@ -75,10 +84,10 @@ function cardHTML(t){
         ${(!dead && !over && !due && !coming) ? `<button class="pill pill-fresh"  data-row="${id}" data-action="done">FRESH</button>` : ''}
       </div>
     </div>
-    <div class="progress"><div class="${color}" style="width:${pct}%"></div></div>
+    <div class="progress"><div class="${colorOf(t)}" style="width:${pct}%"></div></div>
     <div class="footer">
       <span>${dueLabel}</span>
-      <span>${t.daysSince != null ? `Since: ${t.daysSince}d` : 'Never'}</span>
+      <span>${N(t.daysSince) != null ? `Since: ${N(t.daysSince)}d` : 'Never'}</span>
     </div>
   </div>`;
 }
@@ -86,10 +95,13 @@ function cardHTML(t){
 export function render(){
   // KPI
   const m = metrics(DATA);
-  document.getElementById('kpi-today').textContent = m.today;
+  document.getElementById('kpi-today').textContent   = m.today;
   document.getElementById('kpi-overdue').textContent = m.ov;
-  document.getElementById('kpi-total').textContent = m.total;
-  document.getElementById('kpi-delay').textContent = `${m.avg}d`;
+  document.getElementById('kpi-total').textContent   = m.total;
+  document.getElementById('kpi-delay').textContent   = `${m.avg}d`;
+  // Dodaj COMING KPI jeśli masz miejsce w UI
+  const kpiComing = document.getElementById('kpi-coming');
+  if (kpiComing) kpiComing.textContent = DATA.filter(isComing).length;
 
   // Fill selects once
   const roomSel = document.getElementById('room');
@@ -112,20 +124,19 @@ export function render(){
   let list = DATA.slice();
   if (room !== 'ALL') list = list.filter(t => t.room === room);
   if (category !== 'ALL') list = list.filter(t => t.category === category);
-  if (dueOnly) list = list.filter(t => t.overdue || t.nextDueIn === 0);
+  if (dueOnly) list = list.filter(t => t.overdue || N(t.nextDueIn) === 0);
 
-  const safeNext = x => (Number.isFinite(x) ? x : 9999);
+  const safeNext = x => (Number.isFinite(N(x)) ? N(x) : 9999);
   list.sort((a, b) => {
-  if (sort === 'room')    return (a.room || '').localeCompare(b.room || '');
-  if (sort === 'soonest') return safeNext(a.nextDueIn) - safeNext(b.nextDueIn);
-  // default: DEAD -> OVERDUE -> DUE -> COMING -> FRESH
-  return statusRank(a) - statusRank(b)
-      || safeNext(a.nextDueIn) - safeNext(b.nextDueIn)
-      || (a.task || '').localeCompare(b.task || '');
-});
+    if (sort === 'room')    return (a.room || '').localeCompare(b.room || '');
+    if (sort === 'soonest') return safeNext(a.nextDueIn) - safeNext(b.nextDueIn);
+    // default: DEAD -> OVERDUE -> DUE -> COMING -> FRESH
+    return statusRank(a) - statusRank(b)
+        || safeNext(a.nextDueIn) - safeNext(b.nextDueIn)
+        || (a.task || '').localeCompare(b.task || '');
+  });
 
-  // ...po list.sort(...)
-LAST_LIST = list;
+  LAST_LIST = list;
 
   const grid = document.getElementById('grid');
   const existing = new Map([...grid.children].map(el => [el.getAttribute('data-key'), el]));
@@ -152,10 +163,12 @@ LAST_LIST = list;
       }
 
       el.querySelector('.badges').innerHTML = newEl.querySelector('.badges').innerHTML;
-      el.querySelector('.title').innerHTML = newEl.querySelector('.title').innerHTML;
-      el.querySelector('.meta').innerHTML = newEl.querySelector('.meta').innerHTML;
+      el.querySelector('.title').innerHTML  = newEl.querySelector('.title').innerHTML;
+      el.querySelector('.meta').innerHTML   = newEl.querySelector('.meta').innerHTML;
 
-      el.className = `card ${isDead(t) ? 'dead' : (t.overdue ? 'overdue' : (isDue(t) ? 'due' : (usedFrac(t) >= 0.8 ? 'coming' : '')))}`;
+      // spójna klasa ramki
+      const cls = isDead(t) ? 'dead' : (t.overdue ? 'overdue' : (isDue(t) ? 'due' : (isComing(t) ? 'coming' : '')));
+      el.className = `card ${cls}`;
       el.classList.add('update');
       setTimeout(()=>el.classList.remove('update'), 300);
     } else {

@@ -40,3 +40,12 @@ export async function markDone(row){
     await fetchData();
   } catch(e){ console.error('markDone exception:', e); }
 }
+
+// zwraca tablicę tasków
+export async function getTasks(){
+  const url = 'https://script.google.com/macros/s/AKfycbwZXHkLhl9HlcTHHzJjcMzAzDMRYhboDs3_kR8oAq9SdeKgBOp9JbWFS6P2OaiczpmXkg/exec'; // Twój URL
+  const r = await fetch(url, {cache:'no-store'});
+  if(!r.ok) throw new Error(r.statusText);
+  const json = await r.json();
+  return json.tasks; // dopasuj do realnego pola
+}

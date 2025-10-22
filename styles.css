@@ -136,17 +136,17 @@ h2 {
 }
 
 .title {
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  column-gap: 8px;
-  align-items: start;
-  font-weight: 700
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 700;
 }
 
 .title .ico {
   width: 18px;
   height: 18px;
-  opacity: .9
+  opacity: .9;
+  flex: 0 0 18px;
 }
 
 .badges {
@@ -377,7 +377,7 @@ button {
 /* Wyśrodkowany nagłówek w karcie HERO */
 .hero-card .header {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 6px;
+  padding-bottom: 8px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
@@ -541,7 +541,6 @@ button {
   border: 1px solid var(--border);
   background: var(--card);
   cursor: help;
-  /* hover = tooltip z atrybutu title */
   transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
@@ -567,7 +566,6 @@ button {
 #now .pill-value {
   font-weight: 700;
   font-size: 15px;
-  /* większe liczby */
   font-variant-numeric: tabular-nums;
 }
 
@@ -576,22 +574,17 @@ button {
   color: var(--muted);
 }
 
-/* Kolorowe akcenty wartości wg typu */
 #now .pill[data-kind="prcp"] .pill-value {
   color: #93c5fd;
 }
 
-/* opad */
 #now .pill[data-kind="wind"] .pill-value {
   color: #fbbf24;
 }
 
-/* wiatr */
 #now .pill[data-kind="gust"] .pill-value {
   color: #fca5a5;
 }
-
-/* porywy */
 
 /* Gęstszy układ na wąskich ekranach */
 @media (max-width:520px) {
@@ -615,14 +608,11 @@ button {
 /* ==== FIX: WEATHER PILLS FIT ==== */
 #now .pill {
   height: auto;
-  /* nadpisuje 22px */
   min-height: 36px;
   padding: 8px 12px;
   max-width: 260px;
-  /* zapobiega rozciąganiu w nieskończoność */
   align-items: center;
   flex: 0 1 auto;
-  /* może się zawijać do nowej linii */
 }
 
 #now .pill-main {
@@ -634,7 +624,6 @@ button {
   font-size: 14px;
   line-height: 1.15;
   white-space: normal;
-  /* pozwól na łamanie, np. przed (bardzo słaby) */
   word-break: keep-all;
 }
 
@@ -647,4 +636,382 @@ button {
   #now .pill {
     max-width: 100%;
   }
+}
+
+/* ===== AQI ===== */
+.aqi {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 16px
+}
+
+.aqi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px
+}
+
+.aqi-head.with-sep {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      text-align: center
+}
+
+.aqi-badge {
+  min-width: 98px;
+  text-align: center;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel)
+}
+
+.aqi-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin: 8px 0 10px
+}
+
+.aqi-value {
+  font-size: 34px;
+  font-weight: 800
+}
+
+.aqi-desc {
+  font-size: 14px
+}
+
+.aqi-dominant {
+  font-size: 12px;
+  color: var(--muted)
+}
+
+.aqi-bars {
+  display: grid;
+  gap: 8px
+}
+
+.aqi-bar {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px
+}
+
+.aqi-bar>div {
+  position: relative;
+  height: 10px;
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.aqi-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .3));
+  transition: width .5s ease;
+}
+
+.aqi-bar em {
+  position: absolute;
+  right: 8px;
+  top: -18px;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 11px
+}
+
+.aqi-foot {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px
+}
+
+/* Kolory kategorii PL AQI */
+:root {
+  --aqi-verygood: #0f9d58;
+  --aqi-good: #22c55e;
+  --aqi-moderate: #eab308;
+  --aqi-sufficient: #f59e0b;
+  --aqi-bad: #ef4444;
+  --aqi-verybad: #7e22ce;
+}
+
+.aqi.k-verygood {
+  box-shadow: 0 0 0 1px var(--aqi-verygood) inset
+}
+
+.aqi.k-good {
+  box-shadow: 0 0 0 1px var(--aqi-good) inset
+}
+
+.aqi.k-moderate {
+  box-shadow: 0 0 0 1px var(--aqi-moderate) inset
+}
+
+.aqi.k-sufficient {
+  box-shadow: 0 0 0 1px var(--aqi-sufficient) inset
+}
+
+.aqi.k-bad {
+  box-shadow: 0 0 0 1px var(--aqi-bad) inset
+}
+
+.aqi.k-verybad {
+  box-shadow: 0 0 0 1px var(--aqi-verybad) inset
+}
+
+.aqi-bar>div::before,
+.aqi-bar>div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  opacity: .18;
+  background: var(--text);
+}
+
+.aqi-bar>div::before {
+  left: 33.3%
+}
+
+/* ~ umiarkowany */
+.aqi-bar>div::after {
+  left: 66.6%
+}
+
+/* ~ zły */
+
+/* kontener drugiego rzędu kart */
+section.grid {
+  max-width: 1100px;
+  margin: 14px auto;
+  padding: 0 14px;
+}
+
+/* karty wewnątrz .grid zachowują się jak bloczki, łapią pełną wysokość */
+.grid>a.card,
+.grid>.card {
+  display: block;
+  height: 100%;
+}
+
+/* Jedna siatka, karty stykają się i płynnie się łamią */
+.dash {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row;
+  max-width: 1100px;
+  margin: 12px auto 0;
+  gap: 8px;
+}
+
+/* karty wierszowo równej wysokości */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+}
+
+/* ujednolicenie nagłówków w kartach */
+.title {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.title .ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: .9;
+}
+
+/* Cleaning: pille z liczbą nad nimi */
+.cleaning .cleaning-counters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cleaning .cleaning-counters .cc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: #1b1b1b;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.cleaning .cc-value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+.cleaning .cleaning-counters .pill {
+  justify-content: center;
+  min-width: 96px;
+}
+
+@media (max-width:520px) {
+  .cleaning .cleaning-counters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ====== DODANE: wyśrodkowanie AQI + Cleaning i odstępy ====== */
+
+/* AQI wyśrodkowane */
+.aqi {
+  text-align: center
+}
+
+.aqi-head {
+  justify-content: center
+}
+
+#aq-location {
+  text-align: center
+}
+
+.aqi-main {
+  justify-items: center
+}
+
+.aqi-foot {
+  justify-content: center
+}
+
+/* Cleaning: header wyśrodkowany, przycisk w rogu, więcej przestrzeni pod podtytułem */
+.card.cleaning .header {
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.card.cleaning .header .title {
+  justify-content: center
+}
+
+.card.cleaning .header .pill {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+
+.card.cleaning .title .meta {
+  margin-top: 6px
+}
+
+.cleaning .cleaning-counters {
+  margin-top: 12px;
+  justify-items: center
+}
+
+/* Cleaning widget: lista pilli */
+
+.cl-list {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  /* środek w poziomie */
+  align-content: flex-start;
+  /* układ od góry */
+}
+
+@media (max-width:700px) {
+  .cl-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* === Cleaning widget: pille kompaktowe === */
+
+/* zamiast 3 kolumn: elastyczne pille, łamią się w wierszach */
+.cl-list {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* pojedynczy „pill” z tytułem i statusem, szerokość = treść */
+.cl-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  /* mniej powietrza */
+  background: #1b1b1b;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  /* pill shape */
+  max-width: 100%;
+}
+
+/* tytuł wypełnia pilla; zawijaj, ale bez dziur */
+.cl-item .title {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  margin: 0;
+  white-space: normal;
+  /* pozwól zawijać */
+  word-break: break-word;
+  /* długie wyrazy się złamią */
+}
+
+/* mały przycisk-status, dopasowany do treści */
+.cl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  /* mniejszy */
+  border-radius: 999px;
+  font-size: 10.5px;
+  line-height: 1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+/* kolory bez zmian */
+.cl-btn.dead {
+  background: var(--dead);
+  color: #fff
+}
+
+.cl-btn.overdue {
+  background: var(--over);
+  color: #fff
+}
+
+.cl-btn.due {
+  background: var(--due);
+  color: #1a1a1a
+}
+
+.cl-btn.coming {
+  background: var(--coming);
+  color: #0c0c0c
 }
