@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cleaning Dashboard</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <aside class="panel">
+            <h1>Cleaning Dashboard</h1>
+            <div class="controls" style="margin-bottom:8px">
+                <button id="back-btn" title="Wróć do strony głównej">⟵ Back</button>
+            </div>
+            <div class="kpis">
+                <div class="kpi"><span>Due today</span><b id="kpi-today">0</b></div>
+                <div class="kpi"><span>Overdue</span><b id="kpi-overdue">0</b></div>
+                <div class="kpi"><span>Total</span><b id="kpi-total">0</b></div>
+                <div class="kpi"><span>Avg delay</span><b id="kpi-delay">0d</b></div>
+            </div>
+
+            <h2>Filters</h2>
+            <div class="controls">
+                <select id="room">
+                    <option value="ALL">All rooms</option>
+                </select>
+                <select id="category">
+                    <option value="ALL">All categories</option>
+                </select>
+                <select id="sort">
+                    <option value="priority">Priority</option>
+                    <option value="soonest">Soonest due</option>
+                    <option value="room">Room</option>
+                </select>
+                <label style="display:flex;align-items:center;gap:6px">
+                    <input type="checkbox" id="dueOnly"> Due only
+                </label>
+                <button id="refresh">Refresh</button>
+                <button id="gen-tips">Generate tips</button>
+                <section id="ai-box" class="ai-box" hidden>
+                    <h2>Assistant</h2>
+                    <div id="ai-output">—</div>
+                </section>
+            </div>
+        </aside>
+
+        <main class="main">
+            <h2>Tasks</h2>
+            <div id="grid" class="grid"></div>
+        </main>
+    </div>
+    <script defer src="./js/nav.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
