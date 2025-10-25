@@ -1,0 +1,243 @@
+{
+  "generatedAt": "2025-10-25T22:18:18.378Z",
+  "today": "2025-10-25",
+  "sobrietyDays": 0,
+  "stats": {
+    "totalActive": 21,
+    "doneToday": 0,
+    "missedToday": 21
+  },
+  "habits": [
+    {
+      "id": 56,
+      "name": "Add 10 sentences to Jessy's Anki deck",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2024-09-26"
+    },
+    {
+      "id": 74,
+      "name": "Ashwaganda",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-24"
+    },
+    {
+      "id": 75,
+      "name": "B12",
+      "archived": false,
+      "unit": "μg",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 60,
+      "name": "Biotyna/B complex",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 51,
+      "name": "Concerta/Atenza",
+      "archived": false,
+      "unit": "mg",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 17,
+      "name": "Don't drink",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 65,
+      "name": "Don't smoke cigarettes",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 70,
+      "name": "Don't smoke weed",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 78,
+      "name": "Duloxetine",
+      "archived": false,
+      "unit": "mg",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 61,
+      "name": "Kolagen",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-06-17"
+    },
+    {
+      "id": 76,
+      "name": "Lion's Mane",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 69,
+      "name": "Magnesium",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-24"
+    },
+    {
+      "id": 68,
+      "name": "Medikinet CR",
+      "archived": false,
+      "unit": "mg",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 52,
+      "name": "Medikinet IR",
+      "archived": false,
+      "unit": "mg",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 64,
+      "name": "Meditation",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-06-27"
+    },
+    {
+      "id": 77,
+      "name": "Omega 3",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 50,
+      "name": "Pregabalin",
+      "archived": false,
+      "unit": "mg",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 62,
+      "name": "Push-ups",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 84,
+      "name": "Vitamin C",
+      "archived": false,
+      "unit": "mg",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 66,
+      "name": "Vitamin D",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    },
+    {
+      "id": 80,
+      "name": "Zinc",
+      "archived": false,
+      "unit": "",
+      "doneToday": false,
+      "todayValue": null,
+      "todayDisplay": null,
+      "streak": 0,
+      "lastDone": "2025-10-25"
+    }
+  ]
+}

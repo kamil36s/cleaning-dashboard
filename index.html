@@ -118,72 +118,251 @@
 
 
 
-        <!-- 4) READING -->
-        <a href="./reading.html" class="card" style="text-decoration:none;">
-            <div class="header">
-                <div class="title">
-                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M4 6h16v12H4zM6 8v8h12V8z" />
-                    </svg>
-                    <div>
-                        Reading Progress
-                        <div class="meta">Skrót do czytelniczego panelu</div>
-                    </div>
-                </div>
-                <span class="pill">Otwórz</span>
+<!-- 4) READING -->
+<div class="card reading" id="reading-card" role="region" aria-labelledby="rdg-title">
+    <!-- header -->
+    <div class="reading-header">
+        <div class="reading-header-left">
+            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4 6h16v12H4zM6 8v8h12V8z" />
+            </svg>
+            <div class="reading-header-text">
+                <div id="rdg-title">Reading Progress</div>
+                <div class="meta">Skrót do czytelniczego panelu</div>
             </div>
-            <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
-                <div><strong>Aktualnie:</strong> “Agile Testing”</div>
-                <div style="flex:1;min-width:180px;">
-                    <div class="progress">
-                        <div class="yellow" style="width:65%"></div>
-                    </div>
-                    <div class="meta">65% • 195/300 stron</div>
-                </div>
+        </div>
+        <a class="pill" href="./reading.html">Otwórz</a>
+    </div>
+
+    <!-- aktywna książka -->
+    <section class="reading-current">
+        <div class="reading-current-top">
+            <div class="current-main">
+                <div class="current-booktitle" id="rdg-book-title">—</div>
+                <div class="current-author meta" id="rdg-book-author">—</div>
             </div>
-        </a>
+            <div class="current-due">
+                <span class="due-pill" id="rdg-due-pill">—</span>
+                <div class="meta current-date" id="rdg-due-date">—</div>
+            </div>
+        </div>
+
+        <div class="progress reading-progressbar">
+            <div id="rdg-progress-bar" class="green" style="width:0%"></div>
+        </div>
+        <div class="meta" id="rdg-progress-text">0 / 0 • 0%</div>
+
+        <!-- edycja strony -->
+        <div class="reading-edit-row">
+            <label for="rdg-page-input" class="sr-only">Aktualna strona</label>
+            <input id="rdg-page-input" type="number" class="reading-page-input" min="0" value="0" />
+            <button id="rdg-save-btn" class="reading-save-btn">Zapisz stronę</button>
+            <div class="meta small-note">Ustaw i zapisz do arkusza</div>
+        </div>
+
+        <!-- 3 boksy: cel / zwrot / tempo -->
+        <div class="reading-kpis">
+            <div class="reading-kpi">
+                <div class="kpi-label">Dzisiejszy cel</div>
+                <div class="kpi-main" id="rdg-today-target">—</div>
+                <div class="kpi-sub meta" id="rdg-today-left">—</div>
+            </div>
+            <div class="reading-kpi">
+                <div class="kpi-label">Zwrot</div>
+                <div class="kpi-main" id="rdg-due-in">—</div>
+                <div class="kpi-sub meta" id="rdg-due-date-2">—</div>
+            </div>
+            <div class="reading-kpi">
+                <div class="kpi-label">Tempo</div>
+                <div class="kpi-main" id="rdg-avg">—</div>
+                <div class="kpi-sub meta" id="rdg-streak">—</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- lista aktywnych książek <100% -->
+    <section class="reading-active">
+        <div class="reading-active-head">
+            <div class="reading-active-title">
+                Aktywne książki
+                <span class="meta" id="rdg-active-count">(0)</span>
+            </div>
+            <div class="reading-active-legend meta">
+                <span class="legend-dot"></span>% = progres
+            </div>
+        </div>
+
+        <div class="reading-active-grid" id="rdg-active-grid">
+            <!-- przyciski książek będą wstrzyknięte z JS -->
+        </div>
+    </section>
+</div>
+
+
+<section class="card habits">
+    <header class="habits-head">
+        <div>
+            <h3>Habits</h3>
+            <div class="muted" id="hb-sub">Dzisiejszy status nawyków</div>
+        </div>
+        <a class="open-link" href="#" target="_blank" rel="noopener">Otwórz</a>
+    </header>
+
+    <div class="hb-soberBanner">
+        <div class="hb-soberInner">
+            <span id="hb-sober-num">0</span>
+            <span class="hb-sober-label">DAYS SOBER</span>
+        </div>
+    </div>
+
+    <div class="hb-statsrow">
+        <div class="pill big done">
+            <div id="hb-done" class="num">0</div>
+            <div class="lbl">DONE</div>
+        </div>
+        <div class="pill big missed">
+            <div id="hb-missed" class="num">0</div>
+            <div class="lbl">MISSED</div>
+        </div>
+        <div class="pill big total">
+            <div id="hb-total" class="num">0</div>
+            <div class="lbl">TOTAL</div>
+        </div>
+    </div>
+
+    <div class="hb-groups" id="hb-groups">
+        <!-- JS will inject grouped sections here -->
+    </div>
+
+
+    <footer class="hb-foot muted" id="hb-foot">
+        <!-- e.g. Ostatnia aktualizacja: 2025-10-25, 16:39 -->
+    </footer>
+</section>
+
 
         <!-- 5) HOLIDAYS -->
-        <a href="./events.html" class="card" style="text-decoration:none;">
-            <div class="header">
-                <div class="title">
-                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
+        <a href="./events.html" class="card events" style="text-decoration:none;">
+            <header class="events-head">
+                <div class="events-head-main">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zM5 8h14v12H5V8z" />
                     </svg>
-                    <div>
-                        Święta i wydarzenia
-                        <div class="meta">Nadchodzące dni wolne + GCal</div>
+                    <div class="events-head-text">
+                        <div class="events-title">Święta i dni wolne</div>
+                        <div class="meta">Kalendarz ustawowych dni wolnych</div>
                     </div>
                 </div>
-                <span class="pill">Wejdź</span>
+                <span class="pill events-link">Wejdź</span>
+            </header>
+        
+            <!-- KPI tylko o najbliższym święcie -->
+            <div class="events-kpis one-col">
+                <div class="metric-tile">
+                    <div class="metric-label">Najbliższe święto</div>
+                    <div class="metric-value" id="hol-name">11.11 – Narodowe Święto Niepodległości</div>
+                    <div class="metric-sub" id="hol-eta">za 20 dni</div>
+                </div>
             </div>
-            <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
-                <div><strong>Najbliższe święto:</strong> 11.11 • za 20 dni</div>
-                <div><strong>Event:</strong> Demo Altera • jutro</div>
+        
+            <!-- lista świąt -->
+            <ul class="events-list" id="events-list">
+                <li class="evt">
+                    <span class="date-badge">11.11</span>
+                    <span class="evt-title">Narodowe Święto Niepodległości</span>
+                    <span class="evt-pill state-ok">dzień wolny</span>
+                </li>
+        
+                <li class="evt">
+                    <span class="date-badge">03.12</span>
+                    <span class="evt-title">Urodziny Jess</span>
+                    <span class="hb-soberInner">urodziny</span>
+                </li>
+
+                <li class="evt">
+                    <span class="date-badge">24.12</span>
+                    <span class="evt-title">Wigilia</span>
+                    <span class="evt-pill state-warn">krótki dzień</span>
+                </li>
+        
+                <li class="evt">
+                    <span class="date-badge">25.12</span>
+                    <span class="evt-title">Boże Narodzenie (pierwszy dzień)</span>
+                    <span class="evt-pill state-ok">wolne</span>
+                </li>
+        
+                <li class="evt">
+                    <span class="date-badge">26.12</span>
+                    <span class="evt-title">Boże Narodzenie (drugi dzień)</span>
+                    <span class="evt-pill state-ok">wolne</span>
+                </li>
+        
+                <li class="evt">
+                    <span class="date-badge">01.01</span>
+                    <span class="evt-title">Nowy Rok</span>
+                    <span class="evt-pill state-ok">wolne</span>
+                </li>
+            </ul>
+        </a>
+
+
+
+        <!-- 6) TEMPERATURA I WILGOTNOŚĆ -->
+        <a href="./sensors.html" class="card sensors" style="text-decoration:none;">
+            <header class="sensor-head">
+                <div class="sensor-head-main">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M15 17a3 3 0 1 1-6 0c0-1.3.84-2.4 2-2.82V6a1 1 0 0 1 2 0v8.18A3.001 3.001 0 0 1 15 17z" />
+                    </svg>
+                    <div class="sensor-head-text">
+                        <div class="sensor-title">Temperatura i wilgotność</div>
+                        <div class="meta">Live z termometru</div>
+                    </div>
+                </div>
+        
+                <span class="pill sensor-link">Wejdź</span>
+            </header>
+        
+            <div class="sensor-grid">
+                <!-- Temp -->
+                <div class="sensor-box">
+                    <div class="sensor-label">Temp</div>
+                    <div class="sensor-value">
+                        <span class="sensor-main" id="room-temp">21.4</span>
+                        <span class="sensor-unit">°C</span>
+                    </div>
+                    <div class="sensor-note" id="temp-trend">
+                        stabilnie
+                    </div>
+                </div>
+        
+                <!-- Humidity -->
+                <div class="sensor-box">
+                    <div class="sensor-label">Wilgotność</div>
+                    <div class="sensor-value">
+                        <span class="sensor-main" id="room-hum">52</span>
+                        <span class="sensor-unit">%</span>
+                    </div>
+                    <div class="sensor-note" id="hum-range">
+                        idealna (40-60)
+                    </div>
+                </div>
+        
+                <!-- Comfort -->
+                <div class="sensor-box">
+                    <div class="sensor-label">Komfort</div>
+                    <div class="sensor-value sensor-comfort">
+                        <span class="comfort-pill state-ok" id="comfort-pill">
+                            Zielony • OK
+                        </span>
+                    </div>
+                    <div class="sensor-note" id="comfort-desc">
+                        powietrze spoko
+                    </div>
+                </div>
             </div>
         </a>
 
-        <!-- 6) TEMPERATURA I WILGOTNOŚĆ -->
-        <a href="./sensors.html" class="card" style="text-decoration:none;">
-            <div class="header">
-                <div class="title">
-                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M15 17a3 3 0 1 1-6 0c0-1.3.84-2.4 2-2.82V6a1 1 0 0 1 2 0v8.18A3.001 3.001 0 0 1 15 17z" />
-                    </svg>
-                    <div>
-                        Temperatura i wilgotność
-                        <div class="meta">Live z termometru (dummy)</div>
-                    </div>
-                </div>
-                <span class="pill">Wejdź</span>
-            </div>
-            <div class="row" style="display:flex;gap:16px;flex-wrap:wrap;">
-                <div><strong>Temp:</strong> 21.4°C</div>
-                <div><strong>Wilgotność:</strong> 52%</div>
-                <div><strong>Komfort:</strong> Zielony • OK</div>
-            </div>
-        </a>
     </section>
 
     <!-- JS -->
@@ -192,6 +371,8 @@
     <script type="module" src="./js/main_weather.js"></script>
     <script type="module" src="./js/init-aqi.js"></script>
     <script type="module" src="./js/widget-cleaning.js"></script>
+    <script type="module" src="./js/widget-reading.js"></script>
+    <script type="module" src="./js/habits.js"></script>
 </body>
 
 </html>

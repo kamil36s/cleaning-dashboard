@@ -1014,23 +1014,1411 @@ section.grid {
   cursor: pointer;
 }
 
-/* kolory bez zmian */
-.cl-btn.dead {
-  background: var(--dead);
-  color: #fff
-}
-
+/* czerwony OVERDUE */
 .cl-btn.overdue {
-  background: var(--over);
-  color: #fff
+  background-image: linear-gradient(to bottom right,
+      #f87171 0%,
+      #dc2626 60%);
+  border: 1px solid #dc2626;
+  color: #000;
+  box-shadow:
+    0 4px 10px rgba(220, 38, 38, 0.4),
+    0 0 12px rgba(248, 113, 113, 0.4) inset;
 }
 
+/* żółty DUE */
 .cl-btn.due {
-  background: var(--due);
-  color: #1a1a1a
+  background-image: linear-gradient(to bottom right,
+      #fde047 0%,
+      #eab308 60%);
+  border: 1px solid #eab308;
+  color: #1a1a1a;
+  box-shadow:
+    0 4px 10px rgba(234, 179, 8, 0.4),
+    0 0 12px rgba(253, 224, 71, 0.4) inset;
 }
 
-.cl-btn.coming {
-  background: var(--coming);
-  color: #0c0c0c
+/* zielony COMING / FRESH */
+.cl-btn.coming,
+.cl-btn.fresh,
+.cl-btn.FRESH {
+  background-image: linear-gradient(to bottom right,
+      #4ade80 0%,
+      #16a34a 60%);
+  border: 1px solid #16a34a;
+  color: #000;
+  box-shadow:
+    0 4px 10px rgba(22, 163, 74, 0.35),
+    0 0 12px rgba(16, 185, 129, 0.4) inset;
+}
+
+/* fiolet DEAD (rzadko, ale zróbmy też ładnie) */
+.cl-btn.dead {
+  background-image: linear-gradient(to bottom right,
+      #a21caf 0%,
+      #4c1d95 60%);
+  border: 1px solid #4c1d95;
+  color: #fff;
+  box-shadow:
+    0 4px 10px rgba(147, 51, 234, 0.4),
+    0 0 12px rgba(192, 132, 252, 0.3) inset;
+}
+
+/* ================= READING WIDGET ================= */
+
+.card.reading {
+  /* nic specjalnego, ale chcemy spójny układ */
+}
+
+/* header u góry kart */
+.reading-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.reading-header-left {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-weight: 700;
+}
+
+.reading-header-left .ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: .9;
+}
+
+.reading-header-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  font-size: 13px;
+}
+
+.reading-header-text .meta {
+  margin-top: 2px;
+}
+
+/* sekcja aktywnej książki */
+.reading-current {
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.reading-current-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.current-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.current-booktitle {
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.current-author {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.current-due {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 4px;
+  min-width: max-content;
+}
+
+.due-pill {
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 600;
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.due-pill.danger {
+  color: var(--over);
+  border-color: var(--over);
+}
+
+.current-date {
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--muted);
+}
+
+/* pasek postępu głównej książki */
+.reading-progressbar {
+  margin: 8px 0 4px;
+}
+
+.reading-progressbar .green {
+  background: var(--fresh);
+}
+
+#rdg-progress-text {
+  margin-bottom: 10px;
+}
+
+/* edycja strony */
+.reading-edit-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.reading-page-input {
+  width: 60px;
+  background: #111;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.reading-save-btn {
+  background: var(--bar);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 11px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.reading-save-btn:hover,
+.reading-save-btn:focus {
+  background: #2a2a2a;
+  outline: none;
+}
+
+.small-note {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+/* 3 boksy KPI */
+.reading-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+
+.reading-kpi {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.reading-kpi .kpi-label {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.reading-kpi .kpi-main {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.reading-kpi .kpi-sub {
+  font-size: 10px;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+/* sekcja listy aktywnych */
+.reading-active-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.reading-active-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.reading-active-legend {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--fresh);
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* siatka 2 kolumny */
+.reading-active-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width:520px) {
+  .reading-active-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* przycisk-książka w siatce */
+.reading-bookbtn {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.reading-bookbtn:hover,
+.reading-bookbtn:focus {
+  background: #1a1a1a;
+  outline: 1px solid var(--text);
+  outline-offset: 0;
+}
+
+.rb-head {
+  margin-bottom: 6px;
+  min-width: 0;
+}
+
+.rb-title {
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rb-author {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* stats pod tytułem */
+.rb-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: center;
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.rb-pages {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.rb-percent {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.due-badge {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 6px;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.due-badge.critical {
+  border-color: var(--over);
+  color: var(--over);
+}
+
+.due-badge.nodate {
+  color: var(--muted);
+}
+
+/* mały pasek postępu */
+.mini-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--bar);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.mini-progress-bar {
+  height: 100%;
+  background: var(--fresh);
+  width: 0%;
+}
+
+.mini-progress-meta {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.2;
+  text-align: right;
+}
+
+/* dostępność dla label SR-only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Reading: header wyśrodkowany jak Cleaning */
+.card.reading .reading-header {
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* grupa tytułu + ikony ma wyglądać jak .title w Cleaning */
+.card.reading .reading-header-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  /* ten sam feeling co Cleaning Dashboard */
+}
+
+/* przycisk Otwórz w prawym górnym rogu jak w Cleaning */
+.card.reading .reading-header .pill {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+
+/* tekst tytułu ma nie być wymuszony na 13px */
+.card.reading .reading-header-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  font-size: inherit;
+}
+
+.card.reading .reading-header-text .meta {
+  margin-top: 6px;
+}
+
+/* ===== HABITS WIDGET ===== */
+
+.card.habits {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.habits-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 12px;
+  gap: 4px;
+}
+
+/* "Otwórz" w prawym górnym rogu jak w Cleaning/Reading */
+.habits-head .open-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* żeby tytuł + podtytuł były razem, wycentrowane */
+.habits-head h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.habits-head .muted {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.hb-statsrow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.pill.big {
+  min-width: 90px;
+  background: var(--bar);
+  /* neutral base same as other pills */
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  border: 1px solid var(--border);
+}
+
+.pill.big .num {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pill.big .lbl {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.pill.big.done {
+  background-color: var(--ok);
+  color: #000;
+  border-color: var(--ok);
+}
+
+.pill.big.missed {
+  background-color: var(--over);
+  color: #000;
+  border-color: var(--over);
+}
+
+.pill.big.total {
+  background-color: var(--bar);
+  color: var(--text);
+}
+
+.pill.big.done .num,
+.pill.big.done .lbl,
+.pill.big.missed .num,
+.pill.big.missed .lbl {
+  color: #000;
+}
+
+.hb-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hb-item {
+  background-image: linear-gradient(to bottom right,
+      #2a2a2a 0%,
+      #1a1a1a 60%);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.05) inset;
+}
+
+.hb-item .hb-name {
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.hb-flag {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 6px;
+  padding: 4px 6px;
+  background: var(--over);
+  color: #000;
+  border: 1px solid var(--over);
+}
+
+.hb-flag.ok {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: #000;
+}
+
+.hb-flag.missed {
+  background: var(--over);
+  border-color: var(--over);
+  color: #000;
+}
+
+.hb-flag.streak {
+  background: var(--barFill);
+  border-color: var(--barFill);
+  color: #000;
+}
+
+.hb-foot {
+  font-size: 11px;
+  margin-top: 16px;
+  color: var(--muted);
+  line-height: 1.3;
+  white-space: pre-line;
+}
+
+.hb-statsrow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+/* one pill */
+.pill.big {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2px;
+
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* number row */
+.pill.big .num {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* label row */
+.pill.big .lbl {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+/* colors */
+/* Zielony DONE */
+.pill.big.done {
+  background-image: linear-gradient(to bottom right,
+      #4ade80 0%,
+      #16a34a 60%);
+  border-color: #16a34a;
+  color: #000;
+  box-shadow:
+    0 8px 16px rgba(22, 163, 74, 0.35),
+    0 0 20px rgba(16, 185, 129, 0.4) inset;
+}
+
+.pill.big.done .num,
+.pill.big.done .lbl {
+  color: #000;
+}
+
+/* Czerwony MISSED */
+.pill.big.missed {
+  background-image: linear-gradient(to bottom right,
+      #f87171 0%,
+      #dc2626 60%);
+  border-color: #dc2626;
+  color: #000;
+  box-shadow:
+    0 8px 16px rgba(220, 38, 38, 0.4),
+    0 0 20px rgba(248, 113, 113, 0.4) inset;
+}
+
+.pill.big.missed .num,
+.pill.big.missed .lbl {
+  color: #000;
+}
+
+/* Szary TOTAL bez krzyczącego efektu */
+.pill.big.total {
+  background-image: linear-gradient(to bottom right,
+      #2b2b2b 0%,
+      #1a1a1a 60%);
+  border-color: var(--border);
+  color: var(--text);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.05) inset;
+}
+
+.pill.big.total .num,
+.pill.big.total .lbl {
+  color: var(--text);
+}
+
+/* wrapper for all category blocks */
+.hb-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* category title */
+.hb-cat {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* thin divider line after the header label */
+.hb-cat::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  border-radius: 999px;
+}
+
+/* list of habit pills inside a category */
+.hb-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* this centers the pills */
+  gap: 8px;
+}
+
+/* each pill cluster ("Ashwaganda  MISSED  0d") */
+.hb-item {
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hb-name {
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* status flag */
+.hb-flag {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 6px;
+  padding: 4px 6px;
+  border: 1px solid var(--over);
+  background: var(--over);
+  color: #000;
+}
+
+/* zielone DONE albo dawka leku */
+.hb-flag.ok {
+  background-image: linear-gradient(to bottom right,
+      #4ade80 0%,
+      #16a34a 60%);
+  border-color: #16a34a;
+  color: #000;
+  box-shadow:
+    0 4px 10px rgba(22, 163, 74, 0.35),
+    0 0 12px rgba(16, 185, 129, 0.4) inset;
+}
+
+/* czerwone MISSED */
+.hb-flag.missed {
+  background-image: linear-gradient(to bottom right,
+      #f87171 0%,
+      #dc2626 60%);
+  border-color: #dc2626;
+  color: #000;
+  box-shadow:
+    0 4px 10px rgba(220, 38, 38, 0.4),
+    0 0 12px rgba(248, 113, 113, 0.4) inset;
+}
+
+/* ===== SOBER BANNER ===== */
+.hb-soberBanner {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 16px 0;
+}
+
+.hb-soberInner {
+  position: relative;
+
+  /* zimny czysty niebieski core → ciemny granat z boków */
+  background: radial-gradient(circle at 30% 30%, #4dd6ff 0%, #0077c7 55%, #002642 100%);
+  color: #000;
+
+  border-radius: 10px;
+  padding: 10px 16px;
+
+  /* cienka jasnoniebieska obramówka */
+  border: 1px solid #4dd6ff;
+
+  /* niebieska poświata */
+  box-shadow:
+    0 0 8px rgba(77, 214, 255, 0.8),
+    0 0 24px rgba(77, 214, 255, 0.5),
+    0 0 48px rgba(77, 214, 255, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  min-width: 180px;
+
+  animation: soberPulse 2s infinite;
+}
+
+#hb-sober-num {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.hb-sober-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+@keyframes soberPulse {
+  0% {
+    box-shadow:
+      0 0 6px rgba(77, 214, 255, 0.7),
+      0 0 20px rgba(77, 214, 255, 0.4),
+      0 0 40px rgba(77, 214, 255, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 10px rgba(77, 214, 255, 1),
+      0 0 30px rgba(77, 214, 255, 0.6),
+      0 0 60px rgba(77, 214, 255, 0.25);
+  }
+
+  100% {
+    box-shadow:
+      0 0 6px rgba(77, 214, 255, 0.7),
+      0 0 20px rgba(77, 214, 255, 0.4),
+      0 0 40px rgba(77, 214, 255, 0.15);
+  }
+}
+
+/* --- RESET KPI CLEANING: duże kafle neutralne --- */
+.cleaning .cleaning-counters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+  justify-items: center;
+}
+
+/* każdy kafel */
+.cleaning .cleaning-counters .cc {
+  /* ważne: nie dawaj stałego min-width, bo to łamie trzeci kafel na mobile */
+  min-width: 0;
+  min-height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 12px;
+  line-height: 1.1;
+  text-align: center;
+
+  background: #1b1b1b;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width:520px) {
+  .cleaning .cleaning-counters {
+    /* dalej 3 kolumny, nic nie zmieniamy w grid */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .cleaning .cleaning-counters .cc {
+    min-height: 60px;
+    padding: 8px 8px;
+    border-radius: 8px;
+  }
+
+  .cleaning .cleaning-counters .cc-value {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .cleaning .cleaning-counters .cc .pill {
+    font-size: 10px;
+    padding: 3px 6px;
+    min-height: 20px;
+    min-width: 0;
+    /* pozwól się zwęzić */
+  }
+}
+
+/* liczba (13 / 0 / 0) */
+.cleaning .cleaning-counters .cc-value {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+/* --- KOLOROWE PILLE POD LICZBĄ --- */
+
+/* wspólna baza dla pilli w kaflach liczników */
+.cleaning .cleaning-counters .cc .pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+
+  padding: 4px 8px;
+  border-radius: 999px;
+  min-height: 22px;
+  min-width: 70px;
+
+  border: 1px solid transparent;
+  cursor: default;
+  color: #000;
+  box-shadow: none;
+}
+
+/* Cleaning KPI number (13 / 0 / 0) */
+.cleaning .cleaning-counters .cc-value {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 6px;
+
+  color: #fff;
+  text-shadow:
+    0 0 4px rgba(0, 0, 0, 0.8),
+    0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* upewnij się że nic nie nadpisuje koloru na mobile */
+@media (max-width:520px) {
+  .cleaning .cleaning-counters .cc-value {
+    font-size: 20px;
+  }
+}
+
+/* ===== SENSORS WIDGET ===== */
+
+.card.sensors {
+  display: flex;
+  flex-direction: column;
+}
+
+/* header podobny do Cleaning/Reading */
+.sensor-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.sensor-head-main {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+  min-width: 0;
+}
+
+.sensor-head-main .ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: .9;
+}
+
+.sensor-head-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sensor-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.sensor-head .meta {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* "Wejdź" w prawym górnym rogu jak w innych kartach */
+.sensor-link {
+  position: absolute;
+  right: 14px;
+  top: 0;
+  font-size: 11px;
+  line-height: 1;
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  height: auto;
+  min-width: 0;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* siatka z danymi */
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width:520px) {
+  .sensor-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+/* pojedynczy box z wartością */
+.sensor-box {
+  background: #1b1b1b;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.sensor-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.sensor-value {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.sensor-main {
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  text-shadow:
+    0 0 4px rgba(0, 0, 0, 0.8),
+    0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.sensor-unit {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+/* np. "stabilnie", "↑ rośnie", "↓ spada" */
+.sensor-note {
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--muted);
+  min-height: 1em;
+}
+
+/* Komfort box ma trochę inną wartość, bo tam chcemy pill kolorowy */
+.sensor-comfort {
+  flex-wrap: wrap;
+}
+
+/* kolorowy status komfortu */
+.comfort-pill {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 999px;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  min-width: 0;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .6), 0 0 20px rgba(0, 0, 0, .4) inset;
+  color: #000;
+}
+
+/* zielony = ok */
+.comfort-pill.state-ok {
+  background-image: linear-gradient(to bottom right,
+      #4ade80 0%,
+      #16a34a 60%);
+  border-color: #16a34a;
+  box-shadow:
+    0 4px 10px rgba(22, 163, 74, .35),
+    0 0 12px rgba(16, 185, 129, .4) inset;
+  color: #000;
+}
+
+/* żółty = duszno / za sucho / za wilgotno trochę */
+.comfort-pill.state-warn {
+  background-image: linear-gradient(to bottom right,
+      #fde047 0%,
+      #eab308 60%);
+  border-color: #eab308;
+  box-shadow:
+    0 4px 10px rgba(234, 179, 8, .4),
+    0 0 12px rgba(253, 224, 71, .4) inset;
+  color: #1a1a1a;
+}
+
+/* czerwony = niezdrowo */
+.comfort-pill.state-bad {
+  background-image: linear-gradient(to bottom right,
+      #f87171 0%,
+      #dc2626 60%);
+  border-color: #dc2626;
+  box-shadow:
+    0 4px 10px rgba(220, 38, 38, .4),
+    0 0 12px rgba(248, 113, 113, .4) inset;
+  color: #000;
+}
+
+/* ===== EVENTS WIDGET ===== */
+.card.events {
+  display: flex;
+  flex-direction: column;
+}
+
+.events-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  position: relative
+}
+
+.events-head-main {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-weight: 700
+}
+
+.events-head-main .ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: .9
+}
+
+.events-head-text {
+  display: flex;
+  flex-direction: column
+}
+
+.events-title {
+  font-size: 14px;
+  font-weight: 600
+}
+
+.events-link {
+  position: absolute;
+  right: 14px;
+  top: 0;
+  font-size: 11px;
+  line-height: 1;
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: var(--text)
+}
+
+.events-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px
+}
+
+.metric-tile {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0
+}
+
+.metric-label {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 4px
+}
+
+.metric-value {
+  font-size: 16px;
+  font-weight: 600
+}
+
+.metric-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px
+}
+
+@media (max-width:520px) {
+  .events-kpis {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px
+  }
+
+  .metric-value {
+    font-size: 14px
+  }
+}
+
+.events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px
+}
+
+.evt {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.date-badge {
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--text)
+}
+
+.evt-title {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.evt-pill {
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 4px 8px;
+  border: 1px solid transparent
+}
+
+/* użyj istniejących dopaminowych stanów */
+.evt-pill.state-ok {
+  background-image: linear-gradient(to bottom right, #4ade80 0%, #16a34a 60%);
+  border-color: #16a34a;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, .35), inset 0 0 12px rgba(16, 185, 129, .4)
+}
+
+.evt-pill.state-warn {
+  background-image: linear-gradient(to bottom right, #fde047 0%, #eab308 60%);
+  border-color: #eab308;
+  color: #1a1a1a;
+  box-shadow: 0 4px 10px rgba(234, 179, 8, .4), inset 0 0 12px rgba(253, 224, 71, .4)
+}
+
+.evt-pill.state-bad {
+  background-image: linear-gradient(to bottom right, #f87171 0%, #dc2626 60%);
+  border-color: #dc2626;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, .4), inset 0 0 12px rgba(248, 113, 113, .4)
+}
+
+/* wariant z jedną kolumną KPI */
+.events-kpis.one-col {
+  grid-template-columns: 1fr;
+  max-width: 360px;
+}
+
+/* Reading filters: checkbox + tekst w jednej linii */
+.checkline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.checkline input[type="checkbox"] {
+  accent-color: var(--fresh);
+  /* zielony jak reszta successów */
 }
