@@ -3579,3 +3579,53 @@ section.grid {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
   filter: brightness(1.1);
 }
+
+/* WEATHER: bezpieczny odstęp po bokach w tabeli godzin */
+#next .hours-header,
+#next .hour-row {
+  padding: 6px 14px;
+  /* było 6px 0 */
+}
+
+@media (max-width:520px) {
+
+  #next .hours-header,
+  #next .hour-row {
+    padding: 8px 16px;
+    /* trochę więcej na telefonie */
+    grid-template-columns: 64px 64px 96px 1fr;
+    /* ciaśniejsze stałe kolumny */
+  }
+
+  #next .hour-row>* {
+    min-width: 0;
+  }
+
+  /* zapobiega wypychaniu na brzeg */
+}
+
+/* 1. Zawsze dawaj margines poziomy w tabeli godzin Pogody */
+#next .hours-header,
+#next .hour-row {
+  padding: 8px 16px;
+  /* było 6px 0; */
+}
+
+/* 2. Logika dla telefonu + tabletu (pojedyncza kolumna dashboardu)
+   czyli typowe szerokości 400-800px */
+@media (max-width:900px) {
+
+  #next .hours-header,
+  #next .hour-row {
+    /* cztery kolumny: godz | temp | opad | wiatr */
+    display: grid;
+    grid-template-columns: 64px 64px 72px 1fr;
+    column-gap: 12px;
+  }
+
+  #next .hour-row>*,
+  #next .hours-header>* {
+    min-width: 0;
+    word-break: break-word;
+  }
+}

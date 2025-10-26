@@ -8,7 +8,7 @@ const daysOver = t => t.overdue ? Math.max(0, (N(t.daysSince)||0) - (N(t.freq)||
 const isDead   = t => t.overdue && daysOver(t) > 7;   // DEAD = spóźnione > 7 dni
 /* ⇧⇧ DODANE ⇧⇧ */
 
-const COMING_FRAC = 0.95;
+const COMING_FRAC = 0.92;
 
 const usedFrac = t =>
   t.overdue ? 1.01 :

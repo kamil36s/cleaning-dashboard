@@ -10,7 +10,7 @@ const SUPPLY_FILTER = new Set();
 let SUPPLIES_WIRED = false;
 
 // --- CONFIG + HELPERS ---
-const COMING_FRAC = 0.95;
+const COMING_FRAC = 0.92;
 const N = v => (v==null || v==='') ? null : Number(v);
 
 const daysOver = t =>
