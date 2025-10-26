@@ -1,32 +1,21 @@
 // js/api/gios.js
 
-// próbujemy dobrać się do import.meta.env jeśli bundler (Vite) go wstrzyknął
-let env = {};
-try {
-  if (import.meta && import.meta.env) {
-    env = import.meta.env;
-  }
-} catch (e) {
-  env = {};
-}
-
-// wykryj czy lokalny dev (localhost -> proxy /gios)
-const DEV =
+// wykryj czy działasz lokalnie (Vite dev) czy na produkcji (GitHub Pages)
+const IS_LOCAL =
   location.hostname === 'localhost' ||
   location.hostname === '127.0.0.1';
 
-// baza URL do API
-// priorytet:
-// 1) env.VITE_GIOS_BASE (jeśli istnieje z Vite)
-// 2) w dev użyj proxy /gios
-// 3) w produkcji użyj publicznego API GIOŚ
-const BASE =
-  env.VITE_GIOS_BASE ||
-  (DEV
-    ? '/gios'
-    : 'https://powietrze.gios.gov.pl');
+// adres twojego Cloudflare Workera
+const WORKER_BASE = 'https://gios.kamil36s.workers.dev';
 
-// GET helper z błędem opisowym
+// baza URL do API:
+// - lokalnie leć przez lokalne proxy /gios (to co miałeś w Vite)
+// - w produkcji leć przez Cloudflare Workera, który ma prefix /gios
+const BASE = IS_LOCAL
+  ? '/gios'
+  : WORKER_BASE + '/gios';
+
+// GET helper z obsługą błędów
 async function getJson(url) {
   const r = await fetch(url);
   if (!r.ok) {
