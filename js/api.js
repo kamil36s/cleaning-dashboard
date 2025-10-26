@@ -14,20 +14,40 @@ export async function bootDebug(){
 export async function fetchData(){
   const btn = document.getElementById('refresh');
   if (btn) { btn.disabled = true; btn.textContent = 'Refreshing…'; }
+
   try {
-    const r = await fetch(bust(API), { cache:'no-store' });
+    // pobierz surowe dane z GAS
+    const r = await fetch(bust(API), { cache: 'no-store' });
     const j = await r.json();
-    const rows = (j.tasks || [])
+
+    // 1. bierz tylko realne taski
+    const rowsRaw = Array.isArray(j.tasks) ? j.tasks : [];
+
+    // 2. odfiltruj śmieci jak wcześniej
+    // 3. do każdego taska dopisz pole `articles`
+    const rows = rowsRaw
       .filter(t => t && String(t.task || '').trim() !== '')
-      .filter(t => Number(t.freq) > 0);
+      .filter(t => Number(t.freq) > 0)
+      .map(t => ({
+        ...t,
+        // NOWE: to będzie użyte w kafelkach
+        // próbujemy różne możliwe nazwy z backendu
+        articles: t.items || t['Artykuły'] || ''
+      }));
+
+    // 4. zapisz do globalnego state
     setData(rows);
+
+    // 5. odrysuj siatkę kart
     render();
+
   } catch(e){
     console.error('Refresh failed:', e);
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = 'Refresh'; }
   }
 }
+
 
 export async function markDone(row){
   try {

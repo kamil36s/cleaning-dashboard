@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Personal Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="./styles.css" />
 </head>
 
@@ -58,18 +59,166 @@
                 <div class="aqi-dominant" id="aq-dominant">Dominujące: —</div>
             </div>
             <div class="aqi-bars">
-                <div class="aqi-bar"><span>PM2.5</span>
-                    <div><i id="bar-pm25" style="width:0%"></i><em id="val-pm25">— µg/m³</em></div>
+            
+                <!-- PM2.5 -->
+                <div class="aqi-bar" data-kind="pm25">
+                    <span class="aqi-name">PM2.5</span>
+                    <div class="aqi-track track-pm25">
+                        <i id="bar-pm25" class="aqi-seg" style="width:0%"></i>
+                
+                        <div class="aqi-marker" id="marker-pm25" style="left:0%">
+                            <span class="aqi-marker-dot"></span>
+                            <span class="aqi-marker-val" id="marker-val-pm25">—</span>
+                        </div>
+                
+                        <!-- NOWE: etykiety progów -->
+                        <span class="aqi-break" id="brk1-pm25">15</span>
+                        <span class="aqi-break" id="brk2-pm25">35</span>
+                
+                        <!-- istniejące min/max -->
+                        <div class="aqi-scale">
+                            <span class="tick tick-min">0</span>
+                            <span class="tick tick-max">150</span>
+                        </div>
+                
+                        <!-- tooltip jak miałeś -->
+                        <div class="aqi-tooltip">
+                            <div class="aqi-tooltip-now">
+                                <strong>PM2.5:</strong> <span id="val-pm25">— µg/m³</span>
+                            </div>
+                            <div class="aqi-tooltip-ranges">
+                                <div><span class="aqi-dot good"></span>0-15 bardzo dobry</div>
+                                <div><span class="aqi-dot mid"></span>15-35 umiarkowany</div>
+                                <div><span class="aqi-dot bad"></span>&gt;35 zły</div>
+                            </div>
+                            <br/>
+                            <div class="aqi-tooltip-about">
+                                PM2.5 to pył zawieszony o średnicy &lt;2.5 µm. Wnika głęboko do płuc i dalej do krwi.
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="aqi-bar"><span>PM10</span>
-                    <div><i id="bar-pm10" style="width:0%"></i><em id="val-pm10">— µg/m³</em></div>
+
+            
+                <!-- PM10 -->
+                <div class="aqi-bar" data-kind="pm10">
+                    <span class="aqi-name">PM10</span>
+                    <div class="aqi-track track-pm10">
+                        <i id="bar-pm10" class="aqi-seg" style="width:0%"></i>
+                
+                        <div class="aqi-marker" id="marker-pm10" style="left:0%">
+                            <span class="aqi-marker-dot"></span>
+                            <span class="aqi-marker-val" id="marker-val-pm10">—</span>
+                        </div>
+                
+                        <span class="aqi-break" id="brk1-pm10">25</span>
+                        <span class="aqi-break" id="brk2-pm10">50</span>
+                
+                        <div class="aqi-scale">
+                            <span class="tick tick-min">0</span>
+                            <span class="tick tick-max">200</span>
+                        </div>
+                
+                        <div class="aqi-tooltip">
+                            <div class="aqi-tooltip-now">
+                                <strong>PM10:</strong> <span id="val-pm10">— µg/m³</span>
+                            </div>
+                            <div class="aqi-tooltip-ranges">
+                                <div><span class="aqi-dot good"></span>0-25 bardzo dobry</div>
+                                <div><span class="aqi-dot mid"></span>25-50 umiarkowany</div>
+                                <div><span class="aqi-dot bad"></span>&gt;50 zły</div>
+                            </div>
+                            <br/>
+                            <div class="aqi-tooltip-about">
+                                PM10 to większy pył &lt;10 µm. Drażni oczy, nos i górne drogi oddechowe.
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="aqi-bar"><span>NO₂</span>
-                    <div><i id="bar-no2" style="width:0%"></i><em id="val-no2">— µg/m³</em></div>
+
+            
+                <!-- NO2 -->
+                <div class="aqi-bar" data-kind="no2">
+  <span class="aqi-name">NO₂</span>
+  <div class="aqi-track track-no2">
+    <i id="bar-no2" class="aqi-seg" style="width:0%"></i>
+
+    <div class="aqi-marker" id="marker-no2" style="left:0%">
+      <span class="aqi-marker-dot"></span>
+      <span class="aqi-marker-val" id="marker-val-no2">—</span>
+    </div>
+
+    <span class="aqi-break" id="brk1-no2">40</span>
+    <span class="aqi-break" id="brk2-no2">100</span>
+
+    <div class="aqi-scale">
+      <span class="tick tick-min">0</span>
+      <span class="tick tick-max">200</span>
+    </div>
+
+    <div class="aqi-tooltip">
+        <div class="aqi-tooltip-now">
+            <strong>NO₂:</strong> <span id="val-no2">— µg/m³</span>
+        </div>
+        <div class="aqi-tooltip-ranges">
+            <div><span class="aqi-dot good"></span>0-40 bardzo dobry</div>
+            <div><span class="aqi-dot mid"></span>40-100 umiarkowany</div>
+            <div><span class="aqi-dot bad"></span>&gt;100 zły</div>
+        </div>
+        <br/>
+        <div class="aqi-tooltip-about">
+            NO₂ to dwutlenek azotu głównie ze spalin. Podrażnia płuca i pogarsza astmę.
+        </div>
+    </div>
+
+  </div>
+</div>
+
+            
+                <!-- O3 -->
+                <div class="aqi-bar" data-kind="o3">
+                    <span class="aqi-name">O₃</span>
+                    <div class="aqi-track track-o3">
+                        <i id="bar-o3" class="aqi-seg" style="width:0%"></i>
+                
+                        <div class="aqi-marker" id="marker-o3" style="left:0%">
+                            <span class="aqi-marker-dot"></span>
+                            <span class="aqi-marker-val" id="marker-val-o3">—</span>
+                        </div>
+                
+                        <span class="aqi-break" id="brk1-o3">60</span>
+                        <span class="aqi-break" id="brk2-o3">120</span>
+                
+                        <div class="aqi-scale">
+                            <span class="tick tick-min">0</span>
+                            <span class="tick tick-max">240</span>
+                        </div>
+                
+                        <div class="aqi-tooltip">
+                            <div class="aqi-tooltip-now">
+                                <strong>O₃:</strong> <span id="val-o3">— µg/m³</span>
+                            </div>
+                            <div class="aqi-tooltip-ranges">
+                                <div><span class="aqi-dot good"></span>0-60 bardzo dobry</div>
+                                <div><span class="aqi-dot mid"></span>60-120 umiarkowany</div>
+                                <div><span class="aqi-dot bad"></span>&gt;120 zły</div>
+                            </div>
+                            <br/>
+                            <div class="aqi-tooltip-about">
+                                O₃ to ozon przy ziemi. Powstaje w słońcu z emisji miejskich. Może gryźć w gardło i klatę.
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="aqi-bar"><span>O₃</span>
-                    <div><i id="bar-o3" style="width:0%"></i><em id="val-o3">— µg/m³</em></div>
-                </div>
+
+            
+            </div>
+
+
+
             </div>
             <br/>
             <div id="aq-location" class="muted">Kraków, al. Krasińskiego</div>
@@ -367,7 +516,6 @@
 
     <!-- JS -->
     <script type="module" src="./js/heroClock.js"></script>
-    <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/main_weather.js"></script>
     <script type="module" src="./js/init-aqi.js"></script>
     <script type="module" src="./js/widget-cleaning.js"></script>

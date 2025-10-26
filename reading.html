@@ -54,6 +54,13 @@
                 </label>
 
                 <button id="refresh">Refresh</button>
+
+                <div class="nobel-trigger-row">
+                    <button class="nobel-open-btn" id="nobel-open-btn">
+                        Nobel checklist
+                    </button>
+                </div>
+
             </div>
         </aside>
 
@@ -65,6 +72,30 @@
 
     <!-- Logika dashboardu czytania -->
     <script type="module" src="./js/reading.js"></script>
+    <script type="module" src="./js/nobel.js"></script>
+    <!-- === NOBEL MODAL === -->
+    <div class="nobel-modal-overlay" id="nobel-overlay" hidden>
+        <div class="nobel-modal" role="dialog" aria-modal="true" aria-labelledby="nobel-title">
+            <header class="nobel-modal-head">
+                <div class="nobel-head-block">
+                    <div id="nobel-title" class="nobel-modal-title">Lista noblistów</div>
+                    <div class="nobel-modal-meta">
+                        od najnowszych do najstarszych •
+                        <span id="nobel-progress">0 / 0</span>
+                    </div>
+                </div>
+                <button class="nobel-close-btn" id="nobel-close-btn" aria-label="Zamknij okno">✕</button>
+            </header>
+    
+            <div class="nobel-modal-body">
+                <div class="nobel-grid" id="nobel-grid">
+                    <!-- wypełni JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="./js/nobel.js"></script>
 </body>
 
 </html>

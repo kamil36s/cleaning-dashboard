@@ -783,6 +783,73 @@ button {
   background: var(--text);
 }
 
+/* Kolory konkretnych pasków zanieczyszczeń */
+.aqi-seg.pm25 {
+  background: linear-gradient(90deg,
+      #8b5cf6 0%,
+      #6366f1 100%);
+  /* fiolet */
+}
+
+.aqi-seg.pm10 {
+  background: linear-gradient(90deg,
+      #fde047 0%,
+      #facc15 100%);
+  /* żółty */
+}
+
+.aqi-seg.no2 {
+  background: linear-gradient(90deg,
+      #f87171 0%,
+      #dc2626 100%);
+  /* czerwony */
+}
+
+.aqi-seg.o3 {
+  background: linear-gradient(90deg,
+      #4ade80 0%,
+      #16a34a 100%);
+  /* zielony */
+}
+
+/* Tooltip na hoverze paska jakości */
+.aqi-bar {
+  position: relative;
+  cursor: help;
+}
+
+.aqi-tooltip {
+  position: absolute;
+  left: 74px;
+  /* przy pasku, po prawej od labela */
+  bottom: 100%;
+  /* nad paskiem */
+  transform: translateY(-6px);
+
+  background: #000;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 11px;
+  line-height: 1.3;
+  max-width: 220px;
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .8),
+    0 0 20px rgba(255, 255, 255, .08) inset;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  z-index: 50;
+  text-align: left;
+}
+
+.aqi-bar:hover .aqi-tooltip,
+.aqi-bar:focus-within .aqi-tooltip {
+  opacity: 1;
+}
+
 .aqi-bar>div::before {
   left: 33.3%
 }
@@ -793,6 +860,166 @@ button {
 }
 
 /* ~ zły */
+
+/* Cały blok z barami */
+.aqi-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+/* pojedynczy wiersz: label + pasek */
+.aqi-bar {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  align-items: center;
+  column-gap: 8px;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.aqi-name {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* tor paska */
+.aqi-track {
+  position: relative;
+  height: 10px;
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  cursor: help;
+}
+
+/* podział 25/50/75% */
+.aqi-track::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(to right,
+      transparent 0,
+      transparent calc(25% - 1px),
+      rgba(255, 255, 255, .08) calc(25% - 1px),
+      rgba(255, 255, 255, .08) 25%);
+  pointer-events: none;
+}
+
+/* faktyczne wypełnienie */
+.aqi-seg {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  /* JS ustawia width */
+  transition: width .5s ease;
+  border-radius: 999px;
+}
+
+/* kolory dla różnych zanieczyszczeń */
+.aqi-seg.pm25 {
+  background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
+}
+
+.aqi-seg.pm10 {
+  background: linear-gradient(90deg, #fde047 0%, #facc15 100%);
+}
+
+.aqi-seg.no2 {
+  background: linear-gradient(90deg, #f87171 0%, #dc2626 100%);
+}
+
+.aqi-seg.o3 {
+  background: linear-gradient(90deg, #4ade80 0%, #16a34a 100%);
+}
+
+/* tooltip ze szczegółami */
+.aqi-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -8px);
+
+  background: #000;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  min-width: 170px;
+  max-width: 220px;
+  text-align: left;
+  white-space: normal;
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, .8),
+    0 0 20px rgba(255, 255, 255, .08) inset;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  z-index: 100;
+}
+
+/* mała kropka koloru w legendzie */
+.aqi-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.aqi-dot.good {
+  background: #4ade80;
+}
+
+.aqi-dot.mid {
+  background: #fde047;
+}
+
+.aqi-dot.bad {
+  background: #f87171;
+}
+
+.aqi-tooltip-now {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.aqi-tooltip-now strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.aqi-tooltip-ranges {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.aqi-tooltip-ranges div {
+  white-space: nowrap;
+}
+
+/* pokaż tooltip tylko przy hoverze paska */
+.aqi-track:hover .aqi-tooltip,
+.aqi-track:focus-within .aqi-tooltip {
+  opacity: 1;
+}
 
 /* kontener drugiego rzędu kart */
 section.grid {
@@ -1309,13 +1536,13 @@ section.grid {
 /* siatka 2 kolumny */
 .reading-active-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
 @media (max-width:520px) {
   .reading-active-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -2421,4 +2648,934 @@ section.grid {
 .checkline input[type="checkbox"] {
   accent-color: var(--fresh);
   /* zielony jak reszta successów */
+}
+
+/* ===== AQI VISUAL v3 =====
+   Założenia:
+   - każdy wskaźnik ma własną paletę (inny hue)
+   - im gorzej tym ciemniej (jasny -> średni -> ciemny)
+   - próg 1 / próg 2 / reszta = trzy segmenty tła
+   - marker siedzi na pasku i pokazuje wartość
+   - tooltip na hover jak wcześniej
+*/
+
+/* wrapper całego bloku pasków */
+.aqi-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: left;
+}
+
+/* pojedynczy wiersz: label + tor */
+.aqi-bar {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  column-gap: 10px;
+  align-items: flex-start;
+  position: relative;
+  font-size: 12px;
+  line-height: 1.3;
+  cursor: help;
+}
+
+.aqi-name {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  white-space: nowrap;
+  padding-top: 2px;
+  text-align: left;
+}
+
+/* tor paska ze strefami jakości */
+.aqi-track {
+  position: relative;
+  height: 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #0f0f0f;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .04) inset,
+    0 14px 28px rgba(0, 0, 0, .9);
+  overflow: visible;
+  cursor: help;
+
+  /* domyślne gdy JS jeszcze nie podstawi progów */
+  --seg1: 30%;
+  --seg2: 30%;
+  --seg3: 40%;
+
+  /* kolory segmentów podmieniane przez .track-XXXX */
+  --c1: #666;
+  --c2: #444;
+  --c3: #222;
+
+  background-image:
+    linear-gradient(to right,
+      var(--c1) 0%,
+      var(--c1) var(--seg1),
+      var(--c2) var(--seg1),
+      var(--c2) calc(var(--seg1) + var(--seg2)),
+      var(--c3) calc(var(--seg1) + var(--seg2)),
+      var(--c3) 100%);
+}
+
+/* cienkie kreski progów jakości (koniec seg1 i koniec seg1+seg2) */
+.aqi-track::before,
+.aqi-track::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
+  background: rgba(255, 255, 255, .18);
+  box-shadow: 0 0 4px rgba(255, 255, 255, .5);
+  pointer-events: none;
+}
+
+.aqi-track::before {
+  left: var(--seg1);
+  transform: translateX(0);
+}
+
+.aqi-track::after {
+  left: calc(var(--seg1) + var(--seg2));
+  transform: translateX(0);
+}
+
+/* palety barw dla każdego wskaźnika
+   jasny -> średni -> ciemny jednego koloru
+   żadnych reggae
+*/
+
+.track-pm25 {
+  /* fiolet */
+  --c1: #b6a4ff;
+  /* lekki pastel */
+  --c2: #6a4dff;
+  /* średni nasycony */
+  --c3: #1c163b;
+  /* bardzo ciemny fiolet */
+}
+
+.track-pm10 {
+  /* bursztyn / miód */
+  --c1: #ffe7a1;
+  /* jasny miodowy */
+  --c2: #b8871d;
+  /* średni złoto-brąz */
+  --c3: #2a1f07;
+  /* ciemny ciepły brąz */
+}
+
+.track-no2 {
+  /* czerwony */
+  --c1: #ffb8b8;
+  /* blady ciepły czerwony */
+  --c2: #c43838;
+  /* średni czerwony */
+  --c3: #2a0a0a;
+  /* głęboki bordowy prawie czarny */
+}
+
+.track-o3 {
+  /* zieleń / chlor */
+  --c1: #c4ffd8;
+  /* blady miętowy */
+  --c2: #1fa054;
+  /* średnia zieleń */
+  --c3: #0d2616;
+  /* bardzo ciemna zieleń */
+}
+
+/* znacznik aktualnej wartości
+   siedzi NA pasku w połowie wysokości
+*/
+.aqi-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 10;
+  pointer-events: none;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+  color: #fff;
+}
+
+.aqi-marker-val {
+  background: rgba(0, 0, 0, .8);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, .8),
+    0 0 8px rgba(255, 255, 255, .2) inset;
+}
+
+/* mała kropka w kolorze średniego segmentu (czyli "c2") */
+.aqi-marker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 1px solid #000;
+  box-shadow:
+    0 0 4px rgba(0, 0, 0, .8),
+    0 0 6px rgba(255, 255, 255, .4) inset;
+}
+
+#marker-pm25 .aqi-marker-dot {
+  background: #6a4dff;
+}
+
+#marker-pm10 .aqi-marker-dot {
+  background: #b8871d;
+}
+
+#marker-no2 .aqi-marker-dot {
+  background: #c43838;
+}
+
+#marker-o3 .aqi-marker-dot {
+  background: #1fa054;
+}
+
+/* skala 0 / max pod paskiem */
+.aqi-scale {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+
+.aqi-scale .tick {
+  opacity: .8;
+}
+
+/* tooltip pojawia się nad paskiem przy hoverze */
+.aqi-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -10px);
+  background: #000;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  min-width: 170px;
+  max-width: 220px;
+  text-align: left;
+  white-space: normal;
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, .9),
+    0 0 20px rgba(255, 255, 255, .08) inset;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s ease;
+  z-index: 40;
+}
+
+.aqi-tooltip-now {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.aqi-tooltip-now strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.aqi-tooltip-ranges {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.aqi-tooltip-ranges div {
+  white-space: nowrap;
+}
+
+/* kolorowe kropki w legendzie tooltipa
+   nie używamy zielony/żółty/czerwony na pasku
+   ale legenda zostaje bo to opis progu zdrowotnego
+*/
+.aqi-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.aqi-dot.good {
+  background: #4ade80;
+}
+
+.aqi-dot.mid {
+  background: #fde047;
+}
+
+.aqi-dot.bad {
+  background: #f87171;
+}
+
+/* aktywacja tooltipa */
+.aqi-track:hover .aqi-tooltip,
+.aqi-track:focus-within .aqi-tooltip {
+  opacity: 1;
+}
+
+/* === AQI FINAL OVERRIDE (NO RASTA) ========================= */
+/* to musi być NA SAMYM KOŃCU styles.css */
+
+/* palety barw jednego koloru:
+   pm25 = fiolet
+   pm10 = bursztyn
+   no2  = czerwony
+   o3   = zieleń
+   c1 = najjaśniejszy (OK)
+   c2 = średni (umiarkowany)
+   c3 = najciemniejszy (źle)
+*/
+
+.aqi .track-pm25 {
+  --c1: #b6a4ff;
+  /* jasny fiolet */
+  --c2: #6a4dff;
+  /* średni fiolet */
+  --c3: #1c163b;
+  /* bardzo ciemny fiolet */
+}
+
+.aqi .track-pm10 {
+  --c1: #ffe7a1;
+  /* jasny miód */
+  --c2: #b8871d;
+  /* bursztyn */
+  --c3: #2a1f07;
+  /* ciemny brąz */
+}
+
+.aqi .track-no2 {
+  --c1: #ffb8b8;
+  /* jasny czerwony */
+  --c2: #c43838;
+  /* średni czerwony */
+  --c3: #2a0a0a;
+  /* bordowy prawie czarny */
+}
+
+.aqi .track-o3 {
+  --c1: #c4ffd8;
+  /* jasna mięta */
+  --c2: #1fa054;
+  /* średnia zieleń */
+  --c3: #0d2616;
+  /* ciemna zieleń */
+}
+
+/* tor paska ze strefami jakości
+   tu robimy 3 segmenty w jednym hue
+   JS ustawia --seg1 / --seg2 / --seg3 w %
+   fallback 30/30/40 gdyby JS nie zdążył
+*/
+.aqi .aqi-track {
+  position: relative;
+  height: 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #0f0f0f;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .04) inset,
+    0 14px 28px rgba(0, 0, 0, .9);
+  overflow: visible;
+  cursor: help;
+
+  --seg1: var(--seg1, 30%);
+  --seg2: var(--seg2, 30%);
+  --seg3: var(--seg3, 40%);
+
+  /* ważne: nadpisujemy stare zielony/żółty/czerwony */
+  background-image: linear-gradient(to right,
+      var(--c1) 0%,
+      var(--c1) var(--seg1),
+      var(--c2) var(--seg1),
+      var(--c2) calc(var(--seg1) + var(--seg2)),
+      var(--c3) calc(var(--seg1) + var(--seg2)),
+      var(--c3) 100%) !important;
+  background-color: transparent !important;
+}
+
+/* cienkie kreski progów (koniec seg1 i koniec seg2) */
+.aqi .aqi-track::before,
+.aqi .aqi-track::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
+  background: rgba(255, 255, 255, .18);
+  box-shadow: 0 0 4px rgba(255, 255, 255, .5);
+  pointer-events: none;
+}
+
+.aqi .aqi-track::before {
+  left: var(--seg1);
+}
+
+.aqi .aqi-track::after {
+  left: calc(var(--seg1) + var(--seg2));
+}
+
+/* marker wartości na pasku */
+.aqi .aqi-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 10;
+  pointer-events: none;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+  color: #fff;
+}
+
+.aqi .aqi-marker-val {
+  background: rgba(0, 0, 0, .8);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, .8),
+    0 0 8px rgba(255, 255, 255, .2) inset;
+}
+
+/* kropka w markerze bierze średni ton (c2) */
+.aqi .aqi-marker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 1px solid #000;
+  box-shadow:
+    0 0 4px rgba(0, 0, 0, .8),
+    0 0 6px rgba(255, 255, 255, .4) inset;
+}
+
+/* przypnij kolory kropek */
+#marker-pm25 .aqi-marker-dot {
+  background: #6a4dff;
+}
+
+#marker-pm10 .aqi-marker-dot {
+  background: #b8871d;
+}
+
+#marker-no2 .aqi-marker-dot {
+  background: #c43838;
+}
+
+#marker-o3 .aqi-marker-dot {
+  background: #1fa054;
+}
+
+/* skala 0 / max pod paskiem */
+.aqi .aqi-scale {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+
+.aqi .aqi-scale .tick {
+  opacity: .8;
+}
+
+/* tooltip nad paskiem */
+.aqi .aqi-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -10px);
+  background: #000;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  min-width: 170px;
+  max-width: 220px;
+  text-align: left;
+  white-space: normal;
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, .9),
+    0 0 20px rgba(255, 255, 255, .08) inset;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s ease;
+  z-index: 40;
+}
+
+.aqi .aqi-track:hover .aqi-tooltip,
+.aqi .aqi-track:focus-within .aqi-tooltip {
+  opacity: 1;
+}
+
+/* tekst w tooltipie */
+.aqi .aqi-tooltip-now {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.aqi .aqi-tooltip-now strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.aqi .aqi-tooltip-ranges {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.aqi .aqi-tooltip-ranges div {
+  white-space: nowrap;
+}
+
+/* kropki w legendzie tooltipa (to jest opis zdrowotny, nie wygląd paska) */
+.aqi .aqi-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.aqi .aqi-dot.good {
+  background: #4ade80;
+}
+
+.aqi .aqi-dot.mid {
+  background: #fde047;
+}
+
+.aqi .aqi-dot.bad {
+  background: #f87171;
+}
+
+/* liczby progowe pod paskiem */
+.aqi-break {
+  position: absolute;
+  top: 100%;
+  margin-top: 4px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ================= NOBEL MODAL ================= */
+
+/* Wiersz z przyciskiem pod dashboardem */
+.nobel-trigger-row {
+  margin-top: 16px;
+}
+
+.nobel-open-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, .6),
+    0 0 20px rgba(255, 255, 255, .05) inset;
+}
+
+/* tło przyciemnione za modalem */
+.nobel-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .6);
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+}
+
+/* samo okno */
+.nobel-modal {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, .9),
+    0 0 40px rgba(255, 255, 255, .07) inset;
+  color: var(--text);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* nagłówek modala */
+.nobel-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
+}
+
+.nobel-head-block {
+  line-height: 1.2;
+  min-width: 0;
+}
+
+.nobel-modal-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.nobel-modal-meta {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.nobel-close-btn {
+  background: var(--bar);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ciało modala z listą */
+.nobel-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* grid noblistów: kilka kolumn, wrapuje responsywnie */
+.nobel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+/* pojedyncza karta noblisty */
+.nobel-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, .6),
+    0 0 20px rgba(255, 255, 255, .05) inset;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--text);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.nobel-check {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  accent-color: var(--fresh);
+  width: 16px;
+  height: 16px;
+}
+
+.nobel-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.nobel-author {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nobel-book {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.3;
+  word-break: break-word;
+  margin-top: 2px;
+}
+
+.nobel-year {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.2;
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
+  opacity: .7;
+}
+
+/* scroll bar lekko węższy na webkit (opcjonalne) */
+.nobel-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nobel-modal-body::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+.nobel-modal-body::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.nobel-modal-overlay[hidden] {
+  display: none !important;
+}
+
+/* ==== FIX: due-badge niech się mieści w nagłówku karty ==== */
+
+/* lewa kolumna nagłówka ma prawo się zwężać */
+.card .header>div:first-child {
+  min-width: 0;
+  /* klucz: pozwól tekstom łapać ellipsis */
+  flex: 1 1 auto;
+}
+
+/* badge po prawej niech się nie rozciąga i mieści w granicach */
+.due-badge {
+  flex: 0 0 auto;
+  /* nie pozwól badge się rozciągać */
+  max-width: 40%;
+  /* ogranicz szerokość względem karty */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* nie łam „Due in 30d” */
+  padding: 4px 6px;
+  /* kompakt */
+  font-size: 9.5px;
+  /* odrobinę mniejsze, czytelne */
+  line-height: 1;
+}
+
+/* ciaśniej w nagłówku i wyrównanie do góry, żeby badge nie „skakał” */
+.card .header {
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* na wąskich ekranach badge jeszcze węższy i mniejszy */
+@media (max-width:700px) {
+  .due-badge {
+    max-width: 36%;
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+}
+
+.needs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--muted);
+}
+
+.need-chip {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.supplies-block {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.supplies-block h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.supplies-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 8px;
+  max-width: 100%;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* bazowy pill */
+.supplies-list .need-chip {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--text);
+
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+
+  /* lekki cień dla odcięcia od tła panelu */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* pastelowe/mleczne warianty chipów w Supplies */
+.supplies-list .need-chip:nth-child(6n + 1) {
+  background: #2a3442;
+  /* przytłumiony błękit z domieszką szarości */
+  border-color: #3a4a5f;
+  color: #dfe8f6;
+  /* lekki, nie 100% biały */
+}
+
+.supplies-list .need-chip:nth-child(6n + 2) {
+  background: #273a31;
+  /* zgaszona zieleń z szarością */
+  border-color: #365345;
+  color: #e4f5ea;
+}
+
+.supplies-list .need-chip:nth-child(6n + 3) {
+  background: #3a3726;
+  /* oliwkowo beżowy ale przydymiony */
+  border-color: #5a5433;
+  color: #f5f1d9;
+}
+
+.supplies-list .need-chip:nth-child(6n + 4) {
+  background: #3a2f28;
+  /* ciepły brąz / karmel mleczny */
+  border-color: #544234;
+  color: #f3e3d6;
+}
+
+.supplies-list .need-chip:nth-child(6n + 5) {
+  background: #322d3d;
+  /* fiolet wpadający w grafit */
+  border-color: #4a435e;
+  color: #ece6fa;
+}
+
+.supplies-list .need-chip:nth-child(6n + 6) {
+  background: #3a2a32;
+  /* róż przydymiony, nie neon */
+  border-color: #5a3c4d;
+  color: #fde5ef;
+}
+
+/* stan zaznaczony w filtrze supplies */
+.supplies-list .need-chip.active {
+  outline: 2px solid #fff;
+  outline-offset: 0px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  filter: brightness(1.15);
+}
+
+/* interakcja dla klikanych chipów w Supplies */
+.supplies-list .need-chip {
+  cursor: pointer;
+  transition: box-shadow 0.12s linear, filter 0.12s linear, outline-color 0.12s linear;
+}
+
+.supplies-list .need-chip:hover {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+  filter: brightness(1.1);
 }

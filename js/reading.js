@@ -174,9 +174,10 @@ async function fetchData() {
 
 // Inicjalizacja handlerów
 function initReadingDashboard() {
-    const refreshBtn = document.getElementById('refresh');
+    const refreshBtn   = document.getElementById('refresh');
     const unfinishedCb = document.getElementById('unfinished');
-    const sortSel = document.getElementById('sort');
+    const sortSel      = document.getElementById('sort');
+    const backBtn      = document.getElementById('back-btn');
 
     if (refreshBtn) {
         refreshBtn.addEventListener('click', fetchData);
@@ -186,6 +187,12 @@ function initReadingDashboard() {
     }
     if (sortSel) {
         sortSel.addEventListener('change', renderAll);
+    }
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            // przekierowanie na stronę główną
+            window.location.href = 'index.html';
+        });
     }
 
     fetchData();
