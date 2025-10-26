@@ -1,10 +1,29 @@
 // js/api/gios.js
 
-const BASE =
-  (import.meta.env && import.meta.env.VITE_GIOS_BASE)
-    ?? (import.meta.env.DEV ? '/gios' : 'https://api.gios.gov.pl');
+// zabezpiecz env nawet jeśli import.meta.env nie istnieje (np. na GitHub Pages)
+const env = (
+  typeof import !== 'undefined' &&
+  import.meta &&
+  import.meta.env
+) ? import.meta.env : {};
 
-// proste GET
+// wykryj dev po hoście a nie po Vite
+const DEV =
+  location.hostname === 'localhost' ||
+  location.hostname === '127.0.0.1';
+
+// wybierz bazowy URL API
+// kolejność:
+// 1) jeśli Vite wstrzyknął VITE_GIOS_BASE to użyj tego
+// 2) jeśli DEV to użyj local proxy /gios
+// 3) inaczej produkcyjne API GIOŚ
+const BASE =
+  env.VITE_GIOS_BASE ||
+  (DEV
+    ? '/gios'
+    : 'https://powietrze.gios.gov.pl');
+
+// proste GET z obsługą błędów
 async function getJson(url) {
   const r = await fetch(url);
   if (!r.ok) {
@@ -38,7 +57,7 @@ function normalizeIndex(json) {
 
 // ---------- SENSORS / STANOWISKA ----------
 
-// zbiera wszystkie stringi z obiektu rekursywnie
+// zbiera wszystkie stringi z obiektu rekurencyjnie
 function gatherStringsDeep(obj, bucket = []) {
   if (obj == null) return bucket;
   if (typeof obj === 'string') {
@@ -58,11 +77,9 @@ function gatherStringsDeep(obj, bucket = []) {
 
 // zgadnij kod zanieczyszczenia (PM2.5 / PM10 / NO2 / O3 / SO2 / CO / C6H6)
 function guessParamCodeDeep(rawSensor) {
-  // klucze które widzimy w logu
   if (rawSensor['Wskaźnik - wzór']) return String(rawSensor['Wskaźnik - wzór']).trim();
   if (rawSensor['Wskaźnik - kod'])  return String(rawSensor['Wskaźnik - kod']).trim();
 
-  // fallback: brute force
   const strs = gatherStringsDeep(rawSensor, []);
   const pollutantRegex = /^(PM ?2\.?5|PM ?10|NO2|SO2|O3|CO|C6H6)$/i;
   for (const s of strs) {
@@ -79,7 +96,7 @@ function normalizeSensor(rawSensor) {
     rawSensor['Identyfikator stanowiska'] ??
     rawSensor['Identyfikator stanowiska pomiarowego'] ??
     rawSensor['Identyfikator czujnika'] ??
-    rawSensor['Identyfikator stacji'] ?? // raczej nie, ale zostawiamy
+    rawSensor['Identyfikator stacji'] ??
     rawSensor['id'] ??
     rawSensor['sensorId'];
 
@@ -91,6 +108,8 @@ function normalizeSensor(rawSensor) {
     _raw: rawSensor
   };
 }
+
+// ---------- PUBLIC API ----------
 
 const GIOS = {
   async getIndex(stationId) {
@@ -106,7 +125,7 @@ const GIOS = {
 
     console.log('DEBUG getSensors raw response', data);
 
-    // klucz który widzieliśmy
+    // szukamy tablicy stanowisk po znanych kluczach
     let arr =
       data['Lista stanowisk pomiarowych dla podanej stacji'] ??
       data['lista stanowisk pomiarowych dla podanej stacji'] ??
