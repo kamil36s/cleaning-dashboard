@@ -1,29 +1,32 @@
 // js/api/gios.js
 
-// zabezpiecz env nawet jeśli import.meta.env nie istnieje (np. na GitHub Pages)
-const env = (
-  typeof import !== 'undefined' &&
-  import.meta &&
-  import.meta.env
-) ? import.meta.env : {};
+// próbujemy dobrać się do import.meta.env jeśli bundler (Vite) go wstrzyknął
+let env = {};
+try {
+  if (import.meta && import.meta.env) {
+    env = import.meta.env;
+  }
+} catch (e) {
+  env = {};
+}
 
-// wykryj dev po hoście a nie po Vite
+// wykryj czy lokalny dev (localhost -> proxy /gios)
 const DEV =
   location.hostname === 'localhost' ||
   location.hostname === '127.0.0.1';
 
-// wybierz bazowy URL API
-// kolejność:
-// 1) jeśli Vite wstrzyknął VITE_GIOS_BASE to użyj tego
-// 2) jeśli DEV to użyj local proxy /gios
-// 3) inaczej produkcyjne API GIOŚ
+// baza URL do API
+// priorytet:
+// 1) env.VITE_GIOS_BASE (jeśli istnieje z Vite)
+// 2) w dev użyj proxy /gios
+// 3) w produkcji użyj publicznego API GIOŚ
 const BASE =
   env.VITE_GIOS_BASE ||
   (DEV
     ? '/gios'
     : 'https://powietrze.gios.gov.pl');
 
-// proste GET z obsługą błędów
+// GET helper z błędem opisowym
 async function getJson(url) {
   const r = await fetch(url);
   if (!r.ok) {
@@ -57,7 +60,7 @@ function normalizeIndex(json) {
 
 // ---------- SENSORS / STANOWISKA ----------
 
-// zbiera wszystkie stringi z obiektu rekurencyjnie
+// zbierz wszystkie stringi z obiektu rekurencyjnie
 function gatherStringsDeep(obj, bucket = []) {
   if (obj == null) return bucket;
   if (typeof obj === 'string') {
@@ -75,7 +78,7 @@ function gatherStringsDeep(obj, bucket = []) {
   return bucket;
 }
 
-// zgadnij kod zanieczyszczenia (PM2.5 / PM10 / NO2 / O3 / SO2 / CO / C6H6)
+// odgadnij kod parametru zanieczyszczenia
 function guessParamCodeDeep(rawSensor) {
   if (rawSensor['Wskaźnik - wzór']) return String(rawSensor['Wskaźnik - wzór']).trim();
   if (rawSensor['Wskaźnik - kod'])  return String(rawSensor['Wskaźnik - kod']).trim();
@@ -109,7 +112,7 @@ function normalizeSensor(rawSensor) {
   };
 }
 
-// ---------- PUBLIC API ----------
+// ---------- PUBLIC API WRAPPER ----------
 
 const GIOS = {
   async getIndex(stationId) {
@@ -125,7 +128,6 @@ const GIOS = {
 
     console.log('DEBUG getSensors raw response', data);
 
-    // szukamy tablicy stanowisk po znanych kluczach
     let arr =
       data['Lista stanowisk pomiarowych dla podanej stacji'] ??
       data['lista stanowisk pomiarowych dla podanej stacji'] ??
