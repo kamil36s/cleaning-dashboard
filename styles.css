@@ -3629,3 +3629,172 @@ section.grid {
     word-break: break-word;
   }
 }
+
+.comfort-pill {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.comfort-pill.state-ok {
+  background: #133;
+  color: #7fffd4;
+}
+
+.comfort-pill.state-warn {
+  background: #332;
+  color: #ffd166;
+}
+
+.comfort-pill.state-bad {
+  background: #311;
+  color: #ff6b6b;
+}
+
+.sensor-meta {
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: .8;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sensor-unit-alt {
+  margin-left: 8px;
+  font-size: 0.8em;
+  opacity: .8;
+}
+
+.comfort-pill.state-ok {
+  background: #133;
+  color: #9ff2d3;
+}
+
+.comfort-pill.state-warn {
+  background: #332;
+  color: #ffd166;
+}
+
+.comfort-pill.state-bad {
+  background: #311;
+  color: #ff6b6b;
+}
+
+/* ===== Black Metal 365 covers ===== */
+.bm365-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  background: rgba(255, 255, 255, .03);
+}
+
+.bm365-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.bm365-cover {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, .10);
+  flex: 0 0 auto;
+}
+
+.bm365-cover.sm {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+
+.bm365-text {
+  min-width: 0;
+}
+
+.bm365-title {
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bm365-sub {
+  margin-top: 4px;
+  opacity: .75;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bm365-btn {
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(255, 255, 255, .06);
+  color: inherit;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bm365-btn:hover {
+  background: rgba(255, 255, 255, .10);
+}
+
+.bm365-nextRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== BM365 hero (album dnia) ===== */
+.bm365-row.bm365-hero {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 18px 16px;
+}
+
+.bm365-row.bm365-hero .bm365-left {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.bm365-row.bm365-hero .bm365-cover {
+  width: 260px;
+  height: 260px;
+  border-radius: 24px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, .6),
+    0 0 0 1px rgba(255, 255, 255, .08);
+}
+
+.bm365-row.bm365-hero .bm365-title {
+  font-size: 18px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.bm365-row.bm365-hero .bm365-sub {
+  font-size: 13px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.bm365-row.bm365-hero .bm365-btn {
+  padding: 10px 14px;
+  border-radius: 999px;
+}

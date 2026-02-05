@@ -47,41 +47,37 @@
 
         <!-- 2) AQI -->
         <section id="aq-card" class="card aqi">
-<header class="aqi-head with-sep">
-    <div>
-        <h3>Jakość powietrza</h3>
-        
-    </div>
-</header>
+            <header class="aqi-head with-sep">
+                <div>
+                    <h3>Jakość powietrza</h3>
+                </div>
+            </header>
             <div class="aqi-main">
                 <div class="aqi-value" id="aq-index">—</div>
                 <div class="aqi-desc" id="aq-desc">—</div>
                 <div class="aqi-dominant" id="aq-dominant">Dominujące: —</div>
             </div>
             <div class="aqi-bars">
-            
+
                 <!-- PM2.5 -->
                 <div class="aqi-bar" data-kind="pm25">
                     <span class="aqi-name">PM2.5</span>
                     <div class="aqi-track track-pm25">
                         <i id="bar-pm25" class="aqi-seg" style="width:0%"></i>
-                
+
                         <div class="aqi-marker" id="marker-pm25" style="left:0%">
                             <span class="aqi-marker-dot"></span>
                             <span class="aqi-marker-val" id="marker-val-pm25">—</span>
                         </div>
-                
-                        <!-- NOWE: etykiety progów -->
+
                         <span class="aqi-break" id="brk1-pm25">15</span>
                         <span class="aqi-break" id="brk2-pm25">35</span>
-                
-                        <!-- istniejące min/max -->
+
                         <div class="aqi-scale">
                             <span class="tick tick-min">0</span>
                             <span class="tick tick-max">150</span>
                         </div>
-                
-                        <!-- tooltip jak miałeś -->
+
                         <div class="aqi-tooltip">
                             <div class="aqi-tooltip-now">
                                 <strong>PM2.5:</strong> <span id="val-pm25">— µg/m³</span>
@@ -91,7 +87,7 @@
                                 <div><span class="aqi-dot mid"></span>15-35 umiarkowany</div>
                                 <div><span class="aqi-dot bad"></span>&gt;35 zły</div>
                             </div>
-                            <br/>
+                            <br />
                             <div class="aqi-tooltip-about">
                                 PM2.5 to pył zawieszony o średnicy &lt;2.5 µm. Wnika głęboko do płuc i dalej do krwi.
                             </div>
@@ -100,26 +96,25 @@
                     </div>
                 </div>
 
-            
                 <!-- PM10 -->
                 <div class="aqi-bar" data-kind="pm10">
                     <span class="aqi-name">PM10</span>
                     <div class="aqi-track track-pm10">
                         <i id="bar-pm10" class="aqi-seg" style="width:0%"></i>
-                
+
                         <div class="aqi-marker" id="marker-pm10" style="left:0%">
                             <span class="aqi-marker-dot"></span>
                             <span class="aqi-marker-val" id="marker-val-pm10">—</span>
                         </div>
-                
+
                         <span class="aqi-break" id="brk1-pm10">25</span>
                         <span class="aqi-break" id="brk2-pm10">50</span>
-                
+
                         <div class="aqi-scale">
                             <span class="tick tick-min">0</span>
                             <span class="tick tick-max">200</span>
                         </div>
-                
+
                         <div class="aqi-tooltip">
                             <div class="aqi-tooltip-now">
                                 <strong>PM10:</strong> <span id="val-pm10">— µg/m³</span>
@@ -129,7 +124,7 @@
                                 <div><span class="aqi-dot mid"></span>25-50 umiarkowany</div>
                                 <div><span class="aqi-dot bad"></span>&gt;50 zły</div>
                             </div>
-                            <br/>
+                            <br />
                             <div class="aqi-tooltip-about">
                                 PM10 to większy pył &lt;10 µm. Drażni oczy, nos i górne drogi oddechowe.
                             </div>
@@ -138,64 +133,62 @@
                     </div>
                 </div>
 
-            
                 <!-- NO2 -->
                 <div class="aqi-bar" data-kind="no2">
-  <span class="aqi-name">NO₂</span>
-  <div class="aqi-track track-no2">
-    <i id="bar-no2" class="aqi-seg" style="width:0%"></i>
+                    <span class="aqi-name">NO₂</span>
+                    <div class="aqi-track track-no2">
+                        <i id="bar-no2" class="aqi-seg" style="width:0%"></i>
 
-    <div class="aqi-marker" id="marker-no2" style="left:0%">
-      <span class="aqi-marker-dot"></span>
-      <span class="aqi-marker-val" id="marker-val-no2">—</span>
-    </div>
+                        <div class="aqi-marker" id="marker-no2" style="left:0%">
+                            <span class="aqi-marker-dot"></span>
+                            <span class="aqi-marker-val" id="marker-val-no2">—</span>
+                        </div>
 
-    <span class="aqi-break" id="brk1-no2">40</span>
-    <span class="aqi-break" id="brk2-no2">100</span>
+                        <span class="aqi-break" id="brk1-no2">40</span>
+                        <span class="aqi-break" id="brk2-no2">100</span>
 
-    <div class="aqi-scale">
-      <span class="tick tick-min">0</span>
-      <span class="tick tick-max">200</span>
-    </div>
+                        <div class="aqi-scale">
+                            <span class="tick tick-min">0</span>
+                            <span class="tick tick-max">200</span>
+                        </div>
 
-    <div class="aqi-tooltip">
-        <div class="aqi-tooltip-now">
-            <strong>NO₂:</strong> <span id="val-no2">— µg/m³</span>
-        </div>
-        <div class="aqi-tooltip-ranges">
-            <div><span class="aqi-dot good"></span>0-40 bardzo dobry</div>
-            <div><span class="aqi-dot mid"></span>40-100 umiarkowany</div>
-            <div><span class="aqi-dot bad"></span>&gt;100 zły</div>
-        </div>
-        <br/>
-        <div class="aqi-tooltip-about">
-            NO₂ to dwutlenek azotu głównie ze spalin. Podrażnia płuca i pogarsza astmę.
-        </div>
-    </div>
+                        <div class="aqi-tooltip">
+                            <div class="aqi-tooltip-now">
+                                <strong>NO₂:</strong> <span id="val-no2">— µg/m³</span>
+                            </div>
+                            <div class="aqi-tooltip-ranges">
+                                <div><span class="aqi-dot good"></span>0-40 bardzo dobry</div>
+                                <div><span class="aqi-dot mid"></span>40-100 umiarkowany</div>
+                                <div><span class="aqi-dot bad"></span>&gt;100 zły</div>
+                            </div>
+                            <br />
+                            <div class="aqi-tooltip-about">
+                                NO₂ to dwutlenek azotu głównie ze spalin. Podrażnia płuca i pogarsza astmę.
+                            </div>
+                        </div>
 
-  </div>
-</div>
+                    </div>
+                </div>
 
-            
                 <!-- O3 -->
                 <div class="aqi-bar" data-kind="o3">
                     <span class="aqi-name">O₃</span>
                     <div class="aqi-track track-o3">
                         <i id="bar-o3" class="aqi-seg" style="width:0%"></i>
-                
+
                         <div class="aqi-marker" id="marker-o3" style="left:0%">
                             <span class="aqi-marker-dot"></span>
                             <span class="aqi-marker-val" id="marker-val-o3">—</span>
                         </div>
-                
+
                         <span class="aqi-break" id="brk1-o3">60</span>
                         <span class="aqi-break" id="brk2-o3">120</span>
-                
+
                         <div class="aqi-scale">
                             <span class="tick tick-min">0</span>
                             <span class="tick tick-max">240</span>
                         </div>
-                
+
                         <div class="aqi-tooltip">
                             <div class="aqi-tooltip-now">
                                 <strong>O₃:</strong> <span id="val-o3">— µg/m³</span>
@@ -205,190 +198,242 @@
                                 <div><span class="aqi-dot mid"></span>60-120 umiarkowany</div>
                                 <div><span class="aqi-dot bad"></span>&gt;120 zły</div>
                             </div>
-                            <br/>
+                            <br />
                             <div class="aqi-tooltip-about">
-                                O₃ to ozon przy ziemi. Powstaje w słońcu z emisji miejskich. Może gryźć w gardło i klatę.
+                                O₃ to ozon przy ziemi. Powstaje w słońcu z emisji miejskich. Może gryźć w gardło i
+                                klatę.
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-            
             </div>
 
-
-
             </div>
-            <br/>
+            <br />
             <div id="aq-location" class="muted">Kraków, al. Krasińskiego</div>
             <div class="aqi-head with-sep"></div>
             <footer class="aqi-foot"><span id="aq-updated" class="muted">—</span></footer>
         </section>
 
-<!-- 3) CLEANING -->
-<div class="card cleaning" role="region" aria-labelledby="cl-title">
-    <div class="header">
-        <div class="title" id="cl-title">
-            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M4 4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4zm2 4h12v2H6z" />
-            </svg>
-            <div>
-                Cleaning Dashboard
-                <div class="meta">Dzisiejszy status sprzątania</div>
+        <!-- 3) CLEANING -->
+        <div class="card cleaning" role="region" aria-labelledby="cl-title">
+            <div class="header">
+                <div class="title" id="cl-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M4 4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4zm2 4h12v2H6z" />
+                    </svg>
+                    <div>
+                        Cleaning Dashboard
+                        <div class="meta">Dzisiejszy status sprzątania</div>
+                    </div>
+                </div>
+                <a class="pill" href="./cleaning.html">Otwórz</a>
             </div>
-        </div>
-        <a class="pill" href="./cleaning.html">Otwórz</a>
-    </div>
 
-    <!-- liczniki jako pille -->
-    <div class="cleaning-counters">
-        <div class="cc">
-            <div class="cc-value" id="cl-overdue">0</div>
-            <span class="pill pill-over">OVERDUE</span>
-        </div>
-        <div class="cc">
-            <div class="cc-value" id="cl-due">0</div>
-            <span class="pill pill-due">DUE</span>
-        </div>
-        <div class="cc">
-            <div class="cc-value" id="cl-coming">0</div>
-            <span class="pill pill-coming">COMING</span>
-        </div>
-    </div>
-
-    <div id="cl-list" class="cl-list"></div>
-
-    <!-- zero-state -->
-    <div id="cl-zerostate" class="cl-zerostate meta" hidden>
-        zajebiście ogarnięte, nie ma nic do roboty, elo
-    </div>
-</div>
-
-
-
-<!-- 4) READING -->
-<div class="card reading" id="reading-card" role="region" aria-labelledby="rdg-title">
-    <!-- header -->
-    <div class="reading-header">
-        <div class="reading-header-left">
-            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M4 6h16v12H4zM6 8v8h12V8z" />
-            </svg>
-            <div class="reading-header-text">
-                <div id="rdg-title">Reading Progress</div>
-                <div class="meta">Skrót do czytelniczego panelu</div>
+            <!-- liczniki jako pille -->
+            <div class="cleaning-counters">
+                <div class="cc">
+                    <div class="cc-value" id="cl-overdue">0</div>
+                    <span class="pill pill-over">OVERDUE</span>
+                </div>
+                <div class="cc">
+                    <div class="cc-value" id="cl-due">0</div>
+                    <span class="pill pill-due">DUE</span>
+                </div>
+                <div class="cc">
+                    <div class="cc-value" id="cl-coming">0</div>
+                    <span class="pill pill-coming">COMING</span>
+                </div>
             </div>
-        </div>
-        <a class="pill" href="./reading.html">Otwórz</a>
-    </div>
 
-    <!-- aktywna książka -->
-    <section class="reading-current">
-        <div class="reading-current-top">
-            <div class="current-main">
-                <div class="current-booktitle" id="rdg-book-title">—</div>
-                <div class="current-author meta" id="rdg-book-author">—</div>
-            </div>
-            <div class="current-due">
-                <span class="due-pill" id="rdg-due-pill">—</span>
-                <div class="meta current-date" id="rdg-due-date">—</div>
+            <div id="cl-list" class="cl-list"></div>
+
+            <!-- zero-state -->
+            <div id="cl-zerostate" class="cl-zerostate meta" hidden>
+                zajebiście ogarnięte, nie ma nic do roboty, elo
             </div>
         </div>
 
-        <div class="progress reading-progressbar">
-            <div id="rdg-progress-bar" class="green" style="width:0%"></div>
-        </div>
-        <div class="meta" id="rdg-progress-text">0 / 0 • 0%</div>
-
-        <!-- edycja strony -->
-        <div class="reading-edit-row">
-            <label for="rdg-page-input" class="sr-only">Aktualna strona</label>
-            <input id="rdg-page-input" type="number" class="reading-page-input" min="0" value="0" />
-            <button id="rdg-save-btn" class="reading-save-btn">Zapisz stronę</button>
-            <div class="meta small-note">Ustaw i zapisz do arkusza</div>
-        </div>
-
-        <!-- 3 boksy: cel / zwrot / tempo -->
-        <div class="reading-kpis">
-            <div class="reading-kpi">
-                <div class="kpi-label">Dzisiejszy cel</div>
-                <div class="kpi-main" id="rdg-today-target">—</div>
-                <div class="kpi-sub meta" id="rdg-today-left">—</div>
+        <!-- 4) READING -->
+        <div class="card reading" id="reading-card" role="region" aria-labelledby="rdg-title">
+            <!-- header -->
+            <div class="reading-header">
+                <div class="reading-header-left">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M4 6h16v12H4zM6 8v8h12V8z" />
+                    </svg>
+                    <div class="reading-header-text">
+                        <div id="rdg-title">Reading Progress</div>
+                        <div class="meta">Skrót do czytelniczego panelu</div>
+                    </div>
+                </div>
+                <a class="pill" href="./reading.html">Otwórz</a>
             </div>
-            <div class="reading-kpi">
-                <div class="kpi-label">Zwrot</div>
-                <div class="kpi-main" id="rdg-due-in">—</div>
-                <div class="kpi-sub meta" id="rdg-due-date-2">—</div>
+
+            <!-- aktywna książka -->
+            <section class="reading-current">
+                <div class="reading-current-top">
+                    <div class="current-main">
+                        <div class="current-booktitle" id="rdg-book-title">—</div>
+                        <div class="current-author meta" id="rdg-book-author">—</div>
+                    </div>
+                    <div class="current-due">
+                        <span class="due-pill" id="rdg-due-pill">—</span>
+                        <div class="meta current-date" id="rdg-due-date">—</div>
+                    </div>
+                </div>
+
+                <div class="progress reading-progressbar">
+                    <div id="rdg-progress-bar" class="green" style="width:0%"></div>
+                </div>
+                <div class="meta" id="rdg-progress-text">0 / 0 • 0%</div>
+
+                <!-- edycja strony -->
+                <div class="reading-edit-row">
+                    <label for="rdg-page-input" class="sr-only">Aktualna strona</label>
+                    <input id="rdg-page-input" type="number" class="reading-page-input" min="0" value="0" />
+                    <button id="rdg-save-btn" class="reading-save-btn">Zapisz stronę</button>
+                    <div class="meta small-note">Ustaw i zapisz do arkusza</div>
+                </div>
+
+                <!-- 3 boksy: cel / zwrot / tempo -->
+                <div class="reading-kpis">
+                    <div class="reading-kpi">
+                        <div class="kpi-label">Dzisiejszy cel</div>
+                        <div class="kpi-main" id="rdg-today-target">—</div>
+                        <div class="kpi-sub meta" id="rdg-today-left">—</div>
+                    </div>
+                    <div class="reading-kpi">
+                        <div class="kpi-label">Zwrot</div>
+                        <div class="kpi-main" id="rdg-due-in">—</div>
+                        <div class="kpi-sub meta" id="rdg-due-date-2">—</div>
+                    </div>
+                    <div class="reading-kpi">
+                        <div class="kpi-label">Tempo</div>
+                        <div class="kpi-main" id="rdg-avg">—</div>
+                        <div class="kpi-sub meta" id="rdg-streak">—</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- lista aktywnych książek <100% -->
+            <section class="reading-active">
+                <div class="reading-active-head">
+                    <div class="reading-active-title">
+                        Aktywne książki
+                        <span class="meta" id="rdg-active-count">(0)</span>
+                    </div>
+                    <div class="reading-active-legend meta">
+                        <span class="legend-dot"></span>% = progres
+                    </div>
+                </div>
+
+                <div class="reading-active-grid" id="rdg-active-grid">
+                    <!-- przyciski książek będą wstrzyknięte z JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- 4.5) BLACK METAL 365 (NOWY WIDGET) -->
+        <section class="card bm365" id="bm365-card" role="region" aria-labelledby="bm365-title">
+            <header class="habits-head" style="margin-bottom:10px">
+                <div>
+                    <h3 id="bm365-title">Black Metal 365</h3>
+                    <div class="muted" id="bm365-sub">Progress odsłuchu albumów</div>
+                </div>
+                <a class="open-link" href="./bm365.html" rel="noopener">Otwórz</a>
+            </header>
+
+            <div class="hb-statsrow" style="margin-bottom:12px">
+                <div class="pill big total">
+                    <div id="bm365-done" class="num">0</div>
+                    <div class="lbl">DONE</div>
+                </div>
+                <div class="pill big missed">
+                    <div id="bm365-left" class="num">365</div>
+                    <div class="lbl">LEFT</div>
+                </div>
+                <div class="pill big done">
+                    <div id="bm365-pct" class="num">0%</div>
+                    <div class="lbl">PROGRESS</div>
+                </div>
             </div>
-            <div class="reading-kpi">
-                <div class="kpi-label">Tempo</div>
-                <div class="kpi-main" id="rdg-avg">—</div>
-                <div class="kpi-sub meta" id="rdg-streak">—</div>
+
+            <div class="reading-kpis" style="margin-bottom:12px">
+                <div class="reading-kpi">
+                    <div class="kpi-label">Avg rating</div>
+                    <div class="kpi-main" id="bm365-avg">—</div>
+                    <div class="kpi-sub meta" id="bm365-avg-note">ocenione albumy</div>
+                </div>
+                <div class="reading-kpi">
+                    <div class="kpi-label">Total time</div>
+                    <div class="kpi-main" id="bm365-time">—</div>
+                    <div class="kpi-sub meta" id="bm365-time-note">z wpisów z czasem</div>
+                </div>
+                <div class="reading-kpi">
+                    <div class="kpi-label">Next up</div>
+                    <div class="kpi-main" id="bm365-next">—</div>
+                    <div class="kpi-sub meta" id="bm365-next-date">—</div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- lista aktywnych książek <100% -->
-    <section class="reading-active">
-        <div class="reading-active-head">
-            <div class="reading-active-title">
-                Aktywne książki
-                <span class="meta" id="rdg-active-count">(0)</span>
+            <div class="reading-active">
+                <div class="reading-active-head">
+                    <div class="reading-active-title">
+                        Ostatnie wpisy
+                        <span class="meta" id="bm365-recent-count">(0)</span>
+                    </div>
+                </div>
+
+                <div class="reading-active-grid" id="bm365-recent-grid" style="grid-template-columns:1fr; gap:8px">
+                    <!-- JS wstrzyknie wiersze -->
+                </div>
             </div>
-            <div class="reading-active-legend meta">
-                <span class="legend-dot"></span>% = progres
+
+            <footer class="hb-foot muted" id="bm365-foot"></footer>
+        </section>
+
+        <section class="card habits">
+            <header class="habits-head">
+                <div>
+                    <h3>Habits</h3>
+                    <div class="muted" id="hb-sub">Dzisiejszy status nawyków</div>
+                </div>
+                <a class="open-link" href="#" target="_blank" rel="noopener">Otwórz</a>
+            </header>
+
+            <div class="hb-soberBanner">
+                <div class="hb-soberInner">
+                    <span id="hb-sober-num">0</span>
+                    <span class="hb-sober-label">DAYS SOBER</span>
+                </div>
             </div>
-        </div>
 
-        <div class="reading-active-grid" id="rdg-active-grid">
-            <!-- przyciski książek będą wstrzyknięte z JS -->
-        </div>
-    </section>
-</div>
+            <div class="hb-statsrow">
+                <div class="pill big done">
+                    <div id="hb-done" class="num">0</div>
+                    <div class="lbl">DONE</div>
+                </div>
+                <div class="pill big missed">
+                    <div id="hb-missed" class="num">0</div>
+                    <div class="lbl">MISSED</div>
+                </div>
+                <div class="pill big total">
+                    <div id="hb-total" class="num">0</div>
+                    <div class="lbl">TOTAL</div>
+                </div>
+            </div>
 
+            <div class="hb-groups" id="hb-groups">
+                <!-- JS will inject grouped sections here -->
+            </div>
 
-<section class="card habits">
-    <header class="habits-head">
-        <div>
-            <h3>Habits</h3>
-            <div class="muted" id="hb-sub">Dzisiejszy status nawyków</div>
-        </div>
-        <a class="open-link" href="#" target="_blank" rel="noopener">Otwórz</a>
-    </header>
-
-    <div class="hb-soberBanner">
-        <div class="hb-soberInner">
-            <span id="hb-sober-num">0</span>
-            <span class="hb-sober-label">DAYS SOBER</span>
-        </div>
-    </div>
-
-    <div class="hb-statsrow">
-        <div class="pill big done">
-            <div id="hb-done" class="num">0</div>
-            <div class="lbl">DONE</div>
-        </div>
-        <div class="pill big missed">
-            <div id="hb-missed" class="num">0</div>
-            <div class="lbl">MISSED</div>
-        </div>
-        <div class="pill big total">
-            <div id="hb-total" class="num">0</div>
-            <div class="lbl">TOTAL</div>
-        </div>
-    </div>
-
-    <div class="hb-groups" id="hb-groups">
-        <!-- JS will inject grouped sections here -->
-    </div>
-
-
-    <footer class="hb-foot muted" id="hb-foot">
-        <!-- e.g. Ostatnia aktualizacja: 2025-10-25, 16:39 -->
-    </footer>
-</section>
-
+            <footer class="hb-foot muted" id="hb-foot">
+                <!-- e.g. Ostatnia aktualizacja: 2025-10-25, 16:39 -->
+            </footer>
+        </section>
 
         <!-- 5) HOLIDAYS -->
         <a href="./events.html" class="card events" style="text-decoration:none;">
@@ -404,7 +449,7 @@
                 </div>
                 <span class="pill events-link">Wejdź</span>
             </header>
-        
+
             <!-- KPI tylko o najbliższym święcie -->
             <div class="events-kpis one-col">
                 <div class="metric-tile">
@@ -413,7 +458,7 @@
                     <div class="metric-sub" id="hol-eta">za 20 dni</div>
                 </div>
             </div>
-        
+
             <!-- lista świąt -->
             <ul class="events-list" id="events-list">
                 <li class="evt">
@@ -421,7 +466,7 @@
                     <span class="evt-title">Narodowe Święto Niepodległości</span>
                     <span class="evt-pill state-ok">dzień wolny</span>
                 </li>
-        
+
                 <li class="evt">
                     <span class="date-badge">03.12</span>
                     <span class="evt-title">Urodziny Jess</span>
@@ -433,19 +478,19 @@
                     <span class="evt-title">Wigilia</span>
                     <span class="evt-pill state-warn">krótki dzień</span>
                 </li>
-        
+
                 <li class="evt">
                     <span class="date-badge">25.12</span>
                     <span class="evt-title">Boże Narodzenie (pierwszy dzień)</span>
                     <span class="evt-pill state-ok">wolne</span>
                 </li>
-        
+
                 <li class="evt">
                     <span class="date-badge">26.12</span>
                     <span class="evt-title">Boże Narodzenie (drugi dzień)</span>
                     <span class="evt-pill state-ok">wolne</span>
                 </li>
-        
+
                 <li class="evt">
                     <span class="date-badge">01.01</span>
                     <span class="evt-title">Nowy Rok</span>
@@ -454,38 +499,41 @@
             </ul>
         </a>
 
-
-
         <!-- 6) TEMPERATURA I WILGOTNOŚĆ -->
         <a href="./sensors.html" class="card sensors" style="text-decoration:none;">
             <header class="sensor-head">
                 <div class="sensor-head-main">
                     <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M15 17a3 3 0 1 1-6 0c0-1.3.84-2.4 2-2.82V6a1 1 0 0 1 2 0v8.18A3.001 3.001 0 0 1 15 17z" />
+                        <path
+                            d="M15 17a3 3 0 1 1-6 0c0-1.3.84-2.4 2-2.82V6a1 1 0 0 1 2 0v8.18A3.001 3.001 0 0 1 15 17z" />
                     </svg>
                     <div class="sensor-head-text">
                         <div class="sensor-title">Temperatura i wilgotność</div>
                         <div class="meta">Live z termometru</div>
                     </div>
                 </div>
-        
+
                 <span class="pill sensor-link">Wejdź</span>
             </header>
-        
+
             <div class="sensor-grid">
-                <!-- Temp -->
+                <div class="sensor-meta">
+                    <span class="muted">bat <span id="room-batt">—</span>%</span>
+                    <span aria-hidden="true">•</span>
+                    <span class="muted">akt. <span id="room-updated">—:—</span></span>
+                </div>
                 <div class="sensor-box">
                     <div class="sensor-label">Temp</div>
                     <div class="sensor-value">
                         <span class="sensor-main" id="room-temp">21.4</span>
                         <span class="sensor-unit">°C</span>
+                        <span class="sensor-unit sensor-unit-alt" id="room-temp-f">— °F</span>
                     </div>
                     <div class="sensor-note" id="temp-trend">
                         stabilnie
                     </div>
                 </div>
-        
-                <!-- Humidity -->
+
                 <div class="sensor-box">
                     <div class="sensor-label">Wilgotność</div>
                     <div class="sensor-value">
@@ -496,8 +544,7 @@
                         idealna (40-60)
                     </div>
                 </div>
-        
-                <!-- Comfort -->
+
                 <div class="sensor-box">
                     <div class="sensor-label">Komfort</div>
                     <div class="sensor-value sensor-comfort">
@@ -521,6 +568,16 @@
     <script type="module" src="./js/widget-cleaning.js"></script>
     <script type="module" src="./js/widget-reading.js"></script>
     <script type="module" src="./js/habits.js"></script>
+
+    <!-- NOWE: Black Metal 365 widget logic (mock) -->
+    <script type="module" src="./js/bm365.js"></script>
+
+    <script type="module">
+        import { initSensorWidget } from './js/widget-sensors.js';
+        const GIST_URL = 'https://gist.githubusercontent.com/kamil36s/fae9b26f7ffce459eceb203fb130f250/raw/room.json';
+        initSensorWidget({ url: GIST_URL, pollMs: 60000 });
+    </script>
+
 </body>
 
 </html>
