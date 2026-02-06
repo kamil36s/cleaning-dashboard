@@ -1,0 +1,14 @@
+Position,Name,Question,Description,NumRepetitions,Interval,Color
+001,Meditate,Did you meditate today?,,3,7,#1976D2
+002,Journal,Did you journal today?,,2,7,#5D4037
+003,Русский,,,4,7,#FF8F00
+004,Don't drink,Did you have an alcohol-free day?,,1,1,#1976D2
+005,Don't smoke,Did you have a smoke-free day?,,6,7,#00ACC1
+006,Don't eat chips,Did you have a chips-free day?,,5,7,#00897B
+007,Exercise,Did you exercise today?,,3,7,#D32F2F
+008,Concerta,Did you take Concerta today?,,1,1,#FF8F00
+009,Medikinet,,,1,1,#FF8F00
+010,Pregabalin,,,1,1,#303030
+011,Vitamin B,Did you take vitamin B today?,,1,1,#aaaaaa
+012,Vitamin D,Did you take vitamin D today?,,1,1,#F57C00
+013,Water the plants,Did you water the plants?,,2,7,#7CB342

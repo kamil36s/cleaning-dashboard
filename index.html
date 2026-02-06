@@ -391,6 +391,13 @@
                     <!-- JS wstrzyknie wiersze -->
                 </div>
             </div>
+<div class="bm365-block">
+    <div class="bm365-rowhead">
+        <div class="bm365-h">Top 10 (so far)</div>
+        <div class="bm365-meta" id="bm365-top-count">(0)</div>
+    </div>
+    <div id="bm365-top-grid"></div>
+</div>
 
             <footer class="hb-foot muted" id="bm365-foot"></footer>
         </section>
@@ -520,7 +527,7 @@
                 <div class="sensor-meta">
                     <span class="muted">bat <span id="room-batt">—</span>%</span>
                     <span aria-hidden="true">•</span>
-                    <span class="muted">akt. <span id="room-updated">—:—</span></span>
+                    <span class="muted">odczyt <span id="room-updated">—:—</span></span>
                 </div>
                 <div class="sensor-box">
                     <div class="sensor-label">Temp</div>
@@ -559,9 +566,72 @@
             </div>
         </a>
 
-    </section>
+        <!-- 7) HABIT TIMELINES -->
+        <section class="card habit-multi" id="hm-card" role="region" aria-labelledby="hm-title" style="grid-column: 1 / -1;">
+            <header class="hm-head">
+                <div>
+                    <h3 id="hm-title">Habits Timeline</h3>
+                    <div class="meta">Pick multiple habits and compare</div>
+                </div>
+                <div class="hm-pill" id="hm-range-label">--</div>
+            </header>
 
-    <!-- JS -->
+            <div class="hm-controls">
+                <div class="hm-toolbar">
+                    <button class="hm-btn" id="hm-select-all" type="button">All</button>
+                    <button class="hm-btn" id="hm-clear" type="button">Clear</button>
+                    <button class="hm-btn" id="hm-last" type="button">Last</button>
+                    <button class="pill hm-toggle" id="hm-normalize" type="button" aria-pressed="false">Normalize</button>
+                    <div class="hm-count" id="hm-selected">0 selected</div>
+                </div>
+
+                <div class="hm-pills-wrap">
+                    <div class="hm-label hm-pills-label">Habits</div>
+                    <div class="hm-pills" id="hm-pills"></div>
+                </div>
+
+                <div class="hm-sliders">
+                    <div class="hm-row">
+                        <label class="hm-label" for="hm-window">Window (days)</label>
+                        <input id="hm-window" class="hm-range" type="range" min="14" max="365" value="90" step="1" />
+                        <div class="hm-value" id="hm-window-val">90</div>
+                    </div>
+                    <div class="hm-row">
+                        <label class="hm-label" for="hm-offset">Position</label>
+                        <input id="hm-offset" class="hm-range" type="range" min="0" max="0" value="0" step="1" />
+                    </div>
+                    <div class="hm-note">Drag chart to pan, wheel to scroll, Ctrl + wheel to zoom</div>
+                </div>
+            </div>
+
+            <div class="hm-chart-single">
+                <div class="hm-chart-wrap">
+                    <canvas id="hm-canvas" class="hm-chart-canvas" width="1200" height="260" aria-label="Habits chart"></canvas>
+                    <div id="hm-tooltip" class="hm-tip" hidden></div>
+                </div>
+            </div>
+
+            <div class="hm-binary" id="hm-binary" aria-live="polite">
+                <div class="hm-binary-head">
+                    <div class="hm-label">Binary tiles</div>
+                    <div class="hm-note">Emoji per day for binary habits (current range)</div>
+                </div>
+                <div class="hm-binary-table">
+                    <div class="hm-binary-labels" id="hm-binary-labels"></div>
+                    <div class="hm-binary-scroll" id="hm-binary-scroll">
+                        <div class="hm-binary-rows" id="hm-binary-rows"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</section>
+
+
+<script src="./js/habit-data.js"></script>
+<script type="module" src="./js/habit-timelines.js"></script>
+
+<!-- JS -->
     <script type="module" src="./js/heroClock.js"></script>
     <script type="module" src="./js/main_weather.js"></script>
     <script type="module" src="./js/init-aqi.js"></script>

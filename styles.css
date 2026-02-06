@@ -3798,3 +3798,427 @@ section.grid {
   padding: 10px 14px;
   border-radius: 999px;
 }
+
+#bm365-top-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* wyśrodkowanie całej listy */
+  gap: 8px;
+}
+
+.bm365-top-row {
+  width: 100%;
+  max-width: 640px;
+  /* zmień pod siebie */
+}
+
+.bm365-rank {
+  width: 28px;
+  text-align: right;
+  font-weight: 700;
+  opacity: 0.8;
+  margin-right: 10px;
+}
+
+/* Center the whole Top 10 block */
+#bm365-top-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Center all content inside each row */
+.bm365-top-row {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* centers horizontally */
+  gap: 12px;
+}
+
+/* Make left block (cover+text) centered */
+.bm365-top-row .bm365-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Center the text block */
+.bm365-top-row .bm365-text {
+  text-align: center;
+}
+
+/* Center the rank */
+.bm365-rank {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.bm365-rowhead {
+  justify-content: center;
+  text-align: center;
+}
+
+.bm365-rowhead {
+  margin-bottom: 10px;
+  /* zwiększ/zmniejsz */
+}
+
+
+/* ================ HABIT TIMELINE WIDGET ================ */
+.habit-multi .hm-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.habit-multi .hm-pill {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--card) 70%, #000);
+    color: var(--muted);
+}
+
+.habit-multi .hm-controls {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.habit-multi .hm-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.habit-multi .hm-pills-wrap {
+    display: grid;
+    gap: 6px;
+}
+
+.habit-multi .hm-pills {
+    display: grid;
+    gap: 12px;
+}
+
+.habit-multi .hm-pill-section {
+    display: grid;
+    gap: 8px;
+}
+
+.habit-multi .hm-pill-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.habit-multi .hm-pill-title {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.habit-multi .hm-pill-line {
+    height: 1px;
+    flex: 1;
+    background: var(--border);
+}
+
+.habit-multi .hm-pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.habit-multi .hm-habit-pill {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    min-width: 0;
+    height: 22px;
+    padding: 0 10px;
+}
+
+.habit-multi .hm-habit-pill.is-on {
+    background: var(--fresh);
+    color: #0a0a0a;
+    border-color: color-mix(in oklab, var(--fresh) 60%, var(--border));
+}
+
+.habit-multi .hm-habit-pill.is-off {
+    background: transparent;
+}
+
+.habit-multi .hm-habit-pill:hover {
+    border-color: color-mix(in oklab, var(--fresh) 50%, var(--border));
+    color: var(--text);
+}
+
+.habit-multi .hm-toggle {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    height: 22px;
+    padding: 0 10px;
+}
+
+.habit-multi .hm-toggle.is-on {
+    background: var(--fresh);
+    color: #0a0a0a;
+    border-color: color-mix(in oklab, var(--fresh) 60%, var(--border));
+}
+
+.habit-multi .hm-toggle:hover {
+    border-color: color-mix(in oklab, var(--fresh) 50%, var(--border));
+    color: var(--text);
+}
+
+.habit-multi .hm-binary {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    gap: 8px;
+}
+
+.habit-multi .hm-binary-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.habit-multi .hm-binary-table {
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) 1fr;
+    gap: 12px;
+    align-items: start;
+}
+
+.habit-multi .hm-binary-labels,
+.habit-multi .hm-binary-rows {
+    display: grid;
+    gap: 10px;
+}
+
+.habit-multi .hm-binary-label {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 2px;
+}
+
+.habit-multi .hm-binary-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    scrollbar-width: none;
+    cursor: grab;
+    user-select: none;
+}
+
+.habit-multi .hm-binary-rows {
+    width: max-content;
+}
+
+.habit-multi .hm-binary-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 28px;
+    gap: 6px;
+}
+
+.habit-multi .hm-tile {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    font-size: 10px;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.06);
+    color: #0a0a0a;
+}
+
+.habit-multi .hm-tile.is-on {
+    background: var(--fresh);
+    border: 1px solid color-mix(in oklab, var(--fresh) 60%, var(--border));
+}
+
+.habit-multi .hm-tile.is-off {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid transparent;
+}
+
+.habit-multi .hm-tile-date {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: -0.3px;
+}
+
+.habit-multi .hm-tile.is-on .hm-tile-date {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.habit-multi .hm-binary-scroll.is-dragging {
+    cursor: grabbing;
+}
+
+.habit-multi .hm-binary-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.habit-multi .hm-binary-empty {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.habit-multi .hm-btn {
+    border: 1px solid var(--border);
+    background: #0f172a;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.habit-multi .hm-btn:hover {
+    border-color: color-mix(in oklab, var(--fresh) 50%, var(--border));
+}
+
+.habit-multi .hm-count {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.habit-multi .hm-sliders {
+    display: grid;
+    gap: 8px;
+}
+
+.habit-multi .hm-row {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.habit-multi .hm-label {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.habit-multi .hm-range {
+    width: 100%;
+    accent-color: #86efac;
+}
+
+.habit-multi .hm-value {
+    min-width: 34px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.habit-multi .hm-note {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.habit-multi .hm-chart-single {
+    width: 100%;
+}
+
+.habit-multi .hm-chart-wrap {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.habit-multi .hm-chart-canvas {
+    width: 100%;
+    height: 260px;
+    display: block;
+}
+
+.habit-multi .hm-tip {
+    position: absolute;
+    pointer-events: none;
+    background: #0b0f14;
+    border: 1px solid #1f2937;
+    color: #e5e7eb;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    transform: translate(-50%, -110%);
+    white-space: nowrap;
+}
+
+.habit-multi .hm-tip-date {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.habit-multi .hm-tip-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.habit-multi .hm-tip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--fresh);
+    display: inline-block;
+}
+
+@media (max-width: 1000px) {
+    .habit-multi .hm-chart-canvas {
+        height: 220px;
+    }
+}
+
+@media (max-width: 700px) {
+    .habit-multi .hm-row {
+        grid-template-columns: 1fr;
+    }
+
+    .habit-multi .hm-value {
+        text-align: left;
+    }
+
+    .habit-multi .hm-count {
+        width: 100%;
+    }
+}

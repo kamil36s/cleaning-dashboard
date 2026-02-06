@@ -5,7 +5,7 @@
 const CONFIG = {
   // Przykład: https://script.google.com/macros/s/AKfycb.../exec
   API_BASE:
-    "https://script.google.com/macros/s/AKfycbwr8vEWMrcNubg7qu6a5CFCnRINV5M992ZGCsWbZuJpB3kqlKIyErlfH77wgA4xZu1Y/exec",
+    "https://script.google.com/macros/s/AKfycbwinBwL3N0BPJ1H5wx4Q0MxP7JzXJ4y2M5lNoEsy81jL6I-p-GQJbplyFmQMEDW6Sgq/exec",
 
   // Nazwy pól w JSON (dopasowanie do Apps Script)
   FIELDS: {
@@ -33,10 +33,18 @@ function todayISO() {
 }
 
 function toNumber(x) {
-  if (x === null || x === undefined || x === "") return null;
-  const n = Number(String(x).replace(",", "."));
+  if (x === null || x === undefined) return null;
+  const s = String(x).trim();
+  if (!s) return null;
+
+  // Extract first number from text like "42m", "42 min", "42,5"
+  const m = s.match(/-?\d+(?:[.,]\d+)?/);
+  if (!m) return null;
+
+  const n = Number(m[0].replace(",", "."));
   return Number.isFinite(n) ? n : null;
 }
+
 
 function safeText(x) {
   return x === null || x === undefined ? "—" : String(x);
@@ -221,6 +229,76 @@ function recentListened(rows) {
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, CONFIG.RECENT_LIMIT);
 }
+
+function topRated(rows, limit = 10) {
+  return rows
+    .filter((r) => r.listened && Number.isFinite(r.rating))
+    .sort((a, b) => {
+if (b.rating !== a.rating) return b.rating - a.rating;
+return String(b.date).localeCompare(String(a.date));
+    })
+    .slice(0, limit);
+}
+
+
+async function renderTopRated(rows) {
+  const grid = $("bm365-top-grid");
+  if (!grid) return;
+
+  grid.innerHTML = "";
+
+  let rank = 1;
+  for (const r of rows) {
+    const cover = await bm_getCoverUrl_(r.artist, r.album);
+    if (!cover) continue; // pomijamy bez okładki
+
+    const wrap = document.createElement("div");
+    wrap.className = "bm365-row bm365-top-row";
+
+    const rankEl = document.createElement("div");
+    rankEl.className = "bm365-rank";
+    rankEl.textContent = `${rank}.`;
+
+    const left = document.createElement("div");
+    left.className = "bm365-left";
+
+    const img = document.createElement("img");
+    img.className = "bm365-cover";
+    img.alt = "";
+    img.src = cover;
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    const text = document.createElement("div");
+    text.className = "bm365-text";
+
+    const title = document.createElement("div");
+    title.className = "bm365-title";
+    title.textContent = `${r.artist} — ${r.album}`;
+
+    const sub = document.createElement("div");
+    sub.className = "bm365-sub";
+    sub.textContent = `${r.date} • ★ ${r.rating}`;
+
+    text.appendChild(title);
+    text.appendChild(sub);
+
+    left.appendChild(img);
+    left.appendChild(text);
+
+    wrap.appendChild(rankEl);
+    wrap.appendChild(left);
+
+    grid.appendChild(wrap);
+
+    rank++;
+    if (rank > 10) break;
+  }
+
+  setText("bm365-top-count", `(${rank - 1})`);
+}
+
+
 
 async function renderAlreadyDoneState(todayRow) {
   clearRecent();
@@ -436,6 +514,9 @@ async function init() {
   try {
     const raw = await apiGetAll();
     const rows = normalizeRows(raw);
+    const top = topRated(rows, 10);
+    await renderTopRated(top);
+
     const stats = computeStats(rows);
 
     // KPI

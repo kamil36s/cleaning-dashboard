@@ -1,0 +1,97 @@
+{
+  "db_files": [
+    {
+      "path": "data/raw/db\\Loop Habits Backup 2026-02-06 190452.db",
+      "habits": 22,
+      "points": 6928,
+      "errors": []
+    }
+  ],
+  "csv_files": [
+    {
+      "path": "data/raw/csv\\Checkmarks.csv",
+      "kind": "checkmarks_header",
+      "encoding": "utf-8",
+      "rows": 85,
+      "points": 79,
+      "skipped_rows": 0,
+      "skipped_values": 5,
+      "errors": []
+    },
+    {
+      "path": "data/raw/csv\\Checkmarks1.csv",
+      "kind": "checkmarks_header",
+      "encoding": "utf-8",
+      "rows": 85,
+      "points": 79,
+      "skipped_rows": 0,
+      "skipped_values": 5,
+      "errors": []
+    },
+    {
+      "path": "data/raw/csv\\Checkmarks2.csv",
+      "kind": "checkmarks_simple_root",
+      "encoding": "utf-8",
+      "rows": 79,
+      "points": 0,
+      "skipped_rows": 0,
+      "skipped_values": 0,
+      "errors": [
+        "Simple CSV in data/raw/csv root has no habit name. Move it into a habit-named folder."
+      ]
+    }
+  ],
+  "csv_skipped": [
+    {
+      "path": "data/raw/csv\\Habits.csv",
+      "reason": "habits.csv"
+    },
+    {
+      "path": "data/raw/csv\\Scores.csv",
+      "reason": "scores.csv"
+    },
+    {
+      "path": "data/raw/csv\\Scores1.csv",
+      "reason": "scores.csv"
+    }
+  ],
+  "input_points": 7086,
+  "kept_points": 7007,
+  "habits": 22,
+  "conflicts": 0,
+  "errors": [
+    "Simple CSV in data/raw/csv root has no habit name. Move it into a habit-named folder."
+  ],
+  "generated_at": "2026-02-06T18:10:44.259689+00:00",
+  "tz": "Europe/Warsaw",
+  "inputs": {
+    "db": [
+      "data/raw/db\\Loop Habits Backup 2026-02-06 190452.db"
+    ],
+    "csv": [
+      "data/raw/csv\\Checkmarks.csv",
+      "data/raw/csv\\Checkmarks1.csv",
+      "data/raw/csv\\Checkmarks2.csv",
+      "data/raw/csv\\Habits.csv",
+      "data/raw/csv\\Scores.csv",
+      "data/raw/csv\\Scores1.csv"
+    ]
+  },
+  "outputs": {
+    "json": "data/habit-data.json",
+    "js": "js/habit-data.js",
+    "conflicts": "data/conflicts.json",
+    "report": "data/report.json",
+    "report_html": "data/report.html"
+  },
+  "csv_files_count": 3,
+  "csv_points": 158,
+  "csv_skipped_values": 10,
+  "csv_rows": 249,
+  "warnings": [
+    "CSV data/raw/csv\\Checkmarks.csv: skipped values 5.",
+    "CSV data/raw/csv\\Checkmarks1.csv: skipped values 5.",
+    "CSV data/raw/csv\\Checkmarks2.csv: 0 points parsed (check format/quotes).",
+    "CSV data/raw/csv\\Checkmarks2.csv: Simple CSV in data/raw/csv root has no habit name. Move it into a habit-named folder."
+  ]
+}
