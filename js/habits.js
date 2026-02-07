@@ -1,3 +1,5 @@
+import { fmtDateTimeShort } from './utils.js';
+
 async function getHabitsState() {
   const res = await fetch('./data/habits.json', { cache: 'no-store' });
   if (!res.ok) throw new Error('habits fetch failed');
@@ -164,13 +166,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // footer
     const ts = new Date(data.generatedAt);
-    footEl.textContent =
-      `Ostatnia aktualizacja: ${ts.toLocaleString('pl-PL')}\n` +
-      `Czarna plakietka = streak w dniach`;
+    if (footEl && !footEl.hasAttribute('data-fixed')) {
+      footEl.textContent =
+        `Ostatnia aktualizacja: ${fmtDateTimeShort(ts)}\n` +
+        `Czarna plakietka = streak w dniach`;
+    }
 
   } catch (e) {
     console.error('[Habits] Error:', e);
     subEl.textContent = 'Error loading habits';
-    if (footEl) footEl.textContent = 'Brak danych';
+    if (footEl && !footEl.hasAttribute('data-fixed')) footEl.textContent = 'Brak danych';
   }
 });

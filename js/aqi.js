@@ -1,27 +1,47 @@
-// js/aqi.js
+﻿// js/aqi.js
 // Kafelek AQI dla stacji GIOŚ: Kraków, al. Krasińskiego (ID 400)
 
 import GIOS from './api/gios.js';
+import { t, onLocaleChange } from './i18n.js';
+import { fmtDateTimeShort } from './utils.js';
 
-const CLASS_BY_NAME = {
-  "Bardzo dobry": "k-verygood",
-  "Dobry": "k-good",
-  "Umiarkowany": "k-moderate",
-  "Dostateczny": "k-sufficient",
-  "Zły": "k-bad",
-  "Bardzo zły": "k-verybad"
+const CLASS_BY_KEY = {
+  very_good: 'k-verygood',
+  good: 'k-good',
+  moderate: 'k-moderate',
+  sufficient: 'k-sufficient',
+  bad: 'k-bad',
+  very_bad: 'k-verybad'
 };
 
-const DESC_PL = {
-  "Bardzo dobry": "Jakość bardzo dobra. Aktywność na zewnątrz bez ograniczeń.",
-  "Dobry": "Jakość zadowalająca. Ryzyko niskie.",
-  "Umiarkowany": "Akceptowalna; wrażliwi mogą odczuć skutki.",
-  "Dostateczny": "Ogranicz intensywny wysiłek na zewnątrz.",
-  "Zły": "Unikaj aktywności na zewnątrz; wrażliwi nie wychodzą.",
-  "Bardzo zły": "Pozostań w pomieszczeniach; aktywność odradzana."
+const KEY_BY_PL_LABEL = {
+  'Bardzo dobry': 'very_good',
+  'Dobry': 'good',
+  'Umiarkowany': 'moderate',
+  'Dostateczny': 'sufficient',
+  'Zły': 'bad',
+  'Bardzo zły': 'very_bad'
 };
 
-const ORDER = ["Bardzo dobry","Dobry","Umiarkowany","Dostateczny","Zły","Bardzo zły"];
+const LEVEL_FALLBACK = {
+  very_good: 'Bardzo dobry',
+  good: 'Dobry',
+  moderate: 'Umiarkowany',
+  sufficient: 'Dostateczny',
+  bad: 'Zły',
+  very_bad: 'Bardzo zły'
+};
+
+const DESC_FALLBACK = {
+  very_good: 'Jakość bardzo dobra. Aktywność na zewnątrz bez ograniczeń.',
+  good: 'Jakość zadowalająca. Ryzyko niskie.',
+  moderate: 'Akceptowalna; wrażliwi mogą odczuć skutki.',
+  sufficient: 'Ogranicz intensywny wysiłek na zewnątrz.',
+  bad: 'Unikaj aktywności na zewnątrz; wrażliwi nie wychodzą.',
+  very_bad: 'Pozostań w pomieszczeniach; aktywność odradzana.'
+};
+
+const ORDER = ['very_good','good','moderate','sufficient','bad','very_bad'];
 
 // skala końcowa do wyświetlenia pod paskiem
 const MAXS  = { pm25:150, pm10:200, no2:200, o3:240 };
@@ -49,14 +69,29 @@ const THROTTLE_MS = 15 * 60 * 1000; // 15 min
 function $(s){ return document.querySelector(s); }
 function setText(sel, text){ const el = $(sel); if (el) el.textContent = text; }
 
-function pct(v, max){
-  return Math.max(0, Math.min(100, (v/max)*100));
-}
-
-function setClass(el, name){
+function setClass(el, key){
   if (!el) return;
   el.classList.remove('k-verygood','k-good','k-moderate','k-sufficient','k-bad','k-verybad');
-  if (CLASS_BY_NAME[name]) el.classList.add(CLASS_BY_NAME[name]);
+  if (CLASS_BY_KEY[key]) el.classList.add(CLASS_BY_KEY[key]);
+}
+
+function levelLabel(key){
+  return t(`aqi.levels.${key}`, null, LEVEL_FALLBACK[key] || key);
+}
+
+function levelDesc(key){
+  return t(`aqi.descriptions.${key}`, null, DESC_FALLBACK[key] || '');
+}
+
+function dominantText(value){
+  if (!value) return t('aqi.dominant_empty', null, 'Dominujące: —');
+  return t('aqi.dominant_label', { value }, `Dominujące: ${value}`);
+}
+
+function updatedText(iso){
+  if (!iso) return '—';
+  const datetime = fmtDateTimeShort(iso);
+  return t('aqi.updated', { datetime }, `Ostatnia aktualizacja: ${datetime}`);
 }
 
 // nowa wersja setBar:
@@ -104,13 +139,36 @@ function setBar(param, value){
   }
 }
 
-
 // helpers cache
+function normalizeSnapshot(raw){
+  if (!raw || typeof raw !== 'object') return null;
+  if (raw.levelKey || raw.levelKey === null) return raw;
+
+  const levelKey = toLevelKey(raw.name) || null;
+  let dominantValue = null;
+
+  if (typeof raw.dominantValue === 'string') {
+    dominantValue = raw.dominantValue;
+  } else if (typeof raw.dominant === 'string') {
+    const m = raw.dominant.split(':');
+    if (m.length > 1) dominantValue = m.slice(1).join(':').trim();
+  }
+
+  return {
+    ts: raw.ts || Date.now(),
+    location: raw.location || null,
+    levelKey,
+    dominantValue,
+    updatedIso: raw.updatedIso || new Date().toISOString(),
+    vals: raw.vals || {}
+  };
+}
+
 function readCache(){
   try {
     const raw = localStorage.getItem(CACHE_KEY);
     if (!raw) return null;
-    return JSON.parse(raw);
+    return normalizeSnapshot(JSON.parse(raw));
   } catch(e){
     return null;
   }
@@ -121,18 +179,25 @@ function writeCache(snap){
   catch(e){}
 }
 
+let lastSnapshot = null;
+
 // render snapshot
 function applySnapshot(snap){
   const card = $('#aq-card');
   if (!card || !snap) return;
 
-  setText('#aq-location', snap.location || 'Kraków, al. Krasińskiego');
-  setText('#aq-index', snap.name || 'Brak indeksu');
-  setText('#aq-desc', snap.desc || 'Brak indeksu GIOŚ dla tej stacji teraz.');
-  setText('#aq-dominant', snap.dominant || 'Dominujące: —');
-  setText('#aq-updated', snap.updatedText || '—');
+  lastSnapshot = snap;
 
-  setClass(card, snap.name || null);
+  const locationText = snap.location || t('aqi.location_default', null, 'Kraków, al. Krasińskiego');
+  const levelKey = snap.levelKey;
+
+  setText('#aq-location', locationText);
+  setText('#aq-index', levelKey ? levelLabel(levelKey) : t('aqi.no_index', null, 'Brak indeksu'));
+  setText('#aq-desc', levelKey ? levelDesc(levelKey) : t('aqi.no_index_desc', null, 'Brak indeksu GIOŚ dla tej stacji teraz.'));
+  setText('#aq-dominant', dominantText(snap.dominantValue));
+  setText('#aq-updated', updatedText(snap.updatedIso));
+
+  setClass(card, levelKey || null);
 
   // słupki
   setBar('pm25', snap.vals?.pm25);
@@ -144,32 +209,32 @@ function applySnapshot(snap){
 function buildSnapshot(raw){
   return {
     ts: Date.now(),
-    location: 'Kraków, al. Krasińskiego',
-    name:     raw.name || null,
-    desc:     raw.desc || null,
-    dominant: raw.dominant || null,
-    updatedText: `Ostatnia aktualizacja: ${new Date().toLocaleString('pl-PL')}`,
-    vals: {
-      pm25: raw.vals?.pm25,
-      pm10: raw.vals?.pm10,
-      no2:  raw.vals?.no2,
-      o3:   raw.vals?.o3
-    }
+    location: raw.location || null,
+    levelKey: raw.levelKey || null,
+    dominantValue: raw.dominantValue || null,
+    updatedIso: raw.updatedIso || new Date().toISOString(),
+    vals: raw.vals || {}
   };
 }
 
 function isGoodSnapshot(snap){
   if (!snap) return false;
-  if (!snap.name) return false;
-  if (snap.name === 'Brak indeksu') return false;
+  if (!snap.levelKey) return false;
   return true;
 }
 
 // util do normalizacji kodu parametru sensora
 const norm = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g,'');
 
-// convert index numeric to label
+// convert index numeric to label key
 const fromValue = v => (Number.isFinite(v) && ORDER[v]) ? ORDER[v] : null;
+
+function toLevelKey(label){
+  if (!label) return null;
+  const raw = String(label).trim();
+  if (ORDER.includes(raw)) return raw;
+  return KEY_BY_PL_LABEL[raw] || null;
+}
 
 // wyciąga ostatnią sensowną wartość z odpowiedzi sensora GIOŚ
 function extractNumericValueFromSensorData(d){
@@ -225,24 +290,25 @@ export async function renderAqiForKrasinskiego() {
   try {
     // 1) indeks jakości
     const idx  = await GIOS.getIndex(stationId);
-    const name = idx.category || fromValue(idx.value) || null;
+    const levelKey = toLevelKey(idx.category) || fromValue(idx.value) || null;
 
     // dominujący składnik
     const codeMap = { PYL:'PM', SO2:'SO₂', NO2:'NO₂', O3:'O₃', CO:'CO', C6H6:'C₆H₆' };
-    let dominantTxt = 'Dominujące: —';
+    let dominantValue = null;
     if (idx.dominantCode && codeMap[idx.dominantCode]) {
-      dominantTxt = `Dominujące: ${codeMap[idx.dominantCode]}`;
+      dominantValue = codeMap[idx.dominantCode];
     } else if (idx.parts) {
       let worst = null;
       let worstVal = -1;
       for (const [k,v] of Object.entries(idx.parts)) {
-        const score = ORDER.indexOf(v);
+        const key = toLevelKey(v) || null;
+        const score = key ? ORDER.indexOf(key) : -1;
         if (score > worstVal) {
           worstVal = score;
           worst = k.toUpperCase();
         }
       }
-      dominantTxt = `Dominujące: ${worst ?? '—'}`;
+      dominantValue = worst || null;
     }
 
     // 2) lista sensorów -> mapowanie do pm25/pm10/no2/o3
@@ -262,7 +328,7 @@ export async function renderAqiForKrasinskiego() {
       }
     }
 
-        // 3) wartości z sensorów
+    // 3) wartości z sensorów
     const vals = {};
     for (const [code, sid] of Object.entries(wanted)) {
       if (!sid) { vals[code] = NaN; continue; }
@@ -277,13 +343,12 @@ export async function renderAqiForKrasinskiego() {
       }
     }
 
-
     // 4) snapshot
     const freshSnap = buildSnapshot({
-      name,
-      desc: name ? DESC_PL[name] : 'Brak indeksu GIOŚ dla tej stacji teraz.',
-      dominant: dominantTxt,
-      vals
+      levelKey,
+      dominantValue,
+      vals,
+      updatedIso: new Date().toISOString()
     });
 
     // 5) renderuj
@@ -305,10 +370,10 @@ export async function renderAqiForKrasinskiego() {
     }
 
     // fallback totalny
-    setText('#aq-location', 'Kraków, al. Krasińskiego');
-    setText('#aq-index', 'Brak indeksu');
-    setText('#aq-desc', 'Błąd pobierania lub brak danych.');
-    setText('#aq-dominant', 'Dominujące: —');
+    setText('#aq-location', t('aqi.location_default', null, 'Kraków, al. Krasińskiego'));
+    setText('#aq-index', t('aqi.no_index', null, 'Brak indeksu'));
+    setText('#aq-desc', t('aqi.error_desc', null, 'Błąd pobierania lub brak danych.'));
+    setText('#aq-dominant', t('aqi.dominant_empty', null, 'Dominujące: —'));
     setText('#aq-updated', '—');
     setClass($('#aq-card'), null);
 
@@ -318,3 +383,8 @@ export async function renderAqiForKrasinskiego() {
     setBar('o3',   NaN);
   }
 }
+
+onLocaleChange(() => {
+  if (lastSnapshot) applySnapshot(lastSnapshot);
+});
+

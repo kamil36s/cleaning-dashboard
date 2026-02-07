@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Oscars Watchlist</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <aside class="panel">
+            <h1 id="oscars-year-title">Oscars Watchlist</h1>
+            <div class="controls" style="margin-bottom:8px">
+                <button id="back-btn" title="Back">Back</button>
+                <select id="oscars-year-select" class="oscars-input" aria-label="Oscars year"></select>
+            </div>
+            <div class="oscars-source" id="oscars-source" aria-live="polite"></div>
+
+            <div class="kpis">
+                <div class="kpi"><span>Total</span><b id="oscars-kpi-total">0</b></div>
+                <div class="kpi"><span>Watched</span><b id="oscars-kpi-watched">0</b></div>
+                <div class="kpi"><span>Left</span><b id="oscars-kpi-left">0</b></div>
+                <div class="kpi"><span>Avg rating</span><b id="oscars-kpi-avg">-</b></div>
+            </div>
+            <div class="progress">
+                <div id="oscars-progress-bar" class="green" style="width:0%"></div>
+            </div>
+            <div class="meta" id="oscars-progress-text">0 / 0 - 0%</div>
+
+            <h2>Filters</h2>
+            <div class="controls oscars-filters">
+                <input id="oscars-search" class="oscars-input" type="text" placeholder="Search title, director, category">
+                <select id="oscars-type">
+                    <option value="ALL">All types</option>
+                </select>
+                <select id="oscars-sort">
+                    <option value="title">Title</option>
+                    <option value="rating_desc">Rating (high to low)</option>
+                    <option value="rating_asc">Rating (low to high)</option>
+                    <option value="runtime">Runtime</option>
+                    <option value="watched_date">Watched date (newest)</option>
+                </select>
+                <select id="oscars-nom-min" class="oscars-input" aria-label="Min nominations">
+                    <option value="">Min nominations</option>
+                </select>
+                <select id="oscars-nom-max" class="oscars-input" aria-label="Max nominations">
+                    <option value="">Max nominations</option>
+                </select>
+            </div>
+            <div class="controls oscars-toggles">
+                <button id="oscars-hide-watched" type="button" class="oscars-toggle" aria-pressed="false">Hide watched</button>
+                <button id="oscars-only-winners" type="button" class="oscars-toggle" aria-pressed="false">Only winners</button>
+                <button id="oscars-clear-filters" type="button" class="oscars-ghost">Clear filters</button>
+            </div>
+            <div class="oscars-subhead">Where to watch</div>
+            <div id="oscars-where-filters" class="oscars-where-filters"></div>
+            <div class="oscars-subhead">Nominated categories</div>
+            <div id="oscars-category-filters" class="oscars-where-filters"></div>
+            <div class="oscars-subhead">Production countries</div>
+            <div id="oscars-country-filters" class="oscars-where-filters"></div>
+
+            <div class="controls" style="margin-top:8px">
+                <button id="oscars-posters-btn" type="button" title="Fetch posters">Fetch posters</button>
+                <button id="oscars-meta-btn" type="button" title="Fetch runtime and country">Fetch details</button>
+                <button id="oscars-winners-btn" type="button" title="Fetch winners">Fetch winners</button>
+            </div>
+            <div class="meta" id="oscars-posters-status"></div>
+            <div class="meta" id="oscars-meta-status"></div>
+            <div class="meta" id="oscars-winners-status"></div>
+            <div class="meta oscars-data-stats" id="oscars-data-stats"></div>
+
+            <div class="meta" id="oscars-foot">Loading data source...</div>
+        </aside>
+
+        <main class="main">
+            <div class="oscars-toolbar">
+                <h2>Watchlist</h2>
+                <div class="meta" id="oscars-count">0 items</div>
+            </div>
+            <div id="oscars-grid" class="oscars-grid"></div>
+            <button id="oscars-to-top" class="oscars-fab" type="button" aria-label="Scroll to top">Top</button>
+        </main>
+    </div>
+
+    <script defer src="./js/nav.js"></script>
+    <script type="module" src="./js/oscars.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Not Found</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap" style="display:block; max-width:800px">
+    <div class="panel" style="margin:18px auto">
+      <h1>Page not found</h1>
+      <p class="meta" id="nf-msg">Trying to redirect...</p>
+      <p class="meta"><a id="nf-link" href="./index.html">Go back home</a></p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var path = window.location.pathname || '';
+      var match = path.match(/oscars-(\d{4})\.html$/);
+      var base = path.replace(/\/[^/]*$/, '');
+      var prefix = base === '' ? '' : base;
+      if (match) {
+        var year = match[1];
+        var target = prefix + '/oscars.html?year=' + year;
+        var msg = document.getElementById('nf-msg');
+        var link = document.getElementById('nf-link');
+        if (msg) msg.textContent = 'Redirecting to Oscars ' + year + '...';
+        if (link) {
+          link.textContent = 'Open Oscars ' + year;
+          link.href = target;
+        }
+        window.location.replace(target);
+        return;
+      }
+
+      var home = prefix + '/index.html';
+      var linkHome = document.getElementById('nf-link');
+      if (linkHome) linkHome.href = home;
+    })();
+  </script>
+</body>
+</html>

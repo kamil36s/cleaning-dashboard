@@ -4,12 +4,23 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:all": "start-dev.cmd",
     "build": "vite build",
     "preview": "vite preview",
-    "habits:import": "python scripts\\build-habits.py"
+    "habits:import": "python scripts\\build-habits.py",
+    "help": "node scripts/print-help.js",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:report": "vitest run --reporter=default --reporter=html --outputFile=reports/vitest/index.html --coverage",
+    "test:ui": "vitest --ui",
+    "report:open": "node scripts/open-report.js"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "@vitest/coverage-v8": "^2.1.0",
+    "@vitest/ui": "^2.1.0",
+    "happy-dom": "^14.12.1",
+    "vite": "^5.0.0",
+    "vitest": "^2.1.0"
   },
   "version": "1.0.0",
   "description": "Open `src/index.html` via a local server (for ES Modules):",

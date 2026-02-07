@@ -8,6 +8,19 @@ Open `src/index.html` via a local server (for ES Modules):
 
 Then open http://localhost:5173
 
+## Testy
+Szybki start:
+- `npm run test` - tryb watch (czeka na zmiany plikow)
+- `npm run test:run` - jednorazowy run
+- `npm run test:report` - generuje raport HTML + coverage
+- `npm run test:ui` - UI testow w przegladarce
+- `npm run report:open` - uruchamia raport w przegladarce
+- `npm run help` - lista wszystkich komend z opisem
+
+Raporty HTML:
+- `reports/vitest/index.html`
+- `reports/vitest/coverage/index.html`
+
 ## Where things live
 - **styles.css** — all styles and design tokens
 - **js/config.js** — API base URL and write token

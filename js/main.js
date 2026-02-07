@@ -2,6 +2,7 @@ import { bootDebug, fetchData, markDone } from './api.js';
 import { render } from './render.js';
 import { LAST_LIST } from './render.js';
 import { OPENAI_PROXY } from './config.js';
+import { scheduleUndo } from './undo-toast.js';
 
 // Initial debug ping
 bootDebug();
@@ -56,8 +57,30 @@ on(grid, 'click', async (ev) => {
   const row = Number(btn.dataset.row || 0);
   if (!row) return;
   const prev = btn.textContent;
-  btn.disabled = true; btn.textContent = '...';
-  try { await markDone(row); } finally { btn.disabled = false; btn.textContent = prev; }
+  const title = btn.closest('.card')?.querySelector('.title span:last-child')?.textContent?.trim() || 'zadanie';
+  btn.disabled = true;
+  btn.classList.add('is-pending');
+  btn.textContent = 'Zaznaczone';
+
+  scheduleUndo({
+    message: `Zaznaczone: ${title}`,
+    duration: 4000,
+    onUndo: () => {
+      btn.disabled = false;
+      btn.classList.remove('is-pending');
+      btn.textContent = prev;
+    },
+    onCommit: async () => {
+      btn.textContent = '...';
+      try {
+        await markDone(row);
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('is-pending');
+        btn.textContent = prev;
+      }
+    }
+  });
 });
 
 

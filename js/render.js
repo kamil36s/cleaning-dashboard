@@ -1,5 +1,5 @@
 import { DATA } from './state.js';
-import { fmtDate } from './utils.js';
+import { fmtDate, fmtTimeShort, isSameDay, parseDateMaybe } from './utils.js';
 import { iconFor } from './icons.js';
 
 export let LAST_LIST = [];
@@ -12,6 +12,13 @@ let SUPPLIES_WIRED = false;
 // --- CONFIG + HELPERS ---
 const COMING_FRAC = 0.92;
 const N = v => (v==null || v==='') ? null : Number(v);
+const hasTimeInfo = (value) => {
+  if (value == null || value === '') return false;
+  if (value instanceof Date) return true;
+  if (typeof value === 'number') return true;
+  if (typeof value === 'string') return /\d:\d/.test(value);
+  return false;
+};
 
 const daysOver = t =>
   t.overdue ? Math.max(0, (N(t.daysSince)||0) - (N(t.freq)||0)) : 0;
@@ -181,11 +188,32 @@ function cardHTML(t){
             ? 'due'
             : (coming ? 'coming' : '')));
 
-  const dueLabel = over
-    ? `OVERDUE by ${(N(t.daysSince)||0)-(N(t.freq)||0)}d`
-    : (due
-        ? 'DUE today'
-        : `Next in ${N(t.nextDueIn) ?? '—'}d`);
+  const overdueBy = daysOver(t);
+  const nextDue = N(t.nextDueIn);
+  const nextDueLabel = Number.isFinite(nextDue) ? `${nextDue}d` : null;
+
+  let badgeLabel = '';
+  if (dead) {
+    badgeLabel = `DEAD \u2022 ${overdueBy}d`;
+  } else if (over) {
+    badgeLabel = `OVERDUE \u2022 ${overdueBy}d`;
+  } else if (due) {
+    badgeLabel = 'DUE \u2022 today';
+  } else if (coming) {
+    badgeLabel = nextDueLabel ? `COMING \u2022 ${nextDueLabel}` : 'COMING';
+  } else {
+    badgeLabel = nextDueLabel ? `FRESH \u2022 ${nextDueLabel}` : 'FRESH';
+  }
+
+  const metaParts = [];
+  if (t.room) {
+    metaParts.push(t.room);
+  }
+  metaParts.push(`co ${t.freq || '?'} dni`);
+  if (t.lastDone) {
+    metaParts.push(`ostatnio: ${fmtDate(t.lastDone)}`);
+  }
+  const metaText = metaParts.join(' • ');
 
   return `
   <div class="card ${frameClass}" data-key="${keyOf(t)}">
@@ -196,30 +224,26 @@ function cardHTML(t){
           <span>${t.task}</span>
         </div>
 
-        <div class="meta">
-          ${t.room || ''} • every ${t.freq || '?'}d
-          ${t.lastDone ? `• last: ${fmtDate(t.lastDone)}` : ''}
-          • row ${id ?? '—'}
-        </div>
+        <div class="meta meta-inline">${metaText}</div>
 
         ${articlesHTMLFor(t)}
       </div>
 
       <div class="badges">
         ${dead
-          ? `<button class="pill pill-dead"  data-row="${id}" data-action="done">DEAD</button>`
+          ? `<button class="pill pill-dead"  data-row="${id}" data-action="done">${badgeLabel}</button>`
           : ''}
         ${(!dead && over)
-          ? `<button class="pill pill-over" data-row="${id}" data-action="done">OVERDUE</button>`
+          ? `<button class="pill pill-over" data-row="${id}" data-action="done">${badgeLabel}</button>`
           : ''}
         ${(!dead && !over && due)
-          ? `<button class="pill pill-due"  data-row="${id}" data-action="done">DUE</button>`
+          ? `<button class="pill pill-due"  data-row="${id}" data-action="done">${badgeLabel}</button>`
           : ''}
         ${(!dead && !over && !due && coming)
-          ? `<button class="pill pill-coming" data-row="${id}" data-action="done">COMING</button>`
+          ? `<button class="pill pill-coming" data-row="${id}" data-action="done">${badgeLabel}</button>`
           : ''}
         ${(!dead && !over && !due && !coming)
-          ? `<button class="pill pill-fresh"  data-row="${id}" data-action="done">FRESH</button>`
+          ? `<button class="pill pill-fresh"  data-row="${id}" data-action="done">${badgeLabel}</button>`
           : ''}
       </div>
     </div>
@@ -229,10 +253,44 @@ function cardHTML(t){
     </div>
 
     <div class="footer">
-      <span>${dueLabel}</span>
       <span>${N(t.daysSince) != null ? `Since: ${N(t.daysSince)}d` : 'Never'}</span>
     </div>
   </div>`;
+}
+
+function renderTodayLog(){
+  const list = document.getElementById('today-log-list');
+  if (!list) return;
+  const empty = document.getElementById('today-log-empty');
+  const count = document.getElementById('today-log-count');
+
+  const today = new Date();
+  const doneToday = DATA
+    .map(t => ({ t, dt: parseDateMaybe(t.lastDone) }))
+    .filter(({ dt }) => dt && isSameDay(dt, today))
+    .sort((a, b) => (b.dt?.getTime?.() || 0) - (a.dt?.getTime?.() || 0));
+
+  const shown = doneToday.slice(0, 8);
+  list.innerHTML = shown.map(({ t, dt }) => {
+    const title = t.task || '—';
+    const timeLabel = hasTimeInfo(t.lastDone) && dt ? fmtTimeShort(dt) : 'dziś';
+    const metaParts = [];
+    if (t.room) metaParts.push(t.room);
+    if (timeLabel) metaParts.push(timeLabel);
+    const meta = metaParts.join(' • ');
+    return `
+      <div class="today-log-item">
+        <span class="today-log-dot" aria-hidden="true"></span>
+        <span class="today-log-task">${title}</span>
+        <span class="today-log-meta">${meta}</span>
+      </div>
+    `;
+  }).join('');
+
+  const hasAny = doneToday.length > 0;
+  list.hidden = !hasAny;
+  if (empty) empty.hidden = hasAny;
+  if (count) count.textContent = String(doneToday.length);
 }
 
 export function render(){
@@ -297,6 +355,7 @@ export function render(){
 
   // 4. sortowanie końcowe
   const safeNext = x => (Number.isFinite(N(x)) ? N(x) : 9999);
+  const safeSince = x => (Number.isFinite(N(x)) ? N(x) : -1);
 
   list.sort((a, b) => {
     if (sort === 'room'){
@@ -304,6 +363,12 @@ export function render(){
     }
     if (sort === 'soonest'){
       return safeNext(a.nextDueIn) - safeNext(b.nextDueIn);
+    }
+    if (sort === 'since'){
+      return (
+        safeSince(b.daysSince) - safeSince(a.daysSince) ||
+        (a.task || '').localeCompare(b.task || '')
+      );
     }
     // default sort: DEAD -> OVERDUE -> DUE -> COMING -> FRESH
     return (
@@ -425,5 +490,7 @@ export function render(){
       grid.appendChild(node);
     }
   }
+
+  renderTodayLog();
 }
 

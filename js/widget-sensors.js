@@ -1,4 +1,5 @@
 // ./js/widget-sensors.js
+import { fmtDateTimeShort } from './utils.js';
 function comfortLabel(t, h) {
   // proste, rzeczowe klasy
   if (t >= 20 && t <= 24 && h >= 40 && h <= 60)
@@ -7,8 +8,6 @@ function comfortLabel(t, h) {
     return { cls: 'state-warn', txt: 'Akceptowalny', desc: 'niewielkie odchylenia od optimum' };
   return { cls: 'state-bad',    txt: 'Poza zakresem', desc: 'warunki poza komfortem użytkowym' };
 }
-
-
 function trendText(now, prev, tol=0.05) {
   if (prev == null) return '—';
   const d = now - prev;
@@ -26,13 +25,7 @@ function humRange(h) {
 function fmtTime(ts) {
   try {
     const d = new Date(ts * 1000);
-    return d.toLocaleString([], {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    return fmtDateTimeShort(d);
   } catch { return '—:—'; }
 }
 

@@ -1,4 +1,5 @@
 // reading.js
+import { fmtDateShort } from './utils.js';
 
 // Stały endpoint Apps Script
 const API_BASE = 'https://script.google.com/macros/s/AKfycbxHsr6z0XaqmWoJf6B2MuVtcnHVa9OFzha9mVAEH4p7yAoTPqi2hSp2SrwxZpO_Hq35/exec';
@@ -9,7 +10,49 @@ let STATS = {};
 
 // Format daty "2025-10-26T00:00:00Z" -> "26.10.2025"
 function fmtDate(d) {
-    return d ? new Date(d).toLocaleDateString('pl-PL') : '—';
+    return fmtDateShort(d);
+}
+
+const DUE_MAX_DAYS = 31;
+const DUE_STOPS = [
+    { t: 0, c: [126, 34, 206] },  // purple
+    { t: 0.33, c: [239, 68, 68] }, // red
+    { t: 0.66, c: [251, 191, 36] }, // yellow
+    { t: 1, c: [34, 197, 94] },   // green
+];
+
+function clamp(num, min, max) {
+    return Math.min(max, Math.max(min, num));
+}
+
+function lerp(a, b, t) {
+    return Math.round(a + (b - a) * t);
+}
+
+function mix(c1, c2, t) {
+    return [
+        lerp(c1[0], c2[0], t),
+        lerp(c1[1], c2[1], t),
+        lerp(c1[2], c2[2], t),
+    ];
+}
+
+function dueColor(days) {
+    if (!Number.isFinite(days)) return null;
+    if (days <= 0) return "#ef4444";
+    const d = clamp(days, 1, DUE_MAX_DAYS);
+    const t = (d - 1) / (DUE_MAX_DAYS - 1);
+
+    for (let i = 1; i < DUE_STOPS.length; i++) {
+        if (t <= DUE_STOPS[i].t) {
+            const a = DUE_STOPS[i - 1];
+            const b = DUE_STOPS[i];
+            const localT = (t - a.t) / (b.t - a.t);
+            const c = mix(a.c, b.c, localT);
+            return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
+        }
+    }
+    return "rgb(34, 197, 94)";
 }
 
 // Określ kolor progress bara dla książki
@@ -136,6 +179,11 @@ function renderAll() {
         } else if (b.daysToReturn <= 0 && pagesLeft > 0) {
             badgeClass += ' critical';
         }
+        const dueDays = Number(b.daysToReturn);
+        const dueColorVal = (b.returnDate && Number.isFinite(dueDays) && dueDays > 0)
+            ? dueColor(dueDays)
+            : null;
+        const badgeStyle = dueColorVal ? ` style="border-color:${dueColorVal};"` : '';
 
         return `
             <div class="card">
@@ -145,7 +193,7 @@ function renderAll() {
                         <div class="meta">${b.author || ''}</div>
                     </div>
 
-                    <span class="${badgeClass}">${badgeText}</span>
+                    <span class="${badgeClass}"${badgeStyle}>${badgeText}</span>
                 </div>
 
                 <div class="progress">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -22,21 +22,32 @@
     <!-- SIATKA WIDGETÓW -->
     <section class="dash">
         <!-- 1) POGODA -->
-        <div class="card hero-card">
+        <div class="card hero-card" data-widget="weather">
             <div class="header">
                 <div class="title">
-                    <div>Pogoda</div>
+                    <div data-i18n="weather.title">Pogoda</div>
                 </div>
             </div>
             <div class="wx">
                 <div class="wx-main" aria-live="polite">
                     <div id="wx-temp" class="wx-temp"></div>
+                    <div class="wx-sub" id="wx-sub">
+                        <span class="wx-sub-item wind">
+                            <span class="wx-sub-label">Wiatr</span>
+                            <span id="wx-wind" class="wx-sub-value">—</span>
+                        </span>
+                        <span class="wx-sub-item prcp">
+                            <span class="wx-sub-label">Opad</span>
+                            <span id="wx-prcp" class="wx-sub-value">—</span>
+                        </span>
+                    </div>
                     <div id="wx-cond" class="wx-cond"></div>
+                    <div id="wx-icon" class="wx-icon" aria-hidden="true"></div>
                 </div>
             </div>
             <div class="hero-values">
                 <div id="now" class="hero-main"></div>
-                <div id="next" class="meta"></div>
+                <div id="next" class="wx-next-wrap"></div>
             </div>
             <div class="wx-footer">
                 <span id="wx-loc">Batorego, Kraków</span>
@@ -46,16 +57,16 @@
         </div>
 
         <!-- 2) AQI -->
-        <section id="aq-card" class="card aqi">
+        <section id="aq-card" class="card aqi" data-widget="aqi">
             <header class="aqi-head with-sep">
                 <div>
-                    <h3>Jakość powietrza</h3>
+                    <h3 data-i18n="aqi.title">Jakość powietrza</h3>
                 </div>
             </header>
             <div class="aqi-main">
                 <div class="aqi-value" id="aq-index">—</div>
                 <div class="aqi-desc" id="aq-desc">—</div>
-                <div class="aqi-dominant" id="aq-dominant">Dominujące: —</div>
+                <div class="aqi-dominant" id="aq-dominant" data-i18n="aqi.dominant_empty">Dominujące: —</div>
             </div>
             <div class="aqi-bars">
 
@@ -218,7 +229,7 @@
         </section>
 
         <!-- 3) CLEANING -->
-        <div class="card cleaning" role="region" aria-labelledby="cl-title">
+        <div class="card cleaning" data-widget="cleaning" role="region" aria-labelledby="cl-title">
             <div class="header">
                 <div class="title" id="cl-title">
                     <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -229,7 +240,7 @@
                         <div class="meta">Dzisiejszy status sprzątania</div>
                     </div>
                 </div>
-                <a class="pill" href="./cleaning.html">Otwórz</a>
+                <a class="card-cta" href="./cleaning.html">Otwórz</a>
             </div>
 
             <!-- liczniki jako pille -->
@@ -248,16 +259,31 @@
                 </div>
             </div>
 
+            <div class="progress">
+                <div id="cl-progress-bar" class="green" style="width:0%"></div>
+            </div>
+            <div class="meta" id="cl-progress-text">0 / 0 - 0%</div>
+
+            <section class="today-log compact" aria-live="polite">
+                <div class="today-log-head">
+                    <div class="today-log-title">Co zrobiłem dziś</div>
+                    <div class="today-log-count" id="cl-today-count">0</div>
+                </div>
+                <div class="today-log-list" id="cl-today-list" hidden></div>
+                <div class="today-log-empty" id="cl-today-empty">Brak wpisów dziś. Zrób jedną rzecz i wróć.</div>
+            </section>
+
             <div id="cl-list" class="cl-list"></div>
 
             <!-- zero-state -->
             <div id="cl-zerostate" class="cl-zerostate meta" hidden>
                 zajebiście ogarnięte, nie ma nic do roboty, elo
             </div>
+            <footer class="hb-foot muted">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
         </div>
 
         <!-- 4) READING -->
-        <div class="card reading" id="reading-card" role="region" aria-labelledby="rdg-title">
+        <div class="card reading" id="reading-card" data-widget="reading" role="region" aria-labelledby="rdg-title">
             <!-- header -->
             <div class="reading-header">
                 <div class="reading-header-left">
@@ -269,7 +295,7 @@
                         <div class="meta">Skrót do czytelniczego panelu</div>
                     </div>
                 </div>
-                <a class="pill" href="./reading.html">Otwórz</a>
+                <a class="card-cta" href="./reading.html">Otwórz</a>
             </div>
 
             <!-- aktywna książka -->
@@ -330,20 +356,98 @@
                     </div>
                 </div>
 
-                <div class="reading-active-grid" id="rdg-active-grid">
+                <div class="reading-active-grid skeleton-block skeleton-md" id="rdg-active-grid">
                     <!-- przyciski książek będą wstrzyknięte z JS -->
                 </div>
             </section>
+            <footer class="hb-foot muted">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
         </div>
 
+        <!-- 4.3) QUOTE -->
+        <section class="card quote" id="quote-card" data-widget="quote" role="region" aria-labelledby="quote-title" hidden>
+            <div class="header">
+                <div class="title" id="quote-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7 7h4v4H9v4H5v-6a2 2 0 0 1 2-2zm10 0h4v4h-2v4h-4v-6a2 2 0 0 1 2-2z" />
+                    </svg>
+                    <div>Losowy cytat</div>
+                </div>
+                <button class="card-cta" id="quote-refresh" type="button" title="Wylosuj nowy cytat">Nowy</button>
+            </div>
+
+            <figure class="quote-body" aria-live="polite" aria-atomic="true">
+                <blockquote class="quote-text" id="quote-text">—</blockquote>
+                <figcaption class="quote-author" id="quote-author">—</figcaption>
+            </figure>
+            <div class="quote-meta muted" id="quote-status">Ladowanie...</div>
+        </section>
+
+                <!-- 4.4) OSCARS WATCHLIST -->
+        <section class="card oscars" id="oscars-card" data-widget="oscars" role="region" aria-labelledby="oscars-title">
+            <header class="oscars-head">
+                <div class="oscars-head-left">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2l2.47 5.02 5.54.8-4.01 3.91.95 5.53L12 14.77 7.05 17.26l.95-5.53L4 7.82l5.53-.8L12 2z" />
+                    </svg>
+                    <div>
+                        <div id="oscars-title">Oscars 2026 Watchlist</div>
+                        <div class="meta">Quick progress + edits</div>
+                    </div>
+                </div>
+                <a class="card-cta" href="./oscars.html">Otwórz</a>
+            </header>
+
+            <div class="oscars-body">
+                <div class="oscars-col oscars-col-left">
+                    <div class="hb-statsrow oscars-kpis">
+                        <div class="pill big done">
+                            <div id="oscars-watched" class="num">0</div>
+                            <div class="lbl">WATCHED</div>
+                        </div>
+                        <div class="pill big total">
+                            <div id="oscars-left" class="num">0</div>
+                            <div class="lbl">LEFT</div>
+                        </div>
+                        <div class="pill big accent">
+                            <div id="oscars-avg" class="num">-</div>
+                            <div class="lbl">AVG</div>
+                        </div>
+                    </div>
+
+                    <div class="progress">
+                        <div id="oscars-progress-bar" class="green" style="width:0%"></div>
+                    </div>
+                    <div class="meta" id="oscars-progress-text">0 / 0 - 0%</div>
+
+                    <div class="oscars-next">
+                        <div class="oscars-combo-top">
+                            <div class="oscars-combo-label">Required daily watch time (to 2026-03-14)</div>
+                            <div class="oscars-combo-value" id="oscars-required">-</div>
+                        </div>
+                        <div class="oscars-next-row">
+                            <div class="oscars-next-poster" id="oscars-next-poster" aria-hidden="true">
+                                <span>?</span>
+                            </div>
+                            <div class="oscars-next-text">
+                                <div class="oscars-next-title" id="oscars-next-title">-</div>
+                                <div class="oscars-next-meta" id="oscars-next-meta">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+            <footer class="hb-foot muted" id="oscars-updated" data-fixed="true">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
+                </div>
+            </div>
+        </section>
+
         <!-- 4.5) BLACK METAL 365 (NOWY WIDGET) -->
-        <section class="card bm365" id="bm365-card" role="region" aria-labelledby="bm365-title">
+        <section class="card bm365" id="bm365-card" data-widget="bm365" role="region" aria-labelledby="bm365-title">
             <header class="habits-head" style="margin-bottom:10px">
                 <div>
                     <h3 id="bm365-title">Black Metal 365</h3>
                     <div class="muted" id="bm365-sub">Progress odsłuchu albumów</div>
                 </div>
-                <a class="open-link" href="./bm365.html" rel="noopener">Otwórz</a>
+                <a class="card-cta" href="./bm365.html" rel="noopener">Otwórz</a>
             </header>
 
             <div class="hb-statsrow" style="margin-bottom:12px">
@@ -360,6 +464,12 @@
                     <div class="lbl">PROGRESS</div>
                 </div>
             </div>
+
+            <div class="progress">
+                <div id="bm365-progress-bar" class="green" style="width:0%"></div>
+            </div>
+            <div class="meta" id="bm365-progress-text">0 / 0 ??? 0%</div>
+
 
             <div class="reading-kpis" style="margin-bottom:12px">
                 <div class="reading-kpi">
@@ -380,35 +490,31 @@
             </div>
 
             <div class="reading-active">
-                <div class="reading-active-head">
-                    <div class="reading-active-title">
-                        Ostatnie wpisy
-                        <span class="meta" id="bm365-recent-count">(0)</span>
-                    </div>
-                </div>
-
-                <div class="reading-active-grid" id="bm365-recent-grid" style="grid-template-columns:1fr; gap:8px">
+                <div class="reading-active-grid skeleton-block skeleton-lg" id="bm365-recent-grid" style="grid-template-columns:1fr; gap:8px">
                     <!-- JS wstrzyknie wiersze -->
                 </div>
             </div>
-<div class="bm365-block">
-    <div class="bm365-rowhead">
-        <div class="bm365-h">Top 10 (so far)</div>
-        <div class="bm365-meta" id="bm365-top-count">(0)</div>
-    </div>
-    <div id="bm365-top-grid"></div>
-</div>
+            <div class="bm365-block">
+                <div class="bm365-rowhead">
+                    <div class="bm365-h">Top 10</div>
+                </div>
+                <div id="bm365-top-grid" class="skeleton-block skeleton-lg"></div>
+                <details class="bm365-missing" id="bm365-missing" hidden>
+                    <summary>Brak okładek <span id="bm365-missing-count" class="bm365-missing-count">0</span></summary>
+                    <pre id="bm365-missing-list" class="bm365-missing-list"></pre>
+                </details>
+            </div>
 
-            <footer class="hb-foot muted" id="bm365-foot"></footer>
+            <footer class="hb-foot muted" id="bm365-foot" data-fixed="true">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
         </section>
 
-        <section class="card habits">
+        <section class="card habits" data-widget="habits">
             <header class="habits-head">
                 <div>
                     <h3>Habits</h3>
                     <div class="muted" id="hb-sub">Dzisiejszy status nawyków</div>
                 </div>
-                <a class="open-link" href="#" target="_blank" rel="noopener">Otwórz</a>
+                <a class="card-cta" href="#" target="_blank" rel="noopener">Otwórz</a>
             </header>
 
             <div class="hb-soberBanner">
@@ -433,28 +539,27 @@
                 </div>
             </div>
 
-            <div class="hb-groups" id="hb-groups">
+            <div class="hb-groups skeleton-block skeleton-md" id="hb-groups">
                 <!-- JS will inject grouped sections here -->
             </div>
 
-            <footer class="hb-foot muted" id="hb-foot">
-                <!-- e.g. Ostatnia aktualizacja: 2025-10-25, 16:39 -->
-            </footer>
+            <footer class="hb-foot muted" id="hb-foot" data-fixed="true">Ostatnia aktualizacja: 7 lut 2026, 11:47
+Czarna plakietka = streak w dniach</footer>
         </section>
 
         <!-- 5) HOLIDAYS -->
-        <a href="./events.html" class="card events" style="text-decoration:none;">
+        <section class="card events" data-widget="events">
             <header class="events-head">
                 <div class="events-head-main">
                     <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zM5 8h14v12H5V8z" />
                     </svg>
-                    <div class="events-head-text">
+                <div class="events-head-text">
                         <div class="events-title">Święta i dni wolne</div>
                         <div class="meta">Kalendarz ustawowych dni wolnych</div>
                     </div>
                 </div>
-                <span class="pill events-link">Wejdź</span>
+                <a class="card-cta" href="./events.html">Wejdź</a>
             </header>
 
             <!-- KPI tylko o najbliższym święcie -->
@@ -504,10 +609,10 @@
                     <span class="evt-pill state-ok">wolne</span>
                 </li>
             </ul>
-        </a>
+        </section>
 
         <!-- 6) TEMPERATURA I WILGOTNOŚĆ -->
-        <a href="./sensors.html" class="card sensors" style="text-decoration:none;">
+        <section class="card sensors" data-widget="sensors">
             <header class="sensor-head">
                 <div class="sensor-head-main">
                     <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -520,7 +625,7 @@
                     </div>
                 </div>
 
-                <span class="pill sensor-link">Wejdź</span>
+                <a class="card-cta" href="./sensors.html">Wejdź</a>
             </header>
 
             <div class="sensor-grid">
@@ -564,10 +669,10 @@
                     </div>
                 </div>
             </div>
-        </a>
+        </section>
 
         <!-- 7) HABIT TIMELINES -->
-        <section class="card habit-multi" id="hm-card" role="region" aria-labelledby="hm-title" style="grid-column: 1 / -1;">
+        <section class="card habit-multi" id="hm-card" data-widget="habits-timeline" role="region" aria-labelledby="hm-title" style="grid-column: 1 / -1;">
             <header class="hm-head">
                 <div>
                     <h3 id="hm-title">Habits Timeline</h3>
@@ -627,6 +732,11 @@
 
 </section>
 
+    <script src="./js/fetch-tracker.js"></script>
+    <script type="module">
+        import { setLocale } from './js/i18n.js';
+        setLocale('pl');
+    </script>
 
 <script src="./js/habit-data.js"></script>
 <script type="module" src="./js/habit-timelines.js"></script>
@@ -637,10 +747,13 @@
     <script type="module" src="./js/init-aqi.js"></script>
     <script type="module" src="./js/widget-cleaning.js"></script>
     <script type="module" src="./js/widget-reading.js"></script>
+    <script type="module" src="./js/widget-quote.js"></script>
+    <script type="module" src="./js/widget-oscars.js"></script>
     <script type="module" src="./js/habits.js"></script>
 
     <!-- NOWE: Black Metal 365 widget logic (mock) -->
     <script type="module" src="./js/bm365.js"></script>
+    <script type="module" src="./js/widget-order.js"></script>
 
     <script type="module">
         import { initSensorWidget } from './js/widget-sensors.js';
@@ -651,3 +764,7 @@
 </body>
 
 </html>
+
+
+
+

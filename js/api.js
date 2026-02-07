@@ -49,7 +49,7 @@ export async function fetchData(){
 }
 
 
-export async function markDone(row){
+export async function markDone(row, opts = {}){
   try {
     if (!row || row < 1) { console.error('Bad row', row); return; }
     const url = `${API}?action=done&row=${encodeURIComponent(row)}&token=${encodeURIComponent(WRITE_TOKEN)}`;
@@ -57,7 +57,9 @@ export async function markDone(row){
     const text = await resp.text();
     let j; try { j = JSON.parse(text); } catch { console.error('Non-JSON from GAS'); return; }
     if (!j.ok) { console.error('GAS error:', j.error); return; }
-    await fetchData();
+    if (opts.refresh !== false) {
+      await fetchData();
+    }
   } catch(e){ console.error('markDone exception:', e); }
 }
 

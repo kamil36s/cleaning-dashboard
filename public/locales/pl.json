@@ -1,0 +1,78 @@
+﻿{
+  "date": {
+    "days": [
+      "Niedziela",
+      "Poniedziałek",
+      "Wtorek",
+      "Środa",
+      "Czwartek",
+      "Piątek",
+      "Sobota"
+    ],
+    "months_genitive": [
+      "stycznia",
+      "lutego",
+      "marca",
+      "kwietnia",
+      "maja",
+      "czerwca",
+      "lipca",
+      "sierpnia",
+      "września",
+      "października",
+      "listopada",
+      "grudnia"
+    ],
+    "format": "{{day}} • {{date}} {{month}} {{year}}"
+  },
+  "weather": {
+    "title": "Pogoda",
+    "loading": "Ładowanie...",
+    "updated": "Ostatnia aktualizacja: {{datetime}}",
+    "error": "Błąd: {{message}}",
+    "unknown_error": "nieznany"
+  },
+  "aqi": {
+    "title": "Jakość powietrza",
+    "location_default": "Kraków, al. Krasińskiego",
+    "no_index": "Brak indeksu",
+    "no_index_desc": "Brak indeksu GIOŚ dla tej stacji teraz.",
+    "dominant_label": "Dominujące: {{value}}",
+    "dominant_empty": "Dominujące: —",
+    "updated": "Ostatnia aktualizacja: {{datetime}}",
+    "error_desc": "Błąd pobierania lub brak danych.",
+    "levels": {
+      "very_good": "Bardzo dobry",
+      "good": "Dobry",
+      "moderate": "Umiarkowany",
+      "sufficient": "Dostateczny",
+      "bad": "Zły",
+      "very_bad": "Bardzo zły"
+    },
+    "descriptions": {
+      "very_good": "Jakość bardzo dobra. Aktywność na zewnątrz bez ograniczeń.",
+      "good": "Jakość zadowalająca. Ryzyko niskie.",
+      "moderate": "Akceptowalna; wrażliwi mogą odczuć skutki.",
+      "sufficient": "Ogranicz intensywny wysiłek na zewnątrz.",
+      "bad": "Unikaj aktywności na zewnątrz; wrażliwi nie wychodzą.",
+      "very_bad": "Pozostań w pomieszczeniach; aktywność odradzana."
+    },
+    "pollutants": {
+      "pm25": "PM2.5",
+      "pm10": "PM10",
+      "no2": "NO2",
+      "o3": "O3"
+    },
+    "ranges": {
+      "good": "bardzo dobry",
+      "mid": "umiarkowany",
+      "bad": "zły"
+    },
+    "tooltip": {
+      "pm25_about": "PM2.5 to pył zawieszony o średnicy <2.5 um. Wnika głęboko do płuc i dalej do krwi.",
+      "pm10_about": "PM10 to większy pył <10 um. Drażni oczy, nos i górne drogi oddechowe.",
+      "no2_about": "NO2 to dwutlenek azotu głównie ze spalin. Podrażnia płuca i pogarsza astmę.",
+      "o3_about": "O3 to ozon przy ziemi. Powstaje w słońcu z emisji miejskich. Może gryźć w gardło i klatę."
+    }
+  }
+}

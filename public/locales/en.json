@@ -1,0 +1,78 @@
+﻿{
+  "date": {
+    "days": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "months_genitive": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "format": "{{day}} • {{month}} {{date}}, {{year}}"
+  },
+  "weather": {
+    "title": "Weather",
+    "loading": "Loading...",
+    "updated": "Last updated: {{datetime}}",
+    "error": "Error: {{message}}",
+    "unknown_error": "unknown"
+  },
+  "aqi": {
+    "title": "Air quality",
+    "location_default": "Krakow, al. Krasinskiego",
+    "no_index": "No index",
+    "no_index_desc": "No GIOS index for this station right now.",
+    "dominant_label": "Dominant: {{value}}",
+    "dominant_empty": "Dominant: —",
+    "updated": "Last updated: {{datetime}}",
+    "error_desc": "Fetch error or no data.",
+    "levels": {
+      "very_good": "Very good",
+      "good": "Good",
+      "moderate": "Moderate",
+      "sufficient": "Sufficient",
+      "bad": "Bad",
+      "very_bad": "Very bad"
+    },
+    "descriptions": {
+      "very_good": "Very good air quality. Outdoor activity without limits.",
+      "good": "Satisfactory air quality. Low risk.",
+      "moderate": "Acceptable; sensitive people may feel effects.",
+      "sufficient": "Limit intense outdoor exercise.",
+      "bad": "Avoid outdoor activity; sensitive people should stay inside.",
+      "very_bad": "Stay indoors; activity not advised."
+    },
+    "pollutants": {
+      "pm25": "PM2.5",
+      "pm10": "PM10",
+      "no2": "NO2",
+      "o3": "O3"
+    },
+    "ranges": {
+      "good": "very good",
+      "mid": "moderate",
+      "bad": "bad"
+    },
+    "tooltip": {
+      "pm25_about": "PM2.5 is fine particulate matter <2.5 um. It penetrates deep into lungs and blood.",
+      "pm10_about": "PM10 is larger particulate matter <10 um. It irritates eyes, nose and upper airways.",
+      "no2_about": "NO2 is nitrogen dioxide mainly from exhaust. It irritates lungs and worsens asthma.",
+      "o3_about": "O3 is ground-level ozone. It forms in sunlight from urban emissions. It can irritate throat and chest."
+    }
+  }
+}

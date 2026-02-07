@@ -1,4 +1,5 @@
 // js/bm365.js
+import { fmtDateTimeShort } from './utils.js';
 // Black Metal 365 - widget (album dnia + odklikanie do Google Sheets przez Apps Script Web App)
 // + auto-okładki z iTunes (cache w localStorage)
 
@@ -70,7 +71,9 @@ function setText(id, value) {
 
 function setFooter(msg) {
   const el = $("bm365-foot");
-  if (el) el.textContent = msg || "";
+  if (!el) return;
+  if (el.hasAttribute("data-fixed")) return;
+  el.textContent = msg || "";
 }
 
 function clearRecent() {
@@ -81,6 +84,54 @@ function clearRecent() {
 // ---------- covers (iTunes) ----------
 const BM_COVER_CACHE_KEY = "bm365_cover_cache_v1";
 const BM_COVER_CACHE_TTL_DAYS = 30;
+const BM_COVER_MISS_TTL_DAYS = 7;
+const BM_PREFETCH_TTL_DAYS = 14;
+const BM_PREFETCH_TS_KEY = "bm365_prefetch_ts_v1";
+const BM_PREFETCH_RUNNING_KEY = "bm365_prefetch_running_v1";
+const BM_MISSING_KEY = "bm365_missing_covers_v1";
+
+function bm_slugify_(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+function bm_coverSlug_(artist, album) {
+  const a = bm_slugify_(artist);
+  const b = bm_slugify_(album);
+  const base = [a, b].filter(Boolean).join("--");
+  return base || "unknown";
+}
+function bm_localCoverCandidates_(artist, album) {
+  const slug = bm_coverSlug_(artist, album);
+  return [
+    `./covers/${slug}.jpg`,
+    `./covers/${slug}.jpeg`,
+    `./covers/${slug}.png`,
+    `./covers/${slug}.webp`,
+  ];
+}
+function bm_tryLocalCover_(artist, album) {
+  const candidates = bm_localCoverCandidates_(artist, album);
+  return new Promise((resolve) => {
+    const tryAt = (i) => {
+      if (i >= candidates.length) return resolve("");
+      const url = candidates[i];
+      const img = new Image();
+      img.onload = () => resolve(url);
+      img.onerror = () => tryAt(i + 1);
+      img.src = url;
+    };
+    tryAt(0);
+  });
+}
+function bm_coverHint_(artist, album) {
+  const slug = bm_coverSlug_(artist, album);
+  return `covers/${slug}.jpg|.png|.webp`;
+}
 
 function bm_loadCoverCache_() {
   try {
@@ -99,10 +150,10 @@ function bm_cacheKey_(artist, album) {
     (String(artist || "").trim() + " — " + String(album || "").trim()).toLowerCase()
   );
 }
-function bm_isFresh_(ts) {
+function bm_isFresh_(ts, ttlDays = BM_COVER_CACHE_TTL_DAYS) {
   if (!ts) return false;
   const ageMs = Date.now() - ts;
-  return ageMs < BM_COVER_CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+  return ageMs < ttlDays * 24 * 60 * 60 * 1000;
 }
 function bm_upgradeArtworkUrl_(url, sizePx = 600) {
   if (!url) return "";
@@ -127,23 +178,135 @@ async function bm_fetchCoverItunes_(artist, album) {
   const art = item?.artworkUrl100 || item?.artworkUrl60 || "";
   return bm_upgradeArtworkUrl_(art, 600);
 }
-async function bm_getCoverUrl_(artist, album) {
+async function bm_getCoverUrl_(artist, album, opts = {}) {
+  const { force = false } = opts;
   const key = bm_cacheKey_(artist, album);
   if (!key || key === " — ") return "";
 
   const cache = bm_loadCoverCache_();
   const hit = cache[key];
-  if (hit && bm_isFresh_(hit.ts) && hit.url) return hit.url;
+  if (hit && hit.url && bm_isFresh_(hit.ts, BM_COVER_CACHE_TTL_DAYS)) return hit.url;
+
+  if (!hit || hit.miss || !hit.url) {
+    const local = await bm_tryLocalCover_(artist, album);
+    if (local) {
+      cache[key] = { url: local, ts: Date.now(), local: true };
+      bm_saveCoverCache_(cache);
+      return local;
+    }
+  }
+
+  if (hit && !force && hit.miss && bm_isFresh_(hit.ts, BM_COVER_MISS_TTL_DAYS)) return "";
 
   try {
     const url = await bm_fetchCoverItunes_(artist, album);
-    cache[key] = { url: url || "", ts: Date.now() };
+    cache[key] = url
+      ? { url, ts: Date.now() }
+      : { url: "", ts: Date.now(), miss: true };
     bm_saveCoverCache_(cache);
     return url || "";
   } catch {
-    cache[key] = { url: "", ts: Date.now() };
+    cache[key] = { url: "", ts: Date.now(), miss: true };
     bm_saveCoverCache_(cache);
     return "";
+  }
+}
+
+function bm_prefetchDue_() {
+  const ts = Number(localStorage.getItem(BM_PREFETCH_TS_KEY) || 0);
+  return Date.now() - ts > BM_PREFETCH_TTL_DAYS * 24 * 60 * 60 * 1000;
+}
+
+function bm_saveMissingList_(items) {
+  try {
+    localStorage.setItem(
+      BM_MISSING_KEY,
+      JSON.stringify({ ts: Date.now(), items: items || [] })
+    );
+  } catch {}
+}
+
+function bm_loadMissingList_() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(BM_MISSING_KEY) || "{}");
+    return Array.isArray(raw.items) ? raw.items : [];
+  } catch {
+    return [];
+  }
+}
+
+function bm_renderMissingList_(items) {
+  const wrap = $("bm365-missing");
+  const countEl = $("bm365-missing-count");
+  const listEl = $("bm365-missing-list");
+  if (!wrap || !countEl || !listEl) return;
+
+  const list = Array.isArray(items) ? items : [];
+  if (!list.length) {
+    wrap.hidden = true;
+    return;
+  }
+
+  wrap.hidden = false;
+  countEl.textContent = String(list.length);
+  listEl.textContent = list
+    .map((r) => `${r.artist} - ${r.album} (${bm_coverHint_(r.artist, r.album)})`)
+    .join("\n");
+}
+
+function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+async function prefetchAllCovers(rows) {
+  if (!rows || !rows.length) return;
+  if (!bm_prefetchDue_()) return;
+  if (localStorage.getItem(BM_PREFETCH_RUNNING_KEY) === "1") return;
+
+  localStorage.setItem(BM_PREFETCH_RUNNING_KEY, "1");
+
+  const map = new Map();
+  for (const r of rows) {
+    const key = bm_cacheKey_(r.artist, r.album);
+    if (key && !map.has(key)) map.set(key, r);
+  }
+
+  const items = Array.from(map.values());
+  const missing = [];
+  let cursor = 0;
+  const concurrency = 4;
+  const delayMs = 120;
+
+  async function worker() {
+    while (true) {
+      const r = items[cursor++];
+      if (!r) break;
+      try {
+        const url = await bm_getCoverUrl_(r.artist, r.album, { force: true });
+        if (!url) missing.push(r);
+      } catch {
+        missing.push(r);
+      }
+      if (delayMs) await sleep(delayMs);
+    }
+  }
+
+  await Promise.all(Array.from({ length: concurrency }, worker));
+
+  localStorage.setItem(BM_PREFETCH_TS_KEY, String(Date.now()));
+  localStorage.removeItem(BM_PREFETCH_RUNNING_KEY);
+
+  bm_saveMissingList_(missing);
+  bm_renderMissingList_(missing);
+}
+
+function schedulePrefetch(rows) {
+  if (!bm_prefetchDue_()) return;
+  const run = () => prefetchAllCovers(rows).catch((e) => console.error(e));
+  if (typeof requestIdleCallback === "function") {
+    requestIdleCallback(run, { timeout: 2000 });
+  } else {
+    setTimeout(run, 1500);
   }
 }
 
@@ -250,7 +413,6 @@ async function renderTopRated(rows) {
   let rank = 1;
   for (const r of rows) {
     const cover = await bm_getCoverUrl_(r.artist, r.album);
-    if (!cover) continue; // pomijamy bez okładki
 
     const wrap = document.createElement("div");
     wrap.className = "bm365-row bm365-top-row";
@@ -262,12 +424,23 @@ async function renderTopRated(rows) {
     const left = document.createElement("div");
     left.className = "bm365-left";
 
-    const img = document.createElement("img");
-    img.className = "bm365-cover";
-    img.alt = "";
-    img.src = cover;
-    img.loading = "lazy";
-    img.decoding = "async";
+    if (cover) {
+      const img = document.createElement("img");
+      img.className = "bm365-cover";
+      img.alt = "";
+      img.src = cover;
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.onerror = () => {
+        img.style.display = "none";
+      };
+      left.appendChild(img);
+    } else {
+      const ph = document.createElement("div");
+      ph.className = "bm365-cover bm365-cover--placeholder";
+      ph.textContent = "NO";
+      left.appendChild(ph);
+    }
 
     const text = document.createElement("div");
     text.className = "bm365-text";
@@ -283,7 +456,6 @@ async function renderTopRated(rows) {
     text.appendChild(title);
     text.appendChild(sub);
 
-    left.appendChild(img);
     left.appendChild(text);
 
     wrap.appendChild(rankEl);
@@ -295,7 +467,6 @@ async function renderTopRated(rows) {
     if (rank > 10) break;
   }
 
-  setText("bm365-top-count", `(${rank - 1})`);
 }
 
 
@@ -514,6 +685,8 @@ async function init() {
   try {
     const raw = await apiGetAll();
     const rows = normalizeRows(raw);
+    bm_renderMissingList_(bm_loadMissingList_());
+    schedulePrefetch(rows);
     const top = topRated(rows, 10);
     await renderTopRated(top);
 
@@ -523,6 +696,9 @@ async function init() {
     setText("bm365-done", String(stats.done));
     setText("bm365-left", String(stats.left));
     setText("bm365-pct", `${stats.pct}%`);
+    const prog = $("bm365-progress-bar");
+    if (prog) prog.style.width = `${stats.pct}%`;
+    setText("bm365-progress-text", `${stats.done} / ${stats.total} - ${stats.pct}%`);
 
     // Avg rating / total time
     setText("bm365-avg", stats.avgRating === null ? "—" : stats.avgRating.toFixed(2));
@@ -560,7 +736,7 @@ async function init() {
       }
     });
 
-    setFooter(`Aktualizacja: ${new Date().toLocaleString("pl-PL")}`);
+    setFooter(`Aktualizacja: ${fmtDateTimeShort()}`);
   } catch (e) {
     console.error(e);
     setFooter("Nie udało się pobrać danych. Sprawdź URL Apps Script i dostęp.");
@@ -568,3 +744,4 @@ async function init() {
 }
 
 init();
+

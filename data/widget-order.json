@@ -1,0 +1,28 @@
+{
+  "order": {
+    "weather": 10,
+    "aqi": 20,
+    "cleaning": 30,
+    "reading": 40,
+    "quote": 45,
+    "bm365": 50,
+    "oscars": 60,
+    "habits": 70,
+    "events": 80,
+    "sensors": 90,
+    "habits-timeline": 100
+  },
+  "visible": {
+    "weather": true,
+    "aqi": true,
+    "cleaning": true,
+    "reading": true,
+    "quote": true,
+    "bm365": true,
+    "oscars": true,
+    "habits": false,
+    "events": false,
+    "sensors": false,
+    "habits-timeline": true
+  }
+}

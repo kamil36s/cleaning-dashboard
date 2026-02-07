@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body>
+<body class="page-cleaning">
     <div class="wrap">
         <aside class="panel">
             <h1>Cleaning Dashboard</h1>
@@ -43,6 +43,7 @@
                 <select id="sort">
                     <option value="priority">Priority</option>
                     <option value="soonest">Soonest due</option>
+                    <option value="since">Oldest done (Since)</option>
                     <option value="room">Room</option>
                 </select>
                 <label style="display:flex;align-items:center;gap:6px">
@@ -59,6 +60,14 @@
 
         <main class="main">
             <h2>Tasks</h2>
+            <section class="today-log" aria-live="polite">
+                <div class="today-log-head">
+                    <div class="today-log-title">Co zrobiłem dziś</div>
+                    <div class="today-log-count" id="today-log-count">0</div>
+                </div>
+                <div class="today-log-list" id="today-log-list" hidden></div>
+                <div class="today-log-empty" id="today-log-empty">Brak wpisów dziś. Zrób jedną rzecz i wróć.</div>
+            </section>
             <div id="grid" class="grid"></div>
         </main>
     </div>
