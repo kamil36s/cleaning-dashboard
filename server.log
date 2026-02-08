@@ -8079,3 +8079,806 @@ update
 [2026-02-07 16:08:40] [http] 200 GET /api/oscars/years
 [2026-02-07 16:08:40] [http] 200 GET /api/oscars/years
 [2026-02-07 16:08:41] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 16:59:35] [http] 200 GET /api/oscars/years
+[2026-02-07 16:59:35] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 16:59:35] [http] 304 GET /posters/cuttingthroughrocks.jpg
+[2026-02-07 17:01:30] [http] 200 GET /api/oscars/years
+[2026-02-07 17:01:30] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 17:01:31] [http] 200 GET /api/oscars/years
+[2026-02-07 17:01:31] [http] 200 GET /api/oscars/years
+[2026-02-07 17:01:33] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 17:01:34] [http] 304 GET /posters/childrennomore.jpg
+[2026-02-07 17:01:34] [http] 304 GET /posters/butchersstain.jpg
+[2026-02-07 17:16:22] [http] 200 GET /api/oscars/years
+[2026-02-07 17:16:22] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 17:39:29] [http] 200 GET /api/oscars/years
+[2026-02-07 17:39:29] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 17:43:25] [api] Server starting...
+[2026-02-07 17:43:25] [api] Server running: http://127.0.0.1:8000
+[2026-02-07 17:43:29] [http] 200 GET /api/oscars/years
+[2026-02-07 17:43:29] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 17:43:30] [http] 200 GET /api/oscars/years
+[2026-02-07 17:43:31] [http] 200 GET /api/oscars/years
+[2026-02-07 17:43:31] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 17:43:34] [http] 304 GET /posters/perfectlyastrangeness.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/un-simple-accident.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/The_Perfect_Neighbor_poster.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/The_Singers_Official_Poster.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/deuxpersonnes.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/dorothy.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/butterfly.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/vivaverdi.jpg
+[2026-02-07 17:43:34] [http] 304 GET /posters/comeseemeinthegoodlight.jpg
+[2026-02-07 17:43:35] [http] 304 GET /posters/f1.jpg
+[2026-02-07 17:43:35] [http] 304 GET /posters/The_Alabama_Solution_poster.jpg
+[2026-02-07 17:43:35] [http] 304 GET /posters/threesisters.jpg
+[2026-02-07 21:24:45] [http] 200 GET /api/oscars/years
+[2026-02-07 21:24:45] [http] 500 GET /api/oscars/years
+[2026-02-07 22:01:03] [http] 200 GET /api/oscars/years
+[2026-02-07 22:01:04] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 22:01:04] [http] 304 GET /posters/cuttingthroughrocks.jpg
+[2026-02-07 22:02:19] [http] 200 GET /api/oscars/years
+[2026-02-07 22:02:20] [http] 200 GET /api/oscars/years
+[2026-02-07 22:02:20] [http] 200 GET /api/oscars?year=2026
+[2026-02-07 22:02:21] [http] 304 GET /posters/The_Singers_Official_Poster.jpg
+[2026-02-07 22:02:21] [http] 304 GET /posters/butchersstain.jpg
+[2026-02-07 22:02:21] [http] 304 GET /posters/deuxpersonnes.jpg
+[2026-02-07 22:02:23] [http] 304 GET /posters/dorothy.jpg
+[2026-02-07 22:02:23] [http] 304 GET /posters/The_Alabama_Solution_poster.jpg
+[2026-02-08 01:02:47] [api] Server starting...
+[2026-02-08 01:02:47] [api] Server starting...
+[2026-02-08 01:02:47] [api] Server running: http://127.0.0.1:8000
+[2026-02-08 01:02:47] [api] Server running: http://127.0.0.1:8000
+[2026-02-08 01:02:52] [http] 200 GET /api/oscars/years
+[2026-02-08 01:02:53] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 01:02:53] [http] 304 GET /posters/The_Perfect_Neighbor_poster.jpg
+[2026-02-08 01:04:59] [http] 200 GET /api/oscars/years
+[2026-02-08 01:04:59] [http] 200 GET /api/oscars/years
+[2026-02-08 01:04:59] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 01:04:59] [http] 304 GET /posters/dorothy.jpg
+[2026-02-08 01:05:00] [http] 304 GET /posters/butchersstain.jpg
+[2026-02-08 01:05:00] [http] 304 GET /posters/The_Alabama_Solution_poster.jpg
+[2026-02-08 01:05:00] [http] 304 GET /posters/The_Singers_Official_Poster.jpg
+[2026-02-08 01:05:00] [http] 304 GET /posters/deuxpersonnes.jpg
+[2026-02-08 02:02:25] [http] 200 GET /api/oscars/years
+[2026-02-08 02:02:25] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 02:03:29] [http] 200 GET /api/oscars/years
+[2026-02-08 02:03:30] [http] 200 GET /api/oscars/years
+[2026-02-08 02:03:30] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 02:03:51] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 02:03:51] [api] UPDATE request id=14
+[2026-02-08 02:03:51] [api] patch:
+[2026-02-08 02:03:51] [api]   {
+[2026-02-08 02:03:51] [api]     "rating_1_10": 8,
+[2026-02-08 02:03:51] [api]     "watched": true,
+[2026-02-08 02:03:51] [api]     "watched_date": "2026-02-08"
+[2026-02-08 02:03:51] [api]   }
+[2026-02-08 02:03:51] [api] normalized:
+[2026-02-08 02:03:51] [api]   {
+[2026-02-08 02:03:51] [api]     "rating_1_10": 8.0,
+[2026-02-08 02:03:51] [api]     "watched": 1,
+[2026-02-08 02:03:51] [api]     "watched_date": "2026-02-08"
+[2026-02-08 02:03:51] [api]   }
+[2026-02-08 02:03:51] [api] result:
+[2026-02-08 02:03:51] [api]   {
+[2026-02-08 02:03:51] [api]     "country": null,
+[2026-02-08 02:03:51] [api]     "director_s": "Natalie Musteata, Alexandre Singh, fr",
+[2026-02-08 02:03:51] [api]     "id": 14,
+[2026-02-08 02:03:51] [api]     "imdb_link": "IMDb",
+[2026-02-08 02:03:51] [api]     "imdb_url": "https://www.imdb.com/find/?q=Two%20People%20Exchanging%20Saliva",
+[2026-02-08 02:03:51] [api]     "nominated_categories": "Live Action Short Film",
+[2026-02-08 02:03:51] [api]     "nominations_number": 1,
+[2026-02-08 02:03:51] [api]     "notes": "https://www.youtube.com/watch?v=RuOEEu--j2Y",
+[2026-02-08 02:03:51] [api]     "oscars_year": 2026,
+[2026-02-08 02:03:51] [api]     "poster_source": "manual",
+[2026-02-08 02:03:51] [api]     "poster_url": "/posters/deuxpersonnes.jpg",
+[2026-02-08 02:03:51] [api]     "rating_1_10": 8.0,
+[2026-02-08 02:03:51] [api]     "runtime": "36min",
+[2026-02-08 02:03:51] [api]     "runtime_helper": "36 min",
+[2026-02-08 02:03:51] [api]     "runtime_helper_2": "36min",
+[2026-02-08 02:03:51] [api]     "title": "Two People Exchanging Saliva",
+[2026-02-08 02:03:51] [api]     "type": "Short",
+[2026-02-08 02:03:51] [api]     "watched": 1,
+[2026-02-08 02:03:51] [api]     "watched_date": "2026-02-08",
+[2026-02-08 02:03:51] [api]     "where_to_watch": "YouTube",
+[2026-02-08 02:03:51] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 02:03:51] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Two%20People%20Exchanging%20Saliva",
+[2026-02-08 02:03:51] [api]     "won_categories": null
+[2026-02-08 02:03:51] [api]   }
+[2026-02-08 02:03:51] [http] 200 POST /api/oscars/update
+[2026-02-08 02:03:51] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars/years
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars/years
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars?year=2023
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars?year=2025
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars?year=2024
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars?year=1929
+[2026-02-08 02:09:56] [http] 200 GET /api/oscars?year=2022
+[2026-02-08 02:34:24] [http] 304 GET /posters/butterfly.jpg
+[2026-02-08 02:34:25] [http] 304 GET /posters/childrennomore.jpg
+[2026-02-08 02:34:35] [http] 304 GET /posters/comeseemeinthegoodlight.jpg
+[2026-02-08 02:34:36] [http] 304 GET /posters/cuttingthroughrocks.jpg
+[2026-02-08 02:35:57] [http] 304 GET /posters/f1.jpg
+[2026-02-08 02:36:34] [http] 304 GET /posters/un-simple-accident.jpg
+[2026-02-08 02:43:56] [http] 200 GET /api/oscars/years
+[2026-02-08 02:43:57] [http] 200 GET /api/oscars/years
+[2026-02-08 02:43:57] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 13:34:24] [http] 200 GET /api/oscars/years
+[2026-02-08 13:34:24] [http] 200 GET /api/oscars/years
+[2026-02-08 13:34:24] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 13:34:25] [http] 304 GET /posters/butchersstain.jpg
+[2026-02-08 13:34:25] [http] 304 GET /posters/The_Singers_Official_Poster.jpg
+[2026-02-08 13:36:20] [api] Server starting...
+[2026-02-08 13:36:20] [api] Server running: http://127.0.0.1:8000
+[2026-02-08 13:36:22] [http] 200 GET /api/oscars/years
+[2026-02-08 13:36:22] [http] 200 GET /api/oscars/years
+[2026-02-08 13:36:22] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 13:36:26] [http] 200 GET /api/oscars/years
+[2026-02-08 13:36:26] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 13:36:27] [http] 304 GET /posters/The_Perfect_Neighbor_poster.jpg
+[2026-02-08 13:36:41] [http] 200 GET /api/oscars/years
+[2026-02-08 13:36:41] [http] 200 GET /api/oscars/years
+[2026-02-08 13:36:41] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 13:36:50] [http] 304 GET /posters/childrennomore.jpg
+[2026-02-08 13:36:50] [http] 304 GET /posters/perfectlyastrangeness.jpg
+[2026-02-08 13:37:01] [http] 304 GET /posters/threesisters.jpg
+[2026-02-08 13:37:01] [http] 304 GET /posters/dorothy.jpg
+[2026-02-08 13:37:01] [http] 304 GET /posters/butterfly.jpg
+[2026-02-08 13:37:10] [http] 304 GET /posters/cuttingthroughrocks.jpg
+[2026-02-08 13:37:12] [http] 304 GET /posters/un-simple-accident.jpg
+[2026-02-08 13:37:13] [http] 304 GET /posters/vivaverdi.jpg
+[2026-02-08 18:21:06] [http] 200 GET /api/oscars/years
+[2026-02-08 18:21:06] [http] 500 GET /api/oscars/years
+[2026-02-08 19:41:28] [http] 200 GET /api/oscars/years
+[2026-02-08 19:41:28] [http] 200 GET /api/oscars/years
+[2026-02-08 19:41:28] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 19:41:29] [http] 304 GET /posters/butchersstain.jpg
+[2026-02-08 19:41:29] [http] 304 GET /posters/childrennomore.jpg
+[2026-02-08 19:41:29] [http] 304 GET /posters/cuttingthroughrocks.jpg
+[2026-02-08 19:41:30] [http] 304 GET /posters/un-simple-accident.jpg
+[2026-02-08 19:41:34] [http] 200 GET /api/oscars/years
+[2026-02-08 19:41:34] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 19:41:35] [http] 304 GET /posters/The_Perfect_Neighbor_poster.jpg
+[2026-02-08 20:20:02] [http] 200 GET /api/oscars/years
+[2026-02-08 20:20:02] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 20:20:07] [http] 200 GET /api/oscars/years
+[2026-02-08 20:20:07] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 20:21:17] [http] 200 GET /api/oscars/years
+[2026-02-08 20:21:17] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 20:22:19] [http] 200 GET /api/oscars/years
+[2026-02-08 20:22:19] [http] 200 GET /api/oscars/years
+[2026-02-08 20:22:20] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 20:22:28] [http] 304 GET /posters/perfectlyastrangeness.jpg
+[2026-02-08 20:22:28] [http] 304 GET /posters/The_Singers_Official_Poster.jpg
+[2026-02-08 20:22:36] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 20:22:36] [api] UPDATE request id=26
+[2026-02-08 20:22:36] [api] patch:
+[2026-02-08 20:22:36] [api]   {
+[2026-02-08 20:22:36] [api]     "rating_1_10": 4,
+[2026-02-08 20:22:36] [api]     "watched": true,
+[2026-02-08 20:22:36] [api]     "watched_date": "2026-02-08"
+[2026-02-08 20:22:36] [api]   }
+[2026-02-08 20:22:36] [api] normalized:
+[2026-02-08 20:22:36] [api]   {
+[2026-02-08 20:22:36] [api]     "rating_1_10": 4.0,
+[2026-02-08 20:22:36] [api]     "watched": 1,
+[2026-02-08 20:22:36] [api]     "watched_date": "2026-02-08"
+[2026-02-08 20:22:36] [api]   }
+[2026-02-08 20:22:36] [api] result:
+[2026-02-08 20:22:36] [api]   {
+[2026-02-08 20:22:36] [api]     "country": "USA, Ireland",
+[2026-02-08 20:22:36] [api]     "director_s": null,
+[2026-02-08 20:22:36] [api]     "id": 26,
+[2026-02-08 20:22:36] [api]     "imdb_link": "IMDb",
+[2026-02-08 20:22:36] [api]     "imdb_url": "https://www.imdb.com/find/?q=Blue%20Moon",
+[2026-02-08 20:22:36] [api]     "nominated_categories": "Actor in a Leading Role; Writing (Original Screenplay)",
+[2026-02-08 20:22:36] [api]     "nominations_number": 2,
+[2026-02-08 20:22:36] [api]     "notes": null,
+[2026-02-08 20:22:36] [api]     "oscars_year": 2026,
+[2026-02-08 20:22:36] [api]     "poster_source": "omdb",
+[2026-02-08 20:22:36] [api]     "poster_url": "https://m.media-amazon.com/images/M/MV5BODQ0NjNlN2MtNGRmZi00OGYzLWFjNGYtMjkyMTlmMWFkNTQ2XkEyXkFqcGc@._V1_SX300.jpg",
+[2026-02-08 20:22:36] [api]     "rating_1_10": 4.0,
+[2026-02-08 20:22:36] [api]     "runtime": "1h 40min",
+[2026-02-08 20:22:36] [api]     "runtime_helper": "100 min",
+[2026-02-08 20:22:36] [api]     "runtime_helper_2": "100min",
+[2026-02-08 20:22:36] [api]     "title": "Blue Moon",
+[2026-02-08 20:22:36] [api]     "type": "Feature",
+[2026-02-08 20:22:36] [api]     "watched": 1,
+[2026-02-08 20:22:36] [api]     "watched_date": "2026-02-08",
+[2026-02-08 20:22:36] [api]     "where_to_watch": "PC",
+[2026-02-08 20:22:36] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 20:22:36] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Blue%20Moon",
+[2026-02-08 20:22:36] [api]     "won_categories": null
+[2026-02-08 20:22:36] [api]   }
+[2026-02-08 20:22:36] [http] 200 POST /api/oscars/update
+[2026-02-08 20:22:36] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 20:22:36] [http] 304 GET /posters/vivaverdi.jpg
+[2026-02-08 20:22:41] [http] 304 GET /posters/dorothy.jpg
+[2026-02-08 20:22:41] [http] 304 GET /posters/butterfly.jpg
+[2026-02-08 20:22:41] [http] 304 GET /posters/comeseemeinthegoodlight.jpg
+[2026-02-08 20:22:42] [http] 304 GET /posters/f1.jpg
+[2026-02-08 20:23:06] [http] 200 GET /api/oscars/years
+[2026-02-08 20:23:06] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 20:57:35] [http] 304 GET /posters/deuxpersonnes.jpg
+[2026-02-08 21:26:47] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 21:26:47] [api] UPDATE request id=41
+[2026-02-08 21:26:47] [api] patch:
+[2026-02-08 21:26:47] [api]   {
+[2026-02-08 21:26:48] [api]     "where_to_watch": "PirateBay"
+[2026-02-08 21:26:48] [api]   }
+[2026-02-08 21:26:48] [api] normalized:
+[2026-02-08 21:26:48] [api]   {
+[2026-02-08 21:26:48] [api]     "where_to_watch": "PirateBay"
+[2026-02-08 21:26:48] [api]   }
+[2026-02-08 21:26:48] [api] result:
+[2026-02-08 21:26:48] [api]   {
+[2026-02-08 21:26:48] [api]     "country": "Norway, Germany, Denmark, France, Sweden, United Kingdom, Turkey",
+[2026-02-08 21:26:48] [api]     "director_s": null,
+[2026-02-08 21:26:48] [api]     "id": 41,
+[2026-02-08 21:26:48] [api]     "imdb_link": "IMDb",
+[2026-02-08 21:26:48] [api]     "imdb_url": "https://www.imdb.com/find/?q=Sentimental%20Value",
+[2026-02-08 21:26:48] [api]     "nominated_categories": "Actor in a Supporting Role; Actress in a Leading Role; Actress in a Supporting Role; Best Picture; Directing; Film Editing; International Feature Film; Writing (Original Screenplay)",
+[2026-02-08 21:26:48] [api]     "nominations_number": 8,
+[2026-02-08 21:26:48] [api]     "notes": null,
+[2026-02-08 21:26:48] [api]     "oscars_year": 2026,
+[2026-02-08 21:26:48] [api]     "poster_source": "omdb",
+[2026-02-08 21:26:48] [api]     "poster_url": "https://m.media-amazon.com/images/M/MV5BNTMwMTk0Y2QtY2VhNy00OGYwLThkMjMtZjkwMGI3MTJiMjAyXkEyXkFqcGc@._V1_SX300.jpg",
+[2026-02-08 21:26:48] [api]     "rating_1_10": null,
+[2026-02-08 21:26:48] [api]     "runtime": "2h 13min",
+[2026-02-08 21:26:48] [api]     "runtime_helper": "133 min",
+[2026-02-08 21:26:48] [api]     "runtime_helper_2": "133min",
+[2026-02-08 21:26:48] [api]     "title": "Sentimental Value",
+[2026-02-08 21:26:48] [api]     "type": "Feature",
+[2026-02-08 21:26:48] [api]     "watched": 0,
+[2026-02-08 21:26:48] [api]     "watched_date": null,
+[2026-02-08 21:26:48] [api]     "where_to_watch": "PirateBay",
+[2026-02-08 21:26:48] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 21:26:48] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Sentimental%20Value",
+[2026-02-08 21:26:48] [api]     "won_categories": null
+[2026-02-08 21:26:48] [api]   }
+[2026-02-08 21:26:48] [http] 200 POST /api/oscars/update
+[2026-02-08 21:26:48] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 21:26:48] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 21:26:48] [api] UPDATE request id=46
+[2026-02-08 21:26:48] [api] patch:
+[2026-02-08 21:26:48] [api]   {
+[2026-02-08 21:26:48] [api]     "where_to_watch": "PirateBay"
+[2026-02-08 21:26:48] [api]   }
+[2026-02-08 21:26:48] [api] normalized:
+[2026-02-08 21:26:48] [api]   {
+[2026-02-08 21:26:48] [api]     "where_to_watch": "PirateBay"
+[2026-02-08 21:26:48] [api]   }
+[2026-02-08 21:26:48] [api] result:
+[2026-02-08 21:26:48] [api]   {
+[2026-02-08 21:26:48] [api]     "country": "Brazil, France, Netherlands, Germany",
+[2026-02-08 21:26:48] [api]     "director_s": null,
+[2026-02-08 21:26:48] [api]     "id": 46,
+[2026-02-08 21:26:48] [api]     "imdb_link": "IMDb",
+[2026-02-08 21:26:48] [api]     "imdb_url": "https://www.imdb.com/find/?q=The%20Secret%20Agent",
+[2026-02-08 21:26:48] [api]     "nominated_categories": "Actor in a Leading Role; Best Picture; Casting; International Feature Film",
+[2026-02-08 21:26:48] [api]     "nominations_number": 4,
+[2026-02-08 21:26:48] [api]     "notes": null,
+[2026-02-08 21:26:48] [api]     "oscars_year": 2026,
+[2026-02-08 21:26:48] [api]     "poster_source": "omdb",
+[2026-02-08 21:26:48] [api]     "poster_url": "https://m.media-amazon.com/images/M/MV5BODliMTdhOTYtYThjMy00OWVhLWFlMjEtYzZlMDhkMjczYjc5XkEyXkFqcGc@._V1_SX300.jpg",
+[2026-02-08 21:26:48] [api]     "rating_1_10": null,
+[2026-02-08 21:26:48] [api]     "runtime": "2h 38min",
+[2026-02-08 21:26:48] [api]     "runtime_helper": "158 min",
+[2026-02-08 21:26:48] [api]     "runtime_helper_2": "158min",
+[2026-02-08 21:26:48] [api]     "title": "The Secret Agent",
+[2026-02-08 21:26:48] [api]     "type": "Feature",
+[2026-02-08 21:26:48] [api]     "watched": 0,
+[2026-02-08 21:26:48] [api]     "watched_date": null,
+[2026-02-08 21:26:48] [api]     "where_to_watch": "PirateBay",
+[2026-02-08 21:26:48] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 21:26:48] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=The%20Secret%20Agent",
+[2026-02-08 21:26:48] [api]     "won_categories": null
+[2026-02-08 21:26:48] [api]   }
+[2026-02-08 21:26:48] [http] 200 POST /api/oscars/update
+[2026-02-08 21:26:48] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 21:27:59] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 21:27:59] [api] UPDATE request id=29
+[2026-02-08 21:27:59] [api] patch:
+[2026-02-08 21:27:59] [api]   {
+[2026-02-08 21:27:59] [api]     "where_to_watch": "PirateBay"
+[2026-02-08 21:27:59] [api]   }
+[2026-02-08 21:27:59] [api] normalized:
+[2026-02-08 21:27:59] [api]   {
+[2026-02-08 21:27:59] [api]     "where_to_watch": "PirateBay"
+[2026-02-08 21:27:59] [api]   }
+[2026-02-08 21:27:59] [api] result:
+[2026-02-08 21:27:59] [api]   {
+[2026-02-08 21:27:59] [api]     "country": "Iran, France",
+[2026-02-08 21:27:59] [api]     "director_s": null,
+[2026-02-08 21:27:59] [api]     "id": 29,
+[2026-02-08 21:27:59] [api]     "imdb_link": "IMDb",
+[2026-02-08 21:27:59] [api]     "imdb_url": "https://www.imdb.com/title/tt31120368/",
+[2026-02-08 21:27:59] [api]     "nominated_categories": "International Feature Film; Writing (Original Screenplay)",
+[2026-02-08 21:27:59] [api]     "nominations_number": 2,
+[2026-02-08 21:27:59] [api]     "notes": null,
+[2026-02-08 21:27:59] [api]     "oscars_year": 2026,
+[2026-02-08 21:27:59] [api]     "poster_source": "manual",
+[2026-02-08 21:27:59] [api]     "poster_url": "/posters/un-simple-accident.jpg",
+[2026-02-08 21:27:59] [api]     "rating_1_10": null,
+[2026-02-08 21:27:59] [api]     "runtime": "1h 45min",
+[2026-02-08 21:27:59] [api]     "runtime_helper": "105 min",
+[2026-02-08 21:27:59] [api]     "runtime_helper_2": "105min",
+[2026-02-08 21:27:59] [api]     "title": "It Was Just an Accident",
+[2026-02-08 21:27:59] [api]     "type": "Feature",
+[2026-02-08 21:27:59] [api]     "watched": 0,
+[2026-02-08 21:27:59] [api]     "watched_date": null,
+[2026-02-08 21:27:59] [api]     "where_to_watch": "PirateBay",
+[2026-02-08 21:27:59] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 21:27:59] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/It_Was_Just_an_Accident",
+[2026-02-08 21:27:59] [api]     "won_categories": null
+[2026-02-08 21:27:59] [api]   }
+[2026-02-08 21:27:59] [http] 200 POST /api/oscars/update
+[2026-02-08 21:27:59] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 21:28:19] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 21:28:19] [api] UPDATE request id=25
+[2026-02-08 21:28:19] [api] patch:
+[2026-02-08 21:28:19] [api]   {
+[2026-02-08 21:28:19] [api]     "where_to_watch": "PC"
+[2026-02-08 21:28:19] [api]   }
+[2026-02-08 21:28:19] [api] normalized:
+[2026-02-08 21:28:19] [api]   {
+[2026-02-08 21:28:19] [api]     "where_to_watch": "PC"
+[2026-02-08 21:28:19] [api]   }
+[2026-02-08 21:28:19] [api] result:
+[2026-02-08 21:28:19] [api]   {
+[2026-02-08 21:28:19] [api]     "country": "USA",
+[2026-02-08 21:28:19] [api]     "director_s": "Geeta Gandbhir",
+[2026-02-08 21:28:19] [api]     "id": 25,
+[2026-02-08 21:28:19] [api]     "imdb_link": "IMDb",
+[2026-02-08 21:28:19] [api]     "imdb_url": "https://www.imdb.com/find/?q=The%20Perfect%20Neighbor",
+[2026-02-08 21:28:19] [api]     "nominated_categories": "Documentary Feature Film",
+[2026-02-08 21:28:19] [api]     "nominations_number": 1,
+[2026-02-08 21:28:19] [api]     "notes": null,
+[2026-02-08 21:28:19] [api]     "oscars_year": 2026,
+[2026-02-08 21:28:19] [api]     "poster_source": "local",
+[2026-02-08 21:28:19] [api]     "poster_url": "/posters/The_Perfect_Neighbor_poster.jpg",
+[2026-02-08 21:28:19] [api]     "rating_1_10": null,
+[2026-02-08 21:28:19] [api]     "runtime": "1h 37min",
+[2026-02-08 21:28:19] [api]     "runtime_helper": "97 min",
+[2026-02-08 21:28:19] [api]     "runtime_helper_2": "97min",
+[2026-02-08 21:28:19] [api]     "title": "The Perfect Neighbor",
+[2026-02-08 21:28:19] [api]     "type": "Feature",
+[2026-02-08 21:28:19] [api]     "watched": 0,
+[2026-02-08 21:28:19] [api]     "watched_date": null,
+[2026-02-08 21:28:19] [api]     "where_to_watch": "PC",
+[2026-02-08 21:28:19] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 21:28:19] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=The%20Perfect%20Neighbor",
+[2026-02-08 21:28:19] [api]     "won_categories": null
+[2026-02-08 21:28:19] [api]   }
+[2026-02-08 21:28:19] [http] 200 POST /api/oscars/update
+[2026-02-08 21:28:19] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 21:28:25] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 21:28:25] [api] UPDATE request id=48
+[2026-02-08 21:28:25] [api] patch:
+[2026-02-08 21:28:25] [api]   {
+[2026-02-08 21:28:25] [api]     "where_to_watch": "PC"
+[2026-02-08 21:28:25] [api]   }
+[2026-02-08 21:28:25] [api] normalized:
+[2026-02-08 21:28:25] [api]   {
+[2026-02-08 21:28:25] [api]     "where_to_watch": "PC"
+[2026-02-08 21:28:25] [api]   }
+[2026-02-08 21:28:25] [api] result:
+[2026-02-08 21:28:25] [api]   {
+[2026-02-08 21:28:25] [api]     "country": "USA",
+[2026-02-08 21:28:25] [api]     "director_s": null,
+[2026-02-08 21:28:25] [api]     "id": 48,
+[2026-02-08 21:28:25] [api]     "imdb_link": "IMDb",
+[2026-02-08 21:28:25] [api]     "imdb_url": "https://www.imdb.com/find/?q=Song%20Sung%20Blue",
+[2026-02-08 21:28:25] [api]     "nominated_categories": "Actress in a Leading Role",
+[2026-02-08 21:28:25] [api]     "nominations_number": 1,
+[2026-02-08 21:28:25] [api]     "notes": null,
+[2026-02-08 21:28:25] [api]     "oscars_year": 2026,
+[2026-02-08 21:28:25] [api]     "poster_source": "omdb",
+[2026-02-08 21:28:25] [api]     "poster_url": "https://m.media-amazon.com/images/M/MV5BYmQ2YjhjNjgtNGQxNC00NmI0LWEzMjktNWEzMWY2OTUwZjFiXkEyXkFqcGc@._V1_SX300.jpg",
+[2026-02-08 21:28:25] [api]     "rating_1_10": null,
+[2026-02-08 21:28:25] [api]     "runtime": "2h 53min",
+[2026-02-08 21:28:25] [api]     "runtime_helper": "173 min",
+[2026-02-08 21:28:25] [api]     "runtime_helper_2": "173min",
+[2026-02-08 21:28:25] [api]     "title": "Song Sung Blue",
+[2026-02-08 21:28:25] [api]     "type": "Feature",
+[2026-02-08 21:28:25] [api]     "watched": 0,
+[2026-02-08 21:28:25] [api]     "watched_date": null,
+[2026-02-08 21:28:25] [api]     "where_to_watch": "PC",
+[2026-02-08 21:28:25] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 21:28:25] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Song%20Sung%20Blue",
+[2026-02-08 21:28:25] [api]     "won_categories": null
+[2026-02-08 21:28:25] [api]   }
+[2026-02-08 21:28:25] [http] 200 POST /api/oscars/update
+[2026-02-08 21:28:26] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 21:28:27] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 21:28:27] [api] UPDATE request id=36
+[2026-02-08 21:28:27] [api] patch:
+[2026-02-08 21:28:27] [api]   {
+[2026-02-08 21:28:27] [api]     "where_to_watch": "PC"
+[2026-02-08 21:28:27] [api]   }
+[2026-02-08 21:28:27] [api] normalized:
+[2026-02-08 21:28:27] [api]   {
+[2026-02-08 21:28:27] [api]     "where_to_watch": "PC"
+[2026-02-08 21:28:27] [api]   }
+[2026-02-08 21:28:27] [api] result:
+[2026-02-08 21:28:27] [api]   {
+[2026-02-08 21:28:27] [api]     "country": "USA, Japan, Canada",
+[2026-02-08 21:28:27] [api]     "director_s": null,
+[2026-02-08 21:28:27] [api]     "id": 36,
+[2026-02-08 21:28:27] [api]     "imdb_link": "IMDb",
+[2026-02-08 21:28:27] [api]     "imdb_url": "https://www.imdb.com/find/?q=The%20Smashing%20Machine",
+[2026-02-08 21:28:27] [api]     "nominated_categories": "Makeup and Hairstyling",
+[2026-02-08 21:28:27] [api]     "nominations_number": 1,
+[2026-02-08 21:28:27] [api]     "notes": null,
+[2026-02-08 21:28:27] [api]     "oscars_year": 2026,
+[2026-02-08 21:28:27] [api]     "poster_source": "omdb",
+[2026-02-08 21:28:27] [api]     "poster_url": "https://m.media-amazon.com/images/M/MV5BOWYxZTM1ZGMtMjg5MC00NzcyLTk0ZTEtZWI0ZThkNDJiYjZmXkEyXkFqcGc@._V1_SX300.jpg",
+[2026-02-08 21:28:27] [api]     "rating_1_10": null,
+[2026-02-08 21:28:27] [api]     "runtime": "2h 03min",
+[2026-02-08 21:28:27] [api]     "runtime_helper": "123 min",
+[2026-02-08 21:28:27] [api]     "runtime_helper_2": "123min",
+[2026-02-08 21:28:27] [api]     "title": "The Smashing Machine",
+[2026-02-08 21:28:27] [api]     "type": "Feature",
+[2026-02-08 21:28:27] [api]     "watched": 0,
+[2026-02-08 21:28:27] [api]     "watched_date": null,
+[2026-02-08 21:28:27] [api]     "where_to_watch": "PC",
+[2026-02-08 21:28:27] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 21:28:27] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=The%20Smashing%20Machine",
+[2026-02-08 21:28:27] [api]     "won_categories": null
+[2026-02-08 21:28:27] [api]   }
+[2026-02-08 21:28:27] [http] 200 POST /api/oscars/update
+[2026-02-08 21:28:27] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:02:16] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 22:02:16] [api] UPDATE request id=29
+[2026-02-08 22:02:16] [api] patch:
+[2026-02-08 22:02:16] [api]   {
+[2026-02-08 22:02:16] [api]     "where_to_watch": "PC"
+[2026-02-08 22:02:16] [api]   }
+[2026-02-08 22:02:16] [api] normalized:
+[2026-02-08 22:02:16] [api]   {
+[2026-02-08 22:02:16] [api]     "where_to_watch": "PC"
+[2026-02-08 22:02:16] [api]   }
+[2026-02-08 22:02:16] [api] result:
+[2026-02-08 22:02:16] [api]   {
+[2026-02-08 22:02:16] [api]     "country": "Iran, France",
+[2026-02-08 22:02:16] [api]     "director_s": null,
+[2026-02-08 22:02:16] [api]     "id": 29,
+[2026-02-08 22:02:16] [api]     "imdb_link": "IMDb",
+[2026-02-08 22:02:16] [api]     "imdb_url": "https://www.imdb.com/title/tt31120368/",
+[2026-02-08 22:02:16] [api]     "nominated_categories": "International Feature Film; Writing (Original Screenplay)",
+[2026-02-08 22:02:16] [api]     "nominations_number": 2,
+[2026-02-08 22:02:16] [api]     "notes": null,
+[2026-02-08 22:02:16] [api]     "oscars_year": 2026,
+[2026-02-08 22:02:16] [api]     "poster_source": "manual",
+[2026-02-08 22:02:16] [api]     "poster_url": "/posters/un-simple-accident.jpg",
+[2026-02-08 22:02:16] [api]     "rating_1_10": null,
+[2026-02-08 22:02:16] [api]     "runtime": "1h 45min",
+[2026-02-08 22:02:16] [api]     "runtime_helper": "105 min",
+[2026-02-08 22:02:16] [api]     "runtime_helper_2": "105min",
+[2026-02-08 22:02:16] [api]     "title": "It Was Just an Accident",
+[2026-02-08 22:02:16] [api]     "type": "Feature",
+[2026-02-08 22:02:16] [api]     "watched": 0,
+[2026-02-08 22:02:16] [api]     "watched_date": null,
+[2026-02-08 22:02:16] [api]     "where_to_watch": "PC",
+[2026-02-08 22:02:16] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 22:02:16] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/It_Was_Just_an_Accident",
+[2026-02-08 22:02:16] [api]     "won_categories": null
+[2026-02-08 22:02:16] [api]   }
+[2026-02-08 22:02:16] [http] 200 POST /api/oscars/update
+[2026-02-08 22:02:16] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:02:20] [http] 204 OPTIONS /api/oscars/update
+[2026-02-08 22:02:20] [api] UPDATE request id=41
+[2026-02-08 22:02:20] [api] patch:
+[2026-02-08 22:02:20] [api]   {
+[2026-02-08 22:02:20] [api]     "where_to_watch": "PC"
+[2026-02-08 22:02:20] [api]   }
+[2026-02-08 22:02:20] [api] normalized:
+[2026-02-08 22:02:20] [api]   {
+[2026-02-08 22:02:20] [api]     "where_to_watch": "PC"
+[2026-02-08 22:02:20] [api]   }
+[2026-02-08 22:02:20] [api] result:
+[2026-02-08 22:02:20] [api]   {
+[2026-02-08 22:02:20] [api]     "country": "Norway, Germany, Denmark, France, Sweden, United Kingdom, Turkey",
+[2026-02-08 22:02:20] [api]     "director_s": null,
+[2026-02-08 22:02:20] [api]     "id": 41,
+[2026-02-08 22:02:20] [api]     "imdb_link": "IMDb",
+[2026-02-08 22:02:20] [api]     "imdb_url": "https://www.imdb.com/find/?q=Sentimental%20Value",
+[2026-02-08 22:02:20] [api]     "nominated_categories": "Actor in a Supporting Role; Actress in a Leading Role; Actress in a Supporting Role; Best Picture; Directing; Film Editing; International Feature Film; Writing (Original Screenplay)",
+[2026-02-08 22:02:20] [api]     "nominations_number": 8,
+[2026-02-08 22:02:20] [api]     "notes": null,
+[2026-02-08 22:02:20] [api]     "oscars_year": 2026,
+[2026-02-08 22:02:20] [api]     "poster_source": "omdb",
+[2026-02-08 22:02:20] [api]     "poster_url": "https://m.media-amazon.com/images/M/MV5BNTMwMTk0Y2QtY2VhNy00OGYwLThkMjMtZjkwMGI3MTJiMjAyXkEyXkFqcGc@._V1_SX300.jpg",
+[2026-02-08 22:02:20] [api]     "rating_1_10": null,
+[2026-02-08 22:02:20] [api]     "runtime": "2h 13min",
+[2026-02-08 22:02:20] [api]     "runtime_helper": "133 min",
+[2026-02-08 22:02:20] [api]     "runtime_helper_2": "133min",
+[2026-02-08 22:02:20] [api]     "title": "Sentimental Value",
+[2026-02-08 22:02:20] [api]     "type": "Feature",
+[2026-02-08 22:02:20] [api]     "watched": 0,
+[2026-02-08 22:02:20] [api]     "watched_date": null,
+[2026-02-08 22:02:20] [api]     "where_to_watch": "PC",
+[2026-02-08 22:02:20] [api]     "wikipedia_link": "Wikipedia",
+[2026-02-08 22:02:20] [api]     "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Sentimental%20Value",
+[2026-02-08 22:02:20] [api]     "won_categories": null
+[2026-02-08 22:02:20] [api]   }
+[2026-02-08 22:02:20] [http] 200 POST /api/oscars/update
+[2026-02-08 22:02:20] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:08:10] [http] 200 GET /api/oscars/years
+[2026-02-08 22:08:10] [http] 200 GET /api/oscars/years
+[2026-02-08 22:08:11] [http] 200 GET /api/oscars/years
+[2026-02-08 22:08:11] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:08:12] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:12:00] [http] 200 GET /api/oscars/years
+[2026-02-08 22:12:00] [http] 200 GET /api/oscars/years
+[2026-02-08 22:12:00] [http] 200 GET /api/oscars/years
+[2026-02-08 22:12:00] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:12:01] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:13:33] [http] 200 GET /api/oscars/years
+[2026-02-08 22:13:33] [http] 200 GET /api/oscars/years
+[2026-02-08 22:13:33] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:13:34] [http] 200 GET /api/oscars?year=2025
+[2026-02-08 22:13:34] [http] 200 GET /api/oscars?year=2024
+[2026-02-08 22:13:34] [http] 200 GET /api/oscars?year=2023
+[2026-02-08 22:13:34] [http] 200 GET /api/oscars?year=1929
+[2026-02-08 22:13:34] [http] 200 GET /api/oscars?year=2022
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars/years
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars/years
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars?year=1929
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars?year=2022
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars?year=2023
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars?year=2024
+[2026-02-08 22:13:59] [http] 200 GET /api/oscars?year=2025
+[2026-02-08 22:14:00] [http] 200 GET /api/oscars/years
+[2026-02-08 22:14:00] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:14:34] [http] 200 GET /api/oscars/years
+[2026-02-08 22:14:36] [http] 200 GET /api/oscars/years
+[2026-02-08 22:14:36] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:16:13] [http] 200 GET /api/oscars/years
+[2026-02-08 22:16:13] [http] 200 GET /api/oscars/years
+[2026-02-08 22:16:14] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:17:32] [http] 200 GET /api/oscars/years
+[2026-02-08 22:17:32] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:18:06] [http] 200 GET /api/oscars/years
+[2026-02-08 22:18:06] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:24:46] [http] 200 GET /api/oscars/years
+[2026-02-08 22:24:46] [http] 200 GET /api/oscars/years
+[2026-02-08 22:24:46] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:27:25] [http] 200 GET /api/oscars/years
+[2026-02-08 22:27:26] [http] 200 GET /api/oscars/years
+[2026-02-08 22:27:26] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:27:27] [http] 200 GET /api/oscars/years
+[2026-02-08 22:27:28] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:27:53] [http] 200 GET /api/oscars/years
+[2026-02-08 22:27:54] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:27:55] [http] 200 GET /api/oscars/years
+[2026-02-08 22:27:55] [http] 200 GET /api/oscars/years
+[2026-02-08 22:27:55] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:29:01] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:01] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:01] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:29:02] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:02] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:29:25] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:26] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:29:27] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:27] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:27] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:29:41] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:41] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:29:42] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:43] [http] 200 GET /api/oscars/years
+[2026-02-08 22:29:43] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:31:49] [http] 200 GET /api/oscars/years
+[2026-02-08 22:31:50] [http] 200 GET /api/oscars/years
+[2026-02-08 22:31:50] [http] 200 GET /api/oscars/years
+[2026-02-08 22:31:50] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:31:50] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:38:23] [http] 200 GET /api/oscars/years
+[2026-02-08 22:38:23] [http] 200 GET /api/oscars/years
+[2026-02-08 22:38:24] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:38:24] [http] 200 GET /api/oscars/years
+[2026-02-08 22:38:24] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:38:40] [http] 200 GET /api/oscars/years
+[2026-02-08 22:38:41] [http] 200 GET /api/oscars/years
+[2026-02-08 22:38:41] [http] 200 GET /api/oscars/years
+[2026-02-08 22:38:41] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:38:41] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:39:03] [http] 200 GET /api/oscars/years
+[2026-02-08 22:39:03] [http] 200 GET /api/oscars/years
+[2026-02-08 22:39:03] [http] 200 GET /api/oscars/years
+[2026-02-08 22:39:03] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:39:03] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:39:19] [http] 200 GET /api/oscars/years
+[2026-02-08 22:39:19] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:39:20] [http] 200 GET /api/oscars/years
+[2026-02-08 22:39:20] [http] 200 GET /api/oscars/years
+[2026-02-08 22:39:20] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:40:03] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:04] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:04] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:40:04] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:05] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:40:15] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:16] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:16] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:16] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:40:16] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:40:40] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:40] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:41] [http] 200 GET /api/oscars/years
+[2026-02-08 22:40:41] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:40:41] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:41:20] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:20] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:41:21] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:22] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:22] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:41:29] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:29] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:41:30] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:31] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:31] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:41:36] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:36] [http] 200 GET /api/oscars/years
+[2026-02-08 22:41:37] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:43:01] [http] 200 GET /api/oscars/years
+[2026-02-08 22:43:01] [http] 200 GET /api/oscars/years
+[2026-02-08 22:43:02] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:43:02] [http] 200 GET /api/oscars/years
+[2026-02-08 22:43:03] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:43:06] [http] 200 GET /api/oscars/years
+[2026-02-08 22:43:06] [http] 200 GET /api/oscars/years
+[2026-02-08 22:43:07] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:43:07] [http] 200 GET /api/oscars/years
+[2026-02-08 22:43:07] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:50:11] [http] 200 GET /api/oscars/years
+[2026-02-08 22:50:12] [http] 200 GET /api/oscars/years
+[2026-02-08 22:50:12] [http] 200 GET /api/oscars/years
+[2026-02-08 22:50:12] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:50:12] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:51:04] [http] 200 GET /api/oscars/years
+[2026-02-08 22:51:04] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:57:02] [http] 200 GET /api/oscars/years
+[2026-02-08 22:57:02] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:57:03] [http] 200 GET /api/oscars/years
+[2026-02-08 22:57:03] [http] 200 GET /api/oscars/years
+[2026-02-08 22:57:04] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:57:13] [http] 200 GET /api/oscars/years
+[2026-02-08 22:57:13] [http] 200 GET /api/oscars/years
+[2026-02-08 22:57:13] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:57:13] [http] 200 GET /api/oscars/years
+[2026-02-08 22:57:14] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 22:58:02] [http] 200 GET /api/oscars/years
+[2026-02-08 22:58:02] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:01:39] [http] 200 GET /api/oscars/years
+[2026-02-08 23:01:39] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:19] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:20] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:20] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:21] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:21] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:25] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:25] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:26] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:26] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:27] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:33] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:33] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:34] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:34] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:35] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:51] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:51] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:06:52] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:52] [http] 200 GET /api/oscars/years
+[2026-02-08 23:06:53] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:01] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:02] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:02] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:02] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:02] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:06] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:07] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:07] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:08] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:08] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:11] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:11] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:12] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:12] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:12] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:27] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:28] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:28] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:29] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:29] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:48] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:48] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:07:50] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:51] [http] 200 GET /api/oscars/years
+[2026-02-08 23:07:51] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:08:55] [http] 200 GET /api/oscars/years
+[2026-02-08 23:08:55] [http] 200 GET /api/oscars/years
+[2026-02-08 23:08:55] [http] 200 GET /api/oscars/years
+[2026-02-08 23:08:55] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:08:55] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:09:06] [http] 200 GET /api/oscars/years
+[2026-02-08 23:09:07] [http] 200 GET /api/oscars/years
+[2026-02-08 23:09:07] [http] 200 GET /api/oscars/years
+[2026-02-08 23:09:07] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:09:07] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:09:28] [http] 200 GET /api/oscars/years
+[2026-02-08 23:09:28] [http] 200 GET /api/oscars/years
+[2026-02-08 23:09:28] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:09:29] [http] 200 GET /api/oscars/years
+[2026-02-08 23:09:29] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:13] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:14] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:14] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:20] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:20] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:23] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:24] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:24] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:24] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:24] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:25] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:25] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:26] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:29] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:29] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:29] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:29] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:30] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:45] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:45] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:45] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:45] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:46] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:57] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:58] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:19:58] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:58] [http] 200 GET /api/oscars/years
+[2026-02-08 23:19:59] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:20:08] [http] 200 GET /api/oscars/years
+[2026-02-08 23:20:08] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:20:09] [http] 200 GET /api/oscars/years
+[2026-02-08 23:20:09] [http] 200 GET /api/oscars/years
+[2026-02-08 23:20:09] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:21:07] [http] 200 GET /api/oscars/years
+[2026-02-08 23:21:08] [http] 200 GET /api/oscars/years
+[2026-02-08 23:21:08] [http] 200 GET /api/oscars/years
+[2026-02-08 23:21:08] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:21:09] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:22:27] [http] 200 GET /api/oscars/years
+[2026-02-08 23:22:28] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:22:29] [http] 200 GET /api/oscars/years
+[2026-02-08 23:22:29] [http] 200 GET /api/oscars/years
+[2026-02-08 23:22:29] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:22:32] [http] 200 GET /api/oscars/years
+[2026-02-08 23:22:32] [http] 200 GET /api/oscars/years
+[2026-02-08 23:22:33] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:22:33] [http] 200 GET /api/oscars/years
+[2026-02-08 23:22:33] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:23:06] [http] 200 GET /api/oscars/years
+[2026-02-08 23:23:06] [http] 500 GET /api/oscars/years
+[2026-02-08 23:23:06] [http] 200 GET /api/oscars/years
+[2026-02-08 23:23:06] [http] 500 GET /api/oscars/years
+[2026-02-08 23:23:55] [http] 200 GET /api/oscars/years
+[2026-02-08 23:23:55] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:23:56] [http] 200 GET /api/oscars/years
+[2026-02-08 23:23:57] [http] 200 GET /api/oscars/years
+[2026-02-08 23:23:57] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:33:49] [http] 200 GET /api/oscars/years
+[2026-02-08 23:33:49] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:33:50] [http] 200 GET /api/oscars/years
+[2026-02-08 23:33:50] [http] 200 GET /api/oscars/years
+[2026-02-08 23:33:51] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:34:03] [http] 200 GET /api/oscars/years
+[2026-02-08 23:34:03] [http] 200 GET /api/oscars?year=2026
+[2026-02-08 23:34:03] [http] 200 GET /api/oscars/years
+[2026-02-08 23:34:04] [http] 200 GET /api/oscars/years
+[2026-02-08 23:34:04] [http] 200 GET /api/oscars?year=2026

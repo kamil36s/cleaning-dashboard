@@ -291,8 +291,7 @@
                         <path d="M4 6h16v12H4zM6 8v8h12V8z" />
                     </svg>
                     <div class="reading-header-text">
-                        <div id="rdg-title">Reading Progress</div>
-                        <div class="meta">Skrót do czytelniczego panelu</div>
+                        <div id="rdg-title">Postęp czytania</div>
                     </div>
                 </div>
                 <a class="card-cta" href="./reading.html">Otwórz</a>
@@ -321,7 +320,6 @@
                     <label for="rdg-page-input" class="sr-only">Aktualna strona</label>
                     <input id="rdg-page-input" type="number" class="reading-page-input" min="0" value="0" />
                     <button id="rdg-save-btn" class="reading-save-btn">Zapisz stronę</button>
-                    <div class="meta small-note">Ustaw i zapisz do arkusza</div>
                 </div>
 
                 <!-- 3 boksy: cel / zwrot / tempo -->
@@ -340,6 +338,7 @@
                         <div class="kpi-label">Tempo</div>
                         <div class="kpi-main" id="rdg-avg">—</div>
                         <div class="kpi-sub meta" id="rdg-streak">—</div>
+                        <div class="kpi-sub meta kpi-note" id="rdg-tempo-note"></div>
                     </div>
                 </div>
             </section>
@@ -351,9 +350,7 @@
                         Aktywne książki
                         <span class="meta" id="rdg-active-count">(0)</span>
                     </div>
-                    <div class="reading-active-legend meta">
-                        <span class="legend-dot"></span>% = progres
-                    </div>
+                    
                 </div>
 
                 <div class="reading-active-grid skeleton-block skeleton-md" id="rdg-active-grid">

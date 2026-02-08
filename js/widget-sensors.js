@@ -60,13 +60,13 @@ export function initSensorWidget({ url, pollMs = 60000 } = {}) {
       if (!Number.isFinite(t) || !Number.isFinite(h)) return;
 
       // liczby
-      elT.textContent = t.toFixed(1);
+      elT.textContent = Math.round(t).toString();
       elH.textContent = Math.round(h);
 
       // trend i zakres
       elTT.textContent = trendText(t, lastT);
       const f = (t * 9/5) + 32;
-document.getElementById('room-temp-f').textContent = f.toFixed(1) + ' °F';
+      document.getElementById('room-temp-f').textContent = `${Math.round(f)} \u00b0F`;
       elHR.textContent = humRange(h);
       lastT = t;
 

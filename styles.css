@@ -2157,17 +2157,19 @@ section.grid {
 .current-booktitle {
   font-weight: 600;
   color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  overflow-wrap: anywhere;
 }
 
 .current-author {
   font-size: 11px;
   color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  overflow-wrap: anywhere;
 }
 
 .current-due {
@@ -2180,13 +2182,18 @@ section.grid {
 }
 
 .due-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  min-width: 58px;
+  padding: 0 10px;
   font-size: 10px;
   line-height: 1;
   font-weight: 600;
   background: var(--bar);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 4px 8px;
   color: var(--text);
   white-space: nowrap;
 }
@@ -2298,6 +2305,10 @@ section.grid {
   margin-top: 4px;
 }
 
+.reading-kpi .kpi-note {
+  opacity: 0.7;
+}
+
 /* sekcja listy aktywnych */
 .reading-active-head {
   display: flex;
@@ -2367,9 +2378,20 @@ section.grid {
   outline-offset: 0;
 }
 
-.rb-head {
+.rb-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
   margin-bottom: 6px;
+}
+
+.rb-head {
   min-width: 0;
+}
+
+.rb-due {
+  flex: 0 0 auto;
 }
 
 .rb-title {
@@ -2377,18 +2399,20 @@ section.grid {
   font-size: 11px;
   font-weight: 600;
   line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  overflow-wrap: anywhere;
 }
 
 .rb-author {
   color: var(--muted);
   font-size: 10px;
   line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  overflow-wrap: anywhere;
 }
 
 /* stats pod tytułem */
@@ -2400,7 +2424,7 @@ section.grid {
   font-size: 10px;
   line-height: 1.2;
   color: var(--muted);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .rb-pages {
@@ -2440,6 +2464,7 @@ section.grid {
   background: var(--bar);
   border-radius: 999px;
   overflow: hidden;
+  margin-top: auto;
   margin-bottom: 4px;
 }
 
@@ -2502,6 +2527,101 @@ section.grid {
 }
 
 .card.reading .reading-header-text .meta {
+  margin-top: 6px;
+}
+
+/* Reading dashboard: active toggle */
+.page-reading .card .header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 10px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.page-reading .card .header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.page-reading .active-toggle,
+.page-reading .ownership-toggle,
+.page-reading .due-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 72px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  white-space: nowrap;
+  background: var(--bar);
+  color: var(--text);
+}
+
+.page-reading .active-toggle,
+.page-reading .ownership-toggle {
+  cursor: pointer;
+}
+
+.page-reading .pill-ico {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  fill: currentColor;
+}
+
+.page-reading .ownership-toggle.is-library {
+  border-color: var(--due);
+  background: var(--due);
+  color: #111;
+}
+
+.page-reading .active-toggle.is-active {
+  background: var(--fresh);
+  border-color: var(--fresh);
+  color: #0b0b0b;
+}
+
+.page-reading .active-toggle.is-inactive {
+  color: var(--muted);
+}
+
+.page-reading .due-badge {
+  max-width: none;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+/* Reading dashboard cards: keep progress + footer pinned to bottom */
+.page-reading .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.page-reading .card .progress {
+  margin-top: auto;
+  margin-bottom: 6px;
+}
+
+/* Reading widget KPIs: center */
+.card.reading .reading-kpi {
+  align-items: center;
+  text-align: center;
+}
+
+/* Reading dashboard KPIs: center */
+.page-reading .kpi {
+  text-align: center;
+}
+
+.page-reading .kpi b {
   margin-top: 6px;
 }
 

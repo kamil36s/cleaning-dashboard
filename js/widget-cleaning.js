@@ -19,6 +19,73 @@ const hasTimeInfo = (value) => {
   return false;
 };
 
+let resolvedStops = null;
+
+const resolveColor = (name, fallback) => {
+  if (typeof window === 'undefined') return fallback;
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+  return value || fallback;
+};
+
+const getProgressStops = () => {
+  if (resolvedStops) return resolvedStops;
+  resolvedStops = [
+    { pct: 0, color: resolveColor('--dead', '#430069') },   // DEAD (0-10%)
+    { pct: 10, color: resolveColor('--dead', '#430069') },
+    { pct: 35, color: resolveColor('--over', '#ef4444') },  // OVERDUE
+    { pct: 60, color: resolveColor('--due', '#fbbf24') },   // DUE
+    { pct: 80, color: resolveColor('--coming', '#a3e635') },// COMING
+    { pct: 90, color: resolveColor('--fresh', '#22c55e') }, // FRESH
+    { pct: 100, color: resolveColor('--fresh', '#22c55e') },
+  ];
+  return resolvedStops;
+};
+
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+const hexToRgb = (hex) => {
+  const clean = hex.replace('#', '').trim();
+  const full = clean.length === 3
+    ? clean.split('').map(ch => ch + ch).join('')
+    : clean;
+  const num = Number.parseInt(full, 16);
+  return {
+    r: (num >> 16) & 255,
+    g: (num >> 8) & 255,
+    b: num & 255,
+  };
+};
+const rgbToHex = ({ r, g, b }) => {
+  const toHex = (v) => v.toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+};
+const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+const colorForPct = (pct) => {
+  const p = clamp(pct, 0, 100);
+  const stops = getProgressStops();
+  let left = stops[0];
+  let right = stops[stops.length - 1];
+  for (let i = 0; i < stops.length - 1; i += 1) {
+    const a = stops[i];
+    const b = stops[i + 1];
+    if (p >= a.pct && p <= b.pct) {
+      left = a;
+      right = b;
+      break;
+    }
+  }
+  if (left.pct === right.pct) return left.color;
+  const t = (p - left.pct) / (right.pct - left.pct);
+  const c1 = hexToRgb(left.color);
+  const c2 = hexToRgb(right.color);
+  return rgbToHex({
+    r: lerp(c1.r, c2.r, t),
+    g: lerp(c1.g, c2.g, t),
+    b: lerp(c1.b, c2.b, t),
+  });
+};
+
 function renderList(tasks){
   const box = $('#cl-list');
   if (!box) return;
@@ -44,12 +111,8 @@ function updateCounters(tasks){
   const bar = $('#cl-progress-bar');
   if (bar) {
     bar.style.width = `${stats.pct}%`;
-    let cls = 'green';
-    if (stats.dead > 0) cls = 'dead';
-    else if (stats.overdue > 0) cls = 'red';
-    else if (stats.due > 0) cls = 'yellow';
-    else if (stats.coming > 0) cls = 'lime';
-    bar.className = cls;
+    bar.style.background = colorForPct(stats.pct);
+    bar.className = 'progress-fill';
   }
   const text = $('#cl-progress-text');
   if (text) text.textContent = `${stats.ok} / ${stats.total} - ${stats.pct}%`;
@@ -69,8 +132,7 @@ function renderTodayLog(tasks){
     .filter(({ dt }) => dt && isSameDay(dt, today))
     .sort((a, b) => (b.dt?.getTime?.() || 0) - (a.dt?.getTime?.() || 0));
 
-  const shown = doneToday.slice(0, 4);
-  list.innerHTML = shown.map(({ t, dt }) => {
+  list.innerHTML = doneToday.map(({ t, dt }) => {
     const title = t.task || '—';
     const timeLabel = hasTimeInfo(t.lastDone) && dt ? fmtTimeShort(dt) : 'dziś';
     const metaParts = [];

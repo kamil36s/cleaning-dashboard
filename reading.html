@@ -1,63 +1,63 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Reading Dashboard</title>
+    <title>Panel czytania</title>
 
     <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body>
+<body class="page-reading">
     <div class="wrap">
         <aside class="panel">
-            <h1>Reading Dashboard</h1>
+            <h1>Panel czytania</h1>
             <div class="controls" style="margin-bottom:8px">
-                <button id="back-btn" title="Wróć do strony głównej">⟵ Back</button>
+                <button id="back-btn" title="Wróć do strony głównej">Wróć</button>
             </div>
             <div class="kpis">
                 <div class="kpi">
-                    <span>Pages/day to next return</span>
+                    <span>Stron/dzień do najbliższego zwrotu</span>
                     <b id="ppd">0</b>
                 </div>
 
                 <div class="kpi">
-                    <span>Next return</span>
+                    <span>Najbliższy zwrot</span>
                     <b id="next">—</b>
                 </div>
 
                 <div class="kpi">
-                    <span>Active books</span>
+                    <span>Aktywne książki</span>
                     <b id="active">0</b>
                 </div>
 
                 <div class="kpi">
-                    <span>Avg pages/day</span>
+                    <span>Średnio stron/dzień</span>
                     <b id="avg">0</b>
                 </div>
             </div>
 
-            <h2>Filters</h2>
+            <h2>Filtry</h2>
 
             <div class="controls">
                 <select id="sort">
-                    <option value="due">Due soon</option>
-                    <option value="remain">Most remaining</option>
-                    <option value="completion">Completion % ↑</option>
-                    <option value="title">Title</option>
+                    <option value="due">Najbliższy termin</option>
+                    <option value="remain">Najwięcej do przeczytania</option>
+                    <option value="completion">Ukończenie % ↑</option>
+                    <option value="title">Tytuł</option>
                 </select>
 
                 <label class="checkline">
                     <input type="checkbox" id="unfinished" checked />
-                    <span>Unfinished only</span>
+                    <span>Tylko nieukończone</span>
                 </label>
 
-                <button id="refresh">Refresh</button>
+                <button id="refresh">Odśwież</button>
 
                 <div class="nobel-trigger-row">
                     <button class="nobel-open-btn" id="nobel-open-btn">
-                        Nobel checklist
+                        Lista Nobla
                     </button>
                 </div>
 
@@ -65,7 +65,7 @@
         </aside>
 
         <main class="main">
-            <h2>Books</h2>
+            <h2>Książki</h2>
             <div id="grid" class="grid"></div>
         </main>
     </div>
@@ -84,9 +84,9 @@
                         <span id="nobel-progress">0 / 0</span>
                     </div>
                 </div>
-                <button class="nobel-close-btn" id="nobel-close-btn" aria-label="Zamknij okno">✕</button>
+                <button class="nobel-close-btn" id="nobel-close-btn" aria-label="Zamknij okno">×</button>
             </header>
-    
+
             <div class="nobel-modal-body">
                 <div class="nobel-grid" id="nobel-grid">
                     <!-- wypełni JS -->
@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-    
+
     <script type="module" src="./js/nobel.js"></script>
 </body>
 

@@ -4,6 +4,11 @@ import { setTempAccent, tempColor } from '../temp-scale.js';
 const el = (id) => document.getElementById(id);
 const DASH = '\u2014';
 const fmt1 = (v) => (Number.isFinite(v) ? v.toFixed(1) : DASH);
+const fmtTemp = (v) => (Number.isFinite(v) ? String(Math.round(v)) : DASH);
+const formatTempLabel = (v) => {
+  const t = fmtTemp(v);
+  return t === DASH ? DASH : `${t}\u00b0C`;
+};
 
 const fmtHour = new Intl.DateTimeFormat('pl-PL', { hour: '2-digit', minute: '2-digit' });
 const fmtTime = new Intl.DateTimeFormat('pl-PL', { hour: '2-digit', minute: '2-digit' });
@@ -146,7 +151,7 @@ export function renderNow(now) {
   if (Number.isFinite(tempNum)) lastNowTemp = tempNum;
 
   if (el('wx-temp')) {
-    el('wx-temp').textContent = Number.isFinite(tempNum) ? `${tempNum.toFixed(1)}\u00b0C` : DASH;
+    el('wx-temp').textContent = formatTempLabel(tempNum);
   }
   setTempAccent(document.querySelector('.card.hero-card'), tempNum);
   if (el('wx-cond')) el('wx-cond').textContent = WX_DESC[now.code] ?? DASH;
@@ -177,7 +182,7 @@ export function renderNow(now) {
       key: 'feels',
       icon: '&#x1F321;',
       label: 'Odczuwalna',
-      value: Number.isFinite(feels) ? feels.toFixed(1) : DASH,
+      value: Number.isFinite(feels) ? fmtTemp(feels) : DASH,
       unit: '\u00b0C',
       tip: 'Temperatura odczuwalna (uwzgl\u0119dnia wiatr i wilgotno\u015b\u0107)'
     },
@@ -495,7 +500,7 @@ export function renderNext(nextHours) {
     gradientId: 'wx-line-temp',
     colorForValue: (v) => tempColor(v),
     fallbackColor: tempColor(lastNowTemp) || '#ffffff',
-    formatLabel: (v) => `${fmt1(v)}\u00b0C`
+    formatLabel: (v) => formatTempLabel(v)
   });
 
   const prcpChart = buildMetricChart(hours, prcps, col, gap, {
@@ -515,7 +520,7 @@ export function renderNext(nextHours) {
   const formatRangeVal = (val, unit, joiner = ' ') =>
     Number.isFinite(val) ? `${fmt1(val)}${joiner}${unit}` : DASH;
 
-  const tempRange = `min ${formatRangeVal(tempChart.min, '\u00b0C', '')} \u2022 max ${formatRangeVal(tempChart.max, '\u00b0C', '')}`;
+  const tempRange = `min ${formatTempLabel(tempChart.min)} \u2022 max ${formatTempLabel(tempChart.max)}`;
   const prcpRange = `min ${formatRangeVal(prcpChart.min, 'mm/h')} \u2022 max ${formatRangeVal(prcpChart.max, 'mm/h')}`;
   const windRange = `min ${formatRangeVal(windChart.min, 'km/h')} \u2022 max ${formatRangeVal(windChart.max, 'km/h')}`;
 

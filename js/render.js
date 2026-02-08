@@ -270,8 +270,7 @@ function renderTodayLog(){
     .filter(({ dt }) => dt && isSameDay(dt, today))
     .sort((a, b) => (b.dt?.getTime?.() || 0) - (a.dt?.getTime?.() || 0));
 
-  const shown = doneToday.slice(0, 8);
-  list.innerHTML = shown.map(({ t, dt }) => {
+  list.innerHTML = doneToday.map(({ t, dt }) => {
     const title = t.task || '—';
     const timeLabel = hasTimeInfo(t.lastDone) && dt ? fmtTimeShort(dt) : 'dziś';
     const metaParts = [];
