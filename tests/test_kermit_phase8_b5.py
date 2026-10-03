@@ -3,6 +3,7 @@
 import hashlib
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from kermit_grounding import ground
 from kermit_index.coverage import coverage_check
@@ -64,21 +65,25 @@ class B5KnowledgeTests(unittest.TestCase):
             self.assertEqual((decision["route"], decision["topic"]), (PROJECT, topic))
         self.assertEqual(route("Can Kermit read my current BPM?", [])["reason"], "private_runtime_request")
 
-    def test_static_queries_leave_sources_and_private_stores_unchanged(self):
+    def test_static_queries_do_not_open_private_stores_or_change_sources(self):
         self.assertEqual(coverage_check(ROOT, ROOT / "kermit_index/admission.json", INDEX)["findings"], [])
         paths = [ROOT / "live_workout_store.py", ROOT / "ring_store.py", ROOT / "strength_store.py",
                  *(ROOT / "docs/kermit/knowledge/subsystems" / f"{slug}.md" for slug in
                    ("live-workout-strength", "heart-rate-history", "ring", "process-lifecycle")),
                  INDEX / "sources.jsonl", INDEX / "documents.jsonl"]
         before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
-        private = [ROOT / name for name in ("data/live-workout.sqlite", "data/strength.sqlite", "data/ring.sqlite")]
-        private_before = {path: (path.stat().st_size, path.stat().st_mtime_ns) for path in private if path.is_file()}
-        for question in ("Who owns the active Live Workout session?", "Who reconnects the COLMI ring?",
-                         "Which process restarts after the central API exits?"):
-            ask(question)
+        private = {ROOT / name for name in ("data/live-workout.sqlite", "data/strength.sqlite", "data/ring.sqlite")}
+        original_open = Path.open
+
+        def checked_open(path, *args, **kwargs):
+            self.assertNotIn(path, private)
+            return original_open(path, *args, **kwargs)
+
+        with patch.object(Path, "open", checked_open), patch("sqlite3.connect", side_effect=AssertionError("runtime database access")):
+            for question in ("Who owns the active Live Workout session?", "Who reconnects the COLMI ring?",
+                             "Which process restarts after the central API exits?"):
+                ask(question)
         self.assertEqual(before, {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths})
-        self.assertEqual(private_before,
-                         {path: (path.stat().st_size, path.stat().st_mtime_ns) for path in private if path.is_file()})
 
 
 if __name__ == "__main__":
