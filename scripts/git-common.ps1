@@ -83,7 +83,7 @@ function New-Checkpoint([switch]$AllowMain) {
         $names = @(Invoke-Git diff --cached --name-status --find-renames)
         if (-not $names.Count) { Write-Host 'No changes to checkpoint.'; return }
         # Only print paths on detection, never secret values.
-        $pattern = '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{30,}|sk-(proj-)?[A-Za-z0-9_-]{40,}|AIza[A-Za-z0-9_-]{30,}'
+        $pattern = '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|github_pat_[A-Za-z0-9_]{30,}|gh[pousr]_[A-Za-z0-9]{30,}|sk-(proj-)?[A-Za-z0-9_-]{40,}|AIza[A-Za-z0-9_-]{30,}'
         $oldPreference = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
         $secretPaths = & git -C $repoRoot grep --cached -l -I -E -e $pattern -- . 2>&1
         $scanCode = $LASTEXITCODE; $ErrorActionPreference = $oldPreference
