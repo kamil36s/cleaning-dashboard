@@ -159,7 +159,7 @@ class B2CoverageCheckTests(unittest.TestCase):
         result = self.check()
         self.assertEqual(result["findings"], [])
         self.assertEqual((result["widgetCount"], result["apiDomainCount"], result["admittedCount"]),
-                         (34, 44, 181))
+                         (34, 45, 201))
 
     def test_checker_reports_new_widget_and_new_api_without_writing(self):
         from kermit_index import coverage

@@ -1,3 +1,43 @@
+## build-0014 - 2026-10-03 10:53:18 +02:00
+
+Branch: ai/codex/kermit-b5
+
+### Added
+- docs/kermit/knowledge/subsystems/heart-rate-history.md
+- docs/kermit/knowledge/subsystems/live-workout-strength.md
+- docs/kermit/knowledge/subsystems/process-lifecycle.md
+- docs/kermit/knowledge/subsystems/ring.md
+- tests/test_kermit_phase8_b5.py
+
+### Modified
+- docs/kermit/knowledge/COVERAGE.md
+- docs/kermit/knowledge/GAPS_AND_CONFLICTS.md
+- docs/kermit/knowledge/README.md
+- kermit_grounding/service.py
+- kermit_index/admission.json
+- kermit_index/builder.py
+- kermit_index/finding_sides.json
+- kermit_retrieval/service.py
+- kermit_service/routing.py
+- tests/test_kermit_phase8_b2.py
+- tests/test_kermit_phase8_b3.py
+- tests/test_kermit_phase8_b4a.py
+
+### Deleted
+
+### Renamed
+
+### Other
+
+### Stats
+- 17 files changed
+- 262 insertions
+- 23 deletions
+- 0 binary files
+- Stats describe staged input before this generated entry.
+
+---
+
 ## build-0013 - 2026-10-03 10:50:40 +02:00
 
 Branch: ai/astra/publication-retry

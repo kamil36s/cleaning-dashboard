@@ -27,8 +27,9 @@ B3 = {"habits-app": "Habits App", "habits-summary": "Legacy Habits summary",
       "habits-timeline": "Habits Timeline", "self-care": "Self-care"}
 B4A = {"weight-steps": "Weight and steps", "diet": "Diet", "sleep": "Sleep"}
 B4B = {"mental-health": "Mental Health", "sensors": "Sensors", "ble-collector": "BLE collector"}
-PACKS = {**PILOTS, **EXPANSION, **B2, **B3, **B4A, **B4B}
-PILOT_WIDGETS = {"quote": "quote", "budget": "finance", "bills": "finance", "language-learning": "language-learning", "weather": "weather", "cleaning": "cleaning", "reading": "reading", "todo": "todo", "habits-app": "habits-app", "habits": "habits-summary", "habits-timeline": "habits-timeline", "self-care": "self-care", "weight-cut": "weight-steps", "diet": "diet", "mental-health": "mental-health", "sensors": "sensors"}
+B5 = {"live-workout-strength": "Live Workout and Strength", "heart-rate-history": "Heart-rate history", "ring": "COLMI ring", "process-lifecycle": "Local process lifecycle"}
+PACKS = {**PILOTS, **EXPANSION, **B2, **B3, **B4A, **B4B, **B5}
+PILOT_WIDGETS = {"quote": "quote", "budget": "finance", "bills": "finance", "language-learning": "language-learning", "weather": "weather", "cleaning": "cleaning", "reading": "reading", "todo": "todo", "habits-app": "habits-app", "habits": "habits-summary", "habits-timeline": "habits-timeline", "self-care": "self-care", "weight-cut": "weight-steps", "diet": "diet", "mental-health": "mental-health", "sensors": "sensors", "live-workout": "live-workout-strength"}
 
 
 class IndexErrorClosed(ValueError):

@@ -1,12 +1,12 @@
 # Kermit L1 knowledge packs
 
-Status: four historical pilots plus Phase 8 B1 (Cleaning, Reading, Todo) and B2 (Dashboard, Settings, central API/static security). Kermit has a local read-only chat service and dashboard panel; the static index is still rebuilt separately. See `COVERAGE.md` for the current ledger.
+Status: four historical pilots plus Phase 8 B1 through B5, covering 24 of 54 units. Kermit has a local read-only chat service and dashboard panel; the static index is still rebuilt separately. See `COVERAGE.md` for the current ledger.
 
 An L1 pack is a bounded, source-backed explanation of one implemented subsystem: ownership, user and data flows, storage roles, calculations, failure/recovery, and exact evidence locators. It should answer ordinary "how does this work?" questions without requiring a reader to inspect an entire large source file. It is reviewed prose, not a live observation or a substitute for current code.
 
 `PROJECT_MAP.md` is L0: use it to find the owner, then read the relevant L1 pack. Phase 3 L2 metadata indexes admitted pack entities and relationships; Phase 4 provides bounded on-demand L3 excerpts from admitted code. These packs do not admit private runtime material.
 
-Pilots: `quote`, `finance`, `language-learning`, and `weather`. Phase 8 B1: `cleaning`, `reading`, and `todo`. Phase 8 B2: `dashboard`, `settings`, and `central-api`. The pilots cover a small widget, a SQLite domain, a worker and AI boundary, and a browser integration. B1 adds active page/widget pairs and contrasts two canonical SQLite stores with a file-backed browser mirror. B2 establishes shared widget registration, settings roles and the central application boundary. Ten validated packs do not claim whole-repository coverage; 44 units remain in `COVERAGE.md`.
+Pilots: `quote`, `finance`, `language-learning`, and `weather`. Phase 8 B1: `cleaning`, `reading`, `todo`. B2: `dashboard`, `settings`, `central-api`. B3: Habits App, legacy summary, timeline and Self-care. B4A/B4B: Weight/steps, Diet, Sleep, Mental Health, Sensors and BLE collector. B5: Live Workout/Strength, Heart-rate history, Ring and local process lifecycle. These 24 validated packs do not claim whole-repository coverage; 30 units remain in `COVERAGE.md`.
 
 ## Conventions
 
