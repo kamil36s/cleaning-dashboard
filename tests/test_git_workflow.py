@@ -9,7 +9,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ['git-common', 'save', 'restore', 'autosave', 'history', 'start-ai-task',
-           'finish-ai-task', 'version-status', 'start-ai-worktree']
+           'finish-ai-task', 'version-status', 'start-ai-worktree', 'publish-main']
 
 class GitWorkflowTests(unittest.TestCase):
     def setUp(self):
@@ -244,6 +244,10 @@ class GitWorkflowTests(unittest.TestCase):
         self.ps('save', ok=False)
         self.assertNotIn('x'*36, self.ps('save', ok=False).stdout)
         self.assertNotIn('token.txt', self.git('ls-files').stdout)
+        (self.repo/'token.txt').unlink()
+        self.write('token.txt', 'github_pat_' + 'x'*40)
+        self.ps('save', ok=False)
+        self.assertNotIn('token.txt', self.git('ls-files').stdout)
 
     def test_18_status_and_history(self):
         self.assertIn('Hooks: enabled', self.ps('version-status').stdout)
@@ -258,6 +262,24 @@ class GitWorkflowTests(unittest.TestCase):
         self.git('remote','add','origin',str(bare))
         self.write('sample.txt','remote\n'); self.ps('save','-Push')
         self.assertIn('refs/tags/build-0002',self.git('ls-remote','origin').stdout)
+
+    def test_26_publish_main_and_master_with_release_backup(self):
+        bare = self.base/'remote.git'
+        self.git('init', '--bare', str(bare))
+        self.git('remote', 'add', 'origin', str(bare))
+        self.git('push', 'origin', 'main:main', 'main:master')
+        self.task()
+        self.write('sample.txt', 'published\n')
+        self.ps('finish-ai-task', '-Merge')
+        self.git('switch', 'main')
+        result = self.ps('publish-main')
+        self.assertIn('Published main and master', result.stdout)
+        local = self.git('rev-parse', 'main').stdout.strip()
+        refs = self.git('ls-remote', 'origin').stdout
+        self.assertIn(f'{local}\trefs/heads/main', refs)
+        self.assertIn(f'{local}\trefs/heads/master', refs)
+        self.assertIn('refs/tags/release/', refs)
+        self.assertIn('Nothing to publish', self.ps('publish-main').stdout)
         self.assertNotIn('refs/tags/build-0001',self.git('ls-remote','origin').stdout)
 
     def test_20_detached_and_nested_worktree_refuse(self):
