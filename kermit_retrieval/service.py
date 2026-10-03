@@ -37,7 +37,11 @@ TOPIC = {"quote": ("quote", "quotable", "dummyjson", "randomquotes"),
          "sleep": ("sleep", "sleep page", "sleep analysis", "night", "ring", "watch", "connect", "incomplete", "health connect sleep", "ring sleep"),
          "mental-health": ("mental health", "assessment", "questionnaire", "retest", "check-in", "checkin", "phq", "gad", "mental-health.sqlite"),
          "sensors": ("sensor", "temperature", "humidity", "room", "readings.jsonl", "sensor/latest.json", "sensor history"),
-         "ble-collector": ("ble", "collector", "advertisement", "scan_ble", "scanner", "reconnect", "scale" )}
+         "ble-collector": ("ble", "collector", "advertisement", "scan_ble", "scanner", "reconnect", "scale" ),
+         "live-workout-strength": ("live workout", "workout", "training runtime", "strength", "strength set", "checkpoint", "virtual walk", "active session"),
+         "heart-rate-history": ("heart-rate history", "heart rate history", "hr history", "bpm history", "smartwatch", "ring fallback", "watch reference", "heart_rate_telemetry"),
+         "ring": ("colmi", "smart ring", "ring collector", "ring sync", "ring history", "ring phone", "ring wear"),
+         "process-lifecycle": ("process lifecycle", "process", "start-dev", "start-dashboard", "start-all", "dev-service", "restart", "restarts", "port 8766", "port 8765", "vite process")}
 # Reviewed query terms and reviewed L1 heading families. These are ranking hints,
 # not permission to read another source or infer a fact absent from the index.
 SECTION_INTENTS = {
@@ -339,6 +343,10 @@ def retrieve(request, *, root=ROOT):
             score += 17
         if sub == "sensors" and {"room", "temperature"} <= terms:
             score += 9
+        if sub == "process-lifecycle" and ("start-dev" in question.casefold() or {"process", "restart"} <= terms or {"process", "restarts"} <= terms):
+            score += 40
+        if sub == "live-workout-strength" and "training runtime" in question.casefold():
+            score += 24
         if sub in terms:
             score += 6
         score += 9 * sum(c["subsystem"] == sub for c in snapshot.conflicts if c["id"].split(":")[1] in explicit_findings)

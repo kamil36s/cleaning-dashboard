@@ -42,7 +42,11 @@ SUBSYSTEMS = {"quote": {"quote", "quotable", "dummyjson", "randomquotes"},
               "sleep": {"sleep", "night", "health-connect", "ring", "watch"},
               "mental-health": {"mental", "health", "assessment", "questionnaire", "retest", "checkin", "check-in", "phq", "gad"},
               "sensors": {"sensor", "temperature", "humidity", "room", "latest.json", "readings.jsonl"},
-              "ble-collector": {"ble", "collector", "advertisement", "scanner", "reconnect"}}
+              "ble-collector": {"ble", "collector", "advertisement", "scanner", "reconnect"},
+              "live-workout-strength": {"workout", "training", "runtime", "strength", "session", "checkpoint", "telemetry"},
+              "heart-rate-history": {"heart", "rate", "history", "smartwatch", "bpm", "ring", "archive"},
+              "ring": {"ring", "colmi", "ble", "phone", "wear", "sync", "sleep"},
+              "process-lifecycle": {"process", "lifecycle", "restart", "vite", "runtime", "network", "api"}}
 
 
 def _words(value):
