@@ -23,17 +23,19 @@ All ordinary operations work offline. No service or Windows startup task is inst
 8. Integrate: `.\scripts\finish-ai-task.ps1 -Merge`. Only merges into `dev`;
    conflicts remain unresolved for review (`git status`; resolve or `git merge --abort`).
    The AI branch is retained.
-9. After testing dev, switch to clean main and deliberately promote it:
+9. After testing dev, publish from the clean main worktree:
 
 ```powershell
-git switch main
-$env:DASHBOARD_ALLOW_MAIN = '1'
-try { git merge --no-ff dev } finally { Remove-Item Env:DASHBOARD_ALLOW_MAIN }
+.\scripts\publish-main.ps1
 ```
 
-This task itself was completed on main using an explicit baseline override.
-AGENTS.md now directs future development to task branches. Promotion to main
-and emergency overrides require an explicit request.
+The owner has authorized this final step for completed, tested tasks. The helper
+fetches origin, verifies that local and remote main are aligned, checks that dev
+descends from main and does not reconnect the archived credential-bearing history,
+merges dev, scans the published tree for credential patterns, creates an annotated
+release tag, and atomically pushes both `main` and the repository's current default
+branch `master` plus the tag. It stops on conflicts or remote changes without a
+force push. Honor an explicit request to hold publication.
 
 ## Checkpoint and numbering
 
@@ -135,7 +137,7 @@ is accepted but no longer controls debounce. Watcher has no main override and st
 on an error/conflict. `npm run dev` now starts only Vite, so development does not
 silently create commits. Start `npm run autosave` separately when desired.
 
-No default network call or push. `.\scripts\save.ps1 -Push` explicitly pushes
+No default network call or push during a checkpoint. `.\scripts\save.ps1 -Push` explicitly pushes
 only the current branch and newly created tag atomically to origin, establishing
 upstream if needed. It never pushes all historical tags or force-pushes. If no new
 checkpoint exists, `-Push` pushes only the branch; push an older tag explicitly if
