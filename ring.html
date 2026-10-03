@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>COLMI Ring</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./ring.css" />
+</head>
+
+<body class="ring-page">
+    <main class="ring-shell">
+        <aside class="ring-sidebar">
+            <a class="ring-back" href="./index.html" aria-label="Wróć do głównego dashboardu">← Dashboard</a>
+            <div class="ring-brand">
+                <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <ellipse cx="32" cy="32" rx="19" ry="25" stroke="currentColor" stroke-width="8" />
+                    <path d="M20 15.5c7-5.3 17.2-5.3 24 0" stroke="currentColor" stroke-width="2" opacity=".55" />
+                </svg>
+                <div class="ring-brand-copy">
+                    <span>Wearable lab</span>
+                    <h1 id="ring-brand-device-name">COLMI Ring</h1>
+                    <div class="ring-sidebar-battery" id="ring-sidebar-battery" data-level="unknown">
+                        <div class="ring-sidebar-battery-head">
+                            <span id="ring-sidebar-battery-label">Bateria</span>
+                            <strong id="ring-sidebar-battery-value">—</strong>
+                        </div>
+                        <div class="ring-sidebar-battery-track" id="ring-sidebar-battery-track" role="progressbar" aria-label="Poziom baterii ringa" aria-valuemin="0" aria-valuemax="100" aria-valuetext="Brak danych">
+                            <i id="ring-sidebar-battery-fill"></i>
+                        </div>
+                    </div>
+                    <div class="ring-sidebar-wear" id="ring-sidebar-wear" data-state="unknown">
+                        <i aria-hidden="true"></i>
+                        <span id="ring-sidebar-wear-label">Status noszenia: czekam na pomiar</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ring-mode-banner" id="ring-mode-banner" data-mode="real">TRYB REAL · lokalny BLE</div>
+            <nav class="ring-tabs" aria-label="Sekcje aplikacji COLMI Ring">
+                <button class="is-active" type="button" data-ring-tab="overview">Przegląd</button>
+                <button type="button" data-ring-tab="heart">Serce</button>
+                <button type="button" data-ring-tab="sleep">Sen <small>eksperymentalne</small></button>
+                <button type="button" data-ring-tab="spo2">SpO₂</button>
+                <button type="button" data-ring-tab="activity">Aktywność</button>
+                <button type="button" data-ring-tab="hrv">HRV <small>proxy</small></button>
+                <button type="button" data-ring-tab="device">Urządzenie</button>
+                <button type="button" data-ring-tab="diagnostics">Diagnostyka</button>
+            </nav>
+            <div class="ring-sidebar-note">
+                <strong>Izolowany moduł</strong>
+                <span>Dane z ringa nie trafiają do Zdrowia, Timeline ani innych części dashboardu.</span>
+            </div>
+        </aside>
+
+        <section class="ring-content">
+            <header class="ring-topbar">
+                <div>
+                    <span class="ring-kicker">COLMI R10 · auto collector</span>
+                    <h2 id="ring-page-title">Przegląd</h2>
+                </div>
+                <div class="ring-topbar-actions">
+                    <div class="ring-status" id="ring-status" data-state="loading" role="status" aria-live="polite">
+                        <i aria-hidden="true"></i>
+                        <span id="ring-status-label">Sprawdzam collector…</span>
+                    </div>
+                    <button class="ring-button ring-button-secondary" id="ring-disconnect" type="button" hidden>Rozłącz</button>
+                    <button class="ring-button" id="ring-sync" type="button" disabled>Synchronizuj teraz</button>
+                </div>
+            </header>
+
+            <div class="ring-notice" id="ring-notice" role="alert" hidden></div>
+
+            <section class="ring-view is-active" data-ring-view="overview" aria-labelledby="ring-page-title">
+                <section class="ring-connect-card" id="ring-connect-card"></section>
+
+                <div class="ring-metric-grid" aria-label="Ostatnie dane z ringa">
+                    <article><span>Tętno · bpm</span><strong id="ring-latest-hr">—</strong><small id="ring-latest-hr-time">Brak danych</small></article>
+                    <article><span>SpO₂ · %</span><strong id="ring-latest-spo2">—</strong><small id="ring-latest-spo2-time">Brak danych</small></article>
+                    <article><span>HRV · wartość proxy</span><strong id="ring-latest-hrv">—</strong><small>Trend firmware, nie kliniczne ms/RMSSD</small></article>
+                    <article><span>Kroki</span><strong id="ring-latest-steps">—</strong><small>Natywne sloty COLMI</small></article>
+                    <article><span>Sen</span><strong id="ring-latest-sleep">—</strong><small>Eksperymentalny parser etapów</small></article>
+                </div>
+
+                <div class="ring-overview-grid">
+                    <article class="ring-panel">
+                        <header><div><span>Stan urządzenia</span><h3>COLMI R10</h3></div><span class="ring-battery" id="ring-battery">—</span></header>
+                        <dl class="ring-detail-list" id="ring-overview-device"></dl>
+                    </article>
+                    <article class="ring-panel">
+                        <header><div><span>Granica danych</span><h3>Surowy pipeline</h3></div></header>
+                        <ol class="ring-pipeline">
+                            <li><b>1</b><span>COLMI R10<br /><small>BLE bez QRing</small></span></li>
+                            <li><b>2</b><span>Collector<br /><small>Python + Bleak/WinRT</small></span></li>
+                            <li><b>3</b><span>SQLite<br /><small>osobna baza ring.sqlite</small></span></li>
+                            <li><b>4</b><span>Ring UI<br /><small>lokalne API /api/ring</small></span></li>
+                        </ol>
+                    </article>
+                </div>
+            </section>
+
+            <section class="ring-view" data-ring-view="heart" hidden>
+                <div class="ring-section-head"><div><span>Historia i realtime · stable</span><h3>Historia tętna</h3></div><span class="ring-live-state" id="ring-heart-live-state" data-live="false">Oczekiwanie na próbkę</span></div>
+                <div class="ring-day-controls" aria-label="Wybór dnia historii tętna">
+                    <button type="button" id="ring-heart-previous" aria-label="Poprzedni dzień">←</button>
+                    <input type="date" id="ring-heart-date" aria-label="Dzień historii tętna" />
+                    <button type="button" id="ring-heart-next" aria-label="Następny dzień">→</button>
+                    <button type="button" id="ring-heart-today">Dzisiaj</button>
+                </div>
+                <div class="ring-zone-legend" aria-label="Strefy tętna poza treningiem">
+                    <strong>Tryb codzienny · poza treningiem</strong>
+                    <div><span data-zone="deep">&lt;60 BPM · Sen i głęboki relaks</span><span data-zone="base">60–85 BPM · Baza i komfort</span><span data-zone="light">86–100 BPM · Lekki ruch i pobudzenie</span><span data-zone="high">101–120 BPM · Wysoka aktywność lub silny stres</span><span data-zone="alert">&gt;120 BPM · Alert / Trening</span></div>
+                </div>
+                <div class="ring-metric-grid ring-heart-summary">
+                    <article><span>Ostatni pomiar</span><strong id="ring-heart-latest">—</strong><small id="ring-heart-latest-time">Brak próbek</small></article>
+                    <article><span>Średnia</span><strong id="ring-heart-average">—</strong><small>dla wybranego dnia</small></article>
+                    <article><span>Zakres</span><strong id="ring-heart-range">—</strong><small>minimum–maksimum · bpm</small></article>
+                    <article><span>Próbki</span><strong id="ring-heart-samples">—</strong><small id="ring-heart-mode">historia / realtime</small></article>
+                    <article><span>Smartwatch · referencja</span><strong id="ring-watch-heart-samples">—</strong><small id="ring-watch-heart-latest">osobny strumień · bez mieszania</small></article>
+                </div>
+                <article class="ring-panel ring-chart-panel ring-heart-chart-panel"><header><div><span>Historia HR · bpm</span><h3>Tętno w czasie</h3></div><span id="ring-heart-day-label">dzisiaj</span></header><div class="ring-data-chart" id="ring-heart-chart"></div></article>
+            </section>
+
+            <section class="ring-view" data-ring-view="sleep" hidden>
+                <div class="ring-section-head"><div><span>Eksperymentalne · Big Data 0x27</span><h3>Sen</h3></div><div class="ring-sleep-badges"><span class="ring-confidence">Źródło: COLMI Ring</span><span class="ring-confidence is-experimental">experimental</span></div></div>
+                <div class="ring-metric-grid ring-metric-grid-small"><article><span>Czas snu</span><strong id="ring-sleep-duration">—</strong><small id="ring-sleep-date">Brak nocy</small></article><article><span>Początek / koniec</span><strong id="ring-sleep-window">—</strong><small>Europe/Warsaw</small></article><article><span>Etapy</span><strong id="ring-sleep-stages-total">—</strong><small>awake · REM · light · deep</small></article></div>
+                <article class="ring-panel"><header><div><span>Sekwencja etapów</span><h3>Oś snu</h3></div></header><div class="ring-sleep-timeline" id="ring-sleep-timeline"></div><div class="ring-sleep-history" id="ring-sleep-history"></div></article>
+            </section>
+
+            <section class="ring-view" data-ring-view="spo2" hidden>
+                <div class="ring-section-head"><div><span>Realtime: stable · historia: experimental</span><h3>SpO₂</h3></div><button class="ring-button" type="button" disabled>Live aktywne na tej stronie</button></div>
+                <div class="ring-metric-grid ring-metric-grid-small"><article><span>Ostatni odczyt · % SpO₂</span><strong id="ring-spo2-latest">—</strong><small id="ring-spo2-latest-time">Brak danych</small></article><article><span>Minimum · %</span><strong id="ring-spo2-min">—</strong><small>Historia godzinowa</small></article><article><span>Maksimum · %</span><strong id="ring-spo2-max">—</strong><small>Historia godzinowa</small></article></div>
+                <article class="ring-panel ring-chart-panel"><header><div><span>Historia SpO₂</span><h3>Saturacja w czasie</h3></div></header><div class="ring-data-chart" id="ring-spo2-chart"></div></article>
+            </section>
+
+            <section class="ring-view" data-ring-view="activity" hidden>
+                <div class="ring-section-head"><div><span>Stable · natywna rozdzielczość slotów</span><h3>Aktywność</h3></div><span class="ring-confidence">wartości z ringa</span></div>
+                <div class="ring-metric-grid ring-metric-grid-small"><article><span>Kroki dzisiaj</span><strong id="ring-activity-steps">—</strong><small>sloty ringa</small></article><article><span>Dystans</span><strong id="ring-activity-distance">—</strong><small>metry ze źródła</small></article><article><span>Kalorie</span><strong id="ring-activity-calories">—</strong><small>kcal ze źródła</small></article></div>
+                <aside class="ring-callout ring-callout-neutral">Kalorie są przeliczone z surowej skali protokołu R10 (setne kcal). Powtórzone odczyty tego samego 15-minutowego slotu nie są już sumowane podwójnie.</aside>
+                <article class="ring-panel ring-chart-panel"><header><div><span>Sloty aktywności</span><h3>Przebieg dnia</h3></div></header><div class="ring-data-chart" id="ring-activity-chart"></div></article>
+            </section>
+
+            <section class="ring-view" data-ring-view="hrv" hidden>
+                <div class="ring-section-head"><div><span>Eksperymentalne · trend firmware</span><h3>HRV z ringa</h3></div><span class="ring-confidence is-experimental">nie RMSSD</span></div>
+                <aside class="ring-callout">Ta wartość będzie opisana wyłącznie jako metryka/proxy HRV dostarczana przez firmware. Nie jest klinicznym RMSSD ani surowym R–R.</aside>
+                <article class="ring-panel ring-chart-panel"><header><div><span>Historia proxy HRV</span><h3>Trend</h3></div></header><div class="ring-data-chart" id="ring-hrv-chart"></div></article>
+            </section>
+
+            <section class="ring-view" data-ring-view="device" hidden>
+                <div class="ring-section-head"><div><span>GATT + Device Information Service</span><h3>Urządzenie</h3></div><button class="ring-button ring-button-secondary" id="ring-device-refresh" type="button" disabled>Odśwież dane</button></div>
+                <article class="ring-panel"><dl class="ring-detail-list ring-detail-list-wide" id="ring-device-details"></dl></article>
+                <article class="ring-panel"><header><div><span>Warstwa protokołu</span><h3>Implementacja</h3></div></header><dl class="ring-detail-list ring-detail-list-wide"><div><dt>Transport</dt><dd>Bluetooth Low Energy · Nordic UART</dd></div><div><dt>Collector</dt><dd>Python · Bleak · Windows WinRT</dd></div><div><dt>Referencje</dt><dd>openring · colmi_r02_client · colmi-docs</dd></div><div><dt>QRing</dt><dd>Niewymagany</dd></div></dl></article>
+            </section>
+
+            <section class="ring-view" data-ring-view="diagnostics" hidden>
+                <div class="ring-section-head"><div><span>Narzędzia developerskie</span><h3>Diagnostyka BLE</h3></div><button class="ring-button ring-button-secondary" id="ring-diagnostics-refresh" type="button">Odśwież log</button></div>
+                <div class="ring-diagnostics-grid">
+                    <article class="ring-panel"><header><div><span>Macierz funkcji</span><h3>Capabilities</h3></div></header><div class="ring-capabilities" id="ring-capabilities"></div></article>
+                    <article class="ring-panel"><header><div><span>Aktywne GATT</span><h3>Usługi i charakterystyki</h3></div></header><div class="ring-service-list" id="ring-services">Brak aktywnego połączenia.</div></article>
+                </div>
+                <article class="ring-panel"><header><div><span>Collector</span><h3>Synchronizacje i błędy</h3></div></header><div class="ring-log-list" id="ring-event-log">Brak zdarzeń.</div></article>
+                <details class="ring-panel ring-packet-panel">
+                    <summary><span>Surowe pakiety RX / TX</span><b id="ring-packet-count">0</b></summary>
+                    <div class="ring-packet-table-wrap"><table><thead><tr><th>Czas</th><th>Kierunek</th><th>Opcode</th><th>Typ</th><th>Status</th><th>HEX</th></tr></thead><tbody id="ring-packet-log"></tbody></table></div>
+                </details>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="./js/ring-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Temperatura i wilgotność</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./sensors.css" />
+</head>
+
+<body class="page-sensors" data-sensors-page>
+  <main class="sensors-page-shell">
+    <header class="sensors-page-header">
+      <div>
+        <div class="sensors-page-kicker">Environmental sensor</div>
+        <h1>Temperatura i wilgotność</h1>
+        <p>Pełna historia rzeczywistych odczytów — dzień po dniu lub cały miesiąc.</p>
+      </div>
+      <div class="sensors-page-header-actions">
+        <button class="sensors-page-refresh" id="sensors-page-refresh" type="button">Odśwież</button>
+        <a class="sensors-page-back" href="./index.html">Wróć do dashboardu</a>
+      </div>
+    </header>
+
+    <section class="sensors-page-period" aria-label="Zakres historii">
+      <div class="sensors-page-period-mode" role="group" aria-label="Tryb zakresu">
+        <button id="sensors-page-mode-day" type="button" aria-pressed="true">Dzień</button>
+        <button id="sensors-page-mode-month" type="button" aria-pressed="false">Miesiąc</button>
+      </div>
+      <div class="sensors-page-period-picker">
+        <button class="sensors-page-period-step" id="sensors-page-previous" type="button" aria-label="Poprzedni okres">←</button>
+        <input id="sensors-page-day" type="date" aria-label="Wybierz dzień" />
+        <input id="sensors-page-month" type="month" aria-label="Wybierz miesiąc" hidden />
+        <button class="sensors-page-period-step" id="sensors-page-next" type="button" aria-label="Następny okres">→</button>
+        <button class="sensors-page-period-today" id="sensors-page-today" type="button">Dzisiaj</button>
+      </div>
+      <strong class="sensors-page-period-label" id="sensors-page-period-label"></strong>
+    </section>
+
+    <section class="sensors-page-device" aria-labelledby="sensors-page-device-title">
+      <div class="sensors-page-device-identity">
+        <span class="sensors-page-device-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M14.5 14.2V5.5a2.5 2.5 0 0 0-5 0v8.7a4.5 4.5 0 1 0 5 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12 17.8V9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+        </span>
+        <div>
+          <span class="sensors-page-device-label">Czujnik</span>
+          <h2 id="sensors-page-device-title">Biurko</h2>
+          <span class="sensors-page-device-id" id="sensors-page-device-id">desk</span>
+        </div>
+      </div>
+      <div class="sensors-page-device-status">
+        <span class="sensors-page-live" id="sensors-page-live" data-state="loading" role="status">
+          <i aria-hidden="true"></i>
+          <strong>Łączenie…</strong>
+        </span>
+        <span class="sensors-page-battery battery-unknown" id="sensors-page-battery" role="img" aria-label="Poziom baterii nieznany">
+          <i aria-hidden="true"></i>
+          <span id="sensors-page-battery-value">—%</span>
+        </span>
+        <span class="sensors-page-updated" id="sensors-page-updated">Brak odczytu</span>
+      </div>
+    </section>
+
+    <section class="sensors-page-latest" aria-label="Podsumowanie wybranego okresu">
+      <article class="sensors-page-latest-card sensors-page-latest-card--temperature">
+        <span>Temperatura</span>
+        <strong><b id="sensors-page-temperature">—</b><small>°C</small></strong>
+        <em id="sensors-page-temperature-f">— °F</em>
+      </article>
+      <article class="sensors-page-latest-card sensors-page-latest-card--humidity">
+        <span>Wilgotność</span>
+        <strong><b id="sensors-page-humidity">—</b><small>%</small></strong>
+        <em id="sensors-page-humidity-range">Oczekiwanie na odczyt</em>
+      </article>
+      <article class="sensors-page-latest-card sensors-page-latest-card--samples">
+        <span id="sensors-page-count-label">Próbki · dzień</span>
+        <strong><b id="sensors-page-count">0</b></strong>
+        <em>każdy zapisany odczyt</em>
+      </article>
+    </section>
+
+    <section class="sensors-page-chart-card" aria-labelledby="sensors-temperature-chart-title">
+      <header>
+        <div>
+          <span id="sensors-temperature-period">Wybrany dzień · 00:00–23:59</span>
+          <h2 id="sensors-temperature-chart-title">Temperatura</h2>
+        </div>
+        <dl class="sensors-page-chart-summary" id="sensors-temperature-summary">
+          <div><dt>Min</dt><dd>—</dd></div>
+          <div><dt>Średnia</dt><dd>—</dd></div>
+          <div><dt>Max</dt><dd>—</dd></div>
+        </dl>
+      </header>
+      <div class="sensors-page-chart" id="sensors-temperature-chart" role="img" aria-label="Wykres temperatury dla wybranego okresu"></div>
+      <p class="sensors-page-empty" id="sensors-temperature-empty" hidden>Brak zapisanych odczytów temperatury w wybranym okresie.</p>
+    </section>
+
+    <section class="sensors-page-chart-card" aria-labelledby="sensors-humidity-chart-title">
+      <header>
+        <div>
+          <span id="sensors-humidity-period">Wybrany dzień · 00:00–23:59</span>
+          <h2 id="sensors-humidity-chart-title">Wilgotność</h2>
+        </div>
+        <dl class="sensors-page-chart-summary" id="sensors-humidity-summary">
+          <div><dt>Min</dt><dd>—</dd></div>
+          <div><dt>Średnia</dt><dd>—</dd></div>
+          <div><dt>Max</dt><dd>—</dd></div>
+        </dl>
+      </header>
+      <div class="sensors-page-chart" id="sensors-humidity-chart" role="img" aria-label="Wykres wilgotności dla wybranego okresu"></div>
+      <p class="sensors-page-empty" id="sensors-humidity-empty" hidden>Brak zapisanych odczytów wilgotności w wybranym okresie.</p>
+    </section>
+
+    <footer class="sensors-page-footer">
+      Dane lokalne z czujnika BLE BTHome · automatyczne odświeżanie co 60 sekund
+    </footer>
+  </main>
+
+  <script type="module" src="./js/sensors-page.js"></script>
+</body>
+
+</html>

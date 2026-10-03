@@ -1,0 +1,74 @@
+[
+  {
+    "id": "pressing",
+    "title": "Pressing jako działanie zespołu",
+    "category": "tactics",
+    "text": "Najbliższy zawodnik naciska na posiadacza piłki, a partnerzy ograniczają dostępne podania. Sam sprint jednego gracza nie zapewnia skutecznego pressingu. Obserwuj odległości między liniami i moment wspólnego doskoku.",
+    "source": "FIFA Training Centre",
+    "sourceUrl": "https://www.fifatrainingcentre.com/en/practice/elite-sessions/out-of-possession/defending-as-a-unit.php",
+    "dateAdded": "2026-10-03",
+    "relatedClubKeys": []
+  },
+  {
+    "id": "mid-block",
+    "title": "Mid-block i kompaktowość",
+    "category": "tactics",
+    "text": "Średni blok broni przede wszystkim przestrzeni w środkowej części boiska. Krótkie odległości między zawodnikami utrudniają podania przez środek. Zespół może rozpocząć pressing po określonym sygnale, zamiast stale gonić piłkę.",
+    "source": "FIFA Training Centre",
+    "sourceUrl": "https://www.fifatrainingcentre.com/en/fwc2022/technical-and-tactical-analysis/controlling-the-game-without-the-ball--the-mid-block-and-compactness.php",
+    "dateAdded": "2026-10-03",
+    "relatedClubKeys": []
+  },
+  {
+    "id": "transitions",
+    "title": "Przejścia między atakiem i obroną",
+    "category": "tactics",
+    "text": "Po stracie piłki zespół musi zdecydować, czy natychmiast próbować odzyskania, czy odtworzyć ustawienie obronne. Po odbiorze warto rozpoznać możliwość szybkiego ataku. Decyzja zależy od ustawienia obu zespołów.",
+    "source": "FIFA Training Centre",
+    "sourceUrl": "https://www.fifatrainingcentre.com/en/game/game-analysis/landing-page-core-principles.php",
+    "dateAdded": "2026-10-03",
+    "relatedClubKeys": []
+  },
+  {
+    "id": "offside",
+    "title": "Pozycja spalona a przewinienie",
+    "category": "rules",
+    "text": "Sama pozycja spalona nie jest przewinieniem. Istotne jest aktywne uczestnictwo w grze, przeszkadzanie przeciwnikowi albo uzyskanie korzyści w warunkach opisanych przez przepis. Pełne wyjątki i interpretacje sprawdzisz w źródle.",
+    "source": "IFAB ? Law 11",
+    "sourceUrl": "https://www.theifab.com/laws/latest/offside/",
+    "dateAdded": "2026-10-03",
+    "relatedClubKeys": []
+  },
+  {
+    "id": "throw-in-fact",
+    "title": "Bezpośrednio z autu bez spalonego",
+    "category": "trivia",
+    "text": "Nie ma przewinienia spalonego, gdy zawodnik otrzymuje piłkę bezpośrednio z wrzutu, rzutu od bramki albo rzutu rożnego. Po kolejnym zagraniu sytuację ocenia się ponownie.",
+    "source": "IFAB ? Law 11",
+    "sourceUrl": "https://www.theifab.com/laws/latest/offside/",
+    "dateAdded": "2026-10-03",
+    "relatedClubKeys": []
+  },
+  {
+    "id": "ball-out",
+    "title": "Kiedy piłka opuszcza boisko?",
+    "category": "rules",
+    "text": "Piłka jest poza grą, gdy całym obwodem przekroczy linię bramkową lub boczną — po ziemi albo w powietrzu. Samo dotknięcie linii nie wystarcza. Przepis opisuje również przerwanie gry przez sędziego.",
+    "source": "IFAB ? Law 9",
+    "sourceUrl": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/",
+    "dateAdded": "2026-10-03",
+    "relatedClubKeys": []
+  },
+  {
+    "id": "liverpool-1892",
+    "title": "Liverpool: początki w 1892 roku",
+    "category": "history",
+    "text": "Liverpool FC formalnie powstał 3 czerwca 1892 roku. John Houlding utworzył nowy klub po rozstaniu z Evertonem. Anfield stało się domem nowej drużyny. Pierwszy mecz Liverpoolu odbył się 1 września 1892 roku przeciw Rotherham Town.",
+    "source": "Liverpool FC",
+    "sourceUrl": "https://www.liverpoolfc.com/news/liverpool-fc-celebrates-its-134th-birthday",
+    "dateAdded": "2026-10-03",
+    "relatedClubKeys": [
+      "liverpool"
+    ]
+  }
+]

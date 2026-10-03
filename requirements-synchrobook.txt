@@ -1,0 +1,5 @@
+# Book extraction and text cleanup. Whisper/PyTorch are deliberately reused from the existing
+# Voice Journal environment and are not reinstalled by Synchrobook.
+beautifulsoup4>=4.12,<5
+wordfreq>=3.1,<4
+pymupdf>=1.24,<2

@@ -61,11 +61,42 @@ def parse_value(cell):
     except Exception:
         pass
     # boolean-ish
-    if raw.lower() in ("x", "true", "yes", "y", "done"):
+    normalized = raw.lower()
+    if normalized in ("unknown", "skip", "skipped"):
+        return None
+    if normalized in ("yes_manual", "yes_auto"):
+        return 2
+    if normalized in ("x", "true", "yes", "y", "done"):
         return 1
-    if raw.lower() in ("false", "no", "n"):
+    if normalized in ("false", "no", "n"):
         return 0
     return None
+
+
+def load_habits_metadata_csv(csv_path):
+    info = {"path": csv_path, "kind": "habits_metadata", "errors": []}
+    try:
+        text, encoding = read_text_guess(csv_path)
+        info["encoding"] = encoding
+        rows = list(csv.DictReader(text.splitlines()))
+    except Exception as exc:
+        info["errors"].append(str(exc))
+        return {}, info
+
+    habits = {}
+    for row in rows:
+        name = str(row.get("Name") or row.get("name") or "").strip()
+        if not name:
+            continue
+        raw_type = str(row.get("Type") or row.get("type") or "").strip().upper()
+        habits[name] = {
+            "name": name,
+            "type": 1 if raw_type == "NUMERICAL" else 0,
+            "unit": str(row.get("Unit") or row.get("unit") or "").strip(),
+            "position": row.get("Position") or row.get("position"),
+        }
+    info["habits"] = len(habits)
+    return habits, info
 
 
 def load_db(db_path):
@@ -109,7 +140,7 @@ def load_db(db_path):
     return habits, points, info
 
 
-def load_checkmarks_csv(csv_path, tz_name):
+def load_checkmarks_csv(csv_path, tz_name, simple_habit_name=None):
     info = {
         "path": csv_path,
         "kind": None,
@@ -136,9 +167,10 @@ def load_checkmarks_csv(csv_path, tz_name):
     habits = {}
     first = rows[0]
     has_header = first and first[0].strip().lower() in ("date", "day")
+    is_simple_header = has_header and len(first) >= 2 and first[1].strip().lower() in ("value", "checkmark", "status")
 
     warned_split = False
-    if has_header:
+    if has_header and not is_simple_header:
         info["kind"] = "checkmarks_header"
         headers = [h.strip() for h in first[1:] if h.strip()]
         for name in headers:
@@ -171,13 +203,13 @@ def load_checkmarks_csv(csv_path, tz_name):
     else:
         info["kind"] = "checkmarks_simple"
         parent = os.path.basename(os.path.dirname(csv_path)).lower()
-        if parent == "csv":
+        if parent == "csv" and not simple_habit_name:
             info["kind"] = "checkmarks_simple_root"
             info["errors"].append("Simple CSV in data/raw/csv root has no habit name. Move it into a habit-named folder.")
             return [], {}, info
-        name = habit_name_from_folder(csv_path)
+        name = simple_habit_name or habit_name_from_folder(csv_path)
         habits[name] = {"name": name}
-        for row in rows:
+        for row in rows[1:] if is_simple_header else rows:
             if not row or len(row) < 2:
                 info["skipped_rows"] += 1
                 continue
@@ -228,6 +260,26 @@ def build_dataset(db_paths, csv_paths, tz_name):
             habit_meta[name] = meta
         points.extend(db_points)
 
+    metadata_paths = [path for path in csv_paths if os.path.basename(path).lower().startswith("habits")]
+    metadata_roots = {os.path.abspath(os.path.dirname(path)) for path in metadata_paths}
+    nested_checkmarks = [
+        path for path in csv_paths
+        if os.path.basename(path).lower().startswith("checkmarks")
+        and os.path.abspath(os.path.dirname(path)) not in metadata_roots
+    ]
+    names_by_position = {}
+    for csv_path in metadata_paths:
+        csv_habits, csv_info = load_habits_metadata_csv(csv_path)
+        report["csv_files"].append(csv_info)
+        report["errors"].extend(csv_info.get("errors", []))
+        for name, meta in csv_habits.items():
+            existing = habit_meta.get(name, {})
+            habit_meta[name] = {**meta, **existing}
+            try:
+                names_by_position[int(meta.get("position"))] = name
+            except (TypeError, ValueError):
+                pass
+
     # CSV checkmarks
     for csv_path in csv_paths:
         base = os.path.basename(csv_path).lower()
@@ -235,10 +287,15 @@ def build_dataset(db_paths, csv_paths, tz_name):
             report["csv_skipped"].append({"path": csv_path, "reason": "scores.csv"})
             continue
         if base.startswith("habits"):
-            # not used for data points yet
-            report["csv_skipped"].append({"path": csv_path, "reason": "habits.csv"})
             continue
-        csv_points, csv_habits, csv_info = load_checkmarks_csv(csv_path, tz_name)
+        if nested_checkmarks and base.startswith("checkmarks") and os.path.abspath(os.path.dirname(csv_path)) in metadata_roots:
+            report["csv_skipped"].append({"path": csv_path, "reason": "per-habit Checkmarks.csv files contain the full export"})
+            continue
+        simple_name = None
+        folder_match = re.match(r"^(\d+)\s*", os.path.basename(os.path.dirname(csv_path)))
+        if folder_match:
+            simple_name = names_by_position.get(int(folder_match.group(1)))
+        csv_points, csv_habits, csv_info = load_checkmarks_csv(csv_path, tz_name, simple_name)
         report["csv_files"].append(csv_info)
         report["errors"].extend(csv_info.get("errors", []))
         points.extend(csv_points)
@@ -271,10 +328,17 @@ def build_dataset(db_paths, csv_paths, tz_name):
 
     report["input_points"] = len(points)
 
+    if tz_name.upper() == "UTC" or ZoneInfo is None:
+        point_tz = timezone.utc
+    elif tz_name.lower() == "local":
+        point_tz = datetime.now().astimezone().tzinfo
+    else:
+        point_tz = ZoneInfo(tz_name)
+
     for name, ts, val, src in sorted(points, key=lambda x: x[1]):
         if name not in habit_meta:
             continue
-        date_key = datetime.utcfromtimestamp(ts / 1000).date().isoformat()
+        date_key = datetime.fromtimestamp(ts / 1000, point_tz).date().isoformat()
         existing = data_points[name].get(date_key)
         if existing is None:
             data_points[name][date_key] = (val, src)
@@ -538,8 +602,13 @@ def main():
     parser.add_argument("--tz", default="Europe/Warsaw", help="Timezone for CSV dates (default: Europe/Warsaw). Use e.g. UTC or local.")
     args = parser.parse_args()
 
-    db_paths = args.db if args.db is not None and len(args.db) else find_latest_db("data/raw/db")
-    csv_paths = expand_csv_inputs(args.csv or [], "data/raw/csv")
+    explicit_inputs = args.db is not None or args.csv is not None
+    if explicit_inputs:
+        db_paths = list(args.db or [])
+        csv_paths = expand_csv_inputs(args.csv or [], "") if args.csv is not None else []
+    else:
+        db_paths = find_latest_db("data/raw/db")
+        csv_paths = expand_csv_inputs([], "data/raw/csv")
 
     if not db_paths and not csv_paths:
         print("No DB or CSV inputs found.", file=sys.stderr)

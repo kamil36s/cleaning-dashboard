@@ -4,6 +4,7 @@
 import fs from 'fs';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
+import { countSobrietyDays } from '../js/sobriety-streak.js';
 
 // helper: start of day (local) -> ms since epoch
 function startOfDayMs(d = new Date()) {
@@ -196,21 +197,9 @@ async function main() {
       perDayDD.get(dayStart).push(r.value);
     }
 
-    const isSoberDay = vals => vals && vals.some(v => v === 2);
-
-    // walk backward from today until first day without v===2
-    let streak = 0;
-    let dayPtr = todayStart;
-    while (true) {
-      const vals = perDayDD.get(dayPtr) || [];
-      if (isSoberDay(vals)) {
-        streak += 1;
-        dayPtr -= 24 * 60 * 60 * 1000;
-      } else {
-        break;
-      }
-    }
-    sobrietyDays = streak;
+    // Jeśli dzisiejszy tick jeszcze nie istnieje, seria kończy się wczoraj.
+    // Dzisiejszy dzień doliczamy dopiero po potwierdzeniu wartości DONE (2).
+    sobrietyDays = countSobrietyDays(perDayDD, todayStart);
   }
 
   const result = {

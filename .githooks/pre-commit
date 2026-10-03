@@ -1,0 +1,7 @@
+#!/bin/sh
+branch=$(git symbolic-ref --quiet --short HEAD) || exit 1
+if [ "$branch" = main ] && [ "$DASHBOARD_ALLOW_MAIN" != 1 ]; then
+    echo "main is protected: use dev or ai/<agent>/<task>." >&2
+    echo "Conscious emergency override: DASHBOARD_ALLOW_MAIN=1 (or scripts/save.ps1 -AllowMain)." >&2
+    exit 1
+fi

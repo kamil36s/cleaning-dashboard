@@ -1,0 +1,183 @@
+{
+  "dataset": "body_activity",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-16T09:16:12Z",
+  "as_of": "2026-09-16",
+  "units": {
+    "weight": "kg",
+    "steps": "count"
+  },
+  "privacy": {
+    "device_identifiers_exported": false,
+    "raw_packets_exported": false
+  },
+  "metrics": {
+    "latest_weight_date": "2026-09-16",
+    "latest_weight_kg": 91.35,
+    "weight_ma7_kg": 91.62,
+    "weight_previous_7d_avg_kg": 92.36,
+    "weight_7d_change_pct": -0.8,
+    "weight_ma30_kg": 92.74,
+    "weight_trend": "decreasing",
+    "latest_steps_date": "2026-09-16",
+    "latest_steps": 91,
+    "steps_comparison_window_end": "2026-09-15",
+    "steps_7d_avg": 8198.0,
+    "steps_previous_7d_avg": 9263.0,
+    "steps_7d_change_pct": -11.49,
+    "steps_trend": "decreasing"
+  },
+  "records": [
+    {
+      "date": "2026-08-18",
+      "weight_kg": 94.3,
+      "steps": 6082
+    },
+    {
+      "date": "2026-08-19",
+      "weight_kg": 93.95,
+      "steps": 3452
+    },
+    {
+      "date": "2026-08-20",
+      "weight_kg": 93.85,
+      "steps": 2278
+    },
+    {
+      "date": "2026-08-21",
+      "weight_kg": 93.45,
+      "steps": 2001
+    },
+    {
+      "date": "2026-08-22",
+      "weight_kg": 94.0,
+      "steps": 5904
+    },
+    {
+      "date": "2026-08-23",
+      "weight_kg": 94.1,
+      "steps": 4963
+    },
+    {
+      "date": "2026-08-24",
+      "weight_kg": 93.55,
+      "steps": 14129
+    },
+    {
+      "date": "2026-08-25",
+      "weight_kg": 93.65,
+      "steps": 3478
+    },
+    {
+      "date": "2026-08-26",
+      "weight_kg": 93.7,
+      "steps": 10104
+    },
+    {
+      "date": "2026-08-27",
+      "weight_kg": 92.6,
+      "steps": 3854
+    },
+    {
+      "date": "2026-08-28",
+      "weight_kg": 93.6,
+      "steps": 6301
+    },
+    {
+      "date": "2026-08-29",
+      "weight_kg": 92.9,
+      "steps": 12004
+    },
+    {
+      "date": "2026-08-30",
+      "weight_kg": 93.0,
+      "steps": 10027
+    },
+    {
+      "date": "2026-08-31",
+      "weight_kg": 92.55,
+      "steps": 1564
+    },
+    {
+      "date": "2026-09-01",
+      "weight_kg": 92.9,
+      "steps": 2720
+    },
+    {
+      "date": "2026-09-02",
+      "weight_kg": 92.3,
+      "steps": 12209
+    },
+    {
+      "date": "2026-09-03",
+      "weight_kg": 91.85,
+      "steps": 7025
+    },
+    {
+      "date": "2026-09-04",
+      "weight_kg": 91.95,
+      "steps": 10454
+    },
+    {
+      "date": "2026-09-05",
+      "weight_kg": 92.55,
+      "steps": 7311
+    },
+    {
+      "date": "2026-09-06",
+      "weight_kg": 92.0,
+      "steps": 10825
+    },
+    {
+      "date": "2026-09-07",
+      "weight_kg": 93.25,
+      "steps": 14802
+    },
+    {
+      "date": "2026-09-08",
+      "weight_kg": 92.7,
+      "steps": 2215
+    },
+    {
+      "date": "2026-09-09",
+      "weight_kg": 92.25,
+      "steps": 10403
+    },
+    {
+      "date": "2026-09-10",
+      "weight_kg": 91.5,
+      "steps": 10114
+    },
+    {
+      "date": "2026-09-11",
+      "weight_kg": 91.3,
+      "steps": 10163
+    },
+    {
+      "date": "2026-09-12",
+      "weight_kg": 91.55,
+      "steps": 11950
+    },
+    {
+      "date": "2026-09-13",
+      "weight_kg": 91.55,
+      "steps": 6124
+    },
+    {
+      "date": "2026-09-14",
+      "weight_kg": 91.75,
+      "steps": 7541
+    },
+    {
+      "date": "2026-09-15",
+      "weight_kg": 92.35,
+      "steps": 1093
+    },
+    {
+      "date": "2026-09-16",
+      "weight_kg": 91.35,
+      "steps": 91
+    }
+  ]
+}

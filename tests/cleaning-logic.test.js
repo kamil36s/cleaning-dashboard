@@ -1,5 +1,11 @@
 ﻿import { describe, it, expect } from 'vitest';
-import { computeCounts, deriveStatus } from '../js/cleaning-logic.js';
+import {
+  computeCounts,
+  deriveStatus,
+  groupTasksByCategory,
+  groupTasksByRoom,
+  preserveTaskOrder,
+} from '../js/cleaning-logic.js';
 
 describe('Cleaning status (WHY: highlight urgent chores)', () => {
   it('classifies overdue > 7 days as DEAD', () => {
@@ -24,5 +30,50 @@ describe('Cleaning status (WHY: highlight urgent chores)', () => {
     expect(stats.dead).toBe(1);
     expect(stats.ok).toBe(1);
     expect(stats.pct).toBe(20);
+  });
+
+  it('keeps existing cards in place after their status changes', () => {
+    const previous = [{ id: 1, status: 'OVERDUE' }, { id: 2, status: 'DUE' }, { id: 3, status: 'COMING' }];
+    const freshlySorted = [{ id: 2, status: 'DUE' }, { id: 3, status: 'COMING' }, { id: 1, status: 'FRESH' }, { id: 4 }];
+
+    expect(preserveTaskOrder(previous, freshlySorted).map((task) => task.id)).toEqual([1, 2, 3, 4]);
+  });
+
+  it('groups rooms alphabetically and preserves status-sorted task order inside them', () => {
+    const tasks = [
+      { id: 1, room: 'Sypialnia', status: 'DEAD' },
+      { id: 2, room: 'Kuchnia', status: 'DEAD' },
+      { id: 3, room: 'Kuchnia', status: 'OVERDUE' },
+      { id: 4, room: 'Łazienka', status: 'DUE' },
+      { id: 5, room: '', status: 'FRESH' },
+    ];
+
+    expect(groupTasksByRoom(tasks).map((group) => ({
+      room: group.room,
+      ids: group.tasks.map((task) => task.id),
+    }))).toEqual([
+      { room: 'Kuchnia', ids: [2, 3] },
+      { room: 'Łazienka', ids: [4] },
+      { room: 'Sypialnia', ids: [1] },
+      { room: 'Bez pokoju', ids: [5] },
+    ]);
+  });
+
+  it('groups categories alphabetically and puts missing categories last', () => {
+    const tasks = [
+      { id: 1, category: 'Podłogi' },
+      { id: 2, category: 'Kurz' },
+      { id: 3, category: 'Podłogi' },
+      { id: 4, category: '' },
+    ];
+
+    expect(groupTasksByCategory(tasks).map((group) => ({
+      category: group.category,
+      ids: group.tasks.map((task) => task.id),
+    }))).toEqual([
+      { category: 'Kurz', ids: [2] },
+      { category: 'Podłogi', ids: [1, 3] },
+      { category: 'Bez kategorii', ids: [4] },
+    ]);
   });
 });

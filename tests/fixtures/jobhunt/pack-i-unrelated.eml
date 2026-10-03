@@ -1,0 +1,8 @@
+From: Example Newsletter <hello@example.test>
+Return-Path: <bounce@example.test>
+Message-ID: <newsletter@example.test>
+Date: Wed, 23 Sep 2026 08:15:00 +0200
+Subject: JobAlert - unrelated
+Content-Type: text/plain; charset=UTF-8
+
+JobAlert https://www.pracuj.pl/praca/fake,offer-999

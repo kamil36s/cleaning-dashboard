@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <title>Fallback title that must lose to JSON-LD</title>
+  <meta property="og:title" content="Metadata QA role">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Unrelated synthetic site"}</script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"JobPosting","title":"HTML QA Engineer","hiringOrganization":{"@type":"Organization","name":"Synthetic HTML AS"},"jobLocationType":"TELECOMMUTE","baseSalary":{"@type":"MonetaryAmount","currency":"NOK","value":{"@type":"QuantitativeValue","minValue":61000,"maxValue":65000,"unitText":"MONTH"}},"skills":["SQL","Selenium"],"validThrough":"2027-01-15"}
+  </script>
+  <script type="application/ld+json">{"malformed":</script>
+</head>
+<body>
+  <p>&lt;script&gt;globalThis.shouldNeverRun = true;&lt;/script&gt;</p>
+</body>
+</html>

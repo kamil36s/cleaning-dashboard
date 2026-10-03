@@ -1,0 +1,77 @@
+name: cleaning-dashboard-htr
+
+x-escriptorium: &escriptorium
+  image: registry.gitlab.com/scripta/escriptorium:26.04
+  env_file:
+    - ./htr/variables.env
+  volumes:
+    - htr-static:/usr/src/app/static
+    - htr-media:/usr/src/app/media
+    - ./htr/escriptorium-overrides/reporting/tasks.py:/usr/src/app/apps/reporting/tasks.py:ro
+    - ./htr/escriptorium-overrides/reporting/tests.py:/usr/src/app/apps/reporting/tests.py:ro
+  depends_on:
+    - db
+    - redis
+
+services:
+  web:
+    <<: *escriptorium
+    command: uwsgi --ini /usr/src/app/uwsgi.ini
+    expose:
+      - "8000"
+
+  channelserver:
+    <<: *escriptorium
+    command: daphne --bind 0.0.0.0 --port 5000 -v 1 escriptorium.asgi:application
+    expose:
+      - "5000"
+
+  celery-main:
+    <<: *escriptorium
+    environment:
+      OMP_NUM_THREADS: "1"
+    command: celery -A escriptorium worker -l INFO -E -Ofair --prefetch-multiplier 1 -Q default -c 2 --max-tasks-per-child=10
+
+  celery-live:
+    <<: *escriptorium
+    command: celery -A escriptorium worker -l INFO -E -Ofair --prefetch-multiplier 1 -Q live -c 2 --max-tasks-per-child=10
+
+  celery-low-priority:
+    <<: *escriptorium
+    command: celery -A escriptorium worker -l INFO -E -Ofair --prefetch-multiplier 1 -Q low-priority -c 2 --max-tasks-per-child=10
+
+  celery-gpu:
+    <<: *escriptorium
+    environment:
+      KRAKEN_TRAINING_DEVICE: cpu
+      OMP_NUM_THREADS: "1"
+    command: celery -A escriptorium worker -l INFO -E -Ofair --prefetch-multiplier 1 -Q gpu -c 1 --max-tasks-per-child=1
+    shm_size: 3gb
+
+  db:
+    image: postgres:15-alpine
+    env_file:
+      - ./htr/variables.env
+    volumes:
+      - htr-postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+
+  nginx:
+    image: registry.gitlab.com/scripta/escriptorium/nginx:26.04
+    environment:
+      SERVERNAME: localhost
+    volumes:
+      - htr-static:/usr/src/app/static:ro
+      - htr-media:/usr/src/app/media:ro
+    ports:
+      - "${ESCRIPTORIUM_HOST_PORT:-8081}:80"
+    depends_on:
+      - web
+      - channelserver
+
+volumes:
+  htr-static:
+  htr-media:
+  htr-postgres:

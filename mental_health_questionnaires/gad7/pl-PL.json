@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "gad7",
+  "instrumentVersion": "GAD-7 Polish for Poland (official PHQ Screeners form)",
+  "scoringVersion": "gad7-sum-0-21-v1",
+  "language": "pl-PL",
+  "questionTextStatus": "official_translation",
+  "title": "GAD-7",
+  "shortDescription": "Kwestionariusz przesiewowy nasilenia objawów lęku uogólnionego.",
+  "recallPeriod": "ostatnie 2 tygodnie",
+  "estimatedMinutes": 3,
+  "instructions": "Jak często w ciągu ostatnich 2 tygodni dokuczały Panu(i) następujące problemy? (Proszę zaznaczyć odpowiedź znakiem “✔”)",
+  "questionCount": 7,
+  "scoredItemCount": 7,
+  "responseOptions": [
+    { "value": 0, "label": "Wcale nie dokuczały" },
+    { "value": 1, "label": "Kilka dni" },
+    { "value": 2, "label": "Więcej niż połowę dni" },
+    { "value": 3, "label": "Niemal codziennie" }
+  ],
+  "questions": [
+    { "id": "1", "text": "Czuł(a) się Pan(i) podenerwowany(a), niespokojny(a), mocno spięty(a)", "required": true },
+    { "id": "2", "text": "Nie mógł(a) Pan(i) przestać się martwić albo zapanować nad tym", "required": true },
+    { "id": "3", "text": "Za bardzo się Pan(i) martwił(a) różnymi rzeczami", "required": true },
+    { "id": "4", "text": "Miał(a) Pan(i) trudności z relaksowaniem się", "required": true },
+    { "id": "5", "text": "Był(a) Pan(i) tak niespokojny(a), że nie mógł(a) usiedzieć na miejscu", "required": true },
+    { "id": "6", "text": "Łatwo stawał(a) się Pan(i) rozdrażniony(a) lub poirytowany(a)", "required": true },
+    { "id": "7", "text": "Obawiał(a) się Pan(i), tak jakby miało się stać coś strasznego", "required": true }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5", "6", "7"],
+    "allowedValues": [0, 1, 2, 3],
+    "reverseItemIds": [],
+    "subscales": {}
+  },
+  "interpretationBands": [
+    { "min": 0, "max": 4, "label": "minimal" },
+    { "min": 5, "max": 9, "label": "mild" },
+    { "min": 10, "max": 14, "label": "moderate" },
+    { "min": 15, "max": 21, "label": "severe" }
+  ],
+  "source": {
+    "title": "GAD-7 — Polish for Poland, PHQ Screeners",
+    "url": "https://www.phqscreeners.com/images/sites/g/files/g10060481/f/201412/GAD7_Polish%20for%20Poland.pdf",
+    "landingPage": "https://www.phqscreeners.com/select-screener",
+    "scoringUrl": "https://www.phqscreeners.com/images/sites/g/files/g10016261/f/201412/instructions.pdf",
+    "scoringDocumentSha256": "6ed2f00f97e438c1168cd702d38d31fc923031445c720653005f138aa424228a",
+    "documentSha256": "109177c7fb7bbce1e34a49b74573029e3a7975b255d5b7961ee9450e0b8dcf93"
+  },
+  "license": {
+    "status": "unrestricted reproduction",
+    "notice": "Zgoda na powielanie, tłumaczenie, przedstawianie lub rozprowadzanie niniejszego dokumentu nie jest wymagana."
+  },
+  "attribution": "Opracowanie: Dr Robert L. Spitzer, Dr Janet B.W. Williams, Dr Kurt Kroenke oraz współpracownicy, z wykorzystaniem grantu oświatowego od firmy Pfizer Inc."
+}

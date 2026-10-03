@@ -1,0 +1,20 @@
+{
+  "manifestVersion": "language-reference-source-manifest/v1",
+  "sourceId": "uio-norwegian-kelly-shu-wang",
+  "title": "Norwegian KELLY contributions refined by Shu Wang",
+  "provider": "University of Oslo Text Laboratory / KELLY project",
+  "landingUrl": "https://www.hf.uio.no/iln/english/about/organisation/text-laboratory/services/kelly.html",
+  "version": "current-file-audited-2026-09-16",
+  "releaseDate": null,
+  "language": "nb",
+  "resourceType": "LEARNER_ORIENTED_RANKED_LEMMA_LIST",
+  "license": {"id": "CC-BY-SA-4.0", "url": "https://creativecommons.org/licenses/by-sa/4.0/", "verifiedAt": "2026-09-16"},
+  "attribution": "Credit the KELLY project, University of Oslo Text Laboratory and Shu Wang; cite Kilgarriff et al. (2014).",
+  "expectedFiles": [
+    {"name": "Norwegian-KELLY-Contributions-Shu-Wang.json", "url": "https://tekstlab.uio.no/kelly/Norwegian-KELLY-Contributions-Shu-Wang.json", "sizeBytes": 419961, "sha256": "71d9fdc2280bd7d2b9dd0eba394a716551552fde356dc2fce57796da784f9a7f", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:58.108868Z", "httpMetadata": {"contentLength": "419961", "contentType": "application/json", "etag": "\"66879-6549687d56240\"", "lastModified": "Fri, 19 Jun 2026 07:49:21 GMT"}, "format": "UTF-8 JSON array: word, rank, pos, english", "required": true}
+  ],
+  "parser": {"id": "norwegian-kelly-json", "version": "1.0.0"},
+  "decision": "ACCEPT_PHASE_7_5B",
+  "priority": "TIER_1",
+  "notes": ["Measured file has 5953 rows and ranks 1-6000 with gaps.", "It has no CEFR field and must not be imported as CEFR evidence.", "Treat English glosses as a separately licensed projection, not dictionary senses."]
+}

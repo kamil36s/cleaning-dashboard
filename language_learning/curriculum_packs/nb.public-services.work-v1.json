@@ -1,0 +1,663 @@
+{
+  "schemaVersion": "language.curriculum-pack-manifest/v1",
+  "pack": {
+    "id": "nb.public-services.work",
+    "version": 1,
+    "slug": "arbeid",
+    "language": "nb",
+    "name": "Work and employment services",
+    "description": "Official public-service concepts under the Los work and employment services theme.",
+    "category": "WORK",
+    "sourceType": "OFFICIAL_SOURCE",
+    "reviewState": "SOURCE_APPROVED",
+    "status": "ACTIVE",
+    "displayOrder": 10,
+    "releasedDate": "2026-09-17",
+    "curriculumPolicyVersion": "language.curriculum-policy/v1",
+    "denominatorPolicyVersion": "language.curriculum-denominator/v1",
+    "progressPolicyVersion": "language.curriculum-progress/v1",
+    "fingerprint": "sha256:18c47a01fa2ad6a549f9d43b69bce3bb688cf45723192befe5d74c6c3cef4539"
+  },
+  "source": {
+    "id": "digdir-los-3.0-2023-03-01",
+    "provider": "Digitaliseringsdirektoratet (Digdir)",
+    "name": "Los – common terminology for public services",
+    "version": "3.0-rdf-2023-03-01",
+    "url": "https://data.norge.no/en/datasets/c479c6db-af9d-4467-a238-f30480d153e9/los-felles-terminologi-for-offentlige-tjenester",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "attribution": "Digitaliseringsdirektoratet, Los 3.0 (CC0).",
+    "membershipBasis": "Recursive leaf SKOS concepts below https://psi.norge.no/los/tema/arbeid; grouping concepts excluded."
+  },
+  "mappingSnapshot": {
+    "mappingPolicyVersion": "language.curriculum-reference-mapping/v1",
+    "resolverRuleVersion": "reference-resolver/exact-normalized-null-pos/v1",
+    "referenceSchemaVersion": 3,
+    "referenceFingerprint": "sha256:5395a0d1aa2c300f956e04ff69af338463d923d04a14b25bdeffacd416f781e9",
+    "sourceArtifactSha256": "sha256:e6f3266e404aa91d73e31cec0f211814f2fe9a6daadbc1864478287239ba837f",
+    "sourceArtifactLastModified": "2023-03-01T13:09:58Z",
+    "mappedDate": "2026-09-17"
+  },
+  "items": [
+    {
+      "membershipId": "1439b74ac3a2a9aee89347a695aae8cb",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/alderspensjon",
+      "displayTerm": "Alderspensjon",
+      "normalizedLookup": "alderspensjon",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "653ccc914148a9b85b34aaa13a9c0c4e",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|alderspensjon|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A1563",
+        "canonicalForm": "alderspensjon",
+        "normalizedForm": "alderspensjon",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "08dc23037b6f54d1f0c525a9c15eb40a",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidsavklaringspenger",
+      "displayTerm": "Arbeidsavklaringspenger",
+      "normalizedLookup": "arbeidsavklaringspenger",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "af1661abf63c32028b2e8960c4c364a2",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidsavklaringspenger|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A162007",
+        "canonicalForm": "arbeidsavklaringspenger",
+        "normalizedForm": "arbeidsavklaringspenger",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "66e87d3788bedc5f9c7a4fe749f0309e",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidsavtale",
+      "displayTerm": "Arbeidsavtale",
+      "normalizedLookup": "arbeidsavtale",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "88cd61c36f5710df04daa034b94f64f6",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidsavtale|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A86691",
+        "canonicalForm": "arbeidsavtale",
+        "normalizedForm": "arbeidsavtale",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "5d2c7cdf3dce11a5d206d23429caa951",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidsgiver",
+      "displayTerm": "Arbeidsgiver",
+      "normalizedLookup": "arbeidsgiver",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "17126e005987e7145f651d4e6e8fc9ca",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidsgiver|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A3049",
+        "canonicalForm": "arbeidsgiver",
+        "normalizedForm": "arbeidsgiver",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "163e30c9b5bca32951dc6c5e9a0c9e16",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidsmarkedstiltak",
+      "displayTerm": "Arbeidsmarkedstiltak",
+      "normalizedLookup": "arbeidsmarkedstiltak",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "b362aaa7f18862ca1e040c4814801a25",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidsmarkedstiltak|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A86808",
+        "canonicalForm": "arbeidsmarkedstiltak",
+        "normalizedForm": "arbeidsmarkedstiltak",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "b9ac71ee06717b0f4a599a3e208aebb6",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidsmiljo",
+      "displayTerm": "Arbeidsmiljø",
+      "normalizedLookup": "arbeidsmiljø",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "3e554ffab51f5c122193eacc3cfd5a59",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidsmilj%C3%B8|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A3099",
+        "canonicalForm": "arbeidsmiljø",
+        "normalizedForm": "arbeidsmiljø",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "6c821b372853b20e37bd3296023ff8a9",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidstillatelse",
+      "displayTerm": "Arbeidstillatelse",
+      "normalizedLookup": "arbeidstillatelse",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "6ae11047a2d71b80794d49f318c9f924",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidstillatelse|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A3127",
+        "canonicalForm": "arbeidstillatelse",
+        "normalizedForm": "arbeidstillatelse",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "7937a16a147c662c811db19e20683654",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidstvist",
+      "displayTerm": "Arbeidstvist",
+      "normalizedLookup": "arbeidstvist",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "5ed46fedf86166e5389bd93a2bcc6182",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidstvist|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A3131",
+        "canonicalForm": "arbeidstvist",
+        "normalizedForm": "arbeidstvist",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "de2ce71ebb51b93a389a1ab10c3e0bb9",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/barnepensjon",
+      "displayTerm": "Barnepensjon",
+      "normalizedLookup": "barnepensjon",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "fbd6d79139a1522cb0a4249747ffbbf2",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|barnepensjon|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A88849",
+        "canonicalForm": "barnepensjon",
+        "normalizedForm": "barnepensjon",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "4aa3fdb44ad06e17f7e25237ee2cb0e0",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/cv",
+      "displayTerm": "CV",
+      "normalizedLookup": "cv",
+      "reviewState": "APPROVED",
+      "mappingState": "AMBIGUOUS",
+      "mappingBasis": "REFERENCE_RESOLVER_POS_REQUIRED_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "mappingCandidates": [
+        {
+          "id": "79bed09770df82a2d7337c3b4cc108af",
+          "stableKey": "reference-key%2Fv1|nb|LEMMA|cv|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A157314",
+          "canonicalForm": "CV",
+          "normalizedForm": "cv",
+          "partOfSpeech": "NOUN",
+          "unitType": "LEMMA"
+        },
+        {
+          "id": "a4eecf493b77154ecc444173f4e0ac50",
+          "stableKey": "reference-key%2Fv1|nb|LEMMA|cv|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A157315",
+          "canonicalForm": "cv",
+          "normalizedForm": "cv",
+          "partOfSpeech": "NOUN",
+          "unitType": "LEMMA"
+        }
+      ]
+    },
+    {
+      "membershipId": "bc6340c948269340e845e72d7fb7eff6",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/feriepenger",
+      "displayTerm": "Feriepenger",
+      "normalizedLookup": "feriepenger",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "335765f9890446749bf21ec14d966316",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|feriepenger|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A16684",
+        "canonicalForm": "feriepenger",
+        "normalizedForm": "feriepenger",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "0bc0e9e8dd44f9469978003e9cebb8d0",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/ferierettigheter",
+      "displayTerm": "Ferierettigheter",
+      "normalizedLookup": "ferierettigheter",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "be202a3e87785338939f8d7f0969f75f",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/foreldrepermisjon",
+      "displayTerm": "Foreldrepermisjon",
+      "normalizedLookup": "foreldrepermisjon",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "c2912a7f99db30c13bd6eaa60e5a1b48",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|foreldrepermisjon|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A99451",
+        "canonicalForm": "foreldrepermisjon",
+        "normalizedForm": "foreldrepermisjon",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "d54a0ed6274e88d2e8211f041df6dd5b",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/forsorgingstillegg",
+      "displayTerm": "Forsørgingstillegg",
+      "normalizedLookup": "forsørgingstillegg",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "b9bdbacca2eb2da381b68a361df035cc",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/gjenlevendepensjon",
+      "displayTerm": "Gjenlevendepensjon",
+      "normalizedLookup": "gjenlevendepensjon",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "f3427cbd03d3f52c9f256e2f17282300",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|gjenlevendepensjon|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A164063",
+        "canonicalForm": "gjenlevendepensjon",
+        "normalizedForm": "gjenlevendepensjon",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "ff521f42f8f40adfcedd61917ae8837c",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/inkluderende-arbeidsliv",
+      "displayTerm": "Inkluderende arbeidsliv",
+      "normalizedLookup": "inkluderende arbeidsliv",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "500c5625475922308dfe44e0afb15c33",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/innemiljo",
+      "displayTerm": "Innemiljø",
+      "normalizedLookup": "innemiljø",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "1ed7ace56dc8ee01b471f53bec6c8fae",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|innemilj%C3%B8|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A109519",
+        "canonicalForm": "innemiljø",
+        "normalizedForm": "innemiljø",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "29b1621d332bfc09b62444c49466078e",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/lonn",
+      "displayTerm": "Lønn",
+      "normalizedLookup": "lønn",
+      "reviewState": "APPROVED",
+      "mappingState": "AMBIGUOUS",
+      "mappingBasis": "REFERENCE_RESOLVER_POS_REQUIRED_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "mappingCandidates": [
+        {
+          "id": "28887cf5ebc428d88452fa2d3009f8a4",
+          "stableKey": "reference-key%2Fv1|nb|LEMMA|l%C3%B8nn|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A42571",
+          "canonicalForm": "lønn",
+          "normalizedForm": "lønn",
+          "partOfSpeech": "NOUN",
+          "unitType": "LEMMA"
+        },
+        {
+          "id": "8f1bf2d15a83085e47c031e90593e973",
+          "stableKey": "reference-key%2Fv1|nb|LEMMA|l%C3%B8nn|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A42569",
+          "canonicalForm": "lønn",
+          "normalizedForm": "lønn",
+          "partOfSpeech": "NOUN",
+          "unitType": "LEMMA"
+        }
+      ]
+    },
+    {
+      "membershipId": "01ad72f78e5475167aacd292cb044c88",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/omsorgspermisjon",
+      "displayTerm": "Omsorgspermisjon",
+      "normalizedLookup": "omsorgspermisjon",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "aad8690f837555bd930bd3bc12b8c2cf",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|omsorgspermisjon|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A49325",
+        "canonicalForm": "omsorgspermisjon",
+        "normalizedForm": "omsorgspermisjon",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "00a91ce61a33f768eaea9e7ca9b1eaee",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/oppsigelse",
+      "displayTerm": "Oppsigelse",
+      "normalizedLookup": "oppsigelse",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "c542ffde9bd37328b1f3d7837cf01861",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|oppsigelse|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A49861",
+        "canonicalForm": "oppsigelse",
+        "normalizedForm": "oppsigelse",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "b37a8d03981ce7ab71fa3c299e37a6b7",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/pensjonskalkulator",
+      "displayTerm": "Pensjonskalkulator",
+      "normalizedLookup": "pensjonskalkulator",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "4e7a241788280ea5cbe2f408c2a0d19f",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/permittering",
+      "displayTerm": "Permittering",
+      "normalizedLookup": "permittering",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "2ae8763ad6ef497ec686643645585d59",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|permittering|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A51691",
+        "canonicalForm": "permittering",
+        "normalizedForm": "permittering",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "126febb7cb319e619d5ef959385ecde8",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/personskadetrygd",
+      "displayTerm": "Personskadetrygd",
+      "normalizedLookup": "personskadetrygd",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "0c941295eee7d988c85d10283d7b12ac",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/skattekort",
+      "displayTerm": "Skattekort",
+      "normalizedLookup": "skattekort",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "c0175ef9a334a3ae5fb478f3cc59b323",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|skattekort|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A60669",
+        "canonicalForm": "skattekort",
+        "normalizedForm": "skattekort",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "3854e7c77dc07e70ef374ea384d91c45",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/sykefravar",
+      "displayTerm": "Sykefravær",
+      "normalizedLookup": "sykefravær",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "24c0b9167b5cb574edcfa00d3bdf022f",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|sykefrav%C3%A6r|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A144496",
+        "canonicalForm": "sykefravær",
+        "normalizedForm": "sykefravær",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "51efd53eeb687b6f8935fec232088af5",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/sykepenger",
+      "displayTerm": "Sykepenger",
+      "normalizedLookup": "sykepenger",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "b6ef1513a27c986c96d88785eebcff6c",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|sykepenger|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A67499",
+        "canonicalForm": "sykepenger",
+        "normalizedForm": "sykepenger",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "329e31815ca3eea9bcf245a127512dad",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/tilleggsstonader-til-arbeidsrettede-tiltak",
+      "displayTerm": "Tilleggstønader til arbeidsrettede tiltak",
+      "normalizedLookup": "tilleggstønader til arbeidsrettede tiltak",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "05487fa243cc88c0f70afe1005eb8aad",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/tilrettelegging-pa-arbeidsplassen",
+      "displayTerm": "Tilrettelegging på arbeidsplassen",
+      "normalizedLookup": "tilrettelegging på arbeidsplassen",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "085f4b32ac402867a0cf113ef05fdefa",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/tjenestepensjon",
+      "displayTerm": "Tjenestepensjon",
+      "normalizedLookup": "tjenestepensjon",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "11b134e0abcf6164bf366320030d6246",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|tjenestepensjon|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A146890",
+        "canonicalForm": "tjenestepensjon",
+        "normalizedForm": "tjenestepensjon",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "c174b1c6c822491a456dde3ee340e41e",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/uforetrygd",
+      "displayTerm": "Uføretrygd",
+      "normalizedLookup": "uføretrygd",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "283b32f96c8a7e0a9fcaf76e672fb66d",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|uf%C3%B8retrygd|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A73152",
+        "canonicalForm": "uføretrygd",
+        "normalizedForm": "uføretrygd",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "bdc0dea0a7128eea0a5816bdf2b596cf",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/utdanningspermisjon",
+      "displayTerm": "Utdanningspermisjon",
+      "normalizedLookup": "utdanningspermisjon",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "c9d564f4e40d40a722067f3a0049174a",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/velferdspermisjon",
+      "displayTerm": "Velferdspermisjon",
+      "normalizedLookup": "velferdspermisjon",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "da9d858d44cf37426730e3b0c74a0cb7",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|velferdspermisjon|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A77829",
+        "canonicalForm": "velferdspermisjon",
+        "normalizedForm": "velferdspermisjon",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "e832b1adba47d1e9b40f539a0691fb7a",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/yrkesautorisasjon",
+      "displayTerm": "Yrkesautorisasjon",
+      "normalizedLookup": "yrkesautorisasjon",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "f8a552eb9b803b4ee10e6fd106d58942",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/yrkesskadedekning",
+      "displayTerm": "Yrkesskadedekning",
+      "normalizedLookup": "yrkesskadedekning",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    }
+  ]
+}

@@ -1,0 +1,645 @@
+.page-jobhunt {
+  --jh-bg: #f4f5f8;
+  --jh-surface: #fff;
+  --jh-surface-soft: #f8f8fb;
+  --jh-text: #17171c;
+  --jh-muted: #6d6d78;
+  --jh-line: #e2e2e8;
+  --jh-accent: #6f4de0;
+  --jh-accent-soft: #eee9ff;
+  --jh-positive: #1f8a57;
+  --jh-warning: #b66a08;
+  --jh-negative: #c44242;
+  --jh-critical: #a82039;
+  min-height: 100vh;
+  color: var(--jh-text);
+  background: var(--jh-bg);
+}
+
+.page-jobhunt[data-jobhunt-theme="dark"] {
+  --jh-bg: #111115;
+  --jh-surface: #19191f;
+  --jh-surface-soft: #202027;
+  --jh-text: #f1f1f5;
+  --jh-muted: #a2a2ad;
+  --jh-line: #30303a;
+  --jh-accent: #9b83f4;
+  --jh-accent-soft: #2b2446;
+  --jh-positive: #56c58c;
+  --jh-warning: #e3a64d;
+  --jh-negative: #ef7a7a;
+  --jh-critical: #ff6f87;
+}
+
+.page-jobhunt *,
+.page-jobhunt *::before,
+.page-jobhunt *::after { box-sizing: border-box; }
+
+.page-jobhunt .jobhunt-app-shell { display: grid; grid-template-columns: 224px minmax(0, 1fr); min-height: 100vh; }
+.page-jobhunt .jobhunt-app-sidebar {
+  position: sticky; top: 0; display: flex; height: 100vh; flex-direction: column; padding: 24px 16px;
+  border-right: 1px solid var(--jh-line); color: var(--jh-text); background: var(--jh-surface);
+}
+.page-jobhunt .jobhunt-brand { display: flex; align-items: center; gap: 11px; padding: 0 8px 28px; color: inherit; text-decoration: none; }
+.page-jobhunt .jobhunt-brand-mark { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 11px; color: #fff; background: var(--jh-accent); font-size: .72rem; font-weight: 900; }
+.page-jobhunt .jobhunt-brand > span:last-child { display: grid; gap: 2px; }
+.page-jobhunt .jobhunt-brand strong { font-size: .94rem; }
+.page-jobhunt .jobhunt-brand em { color: var(--jh-muted); font-size: .7rem; font-style: normal; }
+.page-jobhunt .jobhunt-nav { display: grid; gap: 3px; }
+.page-jobhunt .jobhunt-nav a { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; min-height: 42px; padding: 0 11px; border-radius: 9px; color: var(--jh-muted); font-size: .83rem; font-weight: 700; text-decoration: none; }
+.page-jobhunt .jobhunt-nav a:hover { color: var(--jh-text); background: var(--jh-surface-soft); }
+.page-jobhunt .jobhunt-nav a.is-active { color: var(--jh-accent); background: var(--jh-accent-soft); }
+.page-jobhunt .jobhunt-nav-count { display: grid; min-width: 21px; height: 21px; place-items: center; border-radius: 999px; color: #fff; background: var(--jh-critical); font-size: .65rem; }
+.page-jobhunt .jobhunt-nav-count[hidden] { display: none !important; }
+.page-jobhunt .jobhunt-sidebar-foot { display: grid; gap: 5px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--jh-line); }
+.page-jobhunt .jobhunt-sidebar-foot > * { min-height: 36px; padding: 0 10px; border: 0; border-radius: 8px; color: var(--jh-muted); background: transparent; font: inherit; font-size: .76rem; text-align: left; text-decoration: none; cursor: pointer; }
+.page-jobhunt .jobhunt-sidebar-foot > *:hover { color: var(--jh-text); background: var(--jh-surface-soft); }
+
+.page-jobhunt .jobhunt-app-main { width: min(1520px, 100%); min-width: 0; margin: 0 auto; padding: 28px clamp(22px, 3.4vw, 54px) 56px; }
+.page-jobhunt .jobhunt-topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; margin-bottom: 12px; }
+.page-jobhunt .jobhunt-topbar h1 { margin: 3px 0 4px; font-size: clamp(1.75rem, 3vw, 2.45rem); letter-spacing: -.04em; }
+.page-jobhunt .jobhunt-topbar p { margin: 0; color: var(--jh-muted); font-size: .92rem; }
+.page-jobhunt .jobhunt-eyebrow,
+.page-jobhunt .jobhunt-section-label { color: var(--jh-accent); font-size: .68rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+.page-jobhunt .jobhunt-top-actions,
+.page-jobhunt .jobhunt-form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.page-jobhunt .jobhunt-primary-action,
+.page-jobhunt .jobhunt-secondary-action,
+.page-jobhunt .jobhunt-quiet-button,
+.page-jobhunt .jobhunt-ghost-action,
+.page-jobhunt .jobhunt-row-action { display: inline-flex; min-height: 37px; align-items: center; justify-content: center; padding: 0 13px; border: 1px solid transparent; border-radius: 8px; font: inherit; font-size: .76rem; font-weight: 800; text-decoration: none; cursor: pointer; }
+.page-jobhunt .jobhunt-primary-action { color: #fff; background: var(--jh-accent); }
+.page-jobhunt .jobhunt-primary-action:hover { filter: brightness(1.07); }
+.page-jobhunt .jobhunt-secondary-action,
+.page-jobhunt .jobhunt-ghost-action,
+.page-jobhunt .jobhunt-row-action { border-color: var(--jh-line); color: var(--jh-text); background: var(--jh-surface); }
+.page-jobhunt .jobhunt-quiet-button { color: var(--jh-muted); background: transparent; }
+.page-jobhunt .jobhunt-quiet-button:hover { color: var(--jh-text); background: var(--jh-surface-soft); }
+.page-jobhunt .jobhunt-quiet-button.is-destructive,
+.page-jobhunt .jobhunt-row-action.is-danger { color: var(--jh-negative); }
+.page-jobhunt button:disabled { opacity: .45; cursor: not-allowed; }
+.page-jobhunt :focus-visible { outline: 3px solid color-mix(in oklab, var(--jh-accent) 45%, transparent); outline-offset: 2px; }
+
+.page-jobhunt .jobhunt-status { min-height: 0; margin: 0 0 16px; padding: 10px 12px; border: 1px solid var(--jh-line); border-radius: 9px; color: var(--jh-muted); background: var(--jh-surface); font-size: .78rem; }
+.page-jobhunt .jobhunt-status[hidden] { display: none; }
+.page-jobhunt .jobhunt-status[data-tone="success"] { border-color: color-mix(in oklab, var(--jh-positive) 35%, var(--jh-line)); color: var(--jh-positive); }
+.page-jobhunt .jobhunt-status[data-tone="warning"] { border-color: color-mix(in oklab, var(--jh-warning) 35%, var(--jh-line)); color: var(--jh-warning); }
+.page-jobhunt .jobhunt-status[data-tone="error"] { border-color: color-mix(in oklab, var(--jh-negative) 35%, var(--jh-line)); color: var(--jh-negative); }
+.page-jobhunt .jobhunt-workspace { min-width: 0; }
+.page-jobhunt .jobhunt-workspace-loading { display: grid; gap: 12px; padding: 28px; border: 1px solid var(--jh-line); border-radius: 14px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-skeleton { display: block; width: 100%; height: 64px; border-radius: 9px; background: linear-gradient(90deg, var(--jh-surface-soft), color-mix(in oklab, var(--jh-surface-soft) 60%, var(--jh-line)), var(--jh-surface-soft)); background-size: 220% 100%; animation: jobhunt-shimmer 1.35s linear infinite; }
+.page-jobhunt .jobhunt-skeleton-title { width: 38%; height: 26px; }
+@keyframes jobhunt-shimmer { to { background-position: -220% 0; } }
+
+.page-jobhunt .jobhunt-home { display: grid; gap: 32px; }
+.page-jobhunt .jobhunt-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 13px; }
+.page-jobhunt .jobhunt-section-heading h2 { margin: 3px 0 0; color: var(--jh-text); font-size: 1.22rem; letter-spacing: -.025em; }
+.page-jobhunt .jobhunt-workspace-intro h2,
+.page-jobhunt .jobhunt-home-flow h2,
+.page-jobhunt .jobhunt-onboarding h2 { color: var(--jh-text); }
+.page-jobhunt .jobhunt-section-heading a { color: var(--jh-accent); font-size: .76rem; font-weight: 800; text-decoration: none; }
+.page-jobhunt .jobhunt-attention-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.page-jobhunt .jobhunt-attention-card { display: grid; gap: 4px; min-width: 0; padding: 15px; border: 1px solid var(--jh-line); border-radius: 12px; color: inherit; background: var(--jh-surface); text-decoration: none; }
+.page-jobhunt .jobhunt-attention-card span { color: var(--jh-muted); font-size: .72rem; }
+.page-jobhunt .jobhunt-attention-card strong { font-size: 1.55rem; }
+.page-jobhunt .jobhunt-attention-card small { overflow: hidden; color: var(--jh-muted); font-size: .68rem; text-overflow: ellipsis; white-space: nowrap; }
+.page-jobhunt .jobhunt-attention-card.is-warning { border-color: color-mix(in oklab, var(--jh-warning) 34%, var(--jh-line)); }
+.page-jobhunt .jobhunt-attention-card.is-critical { border-color: color-mix(in oklab, var(--jh-critical) 40%, var(--jh-line)); }
+.page-jobhunt .jobhunt-opportunity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+.page-jobhunt .jobhunt-opportunity-card { display: grid; gap: 10px; min-width: 0; padding: 17px; border: 1px solid var(--jh-line); border-radius: 13px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-opportunity-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.page-jobhunt .jobhunt-opportunity-head span { color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-opportunity-head h3 { margin: 3px 0 0; font-size: .98rem; line-height: 1.3; }
+.page-jobhunt .jobhunt-opportunity-card > p { margin: 0; color: var(--jh-muted); font-size: .75rem; }
+.page-jobhunt .jobhunt-opportunity-card footer { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; border-top: 1px solid var(--jh-line); color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-opportunity-card footer a { color: var(--jh-accent); font-weight: 800; text-decoration: none; }
+.page-jobhunt .jobhunt-signal-row { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+.page-jobhunt .jobhunt-signal { display: inline-flex; min-height: 22px; align-items: center; padding: 0 7px; border-radius: 999px; color: var(--jh-muted); background: var(--jh-surface-soft); font-size: .65rem; font-weight: 800; }
+.page-jobhunt .jobhunt-signal.is-positive { color: var(--jh-positive); background: color-mix(in oklab, var(--jh-positive) 10%, var(--jh-surface)); }
+.page-jobhunt .jobhunt-signal.is-warning { color: var(--jh-warning); background: color-mix(in oklab, var(--jh-warning) 11%, var(--jh-surface)); }
+.page-jobhunt .jobhunt-signal.is-negative { color: var(--jh-negative); background: color-mix(in oklab, var(--jh-negative) 9%, var(--jh-surface)); }
+.page-jobhunt .jobhunt-signal.is-critical { color: var(--jh-critical); background: color-mix(in oklab, var(--jh-critical) 11%, var(--jh-surface)); }
+.page-jobhunt .jobhunt-signal.is-informational { color: var(--jh-accent); background: var(--jh-accent-soft); }
+.page-jobhunt .jobhunt-track-pulse-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 10px; }
+.page-jobhunt .jobhunt-track-pulse-card { display: grid; gap: 12px; padding: 15px; border: 1px solid var(--jh-line); border-radius: 12px; color: inherit; background: var(--jh-surface); text-decoration: none; }
+.page-jobhunt .jobhunt-track-pulse-card h3 { margin: 7px 0 0; font-size: .95rem; }
+.page-jobhunt .jobhunt-track-pulse-card dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin: 0; }
+.page-jobhunt .jobhunt-track-pulse-card dl div { display: grid; gap: 3px; }
+.page-jobhunt .jobhunt-track-pulse-card dt { color: var(--jh-muted); font-size: .62rem; }
+.page-jobhunt .jobhunt-track-pulse-card dd { margin: 0; font-size: 1.1rem; font-weight: 900; }
+.page-jobhunt .jobhunt-track-pulse-card > span { color: var(--jh-muted); font-size: .68rem; }
+.page-jobhunt .jobhunt-home-flow,
+.page-jobhunt .jobhunt-degraded-banner { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 17px; border: 1px solid var(--jh-line); border-radius: 12px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-home-flow h2 { margin: 3px 0 5px; font-size: 1.05rem; }
+.page-jobhunt .jobhunt-home-flow p { margin: 0; color: var(--jh-muted); font-size: .77rem; }
+.page-jobhunt .jobhunt-degraded-banner { justify-content: flex-start; border-color: color-mix(in oklab, var(--jh-warning) 38%, var(--jh-line)); color: inherit; text-decoration: none; }
+.page-jobhunt .jobhunt-degraded-banner > span:first-child { display: grid; width: 28px; height: 28px; flex: 0 0 auto; place-items: center; border-radius: 50%; color: var(--jh-warning); background: color-mix(in oklab, var(--jh-warning) 12%, var(--jh-surface)); font-weight: 900; }
+.page-jobhunt .jobhunt-degraded-banner div { display: grid; gap: 2px; margin-right: auto; }
+.page-jobhunt .jobhunt-degraded-banner small { color: var(--jh-muted); }
+.page-jobhunt .jobhunt-onboarding { max-width: 780px; padding: 28px; border: 1px solid var(--jh-line); border-radius: 15px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-onboarding h2 { margin: 6px 0; font-size: 1.45rem; }
+.page-jobhunt .jobhunt-onboarding > p { margin: 0 0 22px; color: var(--jh-muted); }
+.page-jobhunt .jobhunt-onboarding ol { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+.page-jobhunt .jobhunt-onboarding li { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 11px; padding: 13px; border: 1px solid var(--jh-line); border-radius: 10px; }
+.page-jobhunt .jobhunt-onboarding li > span { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 50%; color: #fff; background: var(--jh-accent); font-size: .72rem; font-weight: 900; }
+.page-jobhunt .jobhunt-onboarding li > div { display: grid; gap: 2px; }
+.page-jobhunt .jobhunt-onboarding small { color: var(--jh-muted); }
+.page-jobhunt .jobhunt-onboarding a { color: var(--jh-accent); font-size: .74rem; font-weight: 800; }
+.page-jobhunt .jobhunt-onboarding em { color: var(--jh-positive); font-size: .72rem; font-style: normal; font-weight: 800; }
+
+.page-jobhunt .jobhunt-jobs-layout { display: grid; grid-template-columns: 198px minmax(280px, .8fr) minmax(390px, 1.2fr); min-height: 690px; overflow: hidden; border: 1px solid var(--jh-line); border-radius: 14px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-job-filters { display: grid; align-content: start; gap: 11px; padding: 16px; border-right: 1px solid var(--jh-line); background: var(--jh-surface-soft); }
+.page-jobhunt .jobhunt-filter-heading { display: flex; justify-content: space-between; }
+.page-jobhunt .jobhunt-filter-heading button { border: 0; color: var(--jh-accent); background: transparent; font: inherit; font-size: .7rem; font-weight: 800; cursor: pointer; }
+.page-jobhunt .jobhunt-job-filters label,
+.page-jobhunt .jobhunt-inline-select { display: grid; gap: 4px; color: var(--jh-muted); font-size: .67rem; font-weight: 750; }
+.page-jobhunt input,
+.page-jobhunt select,
+.page-jobhunt textarea { width: 100%; min-height: 38px; padding: 8px 10px; border: 1px solid var(--jh-line); border-radius: 8px; outline: 0; color: var(--jh-text); background: var(--jh-surface); font: inherit; font-size: .76rem; }
+.page-jobhunt textarea { resize: vertical; }
+.page-jobhunt input:focus,
+.page-jobhunt select:focus,
+.page-jobhunt textarea:focus { border-color: var(--jh-accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--jh-accent) 13%, transparent); }
+.page-jobhunt .jobhunt-job-list-pane { min-width: 0; border-right: 1px solid var(--jh-line); }
+.page-jobhunt .jobhunt-pane-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px; border-bottom: 1px solid var(--jh-line); }
+.page-jobhunt .jobhunt-pane-head > div { display: grid; gap: 2px; }
+.page-jobhunt .jobhunt-pane-head span { color: var(--jh-muted); font-size: .66rem; }
+.page-jobhunt .jobhunt-offers-list { display: grid; max-height: 730px; overflow: auto; }
+.page-jobhunt .jobhunt-job-row { display: grid; gap: 8px; width: 100%; padding: 14px; border: 0; border-bottom: 1px solid var(--jh-line); color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.page-jobhunt .jobhunt-job-row:hover,
+.page-jobhunt .jobhunt-job-row.is-selected { background: var(--jh-accent-soft); }
+.page-jobhunt .jobhunt-job-row.is-selected { box-shadow: inset 3px 0 var(--jh-accent); }
+.page-jobhunt .jobhunt-job-row-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.page-jobhunt .jobhunt-job-row-top > div { display: grid; gap: 3px; min-width: 0; }
+.page-jobhunt .jobhunt-job-row-top span { color: var(--jh-muted); font-size: .66rem; }
+.page-jobhunt .jobhunt-job-row-top strong { overflow: hidden; font-size: .83rem; text-overflow: ellipsis; white-space: nowrap; }
+.page-jobhunt .jobhunt-job-row > p { margin: 0; color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-job-row footer { display: flex; justify-content: space-between; color: var(--jh-muted); font-size: .64rem; }
+.page-jobhunt .jobhunt-job-detail-pane { min-width: 0; max-height: 790px; overflow: auto; padding: 22px; }
+.page-jobhunt .jobhunt-job-detail { display: grid; gap: 23px; }
+.page-jobhunt .jobhunt-job-detail-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.page-jobhunt .jobhunt-job-detail-header h2 { margin: 4px 0; font-size: 1.5rem; line-height: 1.15; }
+.page-jobhunt .jobhunt-job-detail-header p { margin: 0; color: var(--jh-muted); font-size: .76rem; }
+.page-jobhunt .jobhunt-job-action-stack { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 5px; }
+.page-jobhunt .jobhunt-job-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.page-jobhunt .jobhunt-job-meta > div { display: grid; gap: 4px; min-width: 0; padding: 10px; border: 1px solid var(--jh-line); border-radius: 9px; background: var(--jh-surface-soft); }
+.page-jobhunt .jobhunt-job-meta span { color: var(--jh-muted); font-size: .62rem; }
+.page-jobhunt .jobhunt-job-meta strong { overflow: hidden; font-size: .74rem; text-overflow: ellipsis; white-space: nowrap; }
+.page-jobhunt .jobhunt-job-detail section { padding-top: 18px; border-top: 1px solid var(--jh-line); }
+.page-jobhunt .jobhunt-job-detail h3 { margin: 3px 0 0; font-size: 1rem; }
+.page-jobhunt .jobhunt-job-detail h4 { margin: 13px 0 5px; font-size: .75rem; }
+.page-jobhunt .jobhunt-job-detail ul { margin: 0; padding-left: 18px; color: var(--jh-muted); font-size: .75rem; line-height: 1.55; }
+.page-jobhunt .jobhunt-evaluation-summary-list { display: grid; gap: 7px; }
+.page-jobhunt .jobhunt-evaluation-summary-list article { display: grid; gap: 8px; padding: 11px; border: 1px solid var(--jh-line); border-radius: 9px; }
+.page-jobhunt .jobhunt-evaluation-summary-list article > div:first-child { display: flex; justify-content: space-between; gap: 10px; }
+.page-jobhunt .jobhunt-evaluation-summary-list article span { color: var(--jh-muted); font-size: .68rem; }
+.page-jobhunt .jobhunt-evaluation-summary-list a,
+.page-jobhunt .jobhunt-evaluation-summary-list button { justify-self: start; border: 0; color: var(--jh-accent); background: transparent; font: inherit; font-size: .7rem; font-weight: 800; text-decoration: none; cursor: pointer; }
+.page-jobhunt .jobhunt-application-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin: 0; }
+.page-jobhunt .jobhunt-application-facts div { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--jh-line); }
+.page-jobhunt .jobhunt-application-facts dt { color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-application-facts dd { margin: 0; font-size: .72rem; font-weight: 800; }
+.page-jobhunt .jobhunt-note { padding: 10px; border-radius: 8px; background: var(--jh-surface-soft); white-space: pre-wrap; }
+.page-jobhunt .jobhunt-history-list { display: grid; gap: 5px; padding: 8px 0 0; list-style: none; }
+.page-jobhunt .jobhunt-history-list li { display: flex; justify-content: space-between; gap: 12px; color: var(--jh-muted); font-size: .68rem; }
+.page-jobhunt .jobhunt-evidence { padding: 13px; border: 1px solid var(--jh-line); border-radius: 10px; }
+.page-jobhunt .jobhunt-evidence summary { font-size: .76rem; font-weight: 850; cursor: pointer; }
+.page-jobhunt .jobhunt-evidence > p { color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-original-link { color: var(--jh-accent); font-size: .75rem; font-weight: 800; }
+
+.page-jobhunt .jobhunt-pipeline-board { display: grid; grid-template-columns: repeat(5, minmax(190px, 1fr)); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.page-jobhunt .jobhunt-pipeline-column { min-height: 420px; padding: 12px; border: 1px solid var(--jh-line); border-radius: 12px; background: var(--jh-surface-soft); }
+.page-jobhunt .jobhunt-pipeline-column > header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.page-jobhunt .jobhunt-pipeline-column h3 { margin: 0; font-size: .82rem; }
+.page-jobhunt .jobhunt-pipeline-column header span { color: var(--jh-muted); font-size: .72rem; }
+.page-jobhunt .jobhunt-pipeline-column > div { display: grid; gap: 7px; }
+.page-jobhunt .jobhunt-pipeline-column > div > p { color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-application-card { display: grid; gap: 4px; padding: 11px; border: 1px solid var(--jh-line); border-radius: 9px; color: inherit; background: var(--jh-surface); text-align: left; cursor: pointer; }
+.page-jobhunt .jobhunt-application-card strong { font-size: .76rem; }
+.page-jobhunt .jobhunt-application-card span,
+.page-jobhunt .jobhunt-application-card small { color: var(--jh-muted); font-size: .66rem; }
+.page-jobhunt .jobhunt-application-agenda { margin-top: 24px; padding: 18px; border: 1px solid var(--jh-line); border-radius: 12px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-application-agenda h2 { margin: 3px 0 13px; }
+.page-jobhunt .jobhunt-application-agenda > div:last-child { display: grid; }
+.page-jobhunt .jobhunt-application-agenda button { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 12px; padding: 11px 0; border: 0; border-top: 1px solid var(--jh-line); color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.page-jobhunt .jobhunt-application-agenda button > span { display: grid; gap: 2px; }
+.page-jobhunt .jobhunt-application-agenda time,
+.page-jobhunt .jobhunt-application-agenda small,
+.page-jobhunt .jobhunt-application-agenda em { color: var(--jh-muted); font-size: .7rem; font-style: normal; }
+
+.page-jobhunt .jobhunt-workspace-intro { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 17px; }
+.page-jobhunt .jobhunt-workspace-intro h2 { margin: 4px 0; font-size: 1.25rem; }
+.page-jobhunt .jobhunt-workspace-intro p { max-width: 720px; margin: 0; color: var(--jh-muted); font-size: .78rem; }
+.page-jobhunt .jobhunt-source-product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+.page-jobhunt .jobhunt-source-product-card { display: grid; gap: 14px; padding: 18px; border: 1px solid var(--jh-line); border-radius: 13px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-source-product-card header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.page-jobhunt .jobhunt-source-product-card header > div { display: grid; gap: 3px; }
+.page-jobhunt .jobhunt-source-product-card header span { color: var(--jh-muted); font-size: .66rem; }
+.page-jobhunt .jobhunt-source-product-card h2 { margin: 0; font-size: 1rem; }
+.page-jobhunt .jobhunt-source-product-card > p { min-height: 38px; margin: 0; color: var(--jh-muted); font-size: .73rem; line-height: 1.45; }
+.page-jobhunt .jobhunt-source-product-card dl { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 0; }
+.page-jobhunt .jobhunt-source-product-card dl div { display: grid; gap: 3px; }
+.page-jobhunt .jobhunt-source-product-card dt { color: var(--jh-muted); font-size: .62rem; }
+.page-jobhunt .jobhunt-source-product-card dd { margin: 0; font-size: .76rem; font-weight: 800; }
+.page-jobhunt .jobhunt-source-product-card footer { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 12px; border-top: 1px solid var(--jh-line); }
+.page-jobhunt .jobhunt-inline-error { display: grid; gap: 3px; padding: 10px; border-radius: 8px; color: var(--jh-negative); background: color-mix(in oklab, var(--jh-negative) 8%, var(--jh-surface)); font-size: .7rem; }
+.page-jobhunt .jobhunt-inline-error small { color: var(--jh-muted); }
+.page-jobhunt .jobhunt-source-detail { margin-top: 18px; padding: 20px; border: 1px solid var(--jh-line); border-radius: 13px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-source-detail > header { display: flex; justify-content: space-between; }
+.page-jobhunt .jobhunt-source-detail h2 { margin: 4px 0 15px; }
+.page-jobhunt .jobhunt-source-detail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.page-jobhunt .jobhunt-source-detail-grid div { display: grid; gap: 3px; padding: 10px; border-radius: 8px; background: var(--jh-surface-soft); }
+.page-jobhunt .jobhunt-source-detail-grid dt { color: var(--jh-muted); font-size: .64rem; }
+.page-jobhunt .jobhunt-source-detail-grid dd { margin: 0; font-size: .76rem; font-weight: 800; }
+.page-jobhunt .jobhunt-source-detail pre { max-height: 310px; overflow: auto; padding: 12px; border-radius: 8px; color: var(--jh-muted); background: var(--jh-surface-soft); font-size: .68rem; white-space: pre-wrap; }
+.page-jobhunt .jobhunt-setup-note { color: var(--jh-muted); font-size: .72rem; }
+
+.page-jobhunt .jobhunt-subnav,
+.page-jobhunt .jobhunt-review-tabs,
+.page-jobhunt .jobhunt-track-tabs { display: flex; gap: 4px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--jh-line); }
+.page-jobhunt .jobhunt-subnav button,
+.page-jobhunt .jobhunt-track-tabs button,
+.page-jobhunt .jobhunt-review-tabs a { min-height: 34px; padding: 0 11px; border: 0; border-radius: 7px; color: var(--jh-muted); background: transparent; font: inherit; font-size: .73rem; font-weight: 800; text-decoration: none; cursor: pointer; }
+.page-jobhunt .jobhunt-subnav button.is-active,
+.page-jobhunt .jobhunt-subnav button[aria-selected="true"],
+.page-jobhunt .jobhunt-track-tabs button.is-active,
+.page-jobhunt .jobhunt-review-tabs a.is-active { color: var(--jh-accent); background: var(--jh-accent-soft); }
+.page-jobhunt .jobhunt-career-content { display: grid; gap: 13px; }
+.page-jobhunt .jobhunt-profile-sections { display: flex; gap: 5px; overflow-x: auto; padding: 4px; border: 1px solid var(--jh-line); border-radius: 10px; background: var(--jh-surface-soft); scrollbar-width: thin; }
+.page-jobhunt .jobhunt-profile-sections button { flex: 0 0 auto; min-height: 34px; padding: 0 11px; border: 0; border-radius: 7px; color: var(--jh-muted); background: transparent; font: inherit; font-size: .7rem; font-weight: 800; cursor: pointer; }
+.page-jobhunt .jobhunt-profile-sections button.is-active { color: var(--jh-accent); background: var(--jh-surface); box-shadow: 0 1px 3px rgba(20, 29, 25, .08); }
+.page-jobhunt .jobhunt-guidance { display: grid; gap: 4px; padding: 12px; border-radius: 9px; color: var(--jh-muted); background: var(--jh-accent-soft); font-size: .7rem; }
+.page-jobhunt .jobhunt-guidance strong { color: var(--jh-text); font-size: .76rem; }
+.page-jobhunt .jobhunt-career-version { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; padding: 11px; border: 1px solid var(--jh-line); border-radius: 9px; background: var(--jh-surface-soft); font-size: .7rem; }
+.page-jobhunt .jobhunt-career-version span { color: var(--jh-muted); }
+.page-jobhunt .jobhunt-career-block { position: relative; padding: 17px; border: 1px solid var(--jh-line); border-radius: 12px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-career-block-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 11px; }
+.page-jobhunt .jobhunt-career-block-head > div { display: grid; gap: 3px; }
+.page-jobhunt .jobhunt-career-block-head h3,
+.page-jobhunt .jobhunt-career-block > h3 { margin: 0; font-size: .92rem; }
+.page-jobhunt .jobhunt-career-block-head span { color: var(--jh-muted); font-size: .68rem; }
+.page-jobhunt .jobhunt-career-records { display: grid; gap: 6px; }
+.page-jobhunt .jobhunt-career-record { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 11px; border: 1px solid var(--jh-line); border-radius: 9px; background: var(--jh-surface-soft); }
+.page-jobhunt .jobhunt-career-record > div:first-child { display: grid; gap: 3px; }
+.page-jobhunt .jobhunt-career-record strong { font-size: .76rem; }
+.page-jobhunt .jobhunt-career-record span,
+.page-jobhunt .jobhunt-career-record small { color: var(--jh-muted); font-size: .67rem; }
+.page-jobhunt .jobhunt-career-empty { display: grid; gap: 3px; padding: 15px; border: 1px dashed var(--jh-line); border-radius: 9px; color: var(--jh-muted); }
+.page-jobhunt .jobhunt-career-empty strong { color: var(--jh-text); font-size: .76rem; }
+.page-jobhunt .jobhunt-career-empty span { font-size: .68rem; }
+.page-jobhunt .jobhunt-career-form,
+.page-jobhunt .jobhunt-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+.page-jobhunt .jobhunt-career-form > label,
+.page-jobhunt .jobhunt-form > label { display: grid; gap: 5px; color: var(--jh-muted); font-size: .68rem; font-weight: 750; }
+.page-jobhunt .jobhunt-field-wide { grid-column: 1 / -1; }
+.page-jobhunt .jobhunt-profile-drawer { position: fixed; z-index: 2000; inset: 0 0 0 auto; width: min(560px, 100vw); align-content: start; overflow: auto; padding: 24px; color: var(--jh-text); background: var(--jh-surface); box-shadow: -20px 0 80px rgba(0,0,0,.25); }
+.page-jobhunt .jobhunt-profile-drawer::before { position: fixed; z-index: -1; inset: 0 560px 0 0; background: rgba(0,0,0,.45); content: ""; }
+.page-jobhunt .jobhunt-advanced-field { padding: 10px; border: 1px solid var(--jh-line); border-radius: 8px; }
+.page-jobhunt .jobhunt-advanced-field p { color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-track-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 10px; }
+.page-jobhunt .jobhunt-track-card { display: grid; gap: 11px; padding: 17px; border: 1px solid var(--jh-line); border-radius: 12px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-track-card h3,
+.page-jobhunt .jobhunt-track-card p { margin: 0; }
+.page-jobhunt .jobhunt-track-card p,
+.page-jobhunt .jobhunt-track-card small { color: var(--jh-muted); font-size: .72rem; }
+.page-jobhunt .jobhunt-track-card-head,
+.page-jobhunt .jobhunt-track-counts,
+.page-jobhunt .jobhunt-track-toolbar,
+.page-jobhunt .jobhunt-details-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.page-jobhunt .jobhunt-track-overview { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 14px; }
+.page-jobhunt .jobhunt-track-overview > div { display: grid; gap: 4px; padding: 11px; border: 1px solid var(--jh-line); border-radius: 9px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-track-overview span { color: var(--jh-muted); font-size: .65rem; }
+.page-jobhunt .jobhunt-track-overview p { margin: 0; color: var(--jh-muted); font-size: .72rem; }
+.page-jobhunt .jobhunt-review-workspace { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 14px; }
+.page-jobhunt .jobhunt-review-workspace > section { min-width: 0; padding: 17px; border: 1px solid var(--jh-line); border-radius: 12px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-skills-workspace { display: grid; grid-template-columns: minmax(330px, .8fr) minmax(480px, 1.2fr); gap: 14px; }
+.page-jobhunt .jobhunt-skills-workspace > section { min-width: 0; padding: 17px; border: 1px solid var(--jh-line); border-radius: 12px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-inline-select { min-width: 180px; }
+
+.page-jobhunt .jobhunt-advanced-shell { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 18px; }
+.page-jobhunt .jobhunt-advanced-shell > aside { display: grid; align-content: start; gap: 3px; }
+.page-jobhunt .jobhunt-advanced-shell > aside a { padding: 10px 11px; border-radius: 8px; color: var(--jh-muted); font-size: .74rem; font-weight: 800; text-decoration: none; }
+.page-jobhunt .jobhunt-advanced-shell > aside a.is-active { color: var(--jh-accent); background: var(--jh-accent-soft); }
+.page-jobhunt .jobhunt-advanced-content { min-width: 0; }
+.page-jobhunt .jobhunt-diagnostics-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.page-jobhunt .jobhunt-diagnostics-grid article { display: grid; gap: 5px; padding: 16px; border: 1px solid var(--jh-line); border-radius: 11px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-diagnostics-grid span,
+.page-jobhunt .jobhunt-diagnostics-grid p { margin: 0; color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-diagnostics-grid strong { font-size: 1rem; }
+.page-jobhunt .jobhunt-advanced-link-list,
+.page-jobhunt .jobhunt-legacy-list { display: grid; gap: 7px; }
+.page-jobhunt .jobhunt-advanced-link-list a,
+.page-jobhunt .jobhunt-legacy-list article { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px; border: 1px solid var(--jh-line); border-radius: 9px; color: inherit; background: var(--jh-surface); text-decoration: none; }
+.page-jobhunt .jobhunt-advanced-link-list span,
+.page-jobhunt .jobhunt-legacy-list span,
+.page-jobhunt .jobhunt-legacy-list small { color: var(--jh-muted); font-size: .7rem; }
+.page-jobhunt .jobhunt-legacy-workspace { display: grid; gap: 16px; }
+.page-jobhunt .jobhunt-legacy-workspace > section { padding: 17px; border: 1px solid var(--jh-line); border-radius: 11px; background: var(--jh-surface); }
+.page-jobhunt .jobhunt-settings { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
+.page-jobhunt .jobhunt-settings label { display: grid; grid-template-columns: 1fr 80px; align-items: center; gap: 8px; color: var(--jh-muted); font-size: .7rem; }
+
+.page-jobhunt .jobhunt-dialog { width: min(610px, calc(100vw - 28px)); max-height: calc(100vh - 38px); overflow: auto; padding: 22px; border: 1px solid var(--jh-line); border-radius: 14px; color: var(--jh-text); background: var(--jh-surface); box-shadow: 0 30px 100px rgba(0,0,0,.35); }
+.page-jobhunt .jobhunt-dialog-wide { width: min(680px, calc(100vw - 28px)); }
+.page-jobhunt .jobhunt-dialog::backdrop { background: rgba(8,8,12,.65); backdrop-filter: blur(3px); }
+.page-jobhunt .jobhunt-dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.page-jobhunt .jobhunt-dialog-head h2,
+.page-jobhunt .jobhunt-dialog-head h3 { margin: 4px 0 0; }
+.page-jobhunt .jobhunt-dialog-intro { margin: 0; color: var(--jh-muted); font-size: .76rem; }
+.page-jobhunt .jobhunt-icon-button { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border: 0; border-radius: 8px; color: var(--jh-muted); background: var(--jh-surface-soft); font-size: 1.2rem; cursor: pointer; }
+.page-jobhunt .jobhunt-form-error { min-height: 18px; color: var(--jh-negative); font-size: .72rem; }
+.page-jobhunt .jobhunt-empty-state,
+.page-jobhunt .jobhunt-workspace-error { display: grid; place-items: center; gap: 7px; min-height: 190px; padding: 24px; color: var(--jh-muted); text-align: center; }
+.page-jobhunt .jobhunt-empty-state strong,
+.page-jobhunt .jobhunt-workspace-error h2 { margin: 0; color: var(--jh-text); }
+.page-jobhunt .jobhunt-empty-state p,
+.page-jobhunt .jobhunt-workspace-error p { max-width: 480px; margin: 0; }
+.page-jobhunt .jobhunt-empty-inline { padding: 15px; border: 1px dashed var(--jh-line); border-radius: 9px; color: var(--jh-muted); font-size: .72rem; text-align: center; }
+.page-jobhunt .jobhunt-validation { padding: 10px; border: 1px solid var(--jh-line); border-radius: 8px; color: var(--jh-muted); font-size: .72rem; }
+.page-jobhunt .jobhunt-validation[data-tone="error"] { border-color: color-mix(in oklab, var(--jh-negative) 38%, var(--jh-line)); color: var(--jh-negative); }
+.page-jobhunt .jobhunt-validation[data-tone="warning"] { border-color: color-mix(in oklab, var(--jh-warning) 38%, var(--jh-line)); color: var(--jh-warning); }
+.page-jobhunt .jobhunt-validation[data-tone="success"] { border-color: color-mix(in oklab, var(--jh-positive) 38%, var(--jh-line)); color: var(--jh-positive); }
+.page-jobhunt .jobhunt-muted { color: var(--jh-muted); font-size: .72rem; }
+
+@media (max-width: 1180px) {
+  .page-jobhunt .jobhunt-jobs-layout { grid-template-columns: 180px minmax(270px, .9fr) minmax(340px, 1.1fr); }
+  .page-jobhunt .jobhunt-opportunity-grid,
+  .page-jobhunt .jobhunt-source-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .page-jobhunt .jobhunt-skills-workspace { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .page-jobhunt .jobhunt-app-shell { grid-template-columns: 78px minmax(0, 1fr); }
+  .page-jobhunt .jobhunt-app-sidebar { padding: 18px 10px; }
+  .page-jobhunt .jobhunt-brand { justify-content: center; padding-inline: 0; }
+  .page-jobhunt .jobhunt-brand > span:last-child,
+  .page-jobhunt .jobhunt-nav a > span:nth-child(2),
+  .page-jobhunt .jobhunt-sidebar-foot { display: none; }
+  .page-jobhunt .jobhunt-nav a { grid-template-columns: 1fr; justify-items: center; }
+  .page-jobhunt .jobhunt-nav-count { position: absolute; margin: -22px 0 0 24px; }
+  .page-jobhunt .jobhunt-jobs-layout { grid-template-columns: 180px minmax(300px, 1fr); }
+  .page-jobhunt .jobhunt-job-detail-pane { grid-column: 1 / -1; max-height: none; border-top: 1px solid var(--jh-line); }
+  .page-jobhunt .jobhunt-attention-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-jobhunt .jobhunt-advanced-shell { grid-template-columns: 1fr; }
+  .page-jobhunt .jobhunt-advanced-shell > aside { display: flex; overflow-x: auto; }
+}
+
+@media (max-width: 680px) {
+  .page-jobhunt .jobhunt-app-shell { display: block; }
+  .page-jobhunt .jobhunt-app-sidebar { position: sticky; z-index: 100; top: 0; width: 100%; height: auto; padding: 8px; border: 0; border-bottom: 1px solid var(--jh-line); }
+  .page-jobhunt .jobhunt-brand { display: none; }
+  .page-jobhunt .jobhunt-nav { display: flex; overflow-x: auto; }
+  .page-jobhunt .jobhunt-nav a { min-width: 44px; flex: 0 0 auto; }
+  .page-jobhunt .jobhunt-app-main { padding: 20px 13px 42px; }
+  .page-jobhunt .jobhunt-topbar { display: grid; }
+  .page-jobhunt .jobhunt-top-actions { justify-content: flex-start; }
+  .page-jobhunt .jobhunt-attention-grid,
+  .page-jobhunt .jobhunt-opportunity-grid,
+  .page-jobhunt .jobhunt-source-product-grid,
+  .page-jobhunt .jobhunt-source-detail-grid,
+  .page-jobhunt .jobhunt-track-overview,
+  .page-jobhunt .jobhunt-diagnostics-grid { grid-template-columns: 1fr; }
+  .page-jobhunt .jobhunt-jobs-layout { display: block; }
+  .page-jobhunt .jobhunt-job-filters { border-right: 0; border-bottom: 1px solid var(--jh-line); }
+  .page-jobhunt .jobhunt-job-list-pane { border-right: 0; }
+  .page-jobhunt .jobhunt-job-detail-header,
+  .page-jobhunt .jobhunt-section-heading { align-items: flex-start; flex-direction: column; }
+  .page-jobhunt .jobhunt-job-action-stack { justify-content: flex-start; }
+  .page-jobhunt .jobhunt-job-meta,
+  .page-jobhunt .jobhunt-application-facts,
+  .page-jobhunt .jobhunt-settings,
+  .page-jobhunt .jobhunt-career-form,
+  .page-jobhunt .jobhunt-form { grid-template-columns: 1fr; }
+  .page-jobhunt .jobhunt-field-wide { grid-column: auto; }
+  .page-jobhunt .jobhunt-review-workspace { grid-template-columns: 1fr; }
+  .page-jobhunt .jobhunt-profile-drawer { width: 100vw; }
+  .page-jobhunt .jobhunt-profile-drawer::before { display: none; }
+}
+/* Pack M: bounded analytics, trade-offs, intelligence, and experiments. */
+.jobhunt-insights,
+.jobhunt-analytics-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.jobhunt-insights-tabs {
+  display: flex;
+  gap: .4rem;
+  overflow-x: auto;
+  padding-bottom: .25rem;
+}
+
+.jobhunt-insights-tabs a {
+  border: 1px solid var(--jh-line);
+  border-radius: 999px;
+  color: inherit;
+  padding: .55rem .8rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.jobhunt-insights-tabs a.is-active {
+  background: var(--jh-text);
+  border-color: var(--jh-text);
+  color: #fff;
+}
+
+.jobhunt-insights-toolbar,
+.jobhunt-home-insights {
+  align-items: center;
+  background: var(--jh-surface, #fff);
+  border: 1px solid var(--jh-line);
+  border-radius: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.jobhunt-insights-toolbar p,
+.jobhunt-home-insights p,
+.jobhunt-home-insights h2 {
+  margin: 0;
+}
+
+.jobhunt-insight-metrics {
+  display: grid;
+  gap: .8rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.jobhunt-insight-metric,
+.jobhunt-analytics-card,
+.jobhunt-intelligence-grid article,
+.jobhunt-experiment-list article,
+.jobhunt-scenario-editor,
+.jobhunt-track-analytics {
+  background: var(--jh-surface, #fff);
+  border: 1px solid var(--jh-line);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.jobhunt-insight-metric {
+  display: grid;
+  gap: .25rem;
+}
+
+.jobhunt-insight-metric strong {
+  font-size: 1.55rem;
+}
+
+.jobhunt-insight-metric small,
+.jobhunt-data-table small {
+  color: var(--jh-muted, #687086);
+  display: block;
+}
+
+.jobhunt-coverage-grid,
+.jobhunt-funnel {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.jobhunt-coverage-grid > div,
+.jobhunt-funnel > div {
+  background: var(--jh-surface-soft);
+  border-radius: .8rem;
+  display: grid;
+  gap: .2rem;
+  padding: .8rem;
+}
+
+.jobhunt-table-wrap {
+  overflow-x: auto;
+}
+
+.jobhunt-data-table {
+  border-collapse: collapse;
+  min-width: 760px;
+  width: 100%;
+}
+
+.jobhunt-data-table th,
+.jobhunt-data-table td {
+  border-bottom: 1px solid var(--jh-line);
+  padding: .75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.jobhunt-data-table thead th,
+.jobhunt-tradeoff-table tbody th {
+  background: var(--jh-surface-soft);
+}
+
+.jobhunt-method-note {
+  color: var(--jh-muted, #687086);
+  font-size: .86rem;
+}
+
+.jobhunt-two-column,
+.jobhunt-intelligence-grid,
+.jobhunt-scenario-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.jobhunt-two-column p {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.jobhunt-track-compare-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem 1rem;
+}
+
+.jobhunt-track-compare-picker label {
+  align-items: center;
+  display: flex;
+  gap: .4rem;
+}
+
+.jobhunt-scenario-editor summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.jobhunt-scenario-editor form,
+.jobhunt-experiment-create,
+.jobhunt-experiment-complete,
+.jobhunt-experiment-outcome form {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.jobhunt-scenario-editor label,
+.jobhunt-experiment-create label,
+.jobhunt-experiment-complete label,
+.jobhunt-experiment-outcome label {
+  display: grid;
+  gap: .3rem;
+}
+
+.jobhunt-intelligence-grid article,
+.jobhunt-experiment-list article {
+  display: grid;
+  gap: .75rem;
+}
+
+.jobhunt-intelligence-grid h3,
+.jobhunt-intelligence-grid h4,
+.jobhunt-intelligence-grid p,
+.jobhunt-experiment-list h3,
+.jobhunt-experiment-list p {
+  margin: 0;
+}
+
+.jobhunt-intelligence-grid form {
+  display: flex;
+  gap: .5rem;
+}
+
+.jobhunt-experiment-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.jobhunt-track-analytics {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .jobhunt-insight-metrics,
+  .jobhunt-two-column,
+  .jobhunt-intelligence-grid,
+  .jobhunt-scenario-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .jobhunt-insight-metrics,
+  .jobhunt-two-column,
+  .jobhunt-intelligence-grid,
+  .jobhunt-scenario-grid,
+  .jobhunt-scenario-editor form,
+  .jobhunt-experiment-create,
+  .jobhunt-experiment-complete,
+  .jobhunt-experiment-outcome form {
+    grid-template-columns: 1fr;
+  }
+
+  .jobhunt-insights-toolbar,
+  .jobhunt-home-insights {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

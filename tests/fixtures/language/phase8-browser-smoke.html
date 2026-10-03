@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 8 browser smoke: pending</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/language.css">
+</head>
+<body class="language-page">
+  <main class="language-content">
+    <section id="generate"></section>
+    <section id="reader"></section>
+    <section id="ordinary"></section>
+    <output id="result">PENDING</output>
+  </main>
+  <script type="module">
+    import { renderGenerate } from '/js/language/views/generate.js';
+    import { renderReaderDocument } from '/js/language/views/reader.js';
+
+    const assertions = [];
+    const check = (value, label) => assertions.push({ value: Boolean(value), label });
+    let cancelled = 0;
+    renderGenerate(document.querySelector('#generate'), {
+      busy: false, error: null, notice: '', topics: [],
+      providerHealth: { state: 'CONFIGURED', configured: true, modelId: 'gemini-3.8-flash', policy: 'FREE_ONLY' },
+      form: { generationMode: 'AUTOMATIC', length: 400, difficultyPreset: 'BALANCED', targetCoverage: 95, customTopic: '', grammarFocus: '', styleInstruction: '', referenceEnrichment: true },
+      request: { id: 'r'.repeat(32), generationMode: 'AUTOMATIC', automaticStatus: 'RUNNING', automaticStage: 'GEMINI_ATTEMPT_2_OF_3', automaticProgress: .5, maxProviderAttempts: 3 },
+      contextPack: { estimatedCharacterCount: 500, files: { 'prompt.md': 'Natural contemporary Norwegian Bokmål.', 'known-vocabulary.txt': 'jobb', 'focus-vocabulary.json': { items: [] }, 'metadata.json': { knownVocabularyIncluded: 1, focusVocabularyCount: 1 } } },
+      candidates: [{ id: 'c'.repeat(32), attemptNumber: 1, title: 'Første forsøk', source: 'AUTOMATIC_GEMINI', providerId: 'GEMINI', modelId: 'gemini-3.8-flash', status: 'OUT_OF_TOLERANCE', isBestCandidate: true, analysis: { coverage: { tokenCoveragePercent: 91.2, uniqueLemmaCoveragePercent: 88 }, requestedTokenCoveragePercent: 95, tolerancePercentagePoints: 1, length: { actualWords: 380, requestedWords: 400 }, problematicWords: [{ lemma: 'sjeldent', count: 2 }], targetUsage: [{ lemma: 'jobb', count: 0 }] } }],
+    }, {
+      onCreate: () => {}, onStartAutomatic: () => {}, onCancelAutomatic: () => { cancelled += 1; }, onCopy: () => {}, onExport: () => {}, onImport: () => {}, onAnalyze: () => {}, onRevision: () => {}, onAccept: () => {}, onReject: () => {}, onSaveExpression: async () => ({}),
+    });
+    const generate = document.querySelector('#generate');
+    check(generate.textContent.includes('Automatic · Gemini free tier') && generate.textContent.includes('FREE_ONLY'), 'automatic mode and free-only policy visible');
+    check(generate.textContent.includes('GEMINI ATTEMPT 2 OF 3') && generate.querySelector('progress')?.getAttribute('value') === '0.5', 'durable progress visible');
+    check(generate.textContent.includes('BEST AVAILABLE') && generate.textContent.includes('OUT OF TOLERANCE'), 'honest best failed candidate visible');
+    [...generate.querySelectorAll('button')].find((button) => button.textContent.startsWith('Cancel')).click();
+    check(cancelled === 1, 'cancel control works');
+
+    const sentence = { id: 's'.repeat(32), sentenceOrder: 0, sourceStart: 0, sourceEnd: 11, exactText: 'Jeg jobber.' };
+    const secondSentence = { id: 't'.repeat(32), sentenceOrder: 1, sourceStart: 12, sourceEnd: 21, exactText: 'Du leser.' };
+    let played = 0; let paused = 0; let resumed = 0; let stopped = 0;
+    let activeAudioCallbacks = null;
+    const basePayload = {
+      document: { id: 'd'.repeat(32), title: 'Generert tekst', rawText: 'Jeg jobber. Du leser.', sourceType: 'GENERATED_GEMINI', processingState: 'ANALYZED' },
+      sentences: [sentence, secondSentence], tokens: [], coverage: { tokenCoveragePercent: 100, uniqueLemmaCoveragePercent: 100 },
+      readingProgress: null, latestJob: null, referenceProfile: { available: false }, analysisRuns: [],
+    };
+    const baseHandlers = {
+      onOpenLemma: () => {}, onSaveExpression: async () => ({}), onAnalyze: () => {}, onStart: () => {}, onPause: () => {}, onComplete: () => {},
+      onPlayAudio: async (_sentence, callbacks) => { played += 1; activeAudioCallbacks = callbacks; callbacks.onPlaying(); },
+      onPauseAudio: () => { paused += 1; }, onResumeAudio: async () => { resumed += 1; }, onStopAudio: () => { stopped += 1; },
+    };
+    const readerView = renderReaderDocument(document.querySelector('#reader'), basePayload, baseHandlers);
+    const reader = document.querySelector('#reader');
+    check(reader.textContent.includes('Play text') && reader.textContent.includes('Play current sentence') && reader.textContent.includes('Pause') && reader.textContent.includes('Resume') && reader.textContent.includes('Stop'), 'generated sentence and whole-text audio controls visible');
+    [...reader.querySelectorAll('button')].find((button) => button.textContent === 'Play current sentence').click();
+    await new Promise((resolve) => setTimeout(resolve));
+    check(played === 1 && readerView.source.querySelector('[aria-current="true"]')?.classList.contains('is-audio-playing'), 'playing sentence visibly and accessibly highlighted');
+    const audioControls = reader.querySelector('.language-reader-audio');
+    [...audioControls.querySelectorAll('button')].find((button) => button.textContent === 'Pause').click();
+    [...audioControls.querySelectorAll('button')].find((button) => button.textContent === 'Resume').click();
+    await new Promise((resolve) => setTimeout(resolve));
+    [...audioControls.querySelectorAll('button')].find((button) => button.textContent === 'Stop').click();
+    check(paused === 1 && resumed === 1 && stopped === 1, `pause resume and stop controls work (${paused}/${resumed}/${stopped})`);
+    [...audioControls.querySelectorAll('button')].find((button) => button.textContent === 'Play text').click();
+    await new Promise((resolve) => setTimeout(resolve));
+    activeAudioCallbacks.onEnded();
+    await new Promise((resolve) => setTimeout(resolve));
+    check(played === 3 && readerView.source.querySelector(`[data-sentence-id="${secondSentence.id}"]`)?.getAttribute('aria-current') === 'true', 'Play text advances through sentence audio');
+    check(reader.textContent.includes('does not record study evidence or award XP'), 'listening boundary is explicit');
+
+    renderReaderDocument(document.querySelector('#ordinary'), {
+      ...basePayload, document: { ...basePayload.document, id: 'p'.repeat(32), sourceType: 'PASTED' },
+    }, baseHandlers);
+    check(!document.querySelector('#ordinary').textContent.includes('GENERATED TEXT AUDIO'), 'ordinary Reader text is unchanged');
+    check(document.documentElement.scrollWidth <= document.documentElement.clientWidth, 'no horizontal overflow');
+
+    const passed = assertions.filter((item) => item.value).length;
+    document.querySelector('#result').textContent = `${passed}/${assertions.length} ${passed === assertions.length ? 'PASS' : 'FAIL'}: ${assertions.map((item) => `${item.value ? '✓' : '✗'} ${item.label}`).join(' | ')}`;
+    document.title = `Phase 8 browser smoke: ${passed}/${assertions.length}`;
+    document.body.dataset.smoke = passed === assertions.length ? 'pass' : 'fail';
+  </script>
+</body>
+</html>

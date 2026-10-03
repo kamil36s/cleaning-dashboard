@@ -1,0 +1,199 @@
+.ring-page {
+  --ring-accent: #72e1c2;
+  --ring-accent-soft: rgba(114, 225, 194, .12);
+  --ring-panel: #131716;
+  --ring-raised: #191f1d;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 82% 0, rgba(71, 174, 145, .12), transparent 30rem),
+    #090b0a;
+}
+
+.ring-shell { width: min(1600px, calc(100% - 32px)); margin: 0 auto; padding: 18px 0 50px; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 18px; }
+.ring-sidebar { position: sticky; top: 18px; align-self: start; display: grid; gap: 18px; padding: 18px; border: 1px solid var(--border); border-radius: 18px; background: rgba(17, 20, 19, .95); }
+.ring-back { color: var(--muted); font-size: 12px; }
+.ring-back:hover { color: var(--ring-accent); }
+.ring-brand { display: flex; align-items: center; gap: 12px; }
+.ring-brand svg { width: 43px; color: var(--ring-accent); filter: drop-shadow(0 0 14px rgba(114, 225, 194, .2)); }
+.ring-brand span, .ring-kicker, .ring-panel header span, .ring-section-head > div > span { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.ring-brand h1, .ring-topbar h2, .ring-panel h3, .ring-section-head h3 { margin: 3px 0 0; }
+.ring-brand h1 { font-size: 23px; }
+.ring-brand-copy { min-width: 0; flex: 1; }
+.ring-sidebar-battery { --ring-battery-color: var(--ring-accent); display: grid; gap: 5px; margin-top: 10px; }
+.ring-sidebar-battery-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.ring-sidebar-battery-head span { color: #77817e; font-size: 8px; letter-spacing: .1em; }
+.ring-sidebar-battery-head strong { color: var(--ring-battery-color); font-size: 11px; font-variant-numeric: tabular-nums; line-height: 1; }
+.ring-sidebar-battery-track { height: 6px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .08); border-radius: 999px; background: #080b0a; box-shadow: inset 0 1px 3px rgba(0, 0, 0, .45); }
+.ring-sidebar-battery-track i { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, color-mix(in srgb, var(--ring-battery-color) 68%, #fff), var(--ring-battery-color)); box-shadow: 0 0 9px color-mix(in srgb, var(--ring-battery-color) 60%, transparent); transition: width .35s ease, background .25s ease; }
+.ring-sidebar-battery[data-level="medium"] { --ring-battery-color: #facc15; }
+.ring-sidebar-battery[data-level="low"] { --ring-battery-color: #fb923c; }
+.ring-sidebar-battery[data-level="critical"] { --ring-battery-color: #f87171; }
+.ring-sidebar-battery[data-level="charging"] { --ring-battery-color: #60a5fa; }
+.ring-sidebar-battery[data-level="unknown"] { --ring-battery-color: #737373; }
+.ring-sidebar-wear { display: flex; align-items: center; gap: 7px; margin-top: 8px; color: #8d9895; font-size: 9px; font-weight: 750; }
+.ring-sidebar-wear i { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: #737373; }
+.ring-sidebar-wear[data-state="worn"] { color: #9ee8d2; }
+.ring-sidebar-wear[data-state="worn"] i { background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, .55); }
+.ring-sidebar-wear[data-state="off_wrist"] { color: #fdba74; }
+.ring-sidebar-wear[data-state="off_wrist"] i { background: #f97316; box-shadow: 0 0 8px rgba(249, 115, 22, .55); }
+.ring-mode-banner { padding: 8px 10px; border: 1px solid rgba(114, 225, 194, .3); border-radius: 9px; color: var(--ring-accent); background: var(--ring-accent-soft); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-align: center; }
+.ring-mode-banner[data-mode="mock"] { border-color: rgba(251, 191, 36, .42); color: #fcd34d; background: rgba(251, 191, 36, .1); }
+.ring-tabs { display: grid; gap: 5px; }
+.ring-tabs button { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 11px; border: 1px solid transparent; border-radius: 9px; color: var(--muted); background: transparent; text-align: left; }
+.ring-tabs button small { font-size: 8px; opacity: .7; }
+.ring-tabs button:hover, .ring-tabs button.is-active { border-color: rgba(114, 225, 194, .26); color: var(--text); background: var(--ring-accent-soft); }
+.ring-tabs button.is-active { color: var(--ring-accent); }
+.ring-sidebar-note { display: grid; gap: 6px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 11px; }
+.ring-sidebar-note span, .ring-muted { color: var(--muted); line-height: 1.5; }
+
+.ring-content { min-width: 0; }
+.ring-topbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 74px; padding: 10px 3px 18px; }
+.ring-topbar h2 { font-size: clamp(28px, 4vw, 40px); }
+.ring-topbar-actions, .ring-section-head { display: flex; align-items: center; gap: 10px; }
+.ring-status { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; padding: 7px 11px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 11px; }
+.ring-status i { width: 8px; height: 8px; border-radius: 50%; background: #737373; }
+.ring-status[data-state="connected"] i, .ring-status[data-state="phone-bridge"] i { background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, .65); }
+.ring-status[data-state="working"] i, .ring-status[data-state="syncing"] i, .ring-status[data-state="measuring"] i, .ring-status[data-state="scanning"] i, .ring-status[data-state="connecting"] i { background: #fbbf24; animation: ring-pulse 1s infinite alternate; }
+.ring-status[data-state="error"] i, .ring-status[data-state="offline"] i { background: #ef4444; }
+.ring-status[data-state="off-wrist"] { border-color: rgba(249, 115, 22, .35); color: #fdba74; }
+.ring-status[data-state="off-wrist"] i { background: #f97316; box-shadow: 0 0 10px rgba(249, 115, 22, .55); }
+@keyframes ring-pulse { to { opacity: .3; transform: scale(.75); } }
+
+.ring-button { min-height: 36px; padding: 8px 13px; border: 1px solid var(--ring-accent); border-radius: 9px; color: #07120f; background: var(--ring-accent); font: inherit; font-size: 11px; font-weight: 800; cursor: pointer; }
+.ring-button-secondary { color: var(--text); border-color: var(--border); background: #161a19; }
+.ring-button:disabled { cursor: not-allowed; opacity: .38; }
+.ring-notice { margin: 0 0 14px; padding: 12px 14px; border: 1px solid rgba(239, 68, 68, .38); border-radius: 10px; color: #fecaca; background: rgba(239, 68, 68, .08); font-size: 12px; }
+.ring-notice[data-kind="success"] { border-color: rgba(34, 197, 94, .38); color: #bbf7d0; background: rgba(34, 197, 94, .08); }
+.ring-notice[data-kind="warning"] { border-color: rgba(251, 191, 36, .38); color: #fde68a; background: rgba(251, 191, 36, .08); }
+.ring-view { display: none; gap: 14px; }
+.ring-view.is-active { display: grid; }
+
+.ring-connect-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 18px; border: 1px dashed #355048; border-radius: 16px; background: linear-gradient(135deg, rgba(114, 225, 194, .07), rgba(15, 18, 17, .9)); }
+.ring-connect-card[data-kind="connected"] { border-style: solid; border-color: rgba(34, 197, 94, .35); }
+.ring-connect-icon { display: grid; place-items: center; width: 45px; height: 45px; border: 2px solid var(--ring-accent); border-radius: 50%; color: var(--ring-accent); font-size: 24px; }
+.ring-connect-card h3 { margin: 0 0 4px; font-size: 17px; }
+.ring-connect-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.ring-connect-card .ring-recovery { margin-top: 7px; color: #fde68a; }
+.ring-found-devices { grid-column: 2 / -1; display: grid; gap: 7px; }
+.ring-device-option { display: grid; gap: 3px; padding: 10px; border: 1px solid var(--border); border-radius: 9px; color: var(--text); background: #121514; text-align: left; }
+.ring-device-option span { color: var(--muted); font-size: 10px; }
+
+.ring-metric-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.ring-metric-grid article { display: grid; gap: 6px; min-height: 116px; padding: 15px; border: 1px solid var(--border); border-radius: 14px; background: var(--ring-panel); }
+.ring-metric-grid span { color: var(--muted); font-size: 11px; }
+.ring-metric-grid strong { align-self: end; color: #eefcf8; font-size: 25px; }
+.ring-metric-grid small { color: #69736f; font-size: 9px; line-height: 1.35; }
+.ring-metric-grid-small { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ring-heart-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ring-heart-summary article { border-color: rgba(251, 113, 133, .18); background: linear-gradient(145deg, rgba(251, 113, 133, .055), var(--ring-panel) 55%); }
+.ring-live-state { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+.ring-live-state::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #737373; }
+.ring-live-state[data-live="true"] { color: #bbf7d0; border-color: rgba(34, 197, 94, .32); background: rgba(34, 197, 94, .07); }
+.ring-live-state[data-live="true"]::before { background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, .7); animation: ring-pulse 1s infinite alternate; }
+.ring-day-controls { display: flex; align-items: center; gap: 7px; }
+.ring-day-controls button, .ring-day-controls input { min-height: 38px; padding: 7px 11px; border: 1px solid var(--border); border-radius: 9px; color: var(--text); background: #121615; font: inherit; font-size: 11px; }
+.ring-day-controls button { cursor: pointer; }
+.ring-day-controls button:hover { border-color: rgba(251, 113, 133, .45); color: #fda4af; }
+.ring-heart-chart-panel { border-color: rgba(251, 113, 133, .2); box-shadow: inset 0 1px rgba(255, 255, 255, .02); }
+.ring-zone-legend { display: grid; gap: 9px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: rgba(19, 23, 22, .82); }
+.ring-zone-legend > strong { color: var(--muted); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
+.ring-zone-legend > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.ring-zone-legend span { --zone-color: #737373; padding: 6px 9px; border: 1px solid color-mix(in srgb, var(--zone-color) 48%, transparent); border-radius: 999px; color: #ecf5f2; background: color-mix(in srgb, var(--zone-color) 10%, transparent); font-size: 10px; font-weight: 750; }
+.ring-zone-legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--zone-color); box-shadow: 0 0 8px color-mix(in srgb, var(--zone-color) 70%, transparent); }
+.ring-zone-legend [data-zone="deep"] { --zone-color: #3b82f6; }
+.ring-zone-legend [data-zone="base"] { --zone-color: #22c55e; }
+.ring-zone-legend [data-zone="light"] { --zone-color: #eab308; }
+.ring-zone-legend [data-zone="high"] { --zone-color: #f97316; }
+.ring-zone-legend [data-zone="alert"] { --zone-color: #ef4444; }
+
+.ring-overview-grid, .ring-diagnostics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ring-panel { min-width: 0; padding: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--ring-panel); }
+.ring-panel header, .ring-section-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+.ring-panel h3, .ring-section-head h3 { font-size: 18px; }
+.ring-battery { color: var(--ring-accent) !important; font-size: 17px !important; letter-spacing: 0 !important; }
+.ring-detail-list { display: grid; gap: 0; margin: 14px 0 0; }
+.ring-detail-list > div { display: grid; grid-template-columns: minmax(90px, .65fr) minmax(0, 1fr); gap: 14px; padding: 8px 0; border-top: 1px solid rgba(255, 255, 255, .06); }
+.ring-detail-list dt { color: var(--muted); font-size: 10px; }
+.ring-detail-list dd { min-width: 0; margin: 0; overflow-wrap: anywhere; font-size: 11px; text-align: right; }
+.ring-detail-list-wide { grid-template-columns: 1fr 1fr; column-gap: 22px; }
+.ring-pipeline { display: grid; gap: 9px; margin: 14px 0 0; padding: 0; list-style: none; }
+.ring-pipeline li { display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 10px; }
+.ring-pipeline b { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #36554c; border-radius: 50%; color: var(--ring-accent); font-size: 10px; }
+.ring-pipeline span { font-size: 11px; }
+.ring-pipeline small { color: var(--muted); }
+.ring-section-head { padding: 8px 2px 4px; }
+.ring-section-head h3 { font-size: 27px; }
+.ring-confidence { padding: 6px 9px; border-radius: 999px; font-size: 9px; font-weight: 800; text-transform: uppercase; }
+.ring-sleep-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+.ring-sleep-badges .ring-confidence:first-child { color: var(--ring-accent); background: var(--ring-accent-soft); }
+.ring-confidence.is-experimental { color: #fde68a; background: rgba(251, 191, 36, .12); }
+.ring-chart-panel { min-height: 300px; }
+.ring-chart-empty { display: grid; place-items: center; min-height: 220px; margin-top: 14px; border: 1px dashed #2b3733; border-radius: 12px; color: var(--muted); font-size: 12px; text-align: center; }
+.ring-data-chart { min-height: 250px; margin-top: 12px; }
+.ring-data-chart svg { display: block; width: 100%; height: 220px; overflow: visible; }
+.ring-chart-grid { stroke: rgba(255, 255, 255, .075); stroke-width: 1; }
+.ring-chart-axis { fill: #67716d; font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; }
+.ring-chart-time-grid { stroke: rgba(114, 225, 194, .07); }
+.ring-chart-time-axis { fill: #8b9894; font-variant-numeric: tabular-nums; }
+.ring-chart-last-dot { filter: drop-shadow(0 0 5px currentColor); }
+.ring-chart-legend { color: var(--muted); font-size: 10px; text-align: right; }
+.ring-activity-bars { display: flex; align-items: end; gap: 2px; height: 220px; padding: 15px 4px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.ring-activity-bars i { flex: 1 1 3px; min-width: 2px; max-width: 14px; border-radius: 3px 3px 0 0; background: linear-gradient(180deg, var(--ring-accent), rgba(114, 225, 194, .28)); }
+.ring-callout { padding: 13px 15px; border-left: 3px solid #fbbf24; border-radius: 0 10px 10px 0; color: #d8d2bd; background: rgba(251, 191, 36, .07); font-size: 12px; line-height: 1.55; }
+.ring-callout-neutral { border-left-color: var(--ring-accent); color: #b9c8c3; background: rgba(114, 225, 194, .055); }
+.ring-sleep-placeholder { display: grid; grid-template-columns: 1.3fr 2fr .8fr 1.6fr; gap: 3px; height: 46px; margin-top: 18px; opacity: .32; }
+.ring-sleep-placeholder i { border-radius: 5px; background: #a78bfa; }
+.ring-sleep-placeholder i:nth-child(2) { background: #6366f1; }
+.ring-sleep-placeholder i:nth-child(3) { background: #fbbf24; }
+.ring-sleep-placeholder i:nth-child(4) { background: #4338ca; }
+.ring-sleep-timeline { display: flex; gap: 2px; min-height: 54px; margin-top: 18px; overflow: hidden; border-radius: 8px; background: #0d100f; }
+.ring-sleep-timeline > i { min-width: 3px; background: #818cf8; }
+.ring-sleep-timeline > i[data-stage="deep"] { background: #4338ca; }
+.ring-sleep-timeline > i[data-stage="rem"] { background: #a78bfa; }
+.ring-sleep-timeline > i[data-stage="awake"] { background: #fbbf24; }
+.ring-sleep-history { display: grid; gap: 6px; margin-top: 14px; }
+.ring-sleep-history > div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid rgba(255, 255, 255, .06); font-size: 10px; }
+.ring-sleep-history span { color: var(--muted); text-align: right; }
+
+.ring-capabilities { display: grid; gap: 6px; margin-top: 13px; }
+.ring-capabilities > div { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-top: 1px solid rgba(255, 255, 255, .05); font-size: 10px; }
+.ring-capabilities b { padding: 3px 6px; border-radius: 99px; color: var(--muted); background: #212524; }
+.ring-capabilities b[data-status="supported"] { color: #86efac; background: rgba(34, 197, 94, .1); }
+.ring-capabilities b[data-status="experimental"] { color: #fde68a; background: rgba(251, 191, 36, .1); }
+.ring-service-list, .ring-log-list { display: grid; gap: 7px; margin-top: 13px; color: var(--muted); font-size: 10px; }
+.ring-service-list details, .ring-log-list > div { padding: 8px; border: 1px solid rgba(255, 255, 255, .06); border-radius: 8px; background: #101312; }
+.ring-service-list code { display: block; margin: 8px 0; color: var(--ring-accent); overflow-wrap: anywhere; }
+.ring-service-list p { margin: 6px 0; overflow-wrap: anywhere; }
+.ring-log-list > div { display: grid; grid-template-columns: 155px 1fr; gap: 10px; }
+.ring-log-list [data-level="error"] { color: #fecaca; }
+.ring-log-list [data-level="warning"] { color: #fde68a; }
+.ring-packet-panel summary { display: flex; justify-content: space-between; cursor: pointer; }
+.ring-packet-table-wrap { overflow: auto; margin-top: 14px; }
+.ring-packet-table-wrap table { width: 100%; border-collapse: collapse; font-size: 9px; }
+.ring-packet-table-wrap th, .ring-packet-table-wrap td { padding: 7px; border-bottom: 1px solid rgba(255, 255, 255, .06); text-align: left; white-space: nowrap; }
+.ring-packet-table-wrap td:last-child { color: #9ed8c8; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+@media (max-width: 1050px) {
+  .ring-shell { grid-template-columns: 210px minmax(0, 1fr); }
+  .ring-metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ring-heart-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ring-overview-grid, .ring-diagnostics-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .ring-shell { width: min(100% - 20px, 1600px); grid-template-columns: 1fr; padding-top: 10px; }
+  .ring-sidebar { position: static; }
+  .ring-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ring-topbar, .ring-topbar-actions { align-items: stretch; flex-direction: column; }
+  .ring-topbar-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .ring-status { grid-column: 1 / -1; }
+  .ring-connect-card { grid-template-columns: auto 1fr; }
+  .ring-connect-card > .ring-button, .ring-found-devices { grid-column: 1 / -1; }
+  .ring-metric-grid, .ring-metric-grid-small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ring-detail-list-wide { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 460px) {
+  .ring-metric-grid, .ring-metric-grid-small { grid-template-columns: 1fr; }
+  .ring-tabs { grid-template-columns: 1fr; }
+}

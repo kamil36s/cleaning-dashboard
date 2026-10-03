@@ -1,0 +1,21 @@
+{
+  "manifestVersion": "language-reference-source-manifest/v1",
+  "sourceId": "nb-norsk-ordbank-nob-2022-02-01",
+  "title": "Norsk ordbank - bokmål 2005",
+  "provider": "Nasjonalbiblioteket / Språkbanken; created by University of Bergen and Språkrådet",
+  "landingUrl": "https://www.nb.no/sprakbanken/ressurskatalog/oai-nb-no-sbr-5/",
+  "version": "2022-02-01",
+  "releaseDate": "2022-02-01",
+  "language": "nb",
+  "resourceType": "LEXICON_MORPHOLOGY",
+  "license": {"id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/", "verifiedAt": "2026-09-16"},
+  "attribution": "Credit Nasjonalbiblioteket/Språkbanken, University of Bergen and Språkrådet, and identify the 2022-02-01 dump.",
+  "expectedFiles": [
+    {"name": "20220201_norsk_ordbank_nob_2005.tar.gz", "url": "https://www.nb.no/sbfil/leksikalske_databaser/ordbank/20220201_norsk_ordbank_nob_2005.tar.gz", "sizeBytes": 15288065, "sha256": "57d91cb3f17b85befa50a3b56fcaed9800ca665b39486fe97b668add914d5f60", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:50.062403Z", "httpMetadata": {"contentLength": "15288065", "contentType": "application/octet-stream", "etag": "\"623b104d-e94701\"", "lastModified": "Wed, 23 Mar 2022 12:19:25 GMT"}, "format": "tar.gz containing Latin-1 TSV tables", "required": true},
+    {"name": "norsk_ordbank.pdf", "url": "https://www.nb.no/sbfil/leksikalske_databaser/ordbank/norsk_ordbank.pdf", "sizeBytes": 593084, "sha256": "c4235c6b0242938112d6cc3882a7319197d30ce2acabbd6392dd0b157787f602", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:55.625246Z", "httpMetadata": {"contentLength": "593084", "contentType": "application/pdf", "etag": "\"5c6e8b09-90cbc\"", "lastModified": "Thu, 21 Feb 2019 11:27:05 GMT"}, "format": "PDF documentation", "required": true}
+  ],
+  "parser": {"id": "norsk-ordbank-nob", "version": "1.0.0"},
+  "decision": "ACCEPT_PHASE_7_5B",
+  "priority": "TIER_1",
+  "notes": ["Primary lexical and morphology spine.", "Measured audit: 154824 lemma rows, 1143887 full-form rows, 617139 casefold-distinct forms, 554 multiword lemma rows, and 3688 spellings with multiple lemma IDs.", "The dump is not the continuously updated UiB search service; store source-local IDs and release date."]
+}

@@ -1,0 +1,148 @@
+{
+  "dataset": "training",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-16T09:16:45Z",
+  "as_of": "2026-09-16",
+  "units": {
+    "duration": "minutes",
+    "energy": "kcal",
+    "heart_rate": "bpm"
+  },
+  "metrics": {
+    "workouts_7d": {
+      "sessions": 15,
+      "duration_minutes": 576.2,
+      "active_calories_kcal": 4280.5,
+      "training_load": 801.2
+    },
+    "workouts_previous_7d": {
+      "sessions": 17,
+      "duration_minutes": 707.2,
+      "active_calories_kcal": 4821.8,
+      "training_load": 1064.3
+    },
+    "session_count_delta": -2,
+    "duration_change_pct": -18.52,
+    "strength": {
+      "sessions_7d": 3,
+      "sessions_previous_7d": 1,
+      "sets_7d": 8,
+      "sets_previous_7d": 19,
+      "sets_by_muscle_7d": {
+        "abs": 2,
+        "biceps": 6
+      }
+    }
+  },
+  "records": [
+    {
+      "date": "2026-09-15",
+      "started_at": "2026-09-15T18:59:37Z",
+      "duration_minutes": 59.7,
+      "active_calories_kcal": 525.0,
+      "average_hr_bpm": 130.0,
+      "training_load": 147.9,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-13",
+      "started_at": "2026-09-13T14:50:09Z",
+      "duration_minutes": 3.3,
+      "active_calories_kcal": 16.8,
+      "average_hr_bpm": 100.0,
+      "training_load": 0.8,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-13",
+      "started_at": "2026-09-13T14:09:48Z",
+      "duration_minutes": 40.3,
+      "active_calories_kcal": 271.2,
+      "average_hr_bpm": 113.0,
+      "training_load": 63.6,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-13",
+      "started_at": "2026-09-13T12:47:25Z",
+      "duration_minutes": 43.8,
+      "active_calories_kcal": 262.4,
+      "average_hr_bpm": 106.0,
+      "training_load": 10.9,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-13",
+      "started_at": "2026-09-13T10:04:03Z",
+      "duration_minutes": 12.8,
+      "active_calories_kcal": 63.5,
+      "average_hr_bpm": 100.0,
+      "training_load": 3.2,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-12",
+      "started_at": "2026-09-12T16:31:22Z",
+      "duration_minutes": 34.8,
+      "active_calories_kcal": 231.1,
+      "average_hr_bpm": 112.0,
+      "training_load": 8.7,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-12",
+      "started_at": "2026-09-12T14:59:36Z",
+      "duration_minutes": 37.8,
+      "active_calories_kcal": 246.9,
+      "average_hr_bpm": 110.0,
+      "training_load": 9.4,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-12",
+      "started_at": "2026-09-12T14:04:12Z",
+      "duration_minutes": 54.7,
+      "active_calories_kcal": 446.9,
+      "average_hr_bpm": 127.0,
+      "training_load": 126.9,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-12",
+      "started_at": "2026-09-12T12:53:35Z",
+      "duration_minutes": 27.1,
+      "active_calories_kcal": 159.6,
+      "average_hr_bpm": 106.0,
+      "training_load": 6.8,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-11",
+      "started_at": "2026-09-11T18:07:29Z",
+      "duration_minutes": 16.1,
+      "active_calories_kcal": 102.2,
+      "average_hr_bpm": 110.0,
+      "training_load": 4.0,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-11",
+      "started_at": "2026-09-11T15:03:25Z",
+      "duration_minutes": 31.8,
+      "active_calories_kcal": 207.4,
+      "average_hr_bpm": 111.0,
+      "training_load": 8.0,
+      "source": "wear_os"
+    },
+    {
+      "date": "2026-09-11",
+      "started_at": "2026-09-11T10:31:53Z",
+      "duration_minutes": 44.8,
+      "active_calories_kcal": 293.0,
+      "average_hr_bpm": 110.0,
+      "training_load": 11.2,
+      "source": "wear_os"
+    }
+  ]
+}

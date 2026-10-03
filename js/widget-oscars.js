@@ -185,7 +185,7 @@ function renderFrom(list) {
 
   if (stats.left <= 0) {
     setText('oscars-required', '0min');
-    setText('oscars-suggested', 'Brak nieobejrzanych tytu??w.');
+    setText('oscars-suggested', 'Brak nieobejrzanych tytułów.');
   } else {
     setText('oscars-required', formatMinutes(timeStats.requiredPerDay));
     if (displayItem) {
@@ -193,7 +193,7 @@ function renderFrom(list) {
       const title = displayItem.title || '-';
       setText('oscars-suggested', mins ? `${title} (${formatMinutes(mins)})` : title);
     } else {
-      setText('oscars-suggested', 'Brak nieobejrzanych tytu??w.');
+      setText('oscars-suggested', 'Brak nieobejrzanych tytułów.');
     }
   }
 

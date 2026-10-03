@@ -1,14 +1,5 @@
 // js/temp-scale.js
-const TEMP_STOPS = [
-  { t: -15, c: '#2F2C7E' },
-  { t: -5,  c: '#2B6CB0' },
-  { t: 5,   c: '#2C9FA3' },
-  { t: 12,  c: '#6CC2A5' },
-  { t: 20,  c: '#F0E68C' },
-  { t: 27,  c: '#F6B04C' },
-  { t: 35,  c: '#E35B3F' },
-  { t: 35.1, c: '#B11226' }
-];
+import { TEMP_STOPS } from './config.js';
 
 function hexToRgb(hex) {
   const h = String(hex || '').replace('#', '');

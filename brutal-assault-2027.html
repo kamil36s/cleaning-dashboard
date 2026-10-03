@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Brutal Assault 2027</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="page-bm365 page-ba2027" data-album-project="brutal-assault-2027">
+    <div class="wrap">
+        <aside class="panel">
+            <h1>Brutal Assault 2027</h1>
+            <div class="controls" style="margin-bottom:8px">
+                <button id="back-btn" title="Back">Back</button>
+            </div>
+
+            <div class="oscars-source" id="bm365-source" aria-live="polite">Loading local data...</div>
+
+            <div class="kpis">
+                <div class="kpi"><span>Total</span><b id="bm365-total">0</b></div>
+                <div class="kpi"><span>Listened</span><b id="bm365-done">0</b></div>
+                <div class="kpi"><span>Left</span><b id="bm365-left">0</b></div>
+                <div class="kpi"><span>Avg rating</span><b id="bm365-avg">-</b></div>
+            </div>
+            <div class="progress progress-dual">
+                <div id="bm365-progress-bar" class="progress-base green" style="width:0%"></div>
+                <div id="bm365-progress-delta" class="progress-delta" style="width:0%; left:0%"></div>
+            </div>
+            <div class="meta" id="bm365-progress-text">0 / 0 - 0%</div>
+            <div class="meta bm365-projection ba2027-deadline" id="ba2027-deadline" hidden></div>
+
+            <div class="oscars-extra">
+                <div class="oscars-extra-item">
+                    <div class="oscars-extra-label">Time left</div>
+                    <div class="oscars-extra-value" id="bm365-time">-</div>
+                </div>
+                <div class="oscars-extra-item">
+                    <div class="oscars-extra-label">Rated</div>
+                    <div class="oscars-extra-value" id="bm365-rated-count">0</div>
+                </div>
+            </div>
+
+            <h2>Add album</h2>
+            <form id="ba2027-add-form" class="ba2027-add-form">
+                <label class="ba2027-field">
+                    <span>Artist</span>
+                    <input id="ba2027-add-artist" class="oscars-input" name="artist" type="text" maxlength="240" required />
+                </label>
+                <label class="ba2027-field">
+                    <span>Album</span>
+                    <input id="ba2027-add-album" class="oscars-input" name="album" type="text" maxlength="240" required />
+                </label>
+                <div class="ba2027-add-row">
+                    <label class="ba2027-field">
+                        <span>Release year</span>
+                        <input id="ba2027-add-year" class="oscars-input" name="year" type="number" min="1900" max="2100" inputmode="numeric" />
+                    </label>
+                    <label class="ba2027-field">
+                        <span>Minutes</span>
+                        <input id="ba2027-add-minutes" class="oscars-input" name="minutes" type="number" min="1" max="1440" inputmode="numeric" />
+                    </label>
+                </div>
+                <button id="ba2027-add-submit" class="oscars-btn" type="submit">Add album</button>
+                <div id="ba2027-add-status" class="meta ba2027-add-status" aria-live="polite"></div>
+            </form>
+
+            <h2>Views</h2>
+            <div class="controls bm365-side-nav" role="tablist" aria-label="Brutal Assault 2027 views">
+                <button id="bm365-view-albums-nav" type="button" class="oscars-toggle is-on" aria-pressed="true" role="tab" aria-selected="true">Albums</button>
+                <button id="bm365-view-artists-nav" type="button" class="oscars-toggle" aria-pressed="false" role="tab" aria-selected="false">Rankingi zespołów</button>
+            </div>
+
+            <div id="bm365-albums-sidebar-tools">
+                <section class="ba2027-rym-rating-panel" aria-labelledby="ba2027-rym-rating-title">
+                    <div class="ba2027-rym-rating-head">
+                        <h2 id="ba2027-rym-rating-title">Uzupełnij RYM</h2>
+                        <small id="ba2027-rym-rating-count">0 bez RYM</small>
+                    </div>
+                    <p>Wpisz średnie ocen z Rate Your Music (0,50–5,00). Panel pokazuje wszystkie brakujące albumy jednego artysty.</p>
+                    <div id="ba2027-rym-rating-artist" class="ba2027-rym-rating-artist" hidden></div>
+                    <div id="ba2027-rym-rating-list" class="ba2027-rym-rating-list"></div>
+                    <button id="ba2027-rym-rating-save-all" class="oscars-btn ba2027-rym-rating-save-all" type="button" hidden>Zapisz wszystkie</button>
+                    <div id="ba2027-rym-rating-save-all-status" class="ba2027-rym-rating-save-all-status" aria-live="polite"></div>
+                </section>
+
+                <h2>Filters</h2>
+                <div class="controls bm365-filters">
+                    <input id="bm365-search" class="oscars-input" type="text" placeholder="Search artist or album" />
+                    <select id="bm365-year" class="oscars-input" aria-label="Year filter">
+                        <option value="ALL">All years</option>
+                    </select>
+                    <select id="bm365-sort" class="oscars-input" aria-label="Sort">
+                        <option value="recommended" selected>Propozycje — RYM od najlepszych</option>
+                        <option value="date_asc">Date (oldest first)</option>
+                        <option value="date_desc">Date (newest first)</option>
+                        <option value="rym_desc">RYM rating (high to low)</option>
+                        <option value="rating_desc">My rating (high to low)</option>
+                        <option value="mixed_desc">Mixed rating (high to low)</option>
+                        <option value="artist">Artist (A-Z)</option>
+                    </select>
+                </div>
+                <div class="controls bm365-toggles">
+                    <button id="bm365-hide-listened" type="button" class="oscars-toggle is-on" aria-pressed="true">Hide listened</button>
+                    <button id="bm365-only-rated" type="button" class="oscars-toggle" aria-pressed="false">Only rated</button>
+                    <button id="bm365-missing-covers" type="button" class="oscars-toggle" aria-pressed="false">Missing covers</button>
+                    <button id="bm365-clear-filters" type="button" class="oscars-ghost">Clear filters</button>
+                </div>
+
+                <details class="ba2027-bulk-panel">
+                    <summary>
+                        <span>Masowe opisy</span>
+                        <small id="ba2027-bulk-missing">0 bez opisu</small>
+                    </summary>
+                    <div class="ba2027-bulk-body">
+                        <p>Skopiuj paczkę, wyślij ją do AI, a otrzymany JSON wklej poniżej.</p>
+                        <label class="ba2027-bulk-field">
+                            <span>Wielkość paczki</span>
+                            <select id="ba2027-bulk-size" class="oscars-input">
+                                <option value="10">10 albumów</option>
+                                <option value="20" selected>20 albumów</option>
+                                <option value="30">30 albumów</option>
+                            </select>
+                        </label>
+                        <button id="ba2027-bulk-copy" type="button" class="oscars-btn">Kopiuj prompt + paczkę</button>
+                        <label class="ba2027-bulk-field">
+                            <span>Odpowiedź JSON z AI</span>
+                            <textarea id="ba2027-bulk-json" class="oscars-input" rows="9" spellcheck="false" placeholder='{"195":"[W SKRÓCIE]\n..."}'></textarea>
+                        </label>
+                        <button id="ba2027-bulk-import" type="button" class="oscars-btn" disabled>Importuj do SQLite</button>
+                        <div id="ba2027-bulk-status" class="meta ba2027-bulk-status" aria-live="polite"></div>
+                    </div>
+                </details>
+
+                <div class="meta bm365-upload-note">
+                    Click a cover (or its placeholder) to upload it. Files are saved locally in <code>covers/</code> when <code>server.py</code> is running.
+                </div>
+                <div class="controls bm365-upload-controls">
+                    <button id="bm365-clear-uploads" type="button" class="oscars-ghost">Clear browser uploads</button>
+                </div>
+                <div class="controls bm365-fetch-controls">
+                    <button id="bm365-fetch-covers" type="button" class="oscars-btn">Fetch covers</button>
+                </div>
+                <div class="meta" id="bm365-fetch-status"></div>
+            </div>
+
+            <div class="meta" id="bm365-foot">Loading local SQLite database...</div>
+        </aside>
+
+        <main class="main">
+            <section id="bm365-albums-view" class="bm365-main-view">
+                <div class="oscars-toolbar">
+                    <div class="bm365-list-head">
+                        <div>
+                            <h2 id="bm365-list-title">Proponowane do odsłuchu</h2>
+                            <div class="meta bm365-list-copy" id="bm365-list-copy">Albumy do odsłuchu według ocen Rate Your Music — od najwyższej do najniższej. Albumy bez oceny RYM są na końcu.</div>
+                        </div>
+                        <div class="bm365-view-toggle" role="group" aria-label="Brutal Assault 2027 list mode">
+                            <button id="bm365-view-recommended" type="button" class="oscars-toggle is-on" aria-pressed="true">Propozycje RYM</button>
+                            <button id="bm365-view-chronological" type="button" class="oscars-toggle" aria-pressed="false">Chronological</button>
+                            <button id="bm365-view-ranking-rym" type="button" class="oscars-toggle" aria-pressed="false">RYM</button>
+                            <button id="bm365-view-ranking" type="button" class="oscars-toggle" aria-pressed="false">Moje</button>
+                            <button id="bm365-view-ranking-mixed" type="button" class="oscars-toggle" aria-pressed="false">Mix</button>
+                        </div>
+                    </div>
+                    <div class="meta" id="bm365-count">0 propozycji</div>
+                </div>
+                <div id="bm365-grid" class="oscars-grid bm365-grid"></div>
+            </section>
+
+            <section id="bm365-artists-view" class="bm365-main-view bm365-artists-view" hidden>
+                <div class="oscars-toolbar">
+                    <div class="bm365-list-head">
+                        <div>
+                            <h2 id="bm365-artists-title">Rankingi zespołów</h2>
+                            <div class="meta bm365-list-copy" id="bm365-artists-copy">Średnie zespołów według RYM, Twoich ocen i wyniku mieszanego.</div>
+                        </div>
+                        <div class="bm365-view-toggle ba2027-artist-ranking-toggle" role="tablist" aria-label="Rodzaj rankingu zespołów">
+                            <button id="ba2027-artist-view-rym" type="button" class="oscars-toggle is-on" aria-pressed="true" role="tab" aria-selected="true">RYM</button>
+                            <button id="ba2027-artist-view-own" type="button" class="oscars-toggle" aria-pressed="false" role="tab" aria-selected="false">Moje</button>
+                            <button id="ba2027-artist-view-mixed" type="button" class="oscars-toggle" aria-pressed="false" role="tab" aria-selected="false">Mix</button>
+                        </div>
+                    </div>
+                    <div class="meta" id="bm365-artists-count">0 artists</div>
+                </div>
+
+                <div class="bm365-rankings-grid">
+                    <section id="ba2027-artist-rym-panel" class="bm365-ranking-panel" aria-labelledby="ba2027-artist-rym-title">
+                        <div class="bm365-ranking-head"><div><h3 id="ba2027-artist-rym-title">Średnia RYM</h3><div class="meta">Średnia ocen RYM wszystkich uzupełnionych albumów zespołu.</div></div></div>
+                        <div id="ba2027-artist-rym-list" class="bm365-artist-list"></div>
+                    </section>
+                    <section id="ba2027-artist-own-panel" class="bm365-ranking-panel" aria-labelledby="ba2027-artist-own-title" hidden>
+                        <div class="bm365-ranking-head"><div><h3 id="ba2027-artist-own-title">Średnia moich ocen</h3><div class="meta">Średnia wyłącznie z przesłuchanych i ocenionych przez Ciebie albumów.</div></div></div>
+                        <div id="ba2027-artist-own-list" class="bm365-artist-list"></div>
+                    </section>
+                    <section id="ba2027-artist-mixed-panel" class="bm365-ranking-panel" aria-labelledby="ba2027-artist-mixed-title" hidden>
+                        <div class="bm365-ranking-head"><div><h3 id="ba2027-artist-mixed-title">Średnia mieszana</h3><div class="meta">Średnia RYM zespołu i średnia Twoich ocen, podzielone przez dwa.</div></div></div>
+                        <div id="ba2027-artist-mixed-list" class="bm365-artist-list"></div>
+                    </section>
+                </div>
+            </section>
+            <button id="bm365-to-top" class="oscars-fab" type="button" aria-label="Scroll to top">Top</button>
+        </main>
+    </div>
+
+    <input id="bm365-upload-input" class="bm365-file-input" type="file" accept="image/*" hidden />
+    <script type="module" src="./js/nav.js"></script>
+    <script type="module" src="./js/bm365-page-v2.js"></script>
+</body>
+
+</html>

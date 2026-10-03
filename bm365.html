@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BM365 Challenge</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="page-bm365" data-album-project="bm365">
+    <div class="wrap">
+        <aside class="panel">
+            <h1>BM365 Challenge</h1>
+            <div class="controls" style="margin-bottom:8px">
+                <button id="back-btn" title="Back">Back</button>
+            </div>
+
+            <div class="oscars-source" id="bm365-source" aria-live="polite">Loading data...</div>
+
+            <div class="kpis">
+                <div class="kpi"><span>Total</span><b id="bm365-total">0</b></div>
+                <div class="kpi"><span>Listened</span><b id="bm365-done">0</b></div>
+                <div class="kpi"><span>Left</span><b id="bm365-left">0</b></div>
+                <div class="kpi"><span>Avg rating</span><b id="bm365-avg">-</b></div>
+            </div>
+            <div class="progress progress-dual">
+                <div id="bm365-progress-bar" class="progress-base green" style="width:0%"></div>
+                <div id="bm365-progress-delta" class="progress-delta" style="width:0%; left:0%"></div>
+            </div>
+            <div class="meta" id="bm365-progress-text">0 / 0 - 0%</div>
+
+            <div class="oscars-extra">
+                <div class="oscars-extra-item">
+                    <div class="oscars-extra-label">Total time</div>
+                    <div class="oscars-extra-value" id="bm365-time">-</div>
+                </div>
+                <div class="oscars-extra-item">
+                    <div class="oscars-extra-label">Rated</div>
+                    <div class="oscars-extra-value" id="bm365-rated-count">0</div>
+                </div>
+            </div>
+
+            <h2>Views</h2>
+            <div class="controls bm365-side-nav" role="tablist" aria-label="BM365 views">
+                <button id="bm365-view-albums-nav" type="button" class="oscars-toggle is-on" aria-pressed="true" role="tab" aria-selected="true">Albums</button>
+                <button id="bm365-view-artists-nav" type="button" class="oscars-toggle" aria-pressed="false" role="tab" aria-selected="false">Artist rankings</button>
+            </div>
+
+            <div id="bm365-albums-sidebar-tools">
+            <h2>Filters</h2>
+            <div class="controls bm365-filters">
+                <input id="bm365-search" class="oscars-input" type="text" placeholder="Search artist or album" />
+                <select id="bm365-year" class="oscars-input" aria-label="Year filter">
+                    <option value="ALL">All years</option>
+                </select>
+                <select id="bm365-sort" class="oscars-input" aria-label="Sort">
+                    <option value="date_asc">Date (oldest first)</option>
+                    <option value="date_desc">Date (newest first)</option>
+                    <option value="rating_desc">Rating (high to low)</option>
+                    <option value="artist">Artist (A-Z)</option>
+                </select>
+            </div>
+            <div class="controls bm365-toggles">
+                <button id="bm365-hide-listened" type="button" class="oscars-toggle is-on" aria-pressed="true">Hide listened</button>
+                <button id="bm365-only-rated" type="button" class="oscars-toggle" aria-pressed="false">Only rated</button>
+                <button id="bm365-missing-covers" type="button" class="oscars-toggle" aria-pressed="false">Missing covers</button>
+                <button id="bm365-clear-filters" type="button" class="oscars-ghost">Clear filters</button>
+            </div>
+
+            <details class="ba2027-bulk-panel">
+                <summary>
+                    <span>Masowe opisy</span>
+                    <small id="ba2027-bulk-missing">0 bez opisu</small>
+                </summary>
+                <div class="ba2027-bulk-body">
+                    <p>Skopiuj paczkę, wyślij ją do AI, a otrzymany JSON wklej poniżej.</p>
+                    <label class="ba2027-bulk-field">
+                        <span>Wielkość paczki</span>
+                        <select id="ba2027-bulk-size" class="oscars-input">
+                            <option value="10">10 albumów</option>
+                            <option value="20" selected>20 albumów</option>
+                            <option value="30">30 albumów</option>
+                        </select>
+                    </label>
+                    <button id="ba2027-bulk-copy" type="button" class="oscars-btn">Kopiuj prompt + paczkę</button>
+                    <label class="ba2027-bulk-field">
+                        <span>Odpowiedź JSON z AI</span>
+                        <textarea id="ba2027-bulk-json" class="oscars-input" rows="9" spellcheck="false" placeholder='{"2":"[W SKRÓCIE]\n..."}'></textarea>
+                    </label>
+                    <button id="ba2027-bulk-import" type="button" class="oscars-btn" disabled>Importuj do SQLite</button>
+                    <div id="ba2027-bulk-status" class="meta ba2027-bulk-status" aria-live="polite"></div>
+                </div>
+            </details>
+
+            <div class="meta bm365-upload-note">
+                Kliknij okładkę (lub puste miejsce), żeby wgrać. Jeśli działa <code>server.py</code>, plik trafi do
+                <code>covers/</code> (lokalnie). W innym wypadku zapisuje się w przeglądarce.
+            </div>
+            <div class="controls bm365-upload-controls">
+                <button id="bm365-clear-uploads" type="button" class="oscars-ghost">Clear browser uploads</button>
+            </div>
+            <div class="controls bm365-fetch-controls">
+                <button id="bm365-fetch-covers" type="button" class="oscars-btn">Fetch covers</button>
+            </div>
+            <div class="meta" id="bm365-fetch-status"></div>
+            </div>
+
+            <div class="meta" id="bm365-foot">Loading...</div>
+        </aside>
+
+        <main class="main">
+            <section id="bm365-albums-view" class="bm365-main-view">
+                <div class="oscars-toolbar">
+                    <div class="bm365-list-head">
+                        <div>
+                            <h2 id="bm365-list-title">Chronological list</h2>
+                            <div class="meta bm365-list-copy" id="bm365-list-copy">Browse the full run in calendar order or jump into rating ranking.</div>
+                        </div>
+                        <div class="bm365-view-toggle" role="group" aria-label="BM365 list mode">
+                            <button id="bm365-view-chronological" type="button" class="oscars-toggle is-on" aria-pressed="true">Chronological</button>
+                            <button id="bm365-view-ranking" type="button" class="oscars-toggle" aria-pressed="false">Rating ranking</button>
+                        </div>
+                    </div>
+                    <div class="meta" id="bm365-count">0 items</div>
+                </div>
+                <div id="bm365-grid" class="oscars-grid bm365-grid"></div>
+            </section>
+
+            <section id="bm365-artists-view" class="bm365-main-view bm365-artists-view" hidden>
+                <div class="oscars-toolbar">
+                    <div class="bm365-list-head">
+                        <div>
+                            <h2 id="bm365-artists-title">Artist rankings</h2>
+                            <div class="meta bm365-list-copy" id="bm365-artists-copy">All artists with at least one rated album, split into count and average score leaderboards.</div>
+                        </div>
+                    </div>
+                    <div class="meta" id="bm365-artists-count">0 artists</div>
+                </div>
+
+                <div class="bm365-rankings-grid">
+                    <section class="bm365-ranking-panel" aria-labelledby="bm365-artist-volume-title">
+                        <div class="bm365-ranking-head">
+                            <div>
+                                <h3 id="bm365-artist-volume-title">Most rated albums</h3>
+                                <div class="meta" id="bm365-artist-volume-copy">Artists with the biggest rated footprint.</div>
+                            </div>
+                        </div>
+                        <div id="bm365-artist-volume-list" class="bm365-artist-list"></div>
+                    </section>
+
+                    <section class="bm365-ranking-panel" aria-labelledby="bm365-artist-average-title">
+                        <div class="bm365-ranking-head">
+                            <div>
+                                <h3 id="bm365-artist-average-title">Best weighted ranking</h3>
+                                <div class="meta" id="bm365-artist-average-copy">Weighted score that rewards high ratings but gives more trust to artists with multiple rated albums.</div>
+                            </div>
+                        </div>
+                        <div id="bm365-artist-average-list" class="bm365-artist-list"></div>
+                    </section>
+                </div>
+            </section>
+            <button id="bm365-to-top" class="oscars-fab" type="button" aria-label="Scroll to top">Top</button>
+        </main>
+    </div>
+
+    <input id="bm365-upload-input" class="bm365-file-input" type="file" accept="image/*" hidden />
+
+    <script defer src="./js/nav.js"></script>
+    <script type="module" src="./js/bm365-page-v2.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+# COLMI R10 collector. On Windows Bleak uses the native WinRT Bluetooth stack.
+bleak>=0.22,<2
+

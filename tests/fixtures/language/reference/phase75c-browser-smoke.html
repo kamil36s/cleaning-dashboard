@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 7.5C browser smoke: pending</title>
+  <link rel="stylesheet" href="/language.css">
+</head>
+<body>
+  <main class="language-app">
+    <section id="lemma"></section>
+    <section id="unavailable"></section>
+    <section id="reader"></section>
+    <section id="generate"></section>
+    <section id="cloze"></section>
+    <output id="result">PENDING</output>
+  </main>
+  <script type="module">
+    import { renderLemmaDetail } from '/js/language/components/lemma-detail.js';
+    import { renderExactReaderText } from '/js/language/views/reader.js';
+    import { renderGenerate } from '/js/language/views/generate.js';
+    import { renderCloze } from '/js/language/views/cloze.js';
+
+    const noop = async () => {};
+    const handlers = {
+      onSave: noop, onLockMapping: noop, onMergePreview: noop, onMergeCommit: noop,
+      onAnkiPreview: noop, onAnkiLink: noop, onAnkiCreate: noop, onAnkiOpen: noop,
+    };
+    renderLemmaDetail(document.querySelector('#lemma'), {
+      lemma: { id: 'user-lemma-1', lemmaDisplay: 'jobb', lemmaNormalized: 'jobb', partOfSpeech: 'NOUN' },
+      knowledge: { knowledgeStatus: 'LEARNING', disposition: 'TRACKED', recognition: 2, recall: 1, production: 0, totalExposures: 4 },
+      forms: [], frequencies: [], events: [], anki: { health: { state: 'UNAVAILABLE' }, cards: [] },
+      referenceResolution: {
+        status: 'MATCHED', ruleVersion: 'reference-resolver/v1',
+        candidates: [{ id: 'reference-jobb', stableKey: 'nb:LEMMA:jobb:NOUN', canonicalForm: 'jobb', partOfSpeech: 'NOUN', matchBasis: 'EXACT_LEMMA_POS' }],
+      },
+      reference: {
+        available: true, cefrAvailable: false,
+        unit: { id: 'reference-jobb', stableKey: 'nb:LEMMA:jobb:NOUN', canonicalForm: 'jobb', partOfSpeech: 'NOUN' },
+        frequencyEvidence: [{ metricType: 'SOURCE_LEARNER_RANK', label: 'Learner rank', rank: 250, sourceName: 'Synthetic Kelly fixture', sourceVersion: '1', scope: 'REFERENCE_UNIT' }],
+        forms: [{ displayForm: 'jobber', morphology: { Number: 'Sing' } }],
+        expressions: [{ canonicalForm: 'gjøre en jobb', unitType: 'MWE' }],
+        sources: [{ sourceId: 'synthetic-kelly', name: 'Synthetic Kelly fixture', provider: 'fixture', version: '1', license: 'TEST' }],
+      },
+    }, handlers);
+    renderLemmaDetail(document.querySelector('#unavailable'), {
+      lemma: { id: 'offline-lemma', lemmaDisplay: 'ord', lemmaNormalized: 'ord', partOfSpeech: 'NOUN' },
+      knowledge: { knowledgeStatus: 'NEW', disposition: 'TRACKED', totalExposures: 0 },
+      forms: [], frequencies: [], events: [], anki: { health: { state: 'UNAVAILABLE' }, cards: [] },
+      referenceResolution: { status: 'UNAVAILABLE', ruleVersion: 'reference-resolver/v1', candidates: [] },
+      reference: { available: false, error: 'Synthetic reference outage' },
+    }, handlers);
+
+    const rawText = 'Synge på siste verset.';
+    const surfaces = [
+      ['t1', 'Synge', 0, 5, 'synge'], ['t2', 'på', 6, 8, 'på'],
+      ['t3', 'siste', 9, 14, 'siste'], ['t4', 'verset', 15, 21, 'vers'],
+    ];
+    const tokens = surfaces.map(([id, surface, sourceStart, sourceEnd, lemma], tokenOrder) => ({
+      id, sentenceId: 's1', tokenOrder, tokenKind: 'WORD', surface, sourceStart, sourceEnd,
+      selectedLemmaId: `lemma-${lemma}`, selectedLemmaDisplay: lemma, knowledgeStatus: 'LEARNING',
+      disposition: 'INCLUDED', resolutionState: 'RESOLVED',
+    }));
+    let openedLemma = '';
+    renderExactReaderText({
+      mount: document.querySelector('#reader'), rawText,
+      sentences: [{ id: 's1', sentenceOrder: 0, sourceStart: 0, sourceEnd: 22 }], tokens,
+      expressions: [{ sentenceId: 's1', startTokenOrder: 0, endTokenOrder: 3, canonicalForm: 'synge på siste verset', unitType: 'IDIOM' }],
+      onOpenLemma: (lemmaId) => { openedLemma = lemmaId; },
+    });
+    document.querySelector('#reader [data-lemma-id]')?.click();
+
+    let copied = '';
+    renderGenerate(document.querySelector('#generate'), {
+      form: { length: 250, difficultyPreset: 'BALANCED', targetCoverage: 95, customTopic: '', grammarFocus: '', styleInstruction: '', referenceEnrichment: true },
+      topics: [], candidates: [], busy: false,
+      request: { id: 'synthetic-request' },
+      contextPack: {
+        estimatedCharacterCount: 800,
+        files: {
+          'metadata.json': { createdAt: '2026-09-17T00:00:00Z', knownVocabularyIncluded: 1, focusVocabularyCount: 1, referenceEnrichment: { requested: true, enabled: true, schemaVersion: 3, referenceFingerprint: 'sha256:synthetic-browser-smoke' } },
+          'prompt.md': 'Synthetic prompt', 'known-vocabulary.txt': 'jobb',
+          'focus-vocabulary.json': { items: ['jobb'] },
+          'reference-facts.json': { formatVersion: 'language-generation-reference-facts/v1', items: [{ userLemmaId: 'user-lemma-1' }] },
+        },
+      },
+    }, {
+      onCreate: noop, onCopy: (value) => { copied = value; }, onExport: noop, onImport: noop,
+      onAnalyze: noop, onRevision: noop, onAccept: noop, onReject: noop,
+    });
+
+    const copyReference = [...document.querySelectorAll('#generate button')].find((button) => button.textContent === 'Copy reference facts');
+    copyReference?.click();
+    let clozeStart = null;
+    renderCloze(document.querySelector('#cloze'), {
+      loading: false, busy: false, session: null, preferences: { translationTiming: 'AFTER' },
+      tracks: { status: 'READY', activeSessionId: null, summary: { attempts: 0, correct: 0, incorrect: 0, accuracy: null, mistakeTargets: 0 }, items: [
+        { key: 'FAST_TRACK_1', label: 'Fast Track 1', encountered: 0, targets: 100, rankLabel: 'KELLY rank', rankMin: 1, rankMax: 100, playableTargets: 80 },
+      ] },
+    }, { onStart: (value) => { clozeStart = value; }, onPreferences: noop, onResume: noop, onBack: noop });
+    [...document.querySelectorAll('#cloze button')].find((button) => button.textContent === 'Start Fast Track')?.click();
+    const assertions = [
+      document.querySelector('#lemma').textContent.includes('USER KNOWLEDGE'),
+      document.querySelector('#lemma').textContent.includes('REFERENCE'),
+      document.querySelector('#lemma').textContent.includes('Learner rank'),
+      document.querySelector('#lemma').textContent.includes('#250'),
+      document.querySelectorAll('#reader .has-reference-expression').length === 4,
+      document.querySelector('#reader').textContent === rawText,
+      document.querySelector('#reader [data-lemma-id]').title.includes('IDIOM:'),
+      openedLemma === 'lemma-synge',
+      document.querySelector('#generate').textContent.includes('Reference v2'),
+      document.querySelector('#generate input[type="checkbox"]').checked,
+      copied.includes('language-generation-reference-facts/v1'),
+      document.querySelector('#generate').textContent.includes('Import candidate'),
+      document.querySelector('#unavailable').textContent.includes('USER KNOWLEDGE'),
+      document.querySelector('#unavailable').textContent.includes('Synthetic reference outage'),
+      clozeStart?.mode === 'FAST_TRACK' && clozeStart?.trackKey === 'FAST_TRACK_1',
+    ];
+    const passed = assertions.every(Boolean);
+    document.querySelector('#result').textContent = passed ? `PASS ${assertions.length}/${assertions.length}` : `FAIL ${JSON.stringify(assertions)}`;
+    document.documentElement.dataset.smoke = passed ? 'pass' : 'fail';
+    document.title = passed ? 'Phase 7.5C browser smoke: PASS' : 'Phase 7.5C browser smoke: FAIL';
+  </script>
+</body>
+</html>

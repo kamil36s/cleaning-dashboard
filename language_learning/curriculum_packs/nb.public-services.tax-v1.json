@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "language.curriculum-pack-manifest/v1",
+  "pack": {
+    "id": "nb.public-services.tax",
+    "version": 1,
+    "slug": "skatt-og-avgift",
+    "language": "nb",
+    "name": "Tax and duties services",
+    "description": "Official public-service concepts under the Los tax and duties services theme.",
+    "category": "TAX",
+    "sourceType": "OFFICIAL_SOURCE",
+    "reviewState": "SOURCE_APPROVED",
+    "status": "ACTIVE",
+    "displayOrder": 50,
+    "releasedDate": "2026-09-17",
+    "curriculumPolicyVersion": "language.curriculum-policy/v1",
+    "denominatorPolicyVersion": "language.curriculum-denominator/v1",
+    "progressPolicyVersion": "language.curriculum-progress/v1",
+    "fingerprint": "sha256:db890e8a9ca169d946a865caf9c8057ad4aa5b48efcda9ab7125161048ecd438"
+  },
+  "source": {
+    "id": "digdir-los-3.0-2023-03-01",
+    "provider": "Digitaliseringsdirektoratet (Digdir)",
+    "name": "Los – common terminology for public services",
+    "version": "3.0-rdf-2023-03-01",
+    "url": "https://data.norge.no/en/datasets/c479c6db-af9d-4467-a238-f30480d153e9/los-felles-terminologi-for-offentlige-tjenester",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "attribution": "Digitaliseringsdirektoratet, Los 3.0 (CC0).",
+    "membershipBasis": "Recursive leaf SKOS concepts below https://psi.norge.no/los/tema/skatt-og-avgift; grouping concepts excluded."
+  },
+  "mappingSnapshot": {
+    "mappingPolicyVersion": "language.curriculum-reference-mapping/v1",
+    "resolverRuleVersion": "reference-resolver/exact-normalized-null-pos/v1",
+    "referenceSchemaVersion": 3,
+    "referenceFingerprint": "sha256:5395a0d1aa2c300f956e04ff69af338463d923d04a14b25bdeffacd416f781e9",
+    "sourceArtifactSha256": "sha256:e6f3266e404aa91d73e31cec0f211814f2fe9a6daadbc1864478287239ba837f",
+    "sourceArtifactLastModified": "2023-03-01T13:09:58Z",
+    "mappedDate": "2026-09-17"
+  },
+  "items": [
+    {
+      "membershipId": "870a75903eb516fdef327cce68495f27",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/arbeidsgiveravgift",
+      "displayTerm": "Arbeidsgiveravgift",
+      "normalizedLookup": "arbeidsgiveravgift",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "a7f6570e5b8b337dcab094100a07e24a",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|arbeidsgiveravgift|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A3051",
+        "canonicalForm": "arbeidsgiveravgift",
+        "normalizedForm": "arbeidsgiveravgift",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "196e343eab4ba71400c6892306e27f0c",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/betaling-av-skatt",
+      "displayTerm": "Betaling av skatt",
+      "normalizedLookup": "betaling av skatt",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "97ef988b6427c08e7f8990dd5ef64668",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/dokumentavgift",
+      "displayTerm": "Dokumentavgift",
+      "normalizedLookup": "dokumentavgift",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "6fc7f2b96b5d6743c19a534e74f860f6",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|dokumentavgift|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A12350",
+        "canonicalForm": "dokumentavgift",
+        "normalizedForm": "dokumentavgift",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "af99313b6093d819f24dda37ecaa531b",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/eiendomsskatt",
+      "displayTerm": "Eiendomsskatt",
+      "normalizedLookup": "eiendomsskatt",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "1c8b72899565fbdfd4944687e5092703",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|eiendomsskatt|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A13816",
+        "canonicalForm": "eiendomsskatt",
+        "normalizedForm": "eiendomsskatt",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "d10f0cc40347c73f441f5d14732466e2",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/kommunale-avgifter-og-gebyr",
+      "displayTerm": "Kommunale avgifter og gebyr",
+      "normalizedLookup": "kommunale avgifter og gebyr",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "1e46a8392ab10855af1bea42287105d7",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/merverdiavgift",
+      "displayTerm": "Merverdiavgift",
+      "normalizedLookup": "merverdiavgift",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "972f079a8915abd17895b14c9c0c8f66",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|merverdiavgift|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A44650",
+        "canonicalForm": "merverdiavgift",
+        "normalizedForm": "merverdiavgift",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "acad40e04c45e2470f647c615ab26e08",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/motorvognavgifter",
+      "displayTerm": "Motorvognavgifter",
+      "normalizedLookup": "motorvognavgifter",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "f37cf00f92a44df8df2053184540466e",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/skatteattest",
+      "displayTerm": "Skatteattest",
+      "normalizedLookup": "skatteattest",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "5a39fd7a12a3205b7003d8eb624a2e9d",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/skattekort",
+      "displayTerm": "Skattekort",
+      "normalizedLookup": "skattekort",
+      "reviewState": "APPROVED",
+      "mappingState": "MAPPED",
+      "mappingBasis": "REFERENCE_RESOLVER_UNIQUE_NULL_POS_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "referenceUnit": {
+        "id": "c0175ef9a334a3ae5fb478f3cc59b323",
+        "stableKey": "reference-key%2Fv1|nb|LEMMA|skattekort|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A60669",
+        "canonicalForm": "skattekort",
+        "normalizedForm": "skattekort",
+        "partOfSpeech": "NOUN",
+        "unitType": "LEMMA"
+      }
+    },
+    {
+      "membershipId": "08c6b3978fdd85703fff7788732ef2c9",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/skattemelding-for-formue-og-inntektsskatt",
+      "displayTerm": "Skattemelding for formue- og inntektsskatt",
+      "normalizedLookup": "skattemelding for formue- og inntektsskatt",
+      "reviewState": "APPROVED",
+      "mappingState": "UNRESOLVED",
+      "mappingBasis": "NO_EXACT_REFERENCE_CANDIDATE",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP"
+    },
+    {
+      "membershipId": "6c1a5f12c3652313e861a7e5fe53633b",
+      "sourceMembershipId": "https://psi.norge.no/los/ord/toll",
+      "displayTerm": "Toll",
+      "normalizedLookup": "toll",
+      "reviewState": "APPROVED",
+      "mappingState": "AMBIGUOUS",
+      "mappingBasis": "REFERENCE_RESOLVER_POS_REQUIRED_SNAPSHOT",
+      "priority": "USEFUL",
+      "weight": 1.0,
+      "provenanceClass": "SOURCE_MEMBERSHIP",
+      "mappingCandidates": [
+        {
+          "id": "a3042cc57264b13732db1c7e5a2476ab",
+          "stableKey": "reference-key%2Fv1|nb|LEMMA|toll|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A81986",
+          "canonicalForm": "toll",
+          "normalizedForm": "toll",
+          "partOfSpeech": "NOUN",
+          "unitType": "LEMMA"
+        },
+        {
+          "id": "bea13714ebbe56379577af31b6124e50",
+          "stableKey": "reference-key%2Fv1|nb|LEMMA|toll|NOUN|nb-norsk-ordbank-nob-2022-02-01%3A164046",
+          "canonicalForm": "toll",
+          "normalizedForm": "toll",
+          "partOfSpeech": "NOUN",
+          "unitType": "LEMMA"
+        }
+      ]
+    }
+  ]
+}

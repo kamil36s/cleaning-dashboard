@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "language.curriculum-catalog/v1",
+  "unavailablePacks": [
+    {
+      "id": "nb.norway-essentials",
+      "name": "Norway Essentials",
+      "category": "NORWAY_PRACTICAL",
+      "status": "UNAVAILABLE",
+      "reason": "No reviewed relocation curriculum with defensible membership has been approved; KELLY Top-N is not a substitute."
+    },
+    {
+      "id": "nb.everyday",
+      "name": "Everyday Norwegian",
+      "category": "EVERYDAY",
+      "status": "UNAVAILABLE",
+      "reason": "Frequency evidence alone cannot define everyday-domain membership."
+    },
+    {
+      "id": "nb.work-basics",
+      "name": "Work Basics",
+      "category": "WORK",
+      "status": "UNAVAILABLE",
+      "reason": "The active Los Work pack covers public-service concepts, not a reviewed workplace communication curriculum."
+    },
+    {
+      "id": "nb.warehouse",
+      "name": "Warehouse",
+      "category": "WAREHOUSE",
+      "status": "UNAVAILABLE",
+      "reason": "No licensed source-defined or human-reviewed warehouse curriculum has been approved."
+    },
+    {
+      "id": "nb.construction-tools",
+      "name": "Construction & Tools",
+      "category": "CONSTRUCTION",
+      "status": "UNAVAILABLE",
+      "reason": "No licensed source-defined or human-reviewed construction/tools curriculum has been approved."
+    },
+    {
+      "id": "nb.workplace-safety",
+      "name": "Workplace Safety",
+      "category": "SAFETY",
+      "status": "UNAVAILABLE",
+      "reason": "Official safety pages were audited, but ordinary page text was not promoted into authoritative membership."
+    },
+    {
+      "id": "nb.shopping",
+      "name": "Shopping",
+      "category": "SHOPPING",
+      "status": "UNAVAILABLE",
+      "reason": "No licensed source-defined or human-reviewed shopping curriculum has been approved."
+    },
+    {
+      "id": "nb.job-interview",
+      "name": "Job Interview",
+      "category": "WORK",
+      "status": "UNAVAILABLE",
+      "reason": "No licensed source-defined or human-reviewed job-interview curriculum has been approved."
+    },
+    {
+      "id": "nb.football",
+      "name": "Football",
+      "category": "SPORT",
+      "status": "UNAVAILABLE",
+      "reason": "No licensed source-defined or human-reviewed football curriculum has been approved."
+    }
+  ]
+}

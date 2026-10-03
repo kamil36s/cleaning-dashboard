@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "flourishing",
+  "instrumentVersion": "Flourishing Scale Polish translation (Kaczmarek/Baran; official Diener distribution)",
+  "scoringVersion": "flourishing-sum-8-56-v1",
+  "language": "pl-PL",
+  "questionTextStatus": "official_translation",
+  "title": "Skala Prosperowania (Flourishing Scale)",
+  "shortDescription": "Ośmiopozycyjna skala postrzeganego powodzenia w ważnych obszarach funkcjonowania.",
+  "recallPeriod": "ogólna samoocena",
+  "estimatedMinutes": 3,
+  "instructions": "Poniżej znajduje się 8 stwierdzeń, z którymi możesz się zgodzić lub nie. Korzystając ze skali od 1 do 7 wskaż, w jakim stopniu zgadzasz się z każdym zdaniem.",
+  "questionCount": 8,
+  "scoredItemCount": 8,
+  "responseOptions": [
+    { "value": 1, "label": "Zdecydowanie się nie zgadzam" },
+    { "value": 2, "label": "Nie zgadzam się" },
+    { "value": 3, "label": "Raczej się nie zgadzam" },
+    { "value": 4, "label": "Trudno powiedzieć, ani się nie zgadzam, ani zgadzam" },
+    { "value": 5, "label": "Raczej się zgadzam" },
+    { "value": 6, "label": "Zgadzam się" },
+    { "value": 7, "label": "Zdecydowanie się zgadzam" }
+  ],
+  "questions": [
+    { "id": "1", "text": "Prowadzę życie, które ma sens i cel", "required": true },
+    { "id": "2", "text": "Moje relacje społeczne są wspierające i dają mi satysfakcję.", "required": true },
+    { "id": "3", "text": "Angażuję się i interesuję tym, czym zajmuję się na co dzień.", "required": true },
+    { "id": "4", "text": "Aktywnie przyczyniam się do szczęścia i dobrostanu innych.", "required": true },
+    { "id": "5", "text": "Jestem kompetentny i zdolny do wykonywania zajęć, które są dla mnie ważne.", "required": true },
+    { "id": "6", "text": "Jestem dobrym człowiekiem i prowadzę dobre życie.", "required": true },
+    { "id": "7", "text": "Z optymizmem patrzę na swoją przyszłość.", "required": true },
+    { "id": "8", "text": "Ludzie mnie szanują.", "required": true }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5", "6", "7", "8"],
+    "allowedValues": [1, 2, 3, 4, 5, 6, 7],
+    "reverseItemIds": [],
+    "subscales": {}
+  },
+  "interpretationBands": [],
+  "source": {
+    "title": "Flourishing Scale — Polish translation",
+    "url": "https://eddiener.com/wp-content/uploads/2025/02/FS_Polish.pdf",
+    "landingPage": "https://eddiener.com/flourishing-scale-fs/",
+    "documentSha256": "e9d3b043736a6028274e73843211b079d90623023b23e72ac0d38bcaf0050c72"
+  },
+  "license": {
+    "status": "non-commercial with attribution",
+    "notice": "Copyrighted scale. The authors permit non-commercial use without an individual permission request when proper credit is given."
+  },
+  "attribution": "Diener, E., Wirtz, D., Tov, W., Kim-Prieto, C., Choi, D., Oishi, S., & Biswas-Diener, R. (2009). Polish translation: Łukasz D. Kaczmarek and Barbara Baran."
+}

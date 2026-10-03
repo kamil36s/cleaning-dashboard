@@ -1,0 +1,34 @@
+[
+  {
+    "id": 41001,
+    "isJobListing": true,
+    "jobScope": "Fulltid",
+    "jobDuration": "Fast",
+    "deadline": "31.12.2099",
+    "employer": "Example University",
+    "title": "QA Engineer",
+    "summary": "Quality engineering, accessibility testing, and test automation.",
+    "logo": "https://www.jobbnorge.no/logo/example.png",
+    "link": "https://www.jobbnorge.no/ledige-stillinger/stilling/41001",
+    "location": "Oslo",
+    "postCode": "0150",
+    "promoted": false,
+    "positionCount": 1,
+    "isInternal": false
+  },
+  {
+    "id": 41002,
+    "isJobListing": true,
+    "jobScope": "Deltid",
+    "jobDuration": "Vikariat",
+    "deadline": "31.12.2099",
+    "employer": "Example Archive",
+    "title": "Historian",
+    "summary": "Archive research and cataloguing.",
+    "link": "https://www.jobbnorge.no/ledige-stillinger/stilling/41002",
+    "location": "Bergen",
+    "promoted": false,
+    "positionCount": 1,
+    "isInternal": null
+  }
+]

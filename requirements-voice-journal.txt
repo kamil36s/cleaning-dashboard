@@ -1,0 +1,3 @@
+# Existing OpenAI Whisper remains the default engine and is installed separately.
+# This dependency enables the optional Faster-Whisper adapter.
+faster-whisper>=1.1,<2

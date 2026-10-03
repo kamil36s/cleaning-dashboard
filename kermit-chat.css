@@ -1,0 +1,31 @@
+.kermit-shell { position: fixed; right: 20px; bottom: 20px; z-index: 10000; font: 14px/1.45 system-ui, sans-serif; color: #eaf4ef; }
+.kermit-shell button, .kermit-shell select, .kermit-shell textarea { font: inherit; }
+.kermit-toggle { border: 1px solid #8cc8a6; border-radius: 999px; padding: 10px 16px; background: #173c2d; color: #fff; box-shadow: 0 6px 20px #0007; cursor: pointer; }
+.kermit-shell[data-state="unavailable"] .kermit-toggle, .kermit-shell[data-state="waiting_for_memory"] .kermit-toggle { border-color: #d9ae72; }
+.kermit-panel { width: min(390px, calc(100vw - 32px)); height: min(560px, calc(100vh - 100px)); margin-bottom: 10px; display: flex; flex-direction: column; border: 1px solid #507760; border-radius: 16px; background: #13271f; box-shadow: 0 12px 38px #0009; overflow: hidden; }
+.kermit-panel[hidden], .kermit-resource[hidden] { display: none; }
+.kermit-header { display: flex; align-items: center; gap: 10px; padding: 12px; border-bottom: 1px solid #345442; }
+.kermit-avatar { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #448e5e var(--kermit-avatar-image, none) center / cover no-repeat; font-weight: bold; }
+.kermit-status { margin-left: auto; font-size: 12px; color: #c2d6c8; }
+.kermit-clear { border: 1px solid #507760; border-radius: 6px; padding: 3px 6px; background: #244234; color: #eaf4ef; cursor: pointer; font-size: 11px !important; }
+.kermit-verified, .kermit-evidence-time { display: block; margin-bottom: 5px; color: #a8cbb2; font-size: 11px; }
+.kermit-profile-label { padding: 8px 12px; border-bottom: 1px solid #345442; }
+.kermit-profile { margin-left: 6px; padding: 3px; border-radius: 5px; background: #244234; color: #fff; }
+.kermit-index-state { display: block; padding: 0 12px 7px; border-bottom: 1px solid #345442; color: #a8cbb2; font-size: 11px; }
+.kermit-conversation { min-height: 0; flex: 1; overflow: auto; padding: 12px; }
+.kermit-message { margin: 0 0 12px; padding: 9px 10px; border-radius: 10px; background: #244234; overflow-wrap: anywhere; }
+.kermit-user { background: #285641; }
+.kermit-speaker { display: block; font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+.kermit-message-body { white-space: pre-wrap; }
+.kermit-citation-marker { color: #9debb8; margin-left: 2px; }
+.kermit-sources, .kermit-notes { margin-top: 8px; font-size: 12px; white-space: normal; }
+.kermit-sources summary, .kermit-notes summary { cursor: pointer; }
+.kermit-sources ul, .kermit-notes ul { padding-left: 18px; }
+.kermit-resource { padding: 8px 12px; border-top: 1px solid #84663e; background: #463b25; }
+.kermit-resource p { margin: 0 0 6px; }
+.kermit-resource-actions { display: flex; gap: 6px; }
+.kermit-resource-actions button, .kermit-send { border: 0; border-radius: 6px; padding: 6px 10px; background: #75c38d; color: #102519; cursor: pointer; }
+.kermit-resource-actions button[hidden] { display: none; }
+.kermit-composer { display: flex; gap: 6px; padding: 10px; border-top: 1px solid #345442; }
+.kermit-input { flex: 1; min-width: 0; resize: vertical; border: 1px solid #6c9879; border-radius: 7px; padding: 7px; background: #203a2c; color: #fff; }
+.kermit-shell :focus-visible { outline: 2px solid #b6edc5; outline-offset: 2px; }

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santiago Route QA</title>
+  <link rel="stylesheet" href="./santiago-route-qa.css">
+</head>
+<body>
+  <main class="route-qa-shell">
+    <aside class="route-qa-sidebar">
+      <header>
+        <p class="route-qa-kicker">Developer geometry tool</p>
+        <h1>Kraków → Santiago</h1>
+        <p>Every checkpoint pair is audited independently. Flags require human context before correction.</p>
+      </header>
+
+      <section class="route-qa-summary" data-qa-summary aria-live="polite">
+        <p>Loading route QA data…</p>
+      </section>
+
+      <section class="route-qa-controls" aria-label="Map filters">
+        <label><input type="checkbox" data-qa-show-normal checked> Normal legs</label>
+        <label><input type="checkbox" data-qa-show-suspicious checked> Suspicious legs</label>
+        <label><input type="checkbox" data-qa-show-high checked> Highly suspicious legs</label>
+        <label><input type="checkbox" data-qa-show-checkpoints checked> Checkpoint indexes</label>
+      </section>
+
+      <section>
+        <h2>Flagged legs</h2>
+        <div class="route-qa-leg-list" data-qa-leg-list></div>
+      </section>
+    </aside>
+
+    <section class="route-qa-map-wrap" aria-label="Route geometry map">
+      <div id="santiago-route-qa-map"></div>
+      <div class="route-qa-legend" aria-label="Map legend">
+        <span><i class="is-normal"></i>normal</span>
+        <span><i class="is-suspicious"></i>suspicious</span>
+        <span><i class="is-high"></i>highly suspicious</span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/santiago-route-qa.js"></script>
+</body>
+</html>

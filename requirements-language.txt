@@ -1,0 +1,9 @@
+# Phase 0 Bokmål analysis spike. Models are provisioned separately and are
+# never downloaded by the analyzer at runtime.
+stanza>=1.14,<1.15
+# Phase 0 comparison dependency only; results do not authorize a runtime fallback.
+simplemma>=2.0,<2.1
+wordfreq>=3.1,<4
+# Server-side authentication for on-demand Google Cloud Chirp 3 HD Cloze audio.
+google-auth>=2.35,<3
+requests>=2.31,<3

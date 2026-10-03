@@ -1,0 +1,46 @@
+{
+  "dataset": "current_summary",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-16T09:17:58Z",
+  "dataset_freshness": {
+    "tasks": "2026-09-10T13:51:20Z",
+    "cleaning": "2026-09-16T09:16:37Z",
+    "habits": "2026-09-16T09:16:25Z",
+    "body_activity": "2026-09-16T09:16:12Z",
+    "training": "2026-09-16T09:16:45Z",
+    "reading": "2026-09-16T09:16:45Z",
+    "events": "2026-09-15T10:43:37Z",
+    "ai_usage": "2026-09-16T09:17:52Z",
+    "environment": "2026-09-16T09:16:18Z"
+  },
+  "deterministic_signals": [
+    {
+      "kind": "threshold",
+      "metric": "cleaning.overdue",
+      "value": 106,
+      "condition": "greater_than_zero"
+    },
+    {
+      "kind": "trend",
+      "metric": "body_activity.steps_7d_avg",
+      "value": -11.49,
+      "unit": "percent",
+      "direction": "decreasing"
+    },
+    {
+      "kind": "trend",
+      "metric": "body_activity.weight_ma7_kg",
+      "value": -0.8,
+      "unit": "percent",
+      "direction": "decreasing"
+    },
+    {
+      "kind": "comparison",
+      "metric": "habits.declining_7d",
+      "value": 6,
+      "condition": "positive_days_below_previous_7d"
+    }
+  ],
+  "note": "Signals are deterministic candidates for interpretation, not AI-written conclusions."
+}

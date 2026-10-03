@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Finanse</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="page-budget finance-page">
+  <div class="finance-shell">
+    <aside class="finance-rail">
+      <div class="finance-brand"><span>FINANSE</span><strong>Moje pieniądze</strong></div>
+      <nav class="finance-nav" aria-label="Sekcje finansów">
+        <button class="is-active" data-finance-view="overview">Przegląd</button>
+        <button data-finance-view="transactions">Transakcje</button>
+        <button data-finance-view="review">Przegląd danych <span id="finance-review-count"></span></button>
+        <button data-finance-view="receipts">Paragony <span id="finance-receipt-count"></span></button>
+        <button data-finance-view="budgets">Budżety</button>
+        <button data-finance-view="recurring">Cykliczne</button>
+        <button data-finance-view="goals">Cele</button>
+        <button data-finance-view="analysis">Analiza</button>
+        <button data-finance-view="reports">Raporty</button>
+        <button data-finance-view="settings">Ustawienia</button>
+      </nav>
+      <div class="finance-rail-foot"><a href="./index.html">← Dashboard</a><span id="finance-freshness">Ładowanie danych…</span></div>
+    </aside>
+
+    <div class="finance-workspace">
+      <header class="finance-topbar">
+        <div><p id="finance-eyebrow">Przegląd</p><h1 id="finance-view-title">Sytuacja finansowa</h1></div>
+        <div class="finance-top-actions">
+          <label>Okres <select id="finance-month" aria-label="Okres finansowy"></select></label>
+          <button class="finance-button is-quiet" id="finance-current-month" type="button">Bieżący miesiąc</button>
+          <label class="finance-import-button" for="finance-csv-input"><input id="finance-csv-input" type="file" accept=".csv,text/csv" />Import CSV</label>
+          <button class="finance-button is-quiet" id="finance-help-toggle" type="button">Jak korzystać z Finansów?</button>
+          <button class="finance-button is-quiet" id="finance-refresh" type="button">Odśwież</button>
+        </div>
+      </header>
+      <div class="finance-period-context" id="finance-period-context"></div>
+      <div class="finance-import-freshness" id="finance-import-freshness" aria-label="Ostatnie importy kont"></div>
+      <div class="finance-status" id="finance-status" role="status">Ładowanie…</div>
+      <main>
+        <section class="finance-view is-active" data-finance-section="overview">
+          <section class="finance-onboarding" id="finance-onboarding">
+            <header><div><p>START</p><h2>Pierwsze kroki</h2></div><button type="button" id="finance-onboarding-dismiss">Ukryj</button></header>
+            <div id="finance-onboarding-items" class="finance-onboarding-grid"></div>
+          </section>
+          <div class="finance-kpis">
+            <article class="finance-kpi is-primary"><div class="finance-kpi-heading"><span>Dostępne środki</span><small id="finance-main-updated">—</small></div><strong id="finance-liquid">—</strong><div class="finance-kpi-free"><span>Wolne środki</span><strong id="finance-safe">—</strong></div><small id="finance-safe-daily">—</small></article>
+            <article class="finance-kpi"><div class="finance-kpi-heading"><span>Oszczędności</span><small id="finance-savings-updated">—</small></div><strong id="finance-savings">—</strong><div class="finance-progress-track finance-kpi-progress" role="progressbar" aria-label="Postęp poduszki bezpieczeństwa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="finance-savings-progress"></i></div><small id="finance-savings-rate">—</small></article>
+            <article class="finance-kpi"><span>Z wpływów zostało</span><strong id="finance-net">—</strong><small>wpływy − wydano</small></article>
+          </div>
+          <section class="finance-safe-setup" id="finance-safe-setup" hidden></section>
+          <div class="finance-breakdowns">
+            <section class="finance-card finance-breakdown-card"><header><div><p>Wydatki</p><h2>Zapłacone na ten miesiąc</h2></div><strong class="finance-breakdown-amount" id="finance-expenses">—</strong></header><div class="finance-kpi-breakdown" id="finance-expense-breakdown"></div></section>
+            <section class="finance-card finance-breakdown-card"><header><div><p>Wpływy</p><h2>Dostępne na ten miesiąc</h2></div><strong class="finance-breakdown-amount" id="finance-income">—</strong></header><div class="finance-kpi-breakdown" id="finance-income-breakdown"></div></section>
+          </div>
+          <div class="finance-overview-grid">
+            <section class="finance-card finance-span-2"><header><div><p>Budżet</p><h2>Plan na miesiąc</h2></div><button data-open-view="budgets">Edytuj</button></header><div id="finance-budget-preview" class="finance-stack"></div></section>
+            <section class="finance-card finance-span-2 finance-goal-overview-card"><header><div><p>Cele</p><h2>Postęp</h2></div><button data-open-view="goals">Otwórz</button></header><div id="finance-goal-preview" class="finance-stack"></div><div id="finance-goal-month" class="finance-goal-month"></div><button class="finance-goal-analysis-link" data-open-view="analysis">Analiza wpłat i wypłat <span aria-hidden="true">→</span></button></section>
+            <section class="finance-card finance-span-4"><header><div><p>Nadchodzące</p><h2>Najbliższe zdarzenia</h2></div><button data-open-view="recurring">Zobacz wszystkie</button></header><div id="finance-upcoming" class="finance-list"></div></section>
+            <section class="finance-card finance-span-2"><header><div><p>Historia</p><h2>6 miesięcy</h2></div><button data-open-view="reports">Raporty</button></header><div id="finance-trends" class="finance-trends"></div></section>
+            <section class="finance-card finance-span-2"><header><div><p>Uwaga</p><h2>Deterministyczne obserwacje</h2></div></header><div id="finance-insights" class="finance-insights"></div></section>
+          </div>
+        </section>
+
+        <section class="finance-view" data-finance-section="analysis" hidden>
+          <p class="finance-analysis-intro">Kwoty z wybranego miesiąca oraz średnie miesięczne z historii konta.</p>
+          <div class="finance-analysis-grid">
+            <section class="finance-card"><header><div><p>Cel oszczędnościowy</p><h2>Wpłaty i wypłaty</h2></div></header><div id="finance-analysis-goal-periods" class="finance-goal-month"></div></section>
+            <section class="finance-card"><header><div><p>Wybrany miesiąc</p><h2>Bilans wpływów i wydatków</h2></div></header><div id="finance-analysis-flow" class="finance-analysis-flow"></div></section>
+          </div>
+        </section>
+
+        <section class="finance-view" data-finance-section="transactions" hidden>
+          <div class="finance-filterbar">
+            <input id="finance-tx-search" type="search" placeholder="Szukaj opisu lub miejsca" />
+            <select id="finance-tx-kind"><option value="">Wszystkie rodzaje</option><option value="expense">Wydatek</option><option value="salary">Wynagrodzenie</option><option value="income">Dochód</option><option value="saving">Oszczędność</option><option value="refund">Zwrot</option><option value="transfer">Transfer</option></select>
+            <select id="finance-tx-account"><option value="">Wszystkie konta</option></select><select id="finance-tx-category"><option value="">Wszystkie kategorie</option></select><select id="finance-tx-merchant"><option value="">Wszystkie miejsca</option></select><select id="finance-tx-type"><option value="">Wszystkie typy miejsc</option></select>
+            <input id="finance-tx-from" type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/YYYY" aria-label="Data od, DD/MM/YYYY" /><input id="finance-tx-to" type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/YYYY" aria-label="Data do, DD/MM/YYYY" />
+            <input id="finance-tx-min" type="number" step="0.01" placeholder="Kwota od" aria-label="Kwota od" /><input id="finance-tx-max" type="number" step="0.01" placeholder="Kwota do" aria-label="Kwota do" />
+            <select id="finance-tx-sort"><option value="date_desc">Najnowsze</option><option value="date_asc">Najstarsze</option><option value="amount_asc">Największy wydatek</option><option value="amount_desc">Największy wpływ</option></select>
+            <button class="finance-button" id="finance-tx-apply">Filtruj</button>
+            <a class="finance-button is-quiet" id="finance-tx-export" download="transactions.csv">Eksport CSV</a>
+          </div>
+          <section class="finance-card"><div id="finance-transactions" class="finance-table"></div><footer class="finance-pager"><button id="finance-tx-prev">←</button><span id="finance-tx-page">—</span><button id="finance-tx-next">→</button></footer></section>
+        </section>
+
+        <section class="finance-view" data-finance-section="review" hidden>
+          <div class="finance-section-intro"><div><p>Klasyfikacja</p><h2>Przegląd danych</h2><small id="finance-review-progress">—</small></div><span id="finance-quality-chip">—</span></div>
+          <section class="finance-review-home">
+            <div><strong>Co mam tutaj zrobić?</strong><p>System rozpoznaje transakcje automatycznie tam, gdzie ma wystarczające dane. Tutaj są tylko przypadki wymagające Twojej decyzji. Jedna decyzja może poprawić wiele podobnych transakcji i przyszłe importy.</p></div>
+            <div id="finance-review-quality" class="finance-review-quality"></div>
+          </section>
+          <div class="finance-review-toolbar" aria-label="Zakres i sortowanie przeglądu">
+            <div class="finance-scope-toggle"><button type="button" data-review-scope="selected_month" class="is-active">Wybrany miesiąc</button><button type="button" data-review-scope="all_history">Cała historia</button></div>
+            <label>Sortowanie <select id="finance-review-sort"><option value="impact">Największy wpływ</option><option value="transactions">Najwięcej transakcji</option><option value="newest">Najnowsze</option><option value="easiest">Najłatwiejsze do rozwiązania</option></select></label>
+            <label class="finance-quick-toggle"><input id="finance-review-quick" type="checkbox" /> Szybkie porządki</label>
+            <button type="button" class="finance-button is-quiet" id="finance-review-undo">Cofnij ostatnią zmianę grupową</button>
+          </div>
+          <div id="finance-review-scope-summary" class="finance-review-scope-summary"></div>
+          <div id="finance-review" class="finance-review-list"></div>
+          <dialog id="finance-review-preview" class="finance-review-preview"><form method="dialog"><header><div><p>Podgląd skutku</p><h2>Potwierdź zmianę grupową</h2></div><button value="cancel" aria-label="Zamknij">×</button></header><div id="finance-review-preview-body"></div><footer><button value="cancel" class="finance-button is-quiet">Anuluj</button><button value="confirm" class="finance-button">Potwierdź</button></footer></form></dialog>
+        </section>
+
+        <section class="finance-view" data-finance-section="receipts" hidden>
+          <div class="finance-section-intro"><div><p>Dowody zakupowe</p><h2>Paragony i produkty</h2><small>Paragon wzbogaca transakcję — nigdy nie tworzy drugiego wydatku.</small></div><span id="finance-receipt-coverage">—</span></div>
+          <div class="finance-receipt-toolbar">
+            <label class="finance-import-button" for="finance-receipt-input"><input id="finance-receipt-input" type="file" accept="application/pdf,application/json,text/json,image/jpeg,image/png,image/webp,.json,.pdf" />Dodaj paragon</label>
+            <select id="finance-receipt-status" aria-label="Status paragonu"><option value="">Wszystkie</option><option value="inbox">Inbox</option><option value="matched">Dopasowane</option><option value="needs_review">Wymaga przeglądu</option><option value="archived">Archiwum</option></select>
+            <button type="button" class="finance-button is-quiet" id="finance-receipt-undo">Cofnij ostatnią klasyfikację produktów</button>
+            <button type="button" class="finance-button is-quiet" id="finance-receipt-reprocess-all">Ponów wymagające OCR</button>
+          </div>
+          <div id="finance-receipt-health" class="finance-receipt-health"></div>
+          <div id="finance-receipt-metrics" class="finance-review-quality"></div>
+          <div class="finance-receipt-grid">
+            <section class="finance-card"><header><div><p>Paragony</p><h2>Inbox i historia</h2></div></header><div id="finance-receipts" class="finance-list"></div></section>
+            <section class="finance-card"><header><div><p>Produkty</p><h2>Powtarzające się nierozpoznane pozycje</h2></div></header><div id="finance-receipt-review" class="finance-list"></div></section>
+          </div>
+          <dialog id="finance-receipt-detail" class="finance-review-preview" aria-labelledby="finance-receipt-detail-title"><form method="dialog"><header><div><p>Paragon</p><h2 id="finance-receipt-detail-title">Szczegóły</h2></div><button value="cancel" aria-label="Zamknij">×</button></header><div id="finance-receipt-detail-body" class="finance-receipt-detail-body"></div><footer><button value="cancel" class="finance-button">Zamknij</button></footer></form></dialog>
+        </section>
+
+        <section class="finance-view" data-finance-section="budgets" hidden>
+          <div class="finance-section-intro"><div><p>Plan miesiąca</p><h2>Budżety wydatków</h2></div></div>
+          <form class="finance-inline-form" id="finance-budget-form"><select id="finance-budget-category"><option value="">Budżet ogólny</option></select><input id="finance-budget-limit" type="number" min="0" step="0.01" placeholder="Limit PLN" required /><button class="finance-button">Zapisz limit</button></form>
+          <div id="finance-budget-context" class="finance-setup-context"></div>
+          <div id="finance-budgets" class="finance-budget-list"></div>
+        </section>
+
+        <section class="finance-view" data-finance-section="recurring" hidden>
+          <div class="finance-section-intro"><div><p>Zobowiązania</p><h2>Płatności cykliczne i planowane</h2></div><span id="finance-recurring-total">—</span></div>
+          <form class="finance-inline-form finance-inline-form-wide" id="finance-obligation-form"><input id="finance-obligation-name" placeholder="Nazwa" required /><input id="finance-obligation-amount" type="number" min="0.01" step="0.01" placeholder="Kwota PLN" required /><input id="finance-obligation-date" type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/YYYY" required /><select id="finance-obligation-kind"><option value="bill">Rachunek</option><option value="subscription">Subskrypcja</option><option value="installment">Rata</option><option value="rent">Czynsz</option><option value="saving">Oszczędność</option><option value="salary">Wynagrodzenie</option></select><select id="finance-obligation-cadence"><option value="once">Jednorazowo</option><option value="weekly">Co tydzień</option><option value="monthly">Co miesiąc</option><option value="quarterly">Co kwartał</option><option value="annual">Co rok</option></select><button class="finance-button">Dodaj</button></form>
+          <div class="finance-recurring-grid"><section class="finance-card"><header><div><p>Potwierdzone</p><h2>Definicje</h2></div></header><div id="finance-obligations" class="finance-list"></div></section><section class="finance-card"><header><div><p>Tylko propozycje</p><h2>Wykryte wzorce</h2></div></header><div id="finance-candidates" class="finance-list"></div></section></div>
+          <section class="finance-card finance-planned-card"><header><div><p>Jednorazowe</p><h2>Planowane zdarzenia</h2></div></header><form class="finance-inline-form" id="finance-plan-form"><input id="finance-plan-name" placeholder="Nazwa planu" required /><input id="finance-plan-amount" type="number" min="0.01" step="0.01" placeholder="Kwota PLN" required /><input id="finance-plan-date" type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/YYYY" required /><select id="finance-plan-kind"><option value="expense">Wydatek</option><option value="saving">Oszczędność</option><option value="income">Wpływ</option></select><label><input id="finance-plan-safe" type="checkbox" checked /> Uwzględnij w safe-to-spend</label><button class="finance-button">Dodaj plan</button></form><div id="finance-planned-items" class="finance-list"></div></section>
+        </section>
+
+        <section class="finance-view" data-finance-section="goals" hidden>
+          <div class="finance-section-intro"><div><p>Alokacje jawne</p><h2>Cele finansowe</h2><small>Kwota celu jest jawnie przydzielona — nie oznacza całego salda konta oszczędnościowego.</small></div></div>
+          <form class="finance-inline-form finance-inline-form-wide" id="finance-goal-form"><input id="finance-goal-name" placeholder="Nazwa celu" required /><input id="finance-goal-target" type="number" min="0.01" step="0.01" placeholder="Cel PLN" required /><input id="finance-goal-allocated" type="number" min="0" step="0.01" placeholder="Przydzielono PLN" /><input id="finance-goal-date" type="text" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/YYYY" /><input id="finance-goal-monthly" type="number" min="0" step="0.01" placeholder="Miesięcznie PLN" /><label><input id="finance-goal-emergency" type="checkbox" /> Fundusz bezpieczeństwa</label><button class="finance-button">Dodaj cel</button></form>
+          <div id="finance-goals" class="finance-goals"></div>
+        </section>
+
+        <section class="finance-view" data-finance-section="reports" hidden>
+          <div class="finance-section-intro"><div><p>Raport miesięczny</p><h2 id="finance-report-title">—</h2></div></div><div id="finance-report" class="finance-report"></div>
+        </section>
+
+        <section class="finance-view" data-finance-section="settings" hidden>
+          <div class="finance-section-intro"><div><p>Konfiguracja</p><h2>Ustawienia finansów</h2></div></div>
+          <div class="finance-settings-grid">
+            <section class="finance-card"><header><div><p>Konta</p><h2>Role i płynność</h2></div></header><div id="finance-accounts" class="finance-list"></div></section>
+            <section class="finance-card"><header><div><p>Jakość danych</p><h2>Pokrycie klasyfikacji</h2></div></header><div id="finance-data-quality" class="finance-quality"></div></section>
+            <section class="finance-card"><header><div><p>Paragony</p><h2>Stan przetwarzania</h2></div></header><div id="finance-receipt-health-settings" class="finance-receipt-health"></div></section>
+            <section class="finance-card"><header><div><p>Safe-to-spend</p><h2>Dodatkowy bufor (opcjonalnie)</h2></div></header><p>Kwota, którą chcesz zostawić nietkniętą na koncie głównym ponad zaplanowane płatności. Wpisz 0 zł, jeśli wystarczy Ci plan oparty na pensji.</p><form id="finance-safe-form" class="finance-compact-form"><input id="finance-safe-buffer" type="number" min="0" step="0.01" placeholder="0,00 zł" /><button class="finance-button">Zapisz</button></form><div id="finance-safe-breakdown"></div></section>
+            <section class="finance-card"><header><div><p>Kategorie</p><h2>Taksonomia wydatków</h2></div></header><div id="finance-categories-summary" class="finance-list"></div></section>
+            <section class="finance-card"><header><div><p>Miejsca</p><h2>Sprzedawcy i usługodawcy</h2></div></header><div id="finance-merchants-summary" class="finance-list"></div></section>
+            <section class="finance-card"><header><div><p>Wiedza klasyfikacji</p><h2>Wzorce historyczne</h2></div></header><div id="finance-bootstrap" class="finance-list"></div></section>
+            <section class="finance-card"><header><div><p>Reguły</p><h2>Deterministyczna klasyfikacja</h2></div></header><div id="finance-rules" class="finance-list"></div></section>
+            <section class="finance-card"><header><div><p>Importy</p><h2>Historia źródeł</h2></div></header><div id="finance-imports" class="finance-list"></div></section>
+            <section class="finance-card"><header><div><p>Pomoc</p><h2>Polityka klasyfikacji</h2></div></header><p class="finance-help-copy">Miejsca mieszane, takie jak supermarkety i sklepy convenience, trafiają do „Zakupy codzienne / Zakupy mieszane”. Bez paragonu transakcja bankowa nie ujawnia kupionych produktów.</p><button class="finance-button is-quiet" data-open-view="review">Przejdź do przeglądu</button></section>
+          </div>
+        </section>
+      </main>
+      <dialog id="finance-guided-review" class="finance-guided-review" aria-labelledby="finance-guided-title">
+        <div class="finance-guided-shell">
+          <aside class="finance-guided-mascot" aria-hidden="true">
+            <img id="finance-guided-mascot-image" alt="" hidden />
+            <span id="finance-guided-mascot-fallback">FA</span>
+            <p>Finansowy Akinator</p>
+          </aside>
+          <section class="finance-guided-content">
+            <header class="finance-guided-header">
+              <div><p id="finance-guided-progress">Ustalamy kategorię</p><h2 id="finance-guided-title">Pomogę Ci to ustalić</h2></div>
+              <button type="button" id="finance-guided-close" aria-label="Zamknij">×</button>
+            </header>
+            <div id="finance-guided-transaction" class="finance-guided-transaction"></div>
+            <div id="finance-guided-path" class="finance-guided-path" aria-live="polite"></div>
+            <div id="finance-guided-body"></div>
+            <footer class="finance-guided-footer">
+              <button type="button" class="finance-button is-quiet" id="finance-guided-back">← Wróć</button>
+              <button type="button" class="finance-button is-quiet" id="finance-guided-restart">Zacznij od nowa</button>
+              <button type="button" class="finance-button is-quiet" id="finance-guided-skip">Pomiń na razie</button>
+            </footer>
+          </section>
+        </div>
+      </dialog>
+      <aside class="finance-help-panel" id="finance-help-panel" hidden>
+        <header><div><p>Pomoc</p><h2>Jak korzystać z Finansów?</h2></div><button type="button" id="finance-help-close">Zamknij</button></header>
+        <p>Zaimportuj historię, wskaż konto główne i sprawdź zaplanowane płatności. Dodatkowy bufor jest opcjonalny.</p>
+        <p>Nie musisz znać kategorii. W Przeglądzie kliknij „Pomóż mi ustalić”, a system zada kilka prostych pytań.</p>
+        <button type="button" class="finance-button" data-open-view="review">Otwórz Przegląd</button>
+        <p>Reguły są deterministyczne: działają tylko na warunkach pokazanych w podglądzie. Dane bankowe pozostają lokalne.</p>
+      </aside>
+    </div>
+  </div>
+  <script type="module" src="./js/finance-page.js"></script>
+</body>
+</html>

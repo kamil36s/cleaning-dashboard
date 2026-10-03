@@ -1,0 +1,84 @@
+{
+  "before": {
+    "session": {
+      "id": "dashboard-e00f34fda39246f3bb5b4248ba203fdc",
+      "title": "Długi trening · plan cardio",
+      "started_at": 1790349330481,
+      "status": "finished",
+      "duration_seconds": 7135.03,
+      "active_calories": 972.07,
+      "active_calories_keytel_raw": 1375.33,
+      "calorie_calibration_factor": 0.706786,
+      "total_calories": null,
+      "avg_hr": 126,
+      "max_hr": 156,
+      "zones": {
+        "light": 1115.849,
+        "intensive": 3163.485,
+        "aerobic": 2820.027,
+        "anaerobic": 30.713,
+        "vo2max": 0
+      },
+      "training_effect": {
+        "aerobic": 3.3,
+        "aerobic_label": "Rozwój",
+        "anaerobic": 0.2,
+        "anaerobic_label": "Minimalny",
+        "estimated": true
+      },
+      "training_load": 266.51,
+      "recovery_hours": 46,
+      "source": "Wear OS · sesja sterowana z dashboardu",
+      "sample_count": 5037,
+      "started_by": "dashboard",
+      "workout_type": "indoor_cycling",
+      "sub_type": null,
+      "plan_id": "indoor-cycling-30-day-2026-08",
+      "plan_date": "2026-09-25",
+      "planned_duration_minutes": 95,
+      "target_zones": {
+        "light": 10,
+        "intensive": 39,
+        "aerobic": 46,
+        "anaerobic": 0,
+        "vo2max": 0
+      },
+      "interval_progress_seconds": [
+        600.0,
+        2340.0,
+        2760.0
+      ],
+      "plan_completed_at_elapsed": 7099.751,
+      "plan_completed": true,
+      "runtime_anchor_at": null,
+      "start_request_id": "4710f03e-8827-4588-9e7e-5ac4dc12d502",
+      "calorie_method": "indoor_cycling_mi_calibrated_v1",
+      "data_quality": {
+        "active_calories": "estimated_indoor_cycling_mi_calibrated_v1",
+        "training_effect": "estimated_zone_model_v1",
+        "recovery_hours": "estimated_zone_model_v1"
+      },
+      "virtual_walk_active_seconds": 0,
+      "virtual_walk_outside_seconds": 0,
+      "virtual_steps": 0,
+      "distance_km": 15.673499,
+      "cadence_rpm_avg": 77.2,
+      "ended_at": 1790356465296
+    },
+    "journey_commit_distance_km": 15.673499,
+    "journey_total_km": 64.84356299999999
+  },
+  "recovery": {
+    "method": "heart_rate_virtual_distance_v1_after_inferred_csc_loss",
+    "source_session_id": "dashboard-e00f34fda39246f3bb5b4248ba203fdc",
+    "recorded_at": 1790504309845,
+    "inferred_csc_loss_at": 1790352375850,
+    "inference": "credited distance / (average Magene RPM * 0.004 km/rev * 60 min/h)",
+    "max_heart_rate": 190,
+    "hr_sample_count": 5037,
+    "original_distance_km": 15.673499,
+    "recovered_distance_km": 19.48396,
+    "corrected_distance_km": 35.157459,
+    "uncertainty": "CSC RPM and distance time series were not stored; cutoff is estimated from mean RPM"
+  }
+}

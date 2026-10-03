@@ -1,0 +1,30 @@
+{
+  "dataset": "environment",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-16T09:16:18Z",
+  "as_of": "2026-09-16",
+  "units": {
+    "temperature": "degrees Celsius",
+    "relative_humidity": "percent",
+    "battery": "percent"
+  },
+  "privacy": {
+    "mac_address_exported": false,
+    "raw_packets_exported": false
+  },
+  "metrics": {
+    "observed_at": "2026-09-16T11:16:18.984",
+    "temperature_c": 22.81,
+    "relative_humidity_pct": 57.81,
+    "battery_pct": 64,
+    "samples_24h": 840,
+    "temperature_24h_avg_c": null,
+    "temperature_24h_min_c": null,
+    "temperature_24h_max_c": null,
+    "humidity_24h_avg_pct": null,
+    "humidity_24h_min_pct": null,
+    "humidity_24h_max_pct": null
+  },
+  "records": []
+}

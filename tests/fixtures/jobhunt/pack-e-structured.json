@@ -1,0 +1,16 @@
+{
+  "title": "Manual QA Tester",
+  "company": "Synthetic Testing Cooperative",
+  "location": {"city": "Kraków", "country": "PL"},
+  "workModel": "hybrid",
+  "salary": {"min": 12000, "max": 15000, "currency": "PLN", "period": "month"},
+  "contractType": "employment",
+  "shiftWork": false,
+  "requirements": {
+    "skills": ["SQL", "API testing"],
+    "tools": ["Jira", "Postman"],
+    "languages": [{"name": "Polish", "required": true}],
+    "preferred": ["Playwright"]
+  },
+  "companyTransport": "Night bus after the late shift"
+}

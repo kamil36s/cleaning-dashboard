@@ -1,0 +1,3240 @@
+{
+  "teams": {
+    "olimpia grudziadz": {
+      "name": "Olimpia Grudziądz",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/fwmqh21580815683.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sandecja nowy sacz": {
+      "name": "Sandecja Nowy Sacz",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/jtq1cl1681320690.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "carolina hurricanes": {
+      "name": "Carolina Hurricanes",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/car.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "vegas golden knights": {
+      "name": "Vegas Golden Knights",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/vgk.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "slask ii wroclaw": {
+      "name": "Śląsk II Wrocław",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/e4sikw1760240630.png",
+      "source": "thesportsdb-search",
+      "updatedAt": "2026-06-03T10:57:35"
+    },
+    "raetia": {
+      "name": "Raetia",
+      "crest": "https://www.conifa.org/en/wp-content/uploads/2021/05/members-raetia-logo-259x259-1.png",
+      "source": "wikipedia",
+      "updatedAt": "2026-06-07T06:51:35"
+    },
+    "padania": {
+      "name": "Padania",
+      "crest": "https://www.conifa.org/en/wp-content/uploads/2021/05/members-padania-logo.png",
+      "source": "wikipedia",
+      "updatedAt": "2026-06-07T06:51:35"
+    },
+    "rouet provence": {
+      "name": "Rouet-Provence",
+      "crest": "https://www.conifa.org/en/wp-content/uploads/2026/04/rouet.png",
+      "source": "wikipedia",
+      "updatedAt": "2026-06-07T06:51:35"
+    },
+    "canton ticino": {
+      "name": "Canton Ticino",
+      "crest": "https://www.conifa.org/en/wp-content/uploads/2022/09/Canton-Ticino.png",
+      "source": "wikipedia",
+      "updatedAt": "2026-06-07T06:51:35"
+    },
+    "podbeskidzie bielsko biala": {
+      "name": "Podbeskidzie Bielsko-Biała",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/41k2fu1681320772.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "greenland": {
+      "name": "Greenland",
+      "crest": "https://www.conifa.org/en/wp-content/uploads/2025/10/Greenland_Football_Association.svg.png",
+      "source": "wikipedia",
+      "updatedAt": "2026-06-07T06:51:35"
+    },
+    "northern cyprus": {
+      "name": "Northern Cyprus",
+      "crest": "https://www.conifa.org/en/wp-content/uploads/2021/05/members-northern-cyprus-logo.png",
+      "source": "wikipedia",
+      "updatedAt": "2026-06-07T06:51:35"
+    },
+    "lks lomza": {
+      "name": "ŁKS Łomża",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/aclizf1767545142.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-06-04T01:47:38"
+    },
+    "gornik polkowice": {
+      "name": "Górnik Polkowice",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/q5t9wf1626103611.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-06-07T06:51:35"
+    },
+    "mexico": {
+      "name": "Mexico",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+      "source": "espn",
+      "updatedAt": "2026-07-06T08:25:40"
+    },
+    "south africa": {
+      "name": "South Africa",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "sokol kleczew": {
+      "name": "Sokół Kleczew",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ezol7s1760240222.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "resovia rzeszow": {
+      "name": "Resovia Rzeszów",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ynxxbi1596476075.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "kszo ostrowiec swietokrzyski": {
+      "name": "KSZO Ostrowiec Świętokrzyski",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/kpjes91767935972.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-06-10T05:10:41"
+    },
+    "south korea": {
+      "name": "South Korea",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/a8nqfs1589564916.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-06-26T00:03:47"
+    },
+    "czechia": {
+      "name": "Czechia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
+      "source": "espn",
+      "updatedAt": "2026-06-25T05:36:54"
+    },
+    "canada": {
+      "name": "Canada",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "source": "espn",
+      "updatedAt": "2026-07-04T19:04:43"
+    },
+    "bosnia herzegovina": {
+      "name": "Bosnia-Herzegovina",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wtqqst1455463120.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-25T20:40:41"
+    },
+    "united states": {
+      "name": "United States",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "source": "espn",
+      "updatedAt": "2026-07-07T23:05:01"
+    },
+    "paraguay": {
+      "name": "Paraguay",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
+      "source": "espn",
+      "updatedAt": "2026-07-04T23:08:40"
+    },
+    "usa": {
+      "name": "USA",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/21f0oi1597948195.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T17:54:56"
+    },
+    "qatar": {
+      "name": "Qatar",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png",
+      "source": "espn",
+      "updatedAt": "2026-06-25T05:36:54"
+    },
+    "switzerland": {
+      "name": "Switzerland",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
+      "source": "espn",
+      "updatedAt": "2026-07-12T05:57:15"
+    },
+    "brazil": {
+      "name": "Brazil",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+      "source": "espn",
+      "updatedAt": "2026-07-06T08:25:40"
+    },
+    "morocco": {
+      "name": "Morocco",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "haiti": {
+      "name": "Haiti",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "scotland": {
+      "name": "Scotland",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3691i11552945146.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-26T02:49:56"
+    },
+    "australia": {
+      "name": "Australia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+      "source": "espn",
+      "updatedAt": "2026-07-04T10:12:10"
+    },
+    "turkiye": {
+      "name": "Türkiye",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
+      "source": "espn",
+      "updatedAt": "2026-06-26T07:12:21"
+    },
+    "germany": {
+      "name": "Germany",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/1xysi51726167152.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-01T19:23:51"
+    },
+    "curacao": {
+      "name": "Curaçao",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "netherlands": {
+      "name": "Netherlands",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/1p0hr41593787110.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-27T16:10:32"
+    },
+    "japan": {
+      "name": "Japan",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
+      "source": "espn",
+      "updatedAt": "2026-06-30T06:19:27"
+    },
+    "ivory coast": {
+      "name": "Ivory Coast",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "ecuador": {
+      "name": "Ecuador",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
+      "source": "espn",
+      "updatedAt": "2026-07-01T10:12:39"
+    },
+    "sweden": {
+      "name": "Sweden",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/h5adzg1591981772.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-28T18:56:02"
+    },
+    "tunisia": {
+      "name": "Tunisia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "spain": {
+      "name": "Spain",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ncgqyr1726166942.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-29T19:39:56"
+    },
+    "cape verde": {
+      "name": "Cape Verde",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "belgium": {
+      "name": "Belgium",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/8xlvxv1592062265.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-28T18:56:02"
+    },
+    "egypt": {
+      "name": "Egypt",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "saudi arabia": {
+      "name": "Saudi Arabia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png",
+      "source": "espn",
+      "updatedAt": "2026-06-22T09:37:25"
+    },
+    "uruguay": {
+      "name": "Uruguay",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png",
+      "source": "espn",
+      "updatedAt": "2026-06-22T22:14:17"
+    },
+    "iran": {
+      "name": "Iran",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png",
+      "source": "espn",
+      "updatedAt": "2026-06-22T09:37:25"
+    },
+    "new zealand": {
+      "name": "New Zealand",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+      "source": "espn",
+      "updatedAt": "2026-06-22T22:14:17"
+    },
+    "france": {
+      "name": "France",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ejx5za1788198941.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T18:11:49"
+    },
+    "senegal": {
+      "name": "Senegal",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "iraq": {
+      "name": "Iraq",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
+      "source": "espn",
+      "updatedAt": "2026-06-23T07:33:12"
+    },
+    "norway": {
+      "name": "Norway",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+      "source": "espn",
+      "updatedAt": "2026-07-12T05:57:15"
+    },
+    "argentina": {
+      "name": "Argentina",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
+      "source": "espn",
+      "updatedAt": "2026-07-19T21:11:33"
+    },
+    "algeria": {
+      "name": "Algeria",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "austria": {
+      "name": "Austria",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
+      "source": "espn",
+      "updatedAt": "2026-07-03T07:07:31"
+    },
+    "jordan": {
+      "name": "Jordan",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/jor.png",
+      "source": "espn",
+      "updatedAt": "2026-06-28T22:21:08"
+    },
+    "portugal": {
+      "name": "Portugal",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
+      "source": "espn",
+      "updatedAt": "2026-07-07T18:00:03"
+    },
+    "congo dr": {
+      "name": "Congo DR",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "england": {
+      "name": "England",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vf5ttc1726166739.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-26T19:18:50"
+    },
+    "croatia": {
+      "name": "Croatia",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/84cfeg1789271106.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-29T19:39:56"
+    },
+    "ghana": {
+      "name": "Ghana",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "panama": {
+      "name": "Panama",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/pan.png",
+      "source": "espn",
+      "updatedAt": "2026-06-28T22:21:08"
+    },
+    "uzbekistan": {
+      "name": "Uzbekistan",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/uzb.png",
+      "source": "espn",
+      "updatedAt": "2026-06-28T22:21:08"
+    },
+    "colombia": {
+      "name": "Colombia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
+      "source": "espn",
+      "updatedAt": "2026-07-08T21:29:23"
+    },
+    "dr congo": {
+      "name": "DR Congo",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/s85jjw1728749022.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-01T18:25:45"
+    },
+    "czech republic": {
+      "name": "Czech Republic",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/1o0cx31654205806.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-06-18T04:07:42"
+    },
+    "turkey": {
+      "name": "Turkey",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/70c4oo1591982459.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-25T20:40:41"
+    },
+    "wieczysta krakow": {
+      "name": "Wieczysta Kraków",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/sjv7bd1750699486.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "dynamo kyiv": {
+      "name": "Dynamo Kyiv",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ktbncx1781158762.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-30T23:00:56"
+    },
+    "besiktas": {
+      "name": "Beşiktaş",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/svo05k1776827439.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "gyirmot": {
+      "name": "Gyirmót",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/q221ed1617288438.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-03T07:07:31"
+    },
+    "artis brno": {
+      "name": "Artis Brno",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/6ra2fz1750961458.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-03T07:07:31"
+    },
+    "lincoln red imps": {
+      "name": "Lincoln Red Imps",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/17856.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "inter club d escaldes": {
+      "name": "Inter Club d'Escaldes",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/39f7xv1578827342.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T02:01:59"
+    },
+    "una strassen": {
+      "name": "UNA Strassen",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vdbv301717394741.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-12T03:22:50"
+    },
+    "la fiorita": {
+      "name": "La Fiorita",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/88cp6y1697348957.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-12T03:22:50"
+    },
+    "qarabag": {
+      "name": "Qarabağ",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/f9h2by1725001244.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-23T23:34:19"
+    },
+    "vestri": {
+      "name": "Vestri",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/27f6gb1614288091.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T16:23:49"
+    },
+    "slavia prague": {
+      "name": "Slavia Prague",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/494.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "vardar": {
+      "name": "Vardar",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/8vj1d11738559246.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-24T08:10:04"
+    },
+    "kups": {
+      "name": "KuPS",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/qmrrop1717396470.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-27T02:01:18"
+    },
+    "floriana": {
+      "name": "Floriana",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/zzd9zb1747880322.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T19:01:00"
+    },
+    "shamrock rovers": {
+      "name": "Shamrock Rovers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/u1zowj1491504381.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-27T02:01:18"
+    },
+    "elbasani": {
+      "name": "Elbasani",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/39pb2n1692001424.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T23:05:01"
+    },
+    "bate borisov": {
+      "name": "BATE Borisov",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/236x941779334253.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T23:05:01"
+    },
+    "tre fiori": {
+      "name": "Tre Fiori",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/rvtlzi1690787341.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T20:01:13"
+    },
+    "larne": {
+      "name": "Larne",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/pg8k1v1615586095.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-16T15:33:13"
+    },
+    "zir": {
+      "name": "Zirə",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/db1o7v1580055971.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T17:20:42"
+    },
+    "torpedo kutaisi": {
+      "name": "Torpedo Kutaisi",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/tic3ym1534787566.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T17:20:42"
+    },
+    "ki klaksvik": {
+      "name": "KÍ Klaksvík",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/4vq0i41579294709.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-15T14:30:58"
+    },
+    "atert bissen": {
+      "name": "Atert Bissen",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/bcpfwg1751837534.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T20:31:17"
+    },
+    "kairat almaty": {
+      "name": "Kairat Almaty",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2528.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sutjeska": {
+      "name": "Sutjeska",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/jgxq3z1565903948.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T22:04:34"
+    },
+    "vikingur reykjavik": {
+      "name": "Víkingur Reykjavík",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/srhq2w1579111270.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-12T20:12:05"
+    },
+    "gyori eto": {
+      "name": "Győri ETO",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/mk29081781160208.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-07T23:05:01"
+    },
+    "flora tallinn": {
+      "name": "Flora Tallinn",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/2m6xuv1769308039.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T17:20:42"
+    },
+    "iberia 1999": {
+      "name": "Iberia 1999",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/20025.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "petrocub hincesti": {
+      "name": "Petrocub Hîncești",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/r2mzoe1781541722.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T18:22:57"
+    },
+    "egnatia": {
+      "name": "Egnatia",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/21943.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "connah s quay nomads": {
+      "name": "Connah's Quay Nomads",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/w2zhrr1689313681.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T18:22:57"
+    },
+    "ballkani": {
+      "name": "Ballkani",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/y7p62a1617290077.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T18:22:57"
+    },
+    "atletic d escaldes": {
+      "name": "Atlètic d'Escaldes",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/0mf6rh1578826999.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T19:56:03"
+    },
+    "mornar": {
+      "name": "Mornar",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vvvmjo1625755743.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T19:56:03"
+    },
+    "maxline vitebsk": {
+      "name": "Maxline Vitebsk",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wl5hg71779336693.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T21:29:23"
+    },
+    "universitatea craiova": {
+      "name": "Universitatea Craiova",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/1jdz2y1579793710.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-12T20:12:05"
+    },
+    "differdange 03": {
+      "name": "Differdange 03",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/micxvx1513257944.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T21:29:23"
+    },
+    "ilves": {
+      "name": "Ilves",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/jhx8vm1578953713.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-08T21:29:23"
+    },
+    "alashkert": {
+      "name": "Alashkert",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/gn2ndx1742401876.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T16:23:49"
+    },
+    "elimai semey": {
+      "name": "Elimai Semey",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/rts8gq1715688377.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T16:23:49"
+    },
+    "dinamo minsk": {
+      "name": "Dinamo Minsk",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/1k4scn1779334298.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T18:28:09"
+    },
+    "sileks": {
+      "name": "Sileks",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ixjlou1579439194.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T18:28:09"
+    },
+    "sheriff tiraspol": {
+      "name": "Sheriff Tiraspol",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/6exmnv1781242046.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-30T23:00:56"
+    },
+    "aluminij": {
+      "name": "Aluminij",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/a92sr81579812977.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-31T20:18:50"
+    },
+    "mondorf les bains": {
+      "name": "Mondorf-les-Bains",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/q257d01580066006.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T19:01:10"
+    },
+    "dinamo tbilisi": {
+      "name": "Dinamo Tbilisi",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/mtef0m1781222095.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T19:01:10"
+    },
+    "hajduk split": {
+      "name": "Hajduk Split",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/489.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "zilina": {
+      "name": "Žilina",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/rwsikr1627419286.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T19:34:17"
+    },
+    "caernarfon town": {
+      "name": "Caernarfon Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3k7gu21781246334.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T19:23:26"
+    },
+    "levadia tallinn": {
+      "name": "Levadia Tallinn",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/nsdow61769308517.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-21T12:38:34"
+    },
+    "ruch chorzow": {
+      "name": "Ruch Chorzów",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7xl2yf1681320363.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "widzew lodz": {
+      "name": "Widzew Łódź",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3rkfjd1692596430.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T11:47:07"
+    },
+    "vllaznia shkoder": {
+      "name": "Vllaznia Shkodër",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7ubfvy1753811723.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T19:34:17"
+    },
+    "malisheva": {
+      "name": "Malisheva",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/cjeu8v1717396344.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-22T22:28:13"
+    },
+    "glentoran": {
+      "name": "Glentoran",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wummso1513778239.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T20:08:53"
+    },
+    "rfs": {
+      "name": "RFS",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/cep7qg1644854951.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-13T18:17:06"
+    },
+    "nsi runavik": {
+      "name": "NSÍ Runavík",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/v5sv0k1712728278.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T20:36:22"
+    },
+    "amrun spartans": {
+      "name": "Ħamrun Spartans",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/mmqcjl1579535584.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T20:36:22"
+    },
+    "fk sarajevo": {
+      "name": "FK Sarajevo",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/znka271579113347.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T20:52:36"
+    },
+    "inter turku": {
+      "name": "Inter Turku",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/xoi4oo1738193128.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-13T19:24:04"
+    },
+    "cska sofia": {
+      "name": "CSKA Sofia",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/10834.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "derry city": {
+      "name": "Derry City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/i5u42j1602256316.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-12T03:22:50"
+    },
+    "stjarnan": {
+      "name": "Stjarnan",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/em9xaz1591537148.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T23:05:06"
+    },
+    "vikingur g ta": {
+      "name": "Víkingur Gøta",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/tqgvkm1579294757.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-09T23:05:06"
+    },
+    "mjallby": {
+      "name": "Mjällby",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ruwqxv1430239112.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-26T02:56:33"
+    },
+    "ifk goteborg": {
+      "name": "IFK Göteborg",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ywyxtp1429470529.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-21T12:38:34"
+    },
+    "midtjylland": {
+      "name": "FC Midtjylland",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/572.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "radomiak radom": {
+      "name": "Radomiak Radom",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wpi1dx1698554708.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "polonia bytom": {
+      "name": "Polonia Bytom",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/b1qajc1750699178.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "warta poznan": {
+      "name": "Warta Poznań",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/auedar1690791017.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "znicz pruszkow": {
+      "name": "Znicz Pruszków",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/lm3ts01698554359.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "slovan bratislava": {
+      "name": "Slovan Bratislava",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/521.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "ararat armenia": {
+      "name": "ARARAT-ARMENIA",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/20024.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sabah baku": {
+      "name": "Sabah Baku",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/5cw7q91723051971.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-20T23:02:22"
+    },
+    "agf aarhus": {
+      "name": "AGF Aarhus",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vxuuts1473535487.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-29T01:26:08"
+    },
+    "lech poznan": {
+      "name": "Lech Poznan",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2990.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "fenerbahce": {
+      "name": "Fenerbahce",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "gornik zabrze": {
+      "name": "Górnik Zabrze",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/fk1fam1767928408.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "thun": {
+      "name": "FC Thun",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/3024.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "dinamo zagreb": {
+      "name": "Dinamo Zagreb",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/597.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sturm graz": {
+      "name": "Sturm Graz",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ppg0j71578585847.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-26T02:56:33"
+    },
+    "heart of midlothian": {
+      "name": "Heart of Midlothian",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/262.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "kauno zalgiris": {
+      "name": "Kauno Zalgiris",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/20028.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "hapoel be er sheva": {
+      "name": "Hapoel Be'er Sheva",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ar5zft1781239007.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-20T23:02:22"
+    },
+    "crvena zvezda": {
+      "name": "Crvena Zvezda",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/osgmbz1781157114.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "omonia nicosia": {
+      "name": "Omonia Nicosia",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/617.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "levski sofia": {
+      "name": "Levski Sofia",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/490.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "celje": {
+      "name": "Celje",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/amvs371681106952.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-16T20:15:09"
+    },
+    "hammarby": {
+      "name": "Hammarby",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3kgg5b1592144695.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-31T20:18:50"
+    },
+    "anderlecht": {
+      "name": "Anderlecht",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/441.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "maccabi tel aviv": {
+      "name": "Maccabi Tel Aviv",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/oeer261781239315.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-04T03:48:59"
+    },
+    "paok": {
+      "name": "PAOK",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/m15zsh1602774126.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-04T03:48:59"
+    },
+    "troms": {
+      "name": "Tromsø",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/sb24al1764644259.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-30T23:00:56"
+    },
+    "hradec kralove": {
+      "name": "Hradec Králové",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ckjzy41691419056.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-04T03:48:59"
+    },
+    "st gallen": {
+      "name": "St. Gallen",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/tyvyvs1422644512.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-31T20:18:50"
+    },
+    "benfica": {
+      "name": "Benfica",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/1929.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "twente": {
+      "name": "FC Twente",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/152.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "ferencvaros": {
+      "name": "Ferencvaros",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/622.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "pafos": {
+      "name": "Pafos",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/22281.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "liverpool": {
+      "name": "Liverpool",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/kfaher1737969724.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "sunderland": {
+      "name": "Sunderland",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "zeleznicar pancevo": {
+      "name": "Železničar Pančevo",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/h4nw5d1624714466.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-22T20:57:14"
+    },
+    "braga": {
+      "name": "Braga",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2994.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "hibernian": {
+      "name": "Hibernian",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/qjys3z1684928969.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-22T22:28:13"
+    },
+    "gais": {
+      "name": "GAIS",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3pahks1639779139.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-23T18:59:04"
+    },
+    "nordsj lland": {
+      "name": "FC Nordsjælland",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/3101.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "valur": {
+      "name": "Valur",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/uhi6qr1717395070.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-23T23:34:19"
+    },
+    "zrinjski mostar": {
+      "name": "Zrinjski Mostar",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/sursuu1436260214.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-23T23:34:19"
+    },
+    "riga": {
+      "name": "Riga FC",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/19246.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "pogon szczecin": {
+      "name": "Pogoń Szczecin",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/uxyuwx1448219553.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "legia warsaw": {
+      "name": "Legia Warsaw",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/c969ez1632775656.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "odra opole": {
+      "name": "Odra Opole",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/n4f9ux1698553951.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "arka gdynia": {
+      "name": "Arka Gdynia",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/i6ls7n1698553767.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "legia warsaw ii": {
+      "name": "Legia Warsaw II",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/462o901767543655.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "stal stalowa wola": {
+      "name": "Stal Stalowa Wola",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/xnvanb1717917947.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "jagiellonia bialystok": {
+      "name": "Jagiellonia Bialystok",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/11505.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "korona kielce": {
+      "name": "Korona Kielce",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ytpvtv1448218305.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "stal rzeszow": {
+      "name": "Stal Rzeszów",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/mdyyiv1655569395.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "chrobry glogow": {
+      "name": "Chrobry Głogów",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/tpymjq1681320459.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "slask wroclaw": {
+      "name": "Śląsk Wrocław",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vvvryp1448219776.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "cracovia": {
+      "name": "Cracovia",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/bgqbo51714200086.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lechia zielona gora": {
+      "name": "Lechia Zielona Góra",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/eclt9j1767826551.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "rekord bielsko biala": {
+      "name": "Rekord Bielsko-Biała",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/i1hyuj1760239267.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "bruk bet termalica nieciecza": {
+      "name": "Bruk-Bet Termalica Nieciecza",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/m1tod31628431456.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "rakow czestochowa": {
+      "name": "Raków Częstochowa",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vy8paa1579458598.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T11:47:07"
+    },
+    "wisla plock": {
+      "name": "Wisła Płock",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/o1n52v1698554231.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "avia swidnik": {
+      "name": "Avia Świdnik",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/iujovj1767935670.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "unia skierniewice": {
+      "name": "Unia Skierniewice",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7jxc4l1760243633.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "stal mielec": {
+      "name": "Stal Mielec",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/4003sz1772252841.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "motor lublin": {
+      "name": "Motor Lublin",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7qevx11720351099.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T11:47:07"
+    },
+    "puszcza niepolomice": {
+      "name": "Puszcza Niepołomice",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/o4kdol1709196352.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-01T21:34:00"
+    },
+    "polonia warsaw": {
+      "name": "Polonia Warsaw",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ohxxeh1610395796.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "chojniczanka chojnice": {
+      "name": "Chojniczanka Chojnice",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/e8ixj41580815456.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "gks tychy": {
+      "name": "GKS Tychy",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/i6t59w1698554102.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-29T19:39:56"
+    },
+    "wisla krakow": {
+      "name": "Wisła Kraków",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/y9j7hv1781237442.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T11:47:07"
+    },
+    "gks katowice": {
+      "name": "GKS Katowice",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/zsva1p1626103599.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T11:47:07"
+    },
+    "miedz legnica": {
+      "name": "Miedź Legnica",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/llqr4k1532855627.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "zaglebie lubin": {
+      "name": "Zagłębie Lubin",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7n07qf1702990302.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T11:47:07"
+    },
+    "piast gliwice": {
+      "name": "Piast Gliwice",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/qywuux1448219182.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T11:47:07"
+    },
+    "dukagjini": {
+      "name": "Dukagjini",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ten38q1688449471.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-29T01:26:08"
+    },
+    "lugano": {
+      "name": "Lugano",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/2kh2if1567615581.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "tobol": {
+      "name": "Tobol",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/elz47y1772123854.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-12T20:12:05"
+    },
+    "panevezys": {
+      "name": "Panevėžys",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/roci9r1579201885.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-29T21:06:09"
+    },
+    "rapid vienna": {
+      "name": "Rapid Vienna",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/87y8id1779342351.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-29T22:38:32"
+    },
+    "santa coloma": {
+      "name": "FC Santa Coloma",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/oazed11693288887.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-07-29T22:38:32"
+    },
+    "dinamo city": {
+      "name": "Dinamo City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/mdqmna1743410388.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-14T20:12:20"
+    },
+    "lks lodz": {
+      "name": "ŁKS Łódź",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3y5ljt1681320660.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lechia gdansk": {
+      "name": "Lechia Gdańsk",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/92qkyn1601412225.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "auda kekava": {
+      "name": "Auda Kekava",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3kalsl1644854872.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-14T20:12:20"
+    },
+    "rangers": {
+      "name": "Rangers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ti24j61614290048.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-14T20:12:20"
+    },
+    "red bull salzburg": {
+      "name": "Red Bull Salzburg",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/nc2cua1781541639.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-04T03:48:59"
+    },
+    "zawisza bydgoszcz": {
+      "name": "Zawisza Bydgoszcz",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/u0e1nr1772249917.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "pogon grodzisk mazowiecki": {
+      "name": "Pogoń Grodzisk Mazowiecki",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/pnex231750699339.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "york city": {
+      "name": "York City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/qv0j5n1684734883.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-03T22:36:21"
+    },
+    "crawley town": {
+      "name": "Crawley Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/a9hv3n1689632800.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-03T22:36:21"
+    },
+    "lks lodz ii": {
+      "name": "ŁKS Łódź II",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/o5e5xw1760233334.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-04T03:48:59"
+    },
+    "bristol city": {
+      "name": "Bristol City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/0ejxwz1601721013.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-16T20:15:09"
+    },
+    "walsall": {
+      "name": "Walsall",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ivjidn1689630099.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-04T03:48:59"
+    },
+    "pogon siedlce": {
+      "name": "Pogoń Siedlce",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/2udbzg1717918033.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "podhale nowy targ": {
+      "name": "Podhale Nowy Targ",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/i072dr1760238507.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "hutnik krakow": {
+      "name": "Hutnik Kraków",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/zxp6oq1760232608.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-29T19:39:56"
+    },
+    "mansfield town": {
+      "name": "Mansfield Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/c1fpes1761709071.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-09T21:29:35"
+    },
+    "sheffield united": {
+      "name": "Sheffield United",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/w7f8pj1672950689.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-16T14:27:29"
+    },
+    "apollon limassol": {
+      "name": "Apollon Limassol",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/17nj4k1511608842.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-09T19:59:05"
+    },
+    "brann": {
+      "name": "Brann",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ovuad71690695412.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-09T19:59:05"
+    },
+    "plymouth argyle": {
+      "name": "Plymouth Argyle",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wod5cj1689630278.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-10T23:06:10"
+    },
+    "exeter city": {
+      "name": "Exeter City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/98wt4h1521144923.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-10T23:06:10"
+    },
+    "bod glimt": {
+      "name": "Bodø/Glimt",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-11T17:00:59"
+    },
+    "union saint gilloise": {
+      "name": "Union Saint-Gilloise",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ljszp41654601742.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-17T22:58:47"
+    },
+    "nec nijmegen": {
+      "name": "NEC Nijmegen",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/147.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "olympiacos": {
+      "name": "Olympiacos",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/435.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lyon": {
+      "name": "Lyon",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/blk9771656932845.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "sparta prague": {
+      "name": "Sparta Prague",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/433.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "copenhagen": {
+      "name": "FC Copenhagen",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/styqtr1473535513.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-12T14:13:02"
+    },
+    "debrecen": {
+      "name": "Debrecen",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/0e2yn71579728606.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-12T14:13:02"
+    },
+    "hapoel tel aviv": {
+      "name": "Hapoel Tel-Aviv",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/19siqf1781239772.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-27T19:54:06"
+    },
+    "partizan belgrade": {
+      "name": "Partizan Belgrade",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/xe41k11781157208.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-12T20:12:05"
+    },
+    "jablonec": {
+      "name": "Jablonec",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/7922.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "vaduz": {
+      "name": "Vaduz",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/d71e9w1532766585.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-13T19:24:04"
+    },
+    "sion": {
+      "name": "Sion",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/gzpfmv1689085319.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-13T20:00:03"
+    },
+    "noah": {
+      "name": "Noah",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/qylmss1720503567.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-13T20:00:03"
+    },
+    "gornik leczna": {
+      "name": "Górnik Łęczna",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/uurvsv1448217458.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "wolverhampton wanderers": {
+      "name": "Wolverhampton Wanderers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/u9qr031621593327.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-16T20:15:09"
+    },
+    "blackburn rovers": {
+      "name": "Blackburn Rovers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/rvryut1448810814.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-02T23:01:21"
+    },
+    "slask wroclaw ii": {
+      "name": "Śląsk Wrocław II",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/e4sikw1760240630.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "birmingham city": {
+      "name": "Birmingham City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wufs551672950865.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T23:01:47"
+    },
+    "burnley": {
+      "name": "Burnley",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ql7nl31686893820.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-23T19:39:55"
+    },
+    "west ham united": {
+      "name": "West Ham United",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/yutyxs1467459956.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "watford": {
+      "name": "Watford",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/rsuswy1448813519.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-16T20:15:09"
+    },
+    "southampton": {
+      "name": "Southampton",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ggqtd01621593274.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-16T16:34:59"
+    },
+    "cardiff city": {
+      "name": "Cardiff City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/xtytpt1448808285.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-20T23:02:22"
+    },
+    "wrexham": {
+      "name": "Wrexham",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ezpymt1675092551.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-12T01:10:33"
+    },
+    "arsenal": {
+      "name": "Arsenal",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "coventry city": {
+      "name": "Coventry City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "eyupspor": {
+      "name": "Eyüpspor",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7fb0ub1626445710.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-17T07:38:30"
+    },
+    "celtic": {
+      "name": "Celtic",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/256.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lask": {
+      "name": "LASK",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/oox26l1683556395.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-18T21:23:09"
+    },
+    "aek athens": {
+      "name": "AEK Athens",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/887.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "norwich city": {
+      "name": "Norwich City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/pabczm1679951464.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-17T22:58:47"
+    },
+    "hull city": {
+      "name": "Hull City",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "manchester united": {
+      "name": "Manchester United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lincoln city": {
+      "name": "Lincoln City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/x46tji1719860130.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-14T20:05:48"
+    },
+    "portsmouth": {
+      "name": "Portsmouth",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/j13pfe1601726274.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-22T15:53:15"
+    },
+    "nottingham forest": {
+      "name": "Nottingham Forest",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "leeds united": {
+      "name": "Leeds United",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/jcgrml1756649030.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "swit szczecin": {
+      "name": "Świt Szczecin",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/a88dms1760241853.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "brentford": {
+      "name": "Brentford",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "tottenham hotspur": {
+      "name": "Tottenham Hotspur",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "west bromwich albion": {
+      "name": "West Bromwich Albion",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/rsvuxw1448813527.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-09T20:11:53"
+    },
+    "brighton and hove albion": {
+      "name": "Brighton and Hove Albion",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ywypts1448810904.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-23T17:07:54"
+    },
+    "aston villa": {
+      "name": "Aston Villa",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "newcastle united": {
+      "name": "Newcastle United",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "fulham": {
+      "name": "Fulham",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "chelsea": {
+      "name": "Chelsea",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "preston north end": {
+      "name": "Preston North End",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wqtwvw1448811512.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-02T23:01:21"
+    },
+    "everton": {
+      "name": "Everton",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "viking": {
+      "name": "Viking",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/9mzq961590148192.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-26T23:24:10"
+    },
+    "luton town": {
+      "name": "Luton Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/v977eh1681319466.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-27T02:01:18"
+    },
+    "crystal palace": {
+      "name": "Crystal Palace",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ia6i3m1656014992.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "manchester city": {
+      "name": "Manchester City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vwpvry1467462651.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "atalanta": {
+      "name": "Atalanta",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "trabzonspor": {
+      "name": "Trabzonspor",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "afc wimbledon": {
+      "name": "AFC Wimbledon",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/md7iqx1684129667.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-27T23:29:15"
+    },
+    "bayern munich": {
+      "name": "Bayern Munich",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "stuttgart": {
+      "name": "Stuttgart",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/yppyux1473454085.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T15:05:24"
+    },
+    "middlesbrough": {
+      "name": "Middlesbrough",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/advjg71780068902.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-08-29T15:41:26"
+    },
+    "elversberg": {
+      "name": "Elversberg",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/z079go1677573926.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T17:38:51"
+    },
+    "bayer leverkusen": {
+      "name": "Bayer Leverkusen",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "charlton athletic": {
+      "name": "Charlton Athletic",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/o08wvi1635872307.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-09T23:01:18"
+    },
+    "borussia dortmund": {
+      "name": "Borussia Dortmund",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "hamburg": {
+      "name": "Hamburg",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/tvtppt1473453296.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T17:29:33"
+    },
+    "freiburg": {
+      "name": "Freiburg",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/urwtup1473453288.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-05T17:36:05"
+    },
+    "werder bremen": {
+      "name": "Werder Bremen",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/tkvqan1716960454.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "ipswich town": {
+      "name": "Ipswich Town",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "augsburg": {
+      "name": "Augsburg",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/xqyyvq1473453233.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T23:01:47"
+    },
+    "schalke 04": {
+      "name": "Schalke 04",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/hnci291621593978.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T17:38:51"
+    },
+    "aveley": {
+      "name": "Aveley",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/k0oj7n1682312558.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-02T23:01:21"
+    },
+    "cheshunt": {
+      "name": "Cheshunt",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/qdsdi31675970995.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-02T23:01:21"
+    },
+    "corum": {
+      "name": "Çorum",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ivoq4l1679510278.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-01T01:10:32"
+    },
+    "korona kielce ii": {
+      "name": "Korona Kielce II",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7mkq8a1767937974.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-01T08:13:29"
+    },
+    "millwall": {
+      "name": "Millwall",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/5p1z5k1537208888.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-08T23:29:09"
+    },
+    "stoke city": {
+      "name": "Stoke City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/lz89v21781718914.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-01T23:03:53"
+    },
+    "koln": {
+      "name": "Köln",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/2j1sc91566049407.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-05T08:53:17"
+    },
+    "club brugge": {
+      "name": "Club Brugge",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/570.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "bournemouth": {
+      "name": "Bournemouth",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/y08nak1534071116.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-10T21:03:02"
+    },
+    "quorn": {
+      "name": "Quorn",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/mvbi0l1764257925.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-05T08:53:17"
+    },
+    "shepshed dynamo": {
+      "name": "Shepshed Dynamo",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/elxa3u1694237425.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-05T08:53:17"
+    },
+    "paderborn": {
+      "name": "Paderborn",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/kddvva1566048058.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-05T17:36:05"
+    },
+    "swansea city": {
+      "name": "Swansea City",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/474rco1686920744.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T03:18:57"
+    },
+    "petts wood and holmesdale": {
+      "name": "Petts Wood and Holmesdale",
+      "crest": "https://www.thesportsdb.com/images/media/team/badge/av6bpf1788062411.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T03:18:57"
+    },
+    "windsor and eton": {
+      "name": "Windsor and Eton",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/2zdytg1754330059.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T03:18:57"
+    },
+    "mainz": {
+      "name": "Mainz",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/fhm9v51552134916.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T17:29:33"
+    },
+    "eintracht frankfurt": {
+      "name": "Eintracht Frankfurt",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/rurwpy1473453269.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T23:01:47"
+    },
+    "southall": {
+      "name": "Southall",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/khbnju1702014197.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T16:07:39"
+    },
+    "cobham": {
+      "name": "Cobham",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/yxzcdi1720712748.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-06T23:01:47"
+    },
+    "lille": {
+      "name": "Lille",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "real betis": {
+      "name": "Real Betis",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "bolton wanderers": {
+      "name": "Bolton Wanderers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/yvxxrv1448808301.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-08T23:29:09"
+    },
+    "real madrid": {
+      "name": "Real Madrid",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "inter milan": {
+      "name": "Inter Milan",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ryhu6d1617113103.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-08T23:29:09"
+    },
+    "atletico madrid": {
+      "name": "Atlético Madrid",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "derby county": {
+      "name": "Derby County",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/jioo4z1557155744.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-09T20:11:53"
+    },
+    "whyteleafe": {
+      "name": "Whyteleafe",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/w3409w1645225512.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-09T20:11:53"
+    },
+    "crowborough athletic": {
+      "name": "Crowborough Athletic",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/k1dj7c1730045717.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-09T20:11:53"
+    },
+    "union berlin": {
+      "name": "Union Berlin",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/q0o5001599679795.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-16T20:15:09"
+    },
+    "psv eindhoven": {
+      "name": "PSV Eindhoven",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "shakhtar donetsk": {
+      "name": "Shakhtar Donetsk",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/493.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "napoli": {
+      "name": "Napoli",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "queens park rangers": {
+      "name": "Queens Park Rangers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/l4qscx1601721022.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "peterborough united": {
+      "name": "Peterborough United",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/p14ltc1779778820.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-14T20:05:48"
+    },
+    "barnsley": {
+      "name": "Barnsley",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/glbmdm1781719675.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-14T20:05:48"
+    },
+    "como": {
+      "name": "Como",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "rb leipzig": {
+      "name": "RB Leipzig",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "erzurumspor": {
+      "name": "Erzurumspor",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/7sepx01783701613.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-12T01:10:33"
+    },
+    "jersey bulls": {
+      "name": "Jersey Bulls",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/w8ynin1748845653.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-14T20:05:48"
+    },
+    "burgess hill town": {
+      "name": "Burgess Hill Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/obmsjq1696352773.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T15:05:24"
+    },
+    "celta vigo": {
+      "name": "Celta Vigo",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "marseille": {
+      "name": "Marseille",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/176.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "widzew lodz ii": {
+      "name": "Widzew Łódź II",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/19jw7t1767630984.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-15T17:23:08"
+    },
+    "redcar town": {
+      "name": "Redcar Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/pugh2n1788063683.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-15T20:54:49"
+    },
+    "darlington": {
+      "name": "Darlington",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ft8lcz1690351833.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-15T20:54:49"
+    },
+    "montreal canadiens": {
+      "name": "Montreal Canadiens",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/mtl.png",
+      "source": "espn",
+      "updatedAt": "2026-09-29T19:39:56"
+    },
+    "toronto maple leafs": {
+      "name": "Toronto Maple Leafs",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/tor.png",
+      "source": "espn",
+      "updatedAt": "2026-09-29T19:39:56"
+    },
+    "yate town": {
+      "name": "Yate Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/zjp1f21682318924.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "chippenham town": {
+      "name": "Chippenham Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/pbswej1573389737.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "az alkmaar": {
+      "name": "AZ Alkmaar",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/140.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "ofi": {
+      "name": "OFI",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/02xrl91602773672.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-17T20:50:57"
+    },
+    "hoffenheim": {
+      "name": "Hoffenheim",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/9hwvb21621593919.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-17T20:50:57"
+    },
+    "viktoria plzen": {
+      "name": "Viktoria Plzen",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/11706.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "hanwell town": {
+      "name": "Hanwell Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/fgvyp91682317696.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T15:05:24"
+    },
+    "seattle kraken": {
+      "name": "Seattle Kraken",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/sea.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "vancouver canucks": {
+      "name": "Vancouver Canucks",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/van.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "paris saint germain": {
+      "name": "Paris Saint-Germain",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "barcelona": {
+      "name": "Barcelona",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sporting cp": {
+      "name": "Sporting CP",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/5hiuk71783137875.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "vfb stuttgart": {
+      "name": "VfB Stuttgart",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lens": {
+      "name": "Lens",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/3pxoum1598797195.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "as roma": {
+      "name": "AS Roma",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "villarreal": {
+      "name": "Villarreal",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "internazionale": {
+      "name": "Internazionale",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lask linz": {
+      "name": "LASK Linz",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/4411.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "galatasaray": {
+      "name": "Galatasaray",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "viking fk": {
+      "name": "Viking FK",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/510.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "porto": {
+      "name": "FC Porto",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/437.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "feyenoord rotterdam": {
+      "name": "Feyenoord Rotterdam",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/142.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sabah fk": {
+      "name": "Sabah FK",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/21922.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "bodo glimt": {
+      "name": "Bodo/Glimt",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2980.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "agf": {
+      "name": "AGF",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/7853.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "ajax amsterdam": {
+      "name": "Ajax Amsterdam",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/139.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "borac banja luka": {
+      "name": "Borac Banja Luka",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/20710.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sk brann": {
+      "name": "SK Brann",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/620.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "brighton hove albion": {
+      "name": "Brighton & Hove Albion",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "f c k benhavn": {
+      "name": "F.C. København",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/909.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sc freiburg": {
+      "name": "SC Freiburg",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "kaa gent": {
+      "name": "KAA Gent",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/3611.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "getafe": {
+      "name": "Getafe",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2922.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "inter d escaldes": {
+      "name": "Inter D'Escaldes",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/20703.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "kups kuopio": {
+      "name": "KuPS Kuopio",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/8169.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "mjallby aif": {
+      "name": "Mjällby AIF",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/20301.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "as monaco": {
+      "name": "AS Monaco",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "panathinaikos": {
+      "name": "Panathinaikos",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/443.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "red star belgrade": {
+      "name": "Red Star Belgrade",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2290.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sint truidense": {
+      "name": "Sint-Truidense",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/936.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "csu craiova": {
+      "name": "CSU Craiova",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/8089.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "juventus": {
+      "name": "Juventus",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "union st gilloise": {
+      "name": "Union St.-Gilloise",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "ofi crete": {
+      "name": "OFI CRETE",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/1010.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "afc bournemouth": {
+      "name": "AFC Bournemouth",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "torreense": {
+      "name": "Torreense",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/21615.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "rb salzburg": {
+      "name": "RB Salzburg",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/2790.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "hapoel be er": {
+      "name": "Hapoel Be'er",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/13083.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "stade rennais": {
+      "name": "Stade Rennais",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/169.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "sk sturm graz": {
+      "name": "SK Sturm Graz",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/3746.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "lillestrom": {
+      "name": "Lillestrom",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/987.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "real sociedad": {
+      "name": "Real Sociedad",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/89.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "ac milan": {
+      "name": "AC Milan",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "nk celje": {
+      "name": "NK Celje",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/3362.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "tsg hoffenheim": {
+      "name": "TSG Hoffenheim",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+      "source": "standings",
+      "updatedAt": "2026-09-23T16:01:55"
+    },
+    "legia warszawa": {
+      "name": "Legia Warszawa",
+      "crest": "https://static.files.bbci.co.uk/core/website/assets/static/sport/football/legia-warsaw.7db37ee499.svg",
+      "source": "standings",
+      "updatedAt": "2026-09-21T06:04:28"
+    },
+    "dorking wanderers": {
+      "name": "Dorking Wanderers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ymdlns1689067895.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T16:07:39"
+    },
+    "new jersey devils": {
+      "name": "New Jersey Devils",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nj.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "new york islanders": {
+      "name": "New York Islanders",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nyi.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "amed": {
+      "name": "Amed",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/4fqdgh1783788571.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-20T18:03:32"
+    },
+    "andorra": {
+      "name": "Andorra",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/l5qspn1552847356.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-22T23:30:44"
+    },
+    "malta": {
+      "name": "Malta",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/9esmq41650311389.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-22T23:30:44"
+    },
+    "poland": {
+      "name": "Poland",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ttvrxy1455466076.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T18:11:49"
+    },
+    "polska": {
+      "name": "Polska",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/pol.png",
+      "source": "uefa-schedule",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "bosnia i hercegowina": {
+      "name": "Bośnia i Hercegowina",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
+      "source": "uefa-schedule",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "szwecja": {
+      "name": "Szwecja",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+      "source": "uefa-schedule",
+      "updatedAt": "2026-09-25T22:42:02"
+    },
+    "rumunia": {
+      "name": "Rumunia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/rou.png",
+      "source": "uefa-schedule",
+      "updatedAt": "2026-09-28T20:58:55"
+    },
+    "los angeles kings": {
+      "name": "Los Angeles Kings",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/la.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "edmonton oilers": {
+      "name": "Edmonton Oilers",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/edm.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "winnipeg jets": {
+      "name": "Winnipeg Jets",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/wpg.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "minnesota wild": {
+      "name": "Minnesota Wild",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/min.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "chicago blackhawks": {
+      "name": "Chicago Blackhawks",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/chi.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "st louis blues": {
+      "name": "St. Louis Blues",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/stl.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "dallas stars": {
+      "name": "Dallas Stars",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/dal.png",
+      "source": "espn",
+      "updatedAt": "2026-09-20T15:05:45"
+    },
+    "ottawa senators": {
+      "name": "Ottawa Senators",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/ott.png",
+      "source": "espn",
+      "updatedAt": "2026-09-26T21:21:49"
+    },
+    "anaheim ducks": {
+      "name": "Anaheim Ducks",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/ana.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "san jose sharks": {
+      "name": "San Jose Sharks",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/sj.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "boston bruins": {
+      "name": "Boston Bruins",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/bos.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "washington capitals": {
+      "name": "Washington Capitals",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/99ca9a1638974052.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "tampa bay lightning": {
+      "name": "Tampa Bay Lightning",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/tb.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "nashville predators": {
+      "name": "Nashville Predators",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nsh.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "philadelphia flyers": {
+      "name": "Philadelphia Flyers",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/qxxppp1421794965.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "calgary flames": {
+      "name": "Calgary Flames",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/cgy.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "colorado avalanche": {
+      "name": "Colorado Avalanche",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/col.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "utah mammoth": {
+      "name": "Utah Mammoth",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/uta.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "florida panthers": {
+      "name": "Florida Panthers",
+      "crest": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/fla.png",
+      "source": "espn",
+      "updatedAt": "2026-09-21T11:00:11"
+    },
+    "exmouth town": {
+      "name": "Exmouth Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/bsa9pj1695532286.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-22T23:30:44"
+    },
+    "thame united": {
+      "name": "Thame United",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/y0zej51695689856.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-22T23:30:44"
+    },
+    "bahamas": {
+      "name": "Bahamas",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bah.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "st martin": {
+      "name": "St. Martin",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/stm.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "turks and caicos islands": {
+      "name": "Turks and Caicos Islands",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/tca.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "montserrat": {
+      "name": "Montserrat",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/msr.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "aruba": {
+      "name": "Aruba",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/aru.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "antigua and barbuda": {
+      "name": "Antigua and Barbuda",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/atg.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "namibia": {
+      "name": "Namibia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nam.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "congo": {
+      "name": "Congo",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cgo.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "equatorial guinea": {
+      "name": "Equatorial Guinea",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eqg.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "libya": {
+      "name": "Libya",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/lby.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "botswana": {
+      "name": "Botswana",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bot.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "mauritania": {
+      "name": "Mauritania",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mtn.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "central african republic": {
+      "name": "Central African Republic",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/10528.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "puerto rico": {
+      "name": "Puerto Rico",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/11766.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "guyana": {
+      "name": "Guyana",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/guy.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "cameroon": {
+      "name": "Cameroon",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/crm.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "comoros": {
+      "name": "Comoros",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/com.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "sierra leone": {
+      "name": "Sierra Leone",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sle.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "zimbabwe": {
+      "name": "Zimbabwe",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/4214.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "uganda": {
+      "name": "Uganda",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/uga.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "dominican republic": {
+      "name": "Dominican Republic",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/dom.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "nicaragua": {
+      "name": "Nicaragua",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nca.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "cayman islands": {
+      "name": "Cayman Islands",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cay.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "dominica": {
+      "name": "Dominica",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/dma.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "trinidad and tobago": {
+      "name": "Trinidad and Tobago",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/tri.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "costa rica": {
+      "name": "Costa Rica",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/crc.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "mozambique": {
+      "name": "Mozambique",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/moz.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "tanzania": {
+      "name": "Tanzania",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/tan.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "guinea bissau": {
+      "name": "Guinea-Bissau",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gnb.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "niger": {
+      "name": "Niger",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nig.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "lesotho": {
+      "name": "Lesotho",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/les.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "gambia": {
+      "name": "Gambia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gam.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "somalia": {
+      "name": "Somalia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/som.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "malawi": {
+      "name": "Malawi",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mwi.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "south sudan": {
+      "name": "South Sudan",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/14075.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "nigeria": {
+      "name": "Nigeria",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/nga.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "madagascar": {
+      "name": "Madagascar",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mad.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "rwanda": {
+      "name": "Rwanda",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/rwa.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "liberia": {
+      "name": "Liberia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/lbr.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "sudan": {
+      "name": "Sudan",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sud.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "ethiopia": {
+      "name": "Ethiopia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eth.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "togo": {
+      "name": "Togo",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/tog.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "burundi": {
+      "name": "Burundi",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bdi.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "bermuda": {
+      "name": "Bermuda",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ber.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "guadeloupe": {
+      "name": "Guadeloupe",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gdl.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "zambia": {
+      "name": "Zambia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/zam.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "burkina faso": {
+      "name": "Burkina Faso",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bka.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "benin": {
+      "name": "Benin",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ben.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "angola": {
+      "name": "Angola",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ang.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "mali": {
+      "name": "Mali",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/mli.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "gabon": {
+      "name": "Gabon",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gab.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "grenada": {
+      "name": "Grenada",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/grn.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "cuba": {
+      "name": "Cuba",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/cub.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "barbados": {
+      "name": "Barbados",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/brb.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "st lucia": {
+      "name": "St. Lucia",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/lca.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "bonaire": {
+      "name": "Bonaire",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/boe.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "st kitts and nevis": {
+      "name": "St. Kitts and Nevis",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/skn.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "jamaica": {
+      "name": "Jamaica",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/jam.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "guatemala": {
+      "name": "Guatemala",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gua.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "honduras": {
+      "name": "Honduras",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/hon.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "suriname": {
+      "name": "Suriname",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sur.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "el salvador": {
+      "name": "El Salvador",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/slv.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "martinique": {
+      "name": "Martinique",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/marq.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "kenya": {
+      "name": "Kenya",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/ken.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "eritrea": {
+      "name": "Eritrea",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/eri.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "guinea": {
+      "name": "Guinea",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/gui.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "british virgin islands": {
+      "name": "British Virgin Islands",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/bvr.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "us virgin islands": {
+      "name": "US Virgin Islands",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/vir.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "st vincent and the grenadines": {
+      "name": "St. Vincent and the Grenadines",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/vin.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "french guiana": {
+      "name": "French Guiana",
+      "crest": "https://a.espncdn.com/i/teamlogos/soccer/500/10532.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "anguilla": {
+      "name": "Anguilla",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/aia.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "sint maarten": {
+      "name": "Sint Maarten",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/sma.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "belize": {
+      "name": "Belize",
+      "crest": "https://a.espncdn.com/i/teamlogos/countries/500/blz.png",
+      "source": "espn",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "bury": {
+      "name": "Bury",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/xvvprq1447530980.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-26T21:21:49"
+    },
+    "bromsgrove sporting": {
+      "name": "Bromsgrove Sporting",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/dan3141783311473.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-26T21:21:49"
+    },
+    "georgia": {
+      "name": "Georgia",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/bhwotj1654205067.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-27T22:16:30"
+    },
+    "n ireland": {
+      "name": "N.Ireland",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/pratdm1515531815.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-24T21:58:42"
+    },
+    "slovenia": {
+      "name": "Slovenia",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/s7k1x51552909864.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-26T02:49:56"
+    },
+    "san marino": {
+      "name": "San Marino",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vfvy3j1626192199.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-26T15:13:02"
+    },
+    "finland": {
+      "name": "Finland",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/wgvfd21730303889.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "lithuania": {
+      "name": "Lithuania",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/ukapsd1689197167.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-27T11:54:32"
+    },
+    "azerbaijan": {
+      "name": "Azerbaijan",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/kr6lkz1552856315.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-29T21:46:52"
+    },
+    "brentwood town": {
+      "name": "Brentwood Town",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/b94pzb1714865212.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "dagenham and redbridge": {
+      "name": "Dagenham and Redbridge",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/4jp63p1675955495.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "serbia": {
+      "name": "Serbia",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/oxvynb1689195538.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-01T19:23:51"
+    },
+    "greece": {
+      "name": "Greece",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/xtxtts1455465601.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-27T18:12:47"
+    },
+    "kocaelispor": {
+      "name": "Kocaelispor",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/f6erki1626445224.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    },
+    "ukraine": {
+      "name": "Ukraine",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/k36g2e1591982718.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-27T22:16:30"
+    },
+    "belarus": {
+      "name": "Belarus",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/bz4o2m1552857077.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-29T01:01:40"
+    },
+    "romania": {
+      "name": "Romania",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/w903wb1689198300.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T18:11:49"
+    },
+    "liechtenstein": {
+      "name": "Liechtenstein",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/4o0nlh1591970494.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-09-29T21:46:52"
+    },
+    "kazakhstan": {
+      "name": "Kazakhstan",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/h3wfj01552944956.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-01T21:34:00"
+    },
+    "moldova": {
+      "name": "Moldova",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/dcxqck1591972290.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-01T21:34:00"
+    },
+    "cyprus": {
+      "name": "Cyprus",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/g3slx61589798705.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T16:09:23"
+    },
+    "armenia": {
+      "name": "Armenia",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/8gcur81705941637.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T16:09:23"
+    },
+    "italy": {
+      "name": "Italy",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/fxijcp1726167035.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T18:11:49"
+    },
+    "albania": {
+      "name": "Albania",
+      "crest": "https://r2.thesportsdb.com/images/media/team/badge/vonacg1717365654.png",
+      "source": "thesportsdb",
+      "updatedAt": "2026-10-02T22:15:24"
+    }
+  },
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-02T22:15:24"
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 9.5 browser smoke: pending</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/language.css">
+</head>
+<body class="language-page">
+  <main class="language-content">
+    <section id="reviews"></section>
+    <section id="statistics"></section>
+    <output id="result">PENDING</output>
+  </main>
+  <script type="module">
+    import { renderReviews } from '/js/language/views/reviews.js';
+    import { renderStatistics } from '/js/language/views/statistics.js';
+
+    const assertions = [];
+    const check = (value, label) => assertions.push({ value: Boolean(value), label });
+    const problem = {
+      id: 'mi_fixture', category: 'DIRECTIONAL_CONFUSION', severity: 'HIGH', state: 'IMPROVING',
+      title: 'kjenne is repeatedly answered as vite', explanation: 'Repeated direct learner response.',
+      historicalFailureCount: 3, laterSuccessCount: 1, laterSuccessDates: 1,
+      target: { lemma: 'kjenne' },
+    };
+    const mistakes = {
+      activeClusterCount: 1, recoveredClusterCount: 1, historicalIncorrectCount: 4,
+      newInLast7Days: 1, recoveredInLast7Days: 1,
+      sourceAvailability: { ankiReviewHistory: 'NOT_SUPPORTED' }, topProblems: [problem],
+      recentRecoveries: [{ target: { lemma: 'jobb' }, state: 'RECOVERED', laterSuccessCount: 2, laterSuccessDates: 2 }],
+    };
+    renderReviews(document.querySelector('#reviews'), {
+      loading: false, status: { status: 'NOT_CONFIGURED' }, runs: [],
+      cloze: { summary: { attempts: 5, mistakeTargets: 1 }, practiceModes: { review: {}, curriculum: { packs: [] } } },
+      mistakes: { summary: mistakes },
+    }, {
+      onPull: async () => ({}), onRefresh: () => {},
+      onMistakeDetail: async () => ({ cluster: {
+        explanation: problem.explanation, evidenceTruncated: false,
+        evidence: [{ outcome: 'INCORRECT', attemptedAt: '2026-09-17T10:00:00Z', questionType: 'TYPED', expectedSurface: 'kjenne', userAnswer: 'vite', sourceContextType: 'READER', sentenceId: 'very-long-frozen-source-identifier-without-layout-overflow' }],
+      } }),
+    });
+    check(document.querySelector('#reviews').textContent.includes('HIGH / IMPROVING'), 'severity and state use text labels');
+    check(document.querySelector('#reviews').textContent.includes('kjenne is repeatedly answered as vite'), 'directional confusion is explicit');
+    check(document.querySelector('#reviews').textContent.includes('jobbRECOVERED'), 'recent recovery is separate');
+    check(document.querySelector('#reviews').textContent.includes('NOT_SUPPORTED'), 'missing Anki event history is truthful');
+    check(document.querySelector('#reviews a[href="#cloze"]'), 'practice reuses existing Cloze');
+    [...document.querySelectorAll('#reviews button')].find((item) => item.textContent === 'Details').click();
+    await new Promise((resolve) => setTimeout(resolve));
+    check(document.querySelector('.language-mistake-detail').textContent.includes('supplied vite'), 'bounded attributable evidence opens');
+
+    renderStatistics(document.querySelector('#statistics'), { loading: false, error: null, range: '30d', data: {
+      vocabulary: { totalTracked: 0, newlyAdvanced: 0, series: [], knowledgeCounts: {}, classifierCounts: {} },
+      exposures: { totalReaderOccurrences: 0, uniqueLemmas: 0, byDay: [], distribution: {}, highExposure: [] },
+      reading: { activeSeconds: 0, textsStarted: 0, textsCompleted: 0, byDay: [], recent: [] },
+      streak: { currentDays: 0, definition: 'Canonical Reader days.' }, coverage: { history: [] }, topics: [], cloze: {}, mistakes,
+    } }, { onRange: () => {} });
+    check(document.querySelector('#statistics').textContent.includes('Historical errors4'), 'historical errors remain separate');
+    check(document.querySelector('#statistics').textContent.includes('Active clusters1'), 'current remediation remains separate');
+    check(document.documentElement.scrollWidth <= document.documentElement.clientWidth, 'no horizontal overflow');
+
+    const passed = assertions.filter((entry) => entry.value).length;
+    document.querySelector('#result').textContent = `${passed}/${assertions.length} ${passed === assertions.length ? 'PASS' : 'FAIL'}: ${assertions.map((entry) => `${entry.value ? 'OK' : 'FAIL'} ${entry.label}`).join(' | ')}`;
+    document.title = `Phase 9.5 browser smoke: ${passed}/${assertions.length}`;
+    document.body.dataset.smoke = passed === assertions.length ? 'pass' : 'fail';
+  </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Language Learning · Personal Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./language.css">
+</head>
+<body class="language-page">
+  <div class="language-shell" id="language-app">
+    <aside class="language-sidebar" aria-label="Language Learning navigation">
+      <a class="language-home-link" href="./index.html">← Dashboard</a>
+      <div class="language-brand">
+        <span class="language-brand-mark" aria-hidden="true">Å</span>
+        <div>
+          <span>Personal learning tools</span>
+          <h1>Language</h1>
+        </div>
+      </div>
+      <button type="button" class="language-button language-mobile-nav-toggle" id="language-mobile-nav"
+        aria-controls="language-section-nav" aria-expanded="false">Browse sections</button>
+      <nav class="language-nav" id="language-section-nav" aria-label="Language sections">
+        <div class="language-nav-group"><span>Today</span>
+          <a href="#overview" data-language-route="overview">Today</a>
+          <a href="#study-session" data-language-route="study-session">Study Session</a>
+          <a href="#reviews" data-language-route="reviews">Reviews</a>
+        </div>
+        <div class="language-nav-group"><span>Practice</span>
+          <a href="#reader" data-language-route="reader">Reader</a>
+          <a href="#cloze" data-language-route="cloze">Cloze</a>
+          <a href="#listening" data-language-route="listening">Listening</a>
+        </div>
+        <div class="language-nav-group"><span>Library</span>
+          <a href="#vocabulary" data-language-route="vocabulary">Vocabulary</a>
+          <a href="#phrasebook" data-language-route="phrasebook">Phrasebook</a>
+          <a href="#curriculum" data-language-route="curriculum">Curriculum</a>
+          <a href="#inbox" data-language-route="inbox">Content Inbox</a>
+          <a href="#topics" data-language-route="topics">Topics</a>
+        </div>
+        <div class="language-nav-group"><span>Tools</span>
+          <a href="#grammar" data-language-route="grammar">Grammar</a>
+          <a href="#generate" data-language-route="generate">Generate</a>
+          <a href="#benchmarks" data-language-route="benchmarks">Benchmarks</a>
+        </div>
+        <div class="language-nav-group"><span>Insights</span>
+          <a href="#progress" data-language-route="progress">Progress</a>
+          <a href="#statistics" data-language-route="statistics">Statistics</a>
+          <a href="#goals" data-language-route="goals">Goals</a>
+        </div>
+        <div class="language-nav-group"><span>Settings</span>
+          <a href="#settings" data-language-route="settings">Settings</a>
+        </div>
+      </nav>
+      <div class="language-connection" id="language-connection" data-state="loading">
+        <span aria-hidden="true"></span>
+        <div>Language API<strong>Connecting…</strong></div>
+      </div>
+    </aside>
+
+    <main class="language-main">
+      <header class="language-topbar">
+        <div>
+          <p id="language-eyebrow">NORWEGIAN BOKMÅL</p>
+          <h2 id="language-heading">Overview</h2>
+        </div>
+        <div class="language-topbar-actions">
+          <button type="button" class="language-button" id="language-help-open">? How this works</button>
+          <div class="language-profile-summary" id="language-profile-summary" aria-live="polite"></div>
+        </div>
+      </header>
+      <div class="language-notice" id="language-notice" role="status" aria-live="polite" hidden></div>
+      <section class="language-content" id="language-view" aria-live="polite" aria-busy="true"></section>
+    </main>
+  </div>
+
+  <dialog class="language-help-dialog" id="language-help-dialog" aria-labelledby="language-help-title">
+    <h2 id="language-help-title">How this works</h2>
+    <div id="language-help-content"></div>
+    <button type="button" class="language-button is-primary" id="language-help-close">Close</button>
+  </dialog>
+
+  <dialog class="language-dialog" id="language-lemma-dialog" aria-labelledby="language-lemma-dialog-title">
+    <button class="language-dialog-close" type="button" data-language-dialog-close aria-label="Close lemma detail">×</button>
+    <div id="language-lemma-detail"></div>
+  </dialog>
+
+  <dialog class="language-confirm-dialog" id="language-merge-dialog" aria-labelledby="language-merge-title">
+    <form method="dialog" class="language-confirm-card">
+      <p class="language-kicker">DESTRUCTIVE IDENTITY CHANGE</p>
+      <h2 id="language-merge-title">Confirm lemma merge</h2>
+      <p id="language-merge-summary"></p>
+      <label class="language-confirm-check">
+        <input type="checkbox" id="language-merge-confirm-check">
+        <span>I understand that the source lemma will redirect to the target.</span>
+      </label>
+      <p class="language-form-error" id="language-merge-error" role="alert" hidden></p>
+      <div class="language-dialog-actions">
+        <button class="language-button" value="cancel">Cancel</button>
+        <button class="language-button is-danger" id="language-merge-confirm" type="button" disabled>Merge lemmas</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="./js/language/app.js"></script>
+</body>
+</html>

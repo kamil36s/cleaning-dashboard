@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" role="img" aria-label="Frederic Mompou portrait placeholder">
+  <rect width="320" height="420" fill="#141414"/>
+  <rect x="22" y="22" width="276" height="376" rx="18" fill="#1f2524" stroke="#8eb6bd" stroke-width="3"/>
+  <circle cx="160" cy="136" r="70" fill="#d8c4a5"/>
+  <path d="M94 142c6-70 42-94 93-84 30 6 49 34 39 86-36-23-86-22-132-2z" fill="#2b2b2b"/>
+  <path d="M94 324c16-76 46-112 66-112s50 36 66 112" fill="#293436"/>
+  <path d="M126 213h68l-18 58h-32z" fill="#eee2d0"/>
+  <text x="160" y="366" text-anchor="middle" fill="#d8f3f5" font-family="Georgia, serif" font-size="26">Mompou</text>
+</svg>

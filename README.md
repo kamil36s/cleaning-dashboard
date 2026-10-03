@@ -8,6 +8,40 @@ Open `src/index.html` via a local server (for ES Modules):
 
 Then open http://localhost:5173
 
+### API z front-endu uruchomionego w LAN
+
+API akceptuje żądania przeglądarki wyłącznie z jawnej listy originów. Jeśli Vite działa
+pod adresem komputera w sieci lokalnej, dodaj dokładny origin przed startem serwera:
+
+```powershell
+$env:DASHBOARD_ALLOWED_ORIGINS="http://192.168.1.20:5173"
+python server.py
+```
+
+Kilka originów można podać po przecinku. Nie używaj wildcardów.
+
+### Reading Dashboard (lokalne SQLite)
+
+Ksiazki, historia i ustawienia czytania sa przechowywane w `data/reading.sqlite` i
+udostepniane przez `python server.py` pod `/api/reading/*`. Jednorazowy import ze
+starego Google Sheets / Apps Script oraz istniejacych plikow historii uruchamia:
+
+```powershell
+npm run reading:import
+```
+
+Importer odmawia nadpisania niepustej bazy. Kontrole bez zapisu mozna wykonac przez:
+
+```powershell
+python scripts/import_reading_initial.py --dry-run
+```
+
+Po zmianie backendu zrestartuj dzialajacy proces `python server.py`; samo odswiezenie
+Vite nie przeladuje tras Pythona.
+
+Kontrakt endpointow i zalozenia dla przyszlego klienta Android sa opisane w
+`docs/reading-local-api.md`.
+
 ## Testy
 Szybki start:
 - `npm run test` - tryb watch (czeka na zmiany plikow)
@@ -30,6 +64,11 @@ Raporty HTML:
 - **js/api.js** — `fetchData()`, `markDone()` and boot debug
 - **js/render.js** — KPI calc, card templating, and diff-render loop
 - **js/main.js** — wire-up events and kick-off
+
+## OCR dziennika (lokalny HTR)
+
+Konfiguracja eScriptorium/Kraken, Compose, prywatność, backup oraz workflow są
+opisane w [`docs/journal-htr.md`](docs/journal-htr.md).
 
 ## Jak odpalić projekt lokalnie
 

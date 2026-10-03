@@ -1,0 +1,17 @@
+[
+  {
+    "id": 41003,
+    "isJobListing": true,
+    "jobScope": "Fulltid",
+    "jobDuration": "Fast",
+    "deadline": "01.01.2020",
+    "employer": "Past Employer",
+    "title": "QA Engineer",
+    "summary": "Quality testing role with a past deadline.",
+    "link": "https://www.jobbnorge.no/ledige-stillinger/stilling/41003",
+    "location": "Trondheim",
+    "promoted": false,
+    "positionCount": 1,
+    "isInternal": false
+  }
+]

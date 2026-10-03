@@ -1,0 +1,412 @@
+{
+  "familyId": "norwegian-practical-receptive",
+  "version": 1,
+  "status": "INTERNAL_SYNTHETIC",
+  "scoringVersion": "benchmark-scoring/v1",
+  "forms": {
+    "FORM_A": [
+      {
+        "id": "a-v1",
+        "dimension": "VOCABULARY",
+        "target": "arbeid",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "weather",
+          "evening",
+          "window",
+          "work"
+        ],
+        "answer": "work",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-v2",
+        "dimension": "VOCABULARY",
+        "target": "leilighet",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "appointment",
+          "airport",
+          "apartment",
+          "newspaper"
+        ],
+        "answer": "apartment",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-v3",
+        "dimension": "VOCABULARY",
+        "target": "regning",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "meeting",
+          "bill",
+          "journey",
+          "rain"
+        ],
+        "answer": "bill",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-v4",
+        "dimension": "VOCABULARY",
+        "target": "helse",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "help",
+          "holiday",
+          "health",
+          "home"
+        ],
+        "answer": "health",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-c1",
+        "dimension": "CLOZE",
+        "prompt": "Jeg ___ bussen til jobb hver morgen.",
+        "hint": "take",
+        "answer": "tar",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-c2",
+        "dimension": "CLOZE",
+        "prompt": "I går ___ jeg hos legen.",
+        "hint": "was",
+        "answer": "var",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-c3",
+        "dimension": "CLOZE",
+        "prompt": "Vi har bodd her ___ tre år.",
+        "hint": "for",
+        "answer": "i",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-r1",
+        "dimension": "READING",
+        "passage": "Mina skulle møte sjefen klokken ni, men bussen var forsinket. Hun ringte kontoret og kom fram klokken kvart over ni.",
+        "prompt": "What did Mina do because of the delay?",
+        "options": [
+          "She cancelled the meeting",
+          "She stayed home",
+          "She called the office",
+          "She took a taxi"
+        ],
+        "answer": "She called the office",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-r2",
+        "dimension": "READING",
+        "passage": "Biblioteket stenger tidlig på lørdager. Ali kom dit klokken tre, men døren var låst. Han leverte boken i boksen utenfor.",
+        "prompt": "How did Ali return the book?",
+        "options": [
+          "By post",
+          "To a friend",
+          "At the desk",
+          "In the outside box"
+        ],
+        "answer": "In the outside box",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-l1",
+        "dimension": "LISTENING",
+        "speech": "Toget til Bergen går fra spor fire om ti minutter. Vennligst gå til plattformen nå.",
+        "prompt": "What should the passenger do now?",
+        "options": [
+          "Board a bus",
+          "Go to platform four",
+          "Wait at the café",
+          "Buy another ticket"
+        ],
+        "answer": "Go to platform four",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-l2",
+        "dimension": "LISTENING",
+        "speech": "Legetimen din er flyttet fra mandag til tirsdag klokken elleve. Ring oss hvis tidspunktet ikke passer.",
+        "prompt": "When is the appointment now?",
+        "options": [
+          "Tuesday at eleven",
+          "Tuesday at nine",
+          "Friday at eleven",
+          "Monday at eleven"
+        ],
+        "answer": "Tuesday at eleven",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-v5",
+        "dimension": "VOCABULARY",
+        "target": "kvittering",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "train",
+          "receipt",
+          "key",
+          "floor"
+        ],
+        "answer": "receipt",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-v6",
+        "dimension": "VOCABULARY",
+        "target": "søknad",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "application",
+          "holiday",
+          "platform",
+          "medicine"
+        ],
+        "answer": "application",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-c4",
+        "dimension": "CLOZE",
+        "prompt": "De ___ i Oslo nå.",
+        "hint": "live",
+        "answer": "bor",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-r3",
+        "dimension": "READING",
+        "passage": "Eirik ville betale med kort i butikken, men terminalen virket ikke. Han gikk til minibanken ved siden av og kom tilbake med kontanter.",
+        "prompt": "How did Eirik finally pay?",
+        "options": [
+          "With cash",
+          "With an app",
+          "With his card",
+          "He did not buy anything"
+        ],
+        "answer": "With cash",
+        "itemVersion": 1
+      },
+      {
+        "id": "a-l3",
+        "dimension": "LISTENING",
+        "speech": "Butikken er stengt på søndag. På lørdag holder vi åpent til klokken seks.",
+        "prompt": "When can the customer visit this weekend?",
+        "options": [
+          "Sunday morning",
+          "Saturday before six",
+          "Sunday evening",
+          "Saturday after eight"
+        ],
+        "answer": "Saturday before six",
+        "itemVersion": 1
+      }
+    ],
+    "FORM_B": [
+      {
+        "id": "b-v1",
+        "dimension": "VOCABULARY",
+        "target": "stilling",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "street",
+          "position or job",
+          "receipt",
+          "season"
+        ],
+        "answer": "position or job",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-v2",
+        "dimension": "VOCABULARY",
+        "target": "husleie",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "mortgage",
+          "rent",
+          "salary",
+          "hotel"
+        ],
+        "answer": "rent",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-v3",
+        "dimension": "VOCABULARY",
+        "target": "avtale",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "invoice",
+          "departure",
+          "address",
+          "appointment or agreement"
+        ],
+        "answer": "appointment or agreement",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-v4",
+        "dimension": "VOCABULARY",
+        "target": "ferge",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "bridge",
+          "ferry",
+          "road",
+          "train"
+        ],
+        "answer": "ferry",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-c1",
+        "dimension": "CLOZE",
+        "prompt": "Hun ___ på sykehuset i går.",
+        "hint": "worked",
+        "answer": "jobbet",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-c2",
+        "dimension": "CLOZE",
+        "prompt": "I morgen ___ vi til byen.",
+        "hint": "are going",
+        "answer": "drar",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-c3",
+        "dimension": "CLOZE",
+        "prompt": "Han venter ___ toget.",
+        "hint": "for",
+        "answer": "på",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-r1",
+        "dimension": "READING",
+        "passage": "Nora bestilte en time hos tannlegen torsdag morgen. På onsdag fikk hun feber og flyttet timen til neste uke.",
+        "prompt": "Why did Nora change the appointment?",
+        "options": [
+          "The clinic closed",
+          "She became ill",
+          "The dentist was away",
+          "She had to work"
+        ],
+        "answer": "She became ill",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-r2",
+        "dimension": "READING",
+        "passage": "Jon betalte strømregningen på nett. Etterpå oppdaget han at fristen var i morgen, ikke i dag. Betalingen var allerede registrert.",
+        "prompt": "What happened to Jon's payment?",
+        "options": [
+          "It was late",
+          "It was rejected",
+          "It was already registered",
+          "He paid twice"
+        ],
+        "answer": "It was already registered",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-l1",
+        "dimension": "LISTENING",
+        "speech": "Bussen til sentrum kommer om fem minutter. Bussen til flyplassen går fra holdeplassen på den andre siden av veien.",
+        "prompt": "Where should an airport passenger wait?",
+        "options": [
+          "At this stop",
+          "At the train platform",
+          "Inside the station",
+          "Across the road"
+        ],
+        "answer": "Across the road",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-l2",
+        "dimension": "LISTENING",
+        "speech": "Du kan hente nøklene hos vaktmesteren etter klokken fire. Ta med legitimasjon.",
+        "prompt": "What must you bring to collect the keys?",
+        "options": [
+          "Identification",
+          "A photograph",
+          "A receipt",
+          "Cash"
+        ],
+        "answer": "Identification",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-v5",
+        "dimension": "VOCABULARY",
+        "target": "forsinket",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "expensive",
+          "closed",
+          "empty",
+          "delayed"
+        ],
+        "answer": "delayed",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-v6",
+        "dimension": "VOCABULARY",
+        "target": "lønn",
+        "prompt": "Choose the meaning.",
+        "options": [
+          "loan",
+          "tax",
+          "salary",
+          "bill"
+        ],
+        "answer": "salary",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-c4",
+        "dimension": "CLOZE",
+        "prompt": "Vi ___ en ny leilighet i fjor.",
+        "hint": "found",
+        "answer": "fant",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-r3",
+        "dimension": "READING",
+        "passage": "Siri fikk en e-post om at kurset starter senere enn planlagt. Hun sjekket den nye datoen og bestilte tog til dagen før.",
+        "prompt": "Why did Siri change her travel plans?",
+        "options": [
+          "She changed jobs",
+          "The train was cancelled",
+          "She became ill",
+          "The course date changed"
+        ],
+        "answer": "The course date changed",
+        "itemVersion": 1
+      },
+      {
+        "id": "b-l3",
+        "dimension": "LISTENING",
+        "speech": "Postpakken din kan hentes i kiosken fra klokken to. Husk å vise hentekoden på telefonen.",
+        "prompt": "What is needed to collect the parcel?",
+        "options": [
+          "Cash",
+          "The pickup code",
+          "A paper invoice",
+          "A train ticket"
+        ],
+        "answer": "The pickup code",
+        "itemVersion": 1
+      }
+    ]
+  }
+}

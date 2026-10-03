@@ -1,0 +1,5 @@
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/tracker_navy" />
+    <foreground android:drawable="@drawable/ic_tracker_mark" />
+    <monochrome android:drawable="@drawable/ic_tracker_mark" />
+</adaptive-icon>

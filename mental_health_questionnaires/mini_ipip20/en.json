@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "mini_ipip20",
+  "instrumentVersion": "Mini-IPIP Donnellan 20-item English",
+  "scoringVersion": "mini-ipip-donnellan-five-domains-v1",
+  "language": "en",
+  "questionTextStatus": "official",
+  "title": "Mini-IPIP (20 items)",
+  "shortDescription": "Five separate four-item personality-domain scores; no combined personality score.",
+  "recallPeriod": "as you generally are now",
+  "estimatedMinutes": 6,
+  "instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age. So that you can describe yourself in an honest manner, your responses will be kept in absolute confidence.",
+  "questionCount": 20,
+  "scoredItemCount": 20,
+  "responseOptions": [
+    { "value": 1, "label": "Very Inaccurate" },
+    { "value": 2, "label": "Moderately Inaccurate" },
+    { "value": 3, "label": "Neither Accurate Nor Inaccurate" },
+    { "value": 4, "label": "Moderately Accurate" },
+    { "value": 5, "label": "Very Accurate" }
+  ],
+  "questions": [
+    { "id": "1", "text": "Am the life of the party.", "required": true },
+    { "id": "2", "text": "Sympathize with others' feelings.", "required": true },
+    { "id": "3", "text": "Get chores done right away.", "required": true },
+    { "id": "4", "text": "Have frequent mood swings.", "required": true },
+    { "id": "5", "text": "Have a vivid imagination.", "required": true },
+    { "id": "6", "text": "Don't talk a lot.", "required": true, "reverseScored": true },
+    { "id": "7", "text": "Am not interested in other people's problems.", "required": true, "reverseScored": true },
+    { "id": "8", "text": "Often forget to put things back in their proper place.", "required": true, "reverseScored": true },
+    { "id": "9", "text": "Am relaxed most of the time.", "required": true, "reverseScored": true },
+    { "id": "10", "text": "Am not interested in abstract ideas.", "required": true, "reverseScored": true },
+    { "id": "11", "text": "Talk to a lot of different people at parties.", "required": true },
+    { "id": "12", "text": "Feel others' emotions.", "required": true },
+    { "id": "13", "text": "Like order.", "required": true },
+    { "id": "14", "text": "Get upset easily.", "required": true },
+    { "id": "15", "text": "Have difficulty understanding abstract ideas.", "required": true, "reverseScored": true },
+    { "id": "16", "text": "Keep in the background.", "required": true, "reverseScored": true },
+    { "id": "17", "text": "Am not really interested in others.", "required": true, "reverseScored": true },
+    { "id": "18", "text": "Make a mess of things.", "required": true, "reverseScored": true },
+    { "id": "19", "text": "Seldom feel blue.", "required": true, "reverseScored": true },
+    { "id": "20", "text": "Do not have a good imagination.", "required": true, "reverseScored": true }
+  ],
+  "scoring": {
+    "type": "subscale_sum",
+    "itemIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
+    "allowedValues": [1, 2, 3, 4, 5],
+    "reverseItemIds": ["6", "7", "8", "9", "10", "15", "16", "17", "18", "19", "20"],
+    "subscales": {
+      "extraversion": ["1", "6", "11", "16"],
+      "agreeableness": ["2", "7", "12", "17"],
+      "conscientiousness": ["3", "8", "13", "18"],
+      "neuroticism": ["4", "9", "14", "19"],
+      "intellect_imagination": ["5", "10", "15", "20"]
+    }
+  },
+  "interpretationBands": [],
+  "source": {
+    "title": "Mini-IPIP Scoring Key",
+    "url": "https://ipip.ori.org/MiniIPIPKey.htm",
+    "orderedItemsUrl": "https://ipip.ori.org/PolishMini-IPIP.htm",
+    "administrationUrl": "https://www.ipip.ori.org/New_IPIP-50-item-scale.htm",
+    "permissionUrl": "https://ipip.ori.org/newPermission.htm"
+  },
+  "license": {
+    "status": "public domain",
+    "notice": "IPIP items, scales and inventories are in the public domain and may be used for commercial or non-commercial purposes without permission or a fee."
+  },
+  "attribution": "Donnellan, M. B., Oswald, F. L., Baird, B. M., & Lucas, R. E. (2006). The Mini-IPIP scales: Tiny-yet-effective measures of the Big Five factors of personality. Psychological Assessment, 18, 192–203; International Personality Item Pool."
+}

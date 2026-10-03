@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 9 browser smoke: pending</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/language.css">
+</head>
+<body class="language-page">
+  <main class="language-content">
+    <section id="cloze"></section>
+    <section id="reviews"></section>
+    <output id="result">PENDING</output>
+  </main>
+  <script type="module">
+    import { renderCloze } from '/js/language/views/cloze.js';
+    import { renderReviews } from '/js/language/views/reviews.js';
+
+    const assertions = [];
+    const check = (value, label) => assertions.push({ value: Boolean(value), label });
+    const mount = document.querySelector('#cloze');
+    const baseTracks = {
+      status: 'READY', fastTrackStatus: 'READY', activeSessionId: null,
+      items: [{ key: 'FAST_TRACK_1', label: 'Fast Track 1', rankLabel: 'KELLY learner rank', rankMin: 1, rankMax: 500, targets: 500, encountered: 2, playableTargets: 480 }],
+      summary: { attempts: 4, correct: 2, incorrect: 1, revealed: 1, skipped: 0, accuracy: 66.7, mistakeTargets: 1 },
+      practiceModes: {
+        review: { available: true, targetCount: 3, sourceTargetCounts: { READER: 1, PHRASEBOOK: 1, GENERATED: 1 } },
+        curriculum: { available: true, packs: [{ id: 'starter', version: '3', name: 'Starter Norway', eligibleTargets: 12 }] },
+      },
+    };
+    let started = null; let answer = null; let reported = null; let next = 0;
+    const actions = {
+      onStart: (payload) => { started = payload; }, onResume: () => {}, onAnswer: () => {},
+      onTypedAnswer: (value) => { answer = value; }, onReveal: () => {}, onSkip: () => {},
+      onNext: () => { next += 1; }, onReport: (reason) => { reported = reason; }, onBack: () => {},
+      onPlayAudio: () => {}, onPreferences: () => {}, onSaveExpression: async () => ({ reused: false }),
+    };
+    renderCloze(mount, { tracks: baseTracks, attempts: [] }, actions);
+    [...mount.querySelectorAll('button')].find((button) => button.textContent === 'Start Fast Track').click();
+    check(started?.mode === 'FAST_TRACK' && started?.itemCount === 10, 'existing Fast Track start remains available');
+    [...mount.querySelectorAll('button')].find((button) => button.textContent === 'Start review practice').click();
+    check(started?.mode === 'REVIEW' && started?.questionType === 'TYPED', 'shared Review mode starts typed');
+    [...mount.querySelectorAll('button')].find((button) => button.textContent === 'Practice curriculum pack').click();
+    check(started?.mode === 'CURRICULUM' && started?.curriculumPackId === 'starter' && started?.curriculumVersion === '3', 'curriculum target mode freezes selected identity');
+
+    const item = (sourceContextType, sentenceText, expected, overrides = {}) => {
+      const start = sentenceText.indexOf(expected);
+      return {
+        index: 0, fingerprint: `sha256:${sourceContextType}`, questionType: 'TYPED', sourceContextType,
+        sentenceText, blankStart: start, blankEnd: start + expected.length, options: [],
+        targetLemmaId: `lemma-${sourceContextType}`, targetLemmaDisplay: expected,
+        source: { type: sourceContextType, sourceId: sourceContextType, sentenceId: `${sourceContextType}-sentence` },
+        ...overrides,
+      };
+    };
+    const session = (currentItem, overrides = {}) => ({
+      id: 's'.repeat(32), mode: 'REVIEW', trackKey: 'SHARED_REVIEW', actualItemCount: 4,
+      answeredCount: 0, status: 'ACTIVE', currentItem, ...overrides,
+    });
+    const readerItem = item('READER', 'Jeg arbeider hjemme.', 'arbeider');
+    renderCloze(mount, { tracks: baseTracks, session: session(readerItem), attempts: [] }, actions);
+    await Promise.resolve();
+    const typed = mount.querySelector('[aria-label="Typed Cloze answer"]');
+    typed.value = 'arbeidet'; typed.closest('form').requestSubmit();
+    check(answer === 'arbeidet' && document.activeElement === typed, 'typed Reader answer submits keyboard-first from focused input');
+    renderCloze(mount, {
+      tracks: baseTracks, session: session(item('PHRASEBOOK', 'Jeg arbeider hjemme.', 'arbeider', { index: 1 })),
+      lastItem: readerItem, attempts: [], feedback: {
+        outcome: 'INCORRECT', questionType: 'TYPED', userAnswer: 'arbeidet', expectedSurfaceForm: 'arbeider',
+        targetLemmaDisplay: 'arbeide', sourceContextType: 'READER', source: readerItem.source,
+      },
+    }, actions);
+    check(mount.textContent.includes('Incorrect') && mount.textContent.includes('Expected: arbeider') && mount.textContent.includes('Source: Reader'), 'incorrect feedback is truthful and source-aware');
+    mount.querySelector('.language-cloze-next').click();
+    check(next === 1, 'next-item control works');
+
+    const phrasebookItem = item('PHRASEBOOK', 'Et hus står her.', 'hus', { index: 1 });
+    renderCloze(mount, { tracks: baseTracks, session: session(phrasebookItem), attempts: [] }, actions);
+    const phraseInput = mount.querySelector('[aria-label="Typed Cloze answer"]');
+    phraseInput.value = 'HUS'; phraseInput.closest('form').requestSubmit();
+    renderCloze(mount, {
+      tracks: baseTracks, session: session(item('GENERATED', 'En bok ligger her.', 'bok', { index: 2 })),
+      lastItem: phrasebookItem, attempts: [], feedback: {
+        outcome: 'CORRECT', questionType: 'TYPED', userAnswer: 'HUS', expectedSurfaceForm: 'hus',
+        targetLemmaDisplay: 'hus', sourceContextType: 'PHRASEBOOK', source: phrasebookItem.source,
+      },
+    }, actions);
+    check(answer === 'HUS' && mount.textContent.includes('Correct') && mount.textContent.includes('Source: Phrasebook'), 'Phrasebook item accepts exact case-folded answer');
+    const reason = mount.querySelector('[aria-label="Bad question reason"]');
+    reason.value = 'BAD_MAPPING';
+    [...mount.querySelectorAll('button')].find((button) => button.textContent === 'Report bad question').click();
+    check(reported === 'BAD_MAPPING', 'new-context bad-question reporting works');
+
+    const generatedItem = item('GENERATED', 'En bok ligger her.', 'bok', { index: 2 });
+    renderCloze(mount, { tracks: baseTracks, session: session(generatedItem), attempts: [] }, actions);
+    check(mount.textContent.includes('Source: Generated text'), 'accepted generated source is inspectable');
+    const curriculumItem = item('TATOEBA', 'Jeg øver nå.', 'øver', {
+      index: 3, curriculum: { packId: 'starter', name: 'Starter Norway', version: '3' },
+      source: { type: 'TATOEBA', sourceId: 'tatoeba', sentenceId: '1000', license: 'CC0-1.0' },
+    });
+    renderCloze(mount, { tracks: baseTracks, session: session(curriculumItem, { mode: 'CURRICULUM', trackKey: 'CURRICULUM:starter' }), attempts: [] }, actions);
+    check(mount.textContent.includes('Source: Curriculum Starter Norway v3 · Tatoeba'), 'curriculum and underlying source are both visible');
+
+    const attempts = [
+      { outcome: 'INCORRECT', sourceContextType: 'READER', targetLemmaId: 'lemma-reader' },
+      { outcome: 'CORRECT', sourceContextType: 'PHRASEBOOK', targetLemmaId: 'lemma-house' },
+      { outcome: 'REVEALED', sourceContextType: 'GENERATED', targetLemmaId: 'lemma-book' },
+      { outcome: 'SKIPPED', sourceContextType: 'TATOEBA', targetLemmaId: 'lemma-practice' },
+    ];
+    renderCloze(mount, { tracks: baseTracks, session: session(null, { status: 'COMPLETED', answeredCount: 4 }), attempts }, actions);
+    check(mount.textContent.includes('Correct1') && mount.textContent.includes('Incorrect1') && mount.textContent.includes('Revealed1') && mount.textContent.includes('Skipped1'), 'session outcome summary is complete');
+    check(mount.textContent.includes('Sources used4') && mount.textContent.includes('Targets practiced4'), 'session source and target counts are complete');
+
+    renderReviews(document.querySelector('#reviews'), {
+      loading: false, status: { status: 'CONNECTED', dueCount: 3, linkedVocabulary: 2, conflicts: 0 }, runs: [], cloze: baseTracks,
+    }, { onPull: async () => ({ run: { status: 'COMPLETED', counts: { succeeded: 0 } } }), onRefresh: () => {} });
+    const kinds = [...document.querySelectorAll('[data-review-kind]')].map((element) => element.dataset.reviewKind);
+    check(kinds.join(',') === 'ANKI_DUE,CLOZE_PRACTICE,CLOZE_RECYCLE,READER_REVISIT,CURRICULUM_PRACTICE', 'Reviews separates Anki due from dashboard queues');
+    check(document.querySelector('#reviews').textContent.includes('Anki remains the scheduler'), 'Anki scheduling ownership is explicit');
+    check(document.documentElement.scrollWidth <= document.documentElement.clientWidth, 'no horizontal overflow');
+
+    await new Promise((resolve) => setTimeout(resolve));
+    const passed = assertions.filter((entry) => entry.value).length;
+    document.querySelector('#result').textContent = `${passed}/${assertions.length} ${passed === assertions.length ? 'PASS' : 'FAIL'}: ${assertions.map((entry) => `${entry.value ? '✓' : '✗'} ${entry.label}`).join(' | ')}`;
+    document.title = `Phase 9 browser smoke: ${passed}/${assertions.length}`;
+    document.body.dataset.smoke = passed === assertions.length ? 'pass' : 'fail';
+  </script>
+</body>
+</html>

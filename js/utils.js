@@ -1,14 +1,27 @@
+const DASH = '—';
+
+const HTML_ENTITIES = Object.freeze({
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+});
+
+export const escapeHtml = (value) =>
+  String(value ?? '').replace(/[&<>"']/g, (character) => HTML_ENTITIES[character]);
+
 export const fmtDateShort = (d) => {
-  if (!d) return '—';
+  if (!d) return DASH;
   const dt = new Date(d);
-  if (Number.isNaN(dt.getTime())) return '—';
+  if (Number.isNaN(dt.getTime())) return DASH;
   return dt.toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' });
 };
 
 export const fmtDateTimeShort = (d) => {
-  if (!d) return '—';
+  if (!d) return DASH;
   const dt = new Date(d);
-  if (Number.isNaN(dt.getTime())) return '—';
+  if (Number.isNaN(dt.getTime())) return DASH;
   const date = dt.toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' });
   const time = dt.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
   return `${date}, ${time}`;
@@ -19,9 +32,9 @@ export const fmtDate = fmtDateShort;
 export const bust = (url) => url + (url.includes('?') ? '&' : '?') + '_=' + Date.now();
 
 export const fmtTimeShort = (d) => {
-  if (!d) return 'â€”';
+  if (!d) return DASH;
   const dt = d instanceof Date ? d : new Date(d);
-  if (Number.isNaN(dt.getTime())) return 'â€”';
+  if (Number.isNaN(dt.getTime())) return DASH;
   return dt.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
 };
 

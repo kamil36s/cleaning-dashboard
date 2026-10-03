@@ -1,0 +1,29 @@
+{
+  "devices": [
+    {
+      "bleId": "MOCK-COLMI-R10-001",
+      "name": "R10 MOCK",
+      "rssi": -48,
+      "serviceUuids": ["6e40fff0-b5a3-f393-e0a9-e50e24dcca9e"]
+    }
+  ],
+  "deviceInfo": {
+    "model": "COLMI R10 (fixture)",
+    "firmware_version": "MOCK-1.0.0",
+    "hardware_version": "MOCK-HW"
+  },
+  "battery": {
+    "battery_percentage": 76,
+    "charging": false
+  },
+  "services": [
+    {
+      "uuid": "6e40fff0-b5a3-f393-e0a9-e50e24dcca9e",
+      "description": "Mock Nordic UART",
+      "characteristics": [
+        {"uuid": "6e400002-b5a3-f393-e0a9-e50e24dcca9e", "properties": ["write-without-response"]},
+        {"uuid": "6e400003-b5a3-f393-e0a9-e50e24dcca9e", "properties": ["notify"]}
+      ]
+    }
+  ]
+}

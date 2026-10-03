@@ -1,0 +1,24 @@
+{
+  "normalizedCategories": [
+    "Solo Piano",
+    "Solo Instrument",
+    "Chamber",
+    "Soloist(s) + Orchestra",
+    "Orchestral",
+    "Stage / Ballet / Opera",
+    "Vocal",
+    "Choral",
+    "Arrangement / Orchestration",
+    "Other"
+  ],
+  "displayRules": [
+    {
+      "when": { "category": "Solo Instrument", "instrumentationIncludes": "piano" },
+      "displayCategory": "Solo Piano"
+    },
+    {
+      "when": { "isArrangement": true },
+      "displayCategory": "Arrangement / Orchestration"
+    }
+  ]
+}

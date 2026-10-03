@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/kermit-grounding/grounded-answer.v1",
+  "title": "Kermit Phase 6 GroundedAnswer",
+  "type": "object",
+  "required": ["contractVersion", "answer", "claims", "citations", "uncertainty", "conflicts", "groundingStatus", "evidenceAsOf", "groundingLatencyMs"],
+  "properties": {
+    "contractVersion": {"const": 1},
+    "answer": {"type": "string"},
+    "displayedClaimIds": {"type": "array", "items": {"type": ["string", "null"]}},
+    "claims": {"type": "array", "items": {"type": "object", "required": ["claimId", "text", "type", "evidenceIds", "supportStatus", "supportReason", "conflictIds"], "properties": {
+      "claimId": {"type": "string"}, "text": {"type": "string"}, "type": {"type": "string"},
+      "evidenceIds": {"type": "array", "items": {"type": "string"}},
+      "supportStatus": {"enum": ["supported", "partially_supported", "contradicted", "conflicted", "unsupported"]},
+      "supportReason": {"type": "string"}, "conflictIds": {"type": "array", "items": {"type": "string"}}
+    }}},
+    "citations": {"type": "array", "items": {"type": "object", "required": ["evidenceId", "path", "locator", "sourceSha256", "factStatus", "storageRole", "freshness"], "properties": {
+      "evidenceId": {"type": "string"}, "path": {"type": "string"}, "locator": {"type": "object"},
+      "sourceSha256": {"type": "string"}, "factStatus": {"type": "string"},
+      "storageRole": {"type": ["string", "null"]}, "freshness": {"const": "current"}
+    }}},
+    "uncertainty": {"type": "array", "items": {"type": "string"}},
+    "conflicts": {"type": "array", "items": {"type": "object", "required": ["conflictId", "description", "type", "originalType", "evidenceSides", "registerEvidenceId", "status"]}},
+    "groundingStatus": {"enum": ["grounded", "conflicted", "insufficient_evidence", "invalid", "unavailable", "waiting_for_memory", "confirmation_required"]},
+    "evidenceAsOf": {"type": "object"},
+    "groundingLatencyMs": {"type": "integer", "minimum": 0}
+  }
+}

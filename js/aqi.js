@@ -4,6 +4,7 @@
 import GIOS from './api/gios.js';
 import { t, onLocaleChange } from './i18n.js';
 import { fmtDateTimeShort } from './utils.js';
+import { loadTimeSuffix, startLoadTimer } from './load-timing.js';
 
 const CLASS_BY_KEY = {
   very_good: 'k-verygood',
@@ -64,7 +65,7 @@ const THRESHOLDS = {
 };
 
 const CACHE_KEY   = 'aqi:lastGood';
-const THROTTLE_MS = 15 * 60 * 1000; // 15 min
+const FRESH_WINDOW_MS = 5 * 60 * 1000; // kilka minut: blokada na szybkie odświeżenia
 
 function $(s){ return document.querySelector(s); }
 function setText(sel, text){ const el = $(sel); if (el) el.textContent = text; }
@@ -146,6 +147,12 @@ function normalizeSnapshot(raw){
 
   const levelKey = toLevelKey(raw.name) || null;
   let dominantValue = null;
+  const legacyUpdatedMs = Date.parse(raw.updatedIso || '');
+  const snapshotTs = Number.isFinite(raw.ts)
+    ? raw.ts
+    : Number.isFinite(legacyUpdatedMs)
+      ? legacyUpdatedMs
+      : 0;
 
   if (typeof raw.dominantValue === 'string') {
     dominantValue = raw.dominantValue;
@@ -155,7 +162,7 @@ function normalizeSnapshot(raw){
   }
 
   return {
-    ts: raw.ts || Date.now(),
+    ts: snapshotTs,
     location: raw.location || null,
     levelKey,
     dominantValue,
@@ -180,6 +187,8 @@ function writeCache(snap){
 }
 
 let lastSnapshot = null;
+let inFlight = null;
+let lastLoadMs = null;
 
 // render snapshot
 function applySnapshot(snap){
@@ -195,7 +204,8 @@ function applySnapshot(snap){
   setText('#aq-index', levelKey ? levelLabel(levelKey) : t('aqi.no_index', null, 'Brak indeksu'));
   setText('#aq-desc', levelKey ? levelDesc(levelKey) : t('aqi.no_index_desc', null, 'Brak indeksu GIOŚ dla tej stacji teraz.'));
   setText('#aq-dominant', dominantText(snap.dominantValue));
-  setText('#aq-updated', updatedText(snap.updatedIso));
+  const load = loadTimeSuffix(lastLoadMs);
+  setText('#aq-updated', `${updatedText(snap.updatedIso)}${load ? ` · ${load}` : ''}`);
 
   setClass(card, levelKey || null);
 
@@ -274,114 +284,130 @@ function extractNumericValueFromSensorData(d){
 }
 
 // GŁÓWNA FUNKCJA
-export async function renderAqiForKrasinskiego() {
+export async function renderAqiForKrasinskiego(options = {}) {
+  const { force = false } = options;
   const stationId = 400;
   const card = $('#aq-card');
   if (!card) return;
 
   const cache = readCache();
 
-  // throttle 15 min
-  if (cache && (Date.now() - cache.ts) < THROTTLE_MS) {
-    applySnapshot(cache);
-    return;
-  }
+  if (!force && cache) {
+    const ageMs = Date.now() - cache.ts;
 
-  try {
-    // 1) indeks jakości
-    const idx  = await GIOS.getIndex(stationId);
-    const levelKey = toLevelKey(idx.category) || fromValue(idx.value) || null;
-
-    // dominujący składnik
-    const codeMap = { PYL:'PM', SO2:'SO₂', NO2:'NO₂', O3:'O₃', CO:'CO', C6H6:'C₆H₆' };
-    let dominantValue = null;
-    if (idx.dominantCode && codeMap[idx.dominantCode]) {
-      dominantValue = codeMap[idx.dominantCode];
-    } else if (idx.parts) {
-      let worst = null;
-      let worstVal = -1;
-      for (const [k,v] of Object.entries(idx.parts)) {
-        const key = toLevelKey(v) || null;
-        const score = key ? ORDER.indexOf(key) : -1;
-        if (score > worstVal) {
-          worstVal = score;
-          worst = k.toUpperCase();
-        }
-      }
-      dominantValue = worst || null;
-    }
-
-    // 2) lista sensorów -> mapowanie do pm25/pm10/no2/o3
-    const wanted = { pm25:null, pm10:null, no2:null, o3:null };
-    let sensors = [];
-    try {
-      const res = await GIOS.getSensors(stationId);
-      sensors = Array.isArray(res) ? res : [];
-    } catch(e){
-      console.warn('[AQI] getSensors failed:', e);
-    }
-
-    for (const s of sensors) {
-      const code = norm(s?.paramCode); // po naszej normalizacji
-      if (code in wanted && !wanted[code]) {
-        wanted[code] = s.id;
-      }
-    }
-
-    // 3) wartości z sensorów
-    const vals = {};
-    for (const [code, sid] of Object.entries(wanted)) {
-      if (!sid) { vals[code] = NaN; continue; }
-
-      try {
-        const d = await GIOS.getSensorData(sid);
-        const num = extractNumericValueFromSensorData(d);
-        vals[code] = Number.isFinite(num) ? num : NaN;
-      } catch(e){
-        console.warn('[AQI] getSensorData failed:', code, e);
-        vals[code] = NaN;
-      }
-    }
-
-    // 4) snapshot
-    const freshSnap = buildSnapshot({
-      levelKey,
-      dominantValue,
-      vals,
-      updatedIso: new Date().toISOString()
-    });
-
-    // 5) renderuj
-    applySnapshot(freshSnap);
-
-    // 6) cache
-    if (isGoodSnapshot(freshSnap)) {
-      writeCache(freshSnap);
-    } else if (isGoodSnapshot(cache)) {
-      applySnapshot(cache);
-    }
-
-  } catch (e) {
-    console.error('[AQI] Error:', e);
-
-    if (isGoodSnapshot(cache)) {
+    // blokada na szybkie odświeżenia (kilka minut)
+    if (ageMs < FRESH_WINDOW_MS) {
       applySnapshot(cache);
       return;
     }
 
-    // fallback totalny
-    setText('#aq-location', t('aqi.location_default', null, 'Kraków, al. Krasińskiego'));
-    setText('#aq-index', t('aqi.no_index', null, 'Brak indeksu'));
-    setText('#aq-desc', t('aqi.error_desc', null, 'Błąd pobierania lub brak danych.'));
-    setText('#aq-dominant', t('aqi.dominant_empty', null, 'Dominujące: —'));
-    setText('#aq-updated', '—');
-    setClass($('#aq-card'), null);
-
-    setBar('pm25', NaN);
-    setBar('pm10', NaN);
-    setBar('no2',  NaN);
-    setBar('o3',   NaN);
   }
+
+  if (inFlight) return inFlight;
+
+  inFlight = (async () => {
+    const stopTimer = startLoadTimer();
+    try {
+      // 1) indeks jakości
+      const idx  = await GIOS.getIndex(stationId);
+      const levelKey = toLevelKey(idx.category) || fromValue(idx.value) || null;
+
+      // dominujący składnik
+      const codeMap = { PYL:'PM', SO2:'SO₂', NO2:'NO₂', O3:'O₃', CO:'CO', C6H6:'C₆H₆' };
+      let dominantValue = null;
+      if (idx.dominantCode && codeMap[idx.dominantCode]) {
+        dominantValue = codeMap[idx.dominantCode];
+      } else if (idx.parts) {
+        let worst = null;
+        let worstVal = -1;
+        for (const [k,v] of Object.entries(idx.parts)) {
+          const key = toLevelKey(v) || null;
+          const score = key ? ORDER.indexOf(key) : -1;
+          if (score > worstVal) {
+            worstVal = score;
+            worst = k.toUpperCase();
+          }
+        }
+        dominantValue = worst || null;
+      }
+
+      // 2) lista sensorów -> mapowanie do pm25/pm10/no2/o3
+      const wanted = { pm25:null, pm10:null, no2:null, o3:null };
+      let sensors = [];
+      try {
+        const res = await GIOS.getSensors(stationId);
+        sensors = Array.isArray(res) ? res : [];
+      } catch(e){
+        console.warn('[AQI] getSensors failed:', e);
+      }
+
+      for (const s of sensors) {
+        const code = norm(s?.paramCode); // po naszej normalizacji
+        if (code in wanted && !wanted[code]) {
+          wanted[code] = s.id;
+        }
+      }
+
+      // 3) wartości z sensorów
+      const vals = {};
+      for (const [code, sid] of Object.entries(wanted)) {
+        if (!sid) { vals[code] = NaN; continue; }
+
+        try {
+          const d = await GIOS.getSensorData(sid);
+          const num = extractNumericValueFromSensorData(d);
+          vals[code] = Number.isFinite(num) ? num : NaN;
+        } catch(e){
+          console.warn('[AQI] getSensorData failed:', code, e);
+          vals[code] = NaN;
+        }
+      }
+
+      // 4) snapshot
+      const freshSnap = buildSnapshot({
+        levelKey,
+        dominantValue,
+        vals,
+        updatedIso: idx.computedAt || new Date().toISOString()
+      });
+
+      // 5) renderuj
+      lastLoadMs = stopTimer();
+      applySnapshot(freshSnap);
+
+      // 6) cache
+      if (isGoodSnapshot(freshSnap)) {
+        writeCache(freshSnap);
+      } else if (isGoodSnapshot(cache)) {
+        applySnapshot(cache);
+      }
+
+    } catch (e) {
+      console.error('[AQI] Error:', e);
+
+      if (isGoodSnapshot(cache)) {
+        applySnapshot(cache);
+        return;
+      }
+
+      // fallback totalny
+      setText('#aq-location', t('aqi.location_default', null, 'Kraków, al. Krasińskiego'));
+      setText('#aq-index', t('aqi.no_index', null, 'Brak indeksu'));
+      setText('#aq-desc', t('aqi.error_desc', null, 'Błąd pobierania lub brak danych.'));
+      setText('#aq-dominant', t('aqi.dominant_empty', null, 'Dominujące: —'));
+      setText('#aq-updated', '—');
+      setClass($('#aq-card'), null);
+
+      setBar('pm25', NaN);
+      setBar('pm10', NaN);
+      setBar('no2',  NaN);
+      setBar('o3',   NaN);
+    } finally {
+      inFlight = null;
+    }
+  })();
+
+  return inFlight;
 }
 
 onLocaleChange(() => {

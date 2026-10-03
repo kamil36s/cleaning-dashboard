@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Historia HR</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./heart-rate-history.css" />
+</head>
+
+<body class="page-heart-rate-history">
+    <main class="hr-history-shell">
+        <header class="hr-history-header">
+            <div>
+                <div class="hr-history-kicker">Heart rate archive</div>
+                <h1>Historia HR</h1>
+                <p>Surowe próbki zapisane przez backend, niezależnie od aktywnej sesji treningowej.</p>
+            </div>
+            <a class="hr-history-back" href="./index.html">Wróć do dashboardu</a>
+        </header>
+
+        <section class="hr-history-controls" aria-label="Nawigacja po dniach">
+            <button class="hr-history-day-step" id="hr-history-previous-day" type="button" aria-label="Poprzedni dzień">←</button>
+            <label class="hr-history-day-field">
+                <span>Wybrany dzień</span>
+                <input id="hr-history-day" type="date" />
+            </label>
+            <button class="hr-history-day-step" id="hr-history-next-day" type="button" aria-label="Następny dzień">→</button>
+            <button class="hr-history-today" id="hr-history-today" type="button">Dzisiaj</button>
+            <button id="hr-history-refresh" type="button">Odśwież</button>
+        </section>
+
+        <section class="hr-history-chart-card" aria-labelledby="hr-history-chart-title">
+            <header>
+                <div>
+                    <span>Przebieg dnia</span>
+                    <h2 id="hr-history-chart-title">Tętno w czasie</h2>
+                </div>
+                <div class="hr-history-chart-header-side">
+                    <div class="hr-history-chart-meta">
+                        <div class="hr-history-live-indicator" id="hr-history-live-indicator" data-state="connecting" role="status" aria-live="polite">
+                            <i aria-hidden="true"></i>
+                            <b id="hr-history-live-label">Łączenie…</b>
+                        </div>
+                        <strong id="hr-history-chart-day">—</strong>
+                    </div>
+                    <div class="hr-history-chart-controls" aria-label="Skala czasu wykresu">
+                        <button id="hr-history-zoom-out" type="button" aria-label="Oddal wykres">−</button>
+                        <span id="hr-history-chart-window">—</span>
+                        <button id="hr-history-zoom-in" type="button" aria-label="Przybliż wykres">+</button>
+                        <button id="hr-history-fit-data" type="button">Dopasuj dane</button>
+                        <button id="hr-history-full-day" type="button">24 h</button>
+                    </div>
+                </div>
+            </header>
+            <div class="hr-history-chart-wrap">
+                <canvas id="hr-history-chart" role="img" aria-label="Wykres tętna dla wybranego dnia"></canvas>
+                <div class="hr-history-chart-empty" id="hr-history-chart-empty" hidden>Brak próbek do narysowania dla tego dnia.</div>
+                <div class="hr-history-chart-tooltip" id="hr-history-chart-tooltip" role="tooltip" hidden>
+                    <span id="hr-history-tooltip-time">—</span>
+                    <strong id="hr-history-tooltip-bpm">—</strong>
+                    <em id="hr-history-tooltip-source">—</em>
+                    <em id="hr-history-tooltip-mode">—</em>
+                    <b id="hr-history-tooltip-zone">—</b>
+                    <p id="hr-history-tooltip-description" hidden></p>
+                </div>
+            </div>
+            <div class="hr-history-workout-periods" id="hr-history-workout-periods" hidden aria-live="polite"></div>
+            <div class="hr-history-ring-periods" id="hr-history-ring-periods" hidden aria-live="polite"></div>
+            <div class="hr-history-zone-legend" id="hr-history-zone-legend" aria-label="Legenda stref tętna"></div>
+        </section>
+
+        <section class="hr-history-data-group hr-history-vitals-group" aria-labelledby="hr-history-vitals-title">
+            <header class="hr-history-group-header">
+                <div>
+                    <span>Podsumowanie fizjologiczne</span>
+                    <h2 id="hr-history-vitals-title">Tętno</h2>
+                </div>
+                <p>Kolor kafla wynika ze strefy obowiązującej w danym trybie.</p>
+            </header>
+            <div class="hr-history-summary hr-history-vitals-summary">
+                <article class="hr-history-vital-card" id="hr-history-latest-card">
+                    <span>Ostatni odczyt</span>
+                    <strong id="hr-history-latest-bpm">—</strong>
+                    <small id="hr-history-latest-time">Brak danych</small>
+                    <small id="hr-history-latest-zone">Brak strefy</small>
+                </article>
+                <article class="hr-history-vital-card" id="hr-history-average-card">
+                    <span>Średnie HR · tryb codzienny</span>
+                    <strong id="hr-history-average">—</strong>
+                    <small id="hr-history-average-zone">Poza treningami</small>
+                </article>
+                <article class="hr-history-vital-card" id="hr-history-sports-average-card">
+                    <span>Średnie HR · tryb sportowy</span>
+                    <strong id="hr-history-sports-average">—</strong>
+                    <small id="hr-history-sports-average-zone">Aktywne treningi</small>
+                </article>
+                <article class="hr-history-vital-card hr-history-range-card" id="hr-history-range-card">
+                    <span>Zakres BPM</span>
+                    <strong id="hr-history-range">—</strong>
+                    <small id="hr-history-range-zone">minimum – maksimum</small>
+                </article>
+            </div>
+        </section>
+
+        <section class="hr-history-data-group hr-history-zone-time-group" aria-labelledby="hr-history-zone-time-title">
+            <header class="hr-history-group-header">
+                <div>
+                    <span>Rozkład czasu</span>
+                    <h2 id="hr-history-zone-time-title">Czas spędzony w strefach</h2>
+                </div>
+                <p>Odstęp między próbkami jest przypisywany do strefy poprzedniego odczytu, maksymalnie 5 sekund.</p>
+            </header>
+            <div class="hr-history-pie-grid">
+                <article class="hr-history-pie-card">
+                    <header>
+                        <span>Tryb codzienny</span>
+                        <strong>Poza treningami</strong>
+                    </header>
+                    <div class="hr-history-pie-layout">
+                        <div class="hr-history-pie" id="hr-history-daily-pie" role="img" aria-label="Rozkład czasu w codziennych strefach tętna">
+                            <div><strong id="hr-history-daily-pie-total">—</strong><small>z danymi</small></div>
+                        </div>
+                        <div class="hr-history-pie-legend" id="hr-history-daily-pie-legend"></div>
+                    </div>
+                </article>
+                <article class="hr-history-pie-card">
+                    <header>
+                        <span>Tryb sportowy</span>
+                        <strong>Aktywne treningi · maxHR 190</strong>
+                    </header>
+                    <div class="hr-history-pie-layout">
+                        <div class="hr-history-pie" id="hr-history-sports-pie" role="img" aria-label="Rozkład czasu w sportowych strefach tętna">
+                            <div><strong id="hr-history-sports-pie-total">—</strong><small>z danymi</small></div>
+                        </div>
+                        <div class="hr-history-pie-legend" id="hr-history-sports-pie-legend"></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="hr-history-data-group hr-history-technical-group" aria-labelledby="hr-history-technical-title">
+            <header class="hr-history-group-header">
+                <div>
+                    <span>Telemetria i kompletność</span>
+                    <h2 id="hr-history-technical-title">Jakość danych</h2>
+                </div>
+                <p>Informacje techniczne o archiwum i ciągłości transmisji.</p>
+            </header>
+            <div class="hr-history-summary hr-history-technical-summary">
+                <article>
+                    <span>Wczytane próbki</span>
+                    <strong id="hr-history-count">0</strong>
+                    <small>każda transmisja osobno</small>
+                </article>
+                <article>
+                    <span>Poprawne próbki</span>
+                    <strong id="hr-history-success-rate">—</strong>
+                    <small>BPM 30–240, poprawny czas, status i zapis payloadu</small>
+                </article>
+                <article>
+                    <span>Pokrycie doby</span>
+                    <strong id="hr-history-day-coverage">—</strong>
+                    <small id="hr-history-day-coverage-note">sekundy z danymi / długość dnia</small>
+                </article>
+                <article>
+                    <span>Szacowana utrata</span>
+                    <strong id="hr-history-packet-loss">—</strong>
+                    <small id="hr-history-packet-loss-note">brak wystarczających danych o kadencji</small>
+                </article>
+            </div>
+
+            <aside class="hr-history-method-note" aria-label="Kryteria statystyk">
+                <strong>Jak to liczę:</strong>
+                poprawna próbka spełnia walidację backendu i ma kompletny zapis archiwalny;
+                pokrycie doby to unikalne sekundy zawierające poprawny odczyt;
+                utrata pakietów jest estymacją z luk względem mediany odstępu między próbkami.
+                Przerwa ponad 30 sekund rozpoczyna nową serię, więc nie jest liczona jako utrata w trakcie przesyłu.
+            </aside>
+        </section>
+
+        <div class="hr-history-status" id="hr-history-status" role="status" aria-live="polite">Ładuję historię…</div>
+
+        <details class="hr-history-raw-details">
+            <summary>
+                <span>Surowe próbki i payloady</span>
+                <small id="hr-history-table-summary">Rozwiń tabelę</small>
+            </summary>
+            <section class="hr-history-table-wrap" aria-label="Próbki tętna">
+                <table class="hr-history-table">
+                    <thead>
+                        <tr>
+                            <th>Czas pomiaru</th>
+                            <th>BPM</th>
+                            <th>Źródło</th>
+                            <th>Status</th>
+                            <th>Odebrane przez serwer</th>
+                            <th>Payload</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hr-history-rows"></tbody>
+                </table>
+                <div class="hr-history-empty" id="hr-history-empty" hidden>Brak zapisanych próbek dla tego zakresu.</div>
+            </section>
+        </details>
+    </main>
+
+    <script type="module" src="./js/heart-rate-history.js"></script>
+</body>
+
+</html>

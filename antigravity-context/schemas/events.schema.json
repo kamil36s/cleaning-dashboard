@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/events.schema.json",
+  "title": "Events",
+  "description": "Local event timing and day-off facts without event titles.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "events"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "events_next_7_days": {
+          "type": "integer"
+        },
+        "events_next_30_days": {
+          "type": "integer"
+        },
+        "days_off_next_30_days": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "events_next_7_days",
+        "events_next_30_days",
+        "days_off_next_30_days"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "days_from_today": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "is_day_off": {
+            "type": "boolean"
+          },
+          "is_short_day": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "date",
+          "days_from_today",
+          "type",
+          "source",
+          "is_day_off",
+          "is_short_day"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

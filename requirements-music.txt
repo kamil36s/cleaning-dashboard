@@ -1,0 +1,2 @@
+# DOM parser for manually saved Rate Your Music HTML fixtures.
+beautifulsoup4>=4.12,<5

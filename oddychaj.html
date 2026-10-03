@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oddychaj · 4-7-8</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./breathwork.css" />
+</head>
+
+<body class="page-breathwork">
+
+  <!-- ═══ STRONA NORMALNA ═══ -->
+  <div class="bw-page">
+
+    <header class="bw-header">
+      <a class="bw-back" href="./index.html" aria-label="Wróć do dashboardu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Dashboard
+      </a>
+      <div class="bw-header-meta">
+        <div class="bw-kicker">Zdrowie · Regeneracja</div>
+        <h1>Ćwiczenia oddechowe</h1>
+        <div class="bw-rhythm-badge" aria-label="Rytm 4-7-8 sekund">4 · 7 · 8</div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Kółko + kontrolki -->
+      <section class="bw-stage" aria-label="Konfiguracja sesji">
+
+        <!-- Dekoracyjny podgląd -->
+        <div class="bw-preview-wrap" aria-hidden="true">
+          <div class="bw-preview-ring-outer"></div>
+          <div class="bw-preview-ring-mid"></div>
+          <div class="bw-preview-circle">
+            <span class="bw-preview-rhythm">4·7·8</span>
+            <span class="bw-preview-label">sekund</span>
+          </div>
+        </div>
+
+        <!-- Prawa: opis + kontrolki -->
+        <div class="bw-stage-right">
+          <p class="bw-stage-tagline">
+            <strong>Fizjologiczny hack</strong> — wymusza natychmiastowe przejście układu nerwowego
+            z trybu walki w tryb głębokiej regeneracji. Jeden cykl to 19 sekund.
+          </p>
+
+          <div class="bw-controls">
+            <div class="bw-cycles-row">
+              <label class="bw-cycles-label" for="bw-cycles-input">Cykli na sesję:</label>
+              <input
+                class="bw-cycles-input"
+                id="bw-cycles-input"
+                type="number"
+                value="4"
+                min="1"
+                max="8"
+                step="1"
+                aria-label="Liczba cykli na sesję"
+              />
+              <span class="bw-cycles-hint">maks. 8</span>
+            </div>
+            <button class="bw-btn-start" id="bw-start" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l15 8-15 8V4z"/></svg>
+              Zacznij sesję
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Jak to działa -->
+      <section class="bw-section" aria-labelledby="bw-science-title">
+        <div class="bw-section-title" id="bw-science-title">Jak to działa</div>
+        <div class="bw-pillars">
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">🫀</div>
+            <h4>Nerw błędny · HRV</h4>
+            <p>Wydłużony wydech (8s) wymusza aktywację przywspółczulnego UN. Tętno spada w ciągu minuty — widoczne w telemetrii pierścienia.</p>
+          </article>
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">🧪</div>
+            <h4>Chemia krwi</h4>
+            <p>Zatrzymanie (7s) nasyca krew O₂ i wyrównuje CO₂. Nakłada się na wyciszające właściwości magnezu i L-teaniny z suplementacji.</p>
+          </article>
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">🧠</div>
+            <h4>Kora przedczołowa</h4>
+            <p>Precyzyjne liczenie sekund aktywuje korę przedczołową, odcinając ciało migdałowate (lęk/stres). Ułatwia wejście w deep work.</p>
+          </article>
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">📉</div>
+            <h4>Ciśnienie tętnicze</h4>
+            <p>1 cykl = 19 sekund ≈ 3 oddechy/min. Rytm poniżej 10/min mechanicznie rozszerza naczynia i obniża ciśnienie skurczowe.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Kiedy używać -->
+      <section class="bw-section" aria-labelledby="bw-when-title">
+        <div class="bw-section-title" id="bw-when-title">Kiedy używać</div>
+        <div class="bw-pillars">
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">🚴</div>
+            <h4>Po treningu</h4>
+            <p>Natychmiastowe przejście w regenerację po FBW lub rowerku. Widoczny spadek HR w telemetrii.</p>
+          </article>
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">🍽️</div>
+            <h4>Głód na redukcji</h4>
+            <p>Uspokaja ośrodek nagrody i redukuje kortyzol — pomaga przeczekać fałszywy głód przy deficycie kalorycznym.</p>
+          </article>
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">⌨️</div>
+            <h4>Przed deep work</h4>
+            <p>Obniżenie fal do stanu alfa. Ułatwia wejście w flow przy pisaniu kodu lub wymagających zadaniach.</p>
+          </article>
+          <article class="bw-pillar">
+            <div class="bw-pillar-icon" aria-hidden="true">😤</div>
+            <h4>Ostry stres</h4>
+            <p>Przed trudną rozmową, po irytującym mailu. Min. 2 sesje dziennie trenuje UN do automatycznego zbijania stresu.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Historia sesji -->
+      <section class="bw-history" aria-labelledby="bw-history-title">
+        <div class="bw-history-title" id="bw-history-title">Historia sesji</div>
+        <ul class="bw-history-list" id="bw-history-list" aria-label="Historia ukończonych sesji oddechowych">
+          <li class="bw-history-empty">Brak ukończonych sesji.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ═══ FULLSCREEN OVERLAY (aktywny podczas sesji) ═══ -->
+  <div class="bw-fullscreen" id="bw-fullscreen" hidden data-fs-phase="idle">
+
+    <!-- Tło ambientalne -->
+    <div class="bw-fs-bg" aria-hidden="true"></div>
+
+    <!-- Animowany krąg -->
+    <div class="bw-fs-circle-wrap" aria-hidden="true">
+      <div class="bw-fs-glow"></div>
+      <div class="bw-fs-inner" id="bw-fs-inner">
+        <span class="bw-fs-countdown" id="bw-fs-countdown">—</span>
+        <span class="bw-fs-sublabel" id="bw-fs-sublabel">4 · 7 · 8</span>
+      </div>
+    </div>
+
+    <!-- Info o fazie -->
+    <div class="bw-fs-info" aria-live="polite" aria-atomic="true">
+      <div class="bw-fs-phase" id="bw-fs-phase">Gotowy</div>
+      <div class="bw-fs-instruction" id="bw-fs-instruction">Ułóż język za górnymi zębami</div>
+      <div class="bw-fs-cycle" id="bw-fs-cycle"></div>
+    </div>
+
+    <!-- Dots postępu cykli -->
+    <div class="bw-fs-dots" id="bw-fs-dots" aria-hidden="true"></div>
+
+    <!-- Stop -->
+    <button class="bw-fs-stop" id="bw-stop" type="button">■ Zatrzymaj i zapisz</button>
+
+  </div>
+
+  <!-- ═══ PREP OVERLAY (odliczanie 3-2-1) ═══ -->
+  <div class="bw-prep-overlay" id="bw-prep-overlay" hidden role="status" aria-live="polite">
+    <div class="bw-prep-num" id="bw-prep-num">3</div>
+    <div class="bw-prep-text">Wypuść całe powietrze przez usta ze świstem…</div>
+  </div>
+
+  <script type="module" src="./js/breathwork.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dziennik</title>
+  <link rel="stylesheet" href="./styles.css?v=journal-inline-composer-4">
+</head>
+
+<body class="page-journal">
+  <div class="journal-app" id="journal-app">
+    <header class="journal-app-header">
+      <a class="journal-brand" href="./index.html" aria-label="Wróć do dashboardu">
+        <span class="journal-brand-mark" aria-hidden="true">J</span>
+        <span><strong>Dziennik</strong><small>Prywatne zapiski lokalne</small></span>
+      </a>
+      <div class="journal-header-actions">
+        <button class="journal-button is-primary" id="journal-new-entry" type="button">+ Nowy wpis</button>
+        <button class="journal-button" id="journal-new-poem" type="button">+ Nowy wiersz</button>
+        <a class="journal-button" href="./voice-journal.html">Dziennik głosowy</a>
+        <a class="journal-button" href="./index.html">Dashboard</a>
+      </div>
+    </header>
+
+    <section class="journal-hero">
+      <div>
+        <span class="journal-eyebrow">Twoja osobista kronika</span>
+        <h1>Miejsce na myśli,<br>które warto zachować.</h1>
+        <p>Twórz własne wpisy albo publikuj dopracowane wersje z Dziennika głosowego.</p>
+      </div>
+      <div class="journal-stats" aria-label="Statystyki dziennika">
+        <div><strong id="journal-stat-count">—</strong><span>wpisów dziennika</span></div>
+        <div><strong id="journal-stat-poems">—</strong><span>wierszy</span></div>
+        <div><strong id="journal-stat-voice">—</strong><span>z nagrań głosowych</span></div>
+        <div><strong id="journal-stat-latest">—</strong><span>ostatni wpis</span></div>
+      </div>
+    </section>
+
+    <main class="journal-layout">
+      <aside class="journal-composer-panel" id="journal-composer-panel" hidden>
+        <div class="journal-composer-shell" id="journal-composer-shell">
+          <div class="journal-section-heading">
+            <span id="journal-form-kicker">Nowa strona</span>
+            <h2 id="journal-form-title">Dodaj wpis</h2>
+          </div>
+          <div class="journal-edit-audio" id="journal-edit-audio" hidden>
+            <span>Oryginalne nagranie głosowe</span>
+            <audio id="journal-edit-audio-player" controls preload="metadata"></audio>
+            <small id="journal-edit-audio-meta"></small>
+          </div>
+          <form class="journal-form" id="journal-form">
+          <label><span>Rodzaj</span><select name="entryKind"><option value="journal">Wpis dziennika</option><option value="poem">Wiersz</option></select></label>
+          <label><span>Tytuł</span><input name="title" maxlength="160" placeholder="Jak nazwiesz ten dzień?"></label>
+          <label><span>Data</span><input name="entryDate" type="date" required></label>
+          <label><span>Godzina <small>(opcjonalnie)</small></span><input name="entryTime" type="time"></label>
+          <label><span>Tagi</span><input name="tags" maxlength="500" placeholder="np. refleksje, praca, sen"></label>
+          <label><span>Miejsce <small>(opcjonalne)</small></span><input name="location" maxlength="160" placeholder="np. Kraków"></label>
+          <div class="journal-content-field">
+            <span>Treść</span>
+            <div class="journal-editor-shell">
+              <div class="journal-editor-toolbar" id="journal-editor-toolbar" role="toolbar" aria-label="Formatowanie tekstu">
+                <button type="button" data-command="bold" aria-label="Pogrubienie"><strong>B</strong></button>
+                <button type="button" data-command="italic" aria-label="Kursywa"><em>I</em></button>
+                <button type="button" data-command="underline" aria-label="Podkreślenie"><u>U</u></button>
+                <button type="button" data-command="strikeThrough" aria-label="Przekreślenie"><s>S</s></button>
+                <span class="journal-toolbar-divider" aria-hidden="true"></span>
+                <select id="journal-editor-block" aria-label="Styl akapitu">
+                  <option value="p">Akapit</option>
+                  <option value="h2">Nagłówek</option>
+                  <option value="h3">Podtytuł</option>
+                </select>
+                <button type="button" data-command="insertUnorderedList" aria-label="Lista punktowana">• Lista</button>
+                <button type="button" data-command="insertOrderedList" aria-label="Lista numerowana">1. Lista</button>
+                <button type="button" data-command="formatBlock" data-value="blockquote" aria-label="Cytat">❝</button>
+                <button type="button" data-action="link" aria-label="Dodaj link">Link</button>
+                <button type="button" data-command="removeFormat" aria-label="Wyczyść formatowanie">Wyczyść</button>
+                <button class="journal-editor-source-toggle" id="journal-editor-source-toggle" type="button" aria-pressed="false">Kod</button>
+              </div>
+              <div class="journal-rich-editor" id="journal-rich-editor" contenteditable="true" role="textbox" aria-multiline="true" data-placeholder="Zacznij pisać…"></div>
+              <textarea class="journal-source-editor" name="content" rows="16" maxlength="1000000" hidden aria-label="Treść jako HTML lub BBCode" placeholder="Wklej HTML, BBCode albo zwykły tekst…"></textarea>
+            </div>
+            <small class="journal-editor-help">Możesz też przełączyć na „Kod” i wkleić bezpieczny HTML lub BBCode, np. [b]tekst[/b].</small>
+          </div>
+          <div class="journal-illustration-field">
+            <label><span>Ilustracja</span><input name="illustrationFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+            <small>Opcjonalny obraz JPG, PNG, WebP lub GIF; zostanie zmniejszony przed zapisem.</small>
+            <div class="journal-illustration-preview" id="journal-illustration-preview" hidden>
+              <img id="journal-illustration-image" alt="Podgląd ilustracji">
+              <label><span>Opis ilustracji</span><input name="illustrationAlt" maxlength="240" placeholder="Krótki opis dla czytników ekranu"></label>
+              <button class="journal-text-button is-danger" id="journal-remove-illustration" type="button">Usuń ilustrację</button>
+            </div>
+          </div>
+          <div class="journal-form-actions">
+            <button class="journal-button is-primary" type="submit" id="journal-save-entry">Zapisz wpis</button>
+            <button class="journal-button" type="button" id="journal-cancel-edit" hidden>Anuluj edycję</button>
+            <small class="journal-draft-status" id="journal-draft-status" aria-live="polite">Autosave szkicu jest włączony.</small>
+          </div>
+          </form>
+          <div class="journal-status" id="journal-form-status" aria-live="polite"></div>
+        </div>
+      </aside>
+
+      <section class="journal-entries-panel" aria-labelledby="journal-entries-title">
+        <div class="journal-list-head">
+          <div>
+            <span class="journal-eyebrow">Archiwum</span>
+            <h2 id="journal-entries-title">Zapisane strony</h2>
+          </div>
+          <div class="journal-list-tools">
+            <label class="journal-search"><span class="sr-only">Szukaj</span><input id="journal-search" type="search" placeholder="Szukaj w tytule, treści i tagach…"></label>
+            <label class="journal-poem-toggle"><input id="journal-show-poems" type="checkbox"><span>Pokaż wiersze</span></label>
+            <label class="journal-context-toggle"><input id="journal-show-context" type="checkbox"><span>Pokaż kontekst</span></label>
+            <label class="journal-filter"><span>Rok</span><select id="journal-year-filter"><option value="">Wszystkie</option></select></label>
+            <label class="journal-filter"><span>Miesiąc</span><select id="journal-month-filter"><option value="">Wszystkie</option></select></label>
+            <button class="journal-filter-reset" id="journal-filter-reset" type="button" hidden>Wyczyść filtry</button>
+          </div>
+        </div>
+        <div class="journal-list-status" id="journal-list-status" aria-live="polite"></div>
+        <div class="journal-composer-slot" id="journal-composer-slot"></div>
+        <div class="journal-entry-list" id="journal-entry-list"></div>
+        <div class="journal-empty" id="journal-empty" hidden>
+          <span aria-hidden="true">✦</span>
+          <strong>Jeszcze nie ma tu żadnej strony.</strong>
+          <p>Napisz pierwszy wpis albo opublikuj uporządkowaną transkrypcję.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./js/journal.js?v=journal-inline-composer-1"></script>
+</body>
+
+</html>

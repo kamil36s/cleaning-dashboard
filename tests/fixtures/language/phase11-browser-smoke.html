@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Phase 11 smoke</title>
+<style>body{margin:0;background:#111;color:white}iframe{border:0;width:100%;height:94vh}output{display:block;font:12px monospace;overflow-wrap:anywhere}</style></head>
+<body><iframe title="Language production app" id="app"></iframe><output id="result">PENDING</output>
+<script type="module">
+const params = new URLSearchParams(location.search);
+const textId = params.get('text'); const profileId = params.get('profile');
+const frame = document.querySelector('#app'); const output = document.querySelector('#result');
+const checks = []; const check = (value, label) => { checks.push({ label, pass: Boolean(value) }); if (!value) throw new Error(label); };
+const api = async (path) => (await (await fetch(`/api/language/${path}`)).json()).data;
+const wait = async (predicate, label) => { for (let n=0;n<400;n++) { const result = await predicate(); if (result) return result; await new Promise(r=>setTimeout(r,100)); } throw new Error(`Timeout: ${label}`); };
+const doc = () => frame.contentDocument;
+const button = label => [...doc().querySelectorAll('button')].find(b=>b.textContent===label);
+const go = async hash => { frame.contentWindow.location.hash=hash; await new Promise(r=>setTimeout(r,200)); };
+try {
+  frame.src=`/language.html#reader/text/${textId}`;
+  await wait(()=>button('Analyze Grammar') && !button('Analyze Grammar').disabled,'Reader ready');
+  check(doc().querySelector('[data-reader-source]'),'canonical Reader visible');
+  button('Analyze Grammar').click();
+  await wait(async()=> (await api(`texts/${textId}/grammar?profileId=${profileId}`)).status==='COMPLETED','grammar job completes');
+  check(true,'explicit real parser job completed');
+  await go('#grammar'); await wait(()=>doc().querySelector('.language-grammar section'),'catalogue');
+  const body=doc().body.textContent;
+  check(['A1 practical','A2 practical','B1 practical','SUPPORTED','DEFERRED'].every(t=>body.includes(t)),'practical catalogue and honest support');
+  check(body.includes('not certified CEFR'),'scope disclaimer');
+  check(!body.includes('ENCOUNTERED ·'),'analysis no encounter');
+  await go('#grammar/pattern/A1_PRESENT_TENSE'); await wait(()=>button('Confirm detector'),'detail');
+  check(doc().querySelector('mark')?.textContent==='jobber','exact span');
+  check(doc().body.textContent.includes('READER') && doc().body.textContent.includes('FINITE_VERB'),'source and roles');
+  check((await api(`profiles/${profileId}/grammar/patterns/A1_PRESENT_TENSE`)).pattern.state==='DISCOVERED','analysis only DISCOVERED');
+  button('Confirm detector').click(); await wait(()=>doc().querySelector('.language-grammar [role="status"]')?.textContent.includes('CONFIRMED'),'confirm');
+  await go('#grammar'); await go('#grammar/pattern/A1_PRESENT_TENSE');
+  await wait(()=>doc().body.textContent.includes('Detector review: CONFIRMED'),'confirm reload'); check(true,'confirm persists');
+  await go('#grammar/pattern/A2_PRESENT_PERFECT'); await wait(()=>button('Reject detector'),'perfect');
+  button('Reject detector').click(); await wait(()=>doc().body.textContent.includes('Detector review: REJECTED'),'reject');
+  await go('#grammar'); await go('#grammar/pattern/A2_PRESENT_PERFECT');
+  await wait(()=>doc().body.textContent.includes('Detector review: REJECTED'),'reject reload'); check(true,'reject persists');
+  await go('#grammar/pattern/A1_PRESENT_TENSE'); await wait(()=>[...doc().querySelectorAll('a')].find(a=>a.textContent==='Open source sentence'),'source link');
+  [...doc().querySelectorAll('a')].find(a=>a.textContent==='Open source sentence').click();
+  await wait(()=>doc().querySelector('.is-grammar-focus'),'focused sentence'); check(true,'source navigation focuses exact sentence');
+  button('Start reading').click();
+  await wait(()=>button('Pause') && !button('Pause').disabled,'reading session');
+  doc().querySelector('.is-grammar-focus').scrollIntoView({block:'center'});
+  await wait(async()=> (await api(`profiles/${profileId}/grammar/patterns/A1_PRESENT_TENSE`)).pattern.state==='ENCOUNTERED','actual Reader dwell');
+  check(true,'real Reader sentence study ENCOUNTERED');
+  button('Pause').click();
+  await fetch('/__grammar_fixture/parser-unavailable');
+  await go('#grammar'); await wait(()=>doc().body.textContent.includes('MODEL_NOT_PROVISIONED'),'unavailable');
+  check(true,'truthful unavailable parser');
+  await go(`#reader/text/${textId}`); await wait(()=>doc().querySelector('[data-reader-source]'),'Reader after missing parser');
+  check(doc().querySelector('[data-reader-source]').textContent.includes('Jeg jobber'),'Reader unaffected');
+  await go('#grammar/pattern/A1_PRESENT_TENSE'); await wait(()=>doc().querySelector('details'),'final detail');
+  doc().querySelector('details').open=true;
+  check(doc().documentElement.scrollWidth<=doc().documentElement.clientWidth,'no horizontal overflow');
+  check([...doc().querySelectorAll('.language-grammar, .language-grammar .language-card, .language-grammar pre')].every(el=>el.getBoundingClientRect().right<=frame.contentWindow.innerWidth+1),'content fits actual viewport');
+  check(button('Confirm detector')?.tagName==='BUTTON' && doc().querySelector('summary'),'keyboard native controls');
+  output.textContent=JSON.stringify({pass:true,checks}); document.title='PASS Phase 11';
+} catch(error) { output.textContent=JSON.stringify({pass:false,error:error.message,checks,view:doc()?.body?.textContent?.slice(0,1000)}); document.title='FAIL Phase 11'; }
+</script></body></html>

@@ -4,6 +4,7 @@ import { fetchWeather } from './api/openMeteo.js';
 import { setStatus as uiSetStatus, renderNow, renderNext } from './ui/render_weather_api.js';
 import { t, onLocaleChange } from './i18n.js';
 import { fmtDateTimeShort } from './utils.js';
+import { loadTimeSuffix, startLoadTimer } from './load-timing.js';
 
 const Q = {
   now: () => document.getElementById('now'),
@@ -30,32 +31,33 @@ function ready(fn) {
 }
 
 let busy = false;
-let lastStatus = { type: 'idle', updatedIso: null, error: null };
+let lastStatus = { type: 'idle', updatedIso: null, error: null, loadMs: null };
 
-function formatUpdated(iso) {
+function formatUpdated(iso, loadMs = null) {
   if (!iso) return '';
   const datetime = fmtDateTimeShort(iso);
-  return t('weather.updated', { datetime }, `Ostatnia aktualizacja: ${datetime}`);
+  const load = loadTimeSuffix(loadMs);
+  return `${t('weather.updated', { datetime }, `Ostatnia aktualizacja: ${datetime}`)}${load ? ` · ${load}` : ''}`;
 }
 
 function setStatusLoading() {
-  lastStatus = { type: 'loading', updatedIso: null, error: null };
+  lastStatus = { type: 'loading', updatedIso: null, error: null, loadMs: null };
   setStatusSafe(t('weather.loading', null, 'Ładowanie...'));
 }
 
-function setStatusUpdated(iso) {
-  lastStatus = { type: 'updated', updatedIso: iso, error: null };
-  setStatusSafe(formatUpdated(iso));
+function setStatusUpdated(iso, loadMs = null) {
+  lastStatus = { type: 'updated', updatedIso: iso, error: null, loadMs };
+  setStatusSafe(formatUpdated(iso, loadMs));
 }
 
 function setStatusError(message) {
-  lastStatus = { type: 'error', updatedIso: null, error: message };
+  lastStatus = { type: 'error', updatedIso: null, error: message, loadMs: null };
   setStatusSafe(t('weather.error', { message }, `Błąd: ${message}`));
 }
 
 onLocaleChange(() => {
   if (lastStatus.type === 'updated') {
-    setStatusUpdated(lastStatus.updatedIso);
+    setStatusUpdated(lastStatus.updatedIso, lastStatus.loadMs);
   } else if (lastStatus.type === 'error') {
     setStatusError(lastStatus.error);
   } else if (lastStatus.type === 'loading') {
@@ -68,10 +70,12 @@ async function loadWeather() {
   busy = true;
   try {
     setStatusLoading();
+    const stopTimer = startLoadTimer();
     const data = await fetchWeather();
+    const loadMs = stopTimer();
     if (Q.now()) renderNow(data.now);
     if (Q.next()) renderNext(data.nextHours);
-    setStatusUpdated(data.updatedIso);
+    setStatusUpdated(data.updatedIso, loadMs);
   } catch (e) {
     const fallback = t('weather.unknown_error', null, 'nieznany');
     const msg = e?.message || fallback;

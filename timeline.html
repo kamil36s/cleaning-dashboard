@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Great Timeline</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./timeline.css">
+</head>
+<body class="timeline-page">
+  <a class="timeline-back" href="./index.html" aria-label="Back to dashboard">← Dashboard</a>
+  <main class="timeline-app">
+    <header class="timeline-hero">
+      <div>
+        <p class="timeline-kicker">Personal archive</p>
+        <h1>THE GREAT TIMELINE</h1>
+        <p>Build a careful, expandable record of people, places, periods and events across your life.</p>
+      </div>
+      <div class="timeline-hero-actions" aria-label="Timeline actions">
+        <button class="timeline-button is-primary" id="timeline-add" type="button">Add entry</button>
+        <button class="timeline-button" id="timeline-report-open" type="button">Generate report</button>
+        <button class="timeline-button" id="timeline-activity-open" type="button">Daily signals</button>
+        <button class="timeline-button" id="timeline-import-open" type="button">Import JSON</button>
+        <button class="timeline-button" id="timeline-export-json" type="button">Export JSON</button>
+        <button class="timeline-button" id="timeline-export-csv" type="button">Export CSV</button>
+        <button class="timeline-button" id="timeline-categories-open" type="button">Categories</button>
+      </div>
+    </header>
+
+    <div class="timeline-statusbar">
+      <span id="timeline-status" role="status">Loading timeline…</span>
+      <span id="timeline-count">0 visible / 0 total</span>
+    </div>
+
+    <section class="timeline-workspace" aria-label="Timeline workspace">
+      <aside class="timeline-filters" id="timeline-filters" aria-labelledby="timeline-filter-title">
+        <details class="timeline-filter-menu" id="timeline-filter-menu" open>
+          <summary id="timeline-filter-title">
+            <span><span class="timeline-kicker">View</span><strong>Filters</strong></span>
+            <span class="timeline-filter-menu-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="timeline-filter-menu-body">
+            <div class="timeline-filter-reset-row"><button class="timeline-text-button" id="timeline-filter-reset" type="button">Reset</button></div>
+        <label>Search<input id="timeline-filter-search" type="search" placeholder="Title, notes, description"></label>
+        <label>Category<select id="timeline-filter-category"><option value="">All categories</option></select></label>
+        <label>Subcategory<select id="timeline-filter-subcategory"><option value="">All subcategories</option></select></label>
+        <label>Type<select id="timeline-filter-type"><option value="">All types</option><option>point</option><option>period</option><option>phase</option></select></label>
+        <label>Person<select id="timeline-filter-person"><option value="">All people</option></select></label>
+        <label>Location<input id="timeline-filter-location" type="search" placeholder="Any location"></label>
+        <label>Tag<input id="timeline-filter-tag" type="search" placeholder="Any tag"></label>
+        <label>Importance<select id="timeline-filter-importance"><option value="">Any importance</option><option value="5">5 — essential</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option></select></label>
+        <label>Status<select id="timeline-filter-status"><option value="">Any status</option><option value="ongoing">Ongoing</option><option value="completed">Completed</option></select></label>
+        <label>Date precision<select id="timeline-filter-precision"><option value="">Any precision</option></select></label>
+        <div class="timeline-filter-pair">
+          <label>From<input id="timeline-filter-from" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label>
+          <label>To<input id="timeline-filter-to" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label>
+        </div>
+        <small class="timeline-field-help">Both boundary dates are included.</small>
+          </div>
+        </details>
+        <label>Density<select id="timeline-density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></label>
+        <label class="timeline-check"><input id="timeline-filter-hidden" type="checkbox"> Include hidden categories</label>
+        <label class="timeline-check"><input id="timeline-filter-travel-gaps" type="checkbox" checked> Show Travel gaps</label>
+        <label class="timeline-check"><input id="timeline-filter-travel-colors" type="checkbox"> Flag-color Travel pills</label>
+        <div class="timeline-category-toggles" id="timeline-category-toggles" aria-label="Category visibility"></div>
+      </aside>
+
+      <section class="timeline-content">
+        <div class="timeline-view-bar">
+          <div class="timeline-view-tabs" role="tablist" aria-label="Timeline views">
+            <button class="is-active" id="timeline-tab-visual" role="tab" aria-selected="true" aria-controls="timeline-visual-panel" type="button">Timeline</button>
+            <button id="timeline-tab-list" role="tab" aria-selected="false" aria-controls="timeline-list-panel" type="button">List</button>
+          </div>
+        </div>
+
+        <section id="timeline-visual-panel" role="tabpanel" aria-labelledby="timeline-tab-visual">
+          <div class="timeline-controls" aria-label="Timeline navigation">
+            <button class="timeline-icon-button" id="timeline-zoom-out" type="button" aria-label="Zoom out">−</button>
+            <button class="timeline-icon-button" id="timeline-zoom-in" type="button" aria-label="Zoom in">+</button>
+            <button class="timeline-button" id="timeline-fit" type="button">Fit all</button>
+            <button class="timeline-button" id="timeline-today" type="button">Today</button>
+            <label class="timeline-jump-label">Jump to <input id="timeline-jump-date" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" aria-label="Jump date in DD/MM/YYYY format"><button class="timeline-button" id="timeline-jump" type="button">Go</button></label>
+          </div>
+          <div class="timeline-help">Drag to pan · use the mouse wheel or +/− to zoom · select an item to open details</div>
+          <div class="timeline-canvas-shell">
+            <div id="timeline-loading" class="timeline-state">Loading…</div>
+            <div id="timeline-empty" class="timeline-state" hidden><strong>No entries yet.</strong><span>Add the first point, period or phase to begin.</span><button class="timeline-button is-primary" data-action="add" type="button">Add first entry</button></div>
+            <div id="timeline-canvas" aria-label="Interactive personal life timeline"></div>
+          </div>
+        </section>
+
+        <section id="timeline-list-panel" role="tabpanel" aria-labelledby="timeline-tab-list" hidden>
+          <div class="timeline-table-wrap">
+            <table class="timeline-table">
+              <thead><tr>
+                <th><button data-sort="title" type="button">Title</button></th>
+                <th><button data-sort="type" type="button">Type</button></th>
+                <th><button data-sort="categoryId" type="button">Category</button></th>
+                <th><button data-sort="start" type="button">Start</button></th>
+                <th>End</th><th>Precision</th>
+                <th><button data-sort="importance" type="button">Importance</button></th>
+                <th>People</th><th>Tags</th>
+                <th><button data-sort="updatedAt" type="button">Updated</button></th><th>Actions</th>
+              </tr></thead>
+              <tbody id="timeline-table-body"></tbody>
+            </table>
+          </div>
+          <div class="timeline-pagination">
+            <button class="timeline-button" id="timeline-page-prev" type="button">Previous</button>
+            <span id="timeline-page-label">Page 1</span>
+            <button class="timeline-button" id="timeline-page-next" type="button">Next</button>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="timeline-dialog is-wide" id="timeline-entry-dialog">
+    <form id="timeline-entry-form" method="dialog" novalidate>
+      <header class="timeline-dialog-head"><div><p class="timeline-kicker">Timeline entry</p><h2 id="timeline-entry-heading">Add entry</h2></div><button class="timeline-dialog-close" value="cancel" aria-label="Close">×</button></header>
+      <div class="timeline-dialog-body">
+        <div id="timeline-form-errors" class="timeline-form-errors" role="alert" hidden></div>
+        <input id="timeline-entry-id" name="id" type="hidden">
+        <section class="timeline-form-section"><h3>Basic information</h3><div class="timeline-form-grid">
+          <label class="is-span-2">Title *<input name="title" maxlength="240" required></label>
+          <label>Item type *<select name="type" required><option value="point">point</option><option value="period">period</option><option value="phase">phase</option></select></label>
+          <label>Category *<select name="categoryId" required></select></label>
+          <label>Subcategory<input name="subcategory" list="timeline-subcategories"></label><datalist id="timeline-subcategories"></datalist>
+          <label>Importance<select name="importance"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></label>
+        </div></section>
+        <section class="timeline-form-section"><h3>Dates</h3><div class="timeline-date-columns">
+          <fieldset class="timeline-date-field" data-date-part="start"><legend>Start *</legend><label>Precision<select name="startPrecision"></select></label><label data-date-single>Date<input name="startDate" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label><div class="timeline-date-range" data-date-range hidden><label>Earliest possible<input name="startEarliest" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label><label>Latest possible<input name="startLatest" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label></div></fieldset>
+          <fieldset class="timeline-date-field" data-date-part="end"><legend>End</legend><label>Precision<select name="endPrecision"></select></label><label data-date-single>Date<input name="endDate" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label><div class="timeline-date-range" data-date-range hidden><label>Earliest possible<input name="endEarliest" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label><label>Latest possible<input name="endLatest" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label></div><label class="timeline-check"><input name="ongoing" type="checkbox"> Ongoing</label></fieldset>
+        </div></section>
+        <section class="timeline-form-section"><h3>Connections</h3><div class="timeline-form-grid">
+          <label>Location<input name="location"></label><label>Parent item<select name="parentId"><option value="">None</option></select></label>
+          <label class="is-span-2">Linked people<select name="peopleIds" multiple size="4"></select><span class="timeline-field-help">People imported as separate entities appear here.</span></label>
+          <label class="is-span-2">Tags<input name="tagIds" placeholder="Comma-separated tags"></label>
+        </div></section>
+        <section class="timeline-form-section"><h3>Description and notes</h3><div class="timeline-form-grid"><label class="is-span-2">Description<textarea name="description" rows="4"></textarea></label><label class="is-span-2">Private notes<textarea name="notes" rows="3"></textarea></label></div></section>
+        <details class="timeline-advanced"><summary>Advanced</summary>
+          <section class="timeline-form-section"><h3>Sources</h3><label>Linked sources<select name="sourceIds" multiple size="4"></select><span class="timeline-field-help">Sources remain separate records in exports.</span></label></section>
+          <section class="timeline-form-section"><h3>Metadata</h3><label class="timeline-check"><input name="private" type="checkbox"> Private record</label><p class="timeline-field-help">ID and timestamps are generated automatically. Privacy metadata is preserved for future access-control features.</p></section>
+        </details>
+      </div>
+      <footer class="timeline-dialog-actions"><button class="timeline-button" value="cancel">Cancel</button><button class="timeline-button is-primary" id="timeline-entry-save" type="submit">Save entry</button></footer>
+    </form>
+  </dialog>
+
+  <dialog class="timeline-dialog" id="timeline-detail-dialog">
+    <div id="timeline-detail-content"></div>
+    <footer class="timeline-dialog-actions"><button class="timeline-button" data-detail-action="close" type="button">Close</button><button class="timeline-button" data-detail-action="duplicate" type="button">Duplicate</button><button class="timeline-button" data-detail-action="edit" type="button">Edit</button><button class="timeline-button is-danger" data-detail-action="delete" type="button">Delete</button></footer>
+  </dialog>
+
+  <dialog class="timeline-dialog is-wide" id="timeline-category-dialog">
+    <header class="timeline-dialog-head"><div><p class="timeline-kicker">Configuration</p><h2>Categories</h2></div><button class="timeline-dialog-close" aria-label="Close" data-category-action="close">×</button></header>
+    <div class="timeline-dialog-body timeline-category-layout"><div id="timeline-category-list" class="timeline-category-list"></div><form id="timeline-category-form" class="timeline-category-form">
+      <input name="id" type="hidden"><h3 id="timeline-category-form-title">New category</h3>
+      <label>Name *<input name="name" required></label><label>Color<input name="color" type="color" value="#858585"></label><label>Icon<input name="icon" placeholder="e.g. home"></label><label>Order<input name="order" type="number" value="100"></label><label>Subcategories<input name="subcategories" placeholder="Comma-separated"></label>
+      <label class="timeline-check"><input name="visible" type="checkbox" checked> Visible</label><label class="timeline-check"><input name="archived" type="checkbox"> Archived</label>
+      <div class="timeline-dialog-actions"><button class="timeline-button" id="timeline-category-reset" type="button">New</button><button class="timeline-button is-primary" type="submit">Save</button></div>
+    </form></div>
+  </dialog>
+
+  <dialog class="timeline-dialog" id="timeline-import-dialog">
+    <header class="timeline-dialog-head"><div><p class="timeline-kicker">Backup</p><h2>Import timeline JSON</h2></div><button class="timeline-dialog-close" aria-label="Close" data-import-action="close">×</button></header>
+    <div class="timeline-dialog-body">
+      <section class="timeline-template-box"><div><strong>JSON preparation template</strong><span>Contains every entity, field, enum and supported date format.</span></div><div class="timeline-template-actions"><button class="timeline-button" id="timeline-template-copy" type="button">Copy template</button><button class="timeline-button" id="timeline-template-download" type="button">Download template</button></div><details><summary>Show template</summary><textarea id="timeline-template-preview" rows="14" readonly spellcheck="false"></textarea></details></section>
+      <label>JSON file<input id="timeline-import-file" type="file" accept="application/json,.json"></label><div class="timeline-form-grid"><label>Mode<select id="timeline-import-mode"><option value="merge">Merge</option><option value="replace">Replace all data</option></select></label><label>ID conflicts<select id="timeline-import-conflict"><option value="overwrite">Overwrite existing</option><option value="skip">Keep existing</option></select></label></div><label id="timeline-import-confirm-wrap" class="timeline-check" hidden><input id="timeline-import-confirm" type="checkbox"> I understand that replace removes all existing timeline data.</label><pre id="timeline-import-report" class="timeline-import-report">Choose a JSON backup to validate it.</pre>
+    </div>
+    <footer class="timeline-dialog-actions"><button class="timeline-button" data-import-action="close" type="button">Cancel</button><button class="timeline-button is-primary" id="timeline-import-apply" type="button" disabled>Import</button></footer>
+  </dialog>
+
+  <dialog class="timeline-dialog is-wide" id="timeline-activity-dialog">
+    <header class="timeline-dialog-head"><div><p class="timeline-kicker">Connected data</p><h2>Daily signals</h2></div><button class="timeline-dialog-close" aria-label="Close" data-activity-action="close">×</button></header>
+    <div class="timeline-dialog-body">
+      <p class="timeline-dialog-intro">Small dots show that something was recorded on a day. The underlying data stays in its original dashboard module and is only read through adapters.</p>
+      <div class="timeline-source-table" role="group" aria-label="Activity source settings">
+        <div class="timeline-source-head"><span>Source</span><span>Timeline</span><span>Reports</span></div>
+        <div id="timeline-activity-sources"></div>
+      </div>
+      <section class="timeline-form-section">
+        <h3>Journal privacy</h3>
+        <label>Content included in details and reports<select id="timeline-journal-content"><option value="full">Full entry (default)</option><option value="summary">Short preview only</option><option value="metadata">Title and date only</option></select></label>
+        <p class="timeline-field-help">Journal, poems, habits, completed tasks, self-care and health are marked private in generated JSON. Nothing is sent outside this local dashboard.</p>
+      </section>
+      <section class="timeline-form-section">
+        <h3>Import Loop Habit Tracker</h3>
+        <p class="timeline-field-help">Accepts a Loop SQLite backup (.db), the complete CSV export (.zip), or a root Checkmarks.csv with a Date header. UNKNOWN values are skipped; numerical values keep Loop's ×1000 storage convention.</p>
+        <label>Loop file<input id="timeline-habits-file" type="file" accept=".db,.csv,.zip,application/zip,application/x-sqlite3,text/csv"></label>
+        <div class="timeline-template-actions"><button class="timeline-button" id="timeline-habits-import" type="button">Import habits</button></div>
+        <pre class="timeline-import-report is-compact" id="timeline-habits-report">No file selected.</pre>
+      </section>
+      <section class="timeline-form-section">
+        <h3>Import How We Feel</h3>
+        <p class="timeline-field-help">Imports Check-in_data.csv as private emotion check-ins. Re-importing an overlapping export updates matching check-ins and does not create duplicates.</p>
+        <label>How We Feel CSV<input id="timeline-emotions-file" type="file" accept=".csv,text/csv"></label>
+        <div class="timeline-template-actions"><button class="timeline-button" id="timeline-emotions-import" type="button">Import emotions</button></div>
+        <pre class="timeline-import-report is-compact" id="timeline-emotions-report">No file selected.</pre>
+      </section>
+    </div>
+    <footer class="timeline-dialog-actions"><button class="timeline-button" data-activity-action="close" type="button">Cancel</button><button class="timeline-button is-primary" data-activity-action="save" type="button">Save and refresh</button></footer>
+  </dialog>
+
+  <dialog class="timeline-dialog is-wide" id="timeline-day-dialog">
+    <header class="timeline-dialog-head"><div><p class="timeline-kicker">Day details</p><h2 id="timeline-day-heading">Daily activity</h2></div><button class="timeline-dialog-close" aria-label="Close" data-day-action="close">×</button></header>
+    <div class="timeline-dialog-body" id="timeline-day-content"></div>
+    <footer class="timeline-dialog-actions"><button class="timeline-button" data-day-action="report" type="button">Report this day</button><button class="timeline-button" data-day-action="close" type="button">Close</button></footer>
+  </dialog>
+
+  <dialog class="timeline-dialog is-wide" id="timeline-report-dialog">
+    <header class="timeline-dialog-head"><div><p class="timeline-kicker">Unified export</p><h2>Generate activity report</h2></div><button class="timeline-dialog-close" aria-label="Close" data-report-action="close">×</button></header>
+    <div class="timeline-dialog-body">
+      <div class="timeline-report-presets" aria-label="Report range presets"><button class="timeline-button" data-report-preset="today" type="button">Today</button><button class="timeline-button" data-report-preset="7" type="button">Last 7 days</button><button class="timeline-button" data-report-preset="30" type="button">Last 30 days</button><button class="timeline-button" data-report-preset="month" type="button">This month</button></div>
+      <div class="timeline-form-grid"><label>From<input id="timeline-report-from" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label><label>To<input id="timeline-report-to" type="text" inputmode="numeric" placeholder="DD/MM/YYYY"></label></div>
+      <small class="timeline-field-help">Both boundary dates are included.</small>
+      <div class="timeline-template-actions"><button class="timeline-button is-primary" id="timeline-report-generate" type="button">Generate preview</button><span class="timeline-field-help" id="timeline-report-status">Select a period.</span></div>
+      <label>Preview<textarea id="timeline-report-preview" rows="20" readonly spellcheck="false"></textarea></label>
+    </div>
+    <footer class="timeline-dialog-actions"><button class="timeline-button" data-report-action="download-txt" type="button">TXT</button><button class="timeline-button" data-report-action="download-md" type="button">Markdown</button><button class="timeline-button" data-report-action="download-json" type="button">JSON</button><button class="timeline-button" data-report-action="download-csv" type="button">CSV</button><button class="timeline-button" data-report-action="close" type="button">Close</button></footer>
+  </dialog>
+
+  <div class="timeline-toast" id="timeline-toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="./js/timeline.js?v=poems-context-3"></script>
+</body>
+</html>

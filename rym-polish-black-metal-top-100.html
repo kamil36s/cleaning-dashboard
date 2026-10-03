@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Top 100 RYM Polish BM</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="page-bm365 page-ba2027 page-rym-polish-bm" data-album-project="rym-polish-black-metal-top-100">
+    <div class="wrap">
+        <aside class="panel">
+            <h1>Top 100 RYM Polish BM</h1>
+            <div class="controls" style="margin-bottom:8px">
+                <button id="back-btn" title="Back">Back</button>
+            </div>
+
+            <div class="oscars-source" id="bm365-source" aria-live="polite">Loading local data...</div>
+
+            <div class="kpis">
+                <div class="kpi"><span>Total</span><b id="bm365-total">100</b></div>
+                <div class="kpi"><span>Listened</span><b id="bm365-done">0</b></div>
+                <div class="kpi"><span>Left</span><b id="bm365-left">100</b></div>
+                <div class="kpi"><span>Avg rating</span><b id="bm365-avg">-</b></div>
+            </div>
+            <div class="progress progress-dual">
+                <div id="bm365-progress-bar" class="progress-base green" style="width:0%"></div>
+                <div id="bm365-progress-delta" class="progress-delta" style="width:0%; left:0%"></div>
+            </div>
+            <div class="meta" id="bm365-progress-text">0 / 100 - 0%</div>
+
+            <div class="oscars-extra">
+                <div class="oscars-extra-item">
+                    <div class="oscars-extra-label">Rated</div>
+                    <div class="oscars-extra-value" id="bm365-rated-count">0</div>
+                </div>
+            </div>
+
+            <h2>Views</h2>
+            <div class="controls bm365-side-nav" role="tablist" aria-label="Top 100 RYM Polish BM views">
+                <button id="bm365-view-albums-nav" type="button" class="oscars-toggle is-on" aria-pressed="true" role="tab" aria-selected="true">Albums</button>
+                <button id="bm365-view-artists-nav" type="button" class="oscars-toggle" aria-pressed="false" role="tab" aria-selected="false">Artist rankings</button>
+            </div>
+
+            <div id="bm365-albums-sidebar-tools">
+                <h2>Filters</h2>
+                <div class="controls bm365-filters">
+                    <input id="bm365-search" class="oscars-input" type="text" placeholder="Search artist or album" />
+                    <select id="bm365-year" class="oscars-input" aria-label="Year filter">
+                        <option value="ALL">All years</option>
+                    </select>
+                    <select id="bm365-sort" class="oscars-input" aria-label="Sort">
+                        <option value="source_asc" selected>RYM Top 100 order</option>
+                        <option value="rating_desc">My rating (high to low)</option>
+                        <option value="artist">Artist (A-Z)</option>
+                    </select>
+                </div>
+                <div class="controls bm365-toggles">
+                    <button id="bm365-hide-listened" type="button" class="oscars-toggle is-on" aria-pressed="true">Hide listened</button>
+                    <button id="bm365-only-rated" type="button" class="oscars-toggle" aria-pressed="false">Only rated</button>
+                    <button id="bm365-missing-covers" type="button" class="oscars-toggle" aria-pressed="false">Missing covers</button>
+                    <button id="bm365-clear-filters" type="button" class="oscars-ghost">Clear filters</button>
+                </div>
+
+                <details class="ba2027-bulk-panel">
+                    <summary>
+                        <span>Masowe opisy i ciekawostki</span>
+                        <small id="ba2027-bulk-missing">0 bez opisu</small>
+                    </summary>
+                    <div class="ba2027-bulk-body">
+                        <p>Prompt pilnuje różnych otwarć i odrzuca szablonowe „Warto posłuchać dla…”.</p>
+                        <label class="ba2027-bulk-field">
+                            <span>Wielkość paczki</span>
+                            <select id="ba2027-bulk-size" class="oscars-input">
+                                <option value="10">10 albumów</option>
+                                <option value="20" selected>20 albumów</option>
+                                <option value="30">30 albumów</option>
+                            </select>
+                        </label>
+                        <button id="ba2027-bulk-copy" type="button" class="oscars-btn">Kopiuj prompt + paczkę</button>
+                        <label class="ba2027-bulk-field">
+                            <span>Odpowiedź JSON z AI</span>
+                            <textarea id="ba2027-bulk-json" class="oscars-input" rows="9" spellcheck="false" placeholder='{"1":"[W SKRÓCIE]\n..."}'></textarea>
+                        </label>
+                        <button id="ba2027-bulk-import" type="button" class="oscars-btn" disabled>Importuj do SQLite</button>
+                        <div id="ba2027-bulk-status" class="meta ba2027-bulk-status" aria-live="polite"></div>
+                    </div>
+                </details>
+
+                <div class="meta bm365-upload-note">
+                    Click a cover to replace it. Covers are stored locally in <code>covers/</code>.
+                </div>
+                <div class="controls bm365-upload-controls">
+                    <button id="bm365-clear-uploads" type="button" class="oscars-ghost">Clear browser uploads</button>
+                </div>
+            </div>
+
+            <div class="meta" id="bm365-foot">Loading local SQLite database...</div>
+        </aside>
+
+        <main class="main">
+            <section id="bm365-albums-view" class="bm365-main-view">
+                <div class="oscars-toolbar">
+                    <div class="bm365-list-head">
+                        <div>
+                            <h2 id="bm365-list-title">RYM Top 100 order</h2>
+                            <div class="meta bm365-list-copy" id="bm365-list-copy">The selected, previously unrated albums renumbered from #1 to #100.</div>
+                        </div>
+                        <div class="bm365-view-toggle" role="group" aria-label="Top 100 RYM Polish BM list mode">
+                            <button id="bm365-view-chronological" type="button" class="oscars-toggle is-on" aria-pressed="true">RYM order</button>
+                            <button id="bm365-view-ranking" type="button" class="oscars-toggle" aria-pressed="false">My rating ranking</button>
+                        </div>
+                    </div>
+                    <div class="meta" id="bm365-count">100 items</div>
+                </div>
+                <div id="bm365-grid" class="oscars-grid bm365-grid"></div>
+            </section>
+
+            <section id="bm365-artists-view" class="bm365-main-view bm365-artists-view" hidden>
+                <div class="oscars-toolbar">
+                    <div class="bm365-list-head">
+                        <div>
+                            <h2 id="bm365-artists-title">Artist rankings</h2>
+                            <div class="meta bm365-list-copy" id="bm365-artists-copy">All artists with at least one rated album.</div>
+                        </div>
+                    </div>
+                    <div class="meta" id="bm365-artists-count">0 artists</div>
+                </div>
+
+                <div class="bm365-rankings-grid">
+                    <section class="bm365-ranking-panel" aria-labelledby="bm365-artist-volume-title">
+                        <div class="bm365-ranking-head"><div><h3 id="bm365-artist-volume-title">Most rated albums</h3><div class="meta">Artists with the biggest rated footprint.</div></div></div>
+                        <div id="bm365-artist-volume-list" class="bm365-artist-list"></div>
+                    </section>
+                    <section class="bm365-ranking-panel" aria-labelledby="bm365-artist-average-title">
+                        <div class="bm365-ranking-head"><div><h3 id="bm365-artist-average-title">Best weighted ranking</h3><div class="meta">High ratings with more trust for artists with several rated albums.</div></div></div>
+                        <div id="bm365-artist-average-list" class="bm365-artist-list"></div>
+                    </section>
+                </div>
+            </section>
+            <button id="bm365-to-top" class="oscars-fab" type="button" aria-label="Scroll to top">Top</button>
+        </main>
+    </div>
+
+    <input id="bm365-upload-input" class="bm365-file-input" type="file" accept="image/*" hidden />
+    <script type="module" src="./js/nav.js"></script>
+    <script type="module" src="./js/bm365-page-v2.js"></script>
+</body>
+
+</html>

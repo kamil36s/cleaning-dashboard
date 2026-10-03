@@ -12,6 +12,11 @@ import {
 } from './oscars-data.js';
 import { splitCategories, sortCategories } from './oscars-categories.js';
 import { splitCountries } from './oscars-countries.js';
+import {
+  OSCARS_SPOTLIGHT_YEAR,
+  buildFilmsSpotlight,
+  maybeSyncOscarResults
+} from './films-shared.js';
 
 const $ = (id) => document.getElementById(id);
 
@@ -52,6 +57,8 @@ const YEAR_MIN = 2010;
 const YEAR_MAX = 2030;
 const YEAR_MIN_ISO = `${YEAR_MIN}-01-01`;
 const YEAR_MAX_ISO = `${YEAR_MAX}-12-31`;
+const UNAVAILABLE_PROVIDER = 'Unavailable';
+const UNAVAILABLE_PROVIDER_ALIASES = new Set(['unavailable', 'currently unavailable']);
 
 function getYearFromUrl() {
   try {
@@ -207,8 +214,16 @@ function splitProviders(value) {
   const normalized = String(value).replace(/\s+\/\s+/g, ',');
   return normalized
     .split(/[,;|]/)
-    .map((v) => v.trim())
+    .map((v) => v.replace(/\s+/g, ' ').trim())
+    .map((v) => {
+      if (!v) return '';
+      return UNAVAILABLE_PROVIDER_ALIASES.has(v.toLowerCase()) ? UNAVAILABLE_PROVIDER : v;
+    })
     .filter(Boolean);
+}
+
+function formatProviders(list) {
+  return Array.isArray(list) && list.length ? list.join(', ') : '';
 }
 
 function formatCategoryList(value) {
@@ -232,7 +247,12 @@ function extractProviders(items) {
   items.forEach((item) => {
     splitProviders(item.where_to_watch).forEach((p) => set.add(p));
   });
+  set.add(UNAVAILABLE_PROVIDER);
   return Array.from(set).sort((a, b) => a.localeCompare(b));
+}
+
+function hasUnavailable(whereValue) {
+  return splitProviders(whereValue).some((p) => p === UNAVAILABLE_PROVIDER);
 }
 
 function extractCategories(items) {
@@ -566,6 +586,7 @@ async function refresh() {
   setDataStats(data);
   updateStats();
   render();
+  renderResultsBanner(data);
 }
 
 function isoToDisplay(iso) {
@@ -655,6 +676,45 @@ function setMetaStatus(msg) {
 function setWinnersStatus(msg) {
   const el = $('oscars-winners-status');
   if (el) el.textContent = msg;
+}
+
+function renderResultsBanner(list) {
+  const banner = $('oscars-results-banner');
+  if (!banner) return;
+  if (!Number.isFinite(OSCARS_YEAR) || OSCARS_YEAR !== OSCARS_SPOTLIGHT_YEAR) {
+    banner.setAttribute('hidden', '');
+    return;
+  }
+
+  const spotlight = buildFilmsSpotlight(list);
+  if (spotlight.state !== 'results') {
+    banner.setAttribute('hidden', '');
+    return;
+  }
+
+  const label = $('oscars-results-banner-label');
+  const title = $('oscars-results-banner-title');
+  const copy = $('oscars-results-banner-copy');
+  const listEl = $('oscars-results-banner-list');
+
+  if (label) label.textContent = spotlight.label;
+  if (title) title.textContent = spotlight.title;
+  if (copy) copy.textContent = spotlight.copy;
+  if (listEl) {
+    listEl.innerHTML = '';
+    (spotlight.highlights || []).forEach((entry) => {
+      const row = document.createElement('div');
+      row.className = 'oscars-results-banner-item';
+      const strong = document.createElement('strong');
+      strong.textContent = entry.title || '-';
+      const span = document.createElement('span');
+      span.textContent = entry.detail || '';
+      row.append(strong, span);
+      listEl.appendChild(row);
+    });
+  }
+
+  banner.removeAttribute('hidden');
 }
 
 function computeDataStats(list) {
@@ -849,7 +909,9 @@ function applyFilters(items) {
 
 function renderRow(item) {
   const row = document.createElement('div');
-  row.className = `oscars-row${isWatched(item.watched) ? ' is-watched' : ''}`;
+  const watchedNow = isWatched(item.watched);
+  const unavailable = hasUnavailable(item.where_to_watch);
+  row.className = `oscars-row${watchedNow ? ' is-watched' : ''}${unavailable ? ' is-unavailable' : ''}`;
 
   const itemYear = OSCARS_YEAR === ALL_YEARS_VALUE ? item.oscars_year : OSCARS_YEAR;
 
@@ -879,33 +941,44 @@ function renderRow(item) {
   const watchBtn = document.createElement('button');
   watchBtn.type = 'button';
   watchBtn.className = 'oscars-watch-toggle';
-  const watchedNow = isWatched(item.watched);
-  if (watchedNow) {
-    watchBtn.classList.add('is-reset');
-    watchBtn.setAttribute('aria-label', 'Reset watched');
-    watchBtn.title = 'Reset watched';
-    watchBtn.textContent = '↺';
-  } else {
-    watchBtn.textContent = 'Mark watched';
-  }
+  watchBtn.hidden = watchedNow || unavailable;
+  watchBtn.textContent = 'Mark watched';
   watchBtn.setAttribute('aria-pressed', watchedNow ? 'true' : 'false');
 
   const titleRow = document.createElement('div');
   titleRow.className = 'oscars-title-row';
   const titleWrap = document.createElement('div');
   titleWrap.className = 'oscars-title-wrap';
-  titleWrap.appendChild(title);
-  if (isWatched(item.watched)) {
-    const badge = document.createElement('span');
-    badge.className = 'oscars-watched-badge';
-    const badgeIcon = document.createElement('span');
-    badgeIcon.className = 'oscars-watched-icon';
-    const badgeLabel = document.createElement('span');
-    badgeLabel.textContent = 'Watched';
-    badge.appendChild(badgeIcon);
-    badge.appendChild(badgeLabel);
-    titleWrap.appendChild(badge);
-  }
+  const titleText = document.createElement('div');
+  titleText.className = 'oscars-title-text';
+  titleText.appendChild(title);
+  titleWrap.appendChild(titleText);
+  const statusWrap = document.createElement('div');
+  statusWrap.className = 'oscars-status-badges';
+
+  const watchedBadge = document.createElement('button');
+  watchedBadge.type = 'button';
+  watchedBadge.className = 'oscars-watched-badge oscars-badge-btn';
+  const badgeIcon = document.createElement('span');
+  badgeIcon.className = 'oscars-watched-icon';
+  const badgeLabel = document.createElement('span');
+  badgeLabel.textContent = 'Watched';
+  watchedBadge.appendChild(badgeIcon);
+  watchedBadge.appendChild(badgeLabel);
+  watchedBadge.hidden = !watchedNow || unavailable;
+  watchedBadge.title = 'Unwatch';
+  watchedBadge.setAttribute('aria-label', 'Unwatch');
+  statusWrap.appendChild(watchedBadge);
+  const unavailableBadge = document.createElement('span');
+  unavailableBadge.className = 'oscars-unavailable-badge';
+  const unavailableIcon = document.createElement('span');
+  unavailableIcon.className = 'oscars-unavailable-icon';
+  const unavailableLabel = document.createElement('span');
+  unavailableLabel.textContent = UNAVAILABLE_PROVIDER;
+  unavailableBadge.appendChild(unavailableIcon);
+  unavailableBadge.appendChild(unavailableLabel);
+  unavailableBadge.hidden = !unavailable;
+  statusWrap.appendChild(unavailableBadge);
   if (OSCARS_YEAR === ALL_YEARS_VALUE && Number.isFinite(item.oscars_year)) {
     const yearBadge = document.createElement('span');
     yearBadge.className = 'oscars-year-badge';
@@ -913,7 +986,6 @@ function renderRow(item) {
     titleWrap.appendChild(yearBadge);
   }
   titleRow.appendChild(titleWrap);
-  titleRow.appendChild(watchBtn);
   const meta = document.createElement('div');
   meta.className = 'oscars-meta';
   const metaTags = buildMetaTags(item);
@@ -921,6 +993,11 @@ function renderRow(item) {
     meta.textContent = '-';
   } else {
     metaTags.forEach((tag) => {
+      if (tag.kind === 'nominations') {
+        const breaker = document.createElement('span');
+        breaker.className = 'oscars-tag-break';
+        meta.appendChild(breaker);
+      }
       const span = document.createElement('span');
       span.className = `oscars-tag oscars-tag--${tag.kind}`;
       if (tag.isWinner) {
@@ -939,6 +1016,9 @@ function renderRow(item) {
   }
   text.appendChild(titleRow);
   text.appendChild(meta);
+
+  statusWrap.appendChild(watchBtn);
+  row.appendChild(statusWrap);
 
   const rating = document.createElement('input');
   rating.type = 'number';
@@ -1033,11 +1113,50 @@ function renderRow(item) {
   const edit = document.createElement('div');
   edit.className = 'oscars-row-edit';
 
+  const whereWrap = document.createElement('div');
+  whereWrap.className = 'oscars-where-field';
+
   const where = document.createElement('input');
   where.type = 'text';
   where.className = 'oscars-input';
   where.placeholder = 'Where to watch';
-  where.value = item.where_to_watch || '';
+  where.value = formatProviders(splitProviders(item.where_to_watch));
+  whereWrap.appendChild(where);
+
+  const whereMenu = document.createElement('div');
+  whereMenu.className = 'oscars-where-menu';
+  const availableProviders = extractProviders(data);
+  const providerButtons = new Map();
+  if (!availableProviders.length) {
+    const meta = document.createElement('span');
+    meta.className = 'meta';
+    meta.textContent = 'No providers yet';
+    whereMenu.appendChild(meta);
+  } else {
+    availableProviders.forEach((provider) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'oscars-pill oscars-pill--tiny';
+      btn.textContent = provider;
+      providerButtons.set(provider, btn);
+      whereMenu.appendChild(btn);
+      btn.addEventListener('click', () => {
+        const current = splitProviders(where.value);
+        const lowerProvider = provider.toLowerCase();
+        const idx = current.findIndex((p) => p.toLowerCase() === lowerProvider);
+        if (idx === -1) {
+          current.push(provider);
+        } else {
+          current.splice(idx, 1);
+        }
+        where.value = formatProviders(current);
+        syncWhereMenu();
+        saveWhere();
+        where.focus();
+      });
+    });
+  }
+  whereWrap.appendChild(whereMenu);
 
   const notes = document.createElement('input');
   notes.type = 'text';
@@ -1088,7 +1207,7 @@ function renderRow(item) {
     links.appendChild(a);
   }
 
-  edit.appendChild(where);
+  edit.appendChild(whereWrap);
   edit.appendChild(notes);
   edit.appendChild(wins);
   edit.appendChild(posterInput);
@@ -1096,6 +1215,19 @@ function renderRow(item) {
 
   row.appendChild(main);
   row.appendChild(edit);
+
+  const saveWhere = async () => {
+    const normalized = formatProviders(splitProviders(where.value));
+    where.value = normalized;
+    try {
+      await updateOscars(item.id, { where_to_watch: normalized }, itemYear);
+      await refresh();
+      setFoot(`Saved: ${formatDatePl()}`);
+    } catch (e) {
+      console.error(e);
+      setFoot('Save failed.');
+    }
+  };
 
   const handleChange = () => {
     updateStats();
@@ -1106,6 +1238,11 @@ function renderRow(item) {
     starButtons.forEach((btn) => {
       btn.disabled = value;
     });
+  };
+
+  const setWatchDisabled = (value) => {
+    watchBtn.disabled = value;
+    watchedBadge.disabled = value;
   };
 
   const applyStarPatch = async (value) => {
@@ -1130,17 +1267,8 @@ function renderRow(item) {
     }
   };
 
-  starButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const value = Number(btn.dataset.value);
-      if (!Number.isFinite(value)) return;
-      applyStarPatch(value);
-    });
-  });
-
-  watchBtn.addEventListener('click', async () => {
-    const next = !isWatched(item.watched);
-    watchBtn.disabled = true;
+  const applyWatchPatch = async (next) => {
+    setWatchDisabled(true);
     try {
       const patch = { watched: next };
       if (next) {
@@ -1154,8 +1282,24 @@ function renderRow(item) {
       console.error(e);
       setFoot('Save failed.');
     } finally {
-      watchBtn.disabled = false;
+      setWatchDisabled(false);
     }
+  };
+
+  starButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const value = Number(btn.dataset.value);
+      if (!Number.isFinite(value)) return;
+      applyStarPatch(value);
+    });
+  });
+
+  watchBtn.addEventListener('click', async () => {
+    await applyWatchPatch(true);
+  });
+
+  watchedBadge.addEventListener('click', async () => {
+    await applyWatchPatch(false);
   });
 
   rating.addEventListener('change', async () => {
@@ -1225,15 +1369,46 @@ function renderRow(item) {
   });
 
   where.addEventListener('change', async () => {
-    try {
-      await updateOscars(item.id, { where_to_watch: where.value }, itemYear);
-      await refresh();
-      setFoot(`Saved: ${formatDatePl()}`);
-    } catch (e) {
-      console.error(e);
-      setFoot('Save failed.');
-    }
+    await saveWhere();
   });
+
+  const syncUnavailableDisplay = () => {
+    const isUnavailableNow = hasUnavailable(where.value);
+    row.classList.toggle('is-unavailable', isUnavailableNow);
+    unavailableBadge.hidden = !isUnavailableNow;
+    watchedBadge.hidden = !watchedNow || isUnavailableNow;
+    watchBtn.hidden = watchedNow || isUnavailableNow;
+  };
+
+  const syncWhereMenu = () => {
+    if (!providerButtons.size) {
+      syncUnavailableDisplay();
+      return;
+    }
+    const selected = new Set(splitProviders(where.value).map((p) => p.toLowerCase()));
+    providerButtons.forEach((btn, provider) => {
+      const isOn = selected.has(provider.toLowerCase());
+      btn.classList.toggle('is-on', isOn);
+      btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+    });
+    syncUnavailableDisplay();
+  };
+  syncWhereMenu();
+
+  if (availableProviders.length) {
+    const openMenu = () => whereWrap.classList.add('is-open');
+    const closeMenu = () => {
+      if (!whereWrap.contains(document.activeElement)) {
+        whereWrap.classList.remove('is-open');
+      }
+    };
+    where.addEventListener('focus', openMenu);
+    where.addEventListener('blur', () => setTimeout(closeMenu, 100));
+    where.addEventListener('input', () => {
+      syncWhereMenu();
+      openMenu();
+    });
+  }
 
   notes.addEventListener('change', async () => {
     try {
@@ -1344,8 +1519,25 @@ async function init() {
   syncUiControls();
   setSourceBadge(DATA_MODE);
 
+  let autoSyncResult = null;
+  if (Number.isFinite(OSCARS_YEAR) && OSCARS_YEAR === OSCARS_SPOTLIGHT_YEAR) {
+    autoSyncResult = await maybeSyncOscarResults({
+      mode: DATA_MODE,
+      year: OSCARS_YEAR,
+      syncFn: fetchOscarsWinners
+    });
+  }
+
   try {
     await refresh();
+    if (autoSyncResult?.attempted && autoSyncResult?.ok) {
+      const res = autoSyncResult.response || {};
+      const updatedRows = Number.isFinite(res.updated_rows) ? res.updated_rows : 0;
+      const matchedRows = Number.isFinite(res.matched_rows) ? res.matched_rows : 0;
+      setWinnersStatus(`Auto-sync winners: ${updatedRows} updated. Matched: ${matchedRows}.`);
+    } else if (autoSyncResult?.attempted) {
+      setWinnersStatus('Auto-sync winners failed.');
+    }
     setFoot(getOscarsFootnote());
   } catch (e) {
     console.error(e);

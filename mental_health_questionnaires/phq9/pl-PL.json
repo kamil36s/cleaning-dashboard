@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "phq9",
+  "instrumentVersion": "PHQ-9 Polish for Poland (official PHQ Screeners form)",
+  "scoringVersion": "phq9-sum-0-27-v1",
+  "language": "pl-PL",
+  "questionTextStatus": "official_translation",
+  "title": "KWESTIONARIUSZ ZDROWIA PACJENTA-9 (PHQ-9)",
+  "shortDescription": "Kwestionariusz przesiewowy nasilenia objawów depresyjnych.",
+  "recallPeriod": "ostatnie 2 tygodnie",
+  "estimatedMinutes": 3,
+  "instructions": "Jak często w ciągu ostatnich 2 tygodni dokuczały Panu/Pani następujące problemy? (Proszę zaznaczyć odpowiedź znakiem “✔”)",
+  "questionCount": 10,
+  "scoredItemCount": 9,
+  "responseOptions": [
+    { "value": 0, "label": "Wcale nie dokuczały" },
+    { "value": 1, "label": "Kilka dni" },
+    { "value": 2, "label": "Więcej niż połowę dni" },
+    { "value": 3, "label": "Niemal codziennie" }
+  ],
+  "questions": [
+    { "id": "1", "text": "Niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności", "required": true },
+    { "id": "2", "text": "Uczucie smutku, przygnębienia lub beznadziejności", "required": true },
+    { "id": "3", "text": "Kłopoty z zaśnięciem lub przerywany sen, albo zbyt długi sen", "required": true },
+    { "id": "4", "text": "Uczucie zmęczenia lub brak energii", "required": true },
+    { "id": "5", "text": "Brak apetytu lub przejadanie się", "required": true },
+    { "id": "6", "text": "Poczucie niezadowolenia z siebie — lub uczucie, że jest się do niczego, albo że zawiódł/zawiodła Pan/Pani siebie lub rodzinę", "required": true },
+    { "id": "7", "text": "Problemy ze skupieniem się na przykład przy czytaniu gazety lub oglądaniu telewizji", "required": true },
+    { "id": "8", "text": "Poruszanie się lub mówienie tak wolno, że inni mogliby to zauważyć? Albo wręcz przeciwnie — niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle", "required": true },
+    { "id": "9", "text": "Myśli, że lepiej byłoby umrzeć, albo chęć zrobienia sobie jakiejś krzywdy", "required": true },
+    {
+      "id": "difficulty",
+      "text": "Jeżeli zaznaczył/-a Pan/Pani którekolwiek z problemów, jak bardzo utrudniły one Panu/Pani wykonywanie pracy, zajmowanie się domem lub relacje z innymi ludźmi?",
+      "required": true,
+      "visibleWhenAny": { "itemIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9"], "minValue": 1 },
+      "responseOptions": [
+        { "value": 0, "label": "W ogóle nie utrudniły" },
+        { "value": 1, "label": "Trochę utrudniły" },
+        { "value": 2, "label": "Bardzo utrudniły" },
+        { "value": 3, "label": "Niezmiernie utrudniły" }
+      ]
+    }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    "allowedValues": [0, 1, 2, 3],
+    "reverseItemIds": [],
+    "subscales": {}
+  },
+  "interpretationBands": [
+    { "min": 0, "max": 4, "label": "minimal" },
+    { "min": 5, "max": 9, "label": "mild" },
+    { "min": 10, "max": 14, "label": "moderate" },
+    { "min": 15, "max": 19, "label": "moderately severe" },
+    { "min": 20, "max": 27, "label": "severe" }
+  ],
+  "source": {
+    "title": "PHQ-9 — Polish for Poland, PHQ Screeners",
+    "url": "https://www.phqscreeners.com/images/sites/g/files/g10060481/f/201412/PHQ9_Polish%20for%20Poland.pdf",
+    "landingPage": "https://www.phqscreeners.com/select-screener",
+    "scoringUrl": "https://www.phqscreeners.com/images/sites/g/files/g10016261/f/201412/instructions.pdf",
+    "scoringDocumentSha256": "6ed2f00f97e438c1168cd702d38d31fc923031445c720653005f138aa424228a",
+    "documentSha256": "96e084b545288c57130d5e84d44c418d76125d30e843ae756d43e5fe8e2b8947"
+  },
+  "license": {
+    "status": "unrestricted reproduction",
+    "notice": "Zgoda na powielanie, tłumaczenie, przedstawianie lub rozprowadzanie niniejszego dokumentu nie jest wymagana."
+  },
+  "attribution": "Opracowanie: Dr Robert L. Spitzer, Dr Janet B.W. Williams, Dr Kurt Kroenke oraz współpracownicy z wykorzystaniem grantu oświatowego od firmy Pfizer Inc."
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Job Hunt</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./jobhunt.css" />
+</head>
+
+<body class="page-jobhunt" data-jobhunt-theme="light">
+  <div class="jobhunt-app-shell">
+    <aside class="jobhunt-app-sidebar">
+      <a class="jobhunt-brand" href="./index.html" aria-label="Back to dashboard">
+        <span class="jobhunt-brand-mark" aria-hidden="true">JH</span>
+        <span><strong>Job Hunt</strong><em>Career workspace</em></span>
+      </a>
+
+      <nav class="jobhunt-nav" aria-label="Job Hunt workspaces">
+        <a href="#home" data-jobhunt-route="home"><span aria-hidden="true">⌂</span><span>Home</span></a>
+        <a href="#jobs" data-jobhunt-route="jobs"><span aria-hidden="true">▤</span><span>Jobs</span></a>
+        <a href="#tracks" data-jobhunt-route="tracks"><span aria-hidden="true">◎</span><span>Tracks</span></a>
+        <a href="#applications" data-jobhunt-route="applications"><span aria-hidden="true">↗</span><span>Applications</span></a>
+        <a href="#profile" data-jobhunt-route="profile"><span aria-hidden="true">○</span><span>Profile</span></a>
+        <a href="#skills" data-jobhunt-route="skills"><span aria-hidden="true">◇</span><span>Skills</span></a>
+        <a href="#insights/market" data-jobhunt-route="insights"><span aria-hidden="true">▦</span><span>Insights</span></a>
+        <a href="#sources" data-jobhunt-route="sources"><span aria-hidden="true">⌁</span><span>Sources</span></a>
+        <a href="#review" data-jobhunt-route="review"><span aria-hidden="true">!</span><span>Review</span><span id="jobhunt-review-count" class="jobhunt-nav-count" hidden></span></a>
+        <a href="#advanced" data-jobhunt-route="advanced"><span aria-hidden="true">⚙</span><span>Advanced</span></a>
+      </nav>
+
+      <div class="jobhunt-sidebar-foot">
+        <button class="jobhunt-theme-toggle" id="jobhunt-theme-toggle" type="button">Dark mode</button>
+        <a class="jobhunt-quiet-link" href="./index.html">Dashboard</a>
+      </div>
+    </aside>
+
+    <main class="jobhunt-app-main" id="jobhunt-overview">
+      <header class="jobhunt-topbar">
+        <div>
+          <span class="jobhunt-eyebrow" id="jobhunt-workspace-eyebrow">Job Hunt</span>
+          <h1 id="jobhunt-workspace-title">Home</h1>
+          <p id="jobhunt-workspace-description">What deserves your attention right now.</p>
+        </div>
+        <div class="jobhunt-top-actions">
+          <button class="jobhunt-primary-action" id="jobhunt-add-manually" type="button">+ Add job</button>
+          <button class="jobhunt-secondary-action" id="jobhunt-open-import" type="button">Import advertisement</button>
+        </div>
+      </header>
+
+      <div class="jobhunt-status" id="jobhunt-status" aria-live="polite"></div>
+      <section id="jobhunt-workspace-root" class="jobhunt-workspace" aria-live="polite" aria-busy="true">
+        <div class="jobhunt-workspace-loading" role="status">
+          <span class="jobhunt-skeleton jobhunt-skeleton-title"></span>
+          <span class="jobhunt-skeleton"></span>
+          <span class="jobhunt-skeleton"></span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="jobhunt-dialog" id="jobhunt-manual-dialog" aria-labelledby="jobhunt-manual-title">
+    <form id="jobhunt-manual-form" class="jobhunt-form" method="dialog" novalidate>
+      <div class="jobhunt-dialog-head jobhunt-field-wide">
+        <div><span class="jobhunt-section-label">Opportunity</span><h2 id="jobhunt-manual-title">Add job manually</h2></div>
+        <button class="jobhunt-icon-button" id="jobhunt-manual-close" type="button" aria-label="Close">×</button>
+      </div>
+      <p class="jobhunt-dialog-intro jobhunt-field-wide">Add the job facts you know. Missing details stay unknown.</p>
+      <label><span>Company</span><input name="company" required autocomplete="organization"></label>
+      <label><span>Role</span><input name="role" required autocomplete="organization-title"></label>
+      <label><span>Location</span><input name="city" autocomplete="address-level2"></label>
+      <label><span>Work model</span><select name="workMode"></select></label>
+      <label><span>Contract</span><select name="contractType"></select></label>
+      <label><span>Deadline</span><input name="expiresAt" type="date"></label>
+      <label class="jobhunt-field-wide"><span>Original job link</span><input name="sourceUrl" type="url" placeholder="https://..."></label>
+      <label class="jobhunt-field-wide"><span>Notes</span><textarea name="notes" rows="4"></textarea></label>
+      <input name="salaryMin" type="hidden"><input name="salaryMax" type="hidden">
+      <input name="status" type="hidden" value="to_review"><input name="priority" type="hidden" value="unknown">
+      <input name="matchScore" type="hidden" value="0">
+      <div class="jobhunt-form-error jobhunt-field-wide" id="jobhunt-manual-error" aria-live="polite"></div>
+      <div class="jobhunt-form-actions jobhunt-field-wide">
+        <button class="jobhunt-primary-action" id="jobhunt-manual-submit" type="submit">Save job</button>
+        <button class="jobhunt-secondary-action" id="jobhunt-manual-cancel" type="button">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="jobhunt-dialog jobhunt-dialog-wide" id="jobhunt-import-dialog" aria-labelledby="jobhunt-import-title">
+    <div class="jobhunt-dialog-head">
+      <div><span class="jobhunt-section-label">Source evidence</span><h2 id="jobhunt-import-title">Import advertisement</h2></div>
+      <button class="jobhunt-icon-button" id="jobhunt-import-close" type="button" aria-label="Close">×</button>
+    </div>
+    <p class="jobhunt-dialog-intro">Raw advertisement import and evidence tools live in Advanced. Your source text is preserved before extraction.</p>
+    <div class="jobhunt-form-actions">
+      <a class="jobhunt-primary-action" href="#advanced/ingestion" data-dialog-route>Open advertisement import</a>
+      <button class="jobhunt-secondary-action" type="button" data-dialog-close>Cancel</button>
+    </div>
+  </dialog>
+
+  <input id="jobhunt-logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden>
+
+  <template id="jobhunt-legacy-template">
+    <section id="jobhunt-import-panel"></section>
+    <section id="jobhunt-manual-panel"></section>
+    <section id="jobhunt-settings-panel"></section>
+    <section id="jobhunt-pipeline-panel"></section>
+    <section id="jobhunt-gaps-panel"></section>
+    <section id="jobhunt-followups-panel"></section>
+  </template>
+
+  <script type="module" src="./js/jobhunt.js"></script>
+</body>
+
+</html>

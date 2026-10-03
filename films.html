@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Biblioteka filmów</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="films-page films-library-page">
+    <div class="wrap films-shell" id="films-page">
+        <aside class="panel films-sidebar">
+            <div class="films-sidebar-intro">
+                <div class="films-sidebar-eyebrow">Shared movie library</div>
+                <h1>Biblioteka filmów</h1>
+                <p class="films-sidebar-copy">
+                    Jedna baza filmów dla Oscarów, Cannes i Twoich własnych list. Dodajesz tytuł raz,
+                    potem przypinasz go do dowolnych zestawow.
+                </p>
+            </div>
+
+            <div class="controls films-sidebar-controls">
+                <button id="back-btn" title="Back">Wróć</button>
+                <button class="card-cta" id="films-refresh-btn" type="button">Odśwież</button>
+            </div>
+
+            <div class="oscars-source films-source-badge" id="films-source" aria-live="polite"></div>
+
+            <div class="kpis films-library-kpis">
+                <div class="kpi"><span>Filmy</span><b id="films-kpi-total">0</b></div>
+                <div class="kpi"><span>Obejrzane</span><b id="films-kpi-watched">0</b></div>
+                <div class="kpi"><span>Ocenione</span><b id="films-kpi-rated">0</b></div>
+                <div class="kpi"><span>Listy</span><b id="films-kpi-lists">0</b></div>
+            </div>
+
+            <section class="films-sidebar-block">
+                <div class="films-sidebar-block-head">
+                    <div class="films-sidebar-block-title">Nowa lista</div>
+                    <div class="meta">Biblioteka pozostaje wspólna</div>
+                </div>
+                <form id="films-list-form" class="films-list-form">
+                    <input id="films-list-name" class="oscars-input" type="text" placeholder="Np. Cannes 2026" maxlength="80" required />
+                    <select id="films-list-category" class="oscars-input">
+                        <option value="festival">Festiwalowa</option>
+                        <option value="personal">Osobista</option>
+                        <option value="awards">Nagrody</option>
+                        <option value="custom">Inna</option>
+                    </select>
+                    <input id="films-list-description" class="oscars-input" type="text" placeholder="Krótki opis listy" maxlength="140" />
+                    <button class="card-cta films-sidebar-submit" type="submit">Utwórz</button>
+                </form>
+                <div class="meta" id="films-list-status"></div>
+            </section>
+
+            <section class="films-sidebar-block">
+                <div class="films-sidebar-block-head">
+                    <div class="films-sidebar-block-title">Widoki</div>
+                    <button id="films-show-all" type="button" class="oscars-ghost">Wszystkie filmy</button>
+                </div>
+                <div class="films-sidebar-links" id="films-sidebar-lists"></div>
+            </section>
+        </aside>
+
+        <main class="main films-main">
+            <section class="films-overview-banner">
+                <div class="films-overview-copy">
+                    <div class="films-overview-label">One library, many lists</div>
+                    <h2 id="films-banner-title">Biblioteka filmów</h2>
+                    <p id="films-banner-copy">
+                        Oscars są teraz tylko jedną z list. Tutaj budujesz wspólny katalog filmów i
+                        przypisujesz go do kolejnych zestawow.
+                    </p>
+                </div>
+                <div class="films-overview-meta" id="films-main-meta">Ładowanie biblioteki...</div>
+            </section>
+
+            <section class="films-search-panel">
+                <div class="films-search-head">
+                    <div>
+                        <h2>Dodaj film</h2>
+                        <div class="meta" id="films-search-target">Dodawanie do biblioteki</div>
+                    </div>
+                </div>
+
+                <form id="films-search-form" class="films-search-form">
+                    <input id="films-search-input" class="oscars-input films-search-input" type="search" placeholder="Szukaj filmu przez darmowe API Wikipedii..." />
+                    <button class="card-cta" type="submit">Szukaj</button>
+                </form>
+                <div class="meta" id="films-search-status"></div>
+                <div class="films-search-results" id="films-search-results"></div>
+
+                <details class="films-manual-add">
+                    <summary>Dodaj ręcznie</summary>
+                    <form id="films-manual-form" class="films-manual-form">
+                        <input id="films-manual-title" class="oscars-input" type="text" placeholder="Tytuł" maxlength="120" required />
+                        <input id="films-manual-year" class="oscars-input" type="number" min="1900" max="2100" placeholder="Rok" />
+                        <input id="films-manual-director" class="oscars-input" type="text" placeholder="Reżyser" maxlength="80" />
+                        <button class="card-cta" type="submit">Dodaj film</button>
+                    </form>
+                    <div class="meta" id="films-manual-status"></div>
+                </details>
+            </section>
+
+            <section class="films-library-panel">
+                <div class="films-library-toolbar">
+                    <div>
+                        <h2 id="films-library-title">Katalog filmów</h2>
+                        <div class="meta" id="films-library-subtitle">Wszystkie wpisy z jednej biblioteki</div>
+                    </div>
+                    <input id="films-library-query" class="oscars-input films-library-query" type="search" placeholder="Filtruj bibliotekę..." />
+                </div>
+                <div class="films-library-grid" id="films-library-grid"></div>
+                <div class="films-library-pagination">
+                    <button class="oscars-ghost" id="films-library-more" type="button" hidden>Pokaż kolejne</button>
+                </div>
+            </section>
+
+            <div class="meta films-foot" id="films-foot">Ładowanie danych...</div>
+        </main>
+    </div>
+
+    <script defer src="./js/nav.js"></script>
+    <script type="module" src="./js/films.js"></script>
+</body>
+
+</html>

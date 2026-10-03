@@ -1,0 +1,404 @@
+{
+  "exportKind": "phoneTelemetryExport",
+  "schemaVersion": "1.0.0",
+  "exportedAt": "2026-03-15T00:05:00+01:00",
+  "timezone": "Europe/Warsaw",
+  "device": {
+    "deviceId": "pixel7-demo",
+    "deviceLabel": "Pixel 7",
+    "manufacturer": "Google",
+    "model": "Pixel 7",
+    "sdkInt": 34,
+    "osVersion": "14",
+    "appVersionName": "0.1.0",
+    "appVersionCode": 1
+  },
+  "privacy": {
+    "storeNotificationText": true,
+    "notificationTextMode": "raw"
+  },
+  "dayRange": {
+    "startDay": "2026-03-14",
+    "endDay": "2026-03-14"
+  },
+  "appUsageSessions": [
+    {
+      "id": "app-20260314-001",
+      "day": "2026-03-14",
+      "appPackage": "com.whatsapp",
+      "appLabel": "WhatsApp",
+      "sessionStart": "2026-03-14T06:52:00+01:00",
+      "sessionEnd": "2026-03-14T06:58:00+01:00",
+      "durationSeconds": 360,
+      "category": "messaging",
+      "unlockSessionId": "unlock-20260314-001"
+    },
+    {
+      "id": "app-20260314-002",
+      "day": "2026-03-14",
+      "appPackage": "com.android.chrome",
+      "appLabel": "Chrome",
+      "sessionStart": "2026-03-14T06:58:00+01:00",
+      "sessionEnd": "2026-03-14T07:04:00+01:00",
+      "durationSeconds": 360,
+      "category": "browsing",
+      "unlockSessionId": "unlock-20260314-001"
+    },
+    {
+      "id": "app-20260314-003",
+      "day": "2026-03-14",
+      "appPackage": "com.instagram.android",
+      "appLabel": "Instagram",
+      "sessionStart": "2026-03-14T08:13:00+01:00",
+      "sessionEnd": "2026-03-14T08:18:00+01:00",
+      "durationSeconds": 300,
+      "category": "social",
+      "unlockSessionId": "unlock-20260314-002"
+    },
+    {
+      "id": "app-20260314-004",
+      "day": "2026-03-14",
+      "appPackage": "com.whatsapp",
+      "appLabel": "WhatsApp",
+      "sessionStart": "2026-03-14T08:18:00+01:00",
+      "sessionEnd": "2026-03-14T08:20:00+01:00",
+      "durationSeconds": 120,
+      "category": "messaging",
+      "unlockSessionId": "unlock-20260314-002"
+    },
+    {
+      "id": "app-20260314-005",
+      "day": "2026-03-14",
+      "appPackage": "com.google.android.apps.messaging",
+      "appLabel": "Messages",
+      "sessionStart": "2026-03-14T12:05:00+01:00",
+      "sessionEnd": "2026-03-14T12:10:00+01:00",
+      "durationSeconds": 300,
+      "category": "messaging",
+      "unlockSessionId": "unlock-20260314-003"
+    },
+    {
+      "id": "app-20260314-006",
+      "day": "2026-03-14",
+      "appPackage": "com.slack",
+      "appLabel": "Slack",
+      "sessionStart": "2026-03-14T12:10:00+01:00",
+      "sessionEnd": "2026-03-14T12:21:00+01:00",
+      "durationSeconds": 660,
+      "category": "productivity",
+      "unlockSessionId": "unlock-20260314-003"
+    },
+    {
+      "id": "app-20260314-007",
+      "day": "2026-03-14",
+      "appPackage": "com.google.android.gm",
+      "appLabel": "Gmail",
+      "sessionStart": "2026-03-14T12:21:00+01:00",
+      "sessionEnd": "2026-03-14T12:28:00+01:00",
+      "durationSeconds": 420,
+      "category": "productivity",
+      "unlockSessionId": "unlock-20260314-003"
+    },
+    {
+      "id": "app-20260314-008",
+      "day": "2026-03-14",
+      "appPackage": "com.google.android.youtube",
+      "appLabel": "YouTube",
+      "sessionStart": "2026-03-14T18:41:00+01:00",
+      "sessionEnd": "2026-03-14T18:56:00+01:00",
+      "durationSeconds": 900,
+      "category": "video",
+      "unlockSessionId": "unlock-20260314-004"
+    },
+    {
+      "id": "app-20260314-009",
+      "day": "2026-03-14",
+      "appPackage": "com.discord",
+      "appLabel": "Discord",
+      "sessionStart": "2026-03-14T18:56:00+01:00",
+      "sessionEnd": "2026-03-14T19:08:00+01:00",
+      "durationSeconds": 720,
+      "category": "social",
+      "unlockSessionId": "unlock-20260314-004"
+    },
+    {
+      "id": "app-20260314-010",
+      "day": "2026-03-14",
+      "appPackage": "com.spotify.music",
+      "appLabel": "Spotify",
+      "sessionStart": "2026-03-14T22:48:00+01:00",
+      "sessionEnd": "2026-03-14T23:02:00+01:00",
+      "durationSeconds": 840,
+      "category": "media",
+      "unlockSessionId": "unlock-20260314-005"
+    },
+    {
+      "id": "app-20260314-011",
+      "day": "2026-03-14",
+      "appPackage": "com.whatsapp",
+      "appLabel": "WhatsApp",
+      "sessionStart": "2026-03-14T23:02:00+01:00",
+      "sessionEnd": "2026-03-14T23:14:00+01:00",
+      "durationSeconds": 720,
+      "category": "messaging",
+      "unlockSessionId": "unlock-20260314-005"
+    },
+    {
+      "id": "app-20260314-012",
+      "day": "2026-03-14",
+      "appPackage": "com.instagram.android",
+      "appLabel": "Instagram",
+      "sessionStart": "2026-03-14T23:14:00+01:00",
+      "sessionEnd": "2026-03-14T23:24:00+01:00",
+      "durationSeconds": 600,
+      "category": "social",
+      "unlockSessionId": "unlock-20260314-005"
+    }
+  ],
+  "phoneSessions": [
+    {
+      "id": "unlock-20260314-001",
+      "day": "2026-03-14",
+      "screenUnlockTime": "2026-03-14T06:52:00+01:00",
+      "screenLockTime": "2026-03-14T07:06:00+01:00",
+      "durationSeconds": 840
+    },
+    {
+      "id": "unlock-20260314-002",
+      "day": "2026-03-14",
+      "screenUnlockTime": "2026-03-14T08:13:00+01:00",
+      "screenLockTime": "2026-03-14T08:21:00+01:00",
+      "durationSeconds": 480
+    },
+    {
+      "id": "unlock-20260314-003",
+      "day": "2026-03-14",
+      "screenUnlockTime": "2026-03-14T12:05:00+01:00",
+      "screenLockTime": "2026-03-14T12:32:00+01:00",
+      "durationSeconds": 1620
+    },
+    {
+      "id": "unlock-20260314-004",
+      "day": "2026-03-14",
+      "screenUnlockTime": "2026-03-14T18:41:00+01:00",
+      "screenLockTime": "2026-03-14T19:14:00+01:00",
+      "durationSeconds": 1980
+    },
+    {
+      "id": "unlock-20260314-005",
+      "day": "2026-03-14",
+      "screenUnlockTime": "2026-03-14T22:48:00+01:00",
+      "screenLockTime": "2026-03-14T23:26:00+01:00",
+      "durationSeconds": 2280
+    }
+  ],
+  "notificationEvents": [
+    {
+      "id": "notif-20260314-001",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T07:18:12+01:00",
+      "sourceAppPackage": "com.whatsapp",
+      "sourceAppLabel": "WhatsApp",
+      "senderOrThreadTitle": "Alex",
+      "conversationId": "wa:alex",
+      "previewAvailable": true,
+      "messageCount": 1,
+      "isGroup": false,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Alex",
+      "rawText": "Leaving in 10 minutes"
+    },
+    {
+      "id": "notif-20260314-002",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T08:08:00+01:00",
+      "sourceAppPackage": "com.instagram.android",
+      "sourceAppLabel": "Instagram",
+      "senderOrThreadTitle": "Marta",
+      "conversationId": "ig:marta",
+      "previewAvailable": false,
+      "messageCount": 1,
+      "isGroup": false,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Marta",
+      "rawText": null
+    },
+    {
+      "id": "notif-20260314-003",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T12:01:00+01:00",
+      "sourceAppPackage": "com.google.android.apps.messaging",
+      "sourceAppLabel": "Messages",
+      "senderOrThreadTitle": "Marta",
+      "conversationId": "sms:marta",
+      "previewAvailable": true,
+      "messageCount": 1,
+      "isGroup": false,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Marta",
+      "rawText": "Do we still meet at 6?"
+    },
+    {
+      "id": "notif-20260314-004",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T12:02:30+01:00",
+      "sourceAppPackage": "com.slack",
+      "sourceAppLabel": "Slack",
+      "senderOrThreadTitle": "Ops room",
+      "conversationId": "slack:ops-room",
+      "previewAvailable": true,
+      "messageCount": 2,
+      "isGroup": true,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Ops room",
+      "rawText": "2 new messages"
+    },
+    {
+      "id": "notif-20260314-005",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T12:06:00+01:00",
+      "sourceAppPackage": "com.slack",
+      "sourceAppLabel": "Slack",
+      "senderOrThreadTitle": "Ops room",
+      "conversationId": "slack:ops-room",
+      "previewAvailable": true,
+      "messageCount": 1,
+      "isGroup": true,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Ops room",
+      "rawText": "Follow-up"
+    },
+    {
+      "id": "notif-20260314-006",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T12:08:10+01:00",
+      "sourceAppPackage": "com.slack",
+      "sourceAppLabel": "Slack",
+      "senderOrThreadTitle": "Ops room",
+      "conversationId": "slack:ops-room",
+      "previewAvailable": true,
+      "messageCount": 1,
+      "isGroup": true,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Ops room",
+      "rawText": "Need quick review"
+    },
+    {
+      "id": "notif-20260314-007",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T12:10:20+01:00",
+      "sourceAppPackage": "com.slack",
+      "sourceAppLabel": "Slack",
+      "senderOrThreadTitle": "Ops room",
+      "conversationId": "slack:ops-room",
+      "previewAvailable": true,
+      "messageCount": 1,
+      "isGroup": true,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Ops room",
+      "rawText": "Ping"
+    },
+    {
+      "id": "notif-20260314-008",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T18:36:00+01:00",
+      "sourceAppPackage": "com.google.android.gm",
+      "sourceAppLabel": "Gmail",
+      "senderOrThreadTitle": "Calendar",
+      "conversationId": "gmail:calendar",
+      "previewAvailable": true,
+      "messageCount": 1,
+      "isGroup": false,
+      "eventSource": "notification",
+      "messageLike": false,
+      "rawTitle": "Calendar",
+      "rawText": "Event starts in 15 minutes"
+    },
+    {
+      "id": "notif-20260314-009",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T22:42:00+01:00",
+      "sourceAppPackage": "com.discord",
+      "sourceAppLabel": "Discord",
+      "senderOrThreadTitle": "Friends group",
+      "conversationId": "discord:friends",
+      "previewAvailable": true,
+      "messageCount": 5,
+      "isGroup": true,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Friends group",
+      "rawText": "5 new messages"
+    },
+    {
+      "id": "notif-20260314-010",
+      "day": "2026-03-14",
+      "timestamp": "2026-03-14T23:05:00+01:00",
+      "sourceAppPackage": "com.whatsapp",
+      "sourceAppLabel": "WhatsApp",
+      "senderOrThreadTitle": "Family",
+      "conversationId": "wa:family",
+      "previewAvailable": true,
+      "messageCount": 3,
+      "isGroup": true,
+      "eventSource": "notification",
+      "messageLike": true,
+      "rawTitle": "Family",
+      "rawText": "3 new messages"
+    }
+  ],
+  "dailyAggregates": [
+    {
+      "day": "2026-03-14",
+      "totalPhoneMinutes": 120,
+      "unlockCount": 5,
+      "notificationCount": 10,
+      "messageLikeNotificationCount": 9,
+      "appSwitchCount": 7,
+      "nightUsageMinutes": 38,
+      "topApps": [
+        {
+          "appPackage": "com.whatsapp",
+          "appLabel": "WhatsApp",
+          "durationSeconds": 1200,
+          "sessionCount": 3
+        },
+        {
+          "appPackage": "com.google.android.youtube",
+          "appLabel": "YouTube",
+          "durationSeconds": 900,
+          "sessionCount": 1
+        },
+        {
+          "appPackage": "com.spotify.music",
+          "appLabel": "Spotify",
+          "durationSeconds": 840,
+          "sessionCount": 1
+        }
+      ],
+      "topContactsOrThreads": [
+        {
+          "label": "Ops room",
+          "conversationId": "slack:ops-room",
+          "messageLikeCount": 5,
+          "sourceAppPackage": "com.slack",
+          "sourceAppLabel": "Slack"
+        },
+        {
+          "label": "Family",
+          "conversationId": "wa:family",
+          "messageLikeCount": 3,
+          "sourceAppPackage": "com.whatsapp",
+          "sourceAppLabel": "WhatsApp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spotify Screensaver</title>
+  <link rel="stylesheet" href="./spotify-screensaver.css" />
+</head>
+
+<body class="is-idle">
+  <div class="screensaver-bg" aria-hidden="true">
+    <img id="background-cover" class="background-cover" alt="" />
+    <div id="background-gradient" class="background-gradient"></div>
+    <div class="background-vignette"></div>
+  </div>
+  <a id="back-link" class="screen-control screen-control--back" href="./index.html" hidden>Back to dashboard</a>
+  <main class="screensaver" aria-live="polite">
+    <section id="screensaver-message" class="screensaver-message" hidden>
+      <h1 id="screensaver-message-title"></h1>
+      <p id="screensaver-message-copy"></p>
+      <div class="screensaver-message-actions">
+        <a id="spotify-auth-link" class="screensaver-action" href="/api/spotify/auth/start">Connect Spotify</a>
+        <button id="fullscreen-button" class="screensaver-action screensaver-action--ghost" type="button">Fullscreen</button>
+      </div>
+    </section>
+    <section class="now-playing" aria-label="Currently playing">
+      <img id="album-cover" class="album-cover" alt="" />
+      <div class="track-meta">
+        <h1 id="track-title"></h1>
+        <p id="track-artist"></p>
+        <p id="track-album"></p>
+      </div>
+    </section>
+  </main>
+  <div class="player-controls" aria-label="Spotify playback controls">
+    <button class="player-control" id="previous-button" type="button" aria-label="Previous track" title="Previous track">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 5v14" />
+        <path d="m19 6-9 6 9 6V6Z" />
+      </svg>
+    </button>
+    <button class="player-control player-control--primary" id="play-pause-button" type="button" aria-label="Play or pause" title="Play/Pause">
+      <svg id="play-pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 6v12" />
+        <path d="M15 6v12" />
+      </svg>
+    </button>
+    <button class="player-control" id="next-button" type="button" aria-label="Next track" title="Next track">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m5 6 9 6-9 6V6Z" />
+        <path d="M18 5v14" />
+      </svg>
+    </button>
+  </div>
+  <article class="next-track" id="next-track" hidden>
+    <img id="next-track-cover" alt="" />
+    <span>
+      <small>Next</small>
+      <strong id="next-track-title"></strong>
+      <em id="next-track-artist"></em>
+    </span>
+  </article>
+  <aside class="artist-facts" id="artist-facts" hidden>
+    <img id="artist-facts-image" alt="" />
+    <div class="artist-facts-copy">
+      <small id="artist-facts-kicker">Artist notes</small>
+      <strong id="artist-facts-title"></strong>
+      <p id="artist-facts-text"></p>
+      <em id="artist-facts-credit"></em>
+    </div>
+  </aside>
+  <div class="progress" aria-hidden="true">
+    <div class="progress-time">
+      <span id="progress-time-label">0:00 / 0:00</span>
+    </div>
+    <div id="progress-fill" class="progress-fill"></div>
+  </div>
+  <button id="fullscreen-float" class="screen-control screen-control--fullscreen" type="button" hidden>Fullscreen</button>
+  <script type="module" src="./js/spotify-screensaver.js"></script>
+</body>
+
+</html>

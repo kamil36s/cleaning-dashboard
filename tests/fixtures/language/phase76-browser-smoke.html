@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 7.6 browser smoke: pending</title>
+  <link rel="stylesheet" href="/language.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="language-app">
+    <section id="progress"></section>
+    <aside class="widget language-learning-widget"><div id="widget"></div></aside>
+    <output id="result">PENDING</output>
+  </main>
+  <script type="module">
+    import { renderProgress } from '/js/language/views/progress.js';
+    import { renderLanguageWidget } from '/js/widget-language-learning.js';
+
+    const awardKey = 'phase76-browser-xp-v1';
+    const ledger = JSON.parse(localStorage.getItem(awardKey) || '{"xp":40,"awards":[]}');
+    if (!ledger.awards.includes('cloze-attempt-browser-1')) {
+      ledger.awards.push('cloze-attempt-browser-1');
+      ledger.xp += 5;
+      localStorage.setItem(awardKey, JSON.stringify(ledger));
+    }
+    const level = {
+      label: 'Norwegian Level 1', level: 1, lifetimeXp: ledger.xp,
+      currentLevelXpFloor: 0, nextLevelXp: 50, xpIntoLevel: ledger.xp,
+      xpNeeded: 50 - ledger.xp, progressPercent: ledger.xp * 2,
+    };
+    const achievements = Array.from({ length: 17 }, (_, index) => ({
+      key: `A${index + 1}`, category: index < 3 ? 'READER' : 'CLOZE',
+      name: index === 0 ? 'First real study' : `Evidence achievement ${index + 1}`,
+      description: 'Unlocked only from canonical synthetic evidence.', current: index < 2 ? 1 : 0,
+      target: 1, progressPercent: index < 2 ? 100 : 0,
+      state: index < 2 ? 'UNLOCKED' : 'LOCKED',
+      unlockedAt: index < 2 ? '2026-09-17T09:00:00Z' : null,
+    }));
+    const base = {
+      level,
+      today: {
+        localStudyDate: '2026-09-17', timezone: 'Europe/Warsaw', completedCount: 1,
+        items: [
+          { key: 'CLOZE_ATTEMPTS', title: 'Answer 10 Cloze questions', reason: 'Real Cloze mistakes are available.', current: 1, target: 10, unit: 'answers', href: '#cloze', completed: false, progressPercent: 10 },
+          { key: 'READER_TEXTS_COMPLETED', title: 'Complete one Reader text', reason: 'An unfinished Reader text exists.', current: 1, target: 1, unit: 'text', href: '#reader', completed: true, progressPercent: 100 },
+          { key: 'READER_ACTIVE_MINUTES', title: 'Read actively for 10 minutes', reason: 'Bounded canonical Reader activity.', current: 4, target: 10, unit: 'minutes', href: '#reader', completed: false, progressPercent: 40 },
+        ],
+      },
+      streak: { currentDays: 3, bestDays: 7, studyDaysLast7: 4, studyDaysLast30: 11 },
+      noPenaltyPolicy: 'Missing a day never removes XP, level, achievements, or completed collection evidence.',
+      achievements: { policyVersion: 'language.gamification-achievements/v1', completionLabel: '2 / 17 achievements', items: achievements },
+      collections: {
+        policyVersion: 'language.gamification-collections/v1',
+        items: [{ collectionKey: 'FAST_TRACK_1', name: 'Fast Track 1', kind: 'FAST_TRACK', status: 'AVAILABLE', tier: 'BRONZE', completed: 25, totalEligible: 80, mapped: 80, unresolved: 20, excluded: 0, progressPercent: 31.3, denominatorSource: 'KELLY learner rank intersected with playable targets', completionStateRule: 'Reliable requires 3 correct attempts across 2 Europe/Warsaw dates.' }],
+      },
+      campaigns: { ruleVersion: 'language.gamification-campaigns/v1', items: [] },
+    };
+    const mount = document.querySelector('#progress');
+    const assertions = [];
+    const check = (condition, label) => assertions.push({ condition: Boolean(condition), label });
+    let campaign = null;
+    const rerender = () => renderProgress(mount, { loading: false, data: { ...base, campaigns: { ...base.campaigns, items: campaign ? [campaign] : [] } } }, {
+      onCreateCampaign: async (payload) => {
+        campaign = { id: 'browser-campaign', ...payload, dateState: 'FUTURE', completedMilestones: 0, milestoneCount: payload.milestones.length, universalReadinessPercent: null, milestones: payload.milestones.map((item) => ({ ...item, current: 0, completed: false })) };
+        rerender();
+      },
+      onUpdateCampaign: async (id, payload) => {
+        campaign = { ...campaign, ...payload, id, dateState: 'FUTURE', completedMilestones: 0, milestoneCount: payload.milestones.length, universalReadinessPercent: null, milestones: payload.milestones.map((item) => ({ ...item, current: item.type === 'CLOZE_ATTEMPTS' ? 1 : 0, completed: false })) };
+        rerender();
+      },
+    });
+    rerender();
+    check(level.lifetimeXp === 45 && ledger.awards.length === 1, 'qualifying Cloze XP awarded exactly once and persisted');
+    check(mount.textContent.includes('Norwegian Level 1') && mount.textContent.includes('45 lifetime XP'), 'level and XP render');
+    check(mount.querySelectorAll('.language-quest').length === 3, 'three stable daily quests render');
+    check(mount.querySelectorAll('.language-achievement').length === 17, 'locked and unlocked achievement gallery renders');
+    check(mount.textContent.includes('mapped 80, unresolved 20, excluded 0'), 'collection denominator disclosure renders');
+    check(mount.textContent.includes('not CEFR or a claim about Norwegian proficiency'), 'non-proficiency disclosure renders');
+    const createForm = mount.querySelector('.language-campaign-form');
+    createForm.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    await new Promise((resolve) => setTimeout(resolve));
+    check(campaign?.milestones.length === 3 && campaign?.universalReadinessPercent === null, 'campaign creates with separate milestones');
+    check(mount.textContent.includes('Norway Spring 2027') && mount.textContent.includes('0 / 3 milestones'), 'campaign persists into rendered state');
+    const editForm = mount.querySelector('.language-campaign-form');
+    editForm.elements.name.value = 'Norway Autumn 2027';
+    editForm.elements.enabled.checked = false;
+    editForm.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    await new Promise((resolve) => setTimeout(resolve));
+    check(campaign?.name === 'Norway Autumn 2027' && campaign?.enabled === false, 'campaign edit and disable work');
+
+    renderLanguageWidget(document.querySelector('#widget'), {
+      level, streakDays: 3, known: 12, activeMinutes7d: 18,
+      dailyQuest: base.today.items[0],
+      campaignMilestone: { type: 'CLOZE_ATTEMPTS', current: 1, target: 100 },
+      nextAction: { title: 'Continue Cloze', href: '#cloze' },
+    });
+    check(document.querySelector('#widget').textContent.includes('5 to next'), 'compact widget shows XP to next level');
+    check(document.querySelector('#widget').textContent.includes('Answer 10 Cloze questions'), 'compact widget shows one quest');
+    check(document.querySelector('#widget').textContent.includes('Campaign'), 'compact widget shows campaign milestone');
+    check(document.documentElement.scrollWidth <= document.documentElement.clientWidth, 'no horizontal viewport overflow');
+
+    const passed = assertions.filter((item) => item.condition).length;
+    const result = document.querySelector('#result');
+    result.textContent = `${passed}/${assertions.length} PASS: ${assertions.filter((item) => item.condition).map((item) => item.label).join(' | ')}${passed === assertions.length ? '' : ` FAIL: ${assertions.filter((item) => !item.condition).map((item) => item.label).join(' | ')}`}`;
+    document.title = `Phase 7.6 browser smoke: ${passed}/${assertions.length}`;
+    document.body.dataset.smoke = passed === assertions.length ? 'pass' : 'fail';
+  </script>
+</body>
+</html>

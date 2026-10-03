@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/environment.schema.json",
+  "title": "Environment",
+  "description": "Current and 24-hour room temperature/humidity facts.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "environment"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "temperature_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "relative_humidity_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "samples_24h": {
+          "type": "integer"
+        },
+        "temperature_24h_avg_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "temperature_24h_min_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "temperature_24h_max_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "humidity_24h_avg_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "humidity_24h_min_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "humidity_24h_max_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "observed_at",
+        "temperature_c",
+        "relative_humidity_pct",
+        "battery_pct",
+        "samples_24h",
+        "temperature_24h_avg_c",
+        "temperature_24h_min_c",
+        "temperature_24h_max_c",
+        "humidity_24h_avg_pct",
+        "humidity_24h_min_pct",
+        "humidity_24h_max_pct"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

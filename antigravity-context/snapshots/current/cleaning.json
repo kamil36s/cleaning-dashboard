@@ -1,0 +1,292 @@
+{
+  "dataset": "cleaning",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-16T09:16:37Z",
+  "as_of": "2026-09-16",
+  "privacy": {
+    "addresses_exported": false,
+    "task_names_exported": false,
+    "notes_exported": false
+  },
+  "metrics": {
+    "active_tasks": 137,
+    "overdue": 106,
+    "never_completed": 10,
+    "active_by_room": {
+      "Balkon": 2,
+      "Duży pokój": 7,
+      "Korytarz": 8,
+      "Kuchnia": 43,
+      "Pokój": 29,
+      "Sypialnia": 3,
+      "Toaleta": 6,
+      "Łazienka": 39
+    },
+    "active_by_category": {
+      "Blat": 1,
+      "Inne": 7,
+      "Kibel": 6,
+      "Kuchenka": 5,
+      "Lodówka": 1,
+      "Lustro": 5,
+      "Mycie mopem": 10,
+      "Odkurzanie": 12,
+      "Okno": 17,
+      "Organizacja": 3,
+      "Piekarnik": 1,
+      "Pralka": 4,
+      "Prysznic": 11,
+      "Przetarcie kurzu": 27,
+      "Półka przy umywalce": 1,
+      "Szafki": 4,
+      "Umywalka": 5,
+      "Zlew": 3,
+      "Łóżko": 4,
+      "Śmieci": 10
+    },
+    "overdue_rate_pct": 77.4
+  },
+  "records": [
+    {
+      "apartment": "location_b002a634",
+      "room": "Korytarz",
+      "category": "Mycie mopem",
+      "last_completed": "2025-10-16",
+      "frequency_days": 14.0,
+      "days_overdue": 321
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Mycie mopem",
+      "last_completed": "2025-10-16",
+      "frequency_days": 14.0,
+      "days_overdue": 321
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Pokój",
+      "category": "Mycie mopem",
+      "last_completed": "2025-10-16",
+      "frequency_days": 14.0,
+      "days_overdue": 321
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Toaleta",
+      "category": "Mycie mopem",
+      "last_completed": "2025-10-16",
+      "frequency_days": 14.0,
+      "days_overdue": 321
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Toaleta",
+      "category": "Umywalka",
+      "last_completed": "2025-10-19",
+      "frequency_days": 14.0,
+      "days_overdue": 318
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Toaleta",
+      "category": "Umywalka",
+      "last_completed": "2025-10-19",
+      "frequency_days": 14.0,
+      "days_overdue": 318
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Toaleta",
+      "category": "Kibel",
+      "last_completed": "2025-10-19",
+      "frequency_days": 14.0,
+      "days_overdue": 318
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Zlew",
+      "last_completed": "2025-10-21",
+      "frequency_days": 14.0,
+      "days_overdue": 316
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Zlew",
+      "last_completed": "2025-10-21",
+      "frequency_days": 14.0,
+      "days_overdue": 316
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Łazienka",
+      "category": "Pralka",
+      "last_completed": "2025-10-10",
+      "frequency_days": 30.0,
+      "days_overdue": 311
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Przetarcie kurzu",
+      "last_completed": "2025-10-22",
+      "frequency_days": 30.0,
+      "days_overdue": 299
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Kuchenka",
+      "last_completed": "2025-11-22",
+      "frequency_days": 14.0,
+      "days_overdue": 284
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Pokój",
+      "category": "Przetarcie kurzu",
+      "last_completed": "2025-11-06",
+      "frequency_days": 30.0,
+      "days_overdue": 284
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Szafki",
+      "last_completed": "2025-11-22",
+      "frequency_days": 30.0,
+      "days_overdue": 268
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Toaleta",
+      "category": "Kibel",
+      "last_completed": "2025-12-20",
+      "frequency_days": 10.0,
+      "days_overdue": 260
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Okno",
+      "last_completed": "2025-10-03",
+      "frequency_days": 90.0,
+      "days_overdue": 258
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Kuchnia",
+      "category": "Przetarcie kurzu",
+      "last_completed": "2025-12-13",
+      "frequency_days": 30.0,
+      "days_overdue": 247
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Pokój",
+      "category": "Przetarcie kurzu",
+      "last_completed": "2026-02-10",
+      "frequency_days": 10.0,
+      "days_overdue": 208
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Łazienka",
+      "category": "Lustro",
+      "last_completed": "2026-02-16",
+      "frequency_days": 7.0,
+      "days_overdue": 205
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Pokój",
+      "category": "Przetarcie kurzu",
+      "last_completed": "2026-02-20",
+      "frequency_days": 7.0,
+      "days_overdue": 201
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Łazienka",
+      "category": "Umywalka",
+      "last_completed": "2026-02-21",
+      "frequency_days": 7.0,
+      "days_overdue": 200
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Łazienka",
+      "category": "Umywalka",
+      "last_completed": "2026-02-16",
+      "frequency_days": 14.0,
+      "days_overdue": 198
+    },
+    {
+      "apartment": "location_b002a634",
+      "room": "Łazienka",
+      "category": "Kibel",
+      "last_completed": "2026-02-16",
+      "frequency_days": 14.0,
+      "days_overdue": 198
+    }
+  ]
+}

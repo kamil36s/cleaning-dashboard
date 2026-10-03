@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "QA Engineer",
+  "hiringOrganization": {"@type": "Organization", "name": "Synthetic Quality AS"},
+  "industry": "Software quality",
+  "jobLocation": {
+    "@type": "Place",
+    "address": {"addressLocality": "Oslo", "addressRegion": "Oslo", "addressCountry": "NO"}
+  },
+  "jobLocationType": "TELECOMMUTE",
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "NOK",
+    "value": {"@type": "QuantitativeValue", "minValue": 50000, "maxValue": 60000, "unitText": "MONTH"}
+  },
+  "employmentType": ["FULL_TIME"],
+  "skills": ["SQL", "Postman", "Playwright"],
+  "languageRequirements": [
+    {"name": "English", "required": true},
+    {"name": "Norwegian", "required": false}
+  ],
+  "validThrough": "2026-12-31",
+  "companyTransport": "Bus from Bergen every Monday"
+}

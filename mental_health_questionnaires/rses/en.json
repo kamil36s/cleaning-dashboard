@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "rses",
+  "instrumentVersion": "RSES 10-item English (UMD public-domain copy)",
+  "scoringVersion": "rses-likert-0-30-umd-v1",
+  "language": "en",
+  "questionTextStatus": "official",
+  "title": "Rosenberg Self-Esteem Scale",
+  "shortDescription": "A ten-item measure of general feelings about oneself.",
+  "recallPeriod": "general feelings about yourself",
+  "estimatedMinutes": 3,
+  "instructions": "BELOW IS A LIST OF STATEMENTS DEALING WITH YOUR GENERAL FEELINGS ABOUT YOURSELF. IF YOU STRONGLY AGREE, CIRCLE SA. IF YOU AGREE WITH THE STATEMENT, CIRCLE A. IF YOU DISAGREE, CIRCLE D. IF YOU STRONGLY DISAGREE, CIRCLE SD.",
+  "questionCount": 10,
+  "scoredItemCount": 10,
+  "responseOptions": [
+    { "value": 3, "label": "Strongly Agree" },
+    { "value": 2, "label": "Agree" },
+    { "value": 1, "label": "Disagree" },
+    { "value": 0, "label": "Strongly Disagree" }
+  ],
+  "questions": [
+    { "id": "1", "text": "I feel that I'm a person of worth, at least on an equal plane with others.", "required": true },
+    { "id": "2", "text": "I feel that I have a number of good qualities.", "required": true },
+    { "id": "3", "text": "All in all, I am inclined to feel that I am a failure.", "required": true, "reverseScored": true },
+    { "id": "4", "text": "I am able to do things as well as most other people.", "required": true },
+    { "id": "5", "text": "I feel I do not have much to be proud of.", "required": true, "reverseScored": true },
+    { "id": "6", "text": "I take a positive attitude toward myself.", "required": true },
+    { "id": "7", "text": "On the whole, I am satisfied with myself.", "required": true },
+    { "id": "8", "text": "I wish I could have more respect for myself.", "required": true, "reverseScored": true },
+    { "id": "9", "text": "I certainly feel useless at times.", "required": true, "reverseScored": true },
+    { "id": "10", "text": "At times I think I am no good at all.", "required": true, "reverseScored": true }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+    "allowedValues": [0, 1, 2, 3],
+    "reverseItemIds": ["3", "5", "8", "9", "10"],
+    "subscales": {}
+  },
+  "interpretationBands": [],
+  "source": {
+    "title": "Using the Rosenberg Self-Esteem Scale — University of Maryland Department of Sociology",
+    "url": "https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale",
+    "itemImageUrl": "https://socy.umd.edu/sites/socy.umd.edu/files/Rosenberg%20SE%20Scale.jpg",
+    "documentSha256": "87ffbaebff754c74264bb06fd972ee24fa4c997161e6331752f3568eca438c6e"
+  },
+  "license": {
+    "status": "public domain",
+    "notice": "The University of Maryland states that the scale is in the public domain and may be used without charge or notification, with traditional scholarly attribution."
+  },
+  "attribution": "Rosenberg, Morris. 1965. Society and the Adolescent Self-Image. Princeton, New Jersey: Princeton University Press."
+}

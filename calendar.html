@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b1b1b"><title>Kalendarz · Dashboard</title>
+  <link rel="stylesheet" href="./calendar.css">
+</head>
+<body>
+  <header class="toolbar">
+    <button id="toggle-sidebar" class="icon-button" aria-label="Pokaż lub ukryj panel boczny">☰</button>
+    <a class="brand" href="./calendar.html"><span class="calendar-icon" id="brand-day">31</span>Kalendarz</a>
+    <button id="today">Dzisiaj</button>
+    <div class="arrows"><button id="previous" class="icon-button" aria-label="Poprzedni tydzień">‹</button><button id="next" class="icon-button" aria-label="Następny tydzień">›</button></div>
+    <h1 id="period"></h1><span id="week-number" class="week-badge"></span>
+    <div class="toolbar-end"><input id="search" type="search" placeholder="Szukaj w tym tygodniu" aria-label="Szukaj w widocznym okresie"><button id="refresh" class="icon-button" aria-label="Odśwież dane">↻</button><select id="view" aria-label="Widok kalendarza"><option value="week">Tydzień</option><option value="agenda">Plan dnia</option></select><a class="dashboard-link" href="./index.html" title="Wróć do dashboardu">Dashboard ↗</a></div>
+  </header>
+  <div class="app-layout">
+    <aside id="sidebar">
+      <button id="create" class="create-button"><span>＋</span> Utwórz wydarzenie</button>
+      <div class="mini-toolbar"><strong id="mini-title"></strong><button id="mini-prev" class="icon-button" aria-label="Poprzedni miesiąc">‹</button><button id="mini-next" class="icon-button" aria-label="Następny miesiąc">›</button></div>
+      <div class="mini-calendar" id="mini-calendar" aria-label="Wybierz dzień"></div>
+      <div class="weather" id="weather">Pogoda · ładowanie…</div>
+      <h2>Twój dashboard</h2><div id="source-filters"></div>
+      <h2>Kalendarze</h2><div id="calendar-filters"></div>
+      <div class="google-status" id="google-status">Google Calendar · ładowanie…</div>
+      <a class="google-connect" href="/api/google-calendar/auth/start" target="_blank" rel="noopener">Połącz Google Calendar ↗</a>
+      <details class="source-status"><summary>Stan źródeł</summary><div id="source-status"></div></details>
+      <p class="legend">◌ prognoza / plan<br>✓ wykonane<br>Czas lokalny: <span id="timezone"></span></p>
+    </aside>
+    <main id="calendar-main">
+      <div class="calendar-status" id="status" role="status" aria-live="polite">Wczytuję kalendarz…</div>
+      <div id="week-view" class="week-view">
+        <div class="days-header" id="days-header"></div>
+        <div class="all-day-row"><div class="rail-label">Cały dzień</div><div id="all-day" class="day-columns"></div></div>
+        <div class="time-scroll" id="time-scroll"><div class="time-grid"><div id="hours" class="hours"></div><div id="timed" class="day-columns timed-columns"></div></div></div>
+      </div>
+      <div id="agenda" class="agenda" hidden></div>
+    </main>
+  </div>
+  <dialog id="detail-dialog"><button class="dialog-close" data-close aria-label="Zamknij">×</button><p id="detail-source" class="eyebrow"></p><h2 id="detail-title"></h2><p id="detail-time"></p><p id="detail-body"></p><a id="detail-link" class="primary-link">Otwórz źródło ↗</a></dialog>
+  <dialog id="day-dialog"><button class="dialog-close" data-close aria-label="Zamknij">×</button><p class="eyebrow">Kalendarz · cały dzień</p><h2 id="day-dialog-title"></h2><div id="day-dialog-list" class="day-dialog-list"></div></dialog>
+  <dialog id="create-dialog"><button class="dialog-close" data-close aria-label="Zamknij">×</button><h2>Nowe wydarzenie</h2><form id="event-form">
+    <label>Tytuł<input name="title" required maxlength="240" autocomplete="off"></label>
+    <label>Data<input name="date" type="date" required></label>
+    <div class="form-row"><label>Od<input name="startTime" type="time"></label><label>Do<input name="endTime" type="time"></label></div>
+    <p class="muted">Pozostaw godziny puste dla wydarzenia całodniowego.</p>
+    <label>Zapisz w<select name="destination"><option value="local">Dashboard</option><option value="google">Google Calendar</option></select></label>
+    <label>Notatka<textarea name="notes" rows="3"></textarea></label>
+    <p id="form-error" role="alert"></p><button class="save-button" type="submit">Zapisz wydarzenie</button>
+  </form></dialog>
+  <script type="module" src="./js/calendar.js"></script>
+</body>
+</html>

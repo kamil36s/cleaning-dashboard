@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Panel czytania</title>
 
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./reading.css" />
 </head>
 
 <body class="page-reading">
@@ -38,6 +38,85 @@
                 </div>
             </div>
 
+            <div class="controls reading-forecast-controls">
+                <button id="reset-reading-forecast" type="button">Reset dziennej prognozy stron</button>
+            </div>
+            <label class="checkline reading-cover-toggle">
+                <input type="checkbox" id="reading-covers-enabled" checked />
+                <span>Okładki książek</span>
+            </label>
+            <div class="meta reading-cover-status" id="reading-cover-status" aria-live="polite"></div>
+            <div class="reading-view-mode" aria-label="Tryb widoku książek">
+                <span>Widok książek</span>
+                <div class="reading-view-mode-buttons" role="group" aria-label="Liczba kolumn książek">
+                    <button class="reading-view-mode-btn is-active" type="button" data-reading-columns="2" aria-pressed="true">2 kolumny</button>
+                    <button class="reading-view-mode-btn" type="button" data-reading-columns="3" aria-pressed="false">3 kolumny</button>
+                </div>
+            </div>
+            <label class="reading-cover-size-control" for="reading-cover-size">
+                <span>Rozmiar okładek</span>
+                <input id="reading-cover-size" type="range" min="82" max="152" step="2" value="112" />
+            </label>
+
+            <form id="reading-add-book-form" class="reading-add-book-form">
+                <div class="reading-add-book-title">Dodaj książkę</div>
+                <label>
+                    <span>Autor</span>
+                    <input id="reading-add-author" name="author" type="text" autocomplete="off" required />
+                </label>
+                <label>
+                    <span>Tytuł</span>
+                    <input id="reading-add-title" name="title" type="text" autocomplete="off" required />
+                </label>
+                <div class="reading-add-book-pages">
+                    <label>
+                        <span>Przeczytane</span>
+                        <input id="reading-add-pages-read" name="pagesRead" type="number" min="0" step="1" value="0" required />
+                    </label>
+                    <label>
+                        <span>Stron</span>
+                        <input id="reading-add-pages-total" name="pagesTotal" type="number" min="1" step="1" required />
+                    </label>
+                </div>
+                <div class="reading-add-source-field">
+                    <span>Źródło</span>
+                    <div class="reading-add-source-toggle" role="radiogroup" aria-label="Źródło książki">
+                        <label>
+                            <input type="radio" name="source" value="owned" checked />
+                            <span>Dom</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="source" value="library" />
+                            <span>Biblioteka</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="source" value="wanted" />
+                            <span>Chcę przeczytać</span>
+                        </label>
+                    </div>
+                </div>
+                <label id="reading-add-return-date-wrap" class="reading-add-return-date is-hidden">
+                    <span>Data zwrotu (dd/mm/yyyy)</span>
+                    <span class="reading-date-control">
+                        <input id="reading-add-return-date" name="returnDate" type="text" inputmode="numeric" autocomplete="off" placeholder="dd/mm/yyyy" maxlength="10" data-reading-date-text />
+                        <span class="reading-date-calendar-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M7 3v3m10-3v3M4.5 9h15M6 5h12a2 2 0 0 1 2 2v12H4V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 13h2m4 0h2m-8 3h2m4 0h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        </span>
+                        <input class="reading-native-date-picker" type="date" tabindex="-1" aria-label="Wybierz datę zwrotu z kalendarza" data-reading-date-picker />
+                    </span>
+                </label>
+                <div class="reading-add-cover-field">
+                    <span>Okładka</span>
+                    <div class="reading-add-cover-row">
+                        <label class="reading-add-cover-picker" for="reading-add-cover">Wybierz</label>
+                        <span id="reading-add-cover-name" class="reading-add-cover-name">Bez okładki</span>
+                    </div>
+                    <input id="reading-add-cover" class="reading-add-cover-input" name="cover" type="file" accept="image/*" hidden />
+                </div>
+                <button id="reading-add-submit" type="submit">Dodaj</button>
+                <div class="meta reading-add-book-status" id="reading-add-book-status" aria-live="polite"></div>
+            </form>
+
             <h2>Filtry</h2>
 
             <div class="controls">
@@ -47,13 +126,35 @@
                     <option value="completion">Ukończenie % ↑</option>
                     <option value="title">Tytuł</option>
                 </select>
+                <label class="reading-page-size-control">
+                    <span>Pokaż na stronie</span>
+                    <select id="reading-page-size">
+                        <option value="10">10</option>
+                        <option value="20" selected>20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
 
                 <label class="checkline">
                     <input type="checkbox" id="unfinished" checked />
                     <span>Tylko nieukończone</span>
                 </label>
+                <label class="checkline">
+                    <input type="checkbox" id="owned-only" />
+                    <span>Tylko posiadane</span>
+                </label>
+                <label class="checkline">
+                    <input type="checkbox" id="wanted-only" />
+                    <span>Tylko chcę przeczytać</span>
+                </label>
 
                 <button id="refresh">Odśwież</button>
+                <div class="reading-pagination" aria-label="Strony listy książek">
+                    <button id="reading-page-prev" type="button">Poprzednia</button>
+                    <span id="reading-page-info">1 / 1</span>
+                    <button id="reading-page-next" type="button">Następna</button>
+                </div>
 
                 <div class="nobel-trigger-row">
                     <button class="nobel-open-btn" id="nobel-open-btn">
@@ -66,9 +167,32 @@
 
         <main class="main">
             <h2>Książki</h2>
+            <section id="reading-history" class="cleaning-history reading-history" aria-live="polite">
+                <div class="history-head">
+                    <div class="history-title">STRONY / DZIEŃ</div>
+                    <div class="history-badge" id="reading-history-total-badge">0 str.</div>
+                </div>
+                <div class="history-toolbar">
+                    <div class="history-range" role="tablist" aria-label="Zakres historii czytania">
+                        <button class="history-range-btn is-active" data-range="week" type="button" aria-pressed="true">Tydzień</button>
+                        <button class="history-range-btn" data-range="month" type="button" aria-pressed="false">Miesiąc</button>
+                        <button class="history-range-btn" data-range="year" type="button" aria-pressed="false">Rok</button>
+                    </div>
+                    <div class="history-nav" aria-label="Przesuwanie historii czytania">
+                        <button class="history-nav-btn" data-direction="prev" type="button">Wstecz</button>
+                        <div class="history-window-label" id="reading-history-window-label">-</div>
+                        <button class="history-nav-btn" data-direction="next" type="button">Dalej</button>
+                    </div>
+                </div>
+                <div id="reading-history-chart" class="history-chart"></div>
+                <div id="reading-history-stats" class="history-stats"></div>
+                <div id="reading-history-empty" class="history-empty" hidden>Brak danych.</div>
+            </section>
             <div id="grid" class="grid"></div>
         </main>
     </div>
+
+    <input id="reading-cover-upload-input" type="file" accept="image/*" hidden />
 
     <!-- Logika dashboardu czytania -->
     <script type="module" src="./js/reading.js"></script>

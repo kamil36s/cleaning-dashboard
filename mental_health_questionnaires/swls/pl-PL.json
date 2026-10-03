@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "swls",
+  "instrumentVersion": "SWLS Polish translation (Jankowski; official Diener distribution)",
+  "scoringVersion": "swls-sum-5-35-v1",
+  "language": "pl-PL",
+  "questionTextStatus": "official_translation",
+  "title": "Skala Satysfakcji z Życia (SWLS)",
+  "shortDescription": "Pięciopozycyjna skala globalnej poznawczej oceny satysfakcji z życia.",
+  "recallPeriod": "ogólna ocena życia",
+  "estimatedMinutes": 1,
+  "instructions": "Poniżej znajduje się pięć stwierdzeń, z którymi możesz się zgodzić lub nie. Używając poniższej skali od 1 do 7 wskaż, w jakim stopniu zgadzasz się z każdym stwierdzeniem, wstawiając odpowiednią cyfrę w polu przed danym stwierdzeniem. Proszę o otwartość i szczerość w udzielaniu odpowiedzi.",
+  "questionCount": 5,
+  "scoredItemCount": 5,
+  "responseOptions": [
+    { "value": 1, "label": "Zdecydowanie nie zgadzam się" },
+    { "value": 2, "label": "Nie zgadzam się" },
+    { "value": 3, "label": "Raczej nie zgadzam się" },
+    { "value": 4, "label": "Ani zgadzam się, ani nie zgadzam się" },
+    { "value": 5, "label": "Raczej zgadzam się" },
+    { "value": 6, "label": "Zgadzam się" },
+    { "value": 7, "label": "Zdecydowanie zgadzam się" }
+  ],
+  "questions": [
+    { "id": "1", "text": "W większości aspektów moje życie jest bliskie mojego ideału.", "required": true },
+    { "id": "2", "text": "Warunki mojego życia są doskonałe.", "required": true },
+    { "id": "3", "text": "Jestem zadowolony ze swojego życia.", "required": true },
+    { "id": "4", "text": "Jak dotąd osiągam ważne cele, których pragnę w życiu.", "required": true },
+    { "id": "5", "text": "Gdybym mógł jeszcze raz przeżyć swoje życie, prawie niczego bym nie zmienił.", "required": true }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5"],
+    "allowedValues": [1, 2, 3, 4, 5, 6, 7],
+    "reverseItemIds": [],
+    "subscales": {}
+  },
+  "interpretationBands": [
+    { "min": 5, "max": 9, "label": "Extremely dissatisfied" },
+    { "min": 10, "max": 14, "label": "Dissatisfied" },
+    { "min": 15, "max": 19, "label": "Slightly below average in life satisfaction" },
+    { "min": 20, "max": 24, "label": "Average" },
+    { "min": 25, "max": 29, "label": "High" },
+    { "min": 30, "max": 35, "label": "Very high; highly satisfied" }
+  ],
+  "source": {
+    "title": "Satisfaction With Life Scale — Polish translation",
+    "url": "https://eddiener.com/wp-content/uploads/2025/02/SWLS_Polish.pdf",
+    "landingPage": "https://eddiener.com/satisfaction-with-life-scale-swls/",
+    "scoringUrl": "https://eddiener.com/wp-content/uploads/2024/09/Understanding-SWLS-Scores.pdf",
+    "documentSha256": "b0def0567b97735f102484f3be71f603e4a76f6dacab35d04a6b43bef2f2d64f"
+  },
+  "license": {
+    "status": "non-commercial with attribution",
+    "notice": "Copyrighted scale. The authors permit non-commercial use without an individual permission request when proper credit is given."
+  },
+  "attribution": "Diener, E. D., Emmons, R. A., Larsen, R. J., & Griffin, S. (1985). Polish translation: Konrad S. Jankowski."
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artist Facts Screensaver</title>
+  <link rel="stylesheet" href="./artist-facts-screensaver.css" />
+</head>
+
+<body>
+  <a id="back-link" class="screen-control screen-control--back" href="./index.html">Back to dashboard</a>
+  <button id="fullscreen-button" class="screen-control screen-control--fullscreen" type="button">Fullscreen</button>
+  <main class="artist-screen" aria-live="polite">
+    <section id="message" class="artist-message">
+      <h1 id="message-title">Artist facts</h1>
+      <p id="message-copy">Waiting for Spotify and local artist media.</p>
+    </section>
+    <section id="slide" class="artist-slide" hidden>
+      <img id="slide-image" alt="" />
+      <div class="artist-caption">
+        <small id="slide-artist"></small>
+        <h1 id="slide-title"></h1>
+        <p id="slide-caption"></p>
+        <em id="slide-credit"></em>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./js/artist-facts-screensaver.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "language.curriculum-pack-manifest/v1",
+  "title": "Language curriculum pack manifest",
+  "type": "object",
+  "required": ["schemaVersion", "pack", "source", "mappingSnapshot", "items"],
+  "properties": {
+    "schemaVersion": { "const": "language.curriculum-pack-manifest/v1" },
+    "pack": {
+      "type": "object",
+      "required": ["id", "version", "language", "slug", "name", "description", "category", "sourceType", "reviewState", "status", "curriculumPolicyVersion", "denominatorPolicyVersion", "progressPolicyVersion", "releasedDate", "fingerprint"]
+    },
+    "source": {
+      "type": "object",
+      "required": ["id", "provider", "name", "version", "url", "license", "licenseUrl", "attribution", "membershipBasis"]
+    },
+    "mappingSnapshot": {
+      "type": "object",
+      "required": ["mappingPolicyVersion", "resolverRuleVersion", "referenceSchemaVersion", "referenceFingerprint"]
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2000,
+      "items": {
+        "type": "object",
+        "required": ["membershipId", "sourceMembershipId", "displayTerm", "normalizedLookup", "provenanceClass", "reviewState", "mappingState", "mappingBasis", "priority", "weight"]
+      }
+    }
+  },
+  "additionalProperties": false
+}

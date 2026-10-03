@@ -1,0 +1,905 @@
+{
+  "source": "Rate Your Music custom chart snapshot",
+  "albums": [
+    {
+      "rank": 1,
+      "artist": "Azarath",
+      "album": "Diabolic Impious Evil",
+      "year": 2006,
+      "rymRating": 3.65,
+      "rymVotes": 533,
+      "rymUrl": "https://rateyourmusic.com/release/album/azarath/diabolic-impious-evil/"
+    },
+    {
+      "rank": 2,
+      "artist": "Evilfeast",
+      "album": "Wintermoon Enchantment",
+      "year": 2011,
+      "rymRating": 3.65,
+      "rymVotes": 518,
+      "rymUrl": "https://rateyourmusic.com/release/album/evilfeast/wintermoon-enchantment-4/"
+    },
+    {
+      "rank": 3,
+      "artist": "Evilfeast",
+      "album": "Lost Horizons of Wisdom",
+      "year": 2008,
+      "rymRating": 3.63,
+      "rymVotes": 562,
+      "rymUrl": "https://rateyourmusic.com/release/album/evilfeast/lost-horizons-of-wisdom-4/"
+    },
+    {
+      "rank": 4,
+      "artist": "KAT",
+      "album": "666",
+      "year": 1986,
+      "rymRating": 3.61,
+      "rymVotes": 845,
+      "rymUrl": "https://rateyourmusic.com/release/album/kat/666/"
+    },
+    {
+      "rank": 5,
+      "artist": "Evilfeast",
+      "album": "Mysteries of the Nocturnal Forest",
+      "year": 2004,
+      "rymRating": 3.62,
+      "rymVotes": 519,
+      "rymUrl": "https://rateyourmusic.com/release/album/evilfeast/mysteries-of-the-nocturnal-forest/"
+    },
+    {
+      "rank": 6,
+      "artist": "Thunderbolt",
+      "album": "Inhuman Ritual Massmurder",
+      "year": 2004,
+      "rymRating": 3.63,
+      "rymVotes": 207,
+      "rymUrl": "https://rateyourmusic.com/release/album/thunderbolt/inhuman-ritual-massmurder/"
+    },
+    {
+      "rank": 7,
+      "artist": "Anima Damnata",
+      "album": "Agonizing Journey Through the Burning Universe and Transcendental Ritual of Transfiguration",
+      "year": 2003,
+      "rymRating": 3.59,
+      "rymVotes": 400,
+      "rymUrl": "https://rateyourmusic.com/release/album/anima-damnata/agonizing-journey-through-the-burning-universe-and-transcendental-ritual-of-transfiguration-1/"
+    },
+    {
+      "rank": 8,
+      "artist": "Wędrujący Wiatr",
+      "album": "Tam, gdzie miesiąc opłakuje świt",
+      "year": 2013,
+      "rymRating": 3.58,
+      "rymVotes": 811,
+      "rymUrl": "https://rateyourmusic.com/release/album/wedrujacy-wiatr/tam-gdzie-miesiac-oplakuje-swit/"
+    },
+    {
+      "rank": 9,
+      "artist": "Evilfeast",
+      "album": "Funeral Sorcery",
+      "year": 2005,
+      "rymRating": 3.58,
+      "rymVotes": 409,
+      "rymUrl": "https://rateyourmusic.com/release/album/evilfeast/funeral-sorcery-3/"
+    },
+    {
+      "rank": 10,
+      "artist": "Sacrilegium",
+      "album": "Wicher",
+      "year": 1996,
+      "rymRating": 3.57,
+      "rymVotes": 404,
+      "rymUrl": "https://rateyourmusic.com/release/album/sacrilegium/wicher/"
+    },
+    {
+      "rank": 11,
+      "artist": "Azarath",
+      "album": "Blasphemers' Maledictions",
+      "year": 2011,
+      "rymRating": 3.57,
+      "rymVotes": 692,
+      "rymUrl": "https://rateyourmusic.com/release/album/azarath/blasphemers-maledictions/"
+    },
+    {
+      "rank": 12,
+      "artist": "Wędrowcy~Tułacze~Zbiegi",
+      "album": "Światu jest wszystko jedno",
+      "year": 2016,
+      "rymRating": 3.56,
+      "rymVotes": 657,
+      "rymUrl": "https://rateyourmusic.com/release/album/wedrowcy_tulacze_zbiegi/swiatu-jest-wszystko-jedno/"
+    },
+    {
+      "rank": 13,
+      "artist": "MasseMord",
+      "album": "The Madness Tongue Devouring Juices of Livid Hope",
+      "year": 2010,
+      "rymRating": 3.59,
+      "rymVotes": 222,
+      "rymUrl": "https://rateyourmusic.com/release/album/massemord/the-madness-tongue-devouring-juices-of-livid-hope/"
+    },
+    {
+      "rank": 14,
+      "artist": "Arkona",
+      "album": "Imperium",
+      "year": 1996,
+      "rymRating": 3.56,
+      "rymVotes": 569,
+      "rymUrl": "https://rateyourmusic.com/release/album/arkona/imperium/"
+    },
+    {
+      "rank": 15,
+      "artist": "Stara Rzeka",
+      "album": "Cień chmury nad ukrytym polem",
+      "year": 2013,
+      "rymRating": 3.54,
+      "rymVotes": 1000,
+      "rymUrl": "https://rateyourmusic.com/release/album/stara-rzeka/cien-chmury-nad-ukrytym-polem/"
+    },
+    {
+      "rank": 16,
+      "artist": "Mgła",
+      "album": "Groza",
+      "year": 2008,
+      "rymRating": 3.53,
+      "rymVotes": 3000,
+      "rymUrl": "https://rateyourmusic.com/release/album/mgla/groza/"
+    },
+    {
+      "rank": 17,
+      "artist": "Behemoth",
+      "album": "Evangelion",
+      "year": 2009,
+      "rymRating": 3.51,
+      "rymVotes": 4000,
+      "rymUrl": "https://rateyourmusic.com/release/album/behemoth/evangelion/"
+    },
+    {
+      "rank": 18,
+      "artist": "Deus Mortem",
+      "album": "Emanations of the Black Light",
+      "year": 2013,
+      "rymRating": 3.56,
+      "rymVotes": 329,
+      "rymUrl": "https://rateyourmusic.com/release/album/deus-mortem/emanations-of-the-black-light/"
+    },
+    {
+      "rank": 19,
+      "artist": "Kriegsmaschine",
+      "album": "Apocalypticists",
+      "year": 2018,
+      "rymRating": 3.53,
+      "rymVotes": 1000,
+      "rymUrl": "https://rateyourmusic.com/release/album/kriegsmaschine/apocalypticists/"
+    },
+    {
+      "rank": 20,
+      "artist": "Christ Agony",
+      "album": "Unholyunion",
+      "year": 1993,
+      "rymRating": 3.54,
+      "rymVotes": 411,
+      "rymUrl": "https://rateyourmusic.com/release/album/christ-agony/unholyunion/"
+    },
+    {
+      "rank": 21,
+      "artist": "Fleshworld",
+      "album": "The Essence Has Changed, But the Details Remain",
+      "year": 2019,
+      "rymRating": 3.55,
+      "rymVotes": 241,
+      "rymUrl": "https://rateyourmusic.com/release/album/fleshworld/the-essence-has-changed-but-the-details-remain/"
+    },
+    {
+      "rank": 22,
+      "artist": "Kriegsmaschine",
+      "album": "Altered States of Divinity",
+      "year": 2005,
+      "rymRating": 3.52,
+      "rymVotes": 803,
+      "rymUrl": "https://rateyourmusic.com/release/album/kriegsmaschine/altered-states-of-divinity/"
+    },
+    {
+      "rank": 23,
+      "artist": "Deus Mortem",
+      "album": "Kosmocide",
+      "year": 2019,
+      "rymRating": 3.53,
+      "rymVotes": 514,
+      "rymUrl": "https://rateyourmusic.com/release/album/deus-mortem/kosmocide/"
+    },
+    {
+      "rank": 24,
+      "artist": "Christ Agony",
+      "album": "Daemoonseth - Act II",
+      "year": 1994,
+      "rymRating": 3.52,
+      "rymVotes": 296,
+      "rymUrl": "https://rateyourmusic.com/release/album/christ-agony/daemoonseth-act-ii/"
+    },
+    {
+      "rank": 25,
+      "artist": "North",
+      "album": "From the Dark Past",
+      "year": 1998,
+      "rymRating": 3.53,
+      "rymVotes": 210,
+      "rymUrl": "https://rateyourmusic.com/release/album/north/from-the-dark-past/"
+    },
+    {
+      "rank": 26,
+      "artist": "Dominance",
+      "album": "Slaughter of Human Offerings in the New Age of Pan",
+      "year": 2023,
+      "rymRating": 3.59,
+      "rymVotes": 164,
+      "rymUrl": "https://rateyourmusic.com/release/album/dominance/slaughter-of-human-offerings-in-the-new-age-of-pan/"
+    },
+    {
+      "rank": 27,
+      "artist": "Blaze of Perdition",
+      "album": "Conscious Darkness",
+      "year": 2017,
+      "rymRating": 3.5,
+      "rymVotes": 712,
+      "rymUrl": "https://rateyourmusic.com/release/album/blaze-of-perdition/conscious-darkness/"
+    },
+    {
+      "rank": 28,
+      "artist": "Mord'A'Stigmata",
+      "album": "Ansia",
+      "year": 2013,
+      "rymRating": 3.52,
+      "rymVotes": 257,
+      "rymUrl": "https://rateyourmusic.com/release/album/mordastigmata/ansia/"
+    },
+    {
+      "rank": 29,
+      "artist": "Over the Voids...",
+      "album": "Hadal",
+      "year": 2020,
+      "rymRating": 3.53,
+      "rymVotes": 198,
+      "rymUrl": "https://rateyourmusic.com/release/album/over-the-voids/hadal/"
+    },
+    {
+      "rank": 30,
+      "artist": "Witchmaster",
+      "album": "Masochistic Devil Worship",
+      "year": 2002,
+      "rymRating": 3.52,
+      "rymVotes": 248,
+      "rymUrl": "https://rateyourmusic.com/release/album/witchmaster/masochistic-devil-worship/"
+    },
+    {
+      "rank": 31,
+      "artist": "Dola",
+      "album": "Tabernakulum",
+      "year": 2024,
+      "rymRating": 3.51,
+      "rymVotes": 292,
+      "rymUrl": "https://rateyourmusic.com/release/album/dola/tabernakulum/"
+    },
+    {
+      "rank": 32,
+      "artist": "Lux Occulta",
+      "album": "My Guardian Anger",
+      "year": 1999,
+      "rymRating": 3.49,
+      "rymVotes": 322,
+      "rymUrl": "https://rateyourmusic.com/release/album/lux-occulta/my-guardian-anger/"
+    },
+    {
+      "rank": 33,
+      "artist": "Anima Damnata",
+      "album": "Nefarious Seed Grows to Bring Forth Supremacy of the Beast",
+      "year": 2017,
+      "rymRating": 3.49,
+      "rymVotes": 235,
+      "rymUrl": "https://rateyourmusic.com/release/album/anima-damnata/nefarious-seed-grows-to-bring-forth-supremacy-of-the-beast/"
+    },
+    {
+      "rank": 34,
+      "artist": "KAT",
+      "album": "Metal and Hell",
+      "year": 1986,
+      "rymRating": 3.47,
+      "rymVotes": 601,
+      "rymUrl": "https://rateyourmusic.com/release/album/kat/metal-and-hell/"
+    },
+    {
+      "rank": 35,
+      "artist": "Cultes des Ghoules",
+      "album": "Häxan",
+      "year": 2008,
+      "rymRating": 3.47,
+      "rymVotes": 708,
+      "rymUrl": "https://rateyourmusic.com/release/album/cultes-des-ghoules/haxan/"
+    },
+    {
+      "rank": 36,
+      "artist": "Mentor",
+      "album": "Guts, Graves and Blasphemy",
+      "year": 2016,
+      "rymRating": 3.49,
+      "rymVotes": 273,
+      "rymUrl": "https://rateyourmusic.com/release/album/mentor/guts-graves-and-blasphemy/"
+    },
+    {
+      "rank": 37,
+      "artist": "Gruzja",
+      "album": "Konflikt",
+      "year": 2020,
+      "rymRating": 3.47,
+      "rymVotes": 460,
+      "rymUrl": "https://rateyourmusic.com/release/album/gruzja-neon-scaffold/konflikt/"
+    },
+    {
+      "rank": 38,
+      "artist": "Graveland",
+      "album": "Following the Voice of Blood",
+      "year": 1997,
+      "rymRating": 3.43,
+      "rymVotes": 652,
+      "rymUrl": "https://rateyourmusic.com/release/album/graveland/following-the-voice-of-blood/"
+    },
+    {
+      "rank": 39,
+      "artist": "In Twilight's Embrace",
+      "album": "Lawa",
+      "year": 2018,
+      "rymRating": 3.47,
+      "rymVotes": 354,
+      "rymUrl": "https://rateyourmusic.com/release/album/in-twilights-embrace/lawa/"
+    },
+    {
+      "rank": 40,
+      "artist": "Voidhanger",
+      "album": "Working Class Misanthropy: Of Rapture and Disgust",
+      "year": 2013,
+      "rymRating": 3.48,
+      "rymVotes": 192,
+      "rymUrl": "https://rateyourmusic.com/release/album/voidhanger/working-class-misanthropy-of-rapture-and-disgust/"
+    },
+    {
+      "rank": 41,
+      "artist": "S",
+      "album": "Untitled LP1",
+      "year": 2013,
+      "rymRating": 3.47,
+      "rymVotes": 258,
+      "rymUrl": "https://rateyourmusic.com/release/album/s/untitled-lp1/"
+    },
+    {
+      "rank": 42,
+      "artist": "Deus Mortem",
+      "album": "Thanatos",
+      "year": 2024,
+      "rymRating": 3.48,
+      "rymVotes": 241,
+      "rymUrl": "https://rateyourmusic.com/release/album/deus-mortem/thanatos/"
+    },
+    {
+      "rank": 43,
+      "artist": "Entropia",
+      "album": "Ufonaut",
+      "year": 2016,
+      "rymRating": 3.45,
+      "rymVotes": 642,
+      "rymUrl": "https://rateyourmusic.com/release/album/entropia/ufonaut/"
+    },
+    {
+      "rank": 44,
+      "artist": "Graveland",
+      "album": "Immortal Pride",
+      "year": 1999,
+      "rymRating": 3.42,
+      "rymVotes": 612,
+      "rymUrl": "https://rateyourmusic.com/release/album/graveland/immortal-pride/"
+    },
+    {
+      "rank": 45,
+      "artist": "In Twilight's Embrace",
+      "album": "Vanitas",
+      "year": 2017,
+      "rymRating": 3.49,
+      "rymVotes": 201,
+      "rymUrl": "https://rateyourmusic.com/release/album/in-twilights-embrace/vanitas/"
+    },
+    {
+      "rank": 46,
+      "artist": "Graveland",
+      "album": "Thousand Swords",
+      "year": 1995,
+      "rymRating": 3.42,
+      "rymVotes": 2000,
+      "rymUrl": "https://rateyourmusic.com/release/album/graveland/thousand-swords/"
+    },
+    {
+      "rank": 47,
+      "artist": "Łza Zeschniętej Róży",
+      "album": "Majestat mgieł nocnych",
+      "year": 1997,
+      "rymRating": 3.62,
+      "rymVotes": 169,
+      "rymUrl": "https://rateyourmusic.com/release/album/lza-zeschnietej-rozy/majestat-mgiel-nocnych/"
+    },
+    {
+      "rank": 48,
+      "artist": "Wędrowcy~Tułacze~Zbiegi",
+      "album": "Droga do domu",
+      "year": 2024,
+      "rymRating": 3.46,
+      "rymVotes": 347,
+      "rymUrl": "https://rateyourmusic.com/release/album/wedrowcy_tulacze_zbiegi/droga-do-domu/"
+    },
+    {
+      "rank": 49,
+      "artist": "Doombringer",
+      "album": "The Grand Sabbath",
+      "year": 2014,
+      "rymRating": 3.47,
+      "rymVotes": 213,
+      "rymUrl": "https://rateyourmusic.com/release/album/doombringer/the-grand-sabbath/"
+    },
+    {
+      "rank": 50,
+      "artist": "Arkona",
+      "album": "Lunaris",
+      "year": 2016,
+      "rymRating": 3.46,
+      "rymVotes": 279,
+      "rymUrl": "https://rateyourmusic.com/release/album/arkona/lunaris/"
+    },
+    {
+      "rank": 51,
+      "artist": "Besatt",
+      "album": "Hail Lucifer",
+      "year": 1999,
+      "rymRating": 3.46,
+      "rymVotes": 313,
+      "rymUrl": "https://rateyourmusic.com/release/album/besatt/hail-lucifer/"
+    },
+    {
+      "rank": 52,
+      "artist": "Dola",
+      "album": "Czasy",
+      "year": 2021,
+      "rymRating": 3.45,
+      "rymVotes": 448,
+      "rymUrl": "https://rateyourmusic.com/release/album/dola/czasy/"
+    },
+    {
+      "rank": 53,
+      "artist": "MasseMord",
+      "album": "Let the World Burn",
+      "year": 2007,
+      "rymRating": 3.45,
+      "rymVotes": 248,
+      "rymUrl": "https://rateyourmusic.com/release/album/massemord/let-the-world-burn/"
+    },
+    {
+      "rank": 54,
+      "artist": "Bestial Raids",
+      "album": "Prime Evil Damnation",
+      "year": 2011,
+      "rymRating": 3.45,
+      "rymVotes": 206,
+      "rymUrl": "https://rateyourmusic.com/release/album/bestial-raids/prime-evil-damnation/"
+    },
+    {
+      "rank": 55,
+      "artist": "Gorycz",
+      "album": "Zasypia",
+      "year": 2025,
+      "rymRating": 3.46,
+      "rymVotes": 171,
+      "rymUrl": "https://rateyourmusic.com/release/album/gorycz/zasypia/"
+    },
+    {
+      "rank": 56,
+      "artist": "Cursebinder",
+      "album": "Drifting",
+      "year": 2023,
+      "rymRating": 3.46,
+      "rymVotes": 193,
+      "rymUrl": "https://rateyourmusic.com/release/album/cursebinder/drifting/"
+    },
+    {
+      "rank": 57,
+      "artist": "Biesy",
+      "album": "Noc lekkich obyczajów",
+      "year": 2017,
+      "rymRating": 3.44,
+      "rymVotes": 341,
+      "rymUrl": "https://rateyourmusic.com/release/album/biesy/noc-lekkich-obyczajow/"
+    },
+    {
+      "rank": 58,
+      "artist": "Blaze of Perdition",
+      "album": "Near Death Revelations",
+      "year": 2015,
+      "rymRating": 3.43,
+      "rymVotes": 511,
+      "rymUrl": "https://rateyourmusic.com/release/album/blaze-of-perdition/near-death-revelations/"
+    },
+    {
+      "rank": 59,
+      "artist": "Wędrujący Wiatr",
+      "album": "Zorzysta staje oćma",
+      "year": 2022,
+      "rymRating": 3.42,
+      "rymVotes": 541,
+      "rymUrl": "https://rateyourmusic.com/release/album/wedrujacy-wiatr/zorzysta-staje-ocma/"
+    },
+    {
+      "rank": 60,
+      "artist": "Hate",
+      "album": "Anaclasis - A Haunting Gospel of Malice & Hatred",
+      "year": 2005,
+      "rymRating": 3.43,
+      "rymVotes": 354,
+      "rymUrl": "https://rateyourmusic.com/release/album/hate/anaclasis-a-haunting-gospel-of-malice-and-hatred/"
+    },
+    {
+      "rank": 61,
+      "artist": "Morowe",
+      "album": "Piekło.Labirynty.Diabły",
+      "year": 2010,
+      "rymRating": 3.42,
+      "rymVotes": 440,
+      "rymUrl": "https://rateyourmusic.com/release/album/morowe/pieklo_labirynty_diably/"
+    },
+    {
+      "rank": 62,
+      "artist": "Evilfeast",
+      "album": "Odes to Lands of Past Traditions",
+      "year": 2020,
+      "rymRating": 3.51,
+      "rymVotes": 159,
+      "rymUrl": "https://rateyourmusic.com/release/album/evilfeast-uuntar/odes-to-lands-of-past-traditions/"
+    },
+    {
+      "rank": 63,
+      "artist": "Arkona",
+      "album": "Stella Pandora",
+      "year": 2024,
+      "rymRating": 3.44,
+      "rymVotes": 196,
+      "rymUrl": "https://rateyourmusic.com/release/album/arkona/stella-pandora/"
+    },
+    {
+      "rank": 64,
+      "artist": "Horda",
+      "album": "Form",
+      "year": 2023,
+      "rymRating": 3.47,
+      "rymVotes": 166,
+      "rymUrl": "https://rateyourmusic.com/release/album/horda/form/"
+    },
+    {
+      "rank": 65,
+      "artist": "Entropia",
+      "album": "Total",
+      "year": 2023,
+      "rymRating": 3.4,
+      "rymVotes": 641,
+      "rymUrl": "https://rateyourmusic.com/release/album/entropia/total/"
+    },
+    {
+      "rank": 66,
+      "artist": "Cultes des Ghoules",
+      "album": "Coven, or Evil Ways Instead of Love",
+      "year": 2016,
+      "rymRating": 3.4,
+      "rymVotes": 474,
+      "rymUrl": "https://rateyourmusic.com/release/album/cultes-des-ghoules/coven-or-evil-ways-instead-of-love/"
+    },
+    {
+      "rank": 67,
+      "artist": "-S-",
+      "album": "Dom, w którym mieszkał Wąż (A House Where Dwelled a Snake)",
+      "year": 2022,
+      "rymRating": 3.42,
+      "rymVotes": 274,
+      "rymUrl": "https://rateyourmusic.com/release/album/-s-/dom-w-ktorym-mieszkal-waz-a-house-where-dwelled-a-snake/"
+    },
+    {
+      "rank": 68,
+      "artist": "Truchło strzygi",
+      "album": "Pora umierać",
+      "year": 2018,
+      "rymRating": 3.4,
+      "rymVotes": 352,
+      "rymUrl": "https://rateyourmusic.com/release/album/truchlo-strzygi/pora-umierac/"
+    },
+    {
+      "rank": 69,
+      "artist": "Thy Worshiper",
+      "album": "Popiół (Introibo ad Altare Dei)",
+      "year": 1996,
+      "rymRating": 3.5,
+      "rymVotes": 179,
+      "rymUrl": "https://rateyourmusic.com/release/album/thy-worshiper/popiol-introibo-ad-altare-dei-1/"
+    },
+    {
+      "rank": 70,
+      "artist": "Cultes des Ghoules",
+      "album": "Sinister, or Treading the Darker Paths",
+      "year": 2018,
+      "rymRating": 3.39,
+      "rymVotes": 425,
+      "rymUrl": "https://rateyourmusic.com/release/album/cultes-des-ghoules/sinister-or-treading-the-darker-paths/"
+    },
+    {
+      "rank": 71,
+      "artist": "Infernal War",
+      "album": "Axiom",
+      "year": 2015,
+      "rymRating": 3.4,
+      "rymVotes": 331,
+      "rymUrl": "https://rateyourmusic.com/release/album/infernal-war/axiom/"
+    },
+    {
+      "rank": 72,
+      "artist": "Medico Peste",
+      "album": "ב: The Black Bile",
+      "year": 2020,
+      "rymRating": 3.41,
+      "rymVotes": 316,
+      "rymUrl": "https://rateyourmusic.com/release/album/medico-peste/%D7%91-the-black-bile/"
+    },
+    {
+      "rank": 73,
+      "artist": "Totenmesse",
+      "album": "To",
+      "year": 2018,
+      "rymRating": 3.4,
+      "rymVotes": 319,
+      "rymUrl": "https://rateyourmusic.com/release/album/totenmesse/to/"
+    },
+    {
+      "rank": 74,
+      "artist": "Pathfinder",
+      "album": "Fifth Element",
+      "year": 2012,
+      "rymRating": 3.34,
+      "rymVotes": 294,
+      "rymUrl": "https://rateyourmusic.com/release/album/pathfinder/fifth-element/"
+    },
+    {
+      "rank": 75,
+      "artist": "Dormant Ordeal",
+      "album": "We Had It Coming",
+      "year": 2016,
+      "rymRating": 3.41,
+      "rymVotes": 205,
+      "rymUrl": "https://rateyourmusic.com/release/album/dormant-ordeal/we-had-it-coming/"
+    },
+    {
+      "rank": 76,
+      "artist": "Licho",
+      "album": "Pogrzeb w karczmie",
+      "year": 2014,
+      "rymRating": 3.4,
+      "rymVotes": 172,
+      "rymUrl": "https://rateyourmusic.com/release/album/licho/pogrzeb-w-karczmie/"
+    },
+    {
+      "rank": 77,
+      "artist": "Infernum",
+      "album": "Farewell",
+      "year": 2005,
+      "rymRating": 3.4,
+      "rymVotes": 210,
+      "rymUrl": "https://rateyourmusic.com/release/album/infernum/farewell/"
+    },
+    {
+      "rank": 78,
+      "artist": "Hellveto",
+      "album": "In Arms of Kurpian Phantom",
+      "year": 2004,
+      "rymRating": 3.58,
+      "rymVotes": 164,
+      "rymUrl": "https://rateyourmusic.com/release/album/hellveto/in-arms-of-kurpian-phantom/"
+    },
+    {
+      "rank": 79,
+      "artist": "ZØRZA",
+      "album": "Twilight of the Golden Star",
+      "year": 2026,
+      "rymRating": 3.43,
+      "rymVotes": 176,
+      "rymUrl": "https://rateyourmusic.com/release/album/zorza/twilight-of-the-golden-star/"
+    },
+    {
+      "rank": 80,
+      "artist": "Profanum",
+      "album": "Profanum Aeternum: Eminence of Satanic Imperial Art",
+      "year": 1997,
+      "rymRating": 3.38,
+      "rymVotes": 336,
+      "rymUrl": "https://rateyourmusic.com/release/album/profanum/profanum-aeternum-eminence-of-satanic-imperial-art/"
+    },
+    {
+      "rank": 81,
+      "artist": "Iperyt",
+      "album": "Totalitarian Love Pulse",
+      "year": 2006,
+      "rymRating": 3.38,
+      "rymVotes": 257,
+      "rymUrl": "https://rateyourmusic.com/release/album/iperyt/totalitarian-love-pulse/"
+    },
+    {
+      "rank": 82,
+      "artist": "Medico Peste",
+      "album": "א: Tremendum et fascinatio",
+      "year": 2012,
+      "rymRating": 3.4,
+      "rymVotes": 227,
+      "rymUrl": "https://rateyourmusic.com/release/album/medico-peste/%D7%90-tremendum-et-fascinatio/"
+    },
+    {
+      "rank": 83,
+      "artist": "Owls Woods Graves",
+      "album": "Strix",
+      "year": 2025,
+      "rymRating": 3.38,
+      "rymVotes": 303,
+      "rymUrl": "https://rateyourmusic.com/release/album/owls-woods-graves/strix/"
+    },
+    {
+      "rank": 84,
+      "artist": "Kły",
+      "album": "Chen",
+      "year": 2021,
+      "rymRating": 3.39,
+      "rymVotes": 190,
+      "rymUrl": "https://rateyourmusic.com/release/album/kly/chen/"
+    },
+    {
+      "rank": 85,
+      "artist": "Arkona",
+      "album": "Age of Capricorn",
+      "year": 2019,
+      "rymRating": 3.42,
+      "rymVotes": 170,
+      "rymUrl": "https://rateyourmusic.com/release/album/arkona/age-of-capricorn/"
+    },
+    {
+      "rank": 86,
+      "artist": "Azarath",
+      "album": "Praise the Beast",
+      "year": 2009,
+      "rymRating": 3.37,
+      "rymVotes": 284,
+      "rymUrl": "https://rateyourmusic.com/release/album/azarath/praise-the-beast/"
+    },
+    {
+      "rank": 87,
+      "artist": "Blaze of Perdition",
+      "album": "Upharsin",
+      "year": 2024,
+      "rymRating": 3.36,
+      "rymVotes": 393,
+      "rymUrl": "https://rateyourmusic.com/release/album/blaze-of-perdition/upharsin/"
+    },
+    {
+      "rank": 88,
+      "artist": "Lux Occulta",
+      "album": "Dionysos",
+      "year": 1997,
+      "rymRating": 3.37,
+      "rymVotes": 211,
+      "rymUrl": "https://rateyourmusic.com/release/album/lux-occulta/dionysos/"
+    },
+    {
+      "rank": 89,
+      "artist": "Azarath",
+      "album": "Saint Desecration",
+      "year": 2020,
+      "rymRating": 3.37,
+      "rymVotes": 270,
+      "rymUrl": "https://rateyourmusic.com/release/album/azarath/saint-desecration/"
+    },
+    {
+      "rank": 90,
+      "artist": "Sodality",
+      "album": "Benediction Part 1",
+      "year": 2023,
+      "rymRating": 3.37,
+      "rymVotes": 177,
+      "rymUrl": "https://rateyourmusic.com/release/album/sodality/benediction-part-1/"
+    },
+    {
+      "rank": 91,
+      "artist": "Graveland",
+      "album": "Carpathian Wolves",
+      "year": 1994,
+      "rymRating": 3.32,
+      "rymVotes": 1000,
+      "rymUrl": "https://rateyourmusic.com/release/album/graveland/carpathian-wolves/"
+    },
+    {
+      "rank": 92,
+      "artist": "Bestial Raids",
+      "album": "Master Satan's Witchery",
+      "year": 2016,
+      "rymRating": 3.36,
+      "rymVotes": 173,
+      "rymUrl": "https://rateyourmusic.com/release/album/bestial-raids/master-satans-witchery/"
+    },
+    {
+      "rank": 93,
+      "artist": "Mord'A'Stigmata",
+      "album": "Dreams of Quiet Places",
+      "year": 2019,
+      "rymRating": 3.35,
+      "rymVotes": 387,
+      "rymUrl": "https://rateyourmusic.com/release/album/mordastigmata/dreams-of-quiet-places/"
+    },
+    {
+      "rank": 94,
+      "artist": "Seagulls Insane and Swans Deceased Mining Out the Void",
+      "album": "Seagulls Insane and Swans Deceased Mining Out the Void",
+      "year": 2011,
+      "rymRating": 3.36,
+      "rymVotes": 277,
+      "rymUrl": "https://rateyourmusic.com/release/album/seagulls-insane-and-swans-deceased-mining-out-the-void/seagulls-insane-and-swans-deceased-mining-out-the-void/"
+    },
+    {
+      "rank": 95,
+      "artist": "Voidhanger",
+      "album": "Dark Days of the Soul",
+      "year": 2018,
+      "rymRating": 3.35,
+      "rymVotes": 264,
+      "rymUrl": "https://rateyourmusic.com/release/album/voidhanger/dark-days-of-the-soul/"
+    },
+    {
+      "rank": 96,
+      "artist": "Lost Soul",
+      "album": "Atlantis: The New Beginning",
+      "year": 2015,
+      "rymRating": 3.36,
+      "rymVotes": 213,
+      "rymUrl": "https://rateyourmusic.com/release/album/lost-soul/atlantis-the-new-beginning/"
+    },
+    {
+      "rank": 97,
+      "artist": "Outre",
+      "album": "Ghost Chants",
+      "year": 2015,
+      "rymRating": 3.35,
+      "rymVotes": 334,
+      "rymUrl": "https://rateyourmusic.com/release/album/outre/ghost-chants/"
+    },
+    {
+      "rank": 98,
+      "artist": "Thaw",
+      "album": "Thaw",
+      "year": 2013,
+      "rymRating": 3.35,
+      "rymVotes": 305,
+      "rymUrl": "https://rateyourmusic.com/release/album/thaw/thaw/"
+    },
+    {
+      "rank": 99,
+      "artist": "Morowe",
+      "album": "S",
+      "year": 2014,
+      "rymRating": 3.34,
+      "rymVotes": 266,
+      "rymUrl": "https://rateyourmusic.com/release/album/morowe/s/"
+    },
+    {
+      "rank": 100,
+      "artist": "Frightful",
+      "album": "What Lies Ahead",
+      "year": 2025,
+      "rymRating": 3.35,
+      "rymVotes": 177,
+      "rymUrl": "https://rateyourmusic.com/release/album/frightful/what-lies-ahead/"
+    }
+  ]
+}

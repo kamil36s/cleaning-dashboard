@@ -1,0 +1,10 @@
+From: Pracuj JobAlert <alert@pracuj.pl>
+Return-Path: <attacker@example.test>
+Message-ID: <spoof@example.test>
+Date: Wed, 23 Sep 2026 08:20:00 +0200
+Subject: JobAlert - spoofed
+Content-Type: text/plain; charset=UTF-8
+
+JobAlert - nowe oferty
+Stanowisko: Fake Engineer
+https://www.pracuj.pl/praca/fake-engineer,offer-998

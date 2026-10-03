@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Workout</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./live-workout.css" />
+</head>
+
+<body class="live-workout-page">
+  <div class="workout-app-shell">
+    <aside class="workout-app-sidebar">
+      <a class="workout-app-back" href="./index.html">← Dashboard</a>
+      <div class="workout-app-brand">
+        <span class="workout-app-mark" aria-hidden="true">♥</span>
+        <div><span>TRAINING SYSTEM</span><h1>Live Workout</h1></div>
+      </div>
+      <p>Jedno miejsce dla planu, sesji live, dziennika i progresu.</p>
+      <nav class="workout-app-nav" aria-label="Sekcje Live Workout">
+        <button class="is-active" type="button" data-workout-tab="today"><span>01</span>Dziś</button>
+        <button type="button" data-workout-tab="plan"><span>02</span>Plan</button>
+        <button type="button" data-workout-tab="strength"><span>03</span>Trening siłowy</button>
+        <button type="button" data-workout-tab="history"><span>04</span>Historia</button>
+        <button type="button" data-workout-tab="ranking"><span>05</span>Ranking</button>
+        <button type="button" data-workout-tab="progress"><span>06</span>Progres</button>
+        <button type="button" data-workout-tab="journey"><span>07</span>Podróż</button>
+        <button type="button" data-workout-tab="library"><span>08</span>Biblioteka ćwiczeń</button>
+        <button type="button" data-workout-tab="settings"><span>09</span>Konfiguracja</button>
+      </nav>
+      <div class="workout-app-sidebar-note"><strong>Strength · Micro</strong><span>Jedna seria jest ważna.<br />ABS · weekly targets · progression</span></div>
+    </aside>
+
+    <main class="workout-app-main">
+      <header class="workout-app-topbar">
+        <div><span class="workout-app-kicker" id="workout-page-kicker">DZISIAJ</span><h2 id="workout-page-title">Centrum treningowe</h2><p id="workout-page-subtitle">Wybierz sesję i przejdź do trybu Focus.</p></div>
+        <div class="workout-app-topbar-actions"><span class="workout-app-api-status" id="workout-app-status">Ładowanie danych…</span><button type="button" data-workout-tab-jump="strength">QUICK STRENGTH</button></div>
+      </header>
+
+      <section class="workout-app-view is-active" data-workout-view="today">
+        <div class="workout-today-grid">
+          <section class="card live-workout-card workout-cycling-card" id="live-workout-card" role="region" aria-labelledby="live-workout-title">
+            <header class="header live-workout-widget-header">
+              <div class="title" id="live-workout-title"><span class="workout-session-icon is-cycling">C</span><div><div class="dashboard-widget-title-text">Indoor Cycling</div><div class="meta dashboard-widget-subtitle">HR live · strefy · Magene CSC</div></div></div>
+              <div class="live-workout-widget-actions"><span class="live-workout-status" data-live-widget-status>Gotowy</span><button class="card-cta" id="live-workout-open" type="button">OTWÓRZ FOCUS</button></div>
+            </header>
+            <div id="live-workout-root" aria-live="polite">Ładowanie planu…</div>
+          </section>
+          <section class="workout-today-strength" id="workout-today-strength"></section>
+        </div>
+        <section class="workout-next-strip" id="workout-next-strip"></section>
+      </section>
+
+      <section class="workout-app-view" data-workout-view="plan" hidden>
+        <div class="workout-view-head"><div><span>CYCLING + STRENGTH + WALKING</span><h3>Plan wielosesyjny</h3><p>Każdy dzień może zawierać kilka niezależnych jednostek. Status każdej zmieniasz osobno.</p></div><div class="workout-plan-legends"><div class="workout-plan-legend"><span class="is-cycling">Cycling</span><span class="is-strength">Strength</span><span class="is-walking">Walking</span></div><div class="workout-zone-key" aria-label="Kolory stref tętna"><span style="--zone-color:#3b82f6">LIGHT</span><span style="--zone-color:#10b981">INTENSIVE</span><span style="--zone-color:#f59e0b">AEROBIC</span><span style="--zone-color:#f97316">ANAEROBIC</span><span style="--zone-color:#ef4444">VO₂MAX</span></div></div></div>
+        <div class="workout-plan-layout"><div class="workout-plan-calendar" id="workout-plan-calendar"></div><aside class="workout-plan-detail" id="workout-plan-detail"><p>Wybierz sesję z planu.</p></aside></div>
+      </section>
+
+      <section class="workout-app-view" data-workout-view="strength" hidden>
+        <div class="workout-view-head"><div><span>MICRO-WORKOUTS · INDIVIDUAL SETS</span><h3>Strength</h3><p>Krótko, spontanicznie i z natychmiastowym zapisem każdej serii. ABS jest priorytetem.</p></div><button type="button" data-workout-tab-jump="library">LEGACY LIBRARY</button></div>
+        <div id="strength-app-root" aria-live="polite"><div class="strength-v2-loading">Ładowanie Strength…</div></div>
+        <details class="strength-v2-legacy"><summary>Opcjonalne presety FBW A / B</summary><p>Stary plan pozostaje dostępny jako preset, ale nie jest głównym sposobem rozpoczynania treningu.</p><div class="workout-program-grid" id="workout-program-grid"></div></details>
+      </section>
+
+      <section class="workout-app-view" data-workout-view="history" hidden>
+        <div class="workout-view-head"><div><span>DZIENNIK TRENINGOWY</span><h3>Wszystkie aktywności</h3><p>Cycling, walking i strength w jednej osi czasu, z detalami właściwymi dla typu sesji.</p></div><div class="workout-transfer-actions"><button type="button" id="workout-backup-export">BACKUP JSON</button><button type="button" id="workout-backup-import">IMPORT JSON</button><input type="file" id="workout-backup-file" accept=".json,application/json" hidden><button type="button" id="workout-history-refresh">ODŚWIEŻ</button></div></div>
+        <div class="workout-history" id="workout-history"></div>
+      </section>
+
+      <section class="workout-app-view" data-workout-view="ranking" hidden>
+        <div class="workout-view-head"><div><span>CARDIO · AKTYWNE KCAL</span><h3>Ranking dni</h3><p>Każdy dzień to łączna suma treningu cardio, Free Ride i spacerów. Przy wyniku zobaczysz udział rowerka i spaceru.</p></div><button type="button" id="workout-ranking-refresh">ODŚWIEŻ</button></div>
+        <div class="workout-ranking-summary" id="workout-ranking-summary"></div>
+        <div class="workout-ranking-layout">
+          <div class="workout-ranking-mode-switch" role="group" aria-label="Sposób sortowania rankingu"><button type="button" class="is-active" data-ranking-mode="calories" aria-pressed="true">NAJLEPSZY WYNIK DNIA</button><button type="button" data-ranking-mode="efficiency" aria-pressed="false">WYDAJNOŚĆ KCAL/H</button></div>
+          <section class="workout-ranking-column" id="workout-ranking-column"><header><span id="workout-ranking-kicker">KLASYFIKACJA</span><strong id="workout-ranking-title">Najlepsze dni · łączne kcal</strong></header><div class="workout-ranking-list" id="workout-ranking-list" aria-live="polite"></div></section>
+        </div>
+      </section>
+
+      <section class="workout-app-view" data-workout-view="progress" hidden>
+        <div class="workout-view-head"><div><span>BEZ PSEUDO-SCORE</span><h3>Progres siłowy</h3><p>Ciężar, powtórzenia, serie i czas — metryki, które naprawdę zostały zapisane.</p></div></div>
+        <div class="workout-progress-summary" id="workout-progress-summary"></div>
+        <div class="workout-progress-list" id="workout-progress-list"></div>
+      </section>
+
+      <section class="workout-app-view workout-journey-page" data-workout-view="journey" id="workout-journey-page" hidden>
+        <div class="workout-view-head"><div><span>KRAKÓW → SANTIAGO · 365 PUNKTÓW</span><h3>Podróż</h3><p>Trasa, wszystkie miejsca po drodze i Twoja prywatna kolekcja. Nazwy są jawne, ale grafika każdej pocztówki odkrywa się dopiero na miejscu.</p></div><div class="workout-journey-head-actions"><span id="workout-journey-status">Podróż czeka na otwarcie</span><button type="button" id="workout-journey-refresh">ODŚWIEŻ</button></div></div>
+        <div class="workout-journey-summary" id="workout-journey-summary" aria-live="polite"></div>
+        <section class="workout-journey-map-card"><header><div><span>MAPA TRASY</span><strong>Twój punkt na drodze</strong></div><small>Jasne punkty są już za Tobą</small></header><div class="workout-journey-map" id="workout-journey-map"></div></section>
+        <section class="workout-postcards-section">
+          <header><div><span>KOLEKCJA</span><h4>Pocztówki z drogi</h4><p>Widzisz plan miejsc, ale ilustracja pozostaje zapieczętowana aż do osiągnięcia punktu.</p></div><div class="workout-postcard-filters" id="workout-postcard-filters"><button type="button" class="is-active" data-postcard-filter="all">WSZYSTKIE</button><button type="button" data-postcard-filter="unlocked">ODKRYTE</button><button type="button" data-postcard-filter="locked">ZABLOKOWANE</button></div></header>
+          <div class="workout-postcard-collection" id="workout-postcard-collection"></div>
+        </section>
+        <input type="file" id="workout-postcard-file" accept="image/jpeg,image/png,image/webp" hidden>
+      </section>
+
+      <section class="workout-app-view" data-workout-view="library" hidden>
+        <div class="workout-view-head"><div><span>TECHNIKA PRZED PIERWSZĄ SESJĄ</span><h3>Biblioteka ćwiczeń</h3><p>Filmy są pomocą. Instrukcje, tempo i warianty zawsze pochodzą z planu aplikacji.</p></div><label class="workout-library-search">Szukaj<input id="workout-library-search" type="search" placeholder="np. wyciskanie, core, squat"></label></div>
+        <div class="workout-library-filters" id="workout-library-filters"><button class="is-active" data-library-filter="all">Wszystkie</button><button data-library-filter="warmup">Rozgrzewka</button><button data-library-filter="A">Workout A</button><button data-library-filter="B">Workout B</button><button data-library-filter="core">Core</button></div>
+        <div class="workout-library-grid" id="workout-library-grid"></div>
+      </section>
+
+      <section class="workout-app-view" data-workout-view="settings" hidden>
+        <div class="workout-view-head"><div><span>SPRZĘT I POJĘCIA</span><h3>Konfiguracja</h3><p>Profil hantli jest gotowy. Zmień masę gryfu, jeśli później ją dokładnie zważysz.</p></div></div>
+        <div class="workout-settings-grid">
+          <form class="workout-settings-card" id="workout-equipment-form"><span>HOME STRENGTH EQUIPMENT</span><h4>Hantle gwintowane</h4><label>Masa jednego gryfu z zaciskami [kg]<input name="handleWeight" type="number" min="0.5" max="10" step="0.1" value="2.5"></label><dl><div><dt>Gryfy</dt><dd>2 × 36 cm · 28 mm</dd></div><div><dt>Talerze</dt><dd>8 × 2.5 kg · 4 × 1.25 kg</dd></div><div><dt>Mata</dt><dd>Dostępna</dd></div><div><dt>Ławka</dt><dd>Brak — warianty floor</dd></div></dl><button type="submit">ZAPISZ PROFIL</button></form>
+          <form class="workout-settings-card" id="workout-profile-form"><span>PROFIL OBLICZEŃ</span><h4>Strefy HR i kalorie</h4><label>Płeć biologiczna do wzoru Keytela<select name="sex"><option value="male">Mężczyzna</option><option value="female">Kobieta</option></select></label><label>Wiek<input name="ageYears" type="number" min="14" max="100" required></label><label>Waga [kg]<input name="weightKg" type="number" min="30" max="300" step="0.1" required></label><label>HRmax<input name="maxHr" type="number" min="100" max="240" required></label><label>BMR [kcal/dzień]<input name="bmrKcal" type="number" min="800" max="4000" required></label><small>Ten sam lokalny profil jest używany przez aktywny Focus cycling.</small><button type="submit">ZAPISZ OBLICZENIA</button></form>
+          <section class="workout-settings-card"><span>SŁOWNICZEK</span><h4>Najważniejsze pojęcia</h4><div class="workout-glossary" id="workout-glossary"></div></section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="workout-library-dialog" id="workout-library-dialog"><article id="workout-library-dialog-content"></article></dialog>
+  <dialog class="workout-reschedule-dialog" id="workout-reschedule-dialog"><form method="dialog"><h3>Przenieś sesję</h3><label>Nowa data<input id="workout-reschedule-date" type="date" required></label><div><button value="cancel">Anuluj</button><button value="save">Zapisz</button></div></form></dialog>
+  <dialog class="workout-postcard-preview-dialog" id="workout-postcard-preview-dialog" aria-labelledby="workout-postcard-preview-title">
+    <article>
+      <button type="button" class="workout-postcard-preview-close" data-postcard-preview-close aria-label="Zamknij podgląd">×</button>
+      <img id="workout-postcard-preview-image" alt="">
+      <footer><div><span>POCZTÓWKA Z DROGI</span><strong id="workout-postcard-preview-title"></strong><small id="workout-postcard-preview-meta"></small></div><button type="button" data-postcard-preview-close>ZAMKNIJ</button></footer>
+    </article>
+  </dialog>
+
+  <script type="module" src="./js/live-workout-page.js"></script>
+</body>
+
+</html>

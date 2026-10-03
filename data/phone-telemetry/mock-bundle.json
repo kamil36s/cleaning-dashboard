@@ -1,0 +1,278 @@
+[
+  {
+    "exportKind": "phoneTelemetryExport",
+    "schemaVersion": "1.0.0",
+    "exportedAt": "2026-03-13T00:05:00+01:00",
+    "timezone": "Europe/Warsaw",
+    "device": {
+      "deviceId": "pixel7-demo",
+      "deviceLabel": "Pixel 7",
+      "manufacturer": "Google",
+      "model": "Pixel 7",
+      "sdkInt": 34,
+      "osVersion": "14",
+      "appVersionName": "0.1.0",
+      "appVersionCode": 1
+    },
+    "privacy": {
+      "storeNotificationText": true,
+      "notificationTextMode": "raw"
+    },
+    "dayRange": {
+      "startDay": "2026-03-12",
+      "endDay": "2026-03-12"
+    },
+    "appUsageSessions": [
+      {
+        "id": "app-20260312-001",
+        "day": "2026-03-12",
+        "appPackage": "com.whatsapp",
+        "appLabel": "WhatsApp",
+        "sessionStart": "2026-03-12T06:58:00+01:00",
+        "sessionEnd": "2026-03-12T07:05:00+01:00",
+        "durationSeconds": 420,
+        "category": "messaging",
+        "unlockSessionId": "unlock-20260312-001"
+      }
+    ],
+    "phoneSessions": [
+      {
+        "id": "unlock-20260312-001",
+        "day": "2026-03-12",
+        "screenUnlockTime": "2026-03-12T06:58:00+01:00",
+        "screenLockTime": "2026-03-12T07:14:00+01:00",
+        "durationSeconds": 960
+      }
+    ],
+    "notificationEvents": [
+      {
+        "id": "notif-20260312-001",
+        "day": "2026-03-12",
+        "timestamp": "2026-03-12T07:18:00+01:00",
+        "sourceAppPackage": "com.whatsapp",
+        "sourceAppLabel": "WhatsApp",
+        "senderOrThreadTitle": "Alex",
+        "conversationId": "wa:alex",
+        "previewAvailable": true,
+        "messageCount": 1,
+        "isGroup": false,
+        "eventSource": "notification",
+        "messageLike": true,
+        "rawTitle": "Alex",
+        "rawText": "On my way"
+      }
+    ],
+    "dailyAggregates": [
+      {
+        "day": "2026-03-12",
+        "totalPhoneMinutes": 75,
+        "unlockCount": 5,
+        "notificationCount": 4,
+        "messageLikeNotificationCount": 3,
+        "appSwitchCount": 3,
+        "nightUsageMinutes": 16,
+        "topApps": [
+          {
+            "appPackage": "com.spotify.music",
+            "appLabel": "Spotify",
+            "durationSeconds": 900,
+            "sessionCount": 1
+          }
+        ],
+        "topContactsOrThreads": [
+          {
+            "label": "Alex",
+            "conversationId": "wa:alex",
+            "messageLikeCount": 1,
+            "sourceAppPackage": "com.whatsapp",
+            "sourceAppLabel": "WhatsApp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "exportKind": "phoneTelemetryExport",
+    "schemaVersion": "1.0.0",
+    "exportedAt": "2026-03-14T00:05:00+01:00",
+    "timezone": "Europe/Warsaw",
+    "device": {
+      "deviceId": "pixel7-demo",
+      "deviceLabel": "Pixel 7",
+      "manufacturer": "Google",
+      "model": "Pixel 7",
+      "sdkInt": 34,
+      "osVersion": "14",
+      "appVersionName": "0.1.0",
+      "appVersionCode": 1
+    },
+    "privacy": {
+      "storeNotificationText": true,
+      "notificationTextMode": "raw"
+    },
+    "dayRange": {
+      "startDay": "2026-03-13",
+      "endDay": "2026-03-13"
+    },
+    "appUsageSessions": [
+      {
+        "id": "app-20260313-003",
+        "day": "2026-03-13",
+        "appPackage": "com.google.android.youtube",
+        "appLabel": "YouTube",
+        "sessionStart": "2026-03-13T08:26:00+01:00",
+        "sessionEnd": "2026-03-13T08:42:00+01:00",
+        "durationSeconds": 960,
+        "category": "video",
+        "unlockSessionId": "unlock-20260313-002"
+      }
+    ],
+    "phoneSessions": [
+      {
+        "id": "unlock-20260313-002",
+        "day": "2026-03-13",
+        "screenUnlockTime": "2026-03-13T08:26:00+01:00",
+        "screenLockTime": "2026-03-13T08:44:00+01:00",
+        "durationSeconds": 1080
+      }
+    ],
+    "notificationEvents": [
+      {
+        "id": "notif-20260313-003",
+        "day": "2026-03-13",
+        "timestamp": "2026-03-13T12:04:30+01:00",
+        "sourceAppPackage": "com.slack",
+        "sourceAppLabel": "Slack",
+        "senderOrThreadTitle": "Build alerts",
+        "conversationId": "slack:build-alerts",
+        "previewAvailable": true,
+        "messageCount": 5,
+        "isGroup": true,
+        "eventSource": "notification",
+        "messageLike": true,
+        "rawTitle": "Build alerts",
+        "rawText": "5 new messages"
+      }
+    ],
+    "dailyAggregates": [
+      {
+        "day": "2026-03-13",
+        "totalPhoneMinutes": 102,
+        "unlockCount": 5,
+        "notificationCount": 5,
+        "messageLikeNotificationCount": 5,
+        "appSwitchCount": 5,
+        "nightUsageMinutes": 16,
+        "topApps": [
+          {
+            "appPackage": "com.google.android.youtube",
+            "appLabel": "YouTube",
+            "durationSeconds": 960,
+            "sessionCount": 1
+          }
+        ],
+        "topContactsOrThreads": [
+          {
+            "label": "Build alerts",
+            "conversationId": "slack:build-alerts",
+            "messageLikeCount": 5,
+            "sourceAppPackage": "com.slack",
+            "sourceAppLabel": "Slack"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "exportKind": "phoneTelemetryExport",
+    "schemaVersion": "1.0.0",
+    "exportedAt": "2026-03-15T00:05:00+01:00",
+    "timezone": "Europe/Warsaw",
+    "device": {
+      "deviceId": "pixel7-demo",
+      "deviceLabel": "Pixel 7",
+      "manufacturer": "Google",
+      "model": "Pixel 7",
+      "sdkInt": 34,
+      "osVersion": "14",
+      "appVersionName": "0.1.0",
+      "appVersionCode": 1
+    },
+    "privacy": {
+      "storeNotificationText": true,
+      "notificationTextMode": "raw"
+    },
+    "dayRange": {
+      "startDay": "2026-03-14",
+      "endDay": "2026-03-14"
+    },
+    "appUsageSessions": [
+      {
+        "id": "app-20260314-008",
+        "day": "2026-03-14",
+        "appPackage": "com.google.android.youtube",
+        "appLabel": "YouTube",
+        "sessionStart": "2026-03-14T18:41:00+01:00",
+        "sessionEnd": "2026-03-14T18:56:00+01:00",
+        "durationSeconds": 900,
+        "category": "video",
+        "unlockSessionId": "unlock-20260314-004"
+      }
+    ],
+    "phoneSessions": [
+      {
+        "id": "unlock-20260314-004",
+        "day": "2026-03-14",
+        "screenUnlockTime": "2026-03-14T18:41:00+01:00",
+        "screenLockTime": "2026-03-14T19:14:00+01:00",
+        "durationSeconds": 1980
+      }
+    ],
+    "notificationEvents": [
+      {
+        "id": "notif-20260314-009",
+        "day": "2026-03-14",
+        "timestamp": "2026-03-14T22:42:00+01:00",
+        "sourceAppPackage": "com.discord",
+        "sourceAppLabel": "Discord",
+        "senderOrThreadTitle": "Friends group",
+        "conversationId": "discord:friends",
+        "previewAvailable": true,
+        "messageCount": 5,
+        "isGroup": true,
+        "eventSource": "notification",
+        "messageLike": true,
+        "rawTitle": "Friends group",
+        "rawText": "5 new messages"
+      }
+    ],
+    "dailyAggregates": [
+      {
+        "day": "2026-03-14",
+        "totalPhoneMinutes": 120,
+        "unlockCount": 5,
+        "notificationCount": 10,
+        "messageLikeNotificationCount": 9,
+        "appSwitchCount": 7,
+        "nightUsageMinutes": 38,
+        "topApps": [
+          {
+            "appPackage": "com.whatsapp",
+            "appLabel": "WhatsApp",
+            "durationSeconds": 1200,
+            "sessionCount": 3
+          }
+        ],
+        "topContactsOrThreads": [
+          {
+            "label": "Ops room",
+            "conversationId": "slack:ops-room",
+            "messageLikeCount": 5,
+            "sourceAppPackage": "com.slack",
+            "sourceAppLabel": "Slack"
+          }
+        ]
+      }
+    ]
+  }
+]

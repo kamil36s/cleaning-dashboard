@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/cleaning.schema.json",
+  "title": "Cleaning",
+  "description": "Cleaning cadence and overdue facts without addresses or task text.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "cleaning"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "active_tasks": {
+          "type": "integer"
+        },
+        "overdue": {
+          "type": "integer"
+        },
+        "never_completed": {
+          "type": "integer"
+        },
+        "overdue_rate_pct": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Overdue share of active tasks, percent."
+        },
+        "active_by_room": {
+          "type": "object"
+        },
+        "active_by_category": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "active_tasks",
+        "overdue",
+        "never_completed",
+        "overdue_rate_pct",
+        "active_by_room",
+        "active_by_category"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "apartment": {
+            "type": "string"
+          },
+          "room": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "last_completed": {
+            "type": "string",
+            "format": "date"
+          },
+          "frequency_days": {
+            "type": "number"
+          },
+          "days_overdue": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "apartment",
+          "room",
+          "category",
+          "last_completed",
+          "frequency_days",
+          "days_overdue"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

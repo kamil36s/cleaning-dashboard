@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 7.7 browser smoke: pending</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/language.css">
+</head>
+<body class="language-page">
+  <main class="language-content">
+    <section id="lemma"></section>
+    <section id="phrasebook"></section>
+    <section id="cloze"></section>
+    <section id="generate"></section>
+    <output id="result">PENDING</output>
+  </main>
+  <script type="module">
+    import { renderLemmaDetail } from '/js/language/components/lemma-detail.js';
+    import { renderPhrasebook } from '/js/language/views/phrasebook.js';
+    import { renderCloze } from '/js/language/views/cloze.js';
+    import { renderGenerate } from '/js/language/views/generate.js';
+
+    const assertions = [];
+    const check = (value, label) => assertions.push({ value: Boolean(value), label });
+    const handlers = {
+      onSave: async () => {}, onLockMapping: async () => {}, onSearchMerge: async () => [],
+      onPrepareMerge: () => {}, onAnkiPreview: async () => ({}), onAnkiCommit: async () => {},
+      onAnkiLink: async () => ({}), onAnkiResolve: async () => {},
+      onSaveTranslation: async () => {}, onDeleteTranslation: async () => {},
+    };
+    renderLemmaDetail(document.querySelector('#lemma'), {
+      lemma: { id: 'l'.repeat(32), lemmaDisplay: 'data', lemmaNormalized: 'data', partOfSpeech: 'NOUN', userNotes: '<img src=x onerror=alert(1)>' },
+      knowledge: { knowledgeStatus: 'NEW', disposition: 'TRACKED', totalExposures: 0 },
+      forms: [], frequencies: [], events: [],
+      anki: { status: { status: 'NOT_CONFIGURED' }, cards: [] },
+      reference: { available: false }, referenceResolution: { status: 'UNAVAILABLE', candidates: [] },
+      lexical: {
+        preferredTranslationLocales: ['pl-PL', 'en'],
+        dictionary: {
+          available: true, lookupStatus: 'MATCHED',
+          provider: { id: 'ORDBOKENE_BOKMALSORDBOKA', version: 'live-display-api/v1', license: 'CC-BY-4.0', attribution: 'UiB and Språkrådet · ordbøkene.no · CC BY 4.0' },
+          articles: [{ articleId: '9296', lemmas: ['data'], partsOfSpeech: ['NOUN'], sourceVersion: 'article-updated:fixture', pronunciations: [], senses: [
+            { sourceLocalId: '4', definition: 'opplysninger om verden', usageLabels: ['faglig'], examples: ['samle inn data'], relations: [{ type: 'ARTICLE_REFERENCE', term: 'datateknologi' }] },
+            { sourceLocalId: '5', definition: '<scr' + 'ipt>alert(1)</scr' + 'ipt>', usageLabels: [], examples: [], relations: [] },
+          ] }],
+        },
+        translations: {
+          user: [{ targetLocale: 'pl-PL', translationText: 'dane' }],
+          learnerGlosses: [{ value: 'data', role: 'KELLY_TRANSLATION_NOT_DICTIONARY_SENSE', source: { name: 'KELLY' } }],
+          polish: { available: false, status: 'NOT_CONFIGURED' },
+        },
+      },
+    }, handlers);
+    const lemma = document.querySelector('#lemma');
+    check(lemma.querySelectorAll('.language-sense-list > li').length === 2, 'multiple source senses render');
+    check(lemma.textContent.includes('CC-BY-4.0') && lemma.textContent.includes('article-updated:fixture'), 'definition provenance renders');
+    check(lemma.textContent.includes('KELLY_TRANSLATION_NOT_DICTIONARY_SENSE'), 'KELLY stays a source gloss');
+    check(lemma.textContent.includes('Polish provider translation is not configured'), 'missing Polish translation is explicit');
+    check(!lemma.querySelector('script') && !lemma.querySelector('img'), 'dictionary and user text render safely');
+
+    let updated = null;
+    renderPhrasebook(document.querySelector('#phrasebook'), {
+      loading: false, error: null, query: '', sourceType: '', total: 1,
+      items: [{ id: 'p'.repeat(32), expressionText: '<b>på jobb</b>', sourceType: 'READER', sourceEntityId: 'd'.repeat(32), sourceContext: '<scr' + 'ipt>exact context</scr' + 'ipt>', userTranslation: '', note: '', links: [{ linkType: 'LEMMA', linkValue: 'l'.repeat(32) }] }],
+    }, { onSearch: () => {}, onUpdate: async (id, payload) => { updated = { id, payload }; }, onDelete: async () => {} });
+    const phrasebook = document.querySelector('#phrasebook');
+    check(!phrasebook.querySelector('script') && !phrasebook.querySelector('b'), 'Phrasebook snapshots render safely');
+    check(phrasebook.textContent.includes('<scr' + 'ipt>exact context</scr' + 'ipt>'), 'exact source context remains visible');
+    const fields = phrasebook.querySelectorAll('textarea'); fields[0].value = 'w pracy'; fields[1].value = 'note';
+    phrasebook.querySelector('.language-phrasebook-entry .is-primary').click();
+    await new Promise((resolve) => setTimeout(resolve));
+    check(updated?.payload.userTranslation === 'w pracy' && updated?.payload.note === 'note', 'Phrasebook edits work');
+
+    let clozeSaved = 0;
+    renderCloze(document.querySelector('#cloze'), {
+      loading: false, busy: false, error: null, notice: '', preferences: { translationTiming: 'AFTER' }, audio: {}, feedback: null, lastItem: null,
+      session: { id: 'c'.repeat(32), trackKey: 'FAST_TRACK_1', actualItemCount: 1, currentItem: { index: 0, fingerprint: 'f', sentenceText: 'Han er på jobb.', blankStart: 7, blankEnd: 9, options: ['på', 'av'], source: { sentenceId: '1', license: 'CC-BY-2.0-FR' } } },
+    }, { onAnswer: () => {}, onReveal: () => {}, onSkip: () => {}, onReport: () => {}, onBack: () => {}, onPlayAudio: () => {}, onPreferences: () => {}, onSaveExpression: async () => { clozeSaved += 1; return { reused: true }; } });
+    [...document.querySelectorAll('#cloze button')].find((item) => item.textContent === 'Save sentence').click();
+    await new Promise((resolve) => setTimeout(resolve));
+    check(clozeSaved === 1 && document.querySelector('#cloze').textContent.includes('Already in Phrasebook'), 'Cloze save retry is explicit');
+
+    let generatedSaved = null;
+    renderGenerate(document.querySelector('#generate'), {
+      busy: false, error: null, notice: '', topics: [], request: null, contextPack: null,
+      form: { length: 400, difficultyPreset: 'BALANCED', targetCoverage: 95, customTopic: '', grammarFocus: '', styleInstruction: '', referenceEnrichment: true },
+      candidates: [{ id: 'g'.repeat(32), attemptNumber: 1, title: 'Generated', source: 'MANUAL_EXTERNAL_LLM', status: 'IN_TOLERANCE', extractedText: 'Han er på jobb i dag.', analysis: { coverage: { tokenCoveragePercent: 95, uniqueLemmaCoveragePercent: 90 }, requestedTokenCoveragePercent: 95, tolerancePercentagePoints: 2, length: { actualWords: 6, requestedWords: 6 }, problematicWords: [], targetUsage: [] } }],
+    }, { onCreate: () => {}, onAnalyze: () => {}, onRevision: () => {}, onAccept: () => {}, onReject: () => {}, onCopy: () => {}, onExport: () => {}, onImport: () => {}, onSaveExpression: async (_candidate, expression) => { generatedSaved = expression; return { reused: false }; } });
+    const generated = document.querySelector('#generate'); generated.querySelector('input[placeholder^="Exact expression"]').value = 'på jobb';
+    [...generated.querySelectorAll('button')].find((item) => item.textContent === 'Save expression').click();
+    await new Promise((resolve) => setTimeout(resolve));
+    check(generatedSaved === 'på jobb', 'generated expression save works');
+    check(document.documentElement.scrollWidth <= document.documentElement.clientWidth, 'no horizontal overflow');
+
+    const passed = assertions.filter((item) => item.value).length;
+    document.querySelector('#result').textContent = `${passed}/${assertions.length} ${passed === assertions.length ? 'PASS' : 'FAIL'}: ${assertions.map((item) => `${item.value ? '✓' : '✗'} ${item.label}`).join(' | ')}`;
+    document.title = `Phase 7.7 browser smoke: ${passed}/${assertions.length}`;
+    document.body.dataset.smoke = passed === assertions.length ? 'pass' : 'fail';
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "versionHandling": [
+    "original",
+    "piano version",
+    "orchestral version",
+    "two pianos version",
+    "piano four hands version",
+    "arrangement by another person",
+    "suite",
+    "other"
+  ],
+  "lowConfidenceThreshold": 0.8,
+  "reviewTriggers": [
+    "Mixed instrumentation in a grouped set",
+    "Version or arrangement status unclear",
+    "Dates or numbering vary by source",
+    "Imported source category does not match instrumentation"
+  ]
+}

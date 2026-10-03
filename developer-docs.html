@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Developer Docs</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="page-settings page-developer-docs">
+    <div class="wrap settings-wrap developer-docs-wrap">
+        <aside class="panel settings-sidebar">
+            <div class="settings-sidebar-top">
+                <div class="settings-kicker">Dashboard</div>
+                <h1>Developer Docs</h1>
+                <p class="meta settings-lead">
+                    Placeholder developer documentation for dashboard widgets and project components.
+                </p>
+            </div>
+
+            <div class="settings-nav">
+                <a class="budget-action" href="./settings.html">Back to Settings</a>
+                <a class="budget-action budget-action--ghost" href="./index.html">Dashboard</a>
+            </div>
+
+            <section class="settings-section-picker" aria-labelledby="developer-docs-picker-title">
+                <div class="settings-kicker">Entries</div>
+                <h2 id="developer-docs-picker-title">Select component</h2>
+                <p class="meta settings-copy">
+                    Each entry has the same starter headings so detailed notes can be filled in later.
+                </p>
+
+                <nav class="settings-section-nav developer-docs-nav" id="developer-docs-nav" aria-label="Developer documentation entries"></nav>
+            </section>
+        </aside>
+
+        <main class="main settings-main developer-docs-main" id="developer-docs-content"></main>
+    </div>
+
+    <script type="module" src="./js/docs/projectDocsPage.js"></script>
+</body>
+
+</html>

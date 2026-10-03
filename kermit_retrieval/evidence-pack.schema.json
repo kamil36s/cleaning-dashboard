@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/kermit-retrieval/evidence-pack.v1",
+  "title": "Kermit Phase 4 evidence pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "normalizedQuestion", "resolvedContext", "claimType", "candidateSubsystems", "selectedEvidence", "conflicts", "uncertainty", "staleSources", "omittedDueToBudget", "evidenceAsOf", "diagnostics"],
+  "properties": {
+    "contractVersion": {"const": 1},
+    "normalizedQuestion": {"type": "string"},
+    "resolvedContext": {"type": "object"},
+    "claimType": {"enum": ["behavior", "implementation", "calculation", "ownership", "design", "unknown"]},
+    "candidateSubsystems": {"type": "array", "maxItems": 4, "items": {"type": "object", "required": ["id", "score"], "properties": {"id": {"type": "string"}, "score": {"type": "integer"}}}},
+    "selectedEvidence": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/evidence"}},
+    "conflicts": {"type": "array", "maxItems": 8, "items": {"type": "object", "required": ["id", "subsystem", "type", "category", "sideA", "sideB", "registerEvidenceId", "status", "description", "impact", "provenance"]}},
+    "uncertainty": {"type": "array", "items": {"type": "string"}},
+    "staleSources": {"type": "array", "items": {"type": "string"}},
+    "omittedDueToBudget": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "evidenceAsOf": {"type": "object", "required": ["buildFingerprint", "indexSchemaVersion"], "properties": {"buildFingerprint": {"type": "string"}, "indexSchemaVersion": {"const": 1}}},
+    "diagnostics": {"type": "object", "required": ["normalizedTokens", "topEntityMatches", "relationshipExpansion", "selectedEvidenceIds", "evidenceBytes", "approxTokens", "limits"]}
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["evidenceId", "layer", "sourceId", "entityIds", "sourceClass", "authorityRole", "factStatus", "subsystem", "path", "locator", "sourceSha256", "indexSchemaVersion", "freshness", "storageRole", "privacyClassification", "reasonSelected", "score", "scoreComponents", "conflictRefs", "truncated"],
+      "properties": {
+        "evidenceId": {"type": "string", "pattern": "^E[1-9][0-9]*$"},
+        "layer": {"enum": ["L1", "L2", "L3"]},
+        "sourceId": {"type": "string"},
+        "entityIds": {"type": "array", "items": {"type": "string"}},
+        "sourceClass": {"type": "string"},
+        "authorityRole": {"type": "string"},
+        "factStatus": {"type": "string"},
+        "subsystem": {"type": "string"},
+        "path": {"type": "string"},
+        "locator": {"type": "object"},
+        "excerpt": {"type": "string"},
+        "metadata": {"type": "object"},
+        "sourceSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "indexSchemaVersion": {"const": 1},
+        "freshness": {"const": "current"},
+        "storageRole": {"type": ["string", "null"]},
+        "privacyClassification": {"type": "string"},
+        "reasonSelected": {"type": "string"},
+        "score": {"type": "integer"},
+        "scoreComponents": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "relevanceSignals": {"type": "array", "items": {"enum": ["direct_match", "section_intent_match", "subsystem_match", "finding_match"]}},
+        "relationshipRefs": {"type": "array", "maxItems": 4, "items": {"type": "object"}},
+        "conflictRefs": {"type": "array", "items": {"type": "string"}},
+        "truncated": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -1,10 +1,13 @@
 // render_weather_api.js
 import { setTempAccent, tempColor } from '../temp-scale.js';
+import { WX_COLORS } from '../config.js';
 
 const el = (id) => document.getElementById(id);
 const DASH = '\u2014';
 const fmt1 = (v) => (Number.isFinite(v) ? v.toFixed(1) : DASH);
 const fmtTemp = (v) => (Number.isFinite(v) ? String(Math.round(v)) : DASH);
+const fmtSpeed = (v) => (Number.isFinite(v) ? `${v.toFixed(1)} km/h` : DASH);
+const fmtPrcp = (v) => (Number.isFinite(v) ? `${v.toFixed(1)} mm/h` : DASH);
 const formatTempLabel = (v) => {
   const t = fmtTemp(v);
   return t === DASH ? DASH : `${t}\u00b0C`;
@@ -67,52 +70,98 @@ const BFT = [
 ];
 const windLabel = (v) => BFT.find((b) => (Number(v) || 0) <= b.max).label;
 
+function rainCategory(v) {
+  if (!Number.isFinite(v) || v < 0.05) return null;
+  if (v < 0.3) return 'mżawka';
+  if (v < 2.5) return 'lekki';
+  if (v < 7.6) return 'umiark.';
+  if (v < 50)  return 'intensywny';
+  return 'ulewa';
+}
+
 let lastNowTemp = null;
+
+// ---- Icon style system ----
+const WX_ICON_STYLE_KEY = 'wx-icon-style';
+const WX_ICON_STYLES = ['outline', 'filled', 'neon', 'retro', 'glass'];
+
+function getIconStyle() {
+  try { return localStorage.getItem(WX_ICON_STYLE_KEY) || 'outline'; } catch (_) { return 'outline'; }
+}
+function saveIconStyle(s) {
+  try { localStorage.setItem(WX_ICON_STYLE_KEY, s); } catch (_) {}
+}
 
 const svgWrap = (inner) =>
   `<svg class="wx-icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+const svgFilled = (inner) =>
+  `<svg class="wx-icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="none">${inner}</svg>`;
 
-const ICONS = {
+const ICONS_OUTLINE = {
   clear: svgWrap(
-    `<circle cx="12" cy="12" r="4"></circle>
-     <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>`
+    `<circle cx="12" cy="12" r="4.5"></circle>
+     <path d="M12 1.5v2M12 20.5v2M3.5 3.5l1.4 1.4M19.1 19.1l1.4 1.4M1.5 12h2M20.5 12h2M3.5 20.5l1.4-1.4M19.1 4.9l1.4-1.4"></path>`
   ),
   partly: svgWrap(
-    `<path d="M6 13a4.5 4.5 0 0 1 8.7-1.5"></path>
-     <circle cx="9" cy="8" r="3"></circle>
-     <path d="M7 18h9a4 4 0 0 0 0-8 5 5 0 0 0-9.5-1A4 4 0 0 0 7 18z"></path>`
+    `<circle cx="9.5" cy="7.5" r="3"></circle>
+     <path d="M9.5 4.5V3M9.5 10.5V12M6.5 7.5H5M12.5 7.5H14M7.6 5.6l-1-1M11.4 9.4l1 1"></path>
+     <path d="M7 18h10a4.5 4.5 0 0 0 .5-9 5.5 5.5 0 0 0-10-1.5A4 4 0 0 0 7 18z"></path>`
   ),
   cloudy: svgWrap(
-    `<path d="M7 18h9a4 4 0 0 0 0-8 5 5 0 0 0-9.5-1A4 4 0 0 0 7 18z"></path>`
+    `<path d="M6.5 18.5h10a4.5 4.5 0 0 0 .4-9 5.5 5.5 0 0 0-10.8-.5A4 4 0 0 0 6.5 18.5z"></path>`
   ),
   fog: svgWrap(
-    `<path d="M7 14h9a3.5 3.5 0 0 0 0-7 4.5 4.5 0 0 0-8.5-1.1A3.5 3.5 0 0 0 7 14z"></path>
-     <path d="M4 17h16M6 20h12"></path>`
+    `<path d="M6.5 13h10a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.8-.5A3.5 3.5 0 0 0 6.5 13z"></path>
+     <path d="M3 16h18M5 19.5h14"></path>`
+  ),
+  drizzle: svgWrap(
+    `<path d="M6.5 13h10a4 4 0 0 0 .4-8 5 5 0 0 0-9.8-1A4 4 0 0 0 6.5 13z"></path>
+     <path d="M8.5 17l-.5 1.5M12.5 17l-.5 1.5M16.5 17l-.5 1.5"></path>`
   ),
   rain: svgWrap(
-    `<path d="M7 13h9a4 4 0 0 0 0-8 5 5 0 0 0-9.5-1A4 4 0 0 0 7 13z"></path>
-     <path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"></path>`
+    `<path d="M6.5 13h10a4 4 0 0 0 .4-8 5 5 0 0 0-9.8-1A4 4 0 0 0 6.5 13z"></path>
+     <path d="M8 17l-1.5 3M12 16.5l-1.5 3M16 17l-1.5 3"></path>`
   ),
   snow: svgWrap(
-    `<path d="M7 13h9a4 4 0 0 0 0-8 5 5 0 0 0-9.5-1A4 4 0 0 0 7 13z"></path>
-     <path d="M8 16v4M7 18h2M12 16v4M11 18h2M16 16v4M15 18h2"></path>`
+    `<path d="M6.5 13h10a4 4 0 0 0 .4-8 5 5 0 0 0-9.8-1A4 4 0 0 0 6.5 13z"></path>
+     <path d="M8 17v3.5M7 18.5h2M12 17v3.5M11 18.5h2M16 17v3.5M15 18.5h2"></path>`
   ),
   storm: svgWrap(
-    `<path d="M7 13h9a4 4 0 0 0 0-8 5 5 0 0 0-9.5-1A4 4 0 0 0 7 13z"></path>
-     <path d="M11 14l-2 4h3l-2 4 5-6h-3l2-4z"></path>`
+    `<path d="M6.5 13h10a4 4 0 0 0 .4-8 5 5 0 0 0-9.8-1A4 4 0 0 0 6.5 13z"></path>
+     <path d="M10.5 14l-2.5 5h3.5l-2.5 5 6.5-7h-4l2-3z"></path>`
   ),
   unknown: svgWrap(`<circle cx="12" cy="12" r="4"></circle><path d="M12 7v2"></path>`)
 };
 
-function iconForCode(code) {
-  if (code === 0) return ICONS.clear;
-  if (code === 1 || code === 2) return ICONS.partly;
-  if (code === 3) return ICONS.cloudy;
-  if (code === 45 || code === 48) return ICONS.fog;
-  if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return ICONS.rain;
-  if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) return ICONS.snow;
-  if (code === 95 || code === 96 || code === 99) return ICONS.storm;
-  return ICONS.unknown;
+const ICONS_FILLED = {
+  clear: svgFilled(`<circle cx="12" cy="12" r="5.5"></circle><path d="M12 1v2.5M12 20.5V23M3.2 3.2l1.8 1.8M19 19l1.8 1.8M1 12h2.5M20.5 12H23M3.2 20.8l1.8-1.8M19 5l1.8-1.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>`),
+  partly: svgFilled(`<circle cx="9.5" cy="7" r="4" opacity="0.9"></circle><path d="M14 10a5 5 0 0 1 2.5 9.5H7a4.5 4.5 0 0 1-.5-9A5.5 5.5 0 0 1 14 10z" opacity="0.78"></path>`),
+  cloudy: svgFilled(`<path d="M6 18.5h11.5a5 5 0 0 0 .5-10 6 6 0 0 0-11.5-.5A4.5 4.5 0 0 0 6 18.5z"></path>`),
+  fog: svgFilled(`<path d="M6 13h11.5a4 4 0 0 0 .5-8 5 5 0 0 0-9.5-.5A4 4 0 0 0 6 13z"></path><rect x="2" y="16" width="20" height="2" rx="1"></rect><rect x="4" y="20" width="16" height="2" rx="1"></rect>`),
+  drizzle: svgFilled(`<path d="M6 13h11.5a4.5 4.5 0 0 0 .5-9 5.5 5.5 0 0 0-10.5-1A4.5 4.5 0 0 0 6 13z"></path><circle cx="8.5" cy="18.5" r="1.5"></circle><circle cx="13" cy="18.5" r="1.5"></circle><circle cx="17.5" cy="18.5" r="1.5"></circle>`),
+  rain: svgFilled(`<path d="M6 13h11.5a4.5 4.5 0 0 0 .5-9 5.5 5.5 0 0 0-10.5-1A4.5 4.5 0 0 0 6 13z"></path><ellipse cx="8.5" cy="19.5" rx="1.5" ry="2.5" transform="rotate(-10 8.5 19.5)"></ellipse><ellipse cx="13" cy="19.5" rx="1.5" ry="2.5" transform="rotate(-10 13 19.5)"></ellipse><ellipse cx="17.5" cy="19.5" rx="1.5" ry="2.5" transform="rotate(-10 17.5 19.5)"></ellipse>`),
+  snow: svgFilled(`<path d="M6 13h11.5a4.5 4.5 0 0 0 .5-9 5.5 5.5 0 0 0-10.5-1A4.5 4.5 0 0 0 6 13z"></path><path d="M8 17v4M7 19h2M12 17v4M11 19h2M16 17v4M15 19h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>`),
+  storm: svgFilled(`<path d="M6 13h11.5a4.5 4.5 0 0 0 .5-9 5.5 5.5 0 0 0-10.5-1A4.5 4.5 0 0 0 6 13z"></path><path d="M10 14l-3 5.5h4l-2.5 5.5 7.5-8h-5l2-3z"></path>`),
+  unknown: svgFilled(`<circle cx="12" cy="12" r="5.5"></circle><path d="M12 8v3.5M12 16.5v1" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"></path>`)
+};
+
+function _iconKey(code) {
+  if (code === 0) return 'clear';
+  if (code === 1 || code === 2) return 'partly';
+  if (code === 3) return 'cloudy';
+  if (code === 45 || code === 48) return 'fog';
+  if (code >= 51 && code <= 55) return 'drizzle';
+  if ((code >= 56 && code <= 67) || (code >= 80 && code <= 82)) return 'rain';
+  if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) return 'snow';
+  if (code === 95 || code === 96 || code === 99) return 'storm';
+  return 'unknown';
+}
+
+function iconForCode(code, style) {
+  const s = style !== undefined ? style : getIconStyle();
+  const key = _iconKey(Number(code));
+  if (s === 'filled' || s === 'glass') return (ICONS_FILLED[key] || ICONS_FILLED.unknown);
+  return (ICONS_OUTLINE[key] || ICONS_OUTLINE.unknown);
 }
 
 function buildTempGradient(temps, fallbackTemp) {
@@ -155,61 +204,80 @@ export function renderNow(now) {
   }
   setTempAccent(document.querySelector('.card.hero-card'), tempNum);
   if (el('wx-cond')) el('wx-cond').textContent = WX_DESC[now.code] ?? DASH;
-  if (el('wx-icon')) el('wx-icon').innerHTML = iconForCode(Number(now.code));
+
+  const wxIcon = el('wx-icon');
+  if (wxIcon) {
+    const nowCode = Number(now.code);
+    wxIcon.title = 'Kliknij, aby zmienić styl ikony pogody';
+    wxIcon.style.cursor = 'pointer';
+    const applyIconStyle = (s) => {
+      wxIcon.innerHTML = iconForCode(nowCode, s);
+      wxIcon.dataset.iconStyle = s;
+      wxIcon.dataset.wxKey = _iconKey(nowCode);
+      WX_ICON_STYLES.forEach(st => wxIcon.classList.remove(`wx-icon--${st}`));
+      wxIcon.classList.add(`wx-icon--${s}`);
+    };
+    wxIcon.onclick = () => {
+      const cur = getIconStyle();
+      const next = WX_ICON_STYLES[(WX_ICON_STYLES.indexOf(cur) + 1) % WX_ICON_STYLES.length];
+      saveIconStyle(next);
+      applyIconStyle(next);
+    };
+    applyIconStyle(getIconStyle());
+  }
 
   const prcp = Number(now.prcp);
   const wind = Number(now.wind);
+  const feels = Number(now.feels);
 
-  if (el('wx-wind')) {
-    el('wx-wind').textContent = Number.isFinite(wind)
-      ? `${wind.toFixed(1)} km/h (${windLabel(wind)})`
-      : DASH;
-  }
-
-  if (el('wx-prcp')) {
-    el('wx-prcp').textContent = Number.isFinite(prcp)
-      ? `${prcp.toFixed(1)} mm/h`
-      : DASH;
-  }
-
-  const feels = Number(now.feels ?? now.temp);
   const hum = Number(now.hum);
   const cloud = Number(now.cloud);
   const gust = Number(now.gust);
 
   const pills = [
     {
+      key: 'wind',
+      icon: '&#x1F32C;',
+      label: 'Wiatr',
+      valueText: fmtSpeed(wind),
+      note: Number.isFinite(wind) ? windLabel(wind) : '',
+      tip: 'Pr\u0119dko\u015b\u0107 wiatru na wysoko\u015bci 10 metr\u00f3w'
+    },
+    {
+      key: 'gust',
+      icon: '&#x1F4A8;',
+      label: 'Porywy',
+      valueText: fmtSpeed(gust),
+      note: Number.isFinite(gust) ? windLabel(gust) : '',
+      tip: 'Maksymalne kr\u00f3tkie skoki pr\u0119dko\u015bci wiatru'
+    },
+    {
+      key: 'prcp',
+      icon: '&#x1F4A6;',
+      label: 'Opad',
+      valueText: fmtPrcp(prcp),
+      tip: 'Aktualna intensywno\u015b\u0107 opadu'
+    },
+    {
       key: 'feels',
       icon: '&#x1F321;',
       label: 'Odczuwalna',
-      value: Number.isFinite(feels) ? fmtTemp(feels) : DASH,
-      unit: '\u00b0C',
-      tip: 'Temperatura odczuwalna (uwzgl\u0119dnia wiatr i wilgotno\u015b\u0107)'
+      valueText: formatTempLabel(feels),
+      tip: 'Temperatura odczuwalna z modelu Open-Meteo'
     },
     {
       key: 'hum',
       icon: '&#x1F4A7;',
       label: 'Wilgotno\u015b\u0107',
-      value: Number.isFinite(hum) ? Math.round(hum) : DASH,
-      unit: '%',
+      valueText: Number.isFinite(hum) ? `${Math.round(hum)}%` : DASH,
       tip: 'Wilgotno\u015b\u0107 wzgl\u0119dna powietrza'
     },
     {
       key: 'cloud',
       icon: '&#x2601;',
       label: 'Zachmurzenie',
-      value: Number.isFinite(cloud) ? Math.round(cloud) : DASH,
-      unit: '%',
+      valueText: Number.isFinite(cloud) ? `${Math.round(cloud)}%` : DASH,
       tip: 'Procent pokrycia nieba chmurami'
-    },
-    {
-      key: 'gust',
-      icon: '&#x1F4A8;',
-      label: 'Porywy',
-      value: Number.isFinite(gust) ? gust.toFixed(1) : DASH,
-      unit: 'km/h',
-      extra: Number.isFinite(gust) ? ` (${windLabel(gust)})` : '',
-      tip: 'Maksymalne kr\u00f3tkie skoki pr\u0119dko\u015bci wiatru'
     }
   ];
 
@@ -217,16 +285,18 @@ export function renderNow(now) {
   if (!c) return;
 
   c.innerHTML = pills.map((p) => {
-    const val = p.value === DASH ? DASH : `${p.value}${p.unit}${p.extra ?? ''}`;
+    const note = p.note ? `<span class="pill-note">${p.note}</span>` : '';
+    const ariaText = p.note ? `${p.valueText}, ${p.note}` : p.valueText;
     return `
       <span class="pill" data-kind="${p.key}"
             title="${p.tip}"
-            aria-label="${p.label}: ${val}"
+            aria-label="${p.label}: ${ariaText}"
             tabindex="0">
         <span class="pill-icon" aria-hidden="true">${p.icon}</span>
         <span class="pill-main">
-          <span class="pill-value">${val}</span>
+          <span class="pill-value">${p.valueText}</span>
           <span class="pill-label">${p.label}</span>
+          ${note}
         </span>
       </span>
     `;
@@ -251,11 +321,12 @@ function buildMetricChart(hours, values, colWidth, gapWidth, options) {
   const gap = Number.isFinite(gapWidth) && gapWidth >= 0 ? gapWidth : 10;
   const step = col + gap;
   const width = Math.max(260, (hours.length * col) + (Math.max(0, hours.length - 1) * gap));
-  const height = 88;
-  const plotTop = 8;
-  const plotBottom = 48;
-  const hourY = 66;
-  const valueY = 80;
+  const height = 104;
+  const plotTop = 6;
+  const plotBottom = 46;
+  const hourY = 64;
+  const valueY = 82;
+  const extraY = 97;
 
   const points = values.map((v, idx) => {
     const val = Number.isFinite(v) ? v : min;
@@ -292,17 +363,61 @@ function buildMetricChart(hours, values, colWidth, gapWidth, options) {
     .map((p) => `<circle cx="${p.x.toFixed(2)}" cy="${p.y.toFixed(2)}" r="1.6"></circle>`)
     .join('');
 
-  const labels = points.map((p, idx) => {
+  // 1. Godziny
+  const hourLabels = points.map((p, idx) => {
     const hour = fmtHour.format(new Date(hours[idx].timeIso));
-    const valueLabel = Number.isFinite(values[idx]) ? options.formatLabel(values[idx]) : DASH;
-    return `
-      <text class="wx-chart-hour" x="${p.x.toFixed(2)}" y="${hourY}" text-anchor="middle">${hour}</text>
-      <text class="wx-chart-temp" x="${p.x.toFixed(2)}" y="${valueY}" text-anchor="middle">${valueLabel}</text>
-    `;
+    return `<text class="wx-chart-hour" x="${p.x.toFixed(2)}" y="${hourY}" text-anchor="middle">${hour}</text>`;
   }).join('');
+
+  // 2. Wartości i opisy słowne:
+  // W temperaturze w każdej godzinie, w opadach/wietrze centrowane pośrodku serii.
+  // Opis słowny (kategoria) ZAWSZE pod wartością liczbową (to samo x).
+  let valueLabels = '';
+  let extraLabels = '';
+
+  if (!options.roundForDedup) {
+    valueLabels = points.map((p, idx) => {
+      const valueLabel = Number.isFinite(values[idx]) ? options.formatLabel(values[idx]) : DASH;
+      return `<text class="wx-chart-temp" x="${p.x.toFixed(2)}" y="${valueY}" text-anchor="middle">${valueLabel}</text>`;
+    }).join('');
+  } else {
+    let runs = [];
+    let curRun = null;
+    values.forEach((v, idx) => {
+      if (!Number.isFinite(v)) return;
+      const key = options.roundForDedup(v);
+      if (curRun && curRun.key === key) {
+        curRun.end = idx;
+        curRun.count++;
+      } else {
+        if (curRun) runs.push(curRun);
+        curRun = { key, start: idx, end: idx, count: 1, val: v };
+      }
+    });
+    if (curRun) runs.push(curRun);
+
+    let lastRenderedCat = null;
+    runs.forEach((r) => {
+      const midIdx = (r.start + r.end) / 2;
+      const midX = (midIdx * step + col / 2).toFixed(2);
+      const vl = options.formatLabel(r.val);
+      valueLabels += `<text class="wx-chart-temp" x="${midX}" y="${valueY}" text-anchor="middle">${vl}</text>`;
+
+      if (options.getCategory) {
+        const cat = options.getCategory(r.val);
+        if (cat && cat !== lastRenderedCat) {
+          extraLabels += `<text class="wx-chart-extra" x="${midX}" y="${extraY}" text-anchor="middle">${cat}</text>`;
+          lastRenderedCat = cat;
+        }
+      }
+    });
+  }
+
+  const labels = hourLabels + valueLabels + extraLabels;
 
   const fallback = options.fallbackColor
     || (options.colorForValue ? options.colorForValue(finite[0]) : null)
+    || WX_COLORS.tempFallback
     || '#ffffff';
 
   const stops = values.map((v, idx) => {
@@ -489,8 +604,8 @@ export function renderNext(nextHours) {
     return;
   }
 
-  const col = Number.parseFloat(getComputedStyle(n).getPropertyValue('--wx-col')) || 120;
-  const gap = Number.parseFloat(getComputedStyle(n).getPropertyValue('--wx-gap')) || 10;
+  const col = Number.parseFloat(getComputedStyle(n).getPropertyValue('--wx-col')) || 72;
+  const gap = Number.parseFloat(getComputedStyle(n).getPropertyValue('--wx-gap')) || 6;
 
   const temps = hours.map((h) => Number(h.temp));
   const prcps = hours.map((h) => Number(h.prcp));
@@ -499,22 +614,26 @@ export function renderNext(nextHours) {
   const tempChart = buildMetricChart(hours, temps, col, gap, {
     gradientId: 'wx-line-temp',
     colorForValue: (v) => tempColor(v),
-    fallbackColor: tempColor(lastNowTemp) || '#ffffff',
+    fallbackColor: tempColor(lastNowTemp) || WX_COLORS.tempFallback || '#ffffff',
     formatLabel: (v) => formatTempLabel(v)
   });
 
   const prcpChart = buildMetricChart(hours, prcps, col, gap, {
     gradientId: 'wx-line-prcp',
-    colorForValue: () => '#93c5fd',
-    fallbackColor: '#93c5fd',
-    formatLabel: (v) => `${fmt1(v)} mm/h`
+    colorForValue: () => WX_COLORS.prcp || '#93c5fd',
+    fallbackColor: WX_COLORS.prcp || '#93c5fd',
+    formatLabel: (v) => `${fmt1(v)} mm`,
+    roundForDedup: (v) => fmt1(v),
+    getCategory: rainCategory
   });
 
   const windChart = buildMetricChart(hours, winds, col, gap, {
     gradientId: 'wx-line-wind',
-    colorForValue: () => '#fbbf24',
-    fallbackColor: '#fbbf24',
-    formatLabel: (v) => `${fmt1(v)} km/h`
+    colorForValue: () => WX_COLORS.wind || '#fbbf24',
+    fallbackColor: WX_COLORS.wind || '#fbbf24',
+    formatLabel: (v) => `${Math.round(v)} km/h`,
+    roundForDedup: (v) => String(Math.round(v)),
+    getCategory: (v) => windLabel(v)
   });
 
   const formatRangeVal = (val, unit, joiner = ' ') =>

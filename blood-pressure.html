@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dziennik ciśnienia</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="page-blood-pressure">
+  <div class="blood-pressure-page-shell">
+    <header class="blood-pressure-page-header">
+      <div>
+        <div class="blood-pressure-page-kicker">Pomiary domowe</div>
+        <h1>Dziennik ciśnienia</h1>
+        <p>Pomiary, puls, wykres dnia i historia.</p>
+      </div>
+      <a class="card-cta" href="./index.html">Dashboard</a>
+    </header>
+
+    <main class="card blood-pressure blood-pressure-page-card" id="blood-pressure-card" role="main" aria-labelledby="blood-pressure-title">
+      <div id="blood-pressure-root"></div>
+    </main>
+  </div>
+
+  <script type="module" src="./js/widget-blood-pressure.js"></script>
+</body>
+
+</html>

@@ -19,6 +19,14 @@
             <div class="controls" style="margin-bottom:8px">
                 <button id="back-btn" title="Wróć do strony głównej">⟵ Back</button>
             </div>
+            <h2>Apartment</h2>
+            <div class="controls" style="margin-bottom:8px">
+                <select id="cleaning-apartment"></select>
+            </div>
+            <div class="controls cleaning-manage-controls" style="margin-bottom:8px">
+                <button id="cleaning-add-task" type="button">+ Dodaj zadanie</button>
+                <button id="cleaning-generate-context" type="button">Generate Context</button>
+            </div>
             <div class="kpis">
                 <div class="kpi"><span>Due today</span><b id="kpi-today">0</b></div>
                 <div class="kpi"><span>Overdue</span><b id="kpi-overdue">0</b></div>
@@ -30,7 +38,6 @@
                 <h2>Supplies</h2>
                 <div id="supplies-list" class="supplies-list">—</div>
             </div>
-
 
             <h2>Filters</h2>
             <div class="controls">
@@ -62,15 +69,132 @@
             <h2>Tasks</h2>
             <section class="today-log" aria-live="polite">
                 <div class="today-log-head">
-                    <div class="today-log-title">Co zrobiłem dziś</div>
+                    <div class="today-log-title">CO ZROBIŁEM DZIŚ</div>
                     <div class="today-log-count" id="today-log-count">0</div>
                 </div>
                 <div class="today-log-list" id="today-log-list" hidden></div>
                 <div class="today-log-empty" id="today-log-empty">Brak wpisów dziś. Zrób jedną rzecz i wróć.</div>
             </section>
+
+            <section id="cleaning-history" class="cleaning-history" aria-live="polite">
+                <div class="history-head">
+                    <div class="history-title">WYKRES SPRZĄTANIA</div>
+                    <div class="history-badge" id="history-total-badge">0 akcji</div>
+                </div>
+                <div class="history-range" role="tablist" aria-label="Zakres historii sprzątania">
+                    <button id="history-range-week" class="history-range-btn is-active" data-range="week" type="button" aria-pressed="true">Tydzień</button>
+                    <button id="history-range-month" class="history-range-btn" data-range="month" type="button" aria-pressed="false">Miesiąc</button>
+                </div>
+                <div class="history-nav" aria-label="Przesuwanie historii sprzątania">
+                    <button class="history-nav-btn" data-direction="prev" type="button">Wstecz</button>
+                    <div class="history-window-label" id="history-window-label">-</div>
+                    <button class="history-nav-btn" data-direction="next" type="button">Dalej</button>
+                </div>
+                <div id="history-chart" class="history-chart"></div>
+                <div id="history-stats" class="history-stats"></div>
+                <div id="history-empty" class="history-empty" hidden>Brak historii akcji. Oznacz zadanie jako zrobione, aby zacząć zbieranie timestampów.</div>
+            </section>
+
+            <section id="cleaning-view-switcher" class="cleaning-view-switcher" aria-label="Sposób grupowania zadań">
+                <span class="cleaning-view-switcher-label">Widok zadań</span>
+                <div class="cleaning-view-options" role="group" aria-label="Wybierz sposób grupowania">
+                    <button type="button" data-cleaning-view="all" aria-pressed="false">Wszystkie</button>
+                    <button type="button" data-cleaning-view="room" class="is-active" aria-pressed="true">Pokoje</button>
+                    <button type="button" data-cleaning-view="category" aria-pressed="false">Kategorie</button>
+                </div>
+            </section>
+
             <div id="grid" class="grid"></div>
         </main>
     </div>
+    <dialog id="cleaning-task-dialog" class="cleaning-task-dialog">
+        <form id="cleaning-task-form">
+            <div class="cleaning-task-dialog-head">
+                <div>
+                    <h2 id="cleaning-task-dialog-title">Dodaj zadanie</h2>
+                    <p>Zadanie zapisze się lokalnie i od razu pojawi się w dashboardzie.</p>
+                </div>
+                <button id="cleaning-task-dialog-close" type="button" aria-label="Zamknij">×</button>
+            </div>
+            <input id="cleaning-task-id" type="hidden">
+            <div class="cleaning-task-form-grid">
+                <label>Mieszkanie
+                    <select id="cleaning-task-apartment" required></select>
+                </label>
+                <label>Pokój
+                    <input id="cleaning-task-room" type="text" list="cleaning-task-room-options" maxlength="200" autocomplete="off" required>
+                    <datalist id="cleaning-task-room-options"></datalist>
+                </label>
+                <label>Kategoria
+                    <input id="cleaning-task-category" type="text" list="cleaning-task-category-options" maxlength="200" autocomplete="off" required>
+                    <datalist id="cleaning-task-category-options"></datalist>
+                </label>
+                <label class="is-wide">Nazwa zadania
+                    <input id="cleaning-task-name" type="text" maxlength="500" required>
+                </label>
+                <label>Częstotliwość (dni)
+                    <input id="cleaning-task-freq" type="number" min="0.1" max="36500" step="0.1" required>
+                </label>
+                <label>Ostatnio wykonano
+                    <input id="cleaning-task-last-done" type="text" inputmode="numeric" maxlength="10" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/yyyy" autocomplete="off">
+                </label>
+                <label class="is-wide">Potrzebne środki / artykuły
+                    <input id="cleaning-task-articles" type="text" list="cleaning-task-article-options" maxlength="4000" placeholder="np. Mop, ręcznik papierowy" autocomplete="off">
+                    <datalist id="cleaning-task-article-options"></datalist>
+                    <span class="cleaning-task-suggestion-hint">Wybierz zapisane środki lub wpisz własne:</span>
+                    <span id="cleaning-task-article-suggestions" class="cleaning-task-article-suggestions"></span>
+                </label>
+                <label class="is-wide">Notatki
+                    <textarea id="cleaning-task-notes" maxlength="4000" rows="3"></textarea>
+                </label>
+            </div>
+            <div id="cleaning-task-form-error" class="cleaning-task-form-error" role="alert" hidden></div>
+            <div class="cleaning-task-dialog-actions">
+                <button id="cleaning-task-cancel" type="button">Anuluj</button>
+                <button id="cleaning-task-submit" type="submit">Dodaj zadanie</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="cleaning-context-dialog" class="cleaning-context-dialog">
+        <div class="cleaning-context-head">
+            <div>
+                <p>Eksport lokalny</p>
+                <h2>ChatGPT cleaning context</h2>
+            </div>
+            <button id="cleaning-context-close" type="button" aria-label="Zamknij">&times;</button>
+        </div>
+        <label class="cleaning-context-field">Session notes
+            <textarea id="cleaning-session-notes" maxlength="8000" rows="3" placeholder="np. dzisiaj tylko kuchnia i pokój"></textarea>
+        </label>
+        <div class="cleaning-context-toolbar">
+            <label>Format
+                <select id="cleaning-context-mode">
+                    <option value="full">Full context</option>
+                    <option value="compact">Compact context</option>
+                </select>
+            </label>
+            <button id="cleaning-context-refresh" type="button">Refresh</button>
+        </div>
+        <textarea id="cleaning-context-output" class="cleaning-context-output" readonly spellcheck="false" aria-label="Wygenerowany kontekst sprzątania"></textarea>
+        <div class="cleaning-context-actions">
+            <span id="cleaning-context-status" role="status" aria-live="polite"></span>
+            <button id="cleaning-context-download" type="button">Download .txt</button>
+            <button id="cleaning-context-copy" type="button">Copy to clipboard</button>
+        </div>
+    </dialog>
+    <dialog id="cleaning-day-dialog" class="cleaning-day-dialog">
+        <div class="cleaning-day-dialog-head">
+            <div>
+                <p>Wykonane akcje</p>
+                <h2 id="cleaning-day-dialog-title">Historia dnia</h2>
+            </div>
+            <button id="cleaning-day-dialog-close" type="button" aria-label="Zamknij">&times;</button>
+        </div>
+        <div id="cleaning-day-dialog-count" class="cleaning-day-dialog-count">0 akcji</div>
+        <div id="cleaning-day-dialog-list" class="cleaning-day-dialog-list"></div>
+        <p id="cleaning-day-dialog-empty" class="cleaning-day-dialog-empty" hidden>Brak zapisanych akcji w tym dniu.</p>
+        <p id="cleaning-day-dialog-error" class="cleaning-task-form-error" role="alert" hidden></p>
+    </dialog>
     <script defer src="./js/nav.js"></script>
     <script type="module" src="./js/main.js"></script>
 </body>

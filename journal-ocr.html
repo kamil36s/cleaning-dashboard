@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OCR dziennika</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./journal-ocr.css">
+</head>
+<body class="page-journal-htr">
+  <div class="htr-app" id="htr-app">
+    <header class="htr-topbar">
+      <a class="htr-brand" href="./index.html">
+        <span class="htr-brand-mark" aria-hidden="true">HTR</span>
+        <span><strong>OCR dziennika</strong><small>eScriptorium + Kraken · wyłącznie lokalnie</small></span>
+      </a>
+      <div class="htr-topbar-actions">
+        <button class="htr-button" id="htr-sync" type="button">Synchronizuj</button>
+        <button class="htr-button" id="htr-open-help" type="button">Jak to działa</button>
+        <a class="htr-button" href="./journal.html">Dziennik</a>
+        <a class="htr-button" href="./index.html">Dashboard</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="htr-hero" aria-labelledby="htr-page-title">
+        <div>
+          <span class="htr-eyebrow">Prywatna digitalizacja rękopisów</span>
+          <h1 id="htr-page-title">Od zdjęcia do własnego modelu pisma.</h1>
+          <p>Obrazy, transkrypcje i modele pozostają na tym komputerze. Moduł nie korzysta z zewnętrznych usług AI.</p>
+        </div>
+        <div class="htr-service-strip" id="htr-service-strip" aria-live="polite"></div>
+      </section>
+
+      <section class="htr-summary-grid" aria-label="Podsumowanie HTR">
+        <div><strong id="htr-stat-pages">—</strong><span>stron</span></div>
+        <div><strong id="htr-stat-lines">—</strong><span>zatwierdzonych linii</span></div>
+        <div><strong id="htr-stat-jobs">—</strong><span>aktywnych zadań</span></div>
+        <div><strong id="htr-stat-model">—</strong><span>aktywny model</span></div>
+      </section>
+
+      <section class="htr-next" id="htr-next-card" aria-live="polite">
+        <div><span class="htr-eyebrow">Następny krok</span><h2 id="htr-next-title">Ładowanie…</h2><p id="htr-next-description"></p></div>
+        <a class="htr-button is-primary" id="htr-next-action" href="#configuration">Otwórz</a>
+      </section>
+
+      <nav class="htr-stepper" id="htr-stepper" aria-label="Etapy procesu">
+        <a href="#configuration" data-step="configuration"><b>1</b><span>Konfiguracja</span><em>not_started</em></a>
+        <a href="#upload" data-step="upload"><b>2</b><span>Upload</span><em>not_started</em></a>
+        <a href="#segmentation" data-step="segmentation"><b>3</b><span>Segmentacja</span><em>not_started</em></a>
+        <a href="#transcription" data-step="transcription"><b>4</b><span>Transkrypcja</span><em>not_started</em></a>
+        <a href="#correction" data-step="correction"><b>5</b><span>Korekta</span><em>not_started</em></a>
+        <a href="#dataset" data-step="dataset"><b>6</b><span>Zbiór</span><em>not_started</em></a>
+        <a href="#training" data-step="training"><b>7</b><span>Trening</span><em>not_started</em></a>
+        <a href="#models" data-step="models"><b>8</b><span>Ocena</span><em>not_started</em></a>
+        <a href="#export" data-step="export"><b>9</b><span>Eksport</span><em>not_started</em></a>
+      </nav>
+
+      <div class="htr-status-message" id="htr-message" role="status" aria-live="polite"></div>
+
+      <section class="htr-panel htr-quick-guide" aria-labelledby="htr-quick-guide-title">
+        <div class="htr-panel-heading">
+          <div><span class="htr-eyebrow">Najprościej</span><h2 id="htr-quick-guide-title">Co robić po wgraniu zdjęć?</h2></div>
+        </div>
+        <ol>
+          <li><strong>Segmentacja:</strong> kliknij „Segmentuj wszystkie oczekujące” i poczekaj na status „Linie gotowe”. Ten krok tylko znajduje linie — nie tworzy jeszcze tekstu.</li>
+          <li><strong>Transkrypcja:</strong> kliknij „Transkrybuj wszystkie oczekujące”. Dopiero ten krok odczytuje pismo modelem HTR.</li>
+          <li><strong>Korekta:</strong> sprawdź rozpoznane linie, popraw błędy i zatwierdzaj je klawiszem Enter.</li>
+        </ol>
+        <p class="htr-muted">Duża paczka zdjęć na CPU może przetwarzać się kilka minut. Aktualny etap i postęp są widoczne na stronach oraz w sekcji zadań.</p>
+      </section>
+
+      <section class="htr-panel" id="configuration">
+        <div class="htr-panel-heading">
+          <div><span class="htr-eyebrow">Krok 1</span><h2>Konfiguracja i diagnostyka</h2></div>
+          <button class="htr-button" id="htr-refresh-health" type="button">Sprawdź ponownie</button>
+        </div>
+        <div class="htr-diagnostics" id="htr-diagnostics"></div>
+        <div class="htr-callout">
+          <strong>Konfiguracja i uruchomienie są automatyczne.</strong>
+          <p><code>start-dev.cmd</code> przygotowuje prywatne sekrety, migracje, token, projekt i model startowy. Token API nie jest zwracany do przeglądarki ani zapisywany w logach.</p>
+        </div>
+      </section>
+
+      <section class="htr-panel" id="upload">
+        <div class="htr-panel-heading"><div><span class="htr-eyebrow">Krok 2</span><h2>Dodaj strony</h2></div></div>
+        <form class="htr-upload-form" id="htr-upload-form">
+          <div class="htr-form-grid">
+            <label><span>Zeszyt / dziennik</span><input name="notebookName" maxlength="160" required placeholder="np. Dziennik 2024"></label>
+            <label><span>Data wpisu</span><input name="entryDate" type="date"></label>
+            <label><span>Dokładność daty</span><select name="datePrecision"><option value="unknown">Nieznana</option><option value="exact">Dokładna</option><option value="approximate">Przybliżona</option></select></label>
+            <label><span>Język</span><select name="language"><option value="pl">Polski</option><option value="en">Angielski</option><option value="mixed">Mieszany</option><option value="unknown">Nieznany</option></select></label>
+            <label><span>Numer pierwszej strony</span><input name="pageNumber" type="number" min="1"></label>
+            <label class="is-wide"><span>Notatka</span><input name="notes" maxlength="2000"></label>
+          </div>
+          <label class="htr-dropzone" id="htr-dropzone">
+            <input id="htr-file-input" type="file" multiple accept="image/jpeg,image/png,image/tiff,application/pdf">
+            <strong>Przeciągnij pliki lub wybierz z dysku</strong>
+            <span>JPG, PNG, TIFF, PDF · limit jednego pliku wynika z HTR_MAX_UPLOAD_MB</span>
+          </label>
+          <div class="htr-upload-preview" id="htr-upload-preview"></div>
+          <button class="htr-button is-primary" type="submit">Zapisz lokalnie i rozpocznij OCR</button>
+        </form>
+        <div class="htr-page-list" id="htr-page-list"></div>
+      </section>
+
+      <section class="htr-panel" id="segmentation">
+        <div class="htr-panel-heading">
+          <div><span class="htr-eyebrow">Krok 3</span><h2>Segmentacja stron</h2></div>
+          <div><button class="htr-button" id="htr-segment-pending" type="button">Segmentuj wszystkie oczekujące</button> <button class="htr-button is-primary" id="htr-segment-selected" type="button">Segmentuj zaznaczone</button></div>
+        </div>
+        <p class="htr-muted"><strong>Segmentacja nie rozpoznaje tekstu.</strong> Wykrywa tylko obszary i linie pisma. Po statusie „Linie gotowe” przejdź do transkrypcji poniżej.</p>
+        <div class="htr-capability-grid">
+          <button type="button" disabled>Przycięcie marginesów · niedostępne</button>
+          <button type="button" disabled>Korekcja perspektywy · niedostępne</button>
+          <button type="button" disabled>Deskew / cienie · niedostępne</button>
+        </div>
+        <div class="htr-callout"><strong>Ręczna geometria linii</strong><p>Linie można dodać, usunąć, dzielić, łączyć i przesuwać w lokalnym edytorze eScriptorium. Dashboard synchronizuje wynik przyciskiem „Synchronizuj”; nie udaje jeszcze własnego edytora geometrii.</p></div>
+      </section>
+
+      <section class="htr-panel" id="transcription">
+        <div class="htr-panel-heading"><div><span class="htr-eyebrow">Krok 4</span><h2>Automatyczna transkrypcja</h2></div></div>
+        <div class="htr-inline-form">
+          <label><span>Model rozpoznawania</span><select id="htr-recognition-model"></select></label>
+          <button class="htr-button" id="htr-transcribe-pending" type="button">Transkrybuj wszystkie oczekujące</button>
+          <button class="htr-button is-primary" id="htr-transcribe-selected" type="button">Transkrybuj zaznaczone</button>
+        </div>
+        <p class="htr-muted"><strong>To jest krok, który tworzy tekst.</strong> Po jego zakończeniu linie pojawią się w korekcie. Oryginalna predykcja pozostaje zachowana po każdej poprawce. Model w trakcie treningu nie jest dostępny tutaj; pojawi się automatycznie dopiero po statusie „gotowy”.</p>
+      </section>
+
+      <section class="htr-panel htr-correction-panel" id="correction">
+        <div class="htr-panel-heading">
+          <div><span class="htr-eyebrow">Krok 5 · najważniejszy ekran</span><h2>Korekta linia po linii</h2></div>
+          <span id="htr-review-progress">0 / 0</span>
+        </div>
+        <div class="htr-filter-row">
+          <select id="htr-filter-status" aria-label="Status korekty"><option value="">Wszystkie statusy</option><option value="unreviewed">Nieprzejrzane</option><option value="uncertain">Niepewne</option><option value="illegible">Nieczytelne</option><option value="approved">Zatwierdzone</option><option value="corrected">Poprawione</option><option value="excluded">Wykluczone</option></select>
+          <select id="htr-filter-language" aria-label="Język"><option value="">Wszystkie języki</option><option value="pl">Polski</option><option value="en">Angielski</option><option value="mixed">Mieszane</option></select>
+          <select id="htr-filter-training" aria-label="Użycie w treningu"><option value="">Trening: wszystkie</option><option value="true">Używane</option><option value="false">Nieużywane</option></select>
+          <select id="htr-filter-project" aria-label="Zeszyt"><option value="">Wszystkie zeszyty</option></select>
+          <select id="htr-filter-model" aria-label="Model"><option value="">Wszystkie modele</option></select>
+          <label><span>Od</span><input id="htr-filter-date-from" type="date"></label>
+          <label><span>Do</span><input id="htr-filter-date-to" type="date"></label>
+          <label class="htr-checkbox"><input id="htr-filter-segmentation" type="checkbox"> Tylko błędna segmentacja</label>
+          <button class="htr-button" id="htr-apply-filters" type="button">Filtruj</button>
+        </div>
+        <div class="htr-editor">
+          <div class="htr-page-canvas">
+            <img id="htr-editor-page" alt="Aktualna strona rękopisu">
+            <svg id="htr-line-highlight" aria-label="Geometria aktualnej linii"></svg>
+          </div>
+          <div class="htr-line-editor">
+            <div class="htr-line-image"><canvas id="htr-editor-line-image" role="img" aria-label="Powiększenie aktualnej linii"></canvas></div>
+            <p class="htr-ground-truth-rule">Przepisuj dokładnie to, co znajduje się na stronie. Nie poprawiaj pisowni, gramatyki ani interpunkcji, jeżeli nie występuje ona w rękopisie.</p>
+            <label><span>Wierna transkrypcja</span><textarea id="htr-line-text" rows="5"></textarea></label>
+            <div class="htr-line-meta" id="htr-line-meta"></div>
+            <div class="htr-geometry-actions" aria-label="Korekta segmentacji">
+              <button class="htr-button" id="htr-merge-next-line" type="button">Połącz z następnym fragmentem</button>
+              <button class="htr-button" id="htr-expand-line" type="button">Rozszerz polygon</button>
+              <button class="htr-button" id="htr-draw-line" type="button">Narysuj całą linię</button>
+              <button class="htr-button" id="htr-deskew-page" type="button">Deskew i segmentacja</button>
+              <button class="htr-button" id="htr-perspective-page" type="button">Perspektywa: wskaż 4 rogi</button>
+              <button class="htr-button" id="htr-resegment-page" type="button">Ponownie segmentuj stronę</button>
+            </div>
+            <p class="htr-muted">Rysowanie: przeciągnij prostokąt wokół całej linii na obrazie po lewej. Perspektywa: kliknij kolejno lewy górny, prawy górny, prawy dolny i lewy dolny róg kartki. Korekta obrazu zachowuje oryginał, zastępuje kopię roboczą i automatycznie uruchamia nową segmentację.</p>
+            <details class="htr-geometry-diagnostics">
+              <summary>Tryb diagnostyczny geometrii</summary>
+              <pre id="htr-geometry-diagnostics"></pre>
+            </details>
+            <label class="htr-checkbox"><input id="htr-use-training" type="checkbox"> Użyj tej linii w treningu</label>
+            <div class="htr-editor-actions">
+              <button class="htr-button" data-review-status="approved" type="button">Zatwierdź</button>
+              <button class="htr-button" data-review-status="corrected" type="button">Zapisz poprawkę</button>
+              <button class="htr-button" data-review-status="uncertain" type="button">Niepewne</button>
+              <button class="htr-button" data-review-status="illegible" type="button">Nieczytelne</button>
+              <button class="htr-button" data-review-status="excluded" type="button">Wyklucz</button>
+            </div>
+            <div class="htr-nav-actions"><button class="htr-button" id="htr-prev-line" type="button">← Poprzednia</button><button class="htr-button" id="htr-next-line" type="button">Następna →</button></div>
+            <details><summary>Skróty klawiaturowe</summary><p>Enter — zatwierdź i dalej · Ctrl+Enter — zatwierdź · Tab / Shift+Tab — nawigacja · Ctrl+S — zapisz · Alt+I — nieczytelne · Alt+T — trening · Alt+O — oryginał.</p></details>
+          </div>
+          <aside class="htr-problem-lines"><h3>Kolejka</h3><div id="htr-review-queue"></div></aside>
+        </div>
+      </section>
+
+      <section class="htr-panel" id="dataset">
+        <div class="htr-panel-heading"><div><span class="htr-eyebrow">Krok 6</span><h2>Ground truth i podział danych</h2></div></div>
+        <div class="htr-dataset-stats" id="htr-dataset-stats"></div>
+        <form class="htr-inline-form" id="htr-dataset-form">
+          <label><span>Nazwa</span><input name="name" value="journal-ground-truth"></label>
+          <label><span>Train</span><input name="train" type="number" value="80" min="0" max="100"></label>
+          <label><span>Validation</span><input name="validation" type="number" value="10" min="0" max="100"></label>
+          <label><span>Test</span><input name="test" type="number" value="10" min="0" max="100"></label>
+          <button class="htr-button is-primary" type="submit">Utwórz wersję datasetu</button>
+        </form>
+        <p class="htr-muted">Podział jest deterministyczny według stron. Po pierwszej wersji strony testowe pozostają stałe.</p>
+        <div id="htr-dataset-list"></div>
+      </section>
+
+      <section class="htr-panel" id="training">
+        <div class="htr-panel-heading"><div><span class="htr-eyebrow">Krok 7</span><h2>Trening modelu</h2></div></div>
+        <form class="htr-training-form" id="htr-training-form">
+          <label><span>Typ</span><select name="type"><option value="recognition">Recognition</option><option value="segmentation">Segmentation</option></select></label>
+          <label><span>Dataset</span><select name="datasetId" id="htr-training-dataset"></select></label>
+          <label><span>Model bazowy</span><select name="baseModelId" id="htr-base-model"></select></label>
+          <label><span>Nazwa modelu</span><input name="name" required maxlength="160" placeholder="Moje pismo v1"></label>
+          <label class="is-wide"><span>Opis</span><textarea name="description" rows="2"></textarea></label>
+          <details class="is-wide"><summary>Parametry zaawansowane</summary><p>eScriptorium 26.04 zarządza parametrami Krakena 7. Dashboard celowo nie wysyła niezweryfikowanych opcji CLI.</p></details>
+          <button class="htr-button is-primary" type="submit">Uruchom trening w kolejce</button>
+        </form>
+        <div id="jobs"></div>
+        <div class="htr-job-list" id="htr-job-list"></div>
+      </section>
+
+      <section class="htr-panel" id="models">
+        <div class="htr-panel-heading"><div><span class="htr-eyebrow">Krok 8</span><h2>Modele i ocena</h2></div></div>
+        <div class="htr-callout"><strong>Promocja jest zawsze ręczna.</strong><p>Zakończenie treningu nie zastępuje aktywnego modelu. CER i WER: niższa wartość oznacza lepszy wynik.</p></div>
+        <div class="htr-model-list" id="htr-model-list"></div>
+      </section>
+
+      <section class="htr-panel" id="export">
+        <div class="htr-panel-heading"><div><span class="htr-eyebrow">Krok 9</span><h2>Eksport do dziennika</h2></div></div>
+        <form class="htr-export-form" id="htr-export-form">
+          <label><span>Tytuł wpisu</span><input name="title" maxlength="160"></label>
+          <label><span>Data wpisu</span><input name="entryDate" type="datetime-local"></label>
+          <label class="is-wide"><span>Uporządkowany tekst (opcjonalny)</span><textarea name="structuredText" rows="9" placeholder="Pozostaw puste, aby użyć wiernej transkrypcji…"></textarea></label>
+          <button class="htr-button is-primary" type="submit">Utwórz wpis w dzienniku z zaznaczonych stron</button>
+        </form>
+        <p class="htr-muted">Wpis zachowuje oddzielnie wierną transkrypcję oraz lokalne odnośniki do obrazów źródłowych.</p>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="htr-help" id="htr-help-dialog">
+    <form method="dialog"><button class="htr-button htr-help-close" aria-label="Zamknij">Zamknij</button></form>
+    <h2>Jak to działa</h2>
+    <h3>Pierwsze uruchomienie</h3>
+    <ol>
+      <li>Uruchom lokalny serwis HTR i sprawdź zielony status.</li>
+      <li>Zaimportuj model bazowy w eScriptorium, jeśli lista jest pusta.</li>
+      <li>Dodaj reprezentatywne strony, uruchom segmentację i popraw błędne linie.</li>
+      <li>Uruchom transkrypcję, synchronizuj wynik i poprawiaj go linia po linii.</li>
+      <li>Po zebraniu ground truth utwórz dataset i wytrenuj model v1.</li>
+      <li>Oceń kandydata na stałym teście i aktywuj go tylko, gdy jest lepszy.</li>
+    </ol>
+    <h3>Zasady ground truth</h3>
+    <ul><li>Przepisuj dokładnie; nie poprawiaj autora.</li><li>Nie zgaduj nieczytelnych słów.</li><li>Nie używaj niepewnych linii do treningu.</li><li>Zbieraj polskie i angielskie przykłady, w tym ą ć ę ł ń ó ś ź ż.</li></ul>
+    <h3>Metryki</h3>
+    <p><strong>CER</strong> mierzy odsetek błędnych znaków, a <strong>WER</strong> błędnych słów. Niższy wynik jest lepszy.</p>
+  </dialog>
+  <script type="module" src="./js/journal-ocr.js"></script>
+</body>
+</html>

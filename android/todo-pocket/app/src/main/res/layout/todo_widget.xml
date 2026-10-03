@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="16dp" android:background="@drawable/widget_bg">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+        <TextView android:id="@+id/widget_title" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="To-do" android:textColor="#EEF3EB" android:textSize="18sp" android:textStyle="bold" />
+        <TextView android:id="@+id/widget_refresh" android:layout_width="40dp" android:layout_height="40dp"
+            android:gravity="center" android:text="↻" android:textColor="#AAD1A9" android:textSize="25sp" android:contentDescription="Odśwież" />
+    </LinearLayout>
+    <TextView android:id="@+id/widget_status" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Otwórz apkę i połącz" android:textColor="#8B9B8D" android:textSize="11sp" android:paddingBottom="5dp" />
+    <ListView android:id="@+id/widget_list" android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:divider="@android:color/transparent" android:dividerHeight="0dp"
+        android:scrollbars="none" android:cacheColorHint="@android:color/transparent" />
+</LinearLayout>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sen</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./sleep.css" />
+</head>
+
+<body class="page-sleep">
+    <main class="sleep-shell">
+        <header class="sleep-page-header">
+            <div>
+                <div class="sleep-kicker">Zdrowie · regeneracja</div>
+                <h1>Sen</h1>
+                <p>Historia snu z COLMI Ring i smartwatcha przez Health Connect.</p>
+            </div>
+            <a class="sleep-back" href="./index.html">Wróć do dashboardu</a>
+        </header>
+
+        <section class="sleep-toolbar" aria-label="Sterowanie danymi snu">
+            <div>
+                <span>Analizowany okres</span>
+                <strong id="sleep-night-label">Ostatnia noc</strong>
+            </div>
+            <div class="sleep-toolbar-actions">
+                <span class="sleep-source" id="sleep-source">Źródło: sprawdzam ring i watch…</span>
+                <button id="sleep-refresh" type="button">Odśwież dane</button>
+            </div>
+        </section>
+
+        <div class="sleep-current-head">
+            <div>
+                <span>Główny widok</span>
+                <h2>Wybrana noc</h2>
+            </div>
+            <span class="sleep-current-badge" id="sleep-current-badge">Ostatnia noc</span>
+        </div>
+
+        <section class="sleep-summary" aria-label="Podsumowanie snu">
+            <article class="sleep-summary-card sleep-summary-primary">
+                <span>RHR</span>
+                <div><strong id="sleep-rhr-value">—</strong><em>bpm</em></div>
+                <small>Najniższa średnia z okna 15-minutowego</small>
+                <small class="sleep-data-source" id="sleep-rhr-source">Źródło tętna: —</small>
+            </article>
+            <article class="sleep-summary-card sleep-summary-duration">
+                <span>Całkowity czas snu</span>
+                <strong id="sleep-duration-value">—</strong>
+                <small id="sleep-window-value">Brak wykrytej nocy</small>
+                <small class="sleep-data-source" id="sleep-duration-source">Źródło snu: —</small>
+            </article>
+            <article class="sleep-summary-card">
+                <span>Zaśnięcie</span>
+                <strong id="sleep-start-value">—</strong>
+                <small id="sleep-start-detail">Źródło snu: —</small>
+            </article>
+            <article class="sleep-summary-card">
+                <span>Przebudzenie</span>
+                <strong id="sleep-wake-value">—</strong>
+                <small id="sleep-wake-detail">Źródło snu: —</small>
+            </article>
+        </section>
+
+        <section class="sleep-chart-card" aria-labelledby="sleep-chart-title">
+            <header>
+                <div>
+                    <span>Przebieg nocy</span>
+                    <h2 id="sleep-chart-title">Tętno podczas snu</h2>
+                </div>
+                <div class="sleep-chart-meta">
+                    <span id="sleep-chart-source">Źródło tętna: —</span>
+                    <span><b id="sleep-sample-count">0</b> próbek</span>
+                    <span><b id="sleep-average-value">—</b> średnie BPM</span>
+                </div>
+            </header>
+            <div class="sleep-chart-wrap">
+                <svg id="sleep-chart" viewBox="0 0 960 300" preserveAspectRatio="none" role="img" aria-label="Wykres nocnego tętna"></svg>
+                <div class="sleep-chart-empty" id="sleep-chart-empty">Czekam na próbki z urządzenia.</div>
+            </div>
+            <div class="sleep-chart-axis" aria-hidden="true">
+                <span id="sleep-chart-start">—</span>
+                <span class="sleep-rhr-legend"><i></i>najniższe RHR</span>
+                <span id="sleep-chart-end">—</span>
+            </div>
+        </section>
+
+        <section class="sleep-lower-grid">
+            <aside class="sleep-insight-card" id="sleep-insight-card">
+                <div class="sleep-insight-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3a7 7 0 0 0-4.1 12.7c.7.5 1.1 1.2 1.1 2V19h6v-1.3c0-.8.4-1.5 1.1-2A7 7 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M9.5 22h5M9 12.5l2 2 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <span>Insight</span>
+                    <h2 id="sleep-insight-text">Oczekuję na dane.</h2>
+                    <p id="sleep-insight-detail">Wskazówka pojawi się po analizie pełnej nocy.</p>
+                </div>
+            </aside>
+
+            <section class="sleep-quality-card" aria-labelledby="sleep-quality-title">
+                <header>
+                    <span>Jakość przebiegu</span>
+                    <h2 id="sleep-quality-title">Sygnały nocne</h2>
+                </header>
+                <dl>
+                    <div><dt>Skoki tętna</dt><dd id="sleep-spike-count">—</dd></div>
+                    <div><dt>Położenie RHR</dt><dd id="sleep-rhr-position">—</dd></div>
+                    <div><dt>Próbki snu</dt><dd id="sleep-sleep-samples">—</dd></div>
+                </dl>
+            </section>
+        </section>
+
+        <section class="sleep-overview-card" aria-labelledby="sleep-overview-title">
+            <header>
+                <div>
+                    <span>Cała historia</span>
+                    <h2 id="sleep-overview-title">Sleep Insights</h2>
+                </div>
+                <small id="sleep-overview-range">—</small>
+            </header>
+            <div class="sleep-history-insight" id="sleep-history-insight" data-tone="empty">
+                <strong id="sleep-history-insight-text">Zbieram noce do porównania.</strong>
+                <span id="sleep-history-insight-detail">Statystyki pojawią się po wczytaniu historii.</span>
+            </div>
+            <div class="sleep-overview-grid">
+                <article><span>Zarejestrowane noce</span><strong id="sleep-total-nights">—</strong><small>po połączeniu źródeł</small></article>
+                <article><span>Średni czas snu</span><strong id="sleep-average-duration">—</strong><small>ze wszystkich nocy</small></article>
+                <article><span>Noce w zakresie 7–9 h</span><strong id="sleep-target-share">—</strong><small id="sleep-target-share-detail">—</small></article>
+                <article><span>Typowe godziny</span><strong id="sleep-typical-window">—</strong><small>zaśnięcie — pobudka</small></article>
+                <article><span>Regularność</span><strong id="sleep-regularity">—</strong><small id="sleep-regularity-detail">typowe odchylenie godzin</small></article>
+                <article><span>Ostatnie noce</span><strong id="sleep-duration-trend">—</strong><small id="sleep-duration-trend-detail">zmiana względem wcześniejszych</small></article>
+                <article><span>Średnie RHR</span><strong id="sleep-average-rhr">—</strong><small id="sleep-average-rhr-detail">z nocy z próbkami BPM</small></article>
+                <article><span>Najdłuższa noc</span><strong id="sleep-longest-night">—</strong><small id="sleep-longest-night-detail">—</small></article>
+            </div>
+        </section>
+
+        <section class="sleep-history-card" aria-labelledby="sleep-history-title">
+            <header>
+                <div>
+                    <span>Archiwum</span>
+                    <h2 id="sleep-history-title">Wszystkie zarejestrowane noce</h2>
+                </div>
+                <small id="sleep-history-source-note">Łączę historię ringa i Health Connect…</small>
+            </header>
+            <div class="sleep-history-list" id="sleep-history-list"></div>
+            <div class="sleep-history-empty" id="sleep-history-empty" hidden>Brak wcześniejszych nocy.</div>
+        </section>
+
+        <aside class="sleep-method-note">
+            <strong>Jak to liczę:</strong>
+            każdą noc zapisuję w historii pod datą poranka. Jeżeli dla tej samej nocy istnieje sesja smartwatcha w Health Connect, ma ona priorytet nad ringiem; ring może uzupełnić brakujące próbki tętna.
+            Początek i koniec widocznych nocy pochodzą z gotowej sesji urządzenia. Dashboard nie odbiera obecnie surowego ruchu z akcelerometru; znacznik ruchu jest tylko pochodną stadium „awake”. Algorytm ruch + tętno pozostaje fallbackiem wyłącznie dla zewnętrznej, surowej tablicy BLE.
+            RHR jest najniższą średnią z pełnego, 15-minutowego okna. Wyniki są estymacją konsumencką, nie diagnozą medyczną.
+        </aside>
+
+        <div class="sleep-page-status" id="sleep-page-status" data-tone="loading" role="status" aria-live="polite">Ładuję dane snu…</div>
+    </main>
+
+    <script type="module" src="./js/sleep-page.js"></script>
+</body>
+
+</html>

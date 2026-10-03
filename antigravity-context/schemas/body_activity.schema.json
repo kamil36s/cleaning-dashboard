@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/body_activity.schema.json",
+  "title": "Body Activity",
+  "description": "Daily weight and step summaries with rolling comparisons.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "body_activity"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "latest_weight_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "latest_weight_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "weight_ma7_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "weight_previous_7d_avg_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "weight_7d_change_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "weight_ma30_kg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "weight_trend": {
+          "enum": [
+            "increasing",
+            "decreasing",
+            "stable",
+            "unknown"
+          ]
+        },
+        "latest_steps_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "latest_steps": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "steps_comparison_window_end": {
+          "type": "string",
+          "format": "date",
+          "description": "Last complete day used for step rolling comparisons."
+        },
+        "steps_7d_avg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "steps_previous_7d_avg": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "steps_7d_change_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "steps_trend": {
+          "enum": [
+            "increasing",
+            "decreasing",
+            "stable",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "latest_weight_date",
+        "latest_weight_kg",
+        "weight_ma7_kg",
+        "weight_previous_7d_avg_kg",
+        "weight_7d_change_pct",
+        "weight_ma30_kg",
+        "weight_trend",
+        "latest_steps_date",
+        "latest_steps",
+        "steps_comparison_window_end",
+        "steps_7d_avg",
+        "steps_previous_7d_avg",
+        "steps_7d_change_pct",
+        "steps_trend"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "weight_kg": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "steps": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "weight_kg",
+          "steps"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

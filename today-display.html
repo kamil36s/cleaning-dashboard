@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <title>Dzisiaj · ekran domowy</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./today-display.css">
+</head>
+<body>
+  <main class="display">
+    <header class="display-header">
+      <div class="display-heading"><span class="eyebrow">DZIŚ DO ZROBIENIA</span><h1 id="display-clock">--:--</h1><p id="display-date">Ładowanie daty…</p></div>
+      <div class="display-side">
+        <div class="display-actions"><span id="display-updated" role="status">Ładowanie danych…</span><button id="display-refresh" type="button" aria-label="Odśwież dane" title="Odśwież dane">↻</button><button id="display-fullscreen" type="button" aria-label="Pełny ekran" title="Pełny ekran">⛶</button></div>
+        <div class="display-extras">
+          <article class="mini-card" data-goal="sobriety" hidden><h2>Trzeźwość</h2><strong class="goal-number">—</strong></article>
+          <article class="mini-card" data-goal="album" hidden><h2>Album dnia</h2><strong class="goal-number">—</strong><p class="goal-detail"></p></article>
+        </div>
+      </div>
+    </header>
+
+    <section class="display-grid" aria-label="Dzisiejsze cele">
+      <article class="goal-card" data-goal="steps" hidden><span class="goal-icon" aria-hidden="true">↟</span><div><h2>Kroki</h2><strong class="goal-number">—</strong><span class="goal-unit">kroków</span></div></article>
+      <article class="goal-card" data-goal="anki" hidden><span class="goal-icon" aria-hidden="true">✦</span><div><h2>Anki · norweski</h2><strong class="goal-number">—</strong><span class="goal-unit">kart</span></div></article>
+      <article class="goal-card" data-goal="reading" hidden><span class="goal-icon" aria-hidden="true">▤</span><div><h2>Czytanie</h2><strong class="goal-number">—</strong><span class="goal-unit">stron</span></div></article>
+      <article class="goal-card goal-card-workout" data-goal="workout" hidden><span class="goal-icon" aria-hidden="true">◷</span><div class="goal-content"><h2>Trening</h2><strong class="goal-number">—</strong><span class="goal-unit">minut</span><p class="goal-detail"></p><div class="workout-plan" hidden><div class="workout-zone-strip" role="img"></div><ul class="workout-zone-list"></ul><span class="workout-plan-label">PLAN</span></div></div></article>
+      <article class="goal-card goal-card-cleaning" data-goal="cleaning" hidden><span class="goal-icon" aria-hidden="true">✳</span><div class="goal-content"><h2>Sprzątanie</h2><strong class="goal-number">—</strong><span class="goal-unit">zadań</span><ul class="goal-task-list"></ul></div></article>
+      <article class="goal-card" data-goal="weight" hidden><span class="goal-icon" aria-hidden="true">⌁</span><div><h2>Ważenie</h2><strong class="goal-number goal-word">Zważyć się</strong></div></article>
+    </section>
+
+    <section class="intake-section" aria-label="Suplementy">
+      <article class="intake-card" data-intake="supplements" hidden><div class="intake-head"><h2>Suplementy</h2><strong class="intake-count">—</strong></div><ul class="intake-list"></ul></article>
+    </section>
+    <p id="display-empty" hidden>Na dziś nic nie zostało.</p>
+    <footer><a href="./settings.html">Ustawienia</a><span>Dane odświeżają się automatycznie.</span></footer>
+  </main>
+  <script type="module" src="./js/today-display.js"></script>
+</body>
+</html>

@@ -99,7 +99,7 @@ function initQuoteWidget() {
     if (inFlight) return;
     inFlight = true;
     setLoading(true);
-    setStatus("Ladowanie...");
+    setStatus("Ładowanie...");
     try {
       let picked = null;
       let sourceName = "";
@@ -140,7 +140,7 @@ function initQuoteWidget() {
 
       if (!picked || !picked.quote) throw new Error("Missing quote");
       setQuote({ quote: picked.quote, author: picked.author });
-      setStatus(`Zrodlo: ${sourceName}`);
+      setStatus(`Źródło: ${sourceName}`);
       card.dataset.ready = "true";
       document.dispatchEvent(new Event("quote:ready"));
     } catch (err) {

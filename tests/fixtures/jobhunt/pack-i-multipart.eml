@@ -1,0 +1,21 @@
+From: Pracuj JobAlert <alert@pracuj.pl>
+Return-Path: <bounce@mailer.pracuj.pl>
+Message-ID: <pack-i-multipart@alerts.pracuj.pl>
+Date: Wed, 23 Sep 2026 08:10:00 +0200
+Subject: Zapisane wyszukiwanie - DevOps
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="PACKI"
+
+--PACKI
+Content-Type: text/plain; charset=UTF-8
+
+JobAlert - nowe oferty
+Stanowisko: DevOps Engineer
+Firma: Infra Example
+Lokalizacja: Gdansk
+https://www.pracuj.pl/praca/devops-engineer,offer-789
+--PACKI
+Content-Type: text/html; charset=UTF-8
+
+<p>JobAlert</p><a href="https://www.pracuj.pl/praca/devops-engineer,offer-789">DevOps Engineer</a>
+--PACKI--

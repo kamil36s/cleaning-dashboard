@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "language-reference-source-manifest/v1",
+  "title": "Language reference source manifest",
+  "type": "object",
+  "required": ["manifestVersion", "sourceId", "title", "provider", "landingUrl", "version", "language", "resourceType", "license", "attribution", "expectedFiles", "parser", "decision", "priority", "notes"],
+  "properties": {
+    "manifestVersion": {"const": "language-reference-source-manifest/v1"},
+    "sourceId": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "provider": {"type": "string", "minLength": 1},
+    "landingUrl": {"type": "string", "format": "uri"},
+    "version": {"type": "string", "minLength": 1},
+    "releaseDate": {"type": ["string", "null"]},
+    "language": {"type": "string", "minLength": 1},
+    "resourceType": {"type": "string", "minLength": 1},
+    "license": {
+      "type": "object",
+      "required": ["id", "url", "verifiedAt"],
+      "properties": {"id": {"type": ["string", "null"]}, "url": {"type": ["string", "null"]}, "verifiedAt": {"type": "string"}}
+    },
+    "attribution": {"type": ["string", "null"]},
+    "expectedFiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "url", "sizeBytes", "sha256", "format", "required"],
+        "properties": {
+          "name": {"type": "string"}, "url": {"type": "string"},
+          "sizeBytes": {"type": ["integer", "null"]},
+          "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+          "officialSha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+          "retrievedAt": {"type": ["string", "null"]},
+          "httpMetadata": {"type": "object", "additionalProperties": {"type": "string"}},
+          "format": {"type": "string"}, "required": {"type": "boolean"}
+        }
+      }
+    },
+    "parser": {"type": "object", "required": ["id", "version"], "properties": {"id": {"type": "string"}, "version": {"type": "string"}}},
+    "decision": {"enum": ["ACCEPT_PHASE_7_5B", "ACCEPT_PHASE_9A", "DEFER", "REJECT", "NEEDS_VERIFICATION"]},
+    "priority": {"enum": ["TIER_1", "TIER_2", "TIER_3", "NONE"]},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}

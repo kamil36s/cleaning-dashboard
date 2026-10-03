@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/tasks.schema.json",
+  "title": "Tasks",
+  "description": "Task workload and deadline facts without task titles.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "tasks"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "open": {
+          "type": "integer"
+        },
+        "completed": {
+          "type": "integer"
+        },
+        "completion_rate_pct": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Completed share, percent."
+        },
+        "overdue": {
+          "type": "integer"
+        },
+        "due_next_7_days": {
+          "type": "integer"
+        },
+        "open_by_bucket": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "total",
+        "open",
+        "completed",
+        "completion_rate_pct",
+        "overdue",
+        "due_next_7_days",
+        "open_by_bucket"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "bucket": {
+            "type": "string"
+          },
+          "due_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "days_until_due": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "bucket",
+          "due_date",
+          "days_until_due"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,210 @@
+{
+  "formatVersion": "language-reference-fixture/v1",
+  "sources": [
+    {
+      "sourceId": "fixture-ordbank",
+      "canonicalName": "Synthetic morphology fixture",
+      "provider": "Dashboard tests",
+      "resourceType": "LEXICON",
+      "languageCode": "nb",
+      "version": "1",
+      "landingUrl": "https://example.invalid/fixture-ordbank",
+      "licenseId": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "attributionText": null
+    },
+    {
+      "sourceId": "fixture-newspaper",
+      "canonicalName": "Synthetic newspaper frequency fixture",
+      "provider": "Dashboard tests",
+      "resourceType": "FREQUENCY_LIST",
+      "languageCode": "nb",
+      "version": "1",
+      "landingUrl": "https://example.invalid/fixture-newspaper",
+      "licenseId": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "attributionText": null
+    },
+    {
+      "sourceId": "fixture-books",
+      "canonicalName": "Synthetic books frequency fixture",
+      "provider": "Dashboard tests",
+      "resourceType": "NGRAM",
+      "languageCode": "nb",
+      "version": "1",
+      "landingUrl": "https://example.invalid/fixture-books",
+      "licenseId": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "attributionText": null
+    },
+    {
+      "sourceId": "fixture-cefr",
+      "canonicalName": "Synthetic sourced CEFR fixture",
+      "provider": "Dashboard tests",
+      "resourceType": "LEARNER_LEXICON",
+      "languageCode": "nb",
+      "version": "1",
+      "landingUrl": "https://example.invalid/fixture-cefr",
+      "licenseId": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "attributionText": null
+    },
+    {
+      "sourceId": "fixture-estimator",
+      "canonicalName": "Synthetic estimated CEFR fixture",
+      "provider": "Dashboard tests",
+      "resourceType": "DERIVED_MODEL",
+      "languageCode": "nb",
+      "version": "1",
+      "landingUrl": "https://example.invalid/fixture-estimator",
+      "licenseId": null,
+      "licenseUrl": null,
+      "attributionText": null
+    }
+  ],
+  "lexicalUnits": [
+    {
+      "fixtureId": "arbeidsgiver",
+      "sourceId": "fixture-ordbank",
+      "sourceLocalId": "lemma-1",
+      "languageCode": "nb",
+      "unitType": "LEMMA",
+      "canonicalForm": "arbeidsgiver",
+      "partOfSpeech": "NOUN",
+      "forms": [
+        {"displayForm": "arbeidsgiver", "formType": "LEMMA", "orthographicStatus": "NORMERT", "morphology": {"Number": "Sing", "Definite": "Ind"}},
+        {"displayForm": "arbeidsgiveren", "formType": "INFLECTED", "orthographicStatus": "NORMERT", "morphology": {"Number": "Sing", "Definite": "Def"}},
+        {"displayForm": "arbeidsgivere", "formType": "INFLECTED", "orthographicStatus": "NORMERT", "morphology": {"Number": "Plur", "Definite": "Ind"}}
+      ]
+    },
+    {
+      "fixtureId": "saa_verb",
+      "sourceId": "fixture-ordbank",
+      "sourceLocalId": "lemma-2",
+      "languageCode": "nb",
+      "unitType": "LEMMA",
+      "canonicalForm": "så",
+      "partOfSpeech": "VERB",
+      "forms": [{"displayForm": "så", "formType": "INFLECTED", "orthographicStatus": "NORMERT", "morphology": {"Tense": "Past"}}]
+    },
+    {
+      "fixtureId": "saa_adv",
+      "sourceId": "fixture-ordbank",
+      "sourceLocalId": "lemma-3",
+      "languageCode": "nb",
+      "unitType": "LEMMA",
+      "canonicalForm": "så",
+      "partOfSpeech": "ADV",
+      "forms": [{"displayForm": "så", "formType": "LEMMA", "orthographicStatus": "NORMERT", "morphology": {}}]
+    },
+    {
+      "fixtureId": "paa_grunn_av",
+      "sourceId": "fixture-ordbank",
+      "sourceLocalId": "mwe-1",
+      "languageCode": "nb",
+      "unitType": "PHRASE",
+      "canonicalForm": "på grunn av",
+      "partOfSpeech": "ADP",
+      "components": [{"text": "på"}, {"text": "grunn", "lemmaConstraint": "grunn", "posConstraint": "NOUN"}, {"text": "av"}]
+    },
+    {
+      "fixtureId": "ugler_i_mosen",
+      "sourceId": "fixture-ordbank",
+      "sourceLocalId": "idiom-1",
+      "languageCode": "nb",
+      "unitType": "IDIOM",
+      "canonicalForm": "ugler i mosen",
+      "components": [{"text": "ugler", "lemmaConstraint": "ugle", "posConstraint": "NOUN"}, {"text": "i"}, {"text": "mosen", "lemmaConstraint": "mose", "posConstraint": "NOUN"}]
+    },
+    {
+      "fixtureId": "ta_hensyn",
+      "sourceId": "fixture-ordbank",
+      "sourceLocalId": "collocation-1",
+      "languageCode": "nb",
+      "unitType": "COLLOCATION",
+      "canonicalForm": "ta hensyn",
+      "components": [{"text": "ta", "lemmaConstraint": "ta", "posConstraint": "VERB"}, {"text": "hensyn", "lemmaConstraint": "hensyn", "posConstraint": "NOUN"}]
+    },
+    {
+      "fixtureId": "hensyn",
+      "sourceId": "fixture-ordbank",
+      "sourceLocalId": "lemma-4",
+      "languageCode": "nb",
+      "unitType": "LEMMA",
+      "canonicalForm": "hensyn",
+      "partOfSpeech": "NOUN"
+    }
+  ],
+  "frequency": [
+    {
+      "fixtureUnitId": "arbeidsgiver",
+      "sourceId": "fixture-newspaper",
+      "metricType": "SOURCE_FORM_RANK",
+      "observationKey": "newspaper-surface",
+      "evidenceKind": "RAW_SOURCE",
+      "raw_count": 4312,
+      "rank": 4832,
+      "corpus_token_count": 100000000,
+      "genre": "NEWSPAPER",
+      "raw_evidence": {"surface": "arbeidsgiver"}
+    },
+    {
+      "fixtureUnitId": "arbeidsgiver",
+      "sourceId": "fixture-books",
+      "metricType": "SOURCE_FORM_FREQUENCY",
+      "observationKey": "books-surface",
+      "evidenceKind": "RAW_SOURCE",
+      "raw_count": 1270,
+      "frequency_per_million": 12.7,
+      "document_frequency": 416,
+      "dispersion": 0.74,
+      "genre": "BOOKS",
+      "raw_evidence": {"surface": "arbeidsgiver"}
+    },
+    {
+      "fixtureUnitId": "ta_hensyn",
+      "sourceId": "fixture-books",
+      "metricType": "SOURCE_NGRAM_FREQUENCY",
+      "observationKey": "books-bigram",
+      "evidenceKind": "RAW_SOURCE",
+      "raw_count": 8200,
+      "genre": "BOOKS",
+      "raw_evidence": {"ngram": "ta hensyn"}
+    }
+  ],
+  "cefr": [
+    {
+      "fixtureUnitId": "arbeidsgiver",
+      "sourceId": "fixture-cefr",
+      "evidenceType": "LEARNER_CORPUS_DISTRIBUTION",
+      "confidence": "MEDIUM",
+      "bestLevel": "B1",
+      "distribution": {"A1": 0.01, "A2": 0.08, "B1": 0.57, "B2": 0.27, "C1": 0.06, "C2": 0.01},
+      "method": "synthetic learner distribution",
+      "methodVersion": "1"
+    },
+    {
+      "fixtureUnitId": "hensyn",
+      "sourceId": "fixture-estimator",
+      "evidenceType": "ESTIMATED",
+      "confidence": "ESTIMATED",
+      "bestLevel": "B1",
+      "distribution": {"A1": 0.02, "A2": 0.16, "B1": 0.45, "B2": 0.24, "C1": 0.1, "C2": 0.03},
+      "method": "synthetic estimator",
+      "methodVersion": "fixture-estimator/v1"
+    }
+  ],
+  "associations": [
+    {
+      "fixtureUnitId": "ta_hensyn",
+      "relatedFixtureUnitId": "hensyn",
+      "sourceId": "fixture-books",
+      "relationType": "COLLOCATION_MEMBER",
+      "metricName": "LOGDICE",
+      "metricVersion": "logdice/v1",
+      "metricValue": 9.21,
+      "rawCount": 8200,
+      "context": {"window": 2}
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "manifestVersion": "language-reference-source-manifest/v1",
+  "sourceId": "tatoeba-nob-cc0-2026-09-12",
+  "title": "Tatoeba Norwegian Bokmal sentences (CC0)",
+  "provider": "Tatoeba Association",
+  "landingUrl": "https://tatoeba.org/en/downloads",
+  "version": "weekly-export-2026-09-12",
+  "releaseDate": "2026-09-12",
+  "language": "nb",
+  "resourceType": "BOKMAL_SENTENCE_EXPORT",
+  "license": {"id": "CC0-1.0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "verifiedAt": "2026-09-16"},
+  "attribution": "Tatoeba sentence IDs and source links are retained; this artifact is the dedicated CC0 export.",
+  "expectedFiles": [
+    {"name": "nob_sentences_CC0.tsv.bz2", "url": "https://downloads.tatoeba.org/exports/per_language/nob/nob_sentences_CC0.tsv.bz2", "sizeBytes": 326, "sha256": "23c9f2a2bc900afb04c805521ef16a194bd779f72008512655f48d841d7b46eb", "officialSha256": null, "retrievedAt": "2026-09-16T17:53:08Z", "httpMetadata": {"contentLength": "326", "contentType": "application/octet-stream", "etag": "\"6aa547f1-146\"", "lastModified": "Sat, 12 Sep 2026 12:39:13 GMT"}, "format": "BZip2 TSV: sentence id, ISO 639-3 language, sentence text", "required": true}
+  ],
+  "parser": {"id": "tatoeba-nob-sentences", "version": "1.0.0"},
+  "decision": "ACCEPT_PHASE_9A",
+  "priority": "NONE",
+  "notes": ["Measured artifact contains only 5 Bokmal rows.", "Imported first so CC0 license takes precedence for duplicate sentence IDs."]
+}

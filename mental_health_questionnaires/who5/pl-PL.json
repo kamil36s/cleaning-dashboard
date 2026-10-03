@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "who5",
+  "instrumentVersion": "WHO/UCN/MSD/MHE/2024.1 Polish translation",
+  "scoringVersion": "who5-raw-0-25-percent-x4-v1",
+  "language": "pl-PL",
+  "questionTextStatus": "official_translation",
+  "title": "Wskaźniki Dobrego Samopoczucia (WHO-5)",
+  "shortDescription": "Pięciopozycyjny wskaźnik subiektywnego dobrostanu psychicznego.",
+  "recallPeriod": "ostatnie dwa tygodnie",
+  "estimatedMinutes": 2,
+  "instructions": "Proszę wybrać odpowiedź na każde z pięciu stwierdzeń, która najlepiej określa Pani/Pana samopoczucie w ciągu ostatnich dwóch tygodni. Proszę o zwrócenie uwagi, że wyższe cyfry oznaczają lepsze samopoczucie.",
+  "questionCount": 5,
+  "scoredItemCount": 5,
+  "responseOptions": [
+    { "value": 5, "label": "Cały czas" },
+    { "value": 4, "label": "Prawie cały czas" },
+    { "value": 3, "label": "Więcej niż połowę czasu" },
+    { "value": 2, "label": "Mniej niż połowę czasu" },
+    { "value": 1, "label": "Od czasu do czasu" },
+    { "value": 0, "label": "Nigdy" }
+  ],
+  "questions": [
+    { "id": "1", "text": "Czułam się wesoła/Czułem się wesoły i w dobrym nastroju", "required": true },
+    { "id": "2", "text": "Czułam się spokojna i odprężona/Czułem się spokojny i odprężony", "required": true },
+    { "id": "3", "text": "Czułam się aktywna i energiczna/Czułem się aktywny i energiczny", "required": true },
+    { "id": "4", "text": "Budziłam się z uczuciem świeżości i wypoczęta/Budziłem się z uczuciem świeżości i wypoczęty", "required": true },
+    { "id": "5", "text": "Moje życie codzienne było wypełnione interesującymi mnie sprawami", "required": true }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5"],
+    "allowedValues": [0, 1, 2, 3, 4, 5],
+    "reverseItemIds": [],
+    "subscales": {},
+    "normalizedMultiplier": 4,
+    "normalizedSubscaleId": "percentage"
+  },
+  "interpretationBands": [
+    { "min": 0, "max": 12, "label": "wynik poniżej progu dalszej oceny" },
+    { "min": 13, "max": 25, "label": "wynik na lub powyżej progu dalszej oceny" }
+  ],
+  "interpretationRules": [
+    {
+      "type": "any_item_lte",
+      "itemIds": ["1", "2", "3", "4", "5"],
+      "value": 1,
+      "label": "co najmniej jedna odpowiedź 0 lub 1 — oficjalna instrukcja zaleca dalszą ocenę"
+    }
+  ],
+  "source": {
+    "title": "The World Health Organization-Five Well-Being Index (WHO-5) — Polish translation",
+    "url": "https://cdn.who.int/media/docs/default-source/mental-health/five-well-being-index-%28who-5%29/who-5_polish.pdf?sfvrsn=4df8e167_3",
+    "landingPage": "https://www.who.int/publications/m/item/WHO-UCN-MSD-MHE-2024.01",
+    "documentSha256": "0f6b42ab23ff1cbbd09fd2d2cfb6ac725611b7cd758ea205216cf1caff5dca92"
+  },
+  "license": {
+    "status": "CC BY-NC-SA 3.0 IGO",
+    "notice": "Dozwolone kopiowanie, redystrybucja i adaptacja do celów niekomercyjnych z odpowiednim przypisaniem autorstwa i na warunkach ShareAlike; bez sugerowania poparcia WHO."
+  },
+  "attribution": "© World Health Organization 2024. Polish translation completed before WHO accepted copyright of the English version in 2024; in case of inconsistency the English version is binding. Original translation credit: © Psychiatric Research Unit, WHO Collaborating Center for Mental Health, Frederiksborg General Hospital, DK-3400 Hillerød."
+}

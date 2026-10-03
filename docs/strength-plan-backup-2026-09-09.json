@@ -1,0 +1,45 @@
+{
+  "description": "Backup harmonogramu Strength przed tymczasowym wylaczeniem go z planu Live Workout.",
+  "createdOn": "2026-09-09",
+  "source": "data/settings/live-workout-plan.json",
+  "strengthPlanEnabled": true,
+  "restoreInstructions": "Aby przywrocic harmonogram, ustaw strengthPlanEnabled na true w data/settings/live-workout-plan.json. Definicje Workout A i Workout B pozostaja w js/live-workout-strength-data.js.",
+  "strengthSessions": [
+    {
+      "id": "strength-adaptation-2026-09-05-a",
+      "date": "2026-09-05",
+      "workoutType": "strength",
+      "workoutId": "A",
+      "workoutVariant": "STANDARD",
+      "phase": "adaptation",
+      "status": "completed"
+    },
+    {
+      "id": "strength-adaptation-2026-09-07-b-light",
+      "date": "2026-09-09",
+      "workoutType": "strength",
+      "workoutId": "B",
+      "workoutVariant": "LIGHT",
+      "phase": "adaptation",
+      "status": "planned"
+    },
+    {
+      "id": "strength-adaptation-2026-09-12-a",
+      "date": "2026-09-12",
+      "workoutType": "strength",
+      "workoutId": "A",
+      "workoutVariant": "STANDARD",
+      "phase": "adaptation",
+      "status": "planned"
+    },
+    {
+      "id": "strength-adaptation-2026-09-14-b",
+      "date": "2026-09-14",
+      "workoutType": "strength",
+      "workoutId": "B",
+      "workoutVariant": "STANDARD",
+      "phase": "adaptation",
+      "status": "planned"
+    }
+  ]
+}

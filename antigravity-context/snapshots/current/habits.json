@@ -1,0 +1,222 @@
+{
+  "dataset": "habits",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-16T09:16:25Z",
+  "as_of": "2026-09-16",
+  "privacy": {
+    "habit_names_exported": true,
+    "notes_descriptions_and_questions_exported": false
+  },
+  "metrics": {
+    "active_habits": 17,
+    "improving_7d": 2,
+    "declining_7d": 6
+  },
+  "records": [
+    {
+      "id": "habit_e6c42243",
+      "name": "Don't drink",
+      "category": "HABIT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 7,
+      "positive_days_previous_7d": 7,
+      "positive_days_delta": 0,
+      "current_streak_days": 25
+    },
+    {
+      "id": "habit_8383d05d",
+      "name": "Don't smoke cigarettes",
+      "category": "HABIT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 4,
+      "positive_days_previous_7d": 5,
+      "positive_days_delta": -1,
+      "current_streak_days": 2
+    },
+    {
+      "id": "habit_ae175363",
+      "name": "Don't eat chips",
+      "category": "HABIT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 7,
+      "positive_days_previous_7d": 6,
+      "positive_days_delta": 1,
+      "current_streak_days": 9
+    },
+    {
+      "id": "habit_2149c12e",
+      "name": "Don't smoke weed",
+      "category": "HABIT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 7,
+      "positive_days_previous_7d": 7,
+      "positive_days_delta": 0,
+      "current_streak_days": 32
+    },
+    {
+      "id": "habit_cf8e597b",
+      "name": "Meditation",
+      "category": "HABIT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 0,
+      "positive_days_previous_7d": 0,
+      "positive_days_delta": 0,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_62f9c1c5",
+      "name": "Push-ups",
+      "category": "HABIT",
+      "type": "numeric",
+      "unit": null,
+      "target": 10.0,
+      "positive_days_7d": 0,
+      "positive_days_previous_7d": 0,
+      "positive_days_delta": 0,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_49a38118",
+      "name": "Squats",
+      "category": "HABIT",
+      "type": "numeric",
+      "unit": null,
+      "target": 15.0,
+      "positive_days_7d": 0,
+      "positive_days_previous_7d": 0,
+      "positive_days_delta": 0,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_f1635444",
+      "name": "Pregabalin",
+      "category": "MEDICATION",
+      "type": "numeric",
+      "unit": "mg",
+      "target": 1.0,
+      "positive_days_7d": 7,
+      "positive_days_previous_7d": 7,
+      "positive_days_delta": 0,
+      "current_streak_days": 46
+    },
+    {
+      "id": "habit_dc7f30dd",
+      "name": "Concerta/Atenza",
+      "category": "MEDICATION",
+      "type": "numeric",
+      "unit": "mg",
+      "target": 1.0,
+      "positive_days_7d": 7,
+      "positive_days_previous_7d": 6,
+      "positive_days_delta": 1,
+      "current_streak_days": 11
+    },
+    {
+      "id": "habit_daf30bb6",
+      "name": "Creatine",
+      "category": "SUPPLEMENT",
+      "type": "numeric",
+      "unit": "mg",
+      "target": null,
+      "positive_days_7d": 6,
+      "positive_days_previous_7d": 7,
+      "positive_days_delta": -1,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_e22c22ca",
+      "name": "Biotyna/B complex",
+      "category": "SUPPLEMENT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 6,
+      "positive_days_previous_7d": 7,
+      "positive_days_delta": -1,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_24dc31df",
+      "name": "Vitamin C",
+      "category": "SUPPLEMENT",
+      "type": "numeric",
+      "unit": "mg",
+      "target": null,
+      "positive_days_7d": 0,
+      "positive_days_previous_7d": 0,
+      "positive_days_delta": 0,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_7a6e7a1d",
+      "name": "Vitamin D",
+      "category": "SUPPLEMENT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 6,
+      "positive_days_previous_7d": 6,
+      "positive_days_delta": 0,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_b601a084",
+      "name": "Zinc",
+      "category": "SUPPLEMENT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 3,
+      "positive_days_previous_7d": 4,
+      "positive_days_delta": -1,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_e3f73715",
+      "name": "Magnesium",
+      "category": "SUPPLEMENT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 6,
+      "positive_days_previous_7d": 7,
+      "positive_days_delta": -1,
+      "current_streak_days": 0
+    },
+    {
+      "id": "habit_ec6032e1",
+      "name": "Omega 3",
+      "category": "SUPPLEMENT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 6,
+      "positive_days_previous_7d": 7,
+      "positive_days_delta": -1,
+      "current_streak_days": 2
+    },
+    {
+      "id": "habit_b0260277",
+      "name": "L-Theanine",
+      "category": "SUPPLEMENT",
+      "type": "binary",
+      "unit": null,
+      "target": null,
+      "positive_days_7d": 3,
+      "positive_days_previous_7d": 3,
+      "positive_days_delta": 0,
+      "current_streak_days": 0
+    }
+  ]
+}

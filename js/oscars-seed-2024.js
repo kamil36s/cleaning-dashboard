@@ -485,7 +485,7 @@ export const OSCARS_SEED_2024 = [
   {
     "watched": false,
     "watched_date": null,
-    "title": "N?i Nai & W?i P?",
+    "title": "Nǎi Nai & Wài Pó",
     "type": "Short",
     "runtime_helper": null,
     "runtime_helper_2": null,
@@ -499,8 +499,8 @@ export const OSCARS_SEED_2024 = [
     "imdb_link": "IMDb",
     "where_to_watch": null,
     "notes": null,
-    "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=N%3Fi%20Nai%20%26%20W%3Fi%20P%3F",
-    "imdb_url": "https://www.imdb.com/find/?q=N%3Fi%20Nai%20%26%20W%3Fi%20P%3F",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=N%C7%8Ei%20Nai%20%26%20W%C3%A0i%20P%C3%B3",
+    "imdb_url": "https://www.imdb.com/find/?q=N%C7%8Ei%20Nai%20%26%20W%C3%A0i%20P%C3%B3",
     "id": 24
   },
   {

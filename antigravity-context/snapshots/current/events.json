@@ -1,0 +1,27 @@
+{
+  "dataset": "events",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-15T10:43:37Z",
+  "as_of": "2026-09-16",
+  "privacy": {
+    "titles_exported": false,
+    "external_calendar_events_exported": false
+  },
+  "metrics": {
+    "events_next_7_days": 0,
+    "events_next_30_days": 0,
+    "days_off_next_30_days": 0
+  },
+  "records": [
+    {
+      "id": "event_e2a1999d",
+      "date": "2026-10-17",
+      "days_from_today": 31,
+      "type": "concert",
+      "source": "local",
+      "is_day_off": false,
+      "is_short_day": false
+    }
+  ]
+}

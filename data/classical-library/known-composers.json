@@ -1,0 +1,92 @@
+[
+  {
+    "composerId": "johann-sebastian-bach",
+    "name": "Johann Sebastian Bach",
+    "birthDate": "1685-03-31",
+    "deathDate": "1750-07-28",
+    "birthPlace": "Eisenach, Germany",
+    "deathPlace": "Leipzig, Germany",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "German Baroque composer central to counterpoint, sacred music, keyboard works, concertos, and suites."
+  },
+  {
+    "composerId": "wolfgang-amadeus-mozart",
+    "name": "Wolfgang Amadeus Mozart",
+    "birthDate": "1756-01-27",
+    "deathDate": "1791-12-05",
+    "birthPlace": "Salzburg, Austria",
+    "deathPlace": "Vienna, Austria",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "Austrian Classical composer of operas, symphonies, concertos, chamber music, and sacred works."
+  },
+  {
+    "composerId": "ludwig-van-beethoven",
+    "name": "Ludwig van Beethoven",
+    "birthDate": "1770-12-17",
+    "deathDate": "1827-03-26",
+    "birthPlace": "Bonn, Germany",
+    "deathPlace": "Vienna, Austria",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "German composer whose work bridges Classical form and Romantic force."
+  },
+  {
+    "composerId": "franz-schubert",
+    "name": "Franz Schubert",
+    "birthDate": "1797-01-31",
+    "deathDate": "1828-11-19",
+    "birthPlace": "Vienna, Austria",
+    "deathPlace": "Vienna, Austria",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "Austrian composer known for songs, chamber music, piano works, symphonies, and lyrical harmonic turns."
+  },
+  {
+    "composerId": "frederic-chopin",
+    "name": "Frederic Chopin",
+    "birthDate": "1810-03-01",
+    "deathDate": "1849-10-17",
+    "birthPlace": "Zelazowa Wola, Poland",
+    "deathPlace": "Paris, France",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "Polish-French Romantic composer whose catalogue is centered on the piano."
+  },
+  {
+    "composerId": "claude-debussy",
+    "name": "Claude Debussy",
+    "birthDate": "1862-08-22",
+    "deathDate": "1918-03-25",
+    "birthPlace": "Saint-Germain-en-Laye, France",
+    "deathPlace": "Paris, France",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "French composer associated with color, ambiguity, symbolist atmosphere, and new piano and orchestral language."
+  },
+  {
+    "composerId": "igor-stravinsky",
+    "name": "Igor Stravinsky",
+    "birthDate": "1882-06-17",
+    "deathDate": "1971-04-06",
+    "birthPlace": "Oranienbaum, Russia",
+    "deathPlace": "New York City, United States",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "Russian-born composer of ballet, neoclassical, and serial works with a defining rhythmic imagination."
+  },
+  {
+    "composerId": "olivier-messiaen",
+    "name": "Olivier Messiaen",
+    "birthDate": "1908-12-10",
+    "deathDate": "1992-04-27",
+    "birthPlace": "Avignon, France",
+    "deathPlace": "Clichy, France",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "French composer and organist known for modes of limited transposition, birdsong, Catholic mysticism, and vast color."
+  },
+  {
+    "composerId": "toru-takemitsu",
+    "name": "Toru Takemitsu",
+    "birthDate": "1930-10-08",
+    "deathDate": "1996-02-20",
+    "birthPlace": "Tokyo, Japan",
+    "deathPlace": "Tokyo, Japan",
+    "image": { "localFile": "", "source": "", "sourceUrl": "", "license": "" },
+    "bioShort": "Japanese composer whose music often blends silence, color, nature imagery, and Western modernist textures."
+  }
+]

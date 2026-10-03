@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/ai_usage.schema.json",
+  "title": "Ai Usage",
+  "description": "Quota remaining and session counts without prompts or credentials.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "ai_usage"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "tracked_groups": {
+          "type": "integer"
+        },
+        "sessions_7d": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tracked_groups",
+        "sessions_7d"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          },
+          "five_hour_remaining_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "five_hour_reset_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "weekly_remaining_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "weekly_reset_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "provider",
+          "group",
+          "observed_at",
+          "status",
+          "five_hour_remaining_pct",
+          "five_hour_reset_at",
+          "weekly_remaining_pct",
+          "weekly_reset_at"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

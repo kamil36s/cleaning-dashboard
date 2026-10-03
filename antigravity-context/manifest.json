@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "timezone": "Europe/Warsaw",
+  "access_boundary": "This directory is complete and requires no parent-directory access.",
+  "datasets": [
+    {
+      "id": "tasks",
+      "path": "snapshots/current/tasks.json",
+      "schema": "schemas/tasks.schema.json",
+      "description": "Task workload and deadline facts without task titles."
+    },
+    {
+      "id": "cleaning",
+      "path": "snapshots/current/cleaning.json",
+      "schema": "schemas/cleaning.schema.json",
+      "description": "Cleaning cadence and overdue facts without addresses or task text."
+    },
+    {
+      "id": "habits",
+      "path": "snapshots/current/habits.json",
+      "schema": "schemas/habits.schema.json",
+      "description": "Active habit consistency comparisons; notes and descriptions are omitted."
+    },
+    {
+      "id": "body_activity",
+      "path": "snapshots/current/body-activity.json",
+      "schema": "schemas/body_activity.schema.json",
+      "description": "Daily weight and step summaries with rolling comparisons."
+    },
+    {
+      "id": "training",
+      "path": "snapshots/current/training.json",
+      "schema": "schemas/training.schema.json",
+      "description": "Workout and strength-volume aggregates without raw telemetry."
+    },
+    {
+      "id": "reading",
+      "path": "snapshots/current/reading.json",
+      "schema": "schemas/reading.schema.json",
+      "description": "Active-book progress and recent reading volume."
+    },
+    {
+      "id": "events",
+      "path": "snapshots/current/events.json",
+      "schema": "schemas/events.schema.json",
+      "description": "Local event timing and day-off facts without event titles."
+    },
+    {
+      "id": "ai_usage",
+      "path": "snapshots/current/ai-usage.json",
+      "schema": "schemas/ai_usage.schema.json",
+      "description": "Quota remaining and session counts without prompts or credentials."
+    },
+    {
+      "id": "environment",
+      "path": "snapshots/current/environment.json",
+      "schema": "schemas/environment.schema.json",
+      "description": "Current and 24-hour room temperature/humidity facts."
+    },
+    {
+      "id": "current_summary",
+      "path": "summaries/current.json",
+      "schema": "schemas/current_summary.schema.json",
+      "description": "Cross-dataset deterministic signal candidates and freshness."
+    }
+  ]
+}

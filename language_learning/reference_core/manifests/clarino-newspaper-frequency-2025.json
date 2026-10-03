@@ -1,0 +1,20 @@
+{
+  "manifestVersion": "language-reference-source-manifest/v1",
+  "sourceId": "clarino-norsk-aviskorpus-nob-frequency-2025-08-25",
+  "title": "Frekvensordliste (bokmål) fra ord i norsk avisspråk",
+  "provider": "CLARINO Bergen Centre / University of Bergen",
+  "landingUrl": "https://repo.clarino.uib.no/xmlui/handle/11509/157",
+  "version": "generated-2025-08-25",
+  "releaseDate": "2025-08-25",
+  "language": "nb",
+  "resourceType": "RANKED_SURFACE_FREQUENCY",
+  "license": {"id": "CC-BY-3.0", "url": "https://creativecommons.org/licenses/by/3.0/", "verifiedAt": "2026-09-16"},
+  "attribution": "Credit CLARINO Bergen Centre and Gunn Inger Lyse Samdal; cite the repository item and source corpus.",
+  "expectedFiles": [
+    {"name": "frekvensordliste-aviskorpus-nob.tsv", "url": "https://repo.clarino.uib.no/xmlui/bitstream/handle/11509/157/frekvensordliste-aviskorpus-nob.tsv?sequence=1&isAllowed=y", "sizeBytes": 141382, "sha256": "0da16866e64ad609f15eb99d102285c5e9310287ce09112eb734f0f9842d4ad3", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:41.519347Z", "httpMetadata": {"contentLength": "141382", "contentType": "application/octet-stream;charset=ISO-8859-1", "lastModified": "Tue, 02 Sep 2025 11:25:01 GMT"}, "format": "UTF-8 TSV; count then case-sensitive surface token", "required": true}
+  ],
+  "parser": {"id": "clarino-newspaper-surface-frequency", "version": "1.0.0"},
+  "decision": "ACCEPT_PHASE_7_5B",
+  "priority": "TIER_1",
+  "notes": ["The frozen artifact has 9,999 case-sensitive surface-token rows plus one header, although the header declares count: 10000; row order is the exact source rank.", "Contains punctuation, Det/det, VG and Foto; never import it as a clean lemma rank.", "Corpus covers eleven newspapers, 1998-2022; generated 2025-08-25."]
+}

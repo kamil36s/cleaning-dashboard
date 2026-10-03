@@ -1,0 +1,3 @@
+QA Engineer. SQL is required. Playwright is preferred. Norwegian is not required. Company transport from Bergen.
+
+You will turn loosely written requirements into test scenarios and investigate API failures with the team.

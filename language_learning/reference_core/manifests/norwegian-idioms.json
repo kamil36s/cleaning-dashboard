@@ -1,0 +1,21 @@
+{
+  "manifestVersion": "language-reference-source-manifest/v1",
+  "sourceId": "nb-norwegian-idioms-2024-10-10",
+  "title": "Norske idiomer",
+  "provider": "Nasjonalbiblioteket / Språkbanken",
+  "landingUrl": "https://www.nb.no/sprakbanken/ressurskatalog/oai-nb-no-sbr-96/",
+  "version": "catalogue-modified-2024-10-10",
+  "releaseDate": "2024-10-10",
+  "language": "nb+nn",
+  "resourceType": "IDIOMS_AND_PHRASES",
+  "license": {"id": "CC0-1.0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "verifiedAt": "2026-09-16"},
+  "attribution": "No license-required attribution under CC0; retain Nasjonalbiblioteket/Språkbanken provenance in product data.",
+  "expectedFiles": [
+    {"name": "norske_idiom.zip", "url": "https://www.nb.no/sbfil/norske_idiom/norske_idiom.zip", "sizeBytes": 267999, "sha256": "4385ed9fd4ffb2b3299ed5fb87df407a1a56775e2db87e77ad64387f5c149b7e", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:56.917954Z", "httpMetadata": {"contentLength": "267999", "contentType": "application/zip", "etag": "\"67090bca-416df\"", "lastModified": "Fri, 11 Oct 2024 11:28:10 GMT"}, "format": "ZIP containing UTF-8 JSON/JSONL", "required": true},
+    {"name": "norske_idiom.pdf", "url": "https://www.nb.no/sbfil/norske_idiom/norske_idiom.pdf", "sizeBytes": 109089, "sha256": "ec4297e54decbfd62b6ee6dff08d557961594d7d31c6a844963800b1ae6747c2", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:57.585871Z", "httpMetadata": {"contentLength": "109089", "contentType": "application/pdf", "etag": "\"67090bca-1aa21\"", "lastModified": "Fri, 11 Oct 2024 11:28:10 GMT"}, "format": "PDF documentation", "required": true}
+  ],
+  "parser": {"id": "nb-norwegian-idioms", "version": "1.0.0"},
+  "decision": "ACCEPT_PHASE_7_5B",
+  "priority": "TIER_1",
+  "notes": ["Measured frequency dictionaries contain 3537 expressions: 3455 Bokmål, 88 Nynorsk, and 6 shared.", "data.jsonl contains 3245 completion prompts; 156 rows have multiple accepted completions.", "Store the full expression and frequency as raw source evidence; do not fabricate meanings."]
+}

@@ -1,5 +1,18 @@
 ﻿import { describe, it, expect } from 'vitest';
-import { bust, fmtDateShort } from '../js/utils.js';
+import { bust, escapeHtml, fmtDateShort } from '../js/utils.js';
+
+describe('HTML escaping (WHY: dynamic values are rendered inside HTML templates)', () => {
+  it('escapes every character that can break out of text or an attribute', () => {
+    expect(escapeHtml(`<script data-x="'">&`)).toBe(
+      '&lt;script data-x=&quot;&#39;&quot;&gt;&amp;'
+    );
+  });
+
+  it('normalizes nullish values without changing ordinary text', () => {
+    expect(escapeHtml(null)).toBe('');
+    expect(escapeHtml('Zażółć gęślą')).toBe('Zażółć gęślą');
+  });
+});
 
 describe('Cache busting (WHY: avoid stale widget data)', () => {
   it('adds _= with the correct separator', () => {

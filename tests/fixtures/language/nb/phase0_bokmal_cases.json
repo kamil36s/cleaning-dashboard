@@ -1,0 +1,149 @@
+{
+  "fixtureVersion": "nb-phase0-v1",
+  "languageCode": "nb",
+  "authorship": "Hand-authored test oracle; expected properties were not copied from analyzer output.",
+  "cases": [
+    {
+      "id": "jobb_noun_inflection",
+      "category": "noun_inflection",
+      "text": "Jeg har en jobb. Jobben er ny. Hun har to jobber. Jobbene er viktige.",
+      "expectedSentenceTexts": [
+        "Jeg har en jobb.",
+        "Jobben er ny.",
+        "Hun har to jobber.",
+        "Jobbene er viktige."
+      ],
+      "expectedTokens": [
+        {"surface": "jobb", "lemma": "jobb", "pos": "NOUN", "kind": "WORD", "morphologyContains": {"Definite": "Ind", "Gender": "Masc", "Number": "Sing"}},
+        {"surface": "Jobben", "lemma": "jobb", "pos": "NOUN", "kind": "WORD", "normalizedLookup": "jobben", "morphologyContains": {"Definite": "Def", "Gender": "Masc", "Number": "Sing"}},
+        {"surface": "jobber", "lemma": "jobb", "pos": "NOUN", "kind": "WORD", "morphologyContains": {"Definite": "Ind", "Gender": "Masc", "Number": "Plur"}},
+        {"surface": "Jobbene", "lemma": "jobb", "pos": "NOUN", "kind": "WORD", "normalizedLookup": "jobbene", "morphologyContains": {"Definite": "Def", "Gender": "Masc", "Number": "Plur"}, "knownAnalyzerDeviations": ["morphology.Gender"]}
+      ]
+    },
+    {
+      "id": "other_noun_patterns",
+      "category": "noun_inflection",
+      "text": "Jeg leser en bok. Boka ligger her. Vi kjøper bøker. Bøkene er dyre. Dette er et hus. Huset er gammelt. Husene er hvite.",
+      "expectedTokens": [
+        {"surface": "bok", "lemma": "bok", "pos": "NOUN", "kind": "WORD"},
+        {"surface": "Boka", "lemma": "bok", "pos": "NOUN", "kind": "WORD"},
+        {"surface": "bøker", "lemma": "bok", "pos": "NOUN", "kind": "WORD"},
+        {"surface": "Bøkene", "lemma": "bok", "pos": "NOUN", "kind": "WORD"},
+        {"surface": "hus", "lemma": "hus", "pos": "NOUN", "kind": "WORD"},
+        {"surface": "Huset", "lemma": "hus", "pos": "NOUN", "kind": "WORD"},
+        {"surface": "Husene", "lemma": "hus", "pos": "NOUN", "kind": "WORD"}
+      ]
+    },
+    {
+      "id": "verb_inflection",
+      "category": "verb_inflection",
+      "text": "Jeg prøver å arbeide. Hun arbeider nå. Han arbeidet i går. De har arbeidet lenge.",
+      "expectedTokens": [
+        {"surface": "arbeide", "lemma": "arbeide", "pos": "VERB", "kind": "WORD", "morphologyContains": {"VerbForm": "Inf"}},
+        {"surface": "arbeider", "lemma": "arbeide", "pos": "VERB", "kind": "WORD", "morphologyContains": {"Tense": "Pres", "VerbForm": "Fin"}},
+        {"surface": "arbeidet", "occurrence": 1, "lemma": "arbeide", "pos": "VERB", "kind": "WORD", "morphologyContains": {"Tense": "Past", "VerbForm": "Fin"}},
+        {"surface": "arbeidet", "occurrence": 2, "lemma": "arbeide", "pos": "VERB", "kind": "WORD", "morphologyContains": {"VerbForm": "Part"}}
+      ]
+    },
+    {
+      "id": "adjective_agreement",
+      "category": "adjective_inflection",
+      "text": "Det er en stor bil. Vi ser et stort hus. De har store biler. Den store bilen står der.",
+      "expectedTokens": [
+        {"surface": "stor", "lemma": "stor", "pos": "ADJ", "kind": "WORD"},
+        {"surface": "stort", "lemma": "stor", "pos": "ADJ", "kind": "WORD", "morphologyContains": {"Gender": "Neut", "Number": "Sing"}},
+        {"surface": "store", "occurrence": 1, "lemma": "stor", "pos": "ADJ", "kind": "WORD", "morphologyContains": {"Number": "Plur"}},
+        {"surface": "store", "occurrence": 2, "lemma": "stor", "pos": "ADJ", "kind": "WORD", "morphologyContains": {"Definite": "Def"}}
+      ]
+    },
+    {
+      "id": "function_words",
+      "category": "function_words",
+      "text": "Hun og jeg skal gå til huset fordi vi trenger mat.",
+      "expectedTokens": [
+        {"surface": "Hun", "lemma": "hun", "pos": "PRON", "kind": "WORD"},
+        {"surface": "og", "lemma": "og", "pos": "CCONJ", "kind": "WORD"},
+        {"surface": "jeg", "lemma": "jeg", "pos": "PRON", "kind": "WORD"},
+        {"surface": "skal", "lemma": "skulle", "pos": "AUX", "kind": "WORD"},
+        {"surface": "til", "lemma": "til", "pos": "ADP", "kind": "WORD"},
+        {"surface": "fordi", "lemma": "fordi", "pos": "SCONJ", "kind": "WORD"},
+        {"surface": "vi", "lemma": "vi", "pos": "PRON", "kind": "WORD"}
+      ]
+    },
+    {
+      "id": "contextual_ambiguity",
+      "category": "ambiguity",
+      "text": "Jeg så filmen. Så gikk jeg hjem. Norsk mat er god. Hun lærer norsk. Vi snakker om været. Jeg vet ikke om han kommer.",
+      "expectedTokens": [
+        {"surface": "så", "lemma": "se", "pos": "VERB", "kind": "WORD", "ambiguityGroup": "så"},
+        {"surface": "Så", "lemma": "så", "pos": "ADV", "kind": "WORD", "ambiguityGroup": "så"},
+        {"surface": "Norsk", "lemma": "norsk", "pos": "ADJ", "kind": "WORD", "ambiguityGroup": "norsk"},
+        {"surface": "norsk", "lemma": "norsk", "pos": "NOUN", "kind": "WORD", "ambiguityGroup": "norsk"},
+        {"surface": "om", "occurrence": 1, "lemma": "om", "pos": "ADP", "kind": "WORD", "ambiguityGroup": "om"},
+        {"surface": "om", "occurrence": 2, "lemma": "om", "pos": "SCONJ", "kind": "WORD", "ambiguityGroup": "om"}
+      ],
+      "expectedAnalyzerLimitation": "A contextual model may select one analysis, but Stanza exposes neither alternate candidates nor token confidence; the contract must report that ambiguity was not assessed."
+    },
+    {
+      "id": "unknown_proper_abbreviation_foreign",
+      "category": "unknowns",
+      "text": "Fantasiverbet glorpete står her. Kari møter OpenAI i Bergen. NATO bruker software.",
+      "expectedTokens": [
+        {"surface": "glorpete", "kind": "WORD", "lexicalStatus": "NOT_ASSESSED", "confidenceIsNull": true},
+        {"surface": "Kari", "kind": "WORD", "pos": "PROPN"},
+        {"surface": "OpenAI", "kind": "WORD", "posAnyOf": ["PROPN", "NOUN"]},
+        {"surface": "Bergen", "kind": "WORD", "pos": "PROPN"},
+        {"surface": "NATO", "kind": "WORD", "posAnyOf": ["PROPN", "NOUN"]},
+        {"surface": "software", "kind": "WORD", "lexicalStatus": "NOT_ASSESSED", "confidenceIsNull": true}
+      ],
+      "expectedAnalyzerLimitation": "Without a separate lexicon, model-produced lemmas for invented or foreign items remain unverified hypotheses, never KNOWN lexical facts."
+    },
+    {
+      "id": "compound_preservation",
+      "category": "compounds",
+      "text": "Arbeidsplassen har sikkerhetsutstyr. En lastebilsjåfør bruker vernesko.",
+      "expectedTokens": [
+        {"surface": "Arbeidsplassen", "lemma": "arbeidsplass", "pos": "NOUN", "kind": "WORD", "mustRemainSingleToken": true},
+        {"surface": "sikkerhetsutstyr", "lemma": "sikkerhetsutstyr", "pos": "NOUN", "kind": "WORD", "mustRemainSingleToken": true},
+        {"surface": "lastebilsjåfør", "lemma": "lastebilsjåfør", "pos": "NOUN", "kind": "WORD", "mustRemainSingleToken": true},
+        {"surface": "vernesko", "lemma": "vernesko", "pos": "NOUN", "kind": "WORD", "mustRemainSingleToken": true}
+      ]
+    },
+    {
+      "id": "unicode_offsets_and_nonlexical",
+      "category": "source_invariants",
+      "text": "Ærlig talt: «Øyvind sa: \"blå-grønn\" (O’Neill).»  To  mellomrom.\nNy linje 15.09.2026; https://example.no/a-b?q=øl 😊 Slutt.",
+      "expectedTokens": [
+        {"surface": "Ærlig", "lemma": "ærlig", "pos": "ADJ", "kind": "WORD", "normalizedLookup": "ærlig"},
+        {"surface": "Øyvind", "kind": "WORD", "normalizedLookup": "øyvind", "posAnyOf": ["PROPN", "NOUN"]},
+        {"surface": "blå-grønn", "kind": "WORD", "normalizedLookup": "blå-grønn", "mustRemainSingleToken": true},
+        {"surface": "15.09.2026", "kind": "NUMBER"},
+        {"surface": "https://example.no/a-b?q=øl", "kind": "URL"},
+        {"surface": "😊", "kind": "EMOJI"},
+        {"surface": "Slutt", "kind": "WORD", "normalizedLookup": "slutt"},
+        {"surface": "«", "kind": "PUNCTUATION"},
+        {"surface": "»", "kind": "PUNCTUATION"},
+        {"surface": "(", "kind": "PUNCTUATION"},
+        {"surface": ")", "kind": "PUNCTUATION"}
+      ],
+      "requiredSourceSubstrings": ["Æ", "ø", "å", "O’Neill", "  ", "\n"]
+    },
+    {
+      "id": "sentence_boundaries",
+      "category": "sentence_boundaries",
+      "text": "Dette er første setning. Er dette den andre? Ja!\nSiste setning.",
+      "expectedSentenceTexts": [
+        "Dette er første setning.",
+        "Er dette den andre?",
+        "Ja!",
+        "Siste setning."
+      ],
+      "expectedTokens": [
+        {"surface": ".", "occurrence": 1, "kind": "PUNCTUATION"},
+        {"surface": "?", "kind": "PUNCTUATION"},
+        {"surface": "!", "kind": "PUNCTUATION"},
+        {"surface": ".", "occurrence": 2, "kind": "PUNCTUATION"}
+      ]
+    }
+  ]
+}

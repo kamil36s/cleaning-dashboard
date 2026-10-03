@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>History Wiki · Personal Dashboard</title>
+  <link rel="stylesheet" href="./history-wiki.css">
+</head>
+<body>
+  <header class="wiki-topbar">
+    <a class="wiki-brand" href="#overview" aria-label="History Wiki — strona główna">
+      <span class="wiki-brand-mark" aria-hidden="true">H</span>
+      <span><strong>History Wiki</strong><small>prywatne archiwum osobiste</small></span>
+    </a>
+    <label class="wiki-search">
+      <span class="sr-only">Szukaj w widocznej części archiwum</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+      <input id="global-search" type="search" autocomplete="off" placeholder="Szukaj projektów, idei, rozmów…">
+      <kbd>/</kbd>
+    </label>
+    <div class="wiki-actions">
+      <label class="privacy-control">
+        <span>Prywatność</span>
+        <select id="privacy-mode" aria-label="Widoczne warstwy prywatności">
+          <option value="normal">Tylko normal</option>
+          <option value="private">+ private</option>
+          <option value="sensitive">Wszystkie warstwy</option>
+        </select>
+      </label>
+      <a class="topbar-link" href="../../index.html">Dashboard</a>
+    </div>
+  </header>
+
+  <div class="wiki-shell">
+    <aside class="wiki-sidebar">
+      <nav id="wiki-navigation" aria-label="History Wiki">
+        <a href="#overview" data-route="overview">Overview</a>
+        <div class="nav-heading">My History</div>
+        <a href="#history" data-route="history">Lata i historia</a>
+        <a href="#timeline" data-route="timeline">Timeline</a>
+        <a href="#journal" data-route="journal">Journal</a>
+        <div class="nav-heading">Knowledge</div>
+        <a href="#projects" data-route="projects">Projects</a>
+        <a href="#ideas" data-route="ideas">Ideas</a>
+        <a href="#topics" data-route="topics">Themes / Topics</a>
+        <a href="#conversations" data-route="conversations">Conversations</a>
+        <div class="nav-heading">Archive</div>
+        <a href="#statistics" data-route="statistics">Statistics</a>
+        <a href="#quality" data-route="quality">Data Quality</a>
+      </nav>
+      <div class="sidebar-note">
+        <strong>Source-first</strong>
+        <span>Raw archive is read-only. This UI is a rebuildable view.</span>
+      </div>
+    </aside>
+
+    <main id="wiki-content" class="wiki-content" tabindex="-1">
+      <div class="loading-state">Loading local archive…</div>
+    </main>
+  </div>
+
+  <noscript>History Wiki wymaga włączonego JavaScriptu do filtrowania prywatności.</noscript>
+  <script src="./data/history-wiki-data.js"></script>
+  <script src="./history-wiki.js"></script>
+</body>
+</html>

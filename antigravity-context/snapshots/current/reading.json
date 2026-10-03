@@ -1,0 +1,384 @@
+{
+  "dataset": "reading",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-16T09:16:45Z",
+  "as_of": "2026-09-16",
+  "units": {
+    "reading_volume": "pages"
+  },
+  "privacy": {
+    "titles_and_authors_exported": true,
+    "free_text_metadata_exported": false
+  },
+  "metrics": {
+    "active_books": 36,
+    "pages_7d": 245,
+    "pages_previous_7d": 440,
+    "pages_change_pct": -44.32,
+    "reading_days_7d": 5,
+    "reading_days_previous_7d": 7
+  },
+  "records": [
+    {
+      "id": "book_751fb65b",
+      "title": "Chłopki. Opowieść o naszych babkach",
+      "author": "Joanna Kuciel-Frydryszak",
+      "ownership": "library",
+      "pages_read": 163,
+      "pages_total": 467,
+      "progress_pct": 34.9,
+      "return_date": "2026-10-12"
+    },
+    {
+      "id": "book_58dad7f8",
+      "title": "Tracę ciepło",
+      "author": "Łukasz Orbitowski",
+      "ownership": "library",
+      "pages_read": 139,
+      "pages_total": 489,
+      "progress_pct": 28.4,
+      "return_date": "2026-10-05"
+    },
+    {
+      "id": "book_5da80cd7",
+      "title": "Wool",
+      "author": "Hugh Howey",
+      "ownership": "owned",
+      "pages_read": 123,
+      "pages_total": 509,
+      "progress_pct": 24.2,
+      "return_date": null
+    },
+    {
+      "id": "book_ca770321",
+      "title": "Szczęśliwa ręka",
+      "author": "Kuba Kulasa",
+      "ownership": "library",
+      "pages_read": 0,
+      "pages_total": 187,
+      "progress_pct": 0.0,
+      "return_date": "2026-10-12"
+    },
+    {
+      "id": "book_280ccb5c",
+      "title": "Null",
+      "author": "Szczepan Twardoch",
+      "ownership": "library",
+      "pages_read": 0,
+      "pages_total": 276,
+      "progress_pct": 0.0,
+      "return_date": "2026-10-12"
+    },
+    {
+      "id": "book_7fea6606",
+      "title": "Mit normalności. Trauma, choroba i zdrowienie w toksycznej kulturze",
+      "author": "Gabor Maté, Daniel Maté",
+      "ownership": "library",
+      "pages_read": 504,
+      "pages_total": 504,
+      "progress_pct": 100.0,
+      "return_date": null
+    },
+    {
+      "id": "book_d7aecc6e",
+      "title": "Głód",
+      "author": "Knut Hamsun",
+      "ownership": "library",
+      "pages_read": 170,
+      "pages_total": 170,
+      "progress_pct": 100.0,
+      "return_date": null
+    },
+    {
+      "id": "book_888c69a8",
+      "title": "Molloy i cztery nowele",
+      "author": "Samuel Beckett",
+      "ownership": "library",
+      "pages_read": 0,
+      "pages_total": 281,
+      "progress_pct": 0.0,
+      "return_date": null
+    },
+    {
+      "id": "book_e93dc06e",
+      "title": "Kraina śniegu",
+      "author": "Yasunari Kawabata",
+      "ownership": "library",
+      "pages_read": 0,
+      "pages_total": 156,
+      "progress_pct": 0.0,
+      "return_date": null
+    },
+    {
+      "id": "book_96248d37",
+      "title": "Ethics",
+      "author": "Baruch Spinoza",
+      "ownership": "owned",
+      "pages_read": 4,
+      "pages_total": 463,
+      "progress_pct": 0.9,
+      "return_date": null
+    },
+    {
+      "id": "book_1f7f1685",
+      "title": "Wisła w ogniu. Jak bandyci ukradli Wisłę Kraków",
+      "author": "Szymon Jadczak",
+      "ownership": "owned",
+      "pages_read": 133,
+      "pages_total": 259,
+      "progress_pct": 51.4,
+      "return_date": null
+    },
+    {
+      "id": "book_a8f159d5",
+      "title": "How to Keep House While Drowning",
+      "author": "K.C. Davis",
+      "ownership": "owned",
+      "pages_read": 38,
+      "pages_total": 151,
+      "progress_pct": 25.2,
+      "return_date": null
+    },
+    {
+      "id": "book_ca2364ae",
+      "title": "A Psalm for the Wild-Built",
+      "author": "Becky Chambers",
+      "ownership": "owned",
+      "pages_read": 18,
+      "pages_total": 113,
+      "progress_pct": 15.9,
+      "return_date": null
+    },
+    {
+      "id": "book_71036e94",
+      "title": "Friends: Understanding the Power of our Most Important Relationships",
+      "author": "Robin Dunbar",
+      "ownership": "owned",
+      "pages_read": 28,
+      "pages_total": 432,
+      "progress_pct": 6.5,
+      "return_date": null
+    },
+    {
+      "id": "book_aaf0a552",
+      "title": "The Trauma of Burnout",
+      "author": "Claire Plumbly",
+      "ownership": "owned",
+      "pages_read": 104,
+      "pages_total": 218,
+      "progress_pct": 47.7,
+      "return_date": null
+    },
+    {
+      "id": "book_248f805f",
+      "title": "Dom wszystkich snów",
+      "author": "Wojciech Gunia",
+      "ownership": "library",
+      "pages_read": 0,
+      "pages_total": 386,
+      "progress_pct": 0.0,
+      "return_date": "2026-10-05"
+    },
+    {
+      "id": "book_3216ad3c",
+      "title": "Prisoners of Ourselves: Totalitarianism in everyday life",
+      "author": "Gündüz Vassaf",
+      "ownership": "owned",
+      "pages_read": 191,
+      "pages_total": 273,
+      "progress_pct": 70.0,
+      "return_date": null
+    },
+    {
+      "id": "book_8e1690a5",
+      "title": "Wczoraj byłaś zła na zielono",
+      "author": "Eliza Kącka",
+      "ownership": "owned",
+      "pages_read": 0,
+      "pages_total": 286,
+      "progress_pct": 0.0,
+      "return_date": null
+    },
+    {
+      "id": "book_81c1d4bc",
+      "title": "Litwa",
+      "author": "Herito",
+      "ownership": "owned",
+      "pages_read": 25,
+      "pages_total": 267,
+      "progress_pct": 9.4,
+      "return_date": null
+    },
+    {
+      "id": "book_23626425",
+      "title": "Autyzm: historia geniuszu natury i różnorodności neurologicznej",
+      "author": "Steve Silberman",
+      "ownership": "owned",
+      "pages_read": 26,
+      "pages_total": 474,
+      "progress_pct": 5.5,
+      "return_date": null
+    },
+    {
+      "id": "book_cb663bb9",
+      "title": "Trudne miłości",
+      "author": "Italo Calvino",
+      "ownership": "owned",
+      "pages_read": 51,
+      "pages_total": 227,
+      "progress_pct": 22.5,
+      "return_date": null
+    },
+    {
+      "id": "book_41bda13a",
+      "title": "Autyzm: miłość, przyjaźń, relacje",
+      "author": "Felicity Sedgewick, Sarah Douglas",
+      "ownership": "owned",
+      "pages_read": 279,
+      "pages_total": 436,
+      "progress_pct": 64.0,
+      "return_date": null
+    },
+    {
+      "id": "book_37390778",
+      "title": "Władcy Chaosu: Krwawe powstanie satanistycznego metalowego podziemia",
+      "author": "Michael Moyniham, Didrik Søderlind",
+      "ownership": "owned",
+      "pages_read": 266,
+      "pages_total": 410,
+      "progress_pct": 64.9,
+      "return_date": null
+    },
+    {
+      "id": "book_00355055",
+      "title": "A Clockwork Orange",
+      "author": "Anthony Burgess",
+      "ownership": "owned",
+      "pages_read": 0,
+      "pages_total": 141,
+      "progress_pct": 0.0,
+      "return_date": null
+    },
+    {
+      "id": "book_f2104a57",
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+      "author": "Robert Louis Stevenson",
+      "ownership": "owned",
+      "pages_read": 8,
+      "pages_total": 88,
+      "progress_pct": 9.1,
+      "return_date": null
+    },
+    {
+      "id": "book_3ed28f86",
+      "title": "Dogadaj się z emocjami",
+      "author": "Milena Wojnarowska",
+      "ownership": "owned",
+      "pages_read": 18,
+      "pages_total": 323,
+      "progress_pct": 5.6,
+      "return_date": null
+    },
+    {
+      "id": "book_e6ac32cf",
+      "title": "Zachowuj się: jak biologia wydobywa z nas to, co najgorsze, i to, co najlepsze",
+      "author": "Robert M. Sapolsky",
+      "ownership": "owned",
+      "pages_read": 37,
+      "pages_total": 863,
+      "progress_pct": 4.3,
+      "return_date": null
+    },
+    {
+      "id": "book_0c7ae9ca",
+      "title": "Śpiew ptasich serc",
+      "author": "Viktoria Lloyd-Barlow",
+      "ownership": "owned",
+      "pages_read": 0,
+      "pages_total": 303,
+      "progress_pct": 0.0,
+      "return_date": null
+    },
+    {
+      "id": "book_898e6e99",
+      "title": "Ktoś chodzi po twoim grobie",
+      "author": "Mariana Enriquez",
+      "ownership": "owned",
+      "pages_read": 35,
+      "pages_total": 397,
+      "progress_pct": 8.8,
+      "return_date": null
+    },
+    {
+      "id": "book_6e69424a",
+      "title": "Duch nadziei i inne eseje",
+      "author": "Byung-Chul Han",
+      "ownership": "owned",
+      "pages_read": 47,
+      "pages_total": 249,
+      "progress_pct": 18.9,
+      "return_date": null
+    },
+    {
+      "id": "book_46b9602d",
+      "title": "Kraków - miasto zero",
+      "author": "Rafał Matyja",
+      "ownership": "owned",
+      "pages_read": 29,
+      "pages_total": 269,
+      "progress_pct": 10.8,
+      "return_date": null
+    },
+    {
+      "id": "book_77a85411",
+      "title": "Święty Franciszek z Asyżu",
+      "author": "G.K. Chesterton",
+      "ownership": "owned",
+      "pages_read": 65,
+      "pages_total": 195,
+      "progress_pct": 33.3,
+      "return_date": null
+    },
+    {
+      "id": "book_9afdffdb",
+      "title": "Florencja: Od Dantego do Galileusza",
+      "author": "Paul Strathern",
+      "ownership": "owned",
+      "pages_read": 164,
+      "pages_total": 463,
+      "progress_pct": 35.4,
+      "return_date": null
+    },
+    {
+      "id": "book_16814e8c",
+      "title": "Dante",
+      "author": "Alessandro Barbero",
+      "ownership": "owned",
+      "pages_read": 48,
+      "pages_total": 274,
+      "progress_pct": 17.5,
+      "return_date": null
+    },
+    {
+      "id": "book_e4e8ced5",
+      "title": "Duchologia polska",
+      "author": "Olga Drenda",
+      "ownership": "owned",
+      "pages_read": 92,
+      "pages_total": 233,
+      "progress_pct": 39.5,
+      "return_date": null
+    },
+    {
+      "id": "book_076db3d6",
+      "title": "Pismo Święte Nowego Testamentu",
+      "author": "Anonymous",
+      "ownership": "owned",
+      "pages_read": 15,
+      "pages_total": 811,
+      "progress_pct": 1.8,
+      "return_date": null
+    }
+  ]
+}

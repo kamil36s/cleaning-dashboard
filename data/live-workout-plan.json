@@ -1,0 +1,58 @@
+{
+  "id": "indoor-cycling-30-day-2026-08",
+  "title": "Indoor Cycling — Plan cardio wysokiej objętości",
+  "start_date": "2026-08-22",
+  "end_date": "2026-10-04",
+  "workouts": [
+    { "date": "2026-08-22", "type": "base", "duration": 42, "zones": { "light": 5, "intensive": 15, "aerobic": 22, "anaerobic": 0, "vo2max": 0 }, "purpose": "Spokojna baza i adaptacja do regularnego wysiłku." },
+    { "date": "2026-08-23", "type": "tempo", "duration": 50, "zones": { "light": 5, "intensive": 10, "aerobic": 30, "anaerobic": 5, "vo2max": 0 }, "purpose": "Pierwszy kontrolowany trening o wyższej intensywności." },
+    { "date": "2026-08-24", "type": "recovery", "duration": 30, "zones": { "light": 10, "intensive": 20, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Aktywna regeneracja bez mocnego obciążenia." },
+    { "date": "2026-08-25", "type": "intervals", "duration": 45, "zones": { "light": 8, "intensive": 7, "aerobic": 18, "anaerobic": 10, "vo2max": 2 }, "purpose": "Kontrolowany bodziec anaerobowy i VO₂max." },
+    { "date": "2026-08-26", "type": "rest", "duration": 0, "zones": { "light": 0, "intensive": 0, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Pełna regeneracja." },
+    { "date": "2026-08-27", "type": "long", "duration": 65, "zones": { "light": 8, "intensive": 22, "aerobic": 35, "anaerobic": 0, "vo2max": 0 }, "purpose": "Budowanie objętości i wydolności tlenowej." },
+    { "date": "2026-08-28", "type": "tempo", "duration": 50, "zones": { "light": 5, "intensive": 10, "aerobic": 30, "anaerobic": 5, "vo2max": 0 }, "purpose": "Stabilna jazda aerobowa z krótkim mocniejszym blokiem." },
+
+    { "date": "2026-08-29", "type": "base", "duration": 55, "zones": { "light": 5, "intensive": 15, "aerobic": 35, "anaerobic": 0, "vo2max": 0 }, "purpose": "Rozbudowa bazy aerobowej." },
+    { "date": "2026-08-30", "type": "recovery", "duration": 35, "zones": { "light": 10, "intensive": 25, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Lekki ruch i regeneracja." },
+    { "date": "2026-08-31", "type": "base", "duration": 60, "zones": { "light": 5, "intensive": 15, "aerobic": 40, "anaerobic": 0, "vo2max": 0 }, "purpose": "Dłuższa, stabilna praca tlenowa." },
+    { "date": "2026-09-01", "type": "rest", "duration": 0, "zones": { "light": 0, "intensive": 0, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Pełna regeneracja." },
+    { "date": "2026-09-02", "type": "intervals", "duration": 50, "zones": { "light": 8, "intensive": 7, "aerobic": 20, "anaerobic": 12, "vo2max": 3 }, "purpose": "Rozwój wysokiej intensywności bez nadmiernej objętości." },
+    { "date": "2026-09-03", "type": "long", "duration": 70, "zones": { "light": 10, "intensive": 20, "aerobic": 40, "anaerobic": 0, "vo2max": 0 }, "purpose": "Najdłuższa jednostka tygodnia; głównie metabolizm tlenowy." },
+    { "date": "2026-09-04", "type": "tempo", "duration": 45, "zones": { "light": 5, "intensive": 10, "aerobic": 25, "anaerobic": 5, "vo2max": 0 }, "purpose": "Kontrolowane tempo po długim treningu." },
+
+    { "date": "2026-09-05", "type": "base", "duration": 60, "zones": { "light": 5, "intensive": 15, "aerobic": 40, "anaerobic": 0, "vo2max": 0 }, "purpose": "Duża objętość aerobowa przy kontrolowanej intensywności." },
+    { "date": "2026-09-06", "type": "recovery", "duration": 40, "zones": { "light": 10, "intensive": 30, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Regeneracyjna jazda o niskiej intensywności." },
+    { "date": "2026-09-07", "type": "tempo", "duration": 55, "zones": { "light": 5, "intensive": 10, "aerobic": 33, "anaerobic": 7, "vo2max": 0 }, "purpose": "Dłuższy trening tempowy." },
+    { "date": "2026-09-08", "type": "rest", "duration": 0, "zones": { "light": 0, "intensive": 0, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Pełna regeneracja przed najmocniejszą częścią tygodnia." },
+    { "date": "2026-09-09", "type": "intervals", "duration": 50, "zones": { "light": 8, "intensive": 7, "aerobic": 18, "anaerobic": 14, "vo2max": 3 }, "purpose": "Najmocniejszy trening interwałowy całego bloku." },
+    { "date": "2026-09-10", "type": "long", "duration": 75, "zones": { "light": 10, "intensive": 25, "aerobic": 40, "anaerobic": 0, "vo2max": 0 }, "purpose": "Maksymalna zaplanowana objętość treningu tlenowego." },
+    { "date": "2026-09-11", "type": "tempo", "duration": 55, "zones": { "light": 5, "intensive": 10, "aerobic": 33, "anaerobic": 7, "vo2max": 0 }, "purpose": "Ostatni mocniejszy trening przed deloadem." },
+
+    { "date": "2026-09-12", "type": "base", "duration": 45, "zones": { "light": 5, "intensive": 15, "aerobic": 25, "anaerobic": 0, "vo2max": 0 }, "purpose": "Zmniejszenie objętości przy zachowaniu ruchu." },
+    { "date": "2026-09-13", "type": "recovery", "duration": 30, "zones": { "light": 10, "intensive": 20, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Bardzo lekki trening regeneracyjny." },
+    { "date": "2026-09-14", "type": "rest", "duration": 0, "zones": { "light": 0, "intensive": 0, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Pełna regeneracja." },
+    { "date": "2026-09-15", "type": "tempo", "duration": 50, "zones": { "light": 5, "intensive": 15, "aerobic": 27, "anaerobic": 3, "vo2max": 0 }, "purpose": "Lekki bodziec tempowy podczas tygodnia regeneracyjnego." },
+    { "date": "2026-09-16", "type": "intervals", "duration": 40, "zones": { "light": 8, "intensive": 7, "aerobic": 17, "anaerobic": 7, "vo2max": 1 }, "purpose": "Krótki trening jakościowy bez dużego obciążenia." },
+    { "date": "2026-09-17", "type": "long", "duration": 60, "zones": { "light": 8, "intensive": 22, "aerobic": 30, "anaerobic": 0, "vo2max": 0 }, "purpose": "Umiarkowanie długi trening aerobowy." },
+    { "date": "2026-09-18", "type": "base", "duration": 50, "zones": { "light": 5, "intensive": 15, "aerobic": 30, "anaerobic": 0, "vo2max": 0 }, "purpose": "Spokojne zakończenie poprzedniego bloku i podtrzymanie objętości." },
+
+    { "date": "2026-09-19", "type": "rest", "duration": 0, "zones": { "light": 0, "intensive": 0, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Wyjazd — obowiązkowo bez treningu." },
+    { "date": "2026-09-20", "type": "rest", "duration": 0, "zones": { "light": 0, "intensive": 0, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Wyjazd — obowiązkowo bez treningu." },
+
+    { "date": "2026-09-21", "type": "base", "duration": 60, "zones": { "light": 5, "intensive": 15, "aerobic": 40, "anaerobic": 0, "vo2max": 0 }, "purpose": "Powrót po dwóch dniach wolnych, stabilna praca aerobowa." },
+    { "date": "2026-09-22", "type": "recovery", "duration": 40, "zones": { "light": 10, "intensive": 30, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Lekka objętość bez dokładania istotnego zmęczenia." },
+    { "date": "2026-09-23", "type": "intervals", "duration": 55, "zones": { "light": 8, "intensive": 10, "aerobic": 20, "anaerobic": 14, "vo2max": 3 }, "purpose": "Jedyny główny bodziec wysokiej intensywności w tym tygodniu." },
+    { "date": "2026-09-24", "type": "base", "duration": 65, "zones": { "light": 5, "intensive": 15, "aerobic": 45, "anaerobic": 0, "vo2max": 0 }, "purpose": "Duża, kontrolowana objętość aerobowa." },
+    { "date": "2026-09-25", "type": "long", "duration": 90, "zones": { "light": 10, "intensive": 25, "aerobic": 55, "anaerobic": 0, "vo2max": 0 }, "purpose": "Główny bodziec objętościowy tygodnia; niemal wyłącznie metabolizm tlenowy." },
+    { "date": "2026-09-26", "type": "rest", "duration": 0, "zones": { "light": 0, "intensive": 0, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Pełna regeneracja." },
+    { "date": "2026-09-27", "type": "tempo", "duration": 60, "zones": { "light": 5, "intensive": 10, "aerobic": 38, "anaerobic": 7, "vo2max": 0 }, "purpose": "Kontrolowany umiarkowanie mocny trening bez charakteru HIIT." },
+
+    { "date": "2026-09-28", "type": "recovery", "duration": 40, "zones": { "light": 10, "intensive": 30, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Aktywna regeneracja po długiej jeździe." },
+    { "date": "2026-09-29", "type": "base", "duration": 70, "zones": { "light": 5, "intensive": 15, "aerobic": 50, "anaerobic": 0, "vo2max": 0 }, "purpose": "Długa stabilna praca aerobowa." },
+    { "date": "2026-09-30", "type": "intervals", "duration": 60, "zones": { "light": 8, "intensive": 10, "aerobic": 23, "anaerobic": 16, "vo2max": 3 }, "purpose": "Jedyny główny trening wysokiej intensywności tygodnia." },
+    { "date": "2026-10-01", "type": "recovery", "duration": 45, "zones": { "light": 10, "intensive": 35, "aerobic": 0, "anaerobic": 0, "vo2max": 0 }, "purpose": "Odbudowa po interwałach przy zachowaniu lekkiej aktywności." },
+    { "date": "2026-10-02", "type": "long", "duration": 100, "zones": { "light": 10, "intensive": 30, "aerobic": 60, "anaerobic": 0, "vo2max": 0 }, "purpose": "Największy bodziec objętościowy bloku, praktycznie bez pracy anaerobowej." },
+    { "date": "2026-10-03", "type": "base", "duration": 65, "zones": { "light": 5, "intensive": 15, "aerobic": 45, "anaerobic": 0, "vo2max": 0 }, "purpose": "Dodatkowa objętość aerobowa przy kontrolowanej intensywności." },
+    { "date": "2026-10-04", "type": "tempo", "duration": 65, "zones": { "light": 5, "intensive": 12, "aerobic": 40, "anaerobic": 8, "vo2max": 0 }, "purpose": "Mocniejsze, ale nadal kontrolowane zakończenie bloku." }
+  ]
+}

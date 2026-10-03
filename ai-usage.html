@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Usage · Cleaning Dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ai-usage.css" />
+</head>
+<body class="page-ai-usage">
+  <main class="ai-page-shell">
+    <header class="ai-page-header">
+      <div>
+        <span class="ai-page-kicker">Usage analytics</span>
+        <h1>AI Usage</h1>
+        <p>Codex · Gemini · Claude/GPT usage and quota analytics</p>
+      </div>
+      <div class="ai-page-header-side">
+        <div class="ai-page-sync">
+          <span>Last sync</span>
+          <strong id="ai-page-last-sync">—</strong>
+          <em id="ai-page-provider-summary">Connecting…</em>
+        </div>
+        <div class="ai-page-actions">
+          <button id="ai-page-refresh" type="button">Refresh</button>
+          <a href="./index.html">Back to dashboard</a>
+        </div>
+      </div>
+    </header>
+
+    <p class="ai-page-error" id="ai-page-error" role="alert" hidden></p>
+
+    <section class="ai-page-section" aria-labelledby="ai-page-summary-title">
+      <div class="ai-page-section-head">
+        <div><span>Current state</span><h2 id="ai-page-summary-title">Quota overview</h2></div>
+      </div>
+      <div class="ai-page-provider-grid" id="ai-page-summary"></div>
+    </section>
+
+    <section class="ai-page-section" aria-labelledby="ai-page-exhaustion-title">
+      <div class="ai-page-section-head">
+        <div><span>Pace estimate</span><h2 id="ai-page-exhaustion-title">Estimated exhaustion</h2></div>
+        <p>Based on burn per active hour, excluding long inactivity.</p>
+      </div>
+      <div class="ai-page-provider-grid" id="ai-page-exhaustion"></div>
+    </section>
+
+    <section class="ai-page-section" aria-labelledby="ai-page-quota-chart-title">
+      <div class="ai-page-section-head ai-page-section-head--controls">
+        <div><span>History</span><h2 id="ai-page-quota-chart-title">Quota remaining</h2></div>
+        <div class="ai-page-controls">
+          <label>Provider<select id="ai-page-quota-provider"></select></label>
+          <label>Window<select id="ai-page-quota-window"><option value="both">Both</option><option value="fiveHour">5h</option><option value="weekly">Weekly</option></select></label>
+          <label>Range<select id="ai-page-quota-range"><option value="5">5h</option><option value="24" selected>24h</option><option value="168">7d</option></select></label>
+        </div>
+      </div>
+      <div class="ai-page-chart-wrap" id="ai-page-quota-chart"></div>
+      <div class="ai-page-chart-legend" id="ai-page-quota-legend"></div>
+    </section>
+
+    <section class="ai-page-section" aria-labelledby="ai-page-burn-chart-title">
+      <div class="ai-page-section-head ai-page-section-head--controls">
+        <div><span>Hourly / daily totals</span><h2 id="ai-page-burn-chart-title">Usage burn &amp; quota value</h2></div>
+        <div class="ai-page-controls">
+          <label>Provider<select id="ai-page-burn-provider"></select></label>
+          <label>Range<select id="ai-page-burn-range"><option value="today">Today · hourly</option><option value="7d">7 days · daily</option></select></label>
+        </div>
+      </div>
+      <div class="ai-page-chart-summary" id="ai-page-burn-summary"></div>
+      <div class="ai-page-chart-wrap" id="ai-page-burn-chart"></div>
+      <div class="ai-page-chart-legend">
+        <span><i class="is-five"></i>5h quota consumed</span>
+        <span><i class="is-weekly"></i>Weekly quota consumed</span>
+        <small>Codex cost is an estimated subscription quota value, not an API charge.</small>
+      </div>
+    </section>
+
+    <section class="ai-page-section" aria-labelledby="ai-page-plans-title">
+      <div class="ai-page-section-head">
+        <div><span>Estimate based on current usage pattern</span><h2 id="ai-page-plans-title">Plan simulator</h2></div>
+        <p>Linear capacity comparison, not an official limit guarantee.</p>
+      </div>
+      <div class="ai-page-plan-grid" id="ai-page-plans"></div>
+    </section>
+
+    <section class="ai-page-section" aria-labelledby="ai-page-sessions-title">
+      <div class="ai-page-section-head">
+        <div><span>Recent activity</span><h2 id="ai-page-sessions-title">Sessions</h2></div>
+      </div>
+      <div class="ai-page-table-wrap"><table class="ai-page-table">
+        <thead><tr><th>Time</th><th>Provider</th><th>Duration</th><th>5h used</th><th>Weekly used</th><th>Quota value</th></tr></thead>
+        <tbody id="ai-page-sessions"></tbody>
+      </table></div>
+    </section>
+
+    <section class="ai-page-section" aria-labelledby="ai-page-history-title">
+      <details class="ai-page-history-details" id="ai-page-history-details">
+        <summary class="ai-page-section-head">
+          <div><span>Latest changes</span><h2 id="ai-page-history-title">History</h2></div>
+          <div class="ai-page-history-meta">
+            <p id="ai-page-history-count"></p>
+            <span class="ai-page-history-toggle">
+              <span class="ai-page-history-toggle-closed">Pokaż historię</span>
+              <span class="ai-page-history-toggle-open">Ukryj historię</span>
+            </span>
+          </div>
+        </summary>
+        <div class="ai-page-table-wrap"><table class="ai-page-table">
+          <thead><tr><th>Time</th><th>Provider</th><th>5h remaining</th><th>Week remaining</th><th>Status</th></tr></thead>
+          <tbody id="ai-page-history"></tbody>
+        </table></div>
+      </details>
+    </section>
+
+    <footer class="ai-page-footer">Local quota data · automatic refresh every 60 seconds</footer>
+  </main>
+  <script type="module" src="./js/ai-usage-page.js"></script>
+</body>
+</html>

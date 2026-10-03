@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "pcl5",
+  "instrumentVersion": "PCL-5 Standard 2023-08-29",
+  "scoringVersion": "pcl5-standard-past-month-2023-08-29",
+  "language": "en",
+  "questionTextStatus": "official",
+  "title": "PTSD Checklist for DSM-5 (PCL-5)",
+  "shortDescription": "A 20-item self-report measure of DSM-5 PTSD symptoms; interpretation should be made by a clinician.",
+  "recallPeriod": "past month",
+  "estimatedMinutes": 8,
+  "instructions": "Below is a list of problems that people sometimes have in response to a very stressful experience. Keeping your worst event in mind, please read each problem carefully and then select one of the numbers to the right to indicate how much you have been bothered by that problem in the past month.",
+  "questionCount": 20,
+  "scoredItemCount": 20,
+  "responseOptions": [
+    { "value": 0, "label": "Not at all" },
+    { "value": 1, "label": "A little bit" },
+    { "value": 2, "label": "Moderately" },
+    { "value": 3, "label": "Quite a bit" },
+    { "value": 4, "label": "Extremely" }
+  ],
+  "questions": [
+    { "id": "1", "text": "Repeated, disturbing, and unwanted memories of the stressful experience?", "required": true },
+    { "id": "2", "text": "Repeated, disturbing dreams of the stressful experience?", "required": true },
+    { "id": "3", "text": "Suddenly feeling or acting as if the stressful experience were actually happening again (as if you were actually back there reliving it)?", "required": true },
+    { "id": "4", "text": "Feeling very upset when something reminded you of the stressful experience?", "required": true },
+    { "id": "5", "text": "Having strong physical reactions when something reminded you of the stressful experience (for example, heart pounding, trouble breathing, sweating)?", "required": true },
+    { "id": "6", "text": "Avoiding memories, thoughts, or feelings related to the stressful experience?", "required": true },
+    { "id": "7", "text": "Avoiding external reminders of the stressful experience (for example, people, places, conversations, activities, objects, or situations)?", "required": true },
+    { "id": "8", "text": "Trouble remembering important parts of the stressful experience?", "required": true },
+    { "id": "9", "text": "Having strong negative beliefs about yourself, other people, or the world (for example, having thoughts such as: I am bad, there is something seriously wrong with me, no one can be trusted, the world is completely dangerous)?", "required": true },
+    { "id": "10", "text": "Blaming yourself or someone else for the stressful experience or what happened after it?", "required": true },
+    { "id": "11", "text": "Having strong negative feelings such as fear, horror, anger, guilt, or shame?", "required": true },
+    { "id": "12", "text": "Loss of interest in activities that you used to enjoy?", "required": true },
+    { "id": "13", "text": "Feeling distant or cut off from other people?", "required": true },
+    { "id": "14", "text": "Trouble experiencing positive feelings (for example, being unable to feel happiness or have loving feelings for people close to you)?", "required": true },
+    { "id": "15", "text": "Irritable behavior, angry outbursts, or acting aggressively?", "required": true },
+    { "id": "16", "text": "Taking too many risks or doing things that could cause you harm?", "required": true },
+    { "id": "17", "text": "Being “superalert” or watchful or on guard?", "required": true },
+    { "id": "18", "text": "Feeling jumpy or easily startled?", "required": true },
+    { "id": "19", "text": "Having difficulty concentrating?", "required": true },
+    { "id": "20", "text": "Trouble falling or staying asleep?", "required": true }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
+    "allowedValues": [0, 1, 2, 3, 4],
+    "reverseItemIds": [],
+    "subscales": {
+      "B": ["1", "2", "3", "4", "5"],
+      "C": ["6", "7"],
+      "D": ["8", "9", "10", "11", "12", "13", "14"],
+      "E": ["15", "16", "17", "18", "19", "20"]
+    }
+  },
+  "interpretationBands": [
+    { "min": 0, "max": 30, "label": "below common 31–33 research cut-point range" },
+    { "min": 31, "max": 80, "label": "within/above common 31–33 research cut-point range" }
+  ],
+  "source": {
+    "title": "PCL-5 Standard, Past Month — National Center for PTSD",
+    "url": "https://www.ptsd.va.gov/PTSD/professional/assessment/documents/PCL5_Standard_form.pdf",
+    "landingPage": "https://www.ptsd.va.gov/professional/assessment/adult-sr/ptsd-checklist.asp",
+    "versionDate": "2023-08-29",
+    "documentSha256": "80e133dd9eb977bef1aa21401ec8c8b19fecaec7856437bc2dcc3a44b5c07bd3"
+  },
+  "license": {
+    "status": "public domain",
+    "notice": "The National Center for PTSD states that this measure is in the public domain and not copyrighted; it is intended for use by qualified health professionals and researchers."
+  },
+  "attribution": "Weathers, F. W., Litz, B. T., Keane, T. M., Palmieri, P. A., Marx, B. P., & Schnurr, P. P. (2013). The PTSD Checklist for DSM-5 (PCL-5) — Standard [Measurement instrument]."
+}

@@ -1,0 +1,4 @@
+Synthetic QA Tester
+Company: Example Testing Cooperative
+Location: Remote
+Responsibilities: execute test cases and report defects.

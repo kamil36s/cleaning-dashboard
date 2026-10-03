@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phase 10.5 browser smoke: pending</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/language.css">
+</head>
+<body class="language-page">
+  <main class="language-content">
+    <section id="inbox"></section>
+    <section id="detail"></section>
+    <section id="listening"></section>
+    <output id="result">PENDING</output>
+  </main>
+  <script type="module">
+    import { renderInboxLanding, renderInboxDetail } from '/js/language/views/inbox.js';
+    import { renderListeningText } from '/js/language/views/listening.js';
+    import { createAuthenticMediaPlayer } from '/js/language/audio/authentic-media.js';
+
+    const assertions = [];
+    const check = (value, label) => assertions.push({ value: Boolean(value), label });
+    const items = [
+      { id: 'text', title: 'Pasted Norwegian', sourceType: 'PASTED_TEXT', status: 'READY_READER', rightsStatus: 'USER_PROVIDED_STORAGE_ALLOWED' },
+      { id: 'audio', title: 'Owned interview', sourceType: 'LOCAL_AUDIO', status: 'NEEDS_TRANSCRIPT', rightsStatus: 'USER_OWNED_STORAGE_ALLOWED' },
+      { id: 'aligned', title: 'Owned aligned interview', sourceType: 'LOCAL_AUDIO_PLUS_TRANSCRIPT', status: 'READY_LISTENING', rightsStatus: 'USER_OWNED_STORAGE_ALLOWED' },
+      { id: 'nrk', title: 'NRK reference', sourceType: 'NRK_REFERENCE', status: 'REFERENCE_ONLY', rightsStatus: 'STORAGE_NOT_AUTHORIZED', sourceUri: 'https://radio.nrk.no/podkast/test' },
+    ];
+    renderInboxLanding(document.querySelector('#inbox'), { items }, {});
+    const inboxText = document.querySelector('#inbox').textContent;
+    check(document.querySelectorAll('#inbox form').length === 1, 'one intake surface');
+    check(inboxText.includes('Reader-ready') && inboxText.includes('Needs transcript') && inboxText.includes('Listening-ready') && inboxText.includes('Reference only'), 'readiness labels');
+    check(inboxText.includes('External URLs stay reference-only'), 'no URL fetch contract');
+
+    const alignments = [
+      { id: 'a1', sentenceOrder: 0, exactText: 'Jeg jobber i Oslo.', startMs: 0, endMs: 1800, method: 'IMPORTED_SRT', confidenceBasis: 'CONFIDENCE_NOT_REPORTED', exposureEligible: true },
+      { id: 'a2', sentenceOrder: 1, exactText: 'Dette er en realistisk norsk setning.', startMs: 1900, endMs: 4600, method: 'USER_CORRECTED', confidenceBasis: 'USER_PROVIDED', exposureEligible: true },
+    ];
+    renderInboxDetail(document.querySelector('#detail'), { detail: {
+      item: { ...items[2], retentionPolicy: 'KEEP_UNTIL_USER_DELETES', rightsPolicyVersion: 'language.content-rights/v1' },
+      document: { id: 'doc', processingState: 'ANALYZED' }, currentTranscript: { id: 'tr', version: 2 },
+      coverage: { tokenCoveragePercent: 84, uniqueLemmaCoveragePercent: 79, counts: { unknown: 3, learning: 2, ambiguous: 1 }, policyVersion: 'language.coverage-policy/v1' },
+      alignments, alignmentPolicyVersion: 'language.transcript-alignment/v1',
+    } }, {});
+    const detailText = document.querySelector('#detail').textContent;
+    check(detailText.includes('84% token coverage') && detailText.includes('NOT CEFR'), 'coverage without CEFR claim');
+    check(document.querySelector('#detail a[href="#reader/text/doc"]'), 'Reader route');
+    check(document.querySelector('#detail a[href="#listening/content/aligned"]'), 'Listening route');
+    check(detailText.includes('IMPORTED_SRT') && detailText.includes('USER_CORRECTED'), 'alignment disclosure');
+
+    let selected = null;
+    let saved = null;
+    const listening = document.querySelector('#listening');
+    const controller = renderListeningText(listening, {
+      payload: { document: { id: 'doc', title: 'Owned aligned interview', sourceType: 'CONTENT_TRANSCRIPT' }, sentences: alignments.map((row, index) => ({
+        id: `s${index + 1}`, sentenceOrder: index, exactText: row.exactText, startMs: row.startMs, endMs: row.endMs, alignmentMethod: row.method,
+      })) },
+      progress: { completedSentenceCount: 1, eligibleSentenceCount: 2, completionPercent: 50 },
+      preferences: { defaultMode: 'LISTENING_ONLY', rate: 1 },
+      authenticMedia: { sourceName: 'User-owned upload' }, alignmentStatus: 'IMPORTED_SRT',
+    }, { onSelect: (index) => { selected = index; controller.setCurrent(index); }, onSaveExpression: (sentence) => { saved = sentence; } });
+    check(listening.querySelector('[aria-current="true"]'), 'current sentence highlight');
+    check(listening.textContent.includes('LISTENING ONLY') || listening.querySelector('select').value === 'LISTENING_ONLY', 'Listening-only mode');
+    [...listening.querySelectorAll('button')].find((button) => button.textContent === 'Next').click();
+    check(selected === 1 && listening.querySelector('[aria-current="true"]')?.dataset.sentenceId === 's2', 'sentence jump');
+    [...listening.querySelectorAll('button')].find((button) => button.textContent === 'Reveal current sentence').click();
+    [...listening.querySelectorAll('button')].find((button) => button.textContent === 'Save sentence to Phrasebook').click();
+    check(saved?.id === 's2', 'Phrasebook preserves selected sentence');
+
+    class FakeAudio extends EventTarget {
+      constructor() { super(); this.currentTime = 0; this.paused = true; this.src = ''; }
+      async play() { this.paused = false; this.dispatchEvent(new Event('playing')); }
+      pause() { this.paused = true; this.dispatchEvent(new Event('pause')); }
+    }
+    let now = 0;
+    const ended = [];
+    const player = createAuthenticMediaPlayer({ AudioClass: FakeAudio, clock: () => now });
+    await player.playSegment({ url: '/fixture.wav', startMs: 0, endMs: 1800, onEnded: (evidence) => ended.push(evidence) });
+    now = 350; player.audio.currentTime = 0.35; player.audio.dispatchEvent(new Event('timeupdate'));
+    player.pause(); await player.resume();
+    player.audio.dispatchEvent(new Event('seeking')); player.audio.currentTime = 1.5; player.audio.dispatchEvent(new Event('seeked'));
+    now = 650; player.audio.currentTime = 1.8; player.audio.dispatchEvent(new Event('timeupdate'));
+    check(ended.length === 1 && ended[0].coverageMs < ended[0].durationMs, 'seek gap does not fabricate completion');
+    check(ended[0].activeMs === 650, 'actual active wall time');
+    check(document.documentElement.scrollWidth <= document.documentElement.clientWidth, 'no horizontal overflow');
+
+    const passed = assertions.filter((entry) => entry.value).length;
+    const result = `${passed}/${assertions.length} ${passed === assertions.length ? 'PASS' : 'FAIL'}: ${assertions.map((entry) => `${entry.value ? 'OK' : 'FAIL'} ${entry.label}`).join(' | ')}`;
+    document.querySelector('#result').textContent = result;
+    document.title = `Phase 10.5 browser smoke: ${passed}/${assertions.length}`;
+    document.body.dataset.smoke = passed === assertions.length ? 'pass' : 'fail';
+  </script>
+</body>
+</html>

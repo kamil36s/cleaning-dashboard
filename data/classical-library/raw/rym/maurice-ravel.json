@@ -1,0 +1,165 @@
+{
+  "provider": "Rate Your Music",
+  "artistSlug": "maurice-ravel",
+  "artistName": "Maurice Ravel",
+  "sourceUrl": "https://rateyourmusic.com/artist/maurice-ravel",
+  "sourceNote": "Parsed from user-provided RYM artist page source, Works table grouped by work type.",
+  "grouping": "work type",
+  "groups": [
+    {
+      "name": "Solo Instrument(s) and Orchestra",
+      "works": [
+        { "date": "1920", "role": "composer,arranger", "title": "Kaddisch (cello and orchestra version)", "numbers": "", "path": "/work/kaddisch__cello_and_orchestra_version_/" },
+        { "date": "1924", "role": "composer", "title": "Tzigane (orchestral version)", "numbers": "M. 76", "path": "/work/tzigane__orchestral_version_/" },
+        { "date": "1929-1930", "role": "composer", "title": "Piano Concerto for the Left Hand", "numbers": "M. 82", "path": "/work/piano-concerto-for-the-left-hand/" },
+        { "date": "1929-1931", "role": "composer", "title": "Piano Concerto in G major", "numbers": "M. 83", "path": "/work/piano_concerto_in_g_major/" }
+      ]
+    },
+    {
+      "name": "Stage",
+      "works": [
+        { "date": "1896", "role": "composer", "title": "La parade", "numbers": "M. 11", "path": "/work/parade/" },
+        { "date": "1907", "role": "composer", "title": "L' heure espagnole", "numbers": "M. 52", "path": "/work/heure_espagnole/" },
+        { "date": "1909-1912", "role": "composer", "title": "Daphnis et Chloé", "numbers": "M. 57", "path": "/work/daphnis_et_chloe/" },
+        { "date": "1912", "role": "composer,arranger", "title": "Ma mère l'oye (Ballet)", "numbers": "M. 62", "path": "/work/ma-mere-loye-ballet/" },
+        { "date": "1919-1925", "role": "composer", "title": "L' enfant et les sortilèges", "numbers": "M. 71", "path": "/work/enfant_et_les_sortileges/" },
+        { "date": "1927", "role": "composer", "title": "L' éventail de Jeanne", "numbers": "", "path": "/work/eventail_de_jeanne/" },
+        { "date": "1928", "role": "composer", "title": "Boléro", "numbers": "M. 81", "path": "/work/bolero/" }
+      ]
+    },
+    {
+      "name": "Chamber",
+      "works": [
+        { "date": "1895-1897", "role": "composer", "title": "Sites auriculaires", "numbers": "", "path": "/work/sites_auriculaires/" },
+        { "date": "1895-1907", "role": "composer,arranger", "title": "Rapsodie espagnole (two pianos version)", "numbers": "M. 54", "path": "/work/rapsodie-espagnole-two-pianos-version/" },
+        { "date": "1897", "role": "composer", "title": "Violin Sonata No. 1 in A minor", "numbers": "M. 12", "path": "/work/violin_sonata_no__1_in_a_minor_f1/" },
+        { "date": "1902-1903", "role": "composer", "title": "String Quartet in F major", "numbers": "M. 35", "path": "/work/string_quartet_in_f_major/" },
+        { "date": "1905", "role": "composer", "title": "Introduction et Allegro", "numbers": "M. 46", "path": "/work/introduction_et_allegro/" },
+        { "date": "1907", "role": "composer", "title": "Vocalise-étude en forme de habanera", "numbers": "M. 51", "path": "/work/vocalise-etude_en_forme_de_habanera/" },
+        { "date": "1907", "role": "composer", "title": "Vocalise-étude en forme de habanera (cello and piano version)", "numbers": "", "path": "/work/vocalise-etude-en-forme-de-habanera-cello-and-piano-version/" },
+        { "date": "1909", "role": "arranger", "title": "Nocturnes (arr. Ravel)", "numbers": "M.A 14", "path": "/work/nocturnes-arr-ravel/" },
+        { "date": "1914", "role": "composer", "title": "Piano Trio", "numbers": "M. 67", "path": "/work/piano_trio/" },
+        { "date": "1918", "role": "composer", "title": "Frontispice", "numbers": "M. 70", "path": "/work/frontispice/" },
+        { "date": "1920-1922", "role": "composer", "title": "Sonata for Violin and Cello", "numbers": "M. 73", "path": "/work/sonata_for_violin_and_cello/" },
+        { "date": "1920", "role": "composer,arranger", "title": "La valse (two pianos version)", "numbers": "M. 72", "path": "/work/valse-two-pianos-version/" },
+        { "date": "1922", "role": "composer", "title": "Berceuse sur le nom de Gabriel Fauré", "numbers": "M. 74", "path": "/work/berceuse_sur_le_nom_de_gabriel_faure/" },
+        { "date": "1923-1927", "role": "composer", "title": "Violin Sonata No. 2 in G major", "numbers": "M. 77", "path": "/work/violin_sonata_no__2_in_g_major/" },
+        { "date": "1924", "role": "composer", "title": "Tzigane", "numbers": "M. 76", "path": "/work/tzigane/" },
+        { "date": "1927", "role": "composer,arranger", "title": "Fanfare (Piano Four Hands Version)", "numbers": "", "path": "/work/fanfare__piano_four_hands_version_/" },
+        { "date": "1928", "role": "composer,arranger", "title": "Boléro (for 2 pianos and percussion)", "numbers": "", "path": "/work/bolero__for_2_pianos_and_percussion_/" },
+        { "date": "1929", "role": "composer", "title": "Pavane pour une infante défunte (arr. Borisovsky)", "numbers": "", "path": "/work/pavane-pour-une-infante-defunte-_arr_-borisovsky_/" },
+        { "date": "1944", "role": "composer", "title": "Alborada del gracioso (arr. Castelnuovo-Tedesco)", "numbers": "", "path": "/work/alborada_del_gracioso__arr__castelnuovo-tedesco_/" },
+        { "date": "1944", "role": "composer", "title": "La vallée des cloches (arr. Castelnuovo-Tedesco)", "numbers": "", "path": "/work/vallee-des-cloches-arr-castelnuovo-tedesco/" },
+        { "date": "1989", "role": "composer", "title": "Le tombeau de Couperin (arr. Abrahamsen)", "numbers": "", "path": "/work/tombeau_de_couperin__arr__abrahamsen_/" },
+        { "date": "", "role": "composer", "title": "Pièce en forme de habanera (arr. Catherine)", "numbers": "", "path": "/work/piece_en_forme_de_habanera__arr__catherine_/" },
+        { "date": "", "role": "composer", "title": "Violin Sonata No. 2 (arr. Rohmann)", "numbers": "M. 77", "path": "/work/violin_sonata_no__2__arr__rohmann_/" }
+      ]
+    },
+    {
+      "name": "Orchestral",
+      "works": [
+        { "date": "1890-1923", "role": "orchestral arrangements", "title": "Danse (orchestral version)", "numbers": "", "path": "/work/danse__orchestral_version_/" },
+        { "date": "1894-1923", "role": "orchestral arrangements", "title": "Sarabande (orchestral version)", "numbers": "", "path": "/work/sarabande__orchestral_version_/" },
+        { "date": "1898", "role": "composer", "title": "Shéhérazade : Ouverture de féerie", "numbers": "M. 17", "path": "/work/sheherazade___ouverture_de_feerie/" },
+        { "date": "1906-1926", "role": "composer,orchestral arrangements", "title": "Une barque sur l'océan (orchestral version)", "numbers": "", "path": "/work/barque_sur_locean__orchestral_version_/" },
+        { "date": "1907-1908", "role": "composer", "title": "Rapsodie espagnole", "numbers": "M. 54", "path": "/work/rapsodie_espagnole/" },
+        { "date": "1909-1911", "role": "composer", "title": "Daphnis et Chloé Suite No. 1", "numbers": "M. 57a", "path": "/work/daphnis-et-chloe-suite-no-1/" },
+        { "date": "1909-1913", "role": "composer", "title": "Daphnis et Chloé Suite No. 2", "numbers": "M. 57b", "path": "/work/daphnis_et_chloe_suite_no__2/" },
+        { "date": "1910", "role": "composer,orchestral arrangements", "title": "Pavane pour une infante défunte (orchestral version)", "numbers": "M. 19", "path": "/work/pavane_pour_une_infante_defunte__orchestral_version_/" },
+        { "date": "1911", "role": "composer,orchestral arrangements", "title": "Ma mère l'oye (orchestral version)", "numbers": "", "path": "/work/ma-mere-loye-orchestral-version/" },
+        { "date": "1912", "role": "composer,orchestral arrangements", "title": "Valses nobles et sentimentales (orchestral version)", "numbers": "M. 61", "path": "/work/valses_nobles_et_sentimentales__orchestral_version_/" },
+        { "date": "1918", "role": "composer,orchestral arrangements", "title": "Alborada del gracioso (orchestral version)", "numbers": "", "path": "/work/alborada_del_gracioso__orchestral_version_/" },
+        { "date": "1919-1920", "role": "composer", "title": "La valse", "numbers": "M. 72", "path": "/work/valse/" },
+        { "date": "1919", "role": "composer,orchestral arrangements", "title": "Le tombeau de Couperin (orchestral version)", "numbers": "M. 68a", "path": "/work/tombeau_de_couperin__orchestral_version_/" },
+        { "date": "1922-1922", "role": "orchestral arrangements", "title": "Картинки с выставки (orch. Ravel)", "numbers": "", "path": "/work/картинки_с_выставки__orch__ravel_/" },
+        { "date": "1929", "role": "composer,orchestral arrangements", "title": "Menuet antique (orchestral version)", "numbers": "M. 7", "path": "/work/menuet_antique__orchestral_version_/" },
+        { "date": "1930", "role": "composer", "title": "Pièce en forme de habanera (arr. Hoérée)", "numbers": "", "path": "/work/piece_en_forme_de_habanera__arr__hoeree_/" },
+        { "date": "1942", "role": "composer", "title": "Le gibet (arr. Goossens)", "numbers": "", "path": "/work/gibet-arr-goossens/" },
+        { "date": "1944", "role": "composer", "title": "La vallée des cloches (arr. Grainger)", "numbers": "", "path": "/work/vallee_des_cloches__arr__grainger_/" },
+        { "date": "1951", "role": "composer", "title": "Jeux d'eau (arr. Viacava)", "numbers": "", "path": "/work/jeux_deau__arr__viacava_/" },
+        { "date": "1990", "role": "composer", "title": "Gaspard de la nuit", "numbers": "", "path": "/work/gaspard_de_la_nuit_f1/" },
+        { "date": "", "role": "arranger", "title": "Danse (arr. Ravel/Kocsis)", "numbers": "L. 69", "path": "/work/danse__arr__ravel_kocsis_/" },
+        { "date": "", "role": "composer", "title": "Five o'Clock Foxtrot (arr. Palmer)", "numbers": "", "path": "/work/five-oclock-foxtrot-arr-palmer/" },
+        { "date": "", "role": "composer", "title": "Menuet antique (arr. Kocsis)", "numbers": "M. 7", "path": "/work/menuet_antique__arr__kocsis_/" },
+        { "date": "", "role": "composer", "title": "Le tombeau de Couperin (arr. Kocsis)", "numbers": "M. 68a", "path": "/work/tombeau_de_couperin__arr__kocsis_/" }
+      ]
+    },
+    {
+      "name": "Choral",
+      "works": [
+        { "date": "1900", "role": "composer", "title": "Les bayadères", "numbers": "M. 25", "path": "/work/bayaderes/" },
+        { "date": "1901", "role": "composer", "title": "Tout est lumière", "numbers": "M. 28", "path": "/work/tout_est_lumiere_f1/" },
+        { "date": "1902", "role": "composer", "title": "La nuit", "numbers": "M. 33", "path": "/work/nuit_f4/" },
+        { "date": "1903", "role": "composer", "title": "Matinée de Provence", "numbers": "M. 37", "path": "/work/matinee_de_provence/" },
+        { "date": "1905", "role": "composer", "title": "L' aurore", "numbers": "M. 45", "path": "/work/aurore_f2/" },
+        { "date": "1914-1915", "role": "composer,librettist", "title": "3 Chansons", "numbers": "M. 69", "path": "/work/chansons/" },
+        { "date": "", "role": "composer", "title": "Le jardin féérique", "numbers": "", "path": "/work/jardin_feerique_f1/" },
+        { "date": "", "role": "composer", "title": "La vallée des cloches", "numbers": "", "path": "/work/vallee_des_cloches_f1/" }
+      ]
+    },
+    {
+      "name": "Vocal",
+      "works": [
+        { "date": "1893", "role": "composer", "title": "Ballade de la reine morte d'aimer", "numbers": "M. 4", "path": "/work/ballade_de_la_reine_morte_daimer/" },
+        { "date": "1895", "role": "composer", "title": "Un grand sommeil noir", "numbers": "M. 6", "path": "/work/grand_sommeil_noir/" },
+        { "date": "1896-1899", "role": "composer", "title": "Epigrammes de Clément Marot", "numbers": "", "path": "/work/epigrammes_de_clement_marot/" },
+        { "date": "1896", "role": "composer", "title": "Sainte", "numbers": "M. 9", "path": "/work/sainte/" },
+        { "date": "1898", "role": "composer", "title": "Chanson du rouet", "numbers": "M. 15", "path": "/work/chanson_du_rouet/" },
+        { "date": "1898", "role": "composer", "title": "Si morne !", "numbers": "M. 16", "path": "/work/si-morne-/" },
+        { "date": "1901", "role": "composer", "title": "Myrrha", "numbers": "M. 29", "path": "/work/myrrha/" },
+        { "date": "1902", "role": "composer", "title": "Alcyone", "numbers": "M. 34", "path": "/work/alcyone/" },
+        { "date": "1903", "role": "composer", "title": "Alyssa", "numbers": "M. 38", "path": "/work/alyssa/" },
+        { "date": "1903", "role": "composer", "title": "Manteau de fleurs", "numbers": "M. 39", "path": "/work/manteau_de_fleurs/" },
+        { "date": "1903", "role": "composer", "title": "Shéhérazade", "numbers": "M. 41", "path": "/work/sheherazade/" },
+        { "date": "1904-1906", "role": "composer", "title": "5 mélodies populaires grecques", "numbers": "", "path": "/work/melodies_populaires_grecques/" },
+        { "date": "1905", "role": "composer,lyricist", "title": "Noël des jouets", "numbers": "M. 47", "path": "/work/noel_des_jouets/" },
+        { "date": "1906", "role": "composer", "title": "Histoires naturelles", "numbers": "M. 50", "path": "/work/histoires_naturelles/" },
+        { "date": "1906", "role": "composer", "title": "Les grands vents venus d'outremer", "numbers": "M. 48", "path": "/work/grands-vents-venus-doutremer/" },
+        { "date": "1907", "role": "composer", "title": "Sur l'herbe", "numbers": "M. 54", "path": "/work/sur_lherbe/" },
+        { "date": "1909", "role": "composer", "title": "Chanson écossaise", "numbers": "M.A 12", "path": "/work/chanson_ecossaise/" },
+        { "date": "1909", "role": "composer", "title": "Tripatos", "numbers": "M.A 13", "path": "/work/tripatos/" },
+        { "date": "1910", "role": "composer", "title": "Chants populaires", "numbers": "M.A 17", "path": "/work/chants_populaires/" },
+        { "date": "1913", "role": "composer", "title": "3 poèmes de Stéphane Mallarmé", "numbers": "M. 64", "path": "/work/poemes-de-stephane-mallarme/" },
+        { "date": "1914", "role": "composer", "title": "2 mélodies hébraïques", "numbers": "M.A 22", "path": "/work/melodies-hebraiques/" },
+        { "date": "1919", "role": "composer,arranger", "title": "2 mélodies hébraïques (arr. for voice and orchestra)", "numbers": "M.A 22", "path": "/work/melodies-hebraiques-arr-for-voice-and-orchestra/" },
+        { "date": "1923-1924", "role": "composer", "title": "Ronsard à son âme", "numbers": "M. 75", "path": "/work/ronsard_a_son_ame/" },
+        { "date": "1925-1926", "role": "composer", "title": "Chansons madécasses", "numbers": "M. 78", "path": "/work/chansons-madecasses/" },
+        { "date": "1927", "role": "composer", "title": "Rêves", "numbers": "M. 79", "path": "/work/reves/" },
+        { "date": "1932-1933", "role": "composer", "title": "Don Quichotte à Dulcinée", "numbers": "M. 84", "path": "/work/don_quichotte_a_dulcinee/" },
+        { "date": "1990", "role": "composer", "title": "Trois mélodies (orch. Ketting)", "numbers": "", "path": "/work/melodies-orch-ketting/" }
+      ]
+    },
+    {
+      "name": "Solo Instrument",
+      "works": [
+        { "date": "1892-1893", "role": "composer", "title": "Sérénade grotesque", "numbers": "M. 5", "path": "/work/serenade_grotesque/" },
+        { "date": "1895", "role": "composer", "title": "Menuet antique", "numbers": "M. 7", "path": "/work/menuet_antique/" },
+        { "date": "1899", "role": "composer", "title": "Pavane pour une infante défunte", "numbers": "M. 19", "path": "/work/pavane_pour_une_infante_defunte/" },
+        { "date": "1901", "role": "composer", "title": "Jeux d'eau", "numbers": "M. 30", "path": "/work/jeux_deau/" },
+        { "date": "1903-1905", "role": "composer", "title": "Sonatine", "numbers": "M. 40", "path": "/work/sonatine/" },
+        { "date": "1904-1905", "role": "composer", "title": "Miroirs", "numbers": "M. 43", "path": "/work/miroirs/" },
+        { "date": "1904", "role": "composer", "title": "Minuet in C sharp minor", "numbers": "M. 42", "path": "/work/minuet_in_c_sharp_minor_f1/" },
+        { "date": "1908-1910", "role": "composer", "title": "Ma mère l'oye", "numbers": "M. 60", "path": "/work/ma-mere-loye/" },
+        { "date": "1908", "role": "composer", "title": "Gaspard de la nuit", "numbers": "M. 55", "path": "/work/gaspard_de_la_nuit/" },
+        { "date": "1909-1910", "role": "composer", "title": "Daphnis et Chloé : fragments symphoniques", "numbers": "M. 57c", "path": "/work/daphnis-et-chloe-fragments-symphoniques/" },
+        { "date": "1909-1912", "role": "composer", "title": "Daphnis et Chloé (piano version)", "numbers": "M. 57d", "path": "/work/daphnis-et-chloe-piano-version/" },
+        { "date": "1909", "role": "composer", "title": "Menuet sur le nom d'Haydn", "numbers": "M. 58", "path": "/work/menuet_sur_le_nom_dhaydn/" },
+        { "date": "1911", "role": "composer", "title": "Valses nobles et sentimentales", "numbers": "M. 61", "path": "/work/valses_nobles_et_sentimentales/" },
+        { "date": "1912-1913", "role": "composer", "title": "À la manière de Borodine", "numbers": "M. 63/1", "path": "/work/a_la_maniere_de_borodine/" },
+        { "date": "1912-1913", "role": "composer", "title": "À la manière de Chabrier", "numbers": "M. 63/2", "path": "/work/a_la_maniere_de_chabrier/" },
+        { "date": "1913", "role": "composer", "title": "Daphnis et Chloé Suite No. 2 (arr. for piano four hands)", "numbers": "", "path": "/work/daphnis_et_chloe_suite_no__2__arr__for_piano_four_hands_/" },
+        { "date": "1913", "role": "composer", "title": "Prélude", "numbers": "M. 65", "path": "/work/prelude_f8/" },
+        { "date": "1914-1917", "role": "composer", "title": "Le tombeau de Couperin", "numbers": "M. 68", "path": "/work/tombeau_de_couperin/" },
+        { "date": "1919-1920", "role": "composer", "title": "La valse (piano version)", "numbers": "M. 72b", "path": "/work/valse-piano-version/" },
+        { "date": "1920", "role": "composer", "title": "La valse", "numbers": "", "path": "/work/valse_f29/" },
+        { "date": "1923", "role": "composer", "title": "Rapsodie espagnole (arr. Sorabji)", "numbers": "KSS33", "path": "/work/rapsodie_espagnole__arr__sorabji_/" },
+        { "date": "1924", "role": "composer", "title": "Kaddisch (arr. Garban)", "numbers": "", "path": "/work/kaddisch__arr__garban_/" },
+        { "date": "1929", "role": "composer,arranger", "title": "Boléro (piano four hands version)", "numbers": "", "path": "/work/bolero__piano_four_hands_version_/" },
+        { "date": "1945", "role": "composer", "title": "Rapsodie espagnole (second arr. by Sorabji)", "numbers": "KSS67", "path": "/work/rapsodie_espagnole__second_arr__by_sorabji_/" },
+        { "date": "1953", "role": "composer", "title": "Pavane pour un Infante défunte (arr. Castelnuovo-Tedesco)", "numbers": "", "path": "/work/pavane_pour_un_infante_defunte__arr__castelnuovo-tedesco_/" },
+        { "date": "", "role": "composer", "title": "Pavane pour une Infante défunte (arr. Shibe)", "numbers": "", "path": "/work/pavane_pour_une_infante_defunte__arr__shibe_/" },
+        { "date": "", "role": "composer", "title": "Pièce en forme de habanera (arr. Dumesnil)", "numbers": "", "path": "/work/piece-en-forme-de-habanera-_arr_-dumesnil_/" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Kitchen Dashboard Debug</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="manifest" href="./kitchen.webmanifest" />
+  <meta name="theme-color" content="#090909" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Kitchen" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="./kitchen.css" />
+</head>
+
+<body>
+  <main class="kitchen-screen" id="kitchen-screen">
+    <section class="kitchen-top" aria-label="Czas, pogoda i jakość powietrza">
+      <div class="clock-panel">
+        <div class="clock-main">
+          <div class="clock-time" aria-live="polite"><span id="kitchen-time">00:00</span></div>
+          <div class="clock-date" id="kitchen-date">czwartek, 14 maja</div>
+          <div class="clock-extra" id="kitchen-daily">Imieniny: --</div>
+        </div>
+        <aside class="kitchen-today" aria-label="Pozostało dzisiaj">
+          <div class="kitchen-today-heading">DZIŚ DO ZROBIENIA</div>
+          <div class="kitchen-today-grid" id="kitchen-today-grid" aria-live="polite"></div>
+        </aside>
+      </div>
+
+      <section class="weather-panel" aria-label="Pogoda i jakość powietrza">
+        <div class="weather-main">
+          <div>
+            <div class="weather-label">Kraków</div>
+            <div class="weather-temp" id="kitchen-temp">--°C</div>
+          </div>
+          <div class="weather-icon" id="kitchen-weather-icon" aria-hidden="true"></div>
+        </div>
+        <div class="weather-condition" id="kitchen-condition">Ładowanie pogody...</div>
+        <div class="weather-bottom">
+          <div class="aqi-strip" id="kitchen-aqi">
+            <span>Jakość powietrza</span>
+            <strong id="kitchen-aqi-label">--</strong>
+          </div>
+          <div class="moon-strip" id="kitchen-moon">
+            <div class="moon-thumb" id="kitchen-moon-thumb" aria-hidden="true"></div>
+            <div class="moon-copy">
+              <span>Księżyc</span>
+              <strong id="kitchen-moon-label">--</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="score-stage" aria-label="Wyniki meczów">
+      <div class="score-head">
+        <div>
+          <div class="score-kicker" id="kitchen-score-kicker">Ostatnie 24h</div>
+          <h1 id="kitchen-score-league">Wyniki</h1>
+        </div>
+        <div class="score-counter" id="kitchen-score-counter">--</div>
+      </div>
+
+      <article class="score-match" id="kitchen-score-match" aria-live="polite">
+        <div class="score-empty">Ładowanie wyników...</div>
+      </article>
+    </section>
+
+  </main>
+
+  <script>
+    if (!new URLSearchParams(window.location.search).has("debugSlides")) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("debugSlides", "1");
+      window.history.replaceState(window.history.state, "", url);
+    }
+  </script>
+  <script type="module" src="./js/kitchen.js"></script>
+</body>
+
+</html>

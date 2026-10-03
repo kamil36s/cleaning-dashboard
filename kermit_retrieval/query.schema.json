@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/kermit-retrieval/query.v1",
+  "title": "Kermit Phase 4 query request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "question"],
+  "properties": {
+    "contractVersion": {"const": 1},
+    "question": {"type": "string", "minLength": 1, "maxLength": 500},
+    "optionalContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "subsystemId": {"type": "string"},
+        "pageId": {"type": "string"},
+        "widgetId": {"type": "string"},
+        "route": {"type": "string"},
+        "entityType": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "dataset": "tasks",
+  "schema_version": 1,
+  "generated_at": "2026-09-16T09:17:58Z",
+  "source_freshness": "2026-09-10T13:51:20Z",
+  "as_of": "2026-09-16",
+  "privacy": {
+    "titles_exported": false,
+    "free_text_exported": false
+  },
+  "metrics": {
+    "total": 61,
+    "open": 24,
+    "completed": 37,
+    "completion_rate_pct": 60.7,
+    "overdue": 0,
+    "due_next_7_days": 0,
+    "open_by_bucket": {
+      "now": 3,
+      "projects": 19,
+      "shopping": 2
+    }
+  },
+  "records": []
+}

@@ -1,7 +1,19 @@
 import { COORDS, TIMEZONE } from '../config.js';
 
+const CURRENT = [
+  'temperature_2m',
+  'relative_humidity_2m',
+  'apparent_temperature',
+  'precipitation',
+  'cloud_cover',
+  'weather_code',
+  'wind_speed_10m',
+  'wind_gusts_10m'
+].join(',');
+
 const HOURLY = [
   'temperature_2m',
+  'apparent_temperature',
   'relative_humidity_2m',
   'precipitation',
   'cloud_cover',
@@ -11,7 +23,7 @@ const HOURLY = [
 
 const URL =
   `https://api.open-meteo.com/v1/forecast?latitude=${COORDS.lat}&longitude=${COORDS.lon}` +
-  `&hourly=${HOURLY}&current_weather=true&timezone=${encodeURIComponent(TIMEZONE)}`;
+  `&current=${CURRENT}&hourly=${HOURLY}&current_weather=true&timezone=${encodeURIComponent(TIMEZONE)}`;
 
 function floorHourIndex(times, iso) {
   const t = new Date(iso).getTime();
@@ -28,22 +40,25 @@ export async function fetchWeather() {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const d = await res.json();
 
-  const cw = d.current_weather;                 // temp, windspeed, etc.
-  const i  = floorHourIndex(d.hourly.time, cw.time);  // ZAMIast indexOf
+  const current = d.current ?? null;
+  const cw = d.current_weather ?? null;
+  const currentTime = current?.time ?? cw?.time ?? d.hourly.time[0];
+  const i = floorHourIndex(d.hourly.time, currentTime); // zamiast indexOf
 
   return {
-    updatedIso: cw.time,
+    updatedIso: currentTime,
     now: {
-      temp:  cw.temperature,
-      code:  cw.weathercode,
-      wind:  cw.windspeed,
-      gust:  d.hourly.wind_gusts_10m[i],
-      hum:   d.hourly.relative_humidity_2m[i],
-      prcp:  d.hourly.precipitation[i],
-      cloud: d.hourly.cloud_cover[i]
+      temp: current?.temperature_2m ?? cw?.temperature,
+      feels: current?.apparent_temperature ?? d.hourly.apparent_temperature?.[i],
+      code: current?.weather_code ?? cw?.weathercode,
+      wind: current?.wind_speed_10m ?? cw?.windspeed,
+      gust: current?.wind_gusts_10m ?? d.hourly.wind_gusts_10m[i],
+      hum: current?.relative_humidity_2m ?? d.hourly.relative_humidity_2m[i],
+      prcp: current?.precipitation ?? d.hourly.precipitation[i],
+      cloud: current?.cloud_cover ?? d.hourly.cloud_cover[i]
     },
     nextHours: (() => {
-      const end = new Date(cw.time);
+      const end = new Date(currentTime);
       end.setDate(end.getDate() + 1);
       end.setHours(6, 0, 0, 0);
 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>To-do</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="page-todo">
+    <div class="wrap">
+        <aside class="panel">
+            <h1>To-do</h1>
+            <div class="controls" style="margin-bottom:8px">
+                <button id="todo-back" title="Wróć do strony głównej">Wróć</button>
+                <button id="todo-clear-done" title="Usuń wszystkie zrobione">Wyczyść zrobione</button>
+            </div>
+
+            <div class="kpis">
+                <div class="kpi">
+                    <span>Otwarte</span>
+                    <b id="todo-kpi-open">0</b>
+                </div>
+                <div class="kpi">
+                    <span>Po terminie</span>
+                    <b id="todo-kpi-overdue">0</b>
+                </div>
+                <div class="kpi">
+                    <span>Zrobione</span>
+                    <b id="todo-kpi-done">0</b>
+                </div>
+                <div class="kpi">
+                    <span>Łącznie</span>
+                    <b id="todo-kpi-total">0</b>
+                </div>
+            </div>
+
+            <h2>Widok</h2>
+            <div class="controls">
+                <label class="checkline">
+                    <input type="checkbox" id="todo-filter-done" />
+                    <span>Pokaż zrobione</span>
+                </label>
+                <label class="checkline">
+                    <input type="checkbox" id="todo-filter-deadline" />
+                    <span>Tylko z deadline</span>
+                </label>
+            </div>
+
+            <h2>Integracje</h2>
+            <div class="meta">Przycisk "Kalendarz" pobiera plik .ics, który możesz zaimportować do Google Calendar.</div>
+        </aside>
+
+        <main class="main todo-main">
+            <div class="todo-layout">
+                <div class="todo-top-row">
+                    <section class="todo-column" data-bucket="now" data-label="Taski">
+                        <div class="todo-column-head">
+                            <div>
+                                <div class="todo-column-title">Taski</div>
+                                <div class="todo-column-meta meta">Zwykła lista zadań</div>
+                            </div>
+                            <span class="todo-column-count">0</span>
+                        </div>
+
+                        <form class="todo-form todo-add-form" data-bucket="now">
+                            <input class="todo-input" type="text" aria-label="Dodaj zadanie" placeholder="Dodaj zadanie..." maxlength="120" required />
+                            <input class="todo-date-input" type="text" aria-label="Deadline (dd/mm/yyyy)" inputmode="numeric" placeholder="dd/mm/yyyy" pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}" maxlength="10" autocomplete="off" />
+                            <button class="todo-add-btn" type="submit">Dodaj</button>
+                        </form>
+
+                        <ul class="todo-list" aria-live="polite"></ul>
+                        <div class="todo-empty">Brak tasków.</div>
+                    </section>
+
+                    <section class="todo-column" data-bucket="shopping" data-label="Shopping list">
+                        <div class="todo-column-head">
+                            <div>
+                                <div class="todo-column-title">Shopping list</div>
+                                <div class="todo-column-meta meta">Rzeczy do kupienia</div>
+                            </div>
+                            <span class="todo-column-count">0</span>
+                        </div>
+
+                        <form class="todo-form todo-add-form" data-bucket="shopping">
+                            <input class="todo-input" type="text" aria-label="Dodaj zakup" placeholder="Dodaj zakup..." maxlength="120" required />
+                            <input class="todo-date-input" type="text" aria-label="Deadline (dd/mm/yyyy)" inputmode="numeric" placeholder="dd/mm/yyyy" pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}" maxlength="10" autocomplete="off" />
+                            <button class="todo-add-btn" type="submit">Dodaj</button>
+                        </form>
+
+                        <ul class="todo-list" aria-live="polite"></ul>
+                        <div class="todo-empty">Lista zakupów jest pusta.</div>
+                    </section>
+                </div>
+
+                <section class="todo-projects-section" data-bucket="projects" data-label="Projekty">
+                    <div class="todo-column-head todo-projects-head">
+                        <div>
+                            <div class="todo-column-title">Projekty</div>
+                            <div class="todo-column-meta meta">Backlog projektów i modułów dashboardu</div>
+                        </div>
+                        <span class="todo-column-count" id="todo-projects-count">0</span>
+                    </div>
+
+                    <form class="todo-form todo-add-form todo-projects-add-form" data-bucket="projects">
+                        <input class="todo-input" type="text" aria-label="Dodaj projekt" placeholder="Dodaj projekt..." maxlength="120" required />
+                        <input class="todo-date-input" type="text" aria-label="Deadline (dd/mm/yyyy)" inputmode="numeric" placeholder="dd/mm/yyyy" pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}" maxlength="10" autocomplete="off" />
+                        <button class="todo-add-btn" type="submit">Dodaj</button>
+                    </form>
+
+                    <div class="todo-projects-container" id="todo-projects-container" aria-live="polite"></div>
+                    <div class="todo-empty" id="todo-projects-empty" hidden>Brak projektów.</div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="./js/todo.js"></script>
+</body>
+
+</html>

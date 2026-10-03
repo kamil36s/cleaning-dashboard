@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "pcptsd5",
+  "instrumentVersion": "PC-PTSD-5 2022",
+  "scoringVersion": "pc-ptsd-5-2022-gated-count-v1",
+  "language": "en",
+  "questionTextStatus": "official",
+  "title": "Primary Care PTSD Screen for DSM-5 (PC-PTSD-5)",
+  "shortDescription": "A five-item PTSD screen preceded by the official lifetime trauma-exposure gate.",
+  "recallPeriod": "lifetime exposure gate; symptoms in the past month",
+  "estimatedMinutes": 2,
+  "instructions": "Sometimes things happen to people that are unusually or especially frightening, horrible, or traumatic. For example:\n• a serious accident or fire\n• a physical or sexual assault or abuse\n• an earthquake or flood\n• a war\n• seeing someone be killed or seriously injured\n• having a loved one die through homicide or suicide.",
+  "questionCount": 6,
+  "scoredItemCount": 5,
+  "responseOptions": [
+    { "value": 1, "label": "YES" },
+    { "value": 0, "label": "NO" }
+  ],
+  "questions": [
+    { "id": "trauma_gate", "text": "Have you ever experienced this kind of event?", "helpText": "If no, screen total = 0. Please stop here.", "required": true },
+    { "id": "1", "promptBefore": "If yes, please answer the questions below. In the past month, have you…", "text": "had nightmares about the event(s) or thought about the event(s) when you did not want to?", "required": true, "visibleWhen": { "itemId": "trauma_gate", "values": [1] } },
+    { "id": "2", "text": "tried hard not to think about the event(s) or went out of your way to avoid situations that reminded you of the event(s)?", "required": true, "visibleWhen": { "itemId": "trauma_gate", "values": [1] } },
+    { "id": "3", "text": "been constantly on guard, watchful, or easily startled?", "required": true, "visibleWhen": { "itemId": "trauma_gate", "values": [1] } },
+    { "id": "4", "text": "felt numb or detached from people, activities, or your surroundings?", "required": true, "visibleWhen": { "itemId": "trauma_gate", "values": [1] } },
+    { "id": "5", "text": "felt guilty or unable to stop blaming yourself or others for the event(s) or any problems the event(s) may have caused?", "required": true, "visibleWhen": { "itemId": "trauma_gate", "values": [1] } }
+  ],
+  "scoring": {
+    "type": "sum",
+    "itemIds": ["1", "2", "3", "4", "5"],
+    "allowedValues": [0, 1],
+    "reverseItemIds": [],
+    "subscales": {},
+    "gate": { "itemId": "trauma_gate", "proceedValues": [1], "stopScore": 0 }
+  },
+  "interpretationBands": [],
+  "source": {
+    "title": "Primary Care PTSD Screen for DSM-5 (PC-PTSD-5) — National Center for PTSD",
+    "url": "https://www.ptsd.va.gov/professional/assessment/documents/pc-ptsd5-screen.pdf",
+    "landingPage": "https://www.ptsd.va.gov/professional/assessment/screens/pc-ptsd.asp",
+    "versionDate": "2022",
+    "documentSha256": "5da8f6ff530f15a0759ff34e3d83ce119e9ae493246e0738f030969e922eb0b6"
+  },
+  "license": {
+    "status": "public domain",
+    "notice": "The National Center for PTSD states that this measure is in the public domain and not copyrighted; it is intended for use by qualified health professionals and researchers."
+  },
+  "attribution": "Prins, A., Bovin, M. J., Kimerling, R., Kaloupek, D. G., Marx, B. P., Pless Kaiser, A., & Schnurr, P. P. (2015). Primary Care PTSD Screen for DSM-5 (PC-PTSD-5) [Measurement instrument]."
+}

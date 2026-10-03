@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/training.schema.json",
+  "title": "Training",
+  "description": "Workout and strength-volume aggregates without raw telemetry.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "training"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "workouts_7d": {
+          "type": "object"
+        },
+        "workouts_previous_7d": {
+          "type": "object"
+        },
+        "session_count_delta": {
+          "type": "integer"
+        },
+        "duration_change_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "strength": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "workouts_7d",
+        "workouts_previous_7d",
+        "session_count_delta",
+        "duration_change_pct",
+        "strength"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "duration_minutes": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "active_calories_kcal": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "average_hr_bpm": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "training_load": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "source": {
+            "enum": [
+              "wear_os",
+              "dashboard"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "started_at",
+          "duration_minutes",
+          "active_calories_kcal",
+          "average_hr_bpm",
+          "training_load",
+          "source"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

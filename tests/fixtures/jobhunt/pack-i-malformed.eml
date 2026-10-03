@@ -1,0 +1,9 @@
+From: Pracuj JobAlert <alert@pracuj.pl>
+Return-Path: <bounce@mailer.pracuj.pl>
+Message-ID: <pack-i-malformed@alerts.pracuj.pl>
+Date: Wed, 23 Sep 2026 08:45:00 +0200
+Subject: JobAlert - changed template
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+
+JobAlert - nowe oferty, but the expected per-listing fields and direct offer URL are absent.

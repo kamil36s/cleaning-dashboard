@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Muzyka · Personal Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./music.css">
+</head>
+<body class="music-page">
+  <div class="music-shell">
+    <aside class="music-sidebar" aria-label="Nawigacja Muzyka">
+      <a class="music-home-link" href="./index.html" aria-label="Wróć do dashboardu">← Dashboard</a>
+      <div class="music-brand">
+        <span class="music-brand-mark" aria-hidden="true">◉</span>
+        <div><span>Biblioteka osobista</span><h1>Muzyka</h1></div>
+      </div>
+      <form class="music-global-search" id="music-global-search" role="search">
+        <label for="music-search-input">Szukaj wszędzie</label>
+        <div><input id="music-search-input" type="search" autocomplete="off" placeholder="Artysta, album, gatunek…"><button type="submit" aria-label="Szukaj">⌕</button></div>
+      </form>
+      <nav class="music-nav">
+        <button class="is-active" data-music-view="overview">Przegląd</button>
+        <button data-music-view="library">Biblioteka</button>
+        <button data-music-view="rankings">Rankingi</button>
+        <button data-music-view="genres">Gatunki</button>
+        <button data-music-view="lists">Listy</button>
+        <button data-music-view="history">Historia</button>
+        <button data-music-view="imports">Import</button>
+      </nav>
+      <div class="music-connection" id="music-connection"><span></span><div>Music API<strong>Łączenie…</strong></div></div>
+    </aside>
+    <main class="music-main">
+      <header class="music-topbar">
+        <div><p id="music-eyebrow">MUZYKA</p><h2 id="music-heading">Przegląd</h2></div>
+        <div class="music-topbar-actions" id="music-topbar-actions"></div>
+      </header>
+      <section class="music-search-results" id="music-search-results" hidden></section>
+      <section class="music-content" id="music-content" aria-live="polite"><div class="music-loading">Ładowanie aplikacji Muzyka…</div></section>
+    </main>
+  </div>
+
+  <dialog class="music-dialog" id="music-release-dialog">
+    <button class="music-dialog-close" data-close-dialog aria-label="Zamknij">×</button>
+    <div id="music-release-detail"></div>
+  </dialog>
+  <div class="music-toast" id="music-toast" role="status" hidden></div>
+  <script type="module" src="./js/music.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+{
+  "fixtureVersion": "language-phase0-contracts/v1",
+  "analysisDocument": {
+    "contractVersion": "language.analysis/v1",
+    "languageCode": "nb",
+    "offsetUnit": "UNICODE_CODE_POINT",
+    "originalText": "jobb.",
+    "originalTextFingerprint": "sha256:7649030801fe4174546cf25b75fbb868ef8e7254d785c30bf3ddfac26e3be7e9",
+    "analyzer": {
+      "analyzerId": "fixture-analyzer",
+      "implementationVersion": "1.0.0",
+      "packageName": "fixture-package",
+      "packageVersion": "1.0.0",
+      "modelPackage": "fixture-model",
+      "modelVersion": "fixture-model-v1",
+      "modelFingerprint": "sha256:fixture",
+      "processors": ["tokenize", "pos", "lemma"],
+      "executionMode": "offline"
+    },
+    "sentences": [
+      {
+        "start": 0,
+        "end": 5,
+        "text": "jobb.",
+        "tokens": [
+          {
+            "surface": "jobb",
+            "start": 0,
+            "end": 4,
+            "kind": "WORD",
+            "normalizedLookup": "jobb",
+            "lemmaCandidates": [
+              {
+                "lemma": "jobb",
+                "normalizedLemma": "jobb",
+                "pos": "NOUN",
+                "morphology": {"Number": "Sing"},
+                "sourceId": "fixture-analyzer",
+                "sourceVersion": "1.0.0/fixture-model-v1",
+                "confidence": null,
+                "confidenceBasis": "not_provided"
+              }
+            ],
+            "selectedLemma": "jobb",
+            "pos": "NOUN",
+            "morphology": {"Number": "Sing"},
+            "resolutionState": "MODEL_SELECTED",
+            "ambiguityState": "NOT_REPORTED",
+            "lexicalStatus": "NOT_ASSESSED",
+            "confidence": null,
+            "confidenceBasis": "not_provided",
+            "provenance": "fixture",
+            "components": []
+          },
+          {
+            "surface": ".",
+            "start": 4,
+            "end": 5,
+            "kind": "PUNCTUATION",
+            "normalizedLookup": null,
+            "lemmaCandidates": [],
+            "selectedLemma": null,
+            "pos": null,
+            "morphology": {},
+            "resolutionState": "NOT_APPLICABLE",
+            "ambiguityState": "NOT_APPLICABLE",
+            "lexicalStatus": "NOT_APPLICABLE",
+            "confidence": null,
+            "confidenceBasis": "not_applicable",
+            "provenance": "fixture",
+            "components": []
+          }
+        ]
+      }
+    ]
+  },
+  "lemmaFormMapping": {
+    "contractVersion": "language.lemma-form/v1",
+    "languageCode": "nb",
+    "surface": "jobbene",
+    "normalizedSurface": "jobbene",
+    "candidates": [
+      {
+        "lemma": "jobb",
+        "normalizedLemma": "jobb",
+        "pos": "NOUN",
+        "morphology": {"Definite": "Def", "Number": "Plur"},
+        "sourceId": "fixture-analyzer",
+        "sourceVersion": "1.0.0/fixture-model-v1",
+        "confidence": null,
+        "confidenceBasis": "not_provided"
+      }
+    ],
+    "selectedLemma": "jobb",
+    "manuallyLocked": false
+  },
+  "coverageReport": {
+    "contractVersion": "language.coverage/v1",
+    "eligibleTokens": 10,
+    "coveredTokens": 7,
+    "learningTokens": 1,
+    "unknownTokens": 1,
+    "ambiguousTokens": 1,
+    "excludedTokens": 2,
+    "policyVersion": "coverage/v1"
+  },
+  "knowledgeCommand": {
+    "commandVersion": "language.knowledge-command/v1",
+    "lemmaId": "lemma-fixture",
+    "knowledgeStatus": "LEARNING",
+    "disposition": "TRACKED",
+    "clientEventId": "fixture-event-1"
+  },
+  "errorEnvelope": {
+    "contractVersion": "language.error/v1",
+    "ok": false,
+    "error": "Fixture error",
+    "code": "fixture_error",
+    "details": []
+  }
+}

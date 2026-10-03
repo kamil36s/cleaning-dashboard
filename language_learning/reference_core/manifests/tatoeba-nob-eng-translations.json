@@ -1,0 +1,41 @@
+{
+  "manifestVersion": "language-reference-source-manifest/v1",
+  "sourceId": "tatoeba-nob-eng-translations-2026-09-12",
+  "title": "Tatoeba Norwegian Bokmal to English direct translations",
+  "provider": "Tatoeba Association",
+  "landingUrl": "https://tatoeba.org/en/downloads",
+  "version": "weekly-export-2026-09-12",
+  "releaseDate": "2026-09-12",
+  "language": "nb-en",
+  "resourceType": "SENTENCE_TRANSLATION_LINKS",
+  "license": {"id": "CC-BY-2.0-FR", "url": "https://creativecommons.org/licenses/by/2.0/fr/", "verifiedAt": "2026-09-16"},
+  "attribution": "Norwegian-English direct sentence links and English sentence text from Tatoeba (https://tatoeba.org), released under CC BY 2.0 FR. Source sentence IDs and URLs are retained.",
+  "expectedFiles": [
+    {
+      "name": "nob-eng_links.tsv.bz2",
+      "url": "https://downloads.tatoeba.org/exports/per_language/nob/nob-eng_links.tsv.bz2",
+      "sizeBytes": 89936,
+      "sha256": "fe13d89c08566599a85351a0021f09babe54847aef722a612d9adb2147a3bad4",
+      "officialSha256": null,
+      "retrievedAt": "2026-09-16T18:56:39Z",
+      "httpMetadata": {"contentLength": "89936", "contentType": "application/octet-stream", "etag": "\"6aa55b47-15f50\"", "lastModified": "Sat, 12 Sep 2026 14:01:43 GMT"},
+      "format": "BZip2 TSV: Norwegian Bokmal sentence ID, English sentence ID",
+      "required": true
+    },
+    {
+      "name": "eng_sentences.tsv.bz2",
+      "url": "https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2",
+      "sizeBytes": 24873473,
+      "sha256": "7c46287a9146d8090ea26b6b2eaadc759b92a550e865e32388077806f584ee62",
+      "officialSha256": null,
+      "retrievedAt": "2026-09-16T18:57:48Z",
+      "httpMetadata": {"contentLength": "24873473", "contentType": "application/octet-stream", "etag": "\"6aa547ef-17b8a01\"", "lastModified": "Sat, 12 Sep 2026 12:39:11 GMT"},
+      "format": "BZip2 TSV: sentence ID, ISO 639-3 language, sentence text",
+      "required": true
+    }
+  ],
+  "parser": {"id": "tatoeba-nob-eng-translations", "version": "1.0.0"},
+  "decision": "ACCEPT_PHASE_9A",
+  "priority": "NONE",
+  "notes": ["Only direct nob-eng links are imported.", "Translations remain reference facts and are never generated or fetched at Cloze runtime."]
+}

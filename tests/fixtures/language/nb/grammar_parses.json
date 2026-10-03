@@ -1,0 +1,4744 @@
+[
+  {
+    "text": "Jeg jobber i Oslo.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "A1_SIMPLE_PAST",
+      "A2_PRESENT_PERFECT",
+      "A2_MODAL_CONSTRUCTION",
+      "B1_RELATIVE_CLAUSE",
+      "A1_NOUN_NUMBER",
+      "A1_NOUN_DEFINITENESS"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 18,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 10,
+              "surface": "jobber",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 11,
+              "end": 12,
+              "surface": "i",
+              "index": 3,
+              "head": 4,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "i",
+              "morphology": {}
+            },
+            {
+              "start": 13,
+              "end": 17,
+              "surface": "Oslo",
+              "index": 4,
+              "head": 2,
+              "relation": "obl",
+              "pos": "PROPN",
+              "lemma": "Oslo",
+              "morphology": {}
+            },
+            {
+              "start": 17,
+              "end": 18,
+              "surface": ".",
+              "index": 5,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Hun leser.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "A1_SIMPLE_PAST",
+      "A2_PRESENT_PERFECT",
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 10,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Hun",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "hun",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Gender": "Fem",
+                "Number": "Sing",
+                "Person": "3",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "surface": "leser",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "lese",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 9,
+              "end": 10,
+              "surface": ".",
+              "index": 3,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg jobbet.",
+    "yes": [
+      "A1_SIMPLE_PAST"
+    ],
+    "no": [
+      "A1_PRESENT_TENSE",
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 11,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 10,
+              "surface": "jobbet",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Past",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 10,
+              "end": 11,
+              "surface": ".",
+              "index": 3,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Hun leste.",
+    "yes": [
+      "A1_SIMPLE_PAST"
+    ],
+    "no": [
+      "A1_PRESENT_TENSE",
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 10,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Hun",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "hun",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Gender": "Fem",
+                "Number": "Sing",
+                "Person": "3",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "surface": "leste",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "lese",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Past",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 9,
+              "end": 10,
+              "surface": ".",
+              "index": 3,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg har jobbet.",
+    "yes": [
+      "A2_PRESENT_PERFECT"
+    ],
+    "no": [
+      "A1_SIMPLE_PAST",
+      "A1_PRESENT_TENSE",
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 15,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "har",
+              "index": 2,
+              "head": 3,
+              "relation": "aux",
+              "pos": "AUX",
+              "lemma": "ha",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 8,
+              "end": 14,
+              "surface": "jobbet",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "VerbForm": "Part"
+              }
+            },
+            {
+              "start": 14,
+              "end": 15,
+              "surface": ".",
+              "index": 4,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Hun har lest boken.",
+    "yes": [
+      "A2_PRESENT_PERFECT",
+      "A1_NOUN_NUMBER",
+      "A1_NOUN_DEFINITENESS"
+    ],
+    "no": [
+      "A1_SIMPLE_PAST",
+      "A1_PRESENT_TENSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 19,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Hun",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "hun",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Gender": "Fem",
+                "Number": "Sing",
+                "Person": "3",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "har",
+              "index": 2,
+              "head": 3,
+              "relation": "aux",
+              "pos": "AUX",
+              "lemma": "ha",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 8,
+              "end": 12,
+              "surface": "lest",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "lese",
+              "morphology": {
+                "VerbForm": "Part"
+              }
+            },
+            {
+              "start": 13,
+              "end": 18,
+              "surface": "boken",
+              "index": 4,
+              "head": 3,
+              "relation": "obj",
+              "pos": "NOUN",
+              "lemma": "bok",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 18,
+              "end": 19,
+              "surface": ".",
+              "index": 5,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg hadde jobbet.",
+    "yes": [],
+    "no": [
+      "A2_PRESENT_PERFECT",
+      "A1_SIMPLE_PAST"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 17,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "surface": "hadde",
+              "index": 2,
+              "head": 3,
+              "relation": "aux",
+              "pos": "AUX",
+              "lemma": "ha",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Past",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 10,
+              "end": 16,
+              "surface": "jobbet",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "VerbForm": "Part"
+              }
+            },
+            {
+              "start": 16,
+              "end": 17,
+              "surface": ".",
+              "index": 4,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg har en bil.",
+    "yes": [
+      "A1_NOUN_DEFINITENESS",
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [
+      "A2_PRESENT_PERFECT",
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 15,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "har",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "ha",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 8,
+              "end": 10,
+              "surface": "en",
+              "index": 3,
+              "head": 4,
+              "relation": "det",
+              "pos": "DET",
+              "lemma": "en",
+              "morphology": {
+                "Gender": "Masc",
+                "Number": "Sing",
+                "PronType": "Art"
+              }
+            },
+            {
+              "start": 11,
+              "end": 14,
+              "surface": "bil",
+              "index": 4,
+              "head": 2,
+              "relation": "obj",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 14,
+              "end": 15,
+              "surface": ".",
+              "index": 5,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg kan komme i morgen.",
+    "yes": [
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "no": [
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 23,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "kan",
+              "index": 2,
+              "head": 3,
+              "relation": "aux",
+              "pos": "AUX",
+              "lemma": "kunne",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 8,
+              "end": 13,
+              "surface": "komme",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "komme",
+              "morphology": {
+                "VerbForm": "Inf"
+              }
+            },
+            {
+              "start": 14,
+              "end": 15,
+              "surface": "i",
+              "index": 4,
+              "head": 5,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "i",
+              "morphology": {}
+            },
+            {
+              "start": 16,
+              "end": 22,
+              "surface": "morgen",
+              "index": 5,
+              "head": 3,
+              "relation": "obl",
+              "pos": "NOUN",
+              "lemma": "morgen",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 22,
+              "end": 23,
+              "surface": ".",
+              "index": 6,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Du må lese boken.",
+    "yes": [
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "no": [
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 17,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 2,
+              "surface": "Du",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "du",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "2",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 3,
+              "end": 5,
+              "surface": "må",
+              "index": 2,
+              "head": 3,
+              "relation": "aux",
+              "pos": "AUX",
+              "lemma": "måtte",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 6,
+              "end": 10,
+              "surface": "lese",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "lese",
+              "morphology": {
+                "VerbForm": "Inf"
+              }
+            },
+            {
+              "start": 11,
+              "end": 16,
+              "surface": "boken",
+              "index": 4,
+              "head": 3,
+              "relation": "obj",
+              "pos": "NOUN",
+              "lemma": "bok",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 16,
+              "end": 17,
+              "surface": ".",
+              "index": 5,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg vil ha kaffe.",
+    "yes": [
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "no": [
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 17,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "vil",
+              "index": 2,
+              "head": 3,
+              "relation": "aux",
+              "pos": "AUX",
+              "lemma": "ville",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 8,
+              "end": 10,
+              "surface": "ha",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "ha",
+              "morphology": {
+                "VerbForm": "Inf"
+              }
+            },
+            {
+              "start": 11,
+              "end": 16,
+              "surface": "kaffe",
+              "index": 4,
+              "head": 3,
+              "relation": "obj",
+              "pos": "NOUN",
+              "lemma": "kaffe",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 16,
+              "end": 17,
+              "surface": ".",
+              "index": 5,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg kommer.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 11,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 10,
+              "surface": "kommer",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "komme",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 10,
+              "end": 11,
+              "surface": ".",
+              "index": 3,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Bilen som kommer, er stor.",
+    "yes": [
+      "B1_RELATIVE_CLAUSE",
+      "A1_NOUN_DEFINITENESS",
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 26,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 5,
+              "surface": "Bilen",
+              "index": 1,
+              "head": 6,
+              "relation": "nsubj",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 6,
+              "end": 9,
+              "surface": "som",
+              "index": 2,
+              "head": 3,
+              "relation": "mark",
+              "pos": "SCONJ",
+              "lemma": "som",
+              "morphology": {}
+            },
+            {
+              "start": 10,
+              "end": 16,
+              "surface": "kommer",
+              "index": 3,
+              "head": 1,
+              "relation": "acl:relcl",
+              "pos": "VERB",
+              "lemma": "komme",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 16,
+              "end": 17,
+              "surface": ",",
+              "index": 4,
+              "head": 1,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$,",
+              "morphology": {}
+            },
+            {
+              "start": 18,
+              "end": 20,
+              "surface": "er",
+              "index": 5,
+              "head": 6,
+              "relation": "cop",
+              "pos": "AUX",
+              "lemma": "være",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 21,
+              "end": 25,
+              "surface": "stor",
+              "index": 6,
+              "head": 0,
+              "relation": "root",
+              "pos": "ADJ",
+              "lemma": "stor",
+              "morphology": {
+                "Definite": "Ind",
+                "Degree": "Pos",
+                "Gender": "Fem,Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 25,
+              "end": 26,
+              "surface": ".",
+              "index": 7,
+              "head": 6,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg ser mannen som bor her.",
+    "yes": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 27,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "ser",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "se",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 8,
+              "end": 14,
+              "surface": "mannen",
+              "index": 3,
+              "head": 2,
+              "relation": "obj",
+              "pos": "NOUN",
+              "lemma": "mann",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 15,
+              "end": 18,
+              "surface": "som",
+              "index": 4,
+              "head": 5,
+              "relation": "mark",
+              "pos": "SCONJ",
+              "lemma": "som",
+              "morphology": {}
+            },
+            {
+              "start": 19,
+              "end": 22,
+              "surface": "bor",
+              "index": 5,
+              "head": 3,
+              "relation": "acl:relcl",
+              "pos": "VERB",
+              "lemma": "bo",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 23,
+              "end": 26,
+              "surface": "her",
+              "index": 6,
+              "head": 5,
+              "relation": "advmod",
+              "pos": "ADV",
+              "lemma": "her",
+              "morphology": {}
+            },
+            {
+              "start": 26,
+              "end": 27,
+              "surface": ".",
+              "index": 7,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg jobber som lærer.",
+    "yes": [],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 21,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 10,
+              "surface": "jobber",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 11,
+              "end": 14,
+              "surface": "som",
+              "index": 3,
+              "head": 4,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "som",
+              "morphology": {}
+            },
+            {
+              "start": 15,
+              "end": 20,
+              "surface": "lærer",
+              "index": 4,
+              "head": 2,
+              "relation": "xcomp",
+              "pos": "NOUN",
+              "lemma": "lærer",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 20,
+              "end": 21,
+              "surface": ".",
+              "index": 5,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg tror at han ikke kommer.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 28,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 8,
+              "surface": "tror",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "tro",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 9,
+              "end": 11,
+              "surface": "at",
+              "index": 3,
+              "head": 6,
+              "relation": "mark",
+              "pos": "SCONJ",
+              "lemma": "at",
+              "morphology": {}
+            },
+            {
+              "start": 12,
+              "end": 15,
+              "surface": "han",
+              "index": 4,
+              "head": 6,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "han",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Gender": "Masc",
+                "Number": "Sing",
+                "Person": "3",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 16,
+              "end": 20,
+              "surface": "ikke",
+              "index": 5,
+              "head": 6,
+              "relation": "advmod",
+              "pos": "PART",
+              "lemma": "ikke",
+              "morphology": {
+                "Polarity": "Neg"
+              }
+            },
+            {
+              "start": 21,
+              "end": 27,
+              "surface": "kommer",
+              "index": 6,
+              "head": 2,
+              "relation": "ccomp",
+              "pos": "VERB",
+              "lemma": "komme",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 27,
+              "end": 28,
+              "surface": ".",
+              "index": 7,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "en bil",
+    "yes": [
+      "A1_NOUN_DEFINITENESS",
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [
+      "A1_PRESENT_TENSE",
+      "A1_SIMPLE_PAST"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 6,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 2,
+              "surface": "en",
+              "index": 1,
+              "head": 2,
+              "relation": "det",
+              "pos": "DET",
+              "lemma": "en",
+              "morphology": {
+                "Gender": "Masc",
+                "Number": "Sing",
+                "PronType": "Art"
+              }
+            },
+            {
+              "start": 3,
+              "end": 6,
+              "surface": "bil",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "bilen",
+    "yes": [
+      "A1_NOUN_DEFINITENESS",
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [
+      "A1_PRESENT_TENSE",
+      "A1_SIMPLE_PAST"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 5,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 5,
+              "surface": "bilen",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "biler",
+    "yes": [
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 5,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 5,
+              "surface": "biler",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Plur"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "bilene",
+    "yes": [
+      "A1_NOUN_DEFINITENESS",
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 6,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 6,
+              "surface": "bilene",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Plur"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Oslo",
+    "yes": [],
+    "no": [
+      "A1_NOUN_DEFINITENESS",
+      "A1_NOUN_NUMBER"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 4,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 4,
+              "surface": "Oslo",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "PROPN",
+              "lemma": "Oslo",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "jeg",
+    "yes": [],
+    "no": [
+      "A1_NOUN_DEFINITENESS",
+      "A1_NOUN_NUMBER"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 3,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "jeg",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "å jobbe",
+    "yes": [],
+    "no": [
+      "A1_PRESENT_TENSE",
+      "A1_SIMPLE_PAST",
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 7,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 1,
+              "surface": "å",
+              "index": 1,
+              "head": 2,
+              "relation": "mark",
+              "pos": "PART",
+              "lemma": "å",
+              "morphology": {}
+            },
+            {
+              "start": 2,
+              "end": 7,
+              "surface": "jobbe",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "VerbForm": "Inf"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg jobber ikke i dag.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 22,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 10,
+              "surface": "jobber",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 11,
+              "end": 15,
+              "surface": "ikke",
+              "index": 3,
+              "head": 2,
+              "relation": "advmod",
+              "pos": "PART",
+              "lemma": "ikke",
+              "morphology": {
+                "Polarity": "Neg"
+              }
+            },
+            {
+              "start": 16,
+              "end": 17,
+              "surface": "i",
+              "index": 4,
+              "head": 5,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "i",
+              "morphology": {}
+            },
+            {
+              "start": 18,
+              "end": 21,
+              "surface": "dag",
+              "index": 5,
+              "head": 2,
+              "relation": "obl",
+              "pos": "NOUN",
+              "lemma": "dag",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 21,
+              "end": 22,
+              "surface": ".",
+              "index": 6,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "I går kjøpte jeg en bok.",
+    "yes": [
+      "A1_SIMPLE_PAST"
+    ],
+    "no": [
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 24,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 1,
+              "surface": "I",
+              "index": 1,
+              "head": 2,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "i",
+              "morphology": {}
+            },
+            {
+              "start": 2,
+              "end": 5,
+              "surface": "går",
+              "index": 2,
+              "head": 3,
+              "relation": "obl",
+              "pos": "NOUN",
+              "lemma": "går",
+              "morphology": {}
+            },
+            {
+              "start": 6,
+              "end": 12,
+              "surface": "kjøpte",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "kjøpe",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Past",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 13,
+              "end": 16,
+              "surface": "jeg",
+              "index": 4,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 17,
+              "end": 19,
+              "surface": "en",
+              "index": 5,
+              "head": 6,
+              "relation": "det",
+              "pos": "DET",
+              "lemma": "en",
+              "morphology": {
+                "Gender": "Masc",
+                "Number": "Sing",
+                "PronType": "Art"
+              }
+            },
+            {
+              "start": 20,
+              "end": 23,
+              "surface": "bok",
+              "index": 6,
+              "head": 3,
+              "relation": "obj",
+              "pos": "NOUN",
+              "lemma": "bok",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 23,
+              "end": 24,
+              "surface": ".",
+              "index": 7,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "På mandag begynner jeg på jobb.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "A1_SIMPLE_PAST"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 31,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 2,
+              "surface": "På",
+              "index": 1,
+              "head": 2,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "på",
+              "morphology": {}
+            },
+            {
+              "start": 3,
+              "end": 9,
+              "surface": "mandag",
+              "index": 2,
+              "head": 3,
+              "relation": "obl",
+              "pos": "NOUN",
+              "lemma": "mandag",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 10,
+              "end": 18,
+              "surface": "begynner",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "begynne",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 19,
+              "end": 22,
+              "surface": "jeg",
+              "index": 4,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 23,
+              "end": 25,
+              "surface": "på",
+              "index": 5,
+              "head": 6,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "på",
+              "morphology": {}
+            },
+            {
+              "start": 26,
+              "end": 30,
+              "surface": "jobb",
+              "index": 6,
+              "head": 3,
+              "relation": "obl",
+              "pos": "NOUN",
+              "lemma": "jobb",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 30,
+              "end": 31,
+              "surface": ".",
+              "index": 7,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Kommer du i morgen?",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 19,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 6,
+              "surface": "Kommer",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "komme",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 7,
+              "end": 9,
+              "surface": "du",
+              "index": 2,
+              "head": 1,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "du",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "2",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 10,
+              "end": 11,
+              "surface": "i",
+              "index": 3,
+              "head": 4,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "i",
+              "morphology": {}
+            },
+            {
+              "start": 12,
+              "end": 18,
+              "surface": "morgen",
+              "index": 4,
+              "head": 1,
+              "relation": "obl",
+              "pos": "NOUN",
+              "lemma": "morgen",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 18,
+              "end": 19,
+              "surface": "?",
+              "index": 5,
+              "head": 1,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$?",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Hvor bor du?",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 12,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 4,
+              "surface": "Hvor",
+              "index": 1,
+              "head": 2,
+              "relation": "advmod",
+              "pos": "ADV",
+              "lemma": "hvor",
+              "morphology": {}
+            },
+            {
+              "start": 5,
+              "end": 8,
+              "surface": "bor",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "bo",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 9,
+              "end": 11,
+              "surface": "du",
+              "index": 3,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "du",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "2",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 11,
+              "end": 12,
+              "surface": "?",
+              "index": 4,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$?",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "en stor bil",
+    "yes": [
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 11,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 2,
+              "surface": "en",
+              "index": 1,
+              "head": 3,
+              "relation": "det",
+              "pos": "DET",
+              "lemma": "en",
+              "morphology": {
+                "Gender": "Masc",
+                "Number": "Sing",
+                "PronType": "Art"
+              }
+            },
+            {
+              "start": 3,
+              "end": 7,
+              "surface": "stor",
+              "index": 2,
+              "head": 3,
+              "relation": "amod",
+              "pos": "ADJ",
+              "lemma": "stor",
+              "morphology": {
+                "Definite": "Ind",
+                "Degree": "Pos",
+                "Gender": "Fem,Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 8,
+              "end": 11,
+              "surface": "bil",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "et stort hus",
+    "yes": [
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [
+      "A2_MODAL_CONSTRUCTION"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 12,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 2,
+              "surface": "et",
+              "index": 1,
+              "head": 3,
+              "relation": "det",
+              "pos": "DET",
+              "lemma": "en",
+              "morphology": {
+                "Gender": "Neut",
+                "Number": "Sing",
+                "PronType": "Art"
+              }
+            },
+            {
+              "start": 3,
+              "end": 8,
+              "surface": "stort",
+              "index": 2,
+              "head": 3,
+              "relation": "amod",
+              "pos": "ADJ",
+              "lemma": "stor",
+              "morphology": {
+                "Definite": "Ind",
+                "Degree": "Pos",
+                "Gender": "Neut",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 9,
+              "end": 12,
+              "surface": "hus",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "hus",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Neut",
+                "Number": "Sing"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "store biler",
+    "yes": [
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 11,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 5,
+              "surface": "store",
+              "index": 1,
+              "head": 2,
+              "relation": "amod",
+              "pos": "ADJ",
+              "lemma": "stor",
+              "morphology": {
+                "Degree": "Pos",
+                "Number": "Plur"
+              }
+            },
+            {
+              "start": 6,
+              "end": 11,
+              "surface": "biler",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Plur"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "den store bilen",
+    "yes": [
+      "A1_NOUN_DEFINITENESS"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 15,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "den",
+              "index": 1,
+              "head": 3,
+              "relation": "det",
+              "pos": "DET",
+              "lemma": "den",
+              "morphology": {
+                "Gender": "Masc",
+                "Number": "Sing",
+                "PronType": "Dem"
+              }
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "surface": "store",
+              "index": 2,
+              "head": 3,
+              "relation": "amod",
+              "pos": "ADJ",
+              "lemma": "stor",
+              "morphology": {
+                "Definite": "Def",
+                "Degree": "Pos",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 10,
+              "end": 15,
+              "surface": "bilen",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "bilen min",
+    "yes": [
+      "A1_NOUN_DEFINITENESS"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 9,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 5,
+              "surface": "bilen",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 6,
+              "end": 9,
+              "surface": "min",
+              "index": 2,
+              "head": 1,
+              "relation": "nmod:poss",
+              "pos": "PRON",
+              "lemma": "min",
+              "morphology": {
+                "Gender": "Masc",
+                "Number": "Sing",
+                "Poss": "Yes",
+                "PronType": "Prs"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "min bil",
+    "yes": [
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 7,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "min",
+              "index": 1,
+              "head": 2,
+              "relation": "nmod:poss",
+              "pos": "PRON",
+              "lemma": "min",
+              "morphology": {
+                "Gender": "Masc",
+                "Number": "Sing",
+                "Poss": "Yes",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "bil",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Ærlige Øyvind kjøper øl på Ås.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 30,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 6,
+              "surface": "Ærlige",
+              "index": 1,
+              "head": 2,
+              "relation": "amod",
+              "pos": "ADJ",
+              "lemma": "Ærlig",
+              "morphology": {
+                "Definite": "Def",
+                "Degree": "Pos",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 7,
+              "end": 13,
+              "surface": "Øyvind",
+              "index": 2,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "PROPN",
+              "lemma": "Øyvind",
+              "morphology": {
+                "Gender": "Masc"
+              }
+            },
+            {
+              "start": 14,
+              "end": 20,
+              "surface": "kjøper",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "kjøpe",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 21,
+              "end": 23,
+              "surface": "øl",
+              "index": 4,
+              "head": 3,
+              "relation": "obj",
+              "pos": "NOUN",
+              "lemma": "øl",
+              "morphology": {
+                "Definite": "Ind",
+                "Gender": "Neut",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 24,
+              "end": 26,
+              "surface": "på",
+              "index": 5,
+              "head": 6,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "på",
+              "morphology": {}
+            },
+            {
+              "start": 27,
+              "end": 30,
+              "surface": "Ås.",
+              "index": 6,
+              "head": 3,
+              "relation": "obl",
+              "pos": "PROPN",
+              "lemma": "Ås.",
+              "morphology": {
+                "Abbr": "Yes"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg leser, og hun jobber.",
+    "yes": [
+      "A1_PRESENT_TENSE"
+    ],
+    "no": [
+      "A1_SIMPLE_PAST"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 25,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 9,
+              "surface": "leser",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "lese",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 9,
+              "end": 10,
+              "surface": ",",
+              "index": 3,
+              "head": 6,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$,",
+              "morphology": {}
+            },
+            {
+              "start": 11,
+              "end": 13,
+              "surface": "og",
+              "index": 4,
+              "head": 6,
+              "relation": "cc",
+              "pos": "CCONJ",
+              "lemma": "og",
+              "morphology": {}
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "surface": "hun",
+              "index": 5,
+              "head": 6,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "hun",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Gender": "Fem",
+                "Number": "Sing",
+                "Person": "3",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 18,
+              "end": 24,
+              "surface": "jobber",
+              "index": 6,
+              "head": 2,
+              "relation": "conj",
+              "pos": "VERB",
+              "lemma": "jobbe",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 24,
+              "end": 25,
+              "surface": ".",
+              "index": 7,
+              "head": 2,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Boken blir lest.",
+    "yes": [],
+    "no": [
+      "A2_PRESENT_PERFECT",
+      "A1_SIMPLE_PAST"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 16,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 5,
+              "surface": "Boken",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj:pass",
+              "pos": "NOUN",
+              "lemma": "bok",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 6,
+              "end": 10,
+              "surface": "blir",
+              "index": 2,
+              "head": 3,
+              "relation": "aux:pass",
+              "pos": "AUX",
+              "lemma": "bli",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 11,
+              "end": 15,
+              "surface": "lest",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "lese",
+              "morphology": {
+                "VerbForm": "Part"
+              }
+            },
+            {
+              "start": 15,
+              "end": 16,
+              "surface": ".",
+              "index": 4,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Jeg har",
+    "yes": [],
+    "no": [
+      "A2_PRESENT_PERFECT"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 7,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "Jeg",
+              "index": 1,
+              "head": 2,
+              "relation": "nsubj",
+              "pos": "PRON",
+              "lemma": "jeg",
+              "morphology": {
+                "Animacy": "Hum",
+                "Case": "Nom",
+                "Number": "Sing",
+                "Person": "1",
+                "PronType": "Prs"
+              }
+            },
+            {
+              "start": 4,
+              "end": 7,
+              "surface": "har",
+              "index": 2,
+              "head": 0,
+              "relation": "root",
+              "pos": "VERB",
+              "lemma": "ha",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "som",
+    "yes": [],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 3,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 3,
+              "surface": "som",
+              "index": 1,
+              "head": 0,
+              "relation": "root",
+              "pos": "ADP",
+              "lemma": "som",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  },
+  {
+    "text": "Bilen er større enn huset.",
+    "yes": [
+      "A1_NOUN_NUMBER"
+    ],
+    "no": [
+      "B1_RELATIVE_CLAUSE"
+    ],
+    "parse": {
+      "sentences": [
+        {
+          "start": 0,
+          "end": 26,
+          "tokens": [
+            {
+              "start": 0,
+              "end": 5,
+              "surface": "Bilen",
+              "index": 1,
+              "head": 3,
+              "relation": "nsubj",
+              "pos": "NOUN",
+              "lemma": "bil",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Masc",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 6,
+              "end": 8,
+              "surface": "er",
+              "index": 2,
+              "head": 3,
+              "relation": "cop",
+              "pos": "AUX",
+              "lemma": "være",
+              "morphology": {
+                "Mood": "Ind",
+                "Tense": "Pres",
+                "VerbForm": "Fin"
+              }
+            },
+            {
+              "start": 9,
+              "end": 15,
+              "surface": "større",
+              "index": 3,
+              "head": 0,
+              "relation": "root",
+              "pos": "ADJ",
+              "lemma": "stor",
+              "morphology": {
+                "Degree": "Cmp"
+              }
+            },
+            {
+              "start": 16,
+              "end": 19,
+              "surface": "enn",
+              "index": 4,
+              "head": 5,
+              "relation": "case",
+              "pos": "ADP",
+              "lemma": "enn",
+              "morphology": {}
+            },
+            {
+              "start": 20,
+              "end": 25,
+              "surface": "huset",
+              "index": 5,
+              "head": 3,
+              "relation": "obl",
+              "pos": "NOUN",
+              "lemma": "hus",
+              "morphology": {
+                "Definite": "Def",
+                "Gender": "Neut",
+                "Number": "Sing"
+              }
+            },
+            {
+              "start": 25,
+              "end": 26,
+              "surface": ".",
+              "index": 6,
+              "head": 3,
+              "relation": "punct",
+              "pos": "PUNCT",
+              "lemma": "$.",
+              "morphology": {}
+            }
+          ]
+        }
+      ],
+      "provenance": {
+        "parserId": "stanza-nb-dependencies",
+        "parserVersion": "1.0.0",
+        "packageVersion": "1.14.0",
+        "resourceVersion": "1.14.0",
+        "resources": [
+          {
+            "processor": "tokenize",
+            "package": "bokmaal",
+            "md5": "6b9a174c83441d8b28401bd9b37a3863"
+          },
+          {
+            "processor": "pos",
+            "package": "bokmaal_charlm",
+            "md5": "c289d2cbbba2a5a4aeb759dfd985fbfd"
+          },
+          {
+            "processor": "lemma",
+            "package": "bokmaal_nocharlm",
+            "md5": "d56ecbe7dd807cb51d3998b9e9046e51"
+          },
+          {
+            "processor": "depparse",
+            "package": "bokmaal_charlm",
+            "md5": "f169fa5d81f4cf0adc829bfc1f047dc5"
+          },
+          {
+            "processor": "pretrain",
+            "package": "conll17",
+            "md5": "3e596f28340d5b18d9f8787bd07b8882"
+          },
+          {
+            "processor": "forward_charlm",
+            "package": "conll17",
+            "md5": "b31dcec5f1b5245aaf8718949f14e823"
+          },
+          {
+            "processor": "backward_charlm",
+            "package": "conll17",
+            "md5": "6c4f371018e68d049a4a474fecad9c22"
+          }
+        ],
+        "fingerprint": "f37f657a84b4515f0986ae2be727e4afda30ade6043111359d66af51102e8588",
+        "downloadMethod": "NONE"
+      }
+    }
+  }
+]

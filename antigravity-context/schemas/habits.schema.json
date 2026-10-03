@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/habits.schema.json",
+  "title": "Habits",
+  "description": "Active habit consistency comparisons; notes and descriptions are omitted.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "habits"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "active_habits": {
+          "type": "integer"
+        },
+        "improving_7d": {
+          "type": "integer"
+        },
+        "declining_7d": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active_habits",
+        "improving_7d",
+        "declining_7d"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "binary",
+              "numeric"
+            ]
+          },
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "target": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "positive_days_7d": {
+            "type": "integer"
+          },
+          "positive_days_previous_7d": {
+            "type": "integer"
+          },
+          "positive_days_delta": {
+            "type": "integer"
+          },
+          "current_streak_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "category",
+          "type",
+          "unit",
+          "target",
+          "positive_days_7d",
+          "positive_days_previous_7d",
+          "positive_days_delta",
+          "current_streak_days"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

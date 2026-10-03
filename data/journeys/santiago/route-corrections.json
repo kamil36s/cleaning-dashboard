@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "baselineTotalDistanceKm": 4423.497517,
+  "corrections": [
+    {
+      "id": "checkpoint-84-st-anton-town-center",
+      "checkpointIndex": 84,
+      "checkpointName": "St. Anton am Arlberg",
+      "reason": "The Wikipedia municipality coordinate was on the ski slope south of the settlement and forced BRouter away from the paved Arlberg road corridor. The replacement is the geocoded official town-hall address in the settlement center.",
+      "coordinateBefore": {
+        "lat": 47.1166667,
+        "lon": 10.2666667,
+        "source": "Wikipedia municipality coordinate"
+      },
+      "coordinateAfter": {
+        "lat": 47.1286596,
+        "lon": 10.265999,
+        "source": "Official town-hall address geocoded by Nominatim"
+      },
+      "affectedRoutePart": "070-093.geojson",
+      "evidence": [
+        {
+          "url": "https://www.tirol.gv.at/gemeinden/gemeinde/70621/",
+          "description": "Land Tirol lists the municipal address as Dorfstraße 46, 6580 St. Anton am Arlberg."
+        },
+        {
+          "url": "https://www.stantonamarlberg.com/en/summer/road-biking",
+          "description": "The official destination site describes road-cycling tours from St. Anton west over Arlberg."
+        },
+        {
+          "description": "BRouter trekking comparison: 14.444 km from the old point to Arlberg Pass versus 6.249 km from the corrected town point."
+        }
+      ],
+      "affectedLegs": [
+        {
+          "fromIndex": 83,
+          "toIndex": 84,
+          "beforeKm": 34.47436,
+          "afterKm": 27.975345,
+          "differenceKm": -6.499015
+        },
+        {
+          "fromIndex": 84,
+          "toIndex": 85,
+          "beforeKm": 13.817715,
+          "afterKm": 6.019962,
+          "differenceKm": -7.797753
+        },
+        {
+          "fromIndex": 85,
+          "toIndex": 86,
+          "beforeKm": 4.630594,
+          "afterKm": 4.61985,
+          "differenceKm": -0.010744
+        }
+      ],
+      "totalDifferenceKm": -14.307512
+    }
+  ]
+}

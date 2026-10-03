@@ -71,7 +71,10 @@ export function scheduleUndo({ message, duration = 4000, onCommit, onUndo }) {
     done = true;
     cleanup();
     try {
-      if (onUndo) onUndo();
+      const res = onUndo && onUndo();
+      if (res && typeof res.catch === 'function') {
+        res.catch((err) => console.error('Undo rollback failed:', err));
+      }
     } catch (err) {
       console.error('Undo rollback failed:', err);
     }

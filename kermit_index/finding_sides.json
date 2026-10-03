@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "findings": {
+    "Q-01": {
+      "category": "TEST_COVERAGE_GAP",
+      "sideA": {"description": "Quote provider and fallback behavior is implemented.", "refs": [{"path": "js/widget-quote.js", "start": 1, "end": 24, "anchor": "PROVIDERS"}]},
+      "sideB": {"description": "Focused Quote behavior test was not found in the reviewed test inventory.", "refs": []}
+    },
+    "W-01": {
+      "category": "TEST_COVERAGE_GAP",
+      "sideA": {"description": "Weather fetch and fallback behavior is implemented.", "refs": [{"path": "js/api/openMeteo.js", "start": 38, "end": 60, "anchor": "export async function fetchWeather"}]},
+      "sideB": {"description": "Focused Weather behavior test was not found in the reviewed test inventory.", "refs": []}
+    },
+    "W-02": {
+      "category": "DISPLAY_OR_IMPLEMENTATION_QUIRK",
+      "sideA": {"description": "The adapter copies hourly provider values, including null, into nextHours.", "refs": [{"path": "js/api/openMeteo.js", "start": 62, "end": 76, "anchor": "temp: d.hourly.temperature_2m[x]"}]},
+      "sideB": {"description": "The renderer applies Number to hourly values, so null can display as zero.", "refs": [{"path": "js/ui/render_weather_api.js", "start": 609, "end": 613, "anchor": "Number(h.temp)"}]}
+    },
+    "F-01": {
+      "category": "DOCUMENTATION_DRIFT",
+      "sideA": {"description": "The project map says Finance CSV imports preserve source evidence privately before normalization.", "refs": [{"path": "PROJECT_MAP.md", "start": 317, "end": 317, "anchor": "Finance receipts and CSV imports preserve source evidence privately before normalization"}]},
+      "sideB": {"description": "The active method starts a batch and parses raw bytes; a focused test observes no CSV source file in the service directory.", "refs": [{"path": "finance_service.py", "start": 257, "end": 274, "anchor": "parsed = parse_csv_bytes("}, {"path": "tests/test_finance_import.py", "start": 47, "end": 53, "anchor": "test_csv_import_keeps_no_source_file_in_service_directory"}]}
+    },
+    "F-02": {
+      "category": "AMBIGUOUS_SEMANTICS",
+      "sideA": {"description": "Finance period parsing defaults to the UTC calendar date.", "refs": [{"path": "finance_analytics.py", "start": 12, "end": 19, "anchor": "datetime.now(timezone.utc).date()"}]},
+      "sideB": {"description": "Planning overview defaults to the local date when no reference date is supplied.", "refs": [{"path": "finance_planning.py", "start": 1413, "end": 1415, "anchor": "date.today()"}]}
+    },
+    "F-03": {
+      "category": "AMBIGUOUS_SEMANTICS",
+      "sideA": {"description": "Planning overview uses fresh through day 3 and aging through day 14.", "refs": [{"path": "finance_planning.py", "start": 1458, "end": 1463, "anchor": "age <= 3"}]},
+      "sideB": {"description": "Period analytics uses current through day 1 and stale afterward.", "refs": [{"path": "finance_analytics.py", "start": 103, "end": 113, "anchor": "age <= 1"}]}
+    },
+    "F-04": {
+      "category": "AMBIGUOUS_SEMANTICS",
+      "sideA": {"description": "Receipt category breakdown can allocate eligible item splits instead of transaction categories.", "refs": [{"path": "finance_receipts.py", "start": 2181, "end": 2196, "anchor": "if not eligible:"}]},
+      "sideB": {"description": "Planning report top categories sum transaction category amounts.", "refs": [{"path": "finance_planning.py", "start": 1198, "end": 1204, "anchor": "GROUP BY COALESCE(c.name"}]}
+    },
+    "L-01": {
+      "category": "DOCUMENTATION_DRIFT",
+      "sideA": {"description": "The project map says the provider request has no literal responseSchema field.", "refs": [{"path": "PROJECT_MAP.md", "start": 254, "end": 254, "anchor": "does not currently send a provider `responseSchema` field"}]},
+      "sideB": {"description": "The current Gemini request sends responseJsonSchema and JSON MIME; the literal responseSchema key is absent.", "refs": [{"path": "language_learning/providers/generation.py", "start": 175, "end": 189, "anchor": "\"responseJsonSchema\""}]}
+    }
+  }
+}

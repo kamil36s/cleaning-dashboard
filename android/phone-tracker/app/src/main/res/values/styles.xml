@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.PhoneTracker" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@color/tracker_navy</item>
+        <item name="android:navigationBarColor">@color/tracker_navy</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    <style name="Theme.PhoneTracker.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/tracker_navy</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_tracker_mark</item>
+        <item name="postSplashScreenTheme">@style/Theme.PhoneTracker</item>
+    </style>
+</resources>

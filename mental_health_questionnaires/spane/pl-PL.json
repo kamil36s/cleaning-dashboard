@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "instrumentId": "spane",
+  "instrumentVersion": "SPANE/SPIND Polish translation (Kaczmarek/Baran; official Diener distribution)",
+  "scoringVersion": "spane-p-n-balance-positive-minus-negative-v1",
+  "language": "pl-PL",
+  "questionTextStatus": "official_translation",
+  "title": "Skala Pozytywnego i Negatywnego Doświadczenia (SPIND)",
+  "shortDescription": "Dwie sześciopozycyjne podskale pozytywnych i negatywnych uczuć oraz ich bilans.",
+  "recallPeriod": "ostatnie 4 tygodnie",
+  "estimatedMinutes": 4,
+  "instructions": "Zastanów się proszę, co robiłeś/-aś i czego doświadczałeś/-aś w ciągu ostatnich 4 tygodni. Następnie zaznacz, jak często doświadczałeś/-aś każdego z następujących stanów i uczuć, korzystając z poniższej skali. Dla każdej pozycji wybierz cyfrę od 1 do 5 i zaznacz ją na arkuszu odpowiedzi.",
+  "questionCount": 12,
+  "scoredItemCount": 12,
+  "responseOptions": [
+    { "value": 1, "label": "Bardzo rzadko lub nigdy" },
+    { "value": 2, "label": "Rzadko" },
+    { "value": 3, "label": "Czasami" },
+    { "value": 4, "label": "Często" },
+    { "value": 5, "label": "Bardzo często lub zawsze" }
+  ],
+  "questions": [
+    { "id": "1", "text": "Pozytywnie", "required": true },
+    { "id": "2", "text": "Negatywnie", "required": true },
+    { "id": "3", "text": "Dobrze", "required": true },
+    { "id": "4", "text": "Źle", "required": true },
+    { "id": "5", "text": "Przyjemnie", "required": true },
+    { "id": "6", "text": "Nieprzyjemnie", "required": true },
+    { "id": "7", "text": "Szczęśliwy/-a", "required": true },
+    { "id": "8", "text": "Smutny/-a", "required": true },
+    { "id": "9", "text": "Przestraszony/-a", "required": true },
+    { "id": "10", "text": "Radosny/-a", "required": true },
+    { "id": "11", "text": "Rozgniewany/-a", "required": true },
+    { "id": "12", "text": "Zadowolony/-a", "required": true }
+  ],
+  "scoring": {
+    "type": "subscale_sum",
+    "itemIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "allowedValues": [1, 2, 3, 4, 5],
+    "reverseItemIds": [],
+    "subscales": {
+      "positive": ["1", "3", "5", "7", "10", "12"],
+      "negative": ["2", "4", "6", "8", "9", "11"]
+    },
+    "derivedSubscales": {
+      "balance": { "type": "difference", "minuend": "positive", "subtrahend": "negative" }
+    }
+  },
+  "interpretationBands": [],
+  "source": {
+    "title": "Scale of Positive and Negative Experience — Polish translation (SPIND)",
+    "url": "https://eddiener.com/wp-content/uploads/2025/02/SPANE_Polish.pdf",
+    "landingPage": "https://eddiener.com/scale-of-positive-and-negative-experience-spane/",
+    "scoringUrl": "https://eddiener.com/wp-content/uploads/2024/10/SPANE-Scale.pdf",
+    "documentSha256": "23cf7066fdedc5a4e50a33c6d9891328a7e177cf06044a4d19b6041ec986162b",
+    "scoringDocumentSha256": "53ff18d900d74014e7b303e69ef983d7d823e6c7e647d72d161c72e3c6cea9cc",
+    "discrepancyNotice": "The Polish PDF reverses the subtraction in one sentence, while its stated range and +24 explanation require P minus N. The authoritative English scoring form explicitly defines SPANE-B as positive minus negative."
+  },
+  "license": {
+    "status": "non-commercial with attribution",
+    "notice": "Copyrighted scale. The authors permit non-commercial use without an individual permission request when proper credit is given."
+  },
+  "attribution": "Diener, E., Wirtz, D., Tov, W., Kim-Prieto, C., Choi, D., Oishi, S., & Biswas-Diener, R. (2009/2010). Polish translation: Łukasz D. Kaczmarek and Barbara Baran."
+}

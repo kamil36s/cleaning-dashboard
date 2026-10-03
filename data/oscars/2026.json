@@ -146,7 +146,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=The%20Girl%20Who%20Cried%20Pearls",
       "imdb_url": "https://www.imdb.com/find/?q=The%20Girl%20Who%20Cried%20Pearls",
-      "id": 7
+      "id": 7,
+      "won_categories": "Animated Short Film"
     },
     {
       "watched": false,
@@ -167,7 +168,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=The%20Singers",
       "imdb_url": "https://www.imdb.com/find/?q=The%20Singers",
-      "id": 8
+      "id": 8,
+      "won_categories": "Live Action Short Film"
     },
     {
       "watched": false,
@@ -251,7 +253,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=All%20the%20Empty%20Rooms",
       "imdb_url": "https://www.imdb.com/find/?q=All%20the%20Empty%20Rooms",
-      "id": 12
+      "id": 12,
+      "won_categories": "Documentary Short Film"
     },
     {
       "watched": false,
@@ -440,7 +443,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Mr.%20Nobody%20against%20Putin",
       "imdb_url": "https://www.imdb.com/find/?q=Mr.%20Nobody%20against%20Putin",
-      "id": 21
+      "id": 21,
+      "won_categories": "Documentary Feature Film"
     },
     {
       "watched": false,
@@ -503,7 +507,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=KPop%20Demon%20Hunters",
       "imdb_url": "https://www.imdb.com/find/?q=KPop%20Demon%20Hunters",
-      "id": 24
+      "id": 24,
+      "won_categories": "Animated Feature Film"
     },
     {
       "watched": false,
@@ -776,7 +781,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Hamnet",
       "imdb_url": "https://www.imdb.com/find/?q=Hamnet",
-      "id": 37
+      "id": 37,
+      "won_categories": "Actress in a Leading Role"
     },
     {
       "watched": false,
@@ -797,7 +803,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Weapons",
       "imdb_url": "https://www.imdb.com/find/?q=Weapons",
-      "id": 38
+      "id": 38,
+      "won_categories": "Actress in a Supporting Role"
     },
     {
       "watched": false,
@@ -860,7 +867,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Sentimental%20Value",
       "imdb_url": "https://www.imdb.com/find/?q=Sentimental%20Value",
-      "id": 41
+      "id": 41,
+      "won_categories": "International Feature Film"
     },
     {
       "watched": true,
@@ -881,7 +889,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Sinners",
       "imdb_url": "https://www.imdb.com/find/?q=Sinners",
-      "id": 42
+      "id": 42,
+      "won_categories": "Actor in a Leading Role; Writing (Original Screenplay); Cinematography; Music (Original Score)"
     },
     {
       "watched": false,
@@ -923,7 +932,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Frankenstein",
       "imdb_url": "https://www.imdb.com/find/?q=Frankenstein",
-      "id": 44
+      "id": 44,
+      "won_categories": "Production Design; Costume Design; Makeup and Hairstyling"
     },
     {
       "watched": true,
@@ -944,7 +954,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/F1_(film)",
       "imdb_url": "https://www.imdb.com/title/tt1745960/",
-      "id": 45
+      "id": 45,
+      "won_categories": "Sound"
     },
     {
       "watched": false,
@@ -986,7 +997,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=One%20Battle%20after%20Another",
       "imdb_url": "https://www.imdb.com/find/?q=One%20Battle%20after%20Another",
-      "id": 47
+      "id": 47,
+      "won_categories": "Best Picture; Directing; Actor in a Supporting Role; Writing (Adapted Screenplay); Film Editing; Casting"
     },
     {
       "watched": false,
@@ -1049,7 +1061,8 @@
       "notes": null,
       "wikipedia_url": "https://en.wikipedia.org/wiki/Special:Search?search=Avatar%3A%20Fire%20and%20Ash",
       "imdb_url": "https://www.imdb.com/find/?q=Avatar%3A%20Fire%20and%20Ash",
-      "id": 50
+      "id": 50,
+      "won_categories": "Visual Effects"
     }
   ]
 }

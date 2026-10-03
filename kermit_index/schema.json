@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "indexerVersion": "1.0.0",
+  "entityTypes": ["subsystem", "page", "widget", "module", "symbol", "api_operation", "store", "data_artifact", "transformation", "metric", "job_worker", "integration", "test_contract", "document", "conflict"],
+  "relationshipTypes": ["owns", "calls", "reads", "writes", "renders", "exposes", "handles", "imports", "depends_on", "generates", "caches", "processes", "tests", "documents", "supersedes", "conflicts_with"],
+  "privacyClasses": ["public_project_knowledge", "internal_implementation"],
+  "sourceRecordRequired": ["schemaVersion", "id", "path", "sha256", "sourceClass", "expectedRole", "privacyClassification", "parserMode", "contentMode", "maxBytes", "sizeBytes", "subsystem", "indexerVersion", "provenance"],
+  "entityRequired": ["schemaVersion", "id", "type", "displayName", "sourceClass", "privacyClassification", "sourceReferences", "provenance"],
+  "relationshipRequired": ["schemaVersion", "id", "type", "from", "to", "provenance"],
+  "documentUnitRequired": ["schemaVersion", "id", "parentDocument", "heading", "locator", "lineStart", "lineEnd", "content", "truncated", "sourceStatus", "subsystem", "sourceFingerprint", "provenance"],
+  "findingRequired": ["schemaVersion", "id", "subsystem", "type", "category", "sideA", "sideB", "description", "impact", "blocksPhase3", "provenance"],
+  "optionalEntityFields": ["aliases", "owningSubsystem", "status", "implementationStatus", "storageRole", "repositoryPath", "route", "method", "lineStart", "lineEnd", "symbolKind", "findingType", "description", "impact", "blocksPhase3", "knownConflictRefs"],
+  "idPolicy": {
+    "entity": "type:stable-identity",
+    "source": "source:repository-relative-path",
+    "relationship": "relationship:sha256(type|from|to|source-id|locator)[:24]",
+    "documentUnit": "document_unit:repository-relative-path#heading-slug:occurrence"
+  }
+}

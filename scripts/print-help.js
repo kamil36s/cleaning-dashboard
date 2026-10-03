@@ -49,3 +49,13 @@ for (const name of names) {
 console.log('\nReports:');
 console.log('  Test report:    reports/vitest/index.html');
 console.log('  Coverage report: reports/vitest/coverage/index.html');
+
+console.log('\nLocal shortcuts:');
+console.log('  rs              - Restart only the local API server on port 8000');
+console.log('  restart-api     - Same as rs, but less cryptic');
+console.log('  stop-dev        - Stop only this project\'s API/Vite/network/scale processes');
+
+console.log('\nHTTP console logs:');
+console.log('  compact (default)              - Writes, redirects, warnings and errors');
+console.log('  set DASHBOARD_HTTP_LOG=all     - Include every successful GET request');
+console.log('  set DASHBOARD_HTTP_LOG=errors  - Show only HTTP errors');

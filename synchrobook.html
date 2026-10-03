@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pl" data-synchrobook-mode="desk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Synchrobook</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./synchrobook.css" />
+</head>
+<body class="synchrobook-page">
+  <main class="synchrobook-shell">
+    <header class="synchrobook-header panel">
+      <div class="synchrobook-brand-row">
+        <a class="synchrobook-back" href="./index.html" aria-label="Wróć do dashboardu">← Dashboard</a>
+        <div>
+          <div class="synchrobook-kicker">EBOOK + AUDIOBOOK</div>
+          <h1>Synchrobook</h1>
+        </div>
+      </div>
+      <section class="synchrobook-queue" id="synchrobook-queue" aria-label="Kolejka przetwarzania" hidden>
+        <div class="synchrobook-queue-title">
+          <div class="synchrobook-queue-title-row"><span>KOLEJKA PRZETWARZANIA</span><strong id="synchrobook-queue-count">0</strong></div>
+          <small id="synchrobook-queue-estimate">Pozostało: obliczanie…</small>
+        </div>
+        <div class="synchrobook-queue-list" id="synchrobook-queue-list"></div>
+      </section>
+      <div class="synchrobook-header-actions">
+        <button class="budget-action budget-action--ghost" id="synchrobook-guide-open" type="button" disabled>Reading Guide</button>
+        <button class="budget-action budget-action--ghost" id="synchrobook-quality-open" type="button" disabled>Jakość dopasowania</button>
+        <button class="budget-action budget-action--ghost" id="synchrobook-settings-open" type="button">Ustawienia</button>
+        <button class="budget-action budget-action--ghost synchrobook-book-menu-open" id="synchrobook-book-menu-open" type="button" aria-label="Opcje otwartej książki" title="Opcje książki" hidden>•••</button>
+        <button class="budget-action budget-action--ghost synchrobook-fullscreen-toggle" id="synchrobook-fullscreen-toggle" type="button" aria-label="Włącz pełny ekran" aria-pressed="false" title="Włącz pełny ekran">
+          <span class="synchrobook-fullscreen-icon" aria-hidden="true">⛶</span><span class="synchrobook-fullscreen-label">Pełny ekran</span>
+        </button>
+        <button class="budget-action" id="synchrobook-import-open" type="button">Importuj książkę</button>
+      </div>
+    </header>
+
+    <section class="synchrobook-workspace panel" aria-label="Czytnik Synchrobook">
+      <aside class="synchrobook-sidebar">
+        <div class="synchrobook-side-tabs" role="tablist" aria-label="Nawigacja książki">
+          <button class="is-active" type="button" data-side-tab="library">Biblioteka</button>
+          <button type="button" data-side-tab="chapters">Rozdziały</button>
+        </div>
+        <div class="synchrobook-side-panel" id="synchrobook-library" data-side-panel="library">
+          <p class="synchrobook-empty">Ładowanie biblioteki…</p>
+        </div>
+        <div class="synchrobook-side-panel" id="synchrobook-chapters" data-side-panel="chapters" hidden>
+          <p class="synchrobook-empty">Najpierw otwórz książkę.</p>
+        </div>
+      </aside>
+
+      <button class="synchrobook-sidebar-toggle" id="synchrobook-sidebar-toggle" type="button" aria-label="Ukryj panel książki" aria-pressed="false" hidden><span aria-hidden="true">◧</span><span>Ukryj panel</span></button>
+
+      <section class="synchrobook-reader" id="synchrobook-reader">
+        <div class="synchrobook-reader-empty" id="synchrobook-reader-empty">
+          <span class="synchrobook-empty-icon" aria-hidden="true">◫</span>
+          <h2>Twoja zsynchronizowana biblioteka</h2>
+          <p>Zaimportuj EPUB, PDF lub MOBI oraz odpowiadające mu pliki MP3, WAV lub M4B. Resztę Synchrobook przetworzy w tle.</p>
+        </div>
+        <article class="synchrobook-text" id="synchrobook-text" aria-live="off" hidden></article>
+      </section>
+
+      <aside class="synchrobook-guide" id="synchrobook-guide-panel" hidden>
+        <header class="synchrobook-guide-head">
+          <div><span class="synchrobook-kicker">READING GUIDE</span><h3 id="synchrobook-guide-title">Current Commentary</h3></div>
+          <button id="synchrobook-guide-panel-toggle" type="button" aria-label="Collapse Reading Guide">×</button>
+        </header>
+        <nav class="synchrobook-guide-tabs" aria-label="Reading Guide views">
+          <button type="button" data-guide-sidebar-view="before">Before</button>
+          <button class="is-active" type="button" data-guide-sidebar-view="current">Current</button>
+          <button type="button" data-guide-sidebar-view="after">After</button>
+          <button type="button" data-guide-sidebar-view="terms">Terms</button>
+        </nav>
+        <div class="synchrobook-guide-body" id="synchrobook-guide-body"></div>
+        <footer class="synchrobook-guide-controls">
+          <button id="synchrobook-guide-previous" type="button">Previous</button>
+          <button id="synchrobook-guide-next" type="button">Next</button>
+          <button class="is-active" id="synchrobook-guide-follow" type="button" aria-pressed="true">Follow Reading</button>
+          <button id="synchrobook-guide-go" type="button">Go to Passage</button>
+        </footer>
+      </aside>
+    </section>
+
+    <section class="synchrobook-player panel" aria-label="Odtwarzacz audiobooka">
+      <audio id="synchrobook-audio" preload="metadata"></audio>
+      <div class="synchrobook-player-buttons">
+        <button type="button" id="synchrobook-back-10" aria-label="Cofnij o 10 sekund">−10s</button>
+        <button class="synchrobook-play" type="button" id="synchrobook-play" aria-label="Odtwórz" disabled>
+          <span aria-hidden="true">▶</span>
+        </button>
+        <button type="button" id="synchrobook-forward-10" aria-label="Przewiń o 10 sekund">+10s</button>
+      </div>
+      <span class="synchrobook-time" id="synchrobook-current-time">0:00</span>
+      <input class="synchrobook-seek" id="synchrobook-seek" type="range" min="0" max="0" step="0.05" value="0" aria-label="Pozycja audiobooka" disabled />
+      <span class="synchrobook-time" id="synchrobook-duration">0:00</span>
+      <div class="synchrobook-remaining-times" aria-label="Realny pozostały czas przy aktualnym tempie">
+        <span class="synchrobook-remaining synchrobook-remaining--chapter" title="Realny czas do końca rozdziału"><span>Rozdział</span><strong id="synchrobook-chapter-remaining">—</strong></span>
+        <span class="synchrobook-remaining synchrobook-remaining--book" title="Realny czas do końca książki"><span>Książka</span><strong id="synchrobook-book-remaining">—</strong></span>
+      </div>
+      <label class="synchrobook-page-position" title="Bieżąca strona obliczana z postępu audiobooka">
+        <span>Strona</span>
+        <span class="synchrobook-page-value">
+          <strong id="synchrobook-current-page">—</strong><span aria-hidden="true">/</span><input id="synchrobook-total-pages" type="number" min="1" max="99999" step="1" inputmode="numeric" placeholder="YYY" aria-label="Liczba stron książki" disabled />
+        </span>
+      </label>
+      <label class="synchrobook-speed-label">
+        <span>Tempo</span>
+        <select id="synchrobook-speed" disabled>
+          <option value="0.75">0.75×</option><option value="0.9">0.9×</option>
+          <option value="1" selected>1.0×</option><option value="1.1">1.1×</option>
+          <option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2.0×</option>
+        </select>
+      </label>
+    </section>
+  </main>
+
+  <dialog class="synchrobook-dialog" id="synchrobook-import-dialog">
+    <form class="synchrobook-dialog-card" id="synchrobook-import-form">
+      <header><div><span class="synchrobook-kicker">NOWA POZYCJA</span><h2>Importuj książkę</h2></div><button class="synchrobook-close" type="button" data-close-dialog aria-label="Zamknij">×</button></header>
+      <label class="synchrobook-file"><span>Książka</span><input name="book" type="file" accept=".epub,.pdf,.mobi,application/epub+zip,application/pdf,application/x-mobipocket-ebook" required /><small data-file-label="book">EPUB, PDF albo MOBI</small></label>
+      <label class="synchrobook-file"><span>Audiobook — jeden lub wiele plików</span><input name="audiobook" type="file" accept=".m4b,.mp3,.wav,audio/mp4,audio/x-m4b,audio/mpeg,audio/wav,audio/x-wav" multiple required /><small data-file-label="audiobook">MP3, WAV lub M4B; części zostaną ułożone według nazw i zapisane jako M4B</small></label>
+      <ol class="synchrobook-audio-selection" id="synchrobook-audio-selection" aria-label="Kolejność części audiobooka" hidden></ol>
+      <div class="synchrobook-job" id="synchrobook-import-job" hidden>
+        <div class="synchrobook-job-head"><strong id="synchrobook-job-stage">W kolejce</strong><span id="synchrobook-job-percent">0%</span></div>
+        <progress id="synchrobook-job-progress" max="100" value="0"></progress>
+        <p id="synchrobook-job-message"></p>
+      </div>
+      <p class="synchrobook-error" id="synchrobook-import-error" role="alert" hidden></p>
+      <footer><button class="budget-action budget-action--ghost" type="button" data-close-dialog>Anuluj</button><button class="budget-action" type="submit" id="synchrobook-import-submit">Importuj / przetwórz</button></footer>
+    </form>
+  </dialog>
+
+  <dialog class="synchrobook-dialog" id="synchrobook-settings-dialog">
+    <form class="synchrobook-dialog-card" id="synchrobook-settings-form" method="dialog">
+      <header><div><span class="synchrobook-kicker">CZYTANIE</span><h2>Ustawienia wyglądu</h2></div><button class="synchrobook-close" value="cancel" aria-label="Zamknij">×</button></header>
+      <fieldset class="synchrobook-mode-picker"><legend>Tryb</legend><label><input type="radio" name="mode" value="desk" /> DESK</label><label><input type="radio" name="mode" value="relax" /> RELAX</label><label><input type="radio" name="mode" value="bike" /> BIKE</label></fieldset>
+      <label class="synchrobook-setting"><span>Rozmiar fontu <output id="synchrobook-font-output"></output></span><input name="fontSize" type="range" min="16" max="60" step="1" /></label>
+      <label class="synchrobook-setting"><span>Interlinia <output id="synchrobook-line-output"></output></span><input name="lineHeight" type="range" min="1.35" max="2.2" step="0.05" /></label>
+      <label class="synchrobook-setting"><span>Szerokość tekstu <output id="synchrobook-width-output"></output></span><input name="columnWidth" type="range" min="520" max="1280" step="20" /></label>
+      <fieldset class="synchrobook-highlight-settings">
+        <legend>Aktywne zdanie</legend>
+        <label class="synchrobook-setting"><span>Gotowy wariant</span><select name="highlightPreset"><option value="yellow">Żółty — wysoki kontrast</option><option value="cyan">Turkusowy</option><option value="lime">Limonkowy</option><option value="pink">Różowy</option><option value="white">Biały</option><option value="custom">Własne kolory</option></select></label>
+        <div class="synchrobook-color-settings">
+          <label class="synchrobook-setting synchrobook-color-setting"><span>Tło</span><input name="highlightBackground" type="color" value="#ffd84d" /></label>
+          <label class="synchrobook-setting synchrobook-color-setting"><span>Tekst</span><input name="highlightText" type="color" value="#111111" /></label>
+        </div>
+        <label class="synchrobook-setting"><span>Poświata <output id="synchrobook-highlight-glow-output"></output></span><input name="highlightGlow" type="range" min="0" max="36" step="1" /></label>
+        <label class="checkline"><input name="highlightBold" type="checkbox" /><span>Pogrub aktywne zdanie</span></label>
+        <div class="synchrobook-highlight-preview" aria-label="Podgląd podświetlenia"><span class="synchrobook-sentence is-active">Tak będzie wyglądać aktywne zdanie.</span></div>
+      </fieldset>
+      <label class="checkline"><input name="autoScroll" type="checkbox" /><span>Automatycznie śledź narrację</span></label>
+      <fieldset class="synchrobook-processing-settings">
+        <legend>Przetwarzanie</legend>
+        <label class="checkline"><input name="highMemory" type="checkbox" /><span>Szybsze przetwarzanie — pozwól użyć więcej RAM i CPU</span></label>
+        <small>Wyłączenie pozostawia bezpieczny tryb: Whisper czeka na bezczynność komputera i większy zapas pamięci. Ustawienie jest zapisane na serwerze i działa także po jego restarcie.</small>
+        <small class="synchrobook-processing-status" id="synchrobook-processing-status" role="status"></small>
+      </fieldset>
+      <footer><button class="budget-action" value="default">Gotowe</button></footer>
+    </form>
+  </dialog>
+
+  <dialog class="synchrobook-dialog" id="synchrobook-book-menu-dialog">
+    <section class="synchrobook-dialog-card">
+      <header><div><span class="synchrobook-kicker">OTWARTA KSIĄŻKA</span><h2>Opcje książki</h2></div><button class="synchrobook-close" type="button" data-close-dialog aria-label="Zamknij">×</button></header>
+      <div class="synchrobook-book-summary"><strong id="synchrobook-book-menu-title"></strong><span id="synchrobook-book-menu-author"></span></div>
+      <p class="synchrobook-book-delete-note">Usunięcie skasuje plik książki, audio i zapis postępu. Plik dopasowania pozostanie w lokalnym archiwum.</p>
+      <footer><button class="budget-action budget-action--ghost" type="button" data-close-dialog>Anuluj</button><button class="budget-action synchrobook-danger-action" id="synchrobook-delete-book" type="button">Usuń książkę</button></footer>
+    </section>
+  </dialog>
+
+  <dialog class="synchrobook-dialog synchrobook-guide-dialog" id="synchrobook-guide-dialog">
+    <section class="synchrobook-dialog-card">
+      <header><div><span class="synchrobook-kicker">SYNCHRONIZED COMMENTARY</span><h2>Reading Guide</h2></div><button class="synchrobook-close" type="button" data-close-dialog aria-label="Close">×</button></header>
+      <nav class="synchrobook-guide-manager-tabs" id="synchrobook-guide-dialog-tabs">
+        <button class="is-active" type="button" data-guide-manager-tab="generate">Generate / Import</button>
+        <button type="button" data-guide-manager-tab="sets">Sets</button>
+        <button type="button" data-guide-manager-tab="profiles">Profiles</button>
+        <button type="button" data-guide-manager-tab="types">Commentary Types</button>
+        <button type="button" data-guide-manager-tab="memory">Memory / Glossary</button>
+      </nav>
+      <div class="synchrobook-guide-status" id="synchrobook-guide-load-status" role="status" hidden></div>
+
+      <section class="synchrobook-guide-manager-panel" data-guide-manager-panel="generate">
+        <h3>Generate Reading Guide</h3>
+        <div class="synchrobook-guide-form-grid">
+          <label><span>Mode</span><select id="synchrobook-guide-generation-mode"><option value="book_analysis">Book Analysis</option><option value="current_section">Current Section</option><option value="selected_section">Select Section</option><option value="custom_range">Custom Range</option></select></label>
+          <label><span>Section</span><select id="synchrobook-guide-generation-section"></select></label>
+        </div>
+        <div class="synchrobook-guide-form-grid" id="synchrobook-guide-custom-range" hidden>
+          <label><span>Start source anchor</span><select id="synchrobook-guide-range-start"></select></label>
+          <label><span>End source anchor</span><select id="synchrobook-guide-range-end"></select></label>
+        </div>
+        <div class="synchrobook-guide-status" id="synchrobook-guide-generation-context"></div>
+        <div class="synchrobook-guide-status" id="synchrobook-guide-generation-stats">Choose a generation target. Synchrobook sends source IDs but never creates commentary chunks before import.</div>
+        <div class="synchrobook-guide-actions"><button class="budget-action" id="synchrobook-guide-generate" type="button">Generate Prompt</button><button class="budget-action budget-action--ghost" id="synchrobook-guide-copy" type="button">Copy Prompt</button><button class="budget-action budget-action--ghost" id="synchrobook-guide-save-prompt" type="button">Save .txt</button></div>
+        <textarea class="synchrobook-guide-code" id="synchrobook-guide-prompt" rows="12" readonly placeholder="Generated prompt will appear here."></textarea>
+        <h3>Import Commentary / Book Analysis</h3>
+        <label class="synchrobook-file"><span>Import .json file</span><input id="synchrobook-guide-import-file" type="file" accept=".json,application/json" /></label>
+        <textarea class="synchrobook-guide-code" id="synchrobook-guide-import-json" rows="10" placeholder="Paste JSON returned by an external LLM."></textarea>
+        <div class="synchrobook-guide-actions"><button class="budget-action budget-action--ghost" id="synchrobook-guide-import-validate" type="button">Validate</button><button class="budget-action" id="synchrobook-guide-import-commit" type="button" disabled>Import</button></div>
+        <div class="synchrobook-guide-validation" id="synchrobook-guide-validation" role="status"></div>
+      </section>
+
+      <section class="synchrobook-guide-manager-panel" data-guide-manager-panel="sets" hidden>
+        <h3>Commentary Sets</h3>
+        <label><span>Active Set</span><select id="synchrobook-guide-set-select"></select></label>
+        <div class="synchrobook-guide-form-grid"><label><span>Name</span><input id="synchrobook-guide-set-name" type="text" /></label><label><span>Reading Profile</span><select id="synchrobook-guide-set-profile"></select></label></div>
+        <div class="synchrobook-guide-actions"><button class="budget-action" id="synchrobook-guide-set-create" type="button">Create Set</button><button class="budget-action budget-action--ghost" id="synchrobook-guide-set-rename" type="button">Save / Rename</button><button class="budget-action budget-action--ghost" id="synchrobook-guide-set-duplicate" type="button">Duplicate</button><button class="budget-action synchrobook-danger-action" id="synchrobook-guide-set-delete" type="button">Delete</button></div>
+      </section>
+
+      <section class="synchrobook-guide-manager-panel" data-guide-manager-panel="profiles" hidden>
+        <h3>Reading Profiles</h3>
+        <label><span>Profile</span><select id="synchrobook-guide-profile-select"></select></label>
+        <div class="synchrobook-guide-form-grid"><label><span>Name</span><input id="synchrobook-guide-profile-name" type="text" /></label><label><span>Commentary language</span><input id="synchrobook-guide-profile-language" type="text" /></label></div>
+        <label><span>Description</span><textarea id="synchrobook-guide-profile-description" rows="2"></textarea></label>
+        <label><span>Spoiler policy</span><input id="synchrobook-guide-profile-spoilers" type="text" /></label>
+        <label><span>General instructions</span><textarea id="synchrobook-guide-profile-instructions" rows="8"></textarea></label>
+        <label><span>Optional profile context</span><textarea id="synchrobook-guide-profile-context" rows="5"></textarea></label>
+        <div class="synchrobook-guide-type-columns"><fieldset><legend>Chunk types and order</legend><div id="synchrobook-guide-profile-chunk-types"></div></fieldset><fieldset><legend>Section types</legend><div id="synchrobook-guide-profile-section-types"></div></fieldset><fieldset><legend>Book types</legend><div id="synchrobook-guide-profile-book-types"></div></fieldset></div>
+        <div class="synchrobook-guide-actions"><button class="budget-action budget-action--ghost" id="synchrobook-guide-profile-new" type="button">Create</button><button class="budget-action budget-action--ghost" id="synchrobook-guide-profile-duplicate" type="button">Duplicate</button><button class="budget-action" id="synchrobook-guide-profile-save" type="button">Save</button><button class="budget-action synchrobook-danger-action" id="synchrobook-guide-profile-delete" type="button">Delete</button></div>
+      </section>
+
+      <section class="synchrobook-guide-manager-panel" data-guide-manager-panel="types" hidden>
+        <div class="synchrobook-guide-section-heading">
+          <div><h3>Built-in Commentary Types</h3><p>Built into Synchrobook. Enable and order them in the Profiles tab.</p></div>
+          <span class="synchrobook-guide-count" id="synchrobook-guide-builtin-count"></span>
+        </div>
+        <div class="synchrobook-guide-builtin-list" id="synchrobook-guide-builtin-types"></div>
+        <h3>Custom Commentary Types</h3>
+        <label><span>Custom type</span><select id="synchrobook-guide-type-select"></select></label>
+        <div class="synchrobook-guide-form-grid"><label><span>Name</span><input id="synchrobook-guide-type-name" type="text" /></label><label><span>Slug / ID</span><input id="synchrobook-guide-type-id" type="text" pattern="[A-Za-z0-9_.:-]+" /></label></div>
+        <label><span>Description</span><textarea id="synchrobook-guide-type-description" rows="2"></textarea></label>
+        <label><span>Generation Instructions</span><textarea id="synchrobook-guide-type-instructions" rows="7"></textarea></label>
+        <label><span>Optional Context (included verbatim)</span><textarea id="synchrobook-guide-type-context" rows="5"></textarea></label>
+        <div class="synchrobook-guide-form-grid"><label><span>Scope</span><select id="synchrobook-guide-type-scope"><option>chunk</option><option>section</option><option>book</option></select></label><label><span>Renderer</span><select id="synchrobook-guide-type-renderer"><option>prose</option><option>short_note</option><option>argument</option><option>terminology</option><option>references</option><option>structured</option></select></label></div>
+        <label><span>Optional output schema (JSON)</span><textarea class="synchrobook-guide-code" id="synchrobook-guide-type-schema" rows="5"></textarea></label>
+        <label class="checkline"><input id="synchrobook-guide-type-enabled" type="checkbox" /><span>Enabled by default</span></label>
+        <div class="synchrobook-guide-actions"><button class="budget-action budget-action--ghost" id="synchrobook-guide-type-new" type="button">Create Custom Type</button><button class="budget-action" id="synchrobook-guide-type-save" type="button">Save</button><button class="budget-action synchrobook-danger-action" id="synchrobook-guide-type-delete" type="button">Delete</button></div>
+      </section>
+
+      <section class="synchrobook-guide-manager-panel" data-guide-manager-panel="memory" hidden>
+        <h3>Commentary Memory</h3>
+        <textarea class="synchrobook-guide-code" id="synchrobook-guide-memory" rows="12"></textarea>
+        <div class="synchrobook-guide-actions"><button class="budget-action" id="synchrobook-guide-memory-save" type="button">Save Memory</button><button class="budget-action budget-action--ghost" id="synchrobook-guide-memory-rebuild" type="button">Rebuild from Imports</button><button class="budget-action synchrobook-danger-action" id="synchrobook-guide-memory-reset" type="button">Reset</button></div>
+        <h3>Book Intelligence</h3><textarea class="synchrobook-guide-code" id="synchrobook-guide-intelligence" rows="8" readonly></textarea>
+        <h3>Glossary</h3><div class="synchrobook-guide-glossary" id="synchrobook-guide-glossary"></div>
+      </section>
+    </section>
+  </dialog>
+
+  <dialog class="synchrobook-dialog" id="synchrobook-quality-dialog">
+    <section class="synchrobook-dialog-card">
+      <header><div><span class="synchrobook-kicker">DIAGNOSTYKA</span><h2>Jakość dopasowania</h2></div><button class="synchrobook-close" type="button" data-close-dialog aria-label="Zamknij">×</button></header>
+      <div id="synchrobook-quality-report"></div>
+      <footer><button class="budget-action budget-action--ghost" id="synchrobook-retranscribe" type="button">Transkrybuj ponownie</button><button class="budget-action" id="synchrobook-rebuild" type="button">Przebuduj dopasowanie</button></footer>
+    </section>
+  </dialog>
+
+  <script type="module" src="./js/synchrobook/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Classical Composer Library</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="classical-library-page">
+  <div class="wrap classical-shell" id="classical-page">
+    <aside class="panel classical-sidebar">
+      <div class="classical-sidebar-intro">
+        <div class="classical-overline">Listening Tracker</div>
+        <h1>Classical Composer Library</h1>
+        <p>Browse composers, correct catalogue metadata, and track what you have actually listened to.</p>
+      </div>
+
+      <div class="controls classical-sidebar-actions">
+        <button id="back-btn" type="button">Back</button>
+        <button id="classical-back-library" class="oscars-ghost" type="button" hidden>All composers</button>
+        <a class="card-cta" href="./index.html">Dashboard</a>
+      </div>
+
+      <div class="classical-source" id="classical-source">Loading data...</div>
+
+      <div class="kpis classical-kpis">
+        <div class="kpi"><span>Composers</span><b id="classical-kpi-composers">0</b></div>
+        <div class="kpi"><span>Works</span><b id="classical-kpi-total">0</b></div>
+        <div class="kpi"><span>Listened</span><b id="classical-kpi-listened">0</b></div>
+        <div class="kpi"><span>Review</span><b id="classical-kpi-review">0</b></div>
+      </div>
+
+      <section class="classical-add-panel" id="classical-add-panel"></section>
+      <div class="meta classical-status" id="classical-status" aria-live="polite"></div>
+    </aside>
+
+    <main class="main classical-main">
+      <div id="classical-list-view"></div>
+      <div id="classical-detail-view"></div>
+    </main>
+  </div>
+
+  <div id="classical-modal-root"></div>
+
+  <script type="module" src="./js/nav.js"></script>
+  <script type="module" src="./js/classical-library.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script>
+        (() => {
+            if ("scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+            }
+            const resetScroll = () => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            };
+            window.addEventListener("pageshow", resetScroll);
+            window.addEventListener("load", resetScroll);
+        })();
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="page-settings">
+    <div class="wrap settings-wrap">
+        <aside class="panel settings-sidebar">
+            <div class="settings-sidebar-top">
+                <div class="settings-kicker">Dashboard</div>
+                <h1>Settings</h1>
+                <p class="meta settings-lead">
+                    Sprawdź działanie dashboardu i zarządzaj jego ustawieniami.
+                </p>
+            </div>
+
+            <div class="settings-nav">
+                <a class="budget-action" href="./index.html">Wróć do dashboardu</a>
+                <a class="budget-action budget-action--ghost" href="./developer-docs.html">Developer Docs</a>
+            </div>
+
+            <a class="settings-section-link settings-tablet-link" href="./today-display.html">
+                <span class="settings-section-link-title">Ekran na tablet ↗</span>
+                <span class="settings-section-link-copy">Dzisiejsze cele, leki i suplementy · widok eksperymentalny</span>
+            </a>
+
+            <section class="settings-section-picker" aria-labelledby="settings-section-picker-title">
+                <div class="settings-kicker">Podwidoki</div>
+                <h2 id="settings-section-picker-title">Wybierz sekcję</h2>
+                <p class="meta settings-copy">
+                    Po lewej wybierasz sekcję, a po prawej edytujesz tylko ten fragment ustawień.
+                </p>
+
+                <div class="settings-section-nav" role="tablist" aria-label="Sekcje ustawień">
+                    <button
+                        class="settings-section-link is-active"
+                        id="settings-section-tab-status"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="settings-panel-status"
+                        data-settings-section-link="status"
+                    >
+                        <span class="settings-section-link-title">Status</span>
+                        <span class="settings-section-link-copy">Start dashboardu i Windows oraz wskazówki o restarcie.</span>
+                    </button>
+
+                    <button
+                        class="settings-section-link"
+                        id="settings-section-tab-dashboard-layout"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="settings-panel-dashboard-layout"
+                        data-settings-section-link="dashboard-layout"
+                    >
+                        <span class="settings-section-link-title">Układ dashboardu</span>
+                        <span class="settings-section-link-copy">Widoczność, kolejność i szybki reset widgetów.</span>
+                    </button>
+
+                    <button
+                        class="settings-section-link"
+                        id="settings-section-tab-network-devices"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="settings-panel-network-devices"
+                        data-settings-section-link="network-devices"
+                    >
+                        <span class="settings-section-link-title">Nazwy urządzeń w sieci</span>
+                        <span class="settings-section-link-copy">Własne nazwy, ownerzy i kategorie po MAC.</span>
+                    </button>
+
+                    <button
+                        class="settings-section-link"
+                        id="settings-section-tab-kitchen-dashboard"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="settings-panel-kitchen-dashboard"
+                        data-settings-section-link="kitchen-dashboard"
+                    >
+                        <span class="settings-section-link-title">Kitchen dashboard</span>
+                        <span class="settings-section-link-copy">Tryb przepisu, sport i link Clozemastera.</span>
+                    </button>
+
+                    <button
+                        class="settings-section-link"
+                        id="settings-section-tab-spotify-screensaver"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="settings-panel-spotify-screensaver"
+                        data-settings-section-link="spotify-screensaver"
+                    >
+                        <span class="settings-section-link-title">Spotify screensaver</span>
+                        <span class="settings-section-link-copy">Czas bezczynności i połączenie Spotify.</span>
+                    </button>
+                </div>
+            </section>
+        </aside>
+
+        <main class="main settings-main">
+            <section
+                class="settings-section settings-section-panel"
+                id="settings-panel-status"
+                data-settings-panel="status"
+                role="tabpanel"
+                aria-labelledby="settings-section-tab-status"
+            >
+                <div class="settings-section-head">
+                    <div>
+                        <h2>Status</h2>
+                        <p class="meta settings-copy">Czas uruchomienia głównego dashboardu i ostatniego startu systemu Windows.</p>
+                    </div>
+                    <div class="settings-actions">
+                        <button class="budget-action budget-action--ghost" id="settings-runtime-refresh" type="button">Odśwież status</button>
+                    </div>
+                </div>
+
+                <div class="settings-save-note" id="settings-runtime-summary" role="status">Sprawdzam status API…</div>
+
+                <div class="settings-tablet-callout">
+                    <div>
+                        <strong>Ekran na tablet</strong>
+                        <p class="meta settings-copy">Osobny widok z tym, ile zostało dziś do zrobienia.</p>
+                    </div>
+                    <a class="budget-action" href="./today-display.html">Otwórz widok ↗</a>
+                </div>
+
+                <div class="settings-runtime-grid">
+                    <article class="settings-runtime-card">
+                        <div class="settings-layout-title">Dashboard</div>
+                        <p class="meta settings-copy">Start głównego zestawu przez <code>start-dev.cmd</code>. Poszczególne usługi mogą uruchamiać się ponownie osobno.</p>
+                        <time id="settings-runtime-dashboard-time">Sprawdzam…</time>
+                        <span class="settings-runtime-elapsed" id="settings-runtime-dashboard-elapsed"></span>
+                    </article>
+                    <article class="settings-runtime-card">
+                        <div class="settings-layout-title">Komputer / Windows</div>
+                        <p class="meta settings-copy">Ostatnie uruchomienie systemu. Szybkie uruchamianie Windows może zachować ten czas po zwykłym wyłączeniu.</p>
+                        <time id="settings-runtime-boot-time">Sprawdzam…</time>
+                        <span class="settings-runtime-elapsed" id="settings-runtime-boot-elapsed"></span>
+                    </article>
+                </div>
+
+                <section class="settings-runtime-guidance" aria-labelledby="settings-runtime-guidance-title">
+                    <h3 id="settings-runtime-guidance-title">Kiedy restartować?</h3>
+                    <p><strong>Dashboard:</strong> gdy API lub inna usługa przestaje odpowiadać albo po zmianie wymagającej ponownego uruchomienia.</p>
+                    <p><strong>Komputer:</strong> po aktualizacjach wymagających restartu lub przy problemach z Windows.</p>
+                    <p>Sam długi czas działania nie wymaga regularnego restartu. Ta karta informuje o czasie działania; nie restartuje usług ani komputera.</p>
+                </section>
+            </section>
+
+            <section
+                class="settings-section settings-section-panel"
+                id="settings-panel-dashboard-layout"
+                data-settings-panel="dashboard-layout"
+                role="tabpanel"
+                aria-labelledby="settings-section-tab-dashboard-layout"
+                hidden
+            >
+                <div class="settings-section-head">
+                    <div>
+                        <h2>Układ dashboardu</h2>
+                        <p class="meta settings-copy">
+                            Przełącz aktywność widgetów i ustaw ich kolejność. Zmiany zapisują się automatycznie w tej przeglądarce.
+                        </p>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="budget-action budget-action--ghost" id="settings-show-all" type="button">Pokaż wszystko</button>
+                        <button class="budget-action budget-action--ghost" id="settings-reset" type="button">Resetuj układ</button>
+                    </div>
+                </div>
+
+                <div class="settings-save-note" id="settings-save-note" aria-live="polite">
+                    Ładuję ustawienia...
+                </div>
+
+                <section class="settings-layout-card" aria-label="Liczba kolumn dashboardu">
+                    <div>
+                        <div class="settings-layout-title">Widok dashboardu</div>
+                        <p class="meta settings-copy">
+                            Wybierz 2, 3 albo 4 kolumny. Niżej możesz też ustawić szerokość każdego widgetu.
+                        </p>
+                    </div>
+                    <div class="settings-column-picker" id="settings-column-picker" role="radiogroup" aria-label="Liczba kolumn"></div>
+                    <label class="settings-option-row settings-auto-fit-row" for="settings-auto-fit">
+                        <span class="settings-option-copy">
+                            <span class="settings-option-title">Kompaktowe dopasowanie widgetów</span>
+                            <span class="settings-option-desc">Układa kafle w najniższe dostępne miejsce i tylko subtelnie wyrównuje małe różnice przed pełną szerokością.</span>
+                        </span>
+                        <input id="settings-auto-fit" type="checkbox" />
+                    </label>
+                    <label class="settings-option-row" for="settings-heart-rate-history-shortcut">
+                        <span class="settings-option-copy">
+                            <span class="settings-option-title">Ikona historii HR przy lewej krawędzi</span>
+                            <span class="settings-option-desc">Pokazuje na dashboardzie skrót otwierający osobną stronę z zapisanymi próbkami tętna.</span>
+                        </span>
+                        <input id="settings-heart-rate-history-shortcut" type="checkbox" />
+                    </label>
+                    <label class="settings-option-row" for="settings-cleaning-lock">
+                        <span class="settings-option-copy">
+                            <span class="settings-option-title">Blokada dashboardu za sprzątanie</span>
+                            <span class="settings-option-desc">Wymaga ukończenia dzisiejszego celu sprzątania i ręcznego odblokowania pozostałych widgetów. Domyślnie wyłączona.</span>
+                        </span>
+                        <input id="settings-cleaning-lock" type="checkbox" />
+                    </label>
+                    <label class="settings-header-font-size-control" for="settings-header-font-size">
+                        <span>Rozmiar nagłówków</span>
+                        <input id="settings-header-font-size" type="range" min="13" max="22" step="1" value="16" />
+                        <strong id="settings-header-font-size-value">16px</strong>
+                    </label>
+                </section>
+
+                <div class="settings-widget-list" id="settings-widget-list"></div>
+            </section>
+
+            <section
+                class="settings-section settings-section-panel"
+                id="settings-panel-network-devices"
+                data-settings-panel="network-devices"
+                role="tabpanel"
+                aria-labelledby="settings-section-tab-network-devices"
+                hidden
+            >
+                <div class="settings-section-head">
+                    <div>
+                        <h2>Nazwy urządzeń w sieci</h2>
+                        <p class="meta settings-copy">
+                            Nadaj nazwę, kategorię i ownera po MAC. Heurystyki typu "Wyszedł z domu" i "Wrócił do domu" liczą się głównie dla kategorii osobiste / domowe.
+                        </p>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="budget-action budget-action--ghost" id="network-settings-refresh" type="button">Odśwież urządzenia</button>
+                    </div>
+                </div>
+
+                <div class="settings-save-note" id="network-settings-note" aria-live="polite">
+                    Ładuję urządzenia z monitora sieci...
+                </div>
+
+                <section class="settings-network-options" aria-label="Powiadomienia sieci lokalnej">
+                    <label class="settings-option-row" for="network-notifications-toggle">
+                        <span class="settings-option-copy">
+                            <span class="settings-option-title">Powiadomienia z widgetu Sieć lokalna</span>
+                            <span class="settings-option-desc">Pokaż toast, gdy urządzenie połączy się z LAN albo zniknie z ostatniego skanu.</span>
+                        </span>
+                        <input id="network-notifications-toggle" type="checkbox" />
+                    </label>
+                </section>
+
+                <div class="settings-device-list" id="network-device-list"></div>
+            </section>
+
+            <section
+                class="settings-section settings-section-panel"
+                id="settings-panel-kitchen-dashboard"
+                data-settings-panel="kitchen-dashboard"
+                role="tabpanel"
+                aria-labelledby="settings-section-tab-kitchen-dashboard"
+                hidden
+            >
+                <div class="settings-section-head">
+                    <div>
+                        <h2>Kitchen dashboard</h2>
+                        <p class="meta settings-copy">
+                            Włącz pełnoekranowy przepis na tablecie albo zmień pozostałe elementy tego widoku.
+                        </p>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="budget-action budget-action--ghost" id="dashboard-tablet-refresh" type="button">Odśwież dashboard na tablecie</button>
+                        <button class="budget-action budget-action--ghost" id="kitchen-clozemaster-reset" type="button">Domyślny link</button>
+                        <button class="budget-action" id="kitchen-clozemaster-save" type="button">Zapisz link</button>
+                    </div>
+                </div>
+
+                <div class="settings-save-note" id="kitchen-settings-note" aria-live="polite">
+                    Ładuję ustawienia kitchen dashboardu...
+                </div>
+
+                <div class="settings-actions">
+                    <a class="budget-action budget-action--ghost" href="./kitchen.html">Otwórz kitchen dashboard</a>
+                    <a class="budget-action budget-action--ghost" href="./hitchen.html">Debug slajdów</a>
+                    <a class="budget-action budget-action--ghost" href="./kitchen.html?inputTest=1">Debug pada</a>
+                    <a class="budget-action budget-action--ghost" href="./kitchen.html?night=1">Tryb nocny</a>
+                </div>
+
+                <section class="settings-kitchen-card settings-recipe-card" aria-label="Tryb przepisu">
+                    <div class="settings-recipe-head">
+                        <div>
+                            <div class="settings-device-field-label">Tryb przepisu</div>
+                            <p class="meta settings-copy">Wklej zwykły tekst lub prosty Markdown. Nagłówki, tabele, pogrubienia i kroki numerowane ułożą się automatycznie.</p>
+                        </div>
+                        <label class="settings-recipe-toggle" for="kitchen-recipe-enabled">
+                            <input id="kitchen-recipe-enabled" type="checkbox" />
+                            <span>Przejmij ekran tabletu</span>
+                        </label>
+                    </div>
+                    <label class="settings-device-field" for="kitchen-recipe-content">
+                        <span class="settings-device-field-label">Treść przepisu</span>
+                        <textarea
+                            class="settings-device-input settings-recipe-input"
+                            id="kitchen-recipe-content"
+                            spellcheck="true"
+                            placeholder="**Składniki**&#10;&#10;| Produkt | Ilość |&#10;| --- | --- |&#10;| Kurczak | 400 g |&#10;&#10;**Przygotowanie**&#10;&#10;1. Pierwszy krok..."
+                        ></textarea>
+                    </label>
+                    <div class="settings-recipe-footer">
+                        <span class="settings-kitchen-current" id="kitchen-recipe-current">Tryb wyłączony.</span>
+                        <button class="budget-action" id="kitchen-recipe-save" type="button">Zapisz przepis</button>
+                    </div>
+                </section>
+
+                <section class="settings-kitchen-card" aria-label="Clozemaster">
+                    <label class="settings-device-field" for="kitchen-clozemaster-url">
+                        <span class="settings-device-field-label">Clozemaster URL</span>
+                        <input
+                            class="settings-device-input settings-kitchen-url"
+                            id="kitchen-clozemaster-url"
+                            type="url"
+                            inputmode="url"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="https://www.clozemaster.com/..."
+                        />
+                    </label>
+                    <div class="settings-kitchen-current" id="kitchen-clozemaster-current"></div>
+                </section>
+
+                <section class="settings-kitchen-card" aria-label="Wyniki sportowe">
+
+                    <label class="settings-device-field" for="kitchen-sports-window">
+                        <span class="settings-device-field-label">Zakres wyników</span>
+                        <select class="settings-device-select" id="kitchen-sports-window"></select>
+                    </label>
+
+                    <section>
+                        <div class="settings-device-field-label">Najbliższe turnieje</div>
+                        <div class="settings-tournament-list" id="kitchen-tournament-list"></div>
+                    </section>
+
+                    <section>
+                        <div class="settings-device-field-label">Zespoły</div>
+                        <div class="settings-check-list" id="kitchen-team-list"></div>
+                    </section>
+
+                    <section>
+                        <div class="settings-device-field-label">Ligi i rozgrywki</div>
+                        <div class="settings-check-list" id="kitchen-league-list"></div>
+                    </section>
+                </section>
+
+                <section class="settings-kitchen-card" aria-label="Debug źródeł sportowych">
+                    <div class="settings-section-head settings-section-head--compact">
+                        <div>
+                            <div class="settings-device-field-label">Debug źródeł</div>
+                            <p class="meta settings-copy">Podgląd cache, providerów i błędów pobierania wyników.</p>
+                        </div>
+                        <button class="budget-action budget-action--ghost" id="kitchen-debug-refresh" type="button">Odśwież debug</button>
+                    </div>
+                    <pre class="settings-kitchen-debug" id="kitchen-debug-output">Kliknij odśwież debug.</pre>
+                </section>
+            </section>
+
+            <section
+                class="settings-section settings-section-panel"
+                id="settings-panel-spotify-screensaver"
+                data-settings-panel="spotify-screensaver"
+                role="tabpanel"
+                aria-labelledby="settings-section-tab-spotify-screensaver"
+                hidden
+            >
+                <div class="settings-section-head">
+                    <div>
+                        <h2>Spotify screensaver</h2>
+                        <p class="meta settings-copy">
+                            Ustaw, po ilu minutach bezczynności watcher otworzy kiosk, oraz sprawdź połączenie Spotify.
+                        </p>
+                    </div>
+
+                    <div class="settings-actions">
+                        <a class="budget-action budget-action--ghost" id="spotify-screensaver-preview" href="./spotify-screensaver.html?manual=1">Podgląd</a>
+                        <a class="budget-action budget-action--ghost" id="artist-facts-preview" href="./artist-facts-screensaver.html?artist=Maurice%20Ravel">Artist facts</a>
+                        <a class="budget-action" id="spotify-connect-link" href="/api/spotify/auth/start">Connect Spotify</a>
+                    </div>
+                </div>
+
+                <div class="settings-save-note" id="screensaver-settings-note" aria-live="polite">
+                    Ładuję ustawienia Spotify screensavera...
+                </div>
+
+                <section class="settings-kitchen-card" aria-label="Spotify screensaver options">
+                    <label class="settings-device-field" for="screensaver-idle-minutes">
+                        <span class="settings-device-field-label">Start po bezczynności</span>
+                        <input
+                            class="settings-device-input"
+                            id="screensaver-idle-minutes"
+                            type="number"
+                            min="0.25"
+                            max="120"
+                            step="0.25"
+                            inputmode="decimal"
+                        />
+                    </label>
+
+                    <label class="settings-device-field" for="screensaver-check-interval">
+                        <span class="settings-device-field-label">Interwał sprawdzania</span>
+                        <select class="settings-device-select" id="screensaver-check-interval">
+                            <option value="1000">1 s</option>
+                            <option value="3000">3 s</option>
+                            <option value="5000">5 s</option>
+                            <option value="10000">10 s</option>
+                            <option value="30000">30 s</option>
+                        </select>
+                    </label>
+
+                    <label class="settings-device-field" for="screensaver-background-mode">
+                        <span class="settings-device-field-label">Tlo</span>
+                        <select class="settings-device-select" id="screensaver-background-mode">
+                            <option value="black">Czarne</option>
+                            <option value="blur">Rozmyta okladka</option>
+                            <option value="gradient">Gradient z okladki</option>
+                            <option value="ambient">Ambient: gradient + blur</option>
+                        </select>
+                    </label>
+
+                    <label class="settings-device-field" for="screensaver-progress-style">
+                        <span class="settings-device-field-label">Styl paska progresu</span>
+                        <select class="settings-device-select" id="screensaver-progress-style">
+                            <option value="minimal">Minimalistyczny</option>
+                            <option value="slim">Cienki</option>
+                            <option value="glow">Glow</option>
+                            <option value="rail">Z delikatna szyna</option>
+                        </select>
+                    </label>
+
+                    <label class="settings-device-field" for="screensaver-layout">
+                        <span class="settings-device-field-label">Layout controls / tile</span>
+                        <select class="settings-device-select" id="screensaver-layout">
+                            <option value="center">Center: klasyczny dolny pasek</option>
+                            <option value="safe-bottom">Safe bottom: wiecej miejsca pod tekstem</option>
+                            <option value="side-right">Side right: kontrolki po prawej</option>
+                            <option value="side-left">Side left: kontrolki po lewej</option>
+                            <option value="compact">Compact split: okladka obok tekstu</option>
+                        </select>
+                    </label>
+
+                    <label class="settings-option-row" for="screensaver-show-next-track">
+                        <span class="settings-option-copy">
+                            <span class="settings-option-title">Pokaż następny utwór</span>
+                            <span class="settings-option-desc">Wyświetl następny track z kolejki Spotify pod kontrolkami.</span>
+                        </span>
+                        <input id="screensaver-show-next-track" type="checkbox" />
+                    </label>
+
+                    <section class="settings-next-track-options" aria-label="Widoczność następnego utworu">
+                        <div class="settings-device-field-label">Kiedy pokazac next track</div>
+                        <label class="settings-option-row" for="screensaver-next-at-start">
+                            <span class="settings-option-copy">
+                                <span class="settings-option-title">Na początku utworu</span>
+                                <span class="settings-option-desc">Tile zniknie po ustawionym czasie od startu.</span>
+                            </span>
+                            <input id="screensaver-next-at-start" type="checkbox" />
+                        </label>
+                        <label class="settings-option-row" for="screensaver-next-at-end">
+                            <span class="settings-option-copy">
+                                <span class="settings-option-title">Przed końcem utworu</span>
+                                <span class="settings-option-desc">Tile pojawi się ustawiony czas przed końcem.</span>
+                            </span>
+                            <input id="screensaver-next-at-end" type="checkbox" />
+                        </label>
+
+                        <label class="settings-device-field" for="screensaver-next-timing-unit">
+                            <span class="settings-device-field-label">Jednostka czasu</span>
+                            <select class="settings-device-select" id="screensaver-next-timing-unit">
+                                <option value="seconds">Sekundy</option>
+                                <option value="percent">Procent utworu</option>
+                            </select>
+                        </label>
+
+                        <label class="settings-device-field" for="screensaver-next-start-window">
+                            <span class="settings-device-field-label">Zniknij po starcie</span>
+                            <input
+                                class="settings-device-input"
+                                id="screensaver-next-start-window"
+                                type="number"
+                                min="0"
+                                max="600"
+                                step="1"
+                                inputmode="decimal"
+                            />
+                        </label>
+
+                        <label class="settings-device-field" for="screensaver-next-end-window">
+                            <span class="settings-device-field-label">Pokaż przed końcem</span>
+                            <input
+                                class="settings-device-input"
+                                id="screensaver-next-end-window"
+                                type="number"
+                                min="0"
+                                max="600"
+                                step="1"
+                                inputmode="decimal"
+                            />
+                        </label>
+                    </section>
+
+                    <label class="settings-device-field" for="screensaver-cover-scale">
+                        <span class="settings-device-field-label">Rozmiar okladki</span>
+                        <input
+                            class="settings-device-input"
+                            id="screensaver-cover-scale"
+                            type="range"
+                            min="0.75"
+                            max="1.35"
+                            step="0.05"
+                        />
+                    </label>
+                    <div class="settings-kitchen-current" id="screensaver-cover-scale-label"></div>
+
+                    <label class="settings-device-field" for="screensaver-control-scale">
+                        <span class="settings-device-field-label">Rozmiar przycisków</span>
+                        <input
+                            class="settings-device-input"
+                            id="screensaver-control-scale"
+                            type="range"
+                            min="0.1"
+                            max="1"
+                            step="0.1"
+                        />
+                    </label>
+                    <div class="settings-kitchen-current" id="screensaver-control-scale-label"></div>
+
+                    <label class="settings-option-row" for="screensaver-show-artist-facts">
+                        <span class="settings-option-copy">
+                            <span class="settings-option-title">Pokaż ciekawostki o artyście</span>
+                            <span class="settings-option-desc">Wyświetlaj slajdy z lokalnych JSON-ów i cache'owanych mediów Wikimedia Commons.</span>
+                        </span>
+                        <input id="screensaver-show-artist-facts" type="checkbox" />
+                    </label>
+
+                    <label class="settings-device-field" for="screensaver-artist-fact-slide-seconds">
+                        <span class="settings-device-field-label">Czas slajdu ciekawostki</span>
+                        <input
+                            class="settings-device-input"
+                            id="screensaver-artist-fact-slide-seconds"
+                            type="number"
+                            min="4"
+                            max="120"
+                            step="1"
+                            inputmode="decimal"
+                        />
+                    </label>
+
+                    <label class="settings-device-field" for="screensaver-artist-fact-layout">
+                        <span class="settings-device-field-label">Layout ciekawostek</span>
+                        <select class="settings-device-select" id="screensaver-artist-fact-layout">
+                            <option value="side-card">Duze po prawej</option>
+                            <option value="left-panel">Duze po lewej</option>
+                            <option value="bottom-wide">Szeroki panel na dole</option>
+                            <option value="full-height">Wysoki panel boczny</option>
+                            <option value="text-focus">Tekstowy spotlight</option>
+                        </select>
+                    </label>
+
+                    <label class="settings-device-field" for="screensaver-artist-fact-media-mode">
+                        <span class="settings-device-field-label">Tryb ciekawostek</span>
+                        <select class="settings-device-select" id="screensaver-artist-fact-media-mode">
+                            <option value="media">Tekst + media</option>
+                            <option value="text">Tylko tekst</option>
+                        </select>
+                    </label>
+
+                    <label class="settings-device-field" for="artist-facts-upload">
+                        <span class="settings-device-field-label">Upload JSON ciekawostek</span>
+                        <input class="settings-device-input" id="artist-facts-upload" type="file" accept="application/json,.json" />
+                    </label>
+                    <pre class="settings-json-template" id="artist-facts-template">{
+  "artist": "Maurice Ravel",
+  "summary": "Short artist description.",
+  "slideSeconds": 14,
+  "commons": {
+    "category": "Category:Maurice Ravel",
+    "limit": 6
+  },
+  "facts": [
+    {
+      "title": "Short heading",
+      "text": "One compact fact for the screensaver slide.",
+      "source": "Optional source label",
+      "sourceUrl": "https://example.com"
+    }
+  ]
+}</pre>
+
+                    <div class="settings-kitchen-current" id="spotify-screensaver-current"></div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="./js/settings.js"></script>
+    <script type="module" src="./js/settings-runtime-status.js"></script>
+</body>
+
+</html>

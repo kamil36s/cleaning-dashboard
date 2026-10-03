@@ -1,0 +1,22 @@
+{
+  "manifestVersion": "language-reference-source-manifest/v1",
+  "sourceId": "nb-bokmal-ngram-2012",
+  "title": "N-gram - bokmål",
+  "provider": "Nasjonalbiblioteket / Språkbanken",
+  "landingUrl": "https://www.nb.no/sprakbanken/ressurskatalog/oai-nb-no-sbr-12/",
+  "version": "2012 catalogue release",
+  "releaseDate": "2012-01-02",
+  "language": "nb",
+  "resourceType": "NGRAM_1_TO_6",
+  "license": {"id": "CC0-1.0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "verifiedAt": "2026-09-16"},
+  "attribution": "No license-required attribution under CC0; retain Nasjonalbiblioteket/Språkbanken and corpus provenance.",
+  "expectedFiles": [
+    {"name": "1gram_nob_f1_freq.zip", "url": "https://www.nb.no/sbfil/tekst/1gram_nob_f1_freq.zip", "sizeBytes": 15198030, "sha256": "cda1477a11fc98bcf61e8152fe1a09a4d5f9ae04b16c4ed9dc86ee224c2284e3", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:42.088385Z", "httpMetadata": {"contentLength": "15198030", "contentType": "application/zip", "etag": "\"580e1ac8-e7e74e\"", "lastModified": "Mon, 24 Oct 2016 14:29:28 GMT"}, "format": "ZIP; Latin-1 frequency-sorted unigram rows", "required": true},
+    {"name": "ngram_nob.tar.gz", "url": "https://www.nb.no/sbfil/tekst/ngram_nob.tar.gz", "sizeBytes": null, "sha256": null, "format": "26.6 GB tar.gz; n=1..6 alphabetic and frequency variants", "required": false},
+    {"name": "ngram_nob.pdf", "url": "https://www.nb.no/sbfil/dok/ngram_nob.pdf", "sizeBytes": 302361, "sha256": "7121a602fe82eca98bec1410ebbcded1917ccf57faaaea21cbba1e3bb9138f5c", "officialSha256": null, "retrievedAt": "2026-09-16T16:16:49.246512Z", "httpMetadata": {"contentLength": "302361", "contentType": "application/pdf", "etag": "\"580dfc1b-49d19\"", "lastModified": "Mon, 24 Oct 2016 12:18:35 GMT"}, "format": "PDF documentation", "required": true}
+  ],
+  "parser": {"id": "nb-bokmal-ngram", "version": "1.0.0"},
+  "decision": "ACCEPT_PHASE_7_5B",
+  "priority": "TIER_2",
+  "notes": ["Built from 24 online newspapers plus NST news, 1.175 billion tokens.", "Ingest unigram evidence first; the optional 26.6 GB n=2..6 archive is Tier 3 for collocations/MWEs.", "Observed fields are raw count plus token sequence; no document frequency or dispersion is supplied."]
+}

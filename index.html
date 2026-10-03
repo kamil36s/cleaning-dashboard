@@ -1,15 +1,187 @@
 ﻿<!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-dashboard-columns="3">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initiacol-scale=1" />
     <title>Personal Dashboard</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script>
+        (() => {
+            if ("scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+            }
+            const resetScroll = () => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            };
+            window.addEventListener("pageshow", resetScroll);
+            window.addEventListener("load", resetScroll);
+        })();
+    </script>
+    <script>
+        try {
+            const saved = JSON.parse(localStorage.getItem("dashboard.widget-settings.v1") || "null");
+            const columns = Number(saved?.layout?.columns);
+            if ([2, 3, 4].includes(columns)) {
+                document.documentElement.dataset.dashboardColumns = String(columns);
+            }
+        } catch (_) {}
+    </script>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./feelings.css" />
+    <link rel="stylesheet" href="./live-workout.css" />
+    <link rel="stylesheet" href="./kermit-chat.css" />
 </head>
 
 <body>
+    <nav class="dashboard-side-shortcuts" aria-label="Skróty aplikacji">
+        <section class="dashboard-side-shortcut-group" aria-labelledby="dashboard-shortcuts-journals">
+            <div class="dashboard-side-shortcut-group-label" id="dashboard-shortcuts-journals">Dzienniki</div>
+            <div class="dashboard-side-shortcut-items">
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-journal-link" href="./journal.html" aria-label="Otwórz Dziennik" title="Dziennik">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 4.5h10.5A1.5 1.5 0 0 1 18 6v14H7a3 3 0 0 1-3-3V6.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.45" stroke-linejoin="round" />
+                        <path d="M7 4.5V17h11M9.5 8h5M9.5 11h5" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+                    </svg>
+                    <span>Dziennik</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-voice-journal-link" href="./voice-journal.html" aria-label="Otwórz Dziennik głosowy" title="Dziennik głosowy">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.45" />
+                        <path d="M6.5 11a5.5 5.5 0 0 0 11 0M12 16.5V21M9 21h6" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+                    </svg>
+                    <span>Dziennik głosowy</span>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-side-shortcut-group" aria-labelledby="dashboard-shortcuts-health">
+            <div class="dashboard-side-shortcut-group-label" id="dashboard-shortcuts-health">Zdrowie</div>
+            <div class="dashboard-side-shortcut-items">
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-heart-rate-history-link" id="dashboard-heart-rate-history-link" href="./heart-rate-history.html" aria-label="Otwórz historię tętna" title="Historia HR" hidden>
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 20.1 4.3 12.7A5.2 5.2 0 0 1 11.7 5l.3.3.3-.3a5.2 5.2 0 0 1 7.4 7.7L12 20.1Z" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M5.8 12h3l1.25-2.55L12.1 15l1.45-3h4.7" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Historia HR</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-sleep-link" href="./sleep.html" aria-label="Otwórz analizę snu" title="Sen">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M19.2 15.8A8.2 8.2 0 0 1 8.1 4.7a8.3 8.3 0 1 0 11.1 11.1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15.2 5.1h3.7l-3.7 4h3.7M10.4 2.8h2.7l-2.7 3h2.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Sen</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-blood-pressure-link" href="./blood-pressure.html" aria-label="Otwórz Dziennik ciśnienia" title="Dziennik ciśnienia">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M3 12h4l2-5 4 10 2-5h6" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M5 4.5h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.2" opacity=".65" />
+                    </svg>
+                    <span>Dziennik ciśnienia</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-ring-link" href="./ring.html" aria-label="Otwórz aplikację COLMI Ring" title="COLMI Ring">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <ellipse cx="12" cy="12" rx="6.2" ry="8.3" stroke="currentColor" stroke-width="2.2" />
+                        <path d="M8 5.9a7.2 7.2 0 0 1 8 0M9.2 18.8a7 7 0 0 0 5.6 0" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity=".65" />
+                    </svg>
+                    <span>COLMI Ring</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-breathwork-link" href="./oddychaj.html" aria-label="Otwórz ćwiczenia oddechowe" title="Ćwiczenia oddechowe">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.0" opacity=".4"/>
+                        <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>
+                    </svg>
+                    <span>Oddychaj 4-7-8</span>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-side-shortcut-group" aria-labelledby="dashboard-shortcuts-history">
+            <div class="dashboard-side-shortcut-group-label" id="dashboard-shortcuts-history">Historia</div>
+            <div class="dashboard-side-shortcut-items">
+                <a class="dashboard-action-link dashboard-side-shortcut" href="./calendar.html" aria-label="Otwórz kalendarz" title="Kalendarz">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 3v4M17 3v4M3 10h18M7 14h3M14 14h3M7 18h3" stroke="currentColor" stroke-width="1.5"/></svg>
+                    <span>Kalendarz</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-timeline-link" href="./timeline.html" aria-label="Otwórz The Great Timeline" title="The Great Timeline">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 5v14M5 8h5M5 16h8M10 8h7M13 16h6" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+                        <circle cx="18" cy="8" r="1.8" stroke="currentColor" stroke-width="1.45" />
+                        <circle cx="19" cy="16" r="1.8" stroke="currentColor" stroke-width="1.45" />
+                    </svg>
+                    <span>The Great Timeline</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-history-wiki-link" href="./apps/history-wiki/" aria-label="Otwórz History Wiki" title="History Wiki">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4.5 5.5A2.5 2.5 0 0 1 7 3h4.5v16H7a2.5 2.5 0 0 0-2.5 2V5.5ZM19.5 5.5A2.5 2.5 0 0 0 17 3h-4.5v16H17a2.5 2.5 0 0 1 2.5 2V5.5Z" stroke="currentColor" stroke-width="1.45" stroke-linejoin="round" />
+                        <path d="M8 8h1.8M8 11h1.8M14.2 8H16M14.2 11H16" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" />
+                    </svg>
+                    <span>History Wiki</span>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-side-shortcut-group" aria-labelledby="dashboard-shortcuts-reading">
+            <div class="dashboard-side-shortcut-group-label" id="dashboard-shortcuts-reading">Czytanie</div>
+            <div class="dashboard-side-shortcut-items">
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-synchrobook-link" href="./synchrobook.html" aria-label="Otwórz Synchrobook" title="Synchrobook">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4.5 5.5A2.5 2.5 0 0 1 7 3h4.5v16H7a2.5 2.5 0 0 0-2.5 2V5.5ZM19.5 5.5A2.5 2.5 0 0 0 17 3h-4.5v16H17a2.5 2.5 0 0 1 2.5 2V5.5Z" stroke="currentColor" stroke-width="1.45" stroke-linejoin="round" />
+                        <path d="M2.5 10.2v3.6M21.5 10.2v3.6" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+                    </svg>
+                    <span>Synchrobook</span>
+                </a>
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-language-link" href="./language.html#overview" aria-label="Otwórz Language Learning" title="Language Learning">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 5.5h7.5A2.5 2.5 0 0 1 14 8v11H6.5A2.5 2.5 0 0 0 4 21V5.5Z" stroke="currentColor" stroke-width="1.45" stroke-linejoin="round" />
+                        <path d="M14 8a2.5 2.5 0 0 1 2.5-2.5H20V19h-3.5A2.5 2.5 0 0 0 14 21M8 10h2.5M8 13h3" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Language Learning</span>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-side-shortcut-group" aria-labelledby="dashboard-shortcuts-music">
+            <div class="dashboard-side-shortcut-group-label" id="dashboard-shortcuts-music">Muzyka</div>
+            <div class="dashboard-side-shortcut-items">
+                <a class="dashboard-action-link dashboard-side-shortcut dashboard-music-link" href="./music.html" aria-label="Otwórz aplikację Muzyka" title="Muzyka">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.45" />
+                        <circle cx="12" cy="12" r="2.2" stroke="currentColor" stroke-width="1.45" />
+                        <path d="M12 3.5v6.2M16.7 5.1l-3.2 5.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                    </svg>
+                    <span>Muzyka</span>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-side-shortcut-group" aria-labelledby="dashboard-shortcuts-football">
+            <div class="dashboard-side-shortcut-group-label" id="dashboard-shortcuts-football">Sport</div>
+            <div class="dashboard-side-shortcut-items">
+                <a class="dashboard-action-link dashboard-side-shortcut" href="./football.html" aria-label="Otwórz Football Dashboard" title="Football Dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="m12 7 3 2.2-1.1 3.5h-3.8L9 9.2 12 7ZM9 9.2 5 8m9 4.7 2.7 3M10.1 12.7 7.4 16" stroke="currentColor" stroke-width="1.2"/></svg>
+                    <span>Football</span>
+                </a>
+            </div>
+        </section>
+    </nav>
+    <button class="dashboard-action-link dashboard-notifications-link" id="dashboard-event-notifications-trigger" type="button" aria-label="Powiadomienia dashboardu" aria-expanded="false" hidden>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 20h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="dashboard-notifications-badge" id="dashboard-event-notifications-count">0</span>
+    </button>
+    <a class="dashboard-action-link dashboard-screensaver-link" href="./spotify-screensaver.html?manual=1" aria-label="Open Spotify Screensaver" title="Spotify Screensaver">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="4" y="5" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.35" />
+            <path d="M9.75 9.1v2.8a.55.55 0 0 0 .84.47l2.18-1.4a.56.56 0 0 0 0-.94l-2.18-1.4a.55.55 0 0 0-.84.47Z" fill="currentColor" />
+            <path d="M9 20h6M12 16v4" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" />
+        </svg>
+    </a>
+    <a class="dashboard-action-link dashboard-settings-link" id="dashboard-settings-trigger" href="./settings.html" aria-label="Open Settings" title="Settings">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.46 3.13a1 1 0 0 1 1.08-.82h.92a1 1 0 0 1 1.08.82l.2 1.45a7.8 7.8 0 0 1 1.69.7l1.2-.84a1 1 0 0 1 1.35.1l.65.65a1 1 0 0 1 .1 1.35l-.84 1.2c.28.54.52 1.1.69 1.69l1.46.2a1 1 0 0 1 .82 1.08v.92a1 1 0 0 1-.82 1.08l-1.46.2a7.8 7.8 0 0 1-.69 1.69l.84 1.2a1 1 0 0 1-.1 1.35l-.65.65a1 1 0 0 1-1.35.1l-1.2-.84a7.8 7.8 0 0 1-1.69.69l-.2 1.46a1 1 0 0 1-1.08.82h-.92a1 1 0 0 1-1.08-.82l-.2-1.46a7.8 7.8 0 0 1-1.69-.69l-1.2.84a1 1 0 0 1-1.35-.1l-.65-.65a1 1 0 0 1-.1-1.35l.84-1.2a7.8 7.8 0 0 1-.69-1.69l-1.46-.2A1 1 0 0 1 2.3 12.46v-.92a1 1 0 0 1 .82-1.08l1.46-.2c.17-.59.41-1.15.69-1.69l-.84-1.2a1 1 0 0 1 .1-1.35l.65-.65a1 1 0 0 1 1.35-.1l1.2.84c.54-.28 1.1-.52 1.69-.7l.2-1.45Z" stroke="currentColor" stroke-width="1.35" />
+            <circle cx="12" cy="12" r="3.25" stroke="currentColor" stroke-width="1.35" />
+        </svg>
+    </a>
     <!-- HERO HEADER -->
     <section class="hero">
         <div class="hero-time">
@@ -17,10 +189,65 @@
             <span id="hero-ss">00</span>
         </div>
         <div class="hero-date" id="hero-date"></div>
+        <section class="daily-achievements" aria-label="Dzienne osiągnięcia">
+            <div class="daily-achievements-rail" id="daily-achievements-rail" aria-live="polite" tabindex="0">
+                <article class="daily-achievement is-sobriety" data-daily-achievement="sobriety" data-label="Trzeźwość" data-state="loading">
+                    <span class="daily-achievement-icon" aria-hidden="true">
+                        <svg viewBox="0 0 100 70" fill="currentColor"><path fill-rule="evenodd" d="M50 57C32 42 31 27 50 10c19 17 18 32 0 47Zm0-11c9-9 9-15 0-25-9 10-9 16 0 25Z"/><path d="M43 51C23 39 21 22 34 7c4 4 7 10 8 16-4-6-6-8-8-9-7 13-4 25 9 37Zm14 0C77 39 79 22 66 7c-4 4-7 10-8 16 4-6 6-8 8-9 7 13 4 25-9 37Z"/><path d="M43 55C22 52 10 43 7 30c10 7 22 11 36 25Zm14 0c21-3 33-12 36-25-10 7-22 11-36 25Z"/><path d="M46 59C29 68 13 62 4 54c17 3 29 6 42 5Zm8 0c17 9 33 3 42-5-17 3-29 6-42 5Z"/></svg>
+                    </span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Trzeźwość</span><strong data-daily-achievement-value>—</strong></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+                <article class="daily-achievement" data-daily-achievement="cleaning" data-label="Sprzątanie" data-state="loading">
+                    <span class="daily-achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M14 3 8.7 8.3M12.6 4.4l7 7M7.8 7.8l8.4 8.4M5.6 8.9l9.5 9.5-2.8 2.8-9.5-9.5 2.8-2.8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Sprzątanie</span><strong data-daily-achievement-value>—</strong></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+                <article class="daily-achievement" data-daily-achievement="workout" data-label="Trening" data-state="loading">
+                    <span class="daily-achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10v4m3-7v10m12-10v10m3-7v4M6 12h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Trening</span><strong data-daily-achievement-value>—</strong><span class="daily-achievement-detail" data-daily-achievement-detail></span></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+                <article class="daily-achievement" data-daily-achievement="reading" data-label="Czytanie" data-state="loading">
+                    <span class="daily-achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5.5h5.2c1.6 0 2.8 1.2 2.8 2.8v11.2c0-1.5-1.2-2.7-2.7-2.7H4V5.5Zm16 0h-5.2c-1.6 0-2.8 1.2-2.8 2.8v11.2c0-1.5 1.2-2.7 2.7-2.7H20V5.5Z" stroke="currentColor" stroke-width="1.45" stroke-linejoin="round"/></svg></span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Czytanie</span><strong data-daily-achievement-value>—</strong></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+                <article class="daily-achievement" data-daily-achievement="anki-norwegian" data-label="Anki Norwegian" data-state="loading">
+                    <span class="daily-achievement-icon" aria-hidden="true"><svg viewBox="0 0 22 16"><rect width="22" height="16" fill="#BA0C2F"/><path d="M0 6h6V0h4v6h12v4H10v6H6v-6H0z" fill="#fff"/><path d="M0 7h7V0h2v7h13v2H9v7H7V9H0z" fill="#00205B"/></svg></span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Anki Norwegian</span><strong data-daily-achievement-value>—</strong><span class="daily-achievement-detail" data-daily-achievement-detail></span></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+                <article class="daily-achievement" data-daily-achievement="album" data-label="Album dnia" data-state="loading">
+                    <img class="daily-achievement-album-art" alt="" aria-hidden="true" hidden>
+                    <span class="daily-achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5"/><path d="M12 3.5v6.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Album dnia</span><strong data-daily-achievement-value>—</strong><span class="daily-achievement-detail" data-daily-achievement-detail></span></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+                <article class="daily-achievement" data-daily-achievement="weight" data-label="Waga" data-state="loading">
+                    <span class="daily-achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M8 10a4 4 0 0 1 8 0M12 10l2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Waga</span><strong data-daily-achievement-value>—</strong></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+                <article class="daily-achievement" data-daily-achievement="steps" data-label="Kroki" data-state="loading">
+                    <span class="daily-achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8.2 4.2c1.5 0 2.6 1.3 2.4 2.8l-.5 3.8c-.2 1.4-1.3 2.4-2.7 2.4H5.8c-1.5 0-2.6-1.3-2.4-2.8l.5-3.8c.2-1.4 1.3-2.4 2.7-2.4h1.6Zm8.4 6.6c1.5 0 2.6 1.3 2.4 2.8l-.5 3.8c-.2 1.4-1.3 2.4-2.7 2.4h-1.6c-1.5 0-2.6-1.3-2.4-2.8l.5-3.8c.2-1.4 1.3-2.4 2.7-2.4h1.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                    <span class="daily-achievement-copy"><span class="daily-achievement-label">Kroki</span><strong data-daily-achievement-value>—</strong></span>
+                    <span class="daily-achievement-mark" aria-hidden="true">•</span>
+                </article>
+            </div>
+        </section>
     </section>
 
     <!-- SIATKA WIDGETÓW -->
-    <section class="dash">
+    <section class="dash" data-columns="3" data-auto-fit="true" style="--dashboard-columns: 3;">
+        <script>
+            (() => {
+                const dash = document.currentScript.parentElement;
+                const columns = document.documentElement.dataset.dashboardColumns || "3";
+                dash.dataset.columns = columns;
+                dash.style.setProperty("--dashboard-columns", columns);
+            })();
+        </script>
         <!-- 1) POGODA -->
         <div class="card hero-card" data-widget="weather">
             <div class="header">
@@ -31,18 +258,8 @@
             <div class="wx">
                 <div class="wx-main" aria-live="polite">
                     <div id="wx-temp" class="wx-temp"></div>
-                    <div class="wx-sub" id="wx-sub">
-                        <span class="wx-sub-item wind">
-                            <span class="wx-sub-label">Wiatr</span>
-                            <span id="wx-wind" class="wx-sub-value">—</span>
-                        </span>
-                        <span class="wx-sub-item prcp">
-                            <span class="wx-sub-label">Opad</span>
-                            <span id="wx-prcp" class="wx-sub-value">—</span>
-                        </span>
-                    </div>
-                    <div id="wx-cond" class="wx-cond"></div>
                     <div id="wx-icon" class="wx-icon" aria-hidden="true"></div>
+                    <div id="wx-cond" class="wx-cond"></div>
                 </div>
             </div>
             <div class="hero-values">
@@ -50,7 +267,7 @@
                 <div id="next" class="wx-next-wrap"></div>
             </div>
             <div class="wx-footer">
-                <span id="wx-loc">Batorego, Kraków</span>
+                <span id="wx-loc">Kraków</span>
                 <span aria-hidden="true">•</span>
                 <span id="wx-updated"></span>
             </div>
@@ -229,7 +446,7 @@
         </section>
 
         <!-- 3) CLEANING -->
-        <div class="card cleaning" data-widget="cleaning" role="region" aria-labelledby="cl-title">
+        <div class="card cleaning" id="cleaning-card" data-widget="cleaning" role="region" aria-labelledby="cl-title">
             <div class="header">
                 <div class="title" id="cl-title">
                     <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -245,6 +462,10 @@
 
             <!-- liczniki jako pille -->
             <div class="cleaning-counters">
+                <div class="cc">
+                    <div class="cc-value" id="cl-dead">0</div>
+                    <span class="pill pill-dead">DEAD</span>
+                </div>
                 <div class="cc">
                     <div class="cc-value" id="cl-overdue">0</div>
                     <span class="pill pill-over">OVERDUE</span>
@@ -264,6 +485,39 @@
             </div>
             <div class="meta" id="cl-progress-text">0 / 0 - 0%</div>
 
+            <div class="cleaning-dashboard-lock-message" id="cl-dashboard-lock-message" role="status" hidden>
+                <span id="cl-dashboard-lock-text">Dashboard jest zablokowany do ukończenia dzisiejszego celu sprzątania.</span>
+                <button id="cl-dashboard-unlock" type="button" hidden>Odblokuj dashboard</button>
+            </div>
+
+            <section class="cleaning-rhythm-card" aria-labelledby="cl-goal-label">
+                <div class="cleaning-goal-overview">
+                    <div class="cleaning-goal-copy">
+                        <div class="cleaning-goal-label" id="cl-goal-label">Dzisiejszy cel</div>
+                        <div class="cleaning-goal-value" id="cl-goal-progress">0/0 zadań</div>
+                    </div>
+                    <div class="cleaning-goal-ring" id="cl-goal-ring" role="progressbar" aria-label="Realizacja dzisiejszego celu sprzątania" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+                        <span id="cl-goal-ring-value">0%</span>
+                    </div>
+                </div>
+
+                <div class="cleaning-rhythm">
+                    <div class="cleaning-rhythm-head">
+                        <div class="cleaning-streak-summary">
+                            <svg class="cleaning-streak-flame" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M13.4 2.2c.4 3.1-1.7 4.6-3.1 6.3-1.2 1.4-2.1 2.8-1.3 4.7.4-1.3 1.3-2.2 2.4-3.2-.1 2.1 1.6 3.1 2.4 4.5.6 1 .5 2.3-.2 3.2 2.2-.8 3.6-2.8 3.6-5.2 0-3.4-2-6.7-3.8-10.3ZM12 22c-4.4 0-7.5-3.1-7.5-7.3 0-2.8 1.5-5.2 3.9-7.7-.2 2.3.1 3.6.6 4.4.4-1.7 1.6-3 2.7-4.3 1.4-1.6 2.7-3.2 2.3-6 3.3 3.7 5.5 7.6 5.5 11.5C19.5 18 16.3 22 12 22Z" />
+                            </svg>
+                            <span id="cl-streak">0 dni serii</span>
+                        </div>
+                        <div class="cleaning-average">
+                            <span>Średnio 7 dni</span>
+                            <strong id="cl-average">0 zadań/dzień</strong>
+                        </div>
+                    </div>
+                    <div class="cleaning-week" id="cl-week" aria-label="Sprzątanie przez ostatnie 7 dni"></div>
+                </div>
+            </section>
+
             <section class="today-log compact" aria-live="polite">
                 <div class="today-log-head">
                     <div class="today-log-title">Co zrobiłem dziś</div>
@@ -279,8 +533,80 @@
             <div id="cl-zerostate" class="cl-zerostate meta" hidden>
                 zajebiście ogarnięte, nie ma nic do roboty, elo
             </div>
-            <footer class="hb-foot muted">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
-        </div>
+            <footer class="hb-foot muted" id="cl-updated">Ostatnia synchronizacja: —</footer>
+          </div>
+
+        <!-- 3b) SELF-CARE -->
+        <section class="card self-care" id="self-care-card" data-widget="self-care" role="region" aria-labelledby="sc-title">
+            <div class="header">
+                <div class="title" id="sc-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 21s-7-4.35-9.33-9.02C.9 8.44 2.92 4.5 6.72 4.5c2.04 0 3.34 1.08 4.08 2.08.74-1 2.04-2.08 4.08-2.08 3.8 0 5.82 3.94 4.05 7.48C16.6 16.65 12 21 12 21z" />
+                    </svg>
+                    <div>
+                        Self-care
+                        <div class="meta">Zdrowie, higiena i regularne ogarnianie siebie</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="self-care-counters">
+                <div class="cc">
+                    <div class="cc-value" id="sc-to-do">0</div>
+                    <span class="pill sc-status-to-do">TO DO</span>
+                </div>
+                <div class="cc">
+                    <div class="cc-value" id="sc-done">0</div>
+                    <span class="pill sc-status-done">DONE</span>
+                </div>
+                <div class="cc">
+                    <div class="cc-value" id="sc-idea">0</div>
+                    <span class="pill sc-status-idea">IDEA</span>
+                </div>
+                <div class="cc">
+                    <div class="cc-value" id="sc-recently-done">0</div>
+                    <span class="pill sc-status-recently-done">RECENTLY DONE</span>
+                </div>
+            </div>
+
+            <div class="progress">
+                <div id="sc-progress-bar" class="green" style="width:0%"></div>
+            </div>
+            <div class="meta" id="sc-progress-text">0 / 0 - 0%</div>
+
+            <section class="today-log compact" aria-live="polite">
+                <div class="today-log-head">
+                    <div class="today-log-title">Self-care dziś</div>
+                    <div class="today-log-count" id="sc-today-count">0</div>
+                </div>
+                <div class="today-log-list" id="sc-today-list" hidden></div>
+                <div class="today-log-empty" id="sc-today-empty">Brak wpisów dziś.</div>
+            </section>
+
+            <div id="sc-list" class="sc-list"></div>
+
+            <div id="sc-zerostate" class="cl-zerostate meta" hidden>
+                wszystko ogarnięte, możesz oddychać
+            </div>
+            <footer class="hb-foot muted" id="sc-updated">Ostatnia synchronizacja: —</footer>
+        </section>
+
+        <!-- 3c) HOW I FEEL -->
+        <section class="card feelings-card" id="feelings-card" data-widget="feelings" role="region" aria-labelledby="feelings-title">
+            <header class="header">
+                <div class="title" id="feelings-title">
+                    <span class="feelings-card-mark" aria-hidden="true">
+                        <i style="--mark:#ff4661"></i><i style="--mark:#ffc83d"></i><i style="--mark:#6f91ff"></i><i style="--mark:#49dda0"></i>
+                    </span>
+                    <div>
+                        <span class="dashboard-widget-title-text">How I Feel</span>
+                        <div class="meta dashboard-widget-subtitle">Private emotion journal</div>
+                    </div>
+                </div>
+                <button class="card-cta" id="feelings-check-in" type="button">Check in</button>
+            </header>
+            <div id="feelings-widget-root" aria-live="polite" aria-busy="true">Loading feelings…</div>
+        </section>
 
         <!-- 4) READING -->
         <div class="card reading" id="reading-card" data-widget="reading" role="region" aria-labelledby="rdg-title">
@@ -299,6 +625,9 @@
 
             <!-- aktywna książka -->
             <section class="reading-current">
+                <div class="reading-current-cover-wrap" id="rdg-cover-wrap" hidden>
+                    <img id="rdg-cover" class="reading-current-cover" alt="" loading="lazy" decoding="async" />
+                </div>
                 <div class="reading-current-top">
                     <div class="current-main">
                         <div class="current-booktitle" id="rdg-book-title">—</div>
@@ -318,27 +647,62 @@
                 <!-- edycja strony -->
                 <div class="reading-edit-row">
                     <label for="rdg-page-input" class="sr-only">Aktualna strona</label>
-                    <input id="rdg-page-input" type="number" class="reading-page-input" min="0" value="0" />
+                    <div class="reading-page-control">
+                        <input id="rdg-page-input" type="number" class="reading-page-input" min="0" value="0" />
+                        <div class="reading-page-stepper">
+                            <button class="reading-step-btn" type="button" data-page-step="1" aria-label="Następna strona">
+                                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                                    <path d="M2.25 7.5 6 3.75 9.75 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button class="reading-step-btn" type="button" data-page-step="-1" aria-label="Poprzednia strona">
+                                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                                    <path d="M2.25 4.5 6 8.25 9.75 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                     <button id="rdg-save-btn" class="reading-save-btn">Zapisz stronę</button>
+                    <span id="rdg-save-feedback" class="reading-save-feedback" aria-live="polite" aria-hidden="true" hidden></span>
                 </div>
 
-                <!-- 3 boksy: cel / zwrot / tempo -->
+                <!-- Cel dnia + powiązany rytm tygodnia; zwrot jest informacją drugoplanową -->
                 <div class="reading-kpis">
-                    <div class="reading-kpi">
-                        <div class="kpi-label">Dzisiejszy cel</div>
-                        <div class="kpi-main" id="rdg-today-target">—</div>
-                        <div class="kpi-sub meta" id="rdg-today-left">—</div>
-                    </div>
-                    <div class="reading-kpi">
-                        <div class="kpi-label">Zwrot</div>
-                        <div class="kpi-main" id="rdg-due-in">—</div>
-                        <div class="kpi-sub meta" id="rdg-due-date-2">—</div>
-                    </div>
-                    <div class="reading-kpi">
-                        <div class="kpi-label">Tempo</div>
-                        <div class="kpi-main" id="rdg-avg">—</div>
-                        <div class="kpi-sub meta" id="rdg-streak">—</div>
-                        <div class="kpi-sub meta kpi-note" id="rdg-tempo-note"></div>
+                    <section class="reading-kpi reading-goal-kpi" aria-labelledby="rdg-goal-label">
+                        <div class="reading-goal-overview">
+                            <div class="reading-goal-copy">
+                                <div class="kpi-label" id="rdg-goal-label">Dzisiejszy cel</div>
+                                <div class="kpi-main" id="rdg-today-target">—</div>
+                                <div class="kpi-sub meta" id="rdg-today-left">—</div>
+                            </div>
+                            <div class="reading-goal-ring" id="rdg-goal-ring" role="progressbar" aria-label="Realizacja dzisiejszego celu" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+                                <span id="rdg-goal-ring-value">0%</span>
+                            </div>
+                        </div>
+
+                        <div class="reading-rhythm">
+                            <div class="reading-rhythm-head">
+                                <div class="reading-streak-summary">
+                                    <svg class="reading-streak-flame" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M13.4 2.2c.4 3.1-1.7 4.6-3.1 6.3-1.2 1.4-2.1 2.8-1.3 4.7.4-1.3 1.3-2.2 2.4-3.2-.1 2.1 1.6 3.1 2.4 4.5.6 1 .5 2.3-.2 3.2 2.2-.8 3.6-2.8 3.6-5.2 0-3.4-2-6.7-3.8-10.3ZM12 22c-4.4 0-7.5-3.1-7.5-7.3 0-2.8 1.5-5.2 3.9-7.7-.2 2.3.1 3.6.6 4.4.4-1.7 1.6-3 2.7-4.3 1.4-1.6 2.7-3.2 2.3-6 3.3 3.7 5.5 7.6 5.5 11.5C19.5 18 16.3 22 12 22Z" />
+                                    </svg>
+                                    <span class="kpi-main" id="rdg-streak">—</span>
+                                </div>
+                                <div class="reading-average">
+                                    <span class="kpi-label">Średnio 7 dni</span>
+                                    <span class="kpi-main" id="rdg-avg">—</span>
+                                </div>
+                            </div>
+                            <div class="reading-week" id="rdg-week" aria-label="Czytanie przez ostatnie 7 dni"></div>
+                        </div>
+                    </section>
+
+                    <div class="reading-kpi reading-return-kpi">
+                        <span class="kpi-label">Zwrot</span>
+                        <span class="kpi-main" id="rdg-due-in">—</span>
+                        <span class="reading-return-separator" aria-hidden="true">·</span>
+                        <span class="kpi-sub meta" id="rdg-due-date-2">—</span>
+                        <span class="kpi-sub reading-return-fee" id="rdg-return-fee" hidden></span>
                     </div>
                 </div>
             </section>
@@ -357,10 +721,417 @@
                     <!-- przyciski książek będą wstrzyknięte z JS -->
                 </div>
             </section>
-            <footer class="hb-foot muted">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
+            <footer class="hb-foot muted" id="rdg-updated">Ostatnia synchronizacja: —</footer>
         </div>
 
-        <!-- 4.3) QUOTE -->
+        <!-- 4.05) LANGUAGE LEARNING -->
+        <section class="card language-learning-widget" id="language-learning-card" data-widget="language-learning" role="region" aria-labelledby="language-learning-title" hidden>
+            <header class="language-learning-widget-head">
+                <div class="language-learning-widget-identity">
+                    <svg class="language-learning-widget-flag" viewBox="0 0 22 16" aria-hidden="true">
+                        <rect width="22" height="16" fill="#BA0C2F"></rect>
+                        <path d="M0 6h6V0h4v6h12v4H10v6H6v-6H0z" fill="#fff"></path>
+                        <path d="M0 7h7V0h2v7h13v2H9v7H7V9H0z" fill="#00205B"></path>
+                    </svg>
+                    <div><div id="language-learning-title">Norwegian Bokmål</div></div>
+                </div>
+                <div class="language-learning-widget-head-actions">
+                    <div id="language-learning-known-words"></div>
+                    <a class="card-cta" href="./language.html#overview">Open</a>
+                </div>
+            </header>
+            <div class="language-learning-widget-body" id="language-learning-widget-body" aria-live="polite" aria-busy="true">
+                <div class="language-learning-widget-empty">Loading canonical learning facts…</div>
+            </div>
+        </section>
+
+        <section class="card phone-activity-card" id="phone-activity-card" data-widget="phone-activity" role="region" aria-labelledby="phone-activity-title">
+            <header class="header"><div class="title" id="phone-activity-title"><svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M10 18.5h4M9 6h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="dashboard-widget-title-text">Phone Activity</span></div>
+                <a class="card-cta" href="./phone-activity.html">Open</a></header>
+            <div id="phone-activity-body" class="phone-activity-body" aria-live="polite">Loading phone activity…</div>
+        </section>
+
+        <!-- 4.1) PHONE TELEMETRY -->
+        <section class="card phone-telemetry" id="phone-telemetry-card" data-widget="phone-telemetry" role="region" aria-labelledby="pt-title">
+            <div class="header">
+                <div class="title" id="pt-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M8 2h8a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm0 3v14h8V5zm2 11h4v1.5h-4z" />
+                    </svg>
+                    <div>
+                        Phone Telemetry
+                        <div class="meta">Usage sessions, app switching, and notification pressure</div>
+                    </div>
+                </div>
+                <div class="pt-actions">
+                    <select id="pt-day-select" class="pt-select" disabled>
+                        <option value="">Select day</option>
+                    </select>
+                    <button class="card-cta" id="pt-load-sample" type="button">Sample</button>
+                    <button class="card-cta" id="pt-import-btn" type="button">Import JSON</button>
+                </div>
+            </div>
+
+            <input id="pt-file-input" type="file" accept=".json,application/json" multiple hidden />
+
+            <div class="pt-toolbar">
+                <div class="pt-status-wrap">
+                    <div class="pt-status" id="pt-status">No telemetry imported</div>
+                    <div class="pt-source" id="pt-source">Import one or more daily JSON exports from the Android telemetry app.</div>
+                </div>
+                <div class="pt-schema-pill" id="pt-schema-pill">Schema v1.0.0</div>
+            </div>
+
+            <div class="pt-error" id="pt-error" hidden></div>
+
+            <div class="pt-empty" id="pt-empty">
+                <div class="pt-empty-title">Phone telemetry is empty</div>
+                <div class="pt-empty-copy">
+                    Import exported JSON files to inspect phone sessions, app usage, notification bursts, and messaging pressure.
+                </div>
+            </div>
+
+            <div class="pt-body" id="pt-body" hidden>
+                <section class="pt-overview" id="pt-overview"></section>
+
+                <section class="pt-panels">
+                    <article class="pt-panel">
+                        <div class="pt-panel-head">
+                            <div class="pt-panel-title">Hourly usage histogram</div>
+                            <div class="pt-panel-meta">Minutes per hour</div>
+                        </div>
+                        <div class="pt-vchart" id="pt-usage-chart"></div>
+                    </article>
+
+                    <article class="pt-panel">
+                        <div class="pt-panel-head">
+                            <div class="pt-panel-title">Message-like notifications</div>
+                            <div class="pt-panel-meta" id="pt-burst-summary">0 bursts detected</div>
+                        </div>
+                        <div class="pt-vchart" id="pt-message-chart"></div>
+                    </article>
+
+                    <article class="pt-panel">
+                        <div class="pt-panel-head">
+                            <div class="pt-panel-title">Top apps by time</div>
+                            <div class="pt-panel-meta">Duration share for the selected day</div>
+                        </div>
+                        <div class="pt-hchart" id="pt-app-share-chart"></div>
+                    </article>
+                </section>
+
+                <section class="pt-panels pt-lists">
+                    <article class="pt-panel">
+                        <div class="pt-panel-head">
+                            <div class="pt-panel-title">Top apps</div>
+                            <div class="pt-panel-meta">Foreground duration and session count</div>
+                        </div>
+                        <div class="pt-list" id="pt-top-apps"></div>
+                    </article>
+
+                    <article class="pt-panel">
+                        <div class="pt-panel-head">
+                            <div class="pt-panel-title">Top messaging apps</div>
+                            <div class="pt-panel-meta">Message-like notification load</div>
+                        </div>
+                        <div class="pt-list" id="pt-top-messaging-apps"></div>
+                    </article>
+
+                    <article class="pt-panel">
+                        <div class="pt-panel-head">
+                            <div class="pt-panel-title">Top contacts / threads</div>
+                            <div class="pt-panel-meta" id="pt-synthetic-summary">Synthetic metrics will appear here.</div>
+                        </div>
+                        <div class="pt-list" id="pt-top-contacts"></div>
+                    </article>
+                </section>
+            </div>
+        </section>
+
+        <!-- 4.2) TODO -->
+        <section class="card todo" data-widget="todo" role="region" aria-labelledby="todo-title">
+            <div class="header">
+                <div class="title" id="todo-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7 2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 4h8v2H8zm0 4h8v2H8zm0 4h5v2H8z" />
+                    </svg>
+                    <div>
+                        To-do
+                        <div class="meta">Wszystkie aktywne rzeczy</div>
+                    </div>
+                </div>
+                <a class="card-cta" href="./todo.html">Wejdź</a>
+            </div>
+
+            <form class="todo-form todo-add-form" id="todo-quick-form">
+                <label class="sr-only" for="todo-quick-input">Dodaj zadanie</label>
+                <input id="todo-quick-input" class="todo-input" type="text" placeholder="Dodaj task..." maxlength="120" required />
+                <label class="sr-only" for="todo-quick-date">Deadline</label>
+                <input id="todo-quick-date" class="todo-date-input" type="text" inputmode="numeric" placeholder="dd/mm/yyyy" pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}" maxlength="10" autocomplete="off" />
+                <button class="todo-add-btn" type="submit">Dodaj</button>
+            </form>
+
+            <div class="todo-widget-section">
+                <div class="todo-section-head">
+                    <span>Aktywne taski</span>
+                    <span id="todo-quick-count">0</span>
+                </div>
+            </div>
+            <ul class="todo-list" id="todo-quick-list" aria-live="polite"></ul>
+            <div class="todo-empty" id="todo-quick-empty">Brak aktywnych zadań.</div>
+
+            <div class="todo-widget-section">
+                <div class="todo-section-head">
+                    <span>Shopping list</span>
+                    <span id="todo-shopping-count">0</span>
+                </div>
+                <form class="todo-form todo-add-form" id="todo-shopping-form">
+                    <label class="sr-only" for="todo-shopping-input">Dodaj zakup</label>
+                    <input id="todo-shopping-input" class="todo-input" type="text" placeholder="Dodaj zakup..." maxlength="120" required />
+                    <label class="sr-only" for="todo-shopping-date">Deadline</label>
+                    <input id="todo-shopping-date" class="todo-date-input" type="text" inputmode="numeric" placeholder="dd/mm/yyyy" pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}" maxlength="10" autocomplete="off" />
+                    <button class="todo-add-btn" type="submit">Dodaj</button>
+                </form>
+                <ul class="todo-list" id="todo-shopping-list" aria-live="polite"></ul>
+                <div class="todo-empty" id="todo-shopping-empty">Lista zakupów jest pusta.</div>
+            </div>
+
+            <div class="todo-footer">
+                <button class="todo-ghost-btn" id="todo-toggle-done" type="button" data-label-show="Pokaż zrobione" data-label-hide="Ukryj zrobione">
+                    Pokaż zrobione
+                </button>
+                <div class="todo-summary" id="todo-summary">0 otwarte</div>
+                <a class="todo-more" id="todo-more" href="./todo.html" hidden>+0 więcej</a>
+            </div>
+        </section>
+
+        <!-- 4.3) BILLS, INSTALLMENTS & SUBSCRIPTIONS -->
+        <section class="card bills-widget" data-widget="bills" data-bills-panel role="region" aria-labelledby="bills-widget-title">
+            <header class="bills-widget-header">
+                <div class="title" id="bills-widget-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M3 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1h1a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5h1zm2 0v2h14V5H5zm-1 4v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2h-4a3 3 0 0 1 0-6h4H4zm12 2a1 1 0 1 0 0 2h4v-2h-4z" />
+                    </svg>
+                    <div>
+                        <span class="dashboard-widget-title-text">Rachunki, raty i subskrypcje</span>
+                        <div class="meta">Poręczna przypominajka o cyklicznych płatnościach</div>
+                    </div>
+                </div>
+                <div class="bills-widget-actions">
+                    <button class="todo-ghost-btn bills-add-button" type="button" data-bills-add>+ Dodaj płatność</button>
+                    <span class="bills-open-count" data-bills-open>0 do zapłaty</span>
+                    <button class="todo-ghost-btn" type="button" data-bills-toggle-done>Pokaż zrobione</button>
+                    <button class="todo-ghost-btn bills-notifications" type="button" data-bills-notifications>Włącz powiadomienia</button>
+                </div>
+            </header>
+
+            <div class="bills-reminder" data-bills-reminder aria-live="polite"></div>
+
+            <div class="bills-summary-band">
+                <div class="bills-overview">
+                    <div><span>Plan</span><strong data-bills-planned>0,00 zł</strong></div>
+                    <div><span>Pozostało</span><strong data-bills-remaining>0,00 zł</strong></div>
+                    <div class="bills-overview-total" tabindex="0" aria-describedby="bills-total-tooltip">
+                        <div class="bills-total-metric">
+                            <span>Do spłaty łącznie</span>
+                            <strong data-bills-total-outstanding>0,00 zł</strong>
+                        </div>
+                        <div class="bills-total-metric bills-total-average">
+                            <span>Średnio / mies.</span>
+                            <strong data-bills-monthly-average>0,00 zł</strong>
+                            <small>do kwietnia 2027</small>
+                        </div>
+                        <div class="bills-total-tooltip" id="bills-total-tooltip" role="tooltip">
+                            <span>Suma obejmuje nieopłacone rachunki, raty i subskrypcje do kwietnia 2027. Główna średnia pokazuje wszystkie zaplanowane koszty.</span>
+                            <div class="bills-tooltip-average">
+                                <span>Realnie zostało / mies.</span>
+                                <strong data-bills-monthly-remaining-average>0,00 zł</strong>
+                                <small>Od następnego miesiąca do kwietnia 2027, po odjęciu pozycji opłaconych wcześniej lub z góry.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bills-breakdown" aria-label="Podział miesięcznych kosztów">
+                    <div><span>Rachunki</span><strong data-bills-category="Mieszkanie">0,00 zł</strong></div>
+                    <div><span>Raty</span><strong data-bills-category="Raty">0,00 zł</strong></div>
+                    <div><span>Subskrypcje</span><strong data-bills-category="Subskrypcje">0,00 zł</strong></div>
+                </div>
+            </div>
+
+            <div class="bills-months" data-bills-months aria-label="Prognozowane wydatki w kolejnych miesiącach"></div>
+            <div class="bills-view-controls" aria-label="Widoczność typów płatności">
+                <span>Widoczne płatności</span>
+                <div class="bills-view-filters">
+                    <button class="bills-view-filter" type="button" data-bills-view-filter="automatic" aria-pressed="true">Ukryj automatyczne</button>
+                    <button class="bills-view-filter" type="button" data-bills-view-filter="regular" aria-pressed="true">Ukryj zwykłe</button>
+                </div>
+            </div>
+            <ul class="bills-list" data-bills-list aria-live="polite"></ul>
+            <div class="todo-empty" data-bills-empty hidden></div>
+        </section>
+
+        <!-- 4.4) BUDGET -->
+        <section class="card budget is-private" id="budget-card" data-widget="budget" role="region" aria-labelledby="budget-title">
+            <header class="budget-head">
+                <div class="title" id="budget-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v1H3V6zm0 3h18v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9zm4 3v2h5v-2H7zm0 4v2h8v-2H7z" />
+                    </svg>
+                    <div>
+                        Finanse
+                        <div class="meta budget-sensitive" id="budget-source-meta">Ładowanie sytuacji finansowej…</div>
+                    </div>
+                </div>
+                <div class="budget-import-actions">
+                    <a class="budget-action" href="./budget.html" target="_blank" rel="noopener">Otwórz finanse</a>
+                    <button class="budget-action budget-action--ghost" id="budget-privacy-toggle" type="button" aria-pressed="false">Pokaż dane</button>
+                    <button class="budget-action budget-action--ghost" id="budget-reset" type="button">Odśwież</button>
+                </div>
+            </header>
+            <div class="finance-widget-primary">
+                <span>Bezpiecznie do wydania</span>
+                <strong class="budget-sensitive" id="budget-safe-to-spend">—</strong>
+                <small class="budget-sensitive" id="budget-safe-daily">—</small>
+            </div>
+            <div class="finance-widget-metrics">
+                  <article><span>Wydano</span><strong class="budget-sensitive" id="budget-spending">—</strong><small id="budget-expense-context">Na ten miesiąc</small></article>
+                  <article><span>Z wpływów zostało</span><strong class="budget-sensitive" id="budget-net">—</strong><small>Na ten miesiąc</small></article>
+                <article><span>Oszczędności</span><strong class="budget-sensitive" id="budget-savings">—</strong><small class="budget-sensitive" id="budget-savings-rate">—</small></article>
+                <article><span>Najbliższe płatności</span><strong class="budget-sensitive" id="budget-upcoming">—</strong><small>30 dni</small></article>
+            </div>
+            <section class="finance-widget-goal" id="budget-goal" hidden>
+                <div><span class="budget-sensitive" id="budget-goal-name">Cel</span><strong class="budget-sensitive" id="budget-goal-percent">—</strong></div>
+                <div class="finance-widget-progress"><i id="budget-goal-progress"></i></div>
+                <small class="budget-sensitive" id="budget-goal-context">—</small>
+            </section>
+        </section>
+
+        <!-- 4.3.1) WEIGHT CUT TILES -->
+        <section class="card weight-cut" id="weight-cut-card" data-widget="weight-cut" role="region" aria-labelledby="weight-cut-title">
+            <div id="weight-cut-root"></div>
+        </section>
+
+        <!-- 4.3.1a) LIVE WORKOUT -->
+        <section class="card live-workout-card" id="live-workout-card" data-widget="live-workout" role="region" aria-labelledby="live-workout-title">
+            <header class="header live-workout-widget-header">
+                <div class="title" id="live-workout-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 13h3l2-5 4 10 2-5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 21C7.4 18.4 3 15.1 3 9.7A4.7 4.7 0 0 1 11.1 6L12 7l.9-1A4.7 4.7 0 0 1 21 9.7c0 5.4-4.4 8.7-9 11.3Z" stroke="currentColor" stroke-width="1.4"/>
+                    </svg>
+                    <div>
+                        <div class="dashboard-widget-title-text">Live Workout</div>
+                        <div class="meta dashboard-widget-subtitle">Cycling · strength · walking</div>
+                    </div>
+                </div>
+                <div class="live-workout-widget-actions">
+                    <span class="live-workout-status" data-live-widget-status>Gotowy</span>
+                    <button class="card-cta live-workout-focus-button" id="live-workout-focus-button" type="button">Focus mode</button>
+                    <a class="card-cta" id="live-workout-open" href="./live-workout.html">Otwórz</a>
+                </div>
+            </header>
+            <div id="live-workout-root" aria-live="polite">Ładowanie planu…</div>
+        </section>
+
+        <!-- 4.3.2) DIET -->
+        <section class="card diet" id="diet-card" data-widget="diet" role="region" aria-labelledby="diet-title">
+            <div id="diet-root"></div>
+        </section>
+
+        <!-- 4.3.6) JOURNAL HTR -->
+        <section class="card journal-htr-widget" id="journal-htr-card" data-widget="journal-htr" role="region" aria-labelledby="journal-htr-widget-title">
+            <header class="header journal-htr-widget-header">
+                <div class="title" id="journal-htr-widget-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 3.5h10.5L19 7v13.5H5v-17Z" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M15 3.5V7h4M8 11h8M8 14h8M8 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                    <div>
+                        <div class="dashboard-widget-title-text">OCR dziennika</div>
+                        <div class="meta dashboard-widget-subtitle">Lokalny HTR · eScriptorium + Kraken</div>
+                    </div>
+                </div>
+                <div class="journal-htr-widget-header-actions">
+                    <span class="journal-htr-widget-service" id="journal-htr-widget-service">Sprawdzam…</span>
+                    <button class="card-cta journal-htr-widget-toggle" id="journal-htr-widget-toggle" type="button" disabled>Uruchom serwer</button>
+                    <a class="card-cta" id="journal-htr-widget-action" href="./journal-ocr.html" hidden>Otwórz</a>
+                </div>
+            </header>
+            <div id="journal-htr-widget-root" aria-live="polite">Ładowanie stanu HTR…</div>
+        </section>
+
+        <!-- 4.3.7) JOBHUNT -->
+        <section class="card jobhunt" id="jobhunt-card" data-widget="jobhunt" role="region" aria-labelledby="jobhunt-title">
+            <header class="header jobhunt-head">
+                <div class="title" id="jobhunt-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M10 3h4a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3V5a2 2 0 0 1 2-2Zm4 4V5h-4v2h4Zm-9 4v7h14v-7h-5v2h-4v-2H5Z" />
+                    </svg>
+                    <div>
+                        <div class="dashboard-widget-title-text">Jobhunt</div>
+                        <div class="meta dashboard-widget-subtitle">Status szukania pracy</div>
+                    </div>
+                </div>
+                <a class="card-cta" href="./jobhunt.html">Otwórz</a>
+            </header>
+            <div id="jobhunt-root"></div>
+        </section>
+
+        <!-- 4.3.8) AI USAGE -->
+        <section class="card ai-usage" id="ai-usage-card" data-widget="ai-usage" role="region" aria-labelledby="ai-usage-title">
+            <header class="header ai-usage-head">
+                <div class="title" id="ai-usage-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 18V9m7 9V5m7 13v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        <path d="M3.5 20.5h17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                    </svg>
+                    <div>
+                        <div class="dashboard-widget-title-text">AI Usage</div>
+                        <div class="meta dashboard-widget-subtitle">Codex · Antigravity</div>
+                    </div>
+                </div>
+                <a class="card-cta" id="ai-usage-details" href="./ai-usage.html">Otwórz</a>
+            </header>
+            <div id="ai-usage-root" aria-live="polite">Loading quota…</div>
+        </section>
+
+        <!-- 4.3.8a) MENTAL HEALTH -->
+        <section class="card mental-health" id="mental-health-card" data-widget="mental-health" role="region" aria-labelledby="mental-health-title">
+            <header class="header mental-health-head">
+                <div class="title" id="mental-health-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 20s-7-4.1-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.9-7 10-7 10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                        <path d="M8.5 12h2l1-2.3 1.6 4.4 1-2.1h1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div>
+                        <div class="dashboard-widget-title-text">Mental Health</div>
+                        <div class="meta dashboard-widget-subtitle">Profil · trendy · check-in</div>
+                    </div>
+                </div>
+                <a class="card-cta" href="./mental-health.html">Otwórz</a>
+            </header>
+            <div id="mental-health-root" aria-live="polite">Ładowanie profilu…</div>
+        </section>
+
+        <!-- 4.3.9) WEEKLY INSIGHTS -->
+        <section class="card weekly-insights" id="weekly-insights-card" data-widget="weekly-insights" role="region" aria-labelledby="weekly-insights-title">
+            <header class="header weekly-insights-head">
+                <div class="title" id="weekly-insights-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 5.5h16v14H4v-14Z" stroke="currentColor" stroke-width="1.6" />
+                        <path d="M8 3.5v4M16 3.5v4M4 9.5h16M8 15l2.2-2.2 2 2 3.8-3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div>
+                        <div class="dashboard-widget-title-text">Weekly insights</div>
+                        <div class="meta dashboard-widget-subtitle">Last 7 days compared with the previous 7</div>
+                    </div>
+                </div>
+            </header>
+            <div id="weekly-insights-root" aria-live="polite" aria-busy="false"></div>
+        </section>
+
+        <!-- 4.4) QUOTE -->
         <section class="card quote" id="quote-card" data-widget="quote" role="region" aria-labelledby="quote-title" hidden>
             <div class="header">
                 <div class="title" id="quote-title">
@@ -376,65 +1147,234 @@
                 <blockquote class="quote-text" id="quote-text">—</blockquote>
                 <figcaption class="quote-author" id="quote-author">—</figcaption>
             </figure>
-            <div class="quote-meta muted" id="quote-status">Ladowanie...</div>
+            <div class="quote-meta muted" id="quote-status">Ładowanie...</div>
         </section>
 
-                <!-- 4.4) OSCARS WATCHLIST -->
-        <section class="card oscars" id="oscars-card" data-widget="oscars" role="region" aria-labelledby="oscars-title">
-            <header class="oscars-head">
-                <div class="oscars-head-left">
+        <!-- 4.4) FILMS HUB -->
+        <section class="card films" id="films-card" data-widget="films" role="region" aria-labelledby="films-title">
+            <header class="films-head">
+                <div class="films-head-left">
                     <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12 2l2.47 5.02 5.54.8-4.01 3.91.95 5.53L12 14.77 7.05 17.26l.95-5.53L4 7.82l5.53-.8L12 2z" />
+                        <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6zm2 0v12h12V6H6zm2 1.5h2v9H8v-9zm3 0h2v9h-2v-9zm3 0h2v9h-2v-9z" />
                     </svg>
                     <div>
-                        <div id="oscars-title">Oscars 2026 Watchlist</div>
-                        <div class="meta">Quick progress + edits</div>
+                        <div id="films-title">Filmy</div>
+                        <div class="meta" id="films-subtitle">Jedna biblioteka, wiele list</div>
                     </div>
                 </div>
-                <a class="card-cta" href="./oscars.html">Otwórz</a>
+                <a class="card-cta" href="./films.html">Otwórz</a>
             </header>
 
-            <div class="oscars-body">
-                <div class="oscars-col oscars-col-left">
-                    <div class="hb-statsrow oscars-kpis">
-                        <div class="pill big done">
-                            <div id="oscars-watched" class="num">0</div>
-                            <div class="lbl">WATCHED</div>
-                        </div>
-                        <div class="pill big total">
-                            <div id="oscars-left" class="num">0</div>
-                            <div class="lbl">LEFT</div>
-                        </div>
-                        <div class="pill big accent">
-                            <div id="oscars-avg" class="num">-</div>
-                            <div class="lbl">AVG</div>
-                        </div>
-                    </div>
-
-                    <div class="progress">
-                        <div id="oscars-progress-bar" class="green" style="width:0%"></div>
-                    </div>
-                    <div class="meta" id="oscars-progress-text">0 / 0 - 0%</div>
-
-                    <div class="oscars-next">
-                        <div class="oscars-combo-top">
-                            <div class="oscars-combo-label">Required daily watch time (to 2026-03-14)</div>
-                            <div class="oscars-combo-value" id="oscars-required">-</div>
-                        </div>
-                        <div class="oscars-next-row">
-                            <div class="oscars-next-poster" id="oscars-next-poster" aria-hidden="true">
-                                <span>?</span>
-                            </div>
-                            <div class="oscars-next-text">
-                                <div class="oscars-next-title" id="oscars-next-title">-</div>
-                                <div class="oscars-next-meta" id="oscars-next-meta">-</div>
-                            </div>
-                        </div>
-                    </div>
-
-            <footer class="hb-foot muted" id="oscars-updated" data-fixed="true">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
+            <div class="hb-statsrow films-kpis">
+                <div class="pill big total">
+                    <div id="films-total" class="num">0</div>
+                    <div class="lbl">FILMS</div>
+                </div>
+                <div class="pill big done">
+                    <div id="films-watched" class="num">0</div>
+                    <div class="lbl">WATCHED</div>
+                </div>
+                <div class="pill big accent">
+                    <div id="films-lists" class="num">0</div>
+                    <div class="lbl">LISTS</div>
+                </div>
+                <div class="pill big total">
+                    <div id="films-avg" class="num">-</div>
+                    <div class="lbl">AVG</div>
                 </div>
             </div>
+
+            <div class="films-collections" id="films-collections"></div>
+
+            <section class="films-spotlight">
+                <div class="films-spotlight-head">
+                    <div>
+                        <div class="films-spotlight-label" id="films-spotlight-label">Biblioteka filmów</div>
+                        <div class="films-spotlight-title" id="films-spotlight-title">Ładowanie danych...</div>
+                    </div>
+                    <a class="films-spotlight-link" id="films-spotlight-link" href="./films.html">Przejdź</a>
+                </div>
+                <div class="films-spotlight-copy" id="films-spotlight-copy">Ładuję wspólną bibliotekę i listy filmowe.</div>
+                <div class="films-spotlight-meta" id="films-spotlight-meta">...</div>
+            </section>
+
+            <div class="films-links-head">
+                <div class="films-links-title">Szybkie wejścia</div>
+                <div class="meta" id="films-links-meta">Najważniejsze listy</div>
+            </div>
+            <div class="films-links" id="films-links"></div>
+
+            <footer class="hb-foot muted" id="films-foot" data-fixed="true">Ładowanie danych...</footer>
+        </section>
+
+        <section class="card cinema-city" id="cinema-city-card" data-widget="cinema-city" role="region" aria-labelledby="cinema-city-title">
+            <header class="cinema-city-head">
+                <div class="cinema-city-head-main">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm2 0v12h12V6H6Zm1 2h2v2H7V8Zm4 0h2v2h-2V8Zm4 0h2v2h-2V8Zm-8 4h2v2H7v-2Zm4 0h2v2h-2v-2Zm4 0h2v2h-2v-2Z" />
+                    </svg>
+                    <div>
+                        <div class="cinema-city-title" id="cinema-city-title">Cinema City Galeria Kazimierz</div>
+                        <div class="meta" id="cinema-city-monthly">Ładowanie kina...</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="cinema-membership-countdown" id="cinema-city-countdown" role="timer" aria-live="off">
+                <div class="cinema-membership-countdown-head">
+                    <span>Unlimited wygasa</span>
+                    <strong>19 września 2026</strong>
+                </div>
+                <div class="cinema-membership-countdown-value" id="cinema-city-countdown-value">—</div>
+                <div class="cinema-membership-countdown-hint">Wykorzystaj ostatnie dni na jeszcze kilka filmów.</div>
+            </div>
+
+            <div class="cinema-city-body">
+                <section class="cinema-section" aria-labelledby="cinema-city-today-title">
+                    <div class="cinema-section-title" id="cinema-city-today-title">Dziś</div>
+                    <ul class="cinema-list" id="cinema-city-today"></ul>
+                </section>
+
+                <section class="cinema-section" aria-labelledby="cinema-city-watchlist-title">
+                    <div class="cinema-section-title" id="cinema-city-watchlist-title">Do obejrzenia</div>
+                    <ul class="cinema-list" id="cinema-city-watchlist"></ul>
+                </section>
+
+            </div>
+
+            <footer class="hb-foot muted" id="cinema-city-foot" data-fixed="true">ostatnia aktualizacja: —</footer>
+        </section>
+
+        <section class="card classical-library-widget" id="classical-library-card" data-widget="classical-library" role="region" aria-labelledby="classical-widget-title">
+            <header class="classical-widget-head">
+                <div class="classical-widget-title-wrap">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M6 3h11a2 2 0 0 1 2 2v14.5a1 1 0 0 1-1.45.9L15 19.62l-2.55 1.28a1 1 0 0 1-.9 0L9 19.62 6.45 20.9A1 1 0 0 1 5 20V4a1 1 0 0 1 1-1Zm1 2v12.38l1.55-.78a1 1 0 0 1 .9 0L12 17.88l2.55-1.28a1 1 0 0 1 .9 0l1.55.78V5H7Zm3 3h5v2h-5V8Zm0 4h5v2h-5v-2Z" />
+                    </svg>
+                    <div>
+                        <div id="classical-widget-title">Classical Composer Library</div>
+                        <div class="meta">Works and metadata corrections</div>
+                    </div>
+                </div>
+                <a class="card-cta" href="./classical-library.html">Open Library</a>
+            </header>
+
+            <div class="classical-widget-body">
+                <div class="classical-widget-portrait">
+                    <img id="classical-widget-image" alt="" hidden>
+                    <span id="classical-widget-image-fallback">M</span>
+                </div>
+                <div class="classical-widget-copy">
+                    <div class="classical-widget-composer" id="classical-widget-composer">Maurice Ravel</div>
+                    <p id="classical-widget-bio">Loading composer library...</p>
+                    <div class="classical-widget-facts">
+                        <span id="classical-widget-latest">0 composers in library</span>
+                        <span id="classical-widget-progress">0 works listened / 0 total</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="hb-foot muted" id="classical-widget-foot" data-fixed="true">Loading data...</footer>
+        </section>
+
+        <section class="card network-monitor" id="network-card" data-widget="network-monitor" role="region" aria-labelledby="network-title">
+            <header class="network-head">
+                <div class="network-head-main">
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 17a1.25 1.25 0 1 1 0 2.5A1.25 1.25 0 0 1 12 17Zm0-4a3 3 0 0 1 2.72 1.73 1 1 0 1 1-1.81.84 1 1 0 0 0-1.82 0 1 1 0 1 1-1.81-.84A3 3 0 0 1 12 13Zm0-4c2.42 0 4.64 1.23 5.94 3.28a1 1 0 1 1-1.69 1.08 5.03 5.03 0 0 0-8.5 0 1 1 0 1 1-1.69-1.08A7.02 7.02 0 0 1 12 9Zm0-4c3.82 0 7.33 1.89 9.41 5.04a1 1 0 0 1-1.67 1.1A9.2 9.2 0 0 0 12 3a9.2 9.2 0 0 0-7.74 4.14 1 1 0 0 1-1.67-1.1A11.18 11.18 0 0 1 12 1Z" />
+                    </svg>
+                    <div>
+                        <div id="network-title">Sieć lokalna</div>
+                        <div class="meta">Wi-Fi / LAN z lokalnego skanera</div>
+                    </div>
+                </div>
+                <div class="network-head-actions">
+                    <a class="card-cta" href="./settings.html#network-devices">Nazwy</a>
+                    <div class="network-status-chip is-idle" id="network-state-chip">idle</div>
+                </div>
+            </header>
+
+            <div class="network-body">
+                <div class="network-overview">
+                    <div class="hb-statsrow network-kpis">
+                        <div class="pill big done">
+                            <div id="network-online-count" class="num">0</div>
+                            <div class="lbl">ONLINE</div>
+                        </div>
+                        <div class="pill big total">
+                            <div id="network-total-count" class="num">0</div>
+                            <div class="lbl">SEEN</div>
+                        </div>
+                        <div class="pill big accent">
+                            <div id="network-scan-age" class="num">--</div>
+                            <div class="lbl">LAST SCAN</div>
+                        </div>
+                    </div>
+
+                    <div class="network-panels">
+                        <section class="network-panel" aria-labelledby="network-online-head">
+                            <div class="network-panel-head">
+                                <div class="network-panel-title" id="network-online-head">Online teraz</div>
+                                <div class="meta" id="network-online-meta">czekam na pierwszy skan</div>
+                            </div>
+                            <div class="network-list" id="network-online-list"></div>
+                        </section>
+
+                        <section class="network-panel" aria-labelledby="network-recent-head">
+                            <div class="network-panel-head">
+                                <div class="network-panel-title" id="network-recent-head">Ostatnio widziane</div>
+                                <div class="meta" id="network-recent-meta">historia z SQLite</div>
+                            </div>
+                            <div class="network-list" id="network-recent-list"></div>
+                        </section>
+                    </div>
+
+                    <section class="network-cable-issues" aria-labelledby="network-cable-issues-head">
+                        <div class="network-cable-issues-head">
+                            <div>
+                                <div class="network-panel-title" id="network-cable-issues-head">Problemy PC kabel</div>
+                                <div class="meta" id="network-cable-issues-meta">czekam na historię urządzenia</div>
+                            </div>
+                            <div class="network-cable-status" id="network-cable-issues-status">--</div>
+                        </div>
+                        <div class="network-cable-issues-body" id="network-cable-issues-body"></div>
+                    </section>
+
+                    <div class="network-overview-note">
+                        Lokalny monitoring obecności i aktywności urządzeń w sieci domowej.
+                    </div>
+                </div>
+
+                <section class="network-analytics" aria-labelledby="network-analytics-title">
+                    <div class="network-analytics-head">
+                        <div>
+                            <div class="network-panel-title" id="network-analytics-title">Historia urządzenia</div>
+                            <div class="meta" id="network-history-meta">Wybierz urządzenie, aby zobaczyć statystyki online/offline i oś czasu z ostatnich 24h.</div>
+                        </div>
+                        <div class="network-analytics-controls">
+                            <label class="network-device-picker" for="network-history-device">
+                                <span class="network-device-picker-label">Urządzenie</span>
+                                <select id="network-history-device"></select>
+                            </label>
+                            <div class="network-device-picker network-day-picker">
+                                <span class="network-device-picker-label">Dzień</span>
+                                <div class="network-day-picker-row">
+                                    <button id="network-history-day-prev" class="network-day-nav" type="button" aria-label="Poprzedni dzień">&lsaquo;</button>
+                                    <button id="network-history-day-display" class="network-day-display" type="button" aria-haspopup="dialog">--/--/----</button>
+                                    <button id="network-history-day-next" class="network-day-nav" type="button" aria-label="Następny dzień">&rsaquo;</button>
+                                    <input id="network-history-day" type="date" tabindex="-1" aria-hidden="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="network-history-stats" id="network-history-stats"></div>
+                    <div class="network-history-chart" id="network-history-chart"></div>
+                    <div class="network-presence" id="network-home-presence"></div>
+                </section>
+            </div>
+
+            <footer class="hb-foot muted" id="network-foot" data-fixed="true">Ładowanie lokalnego API...</footer>
         </section>
 
         <!-- 4.5) BLACK METAL 365 (NOWY WIDGET) -->
@@ -462,10 +1402,13 @@
                 </div>
             </div>
 
-            <div class="progress">
-                <div id="bm365-progress-bar" class="green" style="width:0%"></div>
+            <div class="progress progress-dual">
+                <div id="bm365-progress-bar" class="progress-base green" style="width:0%"></div>
+                <div id="bm365-progress-delta" class="progress-delta" style="width:0%; left:0%"></div>
             </div>
-            <div class="meta" id="bm365-progress-text">0 / 0 ??? 0%</div>
+            <div class="meta" id="bm365-progress-text">0 / 0 — 0%</div>
+            <div class="meta" id="bm365-catchup" hidden>Do nadrobienia: —</div>
+            <div class="meta bm365-projection" id="bm365-projection" hidden>Zostało: —</div>
 
 
             <div class="reading-kpis" style="margin-bottom:12px">
@@ -491,18 +1434,120 @@
                     <!-- JS wstrzyknie wiersze -->
                 </div>
             </div>
-            <div class="bm365-block">
-                <div class="bm365-rowhead">
-                    <div class="bm365-h">Top 10</div>
+            <details class="bm365-missing" id="bm365-missing" hidden>
+                <summary>Brak okładek <span id="bm365-missing-count" class="bm365-missing-count">0</span></summary>
+                <pre id="bm365-missing-list" class="bm365-missing-list"></pre>
+            </details>
+
+            <footer class="hb-foot muted" id="bm365-foot" data-fixed="true">Źródło: lokalna baza BM365</footer>
+        </section>
+
+        <!-- 4.6) BRUTAL ASSAULT 2027 -->
+        <section class="card bm365 ba2027" id="ba2027-card" data-widget="brutal-assault-2027" role="region" aria-labelledby="ba2027-title">
+            <header class="habits-head" style="margin-bottom:10px">
+                <div>
+                    <h3 id="ba2027-title">Brutal Assault 2027</h3>
+                    <div class="muted" id="ba2027-sub">Progress odsłuchu albumów</div>
                 </div>
-                <div id="bm365-top-grid" class="skeleton-block skeleton-lg"></div>
-                <details class="bm365-missing" id="bm365-missing" hidden>
-                    <summary>Brak okładek <span id="bm365-missing-count" class="bm365-missing-count">0</span></summary>
-                    <pre id="bm365-missing-list" class="bm365-missing-list"></pre>
-                </details>
+                <a class="card-cta" href="./brutal-assault-2027.html" rel="noopener">Otwórz</a>
+            </header>
+
+            <div class="ba2027-kpi-cluster" aria-label="Brutal Assault 2027 statistics">
+                <div class="pill big total">
+                    <div id="ba2027-done" class="num">0</div>
+                    <div class="lbl">DONE</div>
+                </div>
+                <div class="pill big missed">
+                    <div id="ba2027-left" class="num">0</div>
+                    <div class="lbl">LEFT</div>
+                </div>
+                <div class="pill big done">
+                    <div id="ba2027-pct" class="num">0%</div>
+                    <div class="lbl">PROGRESS</div>
+                </div>
+                <div class="reading-kpi">
+                    <div class="kpi-label">Avg rating</div>
+                    <div class="kpi-main" id="ba2027-avg">—</div>
+                    <div class="kpi-sub meta" id="ba2027-avg-note">ocenione albumy</div>
+                </div>
+                <div class="reading-kpi">
+                    <div class="kpi-label">Time left</div>
+                    <div class="kpi-main" id="ba2027-time">—</div>
+                </div>
             </div>
 
-            <footer class="hb-foot muted" id="bm365-foot" data-fixed="true">Ostatnia aktualizacja: 7 lut 2026, 11:47</footer>
+            <div class="progress progress-dual">
+                <div id="ba2027-progress-bar" class="progress-base green" style="width:0%"></div>
+                <div class="progress-delta" style="width:0%; left:0%"></div>
+            </div>
+            <div class="meta" id="ba2027-progress-text">0 / 0 — 0%</div>
+            <div class="meta bm365-projection" id="ba2027-projection" hidden>Zostało: —</div>
+
+            <div class="reading-active">
+                <div class="reading-active-grid skeleton-block skeleton-lg" id="ba2027-recent-grid" style="grid-template-columns:1fr; gap:8px"></div>
+            </div>
+
+            <section class="ba2027-official" aria-label="Oficjalny line-up Brutal Assault">
+                <div class="ba2027-official-head"><strong>LINE-UP</strong><button id="ba2027-check-now" type="button">Sprawdź teraz</button></div>
+                <div id="ba2027-official-summary" class="meta">Oczekiwanie na oficjalne dane…</div>
+                <div class="ba2027-lineup-track" role="progressbar" aria-label="Potwierdzony line-up" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="ba2027-official-bar" class="ba2027-lineup-fill" style="width:0%"></div></div>
+                <div id="ba2027-official-update" class="meta" hidden></div>
+                <div class="ba2027-news-head">LATEST NEWS</div>
+                <div id="ba2027-official-news" class="ba2027-news-list"></div>
+            </section>
+
+            <footer class="hb-foot muted" id="ba2027-foot" data-fixed="true">Oczekiwanie na pierwsze sprawdzenie</footer>
+        </section>
+
+        <!-- 4.7) RYM POLISH BLACK METAL TOP 100 -->
+        <section class="card bm365 rym-polish-bm" id="rym-polish-bm-card" data-widget="rym-polish-black-metal-top-100" role="region" aria-labelledby="rym-polish-bm-title">
+            <header class="habits-head" style="margin-bottom:10px">
+                <div>
+                    <h3 id="rym-polish-bm-title">Top 100 RYM Polish BM</h3>
+                    <div class="muted" id="rym-polish-bm-sub">Progress odsłuchu albumów</div>
+                </div>
+                <a class="card-cta" href="./rym-polish-black-metal-top-100.html" rel="noopener">Otwórz</a>
+            </header>
+
+            <div class="hb-statsrow" style="margin-bottom:12px">
+                <div class="pill big total">
+                    <div id="rym-polish-bm-done" class="num">0</div>
+                    <div class="lbl">DONE</div>
+                </div>
+                <div class="pill big missed">
+                    <div id="rym-polish-bm-left" class="num">100</div>
+                    <div class="lbl">LEFT</div>
+                </div>
+                <div class="pill big done">
+                    <div id="rym-polish-bm-pct" class="num">0%</div>
+                    <div class="lbl">PROGRESS</div>
+                </div>
+            </div>
+
+            <div class="progress progress-dual">
+                <div id="rym-polish-bm-progress-bar" class="progress-base green" style="width:0%"></div>
+                <div class="progress-delta" style="width:0%; left:0%"></div>
+            </div>
+            <div class="meta" id="rym-polish-bm-progress-text">0 / 100 — 0%</div>
+
+            <div class="reading-kpis" style="margin-bottom:12px">
+                <div class="reading-kpi">
+                    <div class="kpi-label">Avg rating</div>
+                    <div class="kpi-main" id="rym-polish-bm-avg">—</div>
+                    <div class="kpi-sub meta" id="rym-polish-bm-avg-note">brak ocen</div>
+                </div>
+                <div class="reading-kpi">
+                    <div class="kpi-label">Chart</div>
+                    <div class="kpi-main">100</div>
+                    <div class="kpi-sub meta">RYM Poland</div>
+                </div>
+            </div>
+
+            <div class="reading-active">
+                <div class="reading-active-grid skeleton-block skeleton-lg" id="rym-polish-bm-recent-grid" style="grid-template-columns:1fr; gap:8px"></div>
+            </div>
+
+            <footer class="hb-foot muted" id="rym-polish-bm-foot" data-fixed="true">Źródło: Rate Your Music</footer>
         </section>
 
         <section class="card habits" data-widget="habits">
@@ -544,131 +1589,157 @@
 Czarna plakietka = streak w dniach</footer>
         </section>
 
-        <!-- 5) HOLIDAYS -->
-        <section class="card events" data-widget="events">
+        <!-- 5) HOLIDAYS & IMPORTANT DATES -->
+        <section class="card events" id="events-widget" data-widget="events" data-display-mode="month" data-show-past-events="false" role="region" aria-labelledby="events-title">
             <header class="events-head">
                 <div class="events-head-main">
                     <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zM5 8h14v12H5V8z" />
                     </svg>
                 <div class="events-head-text">
-                        <div class="events-title">Święta i dni wolne</div>
-                        <div class="meta">Kalendarz ustawowych dni wolnych</div>
+                        <div class="events-title" id="events-title">Holidays & Important Dates</div>
+                        <div class="meta">Święta, wyjazdy, koncerty i ważne terminy</div>
                     </div>
                 </div>
-                <a class="card-cta" href="./events.html">Wejdź</a>
+                <div class="events-mode" role="group" aria-label="Zakres dat">
+                    <button class="events-mode-btn" type="button" data-events-mode="today">Dzisiaj</button>
+                    <button class="events-mode-btn" type="button" data-events-mode="week">Ten tydzień</button>
+                    <button class="events-mode-btn" type="button" data-events-mode="month">Ten miesiąc</button>
+                    <button class="events-mode-btn" type="button" data-events-mode="year">Ten rok</button>
+                </div>
             </header>
 
-            <!-- KPI tylko o najbliższym święcie -->
-            <div class="events-kpis one-col">
-                <div class="metric-tile">
-                    <div class="metric-label">Najbliższe święto</div>
-                    <div class="metric-value" id="hol-name">11.11 – Narodowe Święto Niepodległości</div>
-                    <div class="metric-sub" id="hol-eta">za 20 dni</div>
+            <div class="events-nearest skeleton-block skeleton-md" id="events-nearest" aria-live="polite"></div>
+            <div class="events-calendars" id="events-calendars" hidden></div>
+            <ul class="events-list" id="events-list"></ul>
+            <footer class="hb-foot muted" id="events-foot" data-fixed="true">Ładowanie dat...</footer>
+        </section>
+
+        <section class="card event-countdowns" id="event-countdowns-widget" data-widget="event-countdowns" role="region" aria-labelledby="event-countdowns-title">
+            <header class="event-countdowns-head">
+                <div>
+                    <div class="event-countdowns-title" id="event-countdowns-title">Event Countdowns</div>
+                    <div class="meta">Odliczania spięte z Holidays & Important Dates</div>
                 </div>
-            </div>
-
-            <!-- lista świąt -->
-            <ul class="events-list" id="events-list">
-                <li class="evt">
-                    <span class="date-badge">11.11</span>
-                    <span class="evt-title">Narodowe Święto Niepodległości</span>
-                    <span class="evt-pill state-ok">dzień wolny</span>
-                </li>
-
-                <li class="evt">
-                    <span class="date-badge">03.12</span>
-                    <span class="evt-title">Urodziny Jess</span>
-                    <span class="hb-soberInner">urodziny</span>
-                </li>
-
-                <li class="evt">
-                    <span class="date-badge">24.12</span>
-                    <span class="evt-title">Wigilia</span>
-                    <span class="evt-pill state-warn">krótki dzień</span>
-                </li>
-
-                <li class="evt">
-                    <span class="date-badge">25.12</span>
-                    <span class="evt-title">Boże Narodzenie (pierwszy dzień)</span>
-                    <span class="evt-pill state-ok">wolne</span>
-                </li>
-
-                <li class="evt">
-                    <span class="date-badge">26.12</span>
-                    <span class="evt-title">Boże Narodzenie (drugi dzień)</span>
-                    <span class="evt-pill state-ok">wolne</span>
-                </li>
-
-                <li class="evt">
-                    <span class="date-badge">01.01</span>
-                    <span class="evt-title">Nowy Rok</span>
-                    <span class="evt-pill state-ok">wolne</span>
-                </li>
-            </ul>
+                <div class="event-countdowns-controls">
+                    <div class="event-countdowns-filter-wrap">
+                        <button class="event-countdowns-select event-countdowns-filter-button" id="event-countdowns-filter" type="button" aria-label="Filtruj countdowny" aria-expanded="false">Filtry</button>
+                        <div class="event-countdowns-filter-menu" id="event-countdowns-filter-menu" hidden></div>
+                    </div>
+                    <button class="event-countdowns-add event-countdowns-add--secondary" id="event-countdowns-refresh" type="button">Odśwież</button>
+                    <button class="event-countdowns-add event-countdowns-add--secondary" id="event-countdowns-create-category" type="button" title="Kliknij: nowa kategoria · Shift+klik: edytuj kategorie">Nowa kategoria</button>
+                    <select class="event-countdowns-select" id="event-countdowns-select" aria-label="Wybierz event do odliczania"></select>
+                    <select class="event-countdowns-select" id="event-countdowns-category" aria-label="Kategoria eventu"></select>
+                    <button class="event-countdowns-add" id="event-countdowns-add" type="button" disabled>Dodaj</button>
+                    <button class="event-countdowns-add event-countdowns-add--secondary" id="event-countdowns-create" type="button">Nowy event</button>
+                </div>
+            </header>
+            <div class="event-countdowns-list" id="event-countdowns-list" aria-live="polite"></div>
+            <footer class="hb-foot muted" id="event-countdowns-foot" data-fixed="true">Ładowanie countdownów...</footer>
         </section>
 
         <!-- 6) TEMPERATURA I WILGOTNOŚĆ -->
-        <section class="card sensors" data-widget="sensors">
+        <section class="card sensors sensor-widget" id="sensor-widget" data-widget="sensors" role="region" aria-labelledby="sensor-widget-title">
             <header class="sensor-head">
                 <div class="sensor-head-main">
-                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M15 17a3 3 0 1 1-6 0c0-1.3.84-2.4 2-2.82V6a1 1 0 0 1 2 0v8.18A3.001 3.001 0 0 1 15 17z" />
+                    <svg class="sensor-header-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M14 14.4V6a2 2 0 1 0-4 0v8.4a4 4 0 1 0 4 0Z" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                    <div class="sensor-head-text">
-                        <div class="sensor-title">Temperatura i wilgotność</div>
-                        <div class="meta">Live z termometru</div>
-                    </div>
+                    <div class="sensor-title" id="sensor-widget-title">Temperatura w mieszkaniu</div>
                 </div>
 
-                <a class="card-cta" href="./sensors.html">Wejdź</a>
+                <a class="card-cta sensor-entry-link" href="./sensors.html">Otwórz</a>
             </header>
 
-            <div class="sensor-grid">
-                <div class="sensor-meta">
-                    <span class="muted">bat <span id="room-batt">—</span>%</span>
-                    <span aria-hidden="true">•</span>
-                    <span class="muted">odczyt <span id="room-updated">—:—</span></span>
-                </div>
-                <div class="sensor-box">
-                    <div class="sensor-label">Temp</div>
-                    <div class="sensor-value">
-                        <span class="sensor-main" id="room-temp">21.4</span>
-                        <span class="sensor-unit">°C</span>
-                        <span class="sensor-unit sensor-unit-alt" id="room-temp-f">— °F</span>
-                    </div>
-                    <div class="sensor-note" id="temp-trend">
-                        stabilnie
-                    </div>
-                </div>
+            <div class="sensor-status-bar" aria-label="Status czujnika">
+                <span class="sensor-location-chip">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z" stroke="currentColor" stroke-width="1.7" />
+                        <circle cx="12" cy="10" r="2" stroke="currentColor" stroke-width="1.7" />
+                    </svg>
+                    <span id="sensor-location-name">Biurko</span>
+                </span>
+                <span class="sensor-live-status" id="sensor-freshness" data-state="loading">
+                    <i aria-hidden="true"></i>
+                    <strong>Łączenie…</strong>
+                </span>
+                <span class="sensor-battery battery-unknown" id="sensor-battery" role="img" aria-label="Poziom baterii nieznany">
+                    <i class="sensor-battery-fill" aria-hidden="true"></i>
+                    <span><span id="room-batt">—</span>%</span>
+                </span>
+                <span class="sensor-reading-time">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span id="room-updated">—</span>
+                </span>
+            </div>
 
-                <div class="sensor-box">
-                    <div class="sensor-label">Wilgotność</div>
+            <div class="sensor-grid">
+                <article class="sensor-box sensor-box--temperature">
+                    <div class="sensor-metric-head">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M14 14.4V6a2 2 0 1 0-4 0v8.4a4 4 0 1 0 4 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="sensor-label">Temperatura</span>
+                    </div>
                     <div class="sensor-value">
-                        <span class="sensor-main" id="room-hum">52</span>
+                        <span class="sensor-main" id="room-temp">—</span>
+                        <span class="sensor-unit">°C</span>
+                    </div>
+                    <div class="sensor-metric-middle">
+                        <div class="sensor-secondary-value" id="room-temp-f">— °F</div>
+                    </div>
+                    <div class="sensor-note sensor-trend-note">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M5 12h14M8 9l-3 3 3 3m8-6 3 3-3 3" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="temp-trend">—</span>
+                    </div>
+                </article>
+
+                <article class="sensor-box sensor-box--humidity">
+                    <div class="sensor-metric-head">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 3.5s6 6.1 6 10.5a6 6 0 0 1-12 0c0-4.4 6-10.5 6-10.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                        </svg>
+                        <span class="sensor-label">Wilgotność</span>
+                    </div>
+                    <div class="sensor-value">
+                        <span class="sensor-main" id="room-hum">—</span>
                         <span class="sensor-unit">%</span>
                     </div>
-                    <div class="sensor-note" id="hum-range">
-                        idealna (40-60)
+                    <div class="sensor-metric-middle" aria-hidden="true"></div>
+                    <div class="sensor-note sensor-humidity-note">
+                        <span><i id="hum-range-icon" aria-hidden="true">✓</i> <span id="hum-range">—</span></span>
+                        <small id="hum-target-range">40–60%</small>
                     </div>
-                </div>
+                </article>
 
-                <div class="sensor-box">
-                    <div class="sensor-label">Komfort</div>
-                    <div class="sensor-value sensor-comfort">
-                        <span class="comfort-pill state-ok" id="comfort-pill">
-                            Zielony • OK
-                        </span>
-                    </div>
-                    <div class="sensor-note" id="comfort-desc">
-                        powietrze spoko
-                    </div>
-                </div>
+                <span id="comfort-pill" hidden></span>
+                <span id="comfort-desc" hidden></span>
             </div>
         </section>
 
-        <!-- 7) HABIT TIMELINES -->
+        <!-- 7) HABITS APP -->
+        <section class="card habits-app-card" id="habits-app-card" data-widget="habits-app" role="region" aria-labelledby="habits-app-title">
+            <header class="habits-app-head">
+                <div class="habits-app-head-main" id="habits-app-title">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M7 5.5h10M7 12h10M7 18.5h10" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" />
+                        <path d="m3.7 5.5 1.1 1.1 2-2M3.7 12l1.1 1.1 2-2M3.7 18.5l1.1 1.1 2-2" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div>
+                        <h3>Habits App</h3>
+                    </div>
+                </div>
+                <span class="habits-app-version">LAN sync</span>
+            </header>
+            <div id="habits-app-root" aria-live="polite"></div>
+        </section>
+
+        <!-- 8) HABIT TIMELINES -->
         <section class="card habit-multi" id="hm-card" data-widget="habits-timeline" role="region" aria-labelledby="hm-title" style="grid-column: 1 / -1;">
             <header class="hm-head">
                 <div>
@@ -683,9 +1754,12 @@ Czarna plakietka = streak w dniach</footer>
                     <button class="hm-btn" id="hm-select-all" type="button">All</button>
                     <button class="hm-btn" id="hm-clear" type="button">Clear</button>
                     <button class="hm-btn" id="hm-last" type="button">Last</button>
+                    <button class="hm-btn" id="hm-upload-btn" type="button">Upload .db</button>
                     <button class="pill hm-toggle" id="hm-normalize" type="button" aria-pressed="false">Normalize</button>
                     <div class="hm-count" id="hm-selected">0 selected</div>
                 </div>
+                <input id="hm-db-input" type="file" accept=".db,application/octet-stream" hidden />
+                <div class="hm-upload-status" id="hm-upload-status" aria-live="polite"></div>
 
                 <div class="hm-pills-wrap">
                     <div class="hm-label hm-pills-label">Habits</div>
@@ -729,34 +1803,543 @@ Czarna plakietka = streak w dniach</footer>
 
 </section>
 
-    <script src="./js/fetch-tracker.js"></script>
+    <script type="module" src="./js/fetch-tracker.js"></script>
     <script type="module">
         import { setLocale } from './js/i18n.js';
         setLocale('pl');
     </script>
 
-<script src="./js/habit-data.js"></script>
-<script type="module" src="./js/habit-timelines.js"></script>
-
 <!-- JS -->
     <script type="module" src="./js/heroClock.js"></script>
-    <script type="module" src="./js/main_weather.js"></script>
-    <script type="module" src="./js/init-aqi.js"></script>
-    <script type="module" src="./js/widget-cleaning.js"></script>
-    <script type="module" src="./js/widget-reading.js"></script>
-    <script type="module" src="./js/widget-quote.js"></script>
-    <script type="module" src="./js/widget-oscars.js"></script>
-    <script type="module" src="./js/habits.js"></script>
+    <script type="module" src="./js/daily-achievements.js"></script>
+    <script type="module" src="./js/daily-anki-achievement.js"></script>
+    <script type="module" src="./js/dashboard-widget-loader.js"></script>
+    <script type="module" src="./js/kermit-entry.js"></script>
 
-    <!-- NOWE: Black Metal 365 widget logic (mock) -->
-    <script type="module" src="./js/bm365.js"></script>
-    <script type="module" src="./js/widget-order.js"></script>
+    <div class="settings-overlay" id="settings-overlay" hidden>
+        <div class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+            <header class="settings-modal-head">
+                <div class="settings-modal-copy">
+                    <div class="settings-kicker">Dashboard</div>
+                    <div class="settings-modal-title" id="settings-modal-title">Settings</div>
+                    <div class="settings-modal-meta">Układ dashboardu i profile urządzeń z monitora sieci w jednym miejscu.</div>
+                </div>
+                <div class="settings-modal-actions">
+                    <a class="settings-modal-tablet-link" href="./today-display.html" target="_blank" rel="noopener">Otwórz ekran na tablet ↗</a>
+                    <button class="settings-close-btn" id="settings-close-btn" type="button" aria-label="Zapisz i zamknij Settings">Zapisz i zamknij</button>
+                </div>
+            </header>
 
-    <script type="module">
-        import { initSensorWidget } from './js/widget-sensors.js';
-        const GIST_URL = 'https://gist.githubusercontent.com/kamil36s/fae9b26f7ffce459eceb203fb130f250/raw/room.json';
-        initSensorWidget({ url: GIST_URL, pollMs: 60000 });
-    </script>
+            <div class="settings-modal-body">
+                <div class="settings-panel-grid">
+                    <aside class="settings-modal-side">
+                        <a class="settings-section-link settings-tablet-link" href="./today-display.html" target="_blank" rel="noopener">
+                            <span class="settings-section-link-title">Ekran na tablet ↗</span>
+                            <span class="settings-section-link-copy">Dzisiejsze cele, leki i suplementy</span>
+                        </a>
+                        <section class="settings-section-picker" aria-labelledby="settings-modal-section-picker-title">
+                            <div class="settings-kicker">Podwidoki</div>
+                            <h2 id="settings-modal-section-picker-title">Wybierz sekcję</h2>
+                            <p class="meta settings-copy">
+                                Przełączaj sekcje po lewej i edytuj tylko wybrany fragment ustawień.
+                            </p>
+
+                            <div class="settings-section-nav" role="tablist" aria-label="Sekcje ustawień">
+                                <button
+                                    class="settings-section-link is-active"
+                                    id="settings-section-tab-dashboard-layout"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="true"
+                                    aria-controls="settings-panel-dashboard-layout"
+                                    data-settings-section-link="dashboard-layout"
+                                >
+                                    <span class="settings-section-link-title">Układ dashboardu</span>
+                                    <span class="settings-section-link-copy">Widoczność, kolejność i szybki reset widgetów.</span>
+                                </button>
+
+                                <button
+                                    class="settings-section-link"
+                                    id="settings-section-tab-network-devices"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                    aria-controls="settings-panel-network-devices"
+                                    data-settings-section-link="network-devices"
+                                >
+                                    <span class="settings-section-link-title">Nazwy urządzeń w sieci</span>
+                                    <span class="settings-section-link-copy">Własne nazwy, ownerzy i kategorie po MAC.</span>
+                                </button>
+
+                                <button
+                                    class="settings-section-link"
+                                    id="settings-section-tab-kitchen-dashboard"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                    aria-controls="settings-panel-kitchen-dashboard"
+                                    data-settings-section-link="kitchen-dashboard"
+                                >
+                                    <span class="settings-section-link-title">Kitchen dashboard</span>
+                                    <span class="settings-section-link-copy">Tryb przepisu, sport i link Clozemastera.</span>
+                                </button>
+
+                                <button
+                                    class="settings-section-link"
+                                    id="settings-section-tab-spotify-screensaver"
+                                    type="button"
+                                    role="tab"
+                                    aria-selected="false"
+                                    aria-controls="settings-panel-spotify-screensaver"
+                                    data-settings-section-link="spotify-screensaver"
+                                >
+                                    <span class="settings-section-link-title">Spotify screensaver</span>
+                                    <span class="settings-section-link-copy">Czas bezczynności i połączenie Spotify.</span>
+                                </button>
+                            </div>
+                        </section>
+                    </aside>
+
+                    <div class="settings-modal-main">
+                        <section
+                            class="settings-section settings-section-panel"
+                            id="settings-panel-dashboard-layout"
+                            data-settings-panel="dashboard-layout"
+                            role="tabpanel"
+                            aria-labelledby="settings-section-tab-dashboard-layout"
+                        >
+                            <div class="settings-section-head">
+                                <div>
+                                    <h2>Układ dashboardu</h2>
+                                    <p class="meta settings-copy">
+                                        Zmieniaj widoczność, kolejność i nazwy widgetów. Nagłówki zapisują się automatycznie, a pozostałe zmiany po kliknięciu „Zapisz i zamknij”.
+                                    </p>
+                                </div>
+
+                                <div class="settings-actions">
+                                    <button class="budget-action budget-action--ghost" id="settings-show-all" type="button">Pokaż wszystko</button>
+                                    <button class="budget-action budget-action--ghost" id="settings-reset" type="button">Resetuj układ</button>
+                                </div>
+                            </div>
+
+                            <div class="settings-save-note" id="settings-save-note" aria-live="polite">
+                                Ładuję ustawienia...
+                            </div>
+
+                            <section class="settings-layout-card" aria-label="Liczba kolumn dashboardu">
+                                <div>
+                                    <div class="settings-layout-title">Widok dashboardu</div>
+                                    <p class="meta settings-copy">
+                                        Wybierz 2, 3 albo 4 kolumny. Niżej możesz też ustawić szerokość każdego widgetu.
+                                    </p>
+                                </div>
+                                <div class="settings-column-picker" id="settings-column-picker" role="radiogroup" aria-label="Liczba kolumn"></div>
+                                <label class="settings-option-row settings-auto-fit-row" for="settings-auto-fit">
+                                    <span class="settings-option-copy">
+                                        <span class="settings-option-title">Kompaktowe dopasowanie widgetów</span>
+                                        <span class="settings-option-desc">Układa kafle w najniższe dostępne miejsce i tylko subtelnie wyrównuje małe różnice przed pełną szerokością.</span>
+                                    </span>
+                                    <input id="settings-auto-fit" type="checkbox" />
+                                </label>
+                                <label class="settings-option-row" for="settings-heart-rate-history-shortcut">
+                                    <span class="settings-option-copy">
+                                        <span class="settings-option-title">Ikona historii HR przy lewej krawędzi</span>
+                                        <span class="settings-option-desc">Pokazuje na dashboardzie skrót otwierający osobną stronę z zapisanymi próbkami tętna.</span>
+                                    </span>
+                                    <input id="settings-heart-rate-history-shortcut" type="checkbox" />
+                                </label>
+                                <label class="settings-header-font-size-control" for="settings-header-font-size">
+                                    <span>Rozmiar nagłówków</span>
+                                    <input id="settings-header-font-size" type="range" min="13" max="22" step="1" value="16" />
+                                    <strong id="settings-header-font-size-value">16px</strong>
+                                </label>
+                            </section>
+
+                            <div class="settings-widget-list" id="settings-widget-list"></div>
+                        </section>
+
+                        <section
+                            class="settings-section settings-section-panel"
+                            id="settings-panel-network-devices"
+                            data-settings-panel="network-devices"
+                            role="tabpanel"
+                            aria-labelledby="settings-section-tab-network-devices"
+                            hidden
+                        >
+                            <div class="settings-section-head">
+                                <div>
+                                    <h2>Nazwy urządzeń w sieci</h2>
+                                    <p class="meta settings-copy">
+                                        Nadaj nazwę, kategorię i ownera po MAC. Heurystyki "Wyszedł z domu" i "Wrócił do domu" liczą się głównie dla kategorii osobiste / domowe.
+                                    </p>
+                                </div>
+
+                                <div class="settings-actions">
+                                    <button class="budget-action budget-action--ghost" id="network-settings-refresh" type="button">Odśwież urządzenia</button>
+                                </div>
+                            </div>
+
+                            <div class="settings-save-note" id="network-settings-note" aria-live="polite">
+                                Ładuję urządzenia z monitora sieci...
+                            </div>
+
+                            <section class="settings-network-options" aria-label="Powiadomienia sieci lokalnej">
+                                <label class="settings-option-row" for="network-notifications-toggle">
+                                    <span class="settings-option-copy">
+                                        <span class="settings-option-title">Powiadomienia z widgetu Sieć lokalna</span>
+                                        <span class="settings-option-desc">Pokaż toast, gdy urządzenie połączy się z LAN albo zniknie z ostatniego skanu.</span>
+                                    </span>
+                                    <input id="network-notifications-toggle" type="checkbox" />
+                                </label>
+                            </section>
+
+                            <div class="settings-device-list" id="network-device-list"></div>
+                        </section>
+
+                        <section
+                            class="settings-section settings-section-panel"
+                            id="settings-panel-kitchen-dashboard"
+                            data-settings-panel="kitchen-dashboard"
+                            role="tabpanel"
+                            aria-labelledby="settings-section-tab-kitchen-dashboard"
+                            hidden
+                        >
+                            <div class="settings-section-head">
+                                <div>
+                                    <h2>Kitchen dashboard</h2>
+                                    <p class="meta settings-copy">
+                                        Włącz pełnoekranowy przepis na tablecie albo zmień pozostałe elementy tego widoku.
+                                    </p>
+                                </div>
+
+                                <div class="settings-actions">
+                                    <button class="budget-action budget-action--ghost" id="dashboard-tablet-refresh" type="button">Odśwież dashboard na tablecie</button>
+                                    <button class="budget-action budget-action--ghost" id="kitchen-clozemaster-reset" type="button">Domyślny link</button>
+                                    <button class="budget-action" id="kitchen-clozemaster-save" type="button">Zapisz link</button>
+                                </div>
+                            </div>
+
+                            <div class="settings-save-note" id="kitchen-settings-note" aria-live="polite">
+                                Ładuję ustawienia kitchen dashboardu...
+                            </div>
+
+                            <div class="settings-actions">
+                                <a class="budget-action budget-action--ghost" href="./kitchen.html">Otwórz kitchen dashboard</a>
+                                <a class="budget-action budget-action--ghost" href="./hitchen.html">Debug slajdów</a>
+                                <a class="budget-action budget-action--ghost" href="./kitchen.html?inputTest=1">Debug pada</a>
+                                <a class="budget-action budget-action--ghost" href="./kitchen.html?night=1">Tryb nocny</a>
+                            </div>
+
+                            <section class="settings-kitchen-card settings-recipe-card" aria-label="Tryb przepisu">
+                                <div class="settings-recipe-head">
+                                    <div>
+                                        <div class="settings-device-field-label">Tryb przepisu</div>
+                                        <p class="meta settings-copy">Wklej zwykły tekst lub prosty Markdown. Nagłówki, tabele, pogrubienia i kroki numerowane ułożą się automatycznie.</p>
+                                    </div>
+                                    <label class="settings-recipe-toggle" for="kitchen-recipe-enabled">
+                                        <input id="kitchen-recipe-enabled" type="checkbox" />
+                                        <span>Przejmij ekran tabletu</span>
+                                    </label>
+                                </div>
+                                <label class="settings-device-field" for="kitchen-recipe-content">
+                                    <span class="settings-device-field-label">Treść przepisu</span>
+                                    <textarea
+                                        class="settings-device-input settings-recipe-input"
+                                        id="kitchen-recipe-content"
+                                        spellcheck="true"
+                                        placeholder="**Składniki**&#10;&#10;| Produkt | Ilość |&#10;| --- | --- |&#10;| Kurczak | 400 g |&#10;&#10;**Przygotowanie**&#10;&#10;1. Pierwszy krok..."
+                                    ></textarea>
+                                </label>
+                                <div class="settings-recipe-footer">
+                                    <span class="settings-kitchen-current" id="kitchen-recipe-current">Tryb wyłączony.</span>
+                                    <button class="budget-action" id="kitchen-recipe-save" type="button">Zapisz przepis</button>
+                                </div>
+                            </section>
+
+                            <section class="settings-kitchen-card" aria-label="Clozemaster">
+                                <label class="settings-device-field" for="kitchen-clozemaster-url">
+                                    <span class="settings-device-field-label">Clozemaster URL</span>
+                                    <input
+                                        class="settings-device-input settings-kitchen-url"
+                                        id="kitchen-clozemaster-url"
+                                        type="url"
+                                        inputmode="url"
+                                        autocomplete="off"
+                                        spellcheck="false"
+                                        placeholder="https://www.clozemaster.com/..."
+                                    />
+                                </label>
+                                <div class="settings-kitchen-current" id="kitchen-clozemaster-current"></div>
+                            </section>
+
+                            <section class="settings-kitchen-card" aria-label="Wyniki sportowe">
+                                <section>
+                                    <div class="settings-device-field-label">Zespoły</div>
+                                    <div class="settings-check-list" id="kitchen-team-list"></div>
+                                </section>
+
+                                <label class="settings-device-field" for="kitchen-sports-window">
+                                    <span class="settings-device-field-label">Zakres wyników</span>
+                                    <select class="settings-device-select" id="kitchen-sports-window"></select>
+                                </label>
+
+                                <section>
+                                    <div class="settings-device-field-label">Ligi i rozgrywki</div>
+                                    <div class="settings-check-list" id="kitchen-league-list"></div>
+                                </section>
+                            </section>
+
+                            <section class="settings-kitchen-card" aria-label="Debug źródeł sportowych">
+                                <div class="settings-section-head settings-section-head--compact">
+                                    <div>
+                                        <div class="settings-device-field-label">Debug źródeł</div>
+                                        <p class="meta settings-copy">Podgląd cache, providerów i błędów pobierania wyników.</p>
+                                    </div>
+                                    <button class="budget-action budget-action--ghost" id="kitchen-debug-refresh" type="button">Odśwież debug</button>
+                                </div>
+                                <pre class="settings-kitchen-debug" id="kitchen-debug-output">Kliknij odśwież debug.</pre>
+                            </section>
+                        </section>
+
+                        <section
+                            class="settings-section settings-section-panel"
+                            id="settings-panel-spotify-screensaver"
+                            data-settings-panel="spotify-screensaver"
+                            role="tabpanel"
+                            aria-labelledby="settings-section-tab-spotify-screensaver"
+                            hidden
+                        >
+                            <div class="settings-section-head">
+                                <div>
+                                    <h2>Spotify screensaver</h2>
+                                    <p class="meta settings-copy">
+                                        Ustaw po ilu minutach bezczynności watcher otworzy kiosk oraz sprawdź połączenie Spotify.
+                                    </p>
+                                </div>
+
+                                <div class="settings-actions">
+                                    <a class="budget-action budget-action--ghost" id="spotify-screensaver-preview" href="./spotify-screensaver.html?manual=1">Podgląd</a>
+                                    <a class="budget-action budget-action--ghost" id="artist-facts-preview" href="./artist-facts-screensaver.html?artist=Maurice%20Ravel">Artist facts</a>
+                                    <a class="budget-action" id="spotify-connect-link" href="/api/spotify/auth/start">Connect Spotify</a>
+                                </div>
+                            </div>
+
+                            <div class="settings-save-note" id="screensaver-settings-note" aria-live="polite">
+                                Ładuję ustawienia Spotify screensavera...
+                            </div>
+
+                            <section class="settings-kitchen-card" aria-label="Spotify screensaver options">
+                                <label class="settings-device-field" for="screensaver-idle-minutes">
+                                    <span class="settings-device-field-label">Start po bezczynności</span>
+                                    <input
+                                        class="settings-device-input"
+                                        id="screensaver-idle-minutes"
+                                        type="number"
+                                        min="0.25"
+                                        max="120"
+                                        step="0.25"
+                                        inputmode="decimal"
+                                    />
+                                </label>
+
+                                <label class="settings-device-field" for="screensaver-check-interval">
+                                    <span class="settings-device-field-label">Interwał sprawdzania</span>
+                                    <select class="settings-device-select" id="screensaver-check-interval">
+                                        <option value="1000">1 s</option>
+                                        <option value="3000">3 s</option>
+                                        <option value="5000">5 s</option>
+                                        <option value="10000">10 s</option>
+                                        <option value="30000">30 s</option>
+                                    </select>
+                                </label>
+
+                                <label class="settings-device-field" for="screensaver-background-mode">
+                                    <span class="settings-device-field-label">Tło</span>
+                                    <select class="settings-device-select" id="screensaver-background-mode">
+                                        <option value="black">Czarne</option>
+                                        <option value="blur">Rozmyta okładka</option>
+                                        <option value="gradient">Gradient z okładki</option>
+                                        <option value="ambient">Ambient: gradient + blur</option>
+                                    </select>
+                                </label>
+
+                                <label class="settings-device-field" for="screensaver-progress-style">
+                                    <span class="settings-device-field-label">Styl paska progresu</span>
+                                    <select class="settings-device-select" id="screensaver-progress-style">
+                                        <option value="minimal">Minimalistyczny</option>
+                                        <option value="slim">Cienki</option>
+                                        <option value="glow">Glow</option>
+                                        <option value="rail">Z delikatną szyną</option>
+                                    </select>
+                                </label>
+
+                                <label class="settings-device-field" for="screensaver-layout">
+                                    <span class="settings-device-field-label">Layout controls / tile</span>
+                                    <select class="settings-device-select" id="screensaver-layout">
+                                        <option value="center">Center: klasyczny dolny pasek</option>
+                                        <option value="safe-bottom">Safe bottom: więcej miejsca pod tekstem</option>
+                                        <option value="side-right">Side right: kontrolki po prawej</option>
+                                        <option value="side-left">Side left: kontrolki po lewej</option>
+                                        <option value="compact">Compact split: okładka obok tekstu</option>
+                                    </select>
+                                </label>
+
+                                <label class="settings-option-row" for="screensaver-show-next-track">
+                                    <span class="settings-option-copy">
+                                        <span class="settings-option-title">Pokaż następny utwór</span>
+                                        <span class="settings-option-desc">Wyświetl następny track z kolejki Spotify pod kontrolkami.</span>
+                                    </span>
+                                    <input id="screensaver-show-next-track" type="checkbox" />
+                                </label>
+
+                                <section class="settings-next-track-options" aria-label="Widoczność następnego utworu">
+                                    <div class="settings-device-field-label">Kiedy pokazać next track</div>
+                                    <label class="settings-option-row" for="screensaver-next-at-start">
+                                        <span class="settings-option-copy">
+                                            <span class="settings-option-title">Na początku utworu</span>
+                                            <span class="settings-option-desc">Tile zniknie po ustawionym czasie od startu.</span>
+                                        </span>
+                                        <input id="screensaver-next-at-start" type="checkbox" />
+                                    </label>
+                                    <label class="settings-option-row" for="screensaver-next-at-end">
+                                        <span class="settings-option-copy">
+                                            <span class="settings-option-title">Przed końcem utworu</span>
+                                            <span class="settings-option-desc">Tile pojawi się ustawiony czas przed końcem.</span>
+                                        </span>
+                                        <input id="screensaver-next-at-end" type="checkbox" />
+                                    </label>
+
+                                    <label class="settings-device-field" for="screensaver-next-timing-unit">
+                                        <span class="settings-device-field-label">Jednostka czasu</span>
+                                        <select class="settings-device-select" id="screensaver-next-timing-unit">
+                                            <option value="seconds">Sekundy</option>
+                                            <option value="percent">Procent utworu</option>
+                                        </select>
+                                    </label>
+
+                                    <label class="settings-device-field" for="screensaver-next-start-window">
+                                        <span class="settings-device-field-label">Zniknij po starcie</span>
+                                        <input
+                                            class="settings-device-input"
+                                            id="screensaver-next-start-window"
+                                            type="number"
+                                            min="0"
+                                            max="600"
+                                            step="1"
+                                            inputmode="decimal"
+                                        />
+                                    </label>
+
+                                    <label class="settings-device-field" for="screensaver-next-end-window">
+                                        <span class="settings-device-field-label">Pokaż przed końcem</span>
+                                        <input
+                                            class="settings-device-input"
+                                            id="screensaver-next-end-window"
+                                            type="number"
+                                            min="0"
+                                            max="600"
+                                            step="1"
+                                            inputmode="decimal"
+                                        />
+                                    </label>
+                                </section>
+
+                                <label class="settings-device-field" for="screensaver-cover-scale">
+                                    <span class="settings-device-field-label">Rozmiar okładki</span>
+                                    <input
+                                        class="settings-device-input"
+                                        id="screensaver-cover-scale"
+                                        type="range"
+                                        min="0.75"
+                                        max="1.35"
+                                        step="0.05"
+                                    />
+                                </label>
+                                <div class="settings-kitchen-current" id="screensaver-cover-scale-label"></div>
+
+                                <label class="settings-device-field" for="screensaver-control-scale">
+                                    <span class="settings-device-field-label">Rozmiar przycisków</span>
+                                    <input
+                                        class="settings-device-input"
+                                        id="screensaver-control-scale"
+                                        type="range"
+                                        min="0.1"
+                                        max="1"
+                                        step="0.1"
+                                    />
+                                </label>
+                                <div class="settings-kitchen-current" id="screensaver-control-scale-label"></div>
+
+                                <label class="settings-option-row" for="screensaver-show-artist-facts">
+                                    <span class="settings-option-copy">
+                                        <span class="settings-option-title">Pokaż ciekawostki o artyście</span>
+                                        <span class="settings-option-desc">Wyświetlaj slajdy z lokalnych JSONów i cache'owanych mediów Wikimedia Commons.</span>
+                                    </span>
+                                    <input id="screensaver-show-artist-facts" type="checkbox" />
+                                </label>
+
+                                <label class="settings-device-field" for="screensaver-artist-fact-slide-seconds">
+                                    <span class="settings-device-field-label">Czas slajdu ciekawostki</span>
+                                    <input
+                                        class="settings-device-input"
+                                        id="screensaver-artist-fact-slide-seconds"
+                                        type="number"
+                                        min="4"
+                                        max="120"
+                                        step="1"
+                                        inputmode="decimal"
+                                    />
+                                </label>
+
+                                <label class="settings-device-field" for="screensaver-artist-fact-layout">
+                                    <span class="settings-device-field-label">Layout ciekawostek</span>
+                                    <select class="settings-device-select" id="screensaver-artist-fact-layout">
+                                        <option value="side-card">Duże po prawej</option>
+                                        <option value="left-panel">Duże po lewej</option>
+                                        <option value="bottom-wide">Szeroki panel na dole</option>
+                                        <option value="full-height">Wysoki panel boczny</option>
+                                        <option value="text-focus">Tekstowy spotlight</option>
+                                    </select>
+                                </label>
+
+                                <label class="settings-device-field" for="screensaver-artist-fact-media-mode">
+                                    <span class="settings-device-field-label">Tryb ciekawostek</span>
+                                    <select class="settings-device-select" id="screensaver-artist-fact-media-mode">
+                                        <option value="media">Tekst + media</option>
+                                        <option value="text">Tylko tekst</option>
+                                    </select>
+                                </label>
+
+                                <label class="settings-device-field" for="artist-facts-upload">
+                                    <span class="settings-device-field-label">Upload JSON ciekawostek</span>
+                                    <input class="settings-device-input" id="artist-facts-upload" type="file" accept="application/json,.json" />
+                                </label>
+                                <pre class="settings-json-template" id="artist-facts-template">{
+  "artist": "Maurice Ravel",
+  "summary": "Short artist description.",
+  "slideSeconds": 14,
+  "commons": {
+    "category": "Category:Maurice Ravel",
+    "limit": 6
+  },
+  "facts": [
+    {
+      "title": "Short heading",
+      "text": "One compact fact for the screensaver slide.",
+      "source": "Optional source label",
+      "sourceUrl": "https://example.com"
+    }
+  ]
+}</pre>
+
+                                <div class="settings-kitchen-current" id="spotify-screensaver-current"></div>
+                            </section>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

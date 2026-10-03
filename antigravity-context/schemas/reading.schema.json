@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/antigravity-context/schemas/reading.schema.json",
+  "title": "Reading",
+  "description": "Active-book progress and recent reading volume.",
+  "type": "object",
+  "required": [
+    "dataset",
+    "schema_version",
+    "generated_at",
+    "source_freshness",
+    "as_of",
+    "metrics",
+    "records"
+  ],
+  "properties": {
+    "dataset": {
+      "const": "reading"
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC export timestamp."
+    },
+    "source_freshness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Newest source file modification time; not necessarily observation time."
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Deterministically calculated facts documented in README.md.",
+      "properties": {
+        "active_books": {
+          "type": "integer"
+        },
+        "pages_7d": {
+          "type": "integer"
+        },
+        "pages_previous_7d": {
+          "type": "integer"
+        },
+        "pages_change_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "reading_days_7d": {
+          "type": "integer"
+        },
+        "reading_days_previous_7d": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active_books",
+        "pages_7d",
+        "pages_previous_7d",
+        "pages_change_pct",
+        "reading_days_7d",
+        "reading_days_previous_7d"
+      ],
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "ownership": {
+            "type": "string"
+          },
+          "pages_read": {
+            "type": "integer"
+          },
+          "pages_total": {
+            "type": "integer"
+          },
+          "progress_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "return_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "author",
+          "ownership",
+          "pages_read",
+          "pages_total",
+          "progress_pct",
+          "return_date"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

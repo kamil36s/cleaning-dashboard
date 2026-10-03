@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Kitchen Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="manifest" href="./kitchen.webmanifest" />
+  <meta name="theme-color" content="#090909" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Kitchen" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="./kitchen.css" />
+</head>
+
+<body>
+  <main class="kitchen-screen" id="kitchen-screen">
+    <section class="kitchen-recipe" id="kitchen-recipe" aria-label="Przepis" hidden>
+      <div class="kitchen-recipe-shell">
+        <header class="kitchen-recipe-header">
+          <span>Tryb przepisu</span>
+          <time id="kitchen-recipe-clock">00:00</time>
+        </header>
+        <article class="kitchen-recipe-content" id="kitchen-recipe-content"></article>
+      </div>
+    </section>
+
+    <section class="kitchen-top" aria-label="Czas, pogoda i jakość powietrza">
+      <div class="clock-panel">
+        <div class="clock-main">
+          <div class="clock-time" aria-live="polite"><span id="kitchen-time">00:00</span></div>
+          <div class="clock-date" id="kitchen-date">czwartek, 14 maja</div>
+          <div class="clock-extra" id="kitchen-daily">Imieniny: --</div>
+        </div>
+        <aside class="kitchen-today" aria-label="Pozostało dzisiaj">
+          <div class="kitchen-today-heading">DZIŚ DO ZROBIENIA</div>
+          <div class="kitchen-today-grid" id="kitchen-today-grid" aria-live="polite"></div>
+        </aside>
+      </div>
+
+      <section class="weather-panel" aria-label="Pogoda i jakość powietrza">
+        <div class="weather-main">
+          <div>
+            <div class="weather-label">Kraków</div>
+            <div class="weather-temp" id="kitchen-temp">--°C</div>
+          </div>
+          <div class="weather-icon" id="kitchen-weather-icon" aria-hidden="true"></div>
+        </div>
+        <div class="weather-condition" id="kitchen-condition">Ładowanie pogody...</div>
+        <div class="weather-bottom">
+          <div class="aqi-strip" id="kitchen-aqi">
+            <span>Jakość powietrza</span>
+            <strong id="kitchen-aqi-label">--</strong>
+          </div>
+          <div class="moon-strip" id="kitchen-moon">
+            <div class="moon-thumb" id="kitchen-moon-thumb" aria-hidden="true"></div>
+            <div class="moon-copy">
+              <span>Księżyc</span>
+              <strong id="kitchen-moon-label">--</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="score-stage" aria-label="Wyniki meczów">
+      <div class="score-head">
+        <div>
+          <div class="score-kicker" id="kitchen-score-kicker">Ostatnie 48h</div>
+          <h1 id="kitchen-score-league">Wyniki</h1>
+        </div>
+        <div class="score-counter" id="kitchen-score-counter">--</div>
+      </div>
+
+      <article class="score-match" id="kitchen-score-match" aria-live="polite">
+        <div class="score-empty">Ładowanie wyników...</div>
+      </article>
+
+      <div class="score-slide-controls is-visible" id="kitchen-slide-controls" aria-label="Sterowanie slajdami">
+        <button class="score-slide-arrow is-prev" id="kitchen-slide-prev" type="button" aria-label="Poprzedni slajd" data-slide-nav="prev">
+          <span aria-hidden="true">&lsaquo;</span>
+        </button>
+        <button class="score-slide-arrow is-next" id="kitchen-slide-next" type="button" aria-label="Następny slajd" data-slide-nav="next">
+          <span aria-hidden="true">&rsaquo;</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="./js/kitchen.js"></script>
+</body>
+
+</html>
