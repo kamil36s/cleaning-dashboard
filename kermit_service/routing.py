@@ -7,8 +7,12 @@ import time
 GENERAL = "GENERAL_CONVERSATION"
 PROJECT = "PROJECT_GROUNDED"
 CLARIFY = "CLARIFICATION_REQUIRED"
-TOPICS = ("cleaning", "reading", "finance", "quote", "weather", "todo", "language-learning", "dashboard", "settings", "central-api", "habits-app", "habits-summary", "habits-timeline", "self-care", "weight-steps", "diet", "sleep", "mental-health", "sensors", "ble-collector")
-ALIASES = {"habits-timeline": r"habits timeline|habit timeline|loop habit",
+TOPICS = ("cleaning", "reading", "finance", "quote", "weather", "todo", "language-learning", "dashboard", "settings", "central-api", "habits-app", "habits-summary", "habits-timeline", "self-care", "weight-steps", "diet", "sleep", "mental-health", "sensors", "ble-collector", "live-workout-strength", "heart-rate-history", "ring", "process-lifecycle")
+ALIASES = {"heart-rate-history": r"heart.rate history|hr history|bpm history|heart_rate_telemetry",
+           "process-lifecycle": r"process lifecycle|start.dev|start.dashboard|start.all|dev.service|service restart|runtime restart|which process restarts|process restart",
+           "live-workout-strength": r"live workout|\bworkout\b|strength|training runtime|virtual walk|workout checkpoint",
+           "ring": r"colmi|smart ring|ring collector|ring sync|ring phone",
+           "habits-timeline": r"habits timeline|habit timeline|loop habit",
            "mental-health": r"mental.health|assessment|questionnaire|retest|check.in|phq.?9|gad.?7",
            "sensors": r"sensors?|room temperature|room humidity|sensor history",
            "ble-collector": r"ble collector|ble scanner|scan_ble|raw advertisements?",
@@ -37,7 +41,7 @@ CAPABILITY = re.compile(r"\b(?:can|could|would|will)\s+(?:you|kermit)\s+(?:chang
 VERIFY = re.compile(r"\b(?:verify|check (?:your|the) documentation|according to (?:the )?(?:current|actual)|"
                     r"against (?:my|the) dashboard|in (?:the|my) (?:repository|codebase))\b", re.I)
 LIVE = re.compile(r"\b(?:my|our)\b.{0,65}\b(?:progress|balance|transactions?|journal|entries|"
-                  r"records?|saved|stored|today|this week|current data|weight|steps|sleep|sleep score|meals?|assessment|check.in|room temperature|temperature now)\b|"
+                  r"records?|saved|stored|today|this week|current data|weight|steps|sleep|sleep score|meals?|assessment|check.in|room temperature|temperature now|heart.rate|bpm|workout|training session|ring readings?)\b|"
                   r"\b(?:last night|last night's|yesterday)\b.{0,65}\b(?:sleep|score|steps|weight)\b|"
                   r"\b(?:how many|how much|what did|what have|show me|list my)\b.{0,65}"
                   r"\b(?:my|stored|saved|i|read|spent|completed|cleaned|balance|progress|transactions?|journal)\b", re.I)

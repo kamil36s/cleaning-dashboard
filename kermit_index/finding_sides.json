@@ -18,7 +18,7 @@
     },
     "F-01": {
       "category": "DOCUMENTATION_DRIFT",
-      "sideA": {"description": "The project map says Finance CSV imports preserve source evidence privately before normalization.", "refs": [{"path": "PROJECT_MAP.md", "start": 317, "end": 317, "anchor": "Finance receipts and CSV imports preserve source evidence privately before normalization"}]},
+      "sideA": {"description": "The project map says Finance CSV imports preserve source evidence privately before normalization.", "refs": [{"path": "PROJECT_MAP.md", "start": 318, "end": 318, "anchor": "Finance receipts and CSV imports preserve source evidence privately before normalization"}]},
       "sideB": {"description": "The active method starts a batch and parses raw bytes; a focused test observes no CSV source file in the service directory.", "refs": [{"path": "finance_service.py", "start": 257, "end": 274, "anchor": "parsed = parse_csv_bytes("}, {"path": "tests/test_finance_import.py", "start": 47, "end": 53, "anchor": "test_csv_import_keeps_no_source_file_in_service_directory"}]}
     },
     "F-02": {
@@ -38,7 +38,7 @@
     },
     "L-01": {
       "category": "DOCUMENTATION_DRIFT",
-      "sideA": {"description": "The project map says the provider request has no literal responseSchema field.", "refs": [{"path": "PROJECT_MAP.md", "start": 254, "end": 254, "anchor": "does not currently send a provider `responseSchema` field"}]},
+      "sideA": {"description": "The project map says the provider request has no literal responseSchema field.", "refs": [{"path": "PROJECT_MAP.md", "start": 255, "end": 255, "anchor": "does not currently send a provider `responseSchema` field"}]},
       "sideB": {"description": "The current Gemini request sends responseJsonSchema and JSON MIME; the literal responseSchema key is absent.", "refs": [{"path": "language_learning/providers/generation.py", "start": 175, "end": 189, "anchor": "\"responseJsonSchema\""}]}
     }
   }

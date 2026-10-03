@@ -108,7 +108,7 @@ class B3KnowledgeTests(unittest.TestCase):
         result = coverage_check(ROOT, MANIFEST, INDEX)
         self.assertEqual(result["findings"], [])
         self.assertEqual((result["widgetCount"], result["apiDomainCount"], result["admittedCount"]),
-                         (34, 44, 181))
+                         (34, 45, 201))
         from kermit_index import coverage
         real_safe_path = coverage.safe_path
         with tempfile.TemporaryDirectory() as temporary:

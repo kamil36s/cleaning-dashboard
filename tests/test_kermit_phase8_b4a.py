@@ -112,7 +112,7 @@ class B4AKnowledgeTests(unittest.TestCase):
         result = coverage_check(ROOT, MANIFEST, INDEX)
         self.assertEqual(result["findings"], [])
         self.assertEqual((result["widgetCount"], result["apiDomainCount"], result["admittedCount"]),
-                         (34, 44, 181))
+                         (34, 45, 201))
         static = [MANIFEST, ROOT / "index.html", ROOT / "server.py",
                   *(ROOT / "docs/kermit/knowledge/subsystems" / f"{slug}.md"
                     for slug in ("weight-steps", "diet", "sleep")),
