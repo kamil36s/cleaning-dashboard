@@ -30,8 +30,8 @@ All ordinary operations work offline. No service or Windows startup task is inst
 ```
 
 The owner has authorized this final step for completed, tested tasks. The helper
-fetches origin, verifies that local and remote main are aligned, checks that dev
-descends from main and does not reconnect the archived credential-bearing history,
+fetches origin, verifies that local main is based on remote main, checks that dev
+does not reconnect the archived credential-bearing history,
 merges dev, scans the published tree for credential patterns, creates an annotated
 release tag, and atomically pushes both `main` and the repository's current default
 branch `master` plus the tag. It stops on conflicts or remote changes without a

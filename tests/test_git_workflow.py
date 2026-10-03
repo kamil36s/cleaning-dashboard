@@ -280,6 +280,26 @@ class GitWorkflowTests(unittest.TestCase):
         self.assertIn(f'{local}\trefs/heads/master', refs)
         self.assertIn('refs/tags/release/', refs)
         self.assertIn('Nothing to publish', self.ps('publish-main').stdout)
+        self.ps('start-ai-task', '-Agent', 'codex', '-Task', 'next release')
+        self.write('next.txt', 'next\n')
+        self.ps('finish-ai-task', '-Merge')
+        self.git('switch', 'main')
+        self.assertIn('Published main and master', self.ps('publish-main').stdout)
+        latest = self.git('rev-parse', 'main').stdout.strip()
+        self.assertIn(f'{latest}\trefs/heads/main', self.git('ls-remote', 'origin').stdout)
+
+    def test_27_publish_retry_after_local_merge(self):
+        bare = self.base/'remote.git'
+        self.git('init', '--bare', str(bare))
+        self.git('remote', 'add', 'origin', str(bare))
+        self.git('push', 'origin', 'main:main', 'main:master')
+        self.task()
+        self.write('sample.txt', 'local merge\n')
+        self.ps('finish-ai-task', '-Merge')
+        self.git('switch', 'main')
+        allowed = dict(self.env, DASHBOARD_ALLOW_MAIN='1')
+        self.git('merge', '--no-ff', '--no-edit', 'dev', env=allowed)
+        self.assertIn('Published main and master', self.ps('publish-main').stdout)
         self.assertNotIn('refs/tags/build-0001',self.git('ls-remote','origin').stdout)
 
     def test_20_detached_and_nested_worktree_refuse(self):

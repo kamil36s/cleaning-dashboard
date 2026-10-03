@@ -11,15 +11,16 @@ try {
     $remoteMaster = Invoke-Git rev-parse refs/remotes/origin/master
     if ($remoteMain -ne $remoteMaster) { throw 'Remote main and master differ. Review before publishing.' }
     $localMain = Invoke-Git rev-parse HEAD
-    if ($localMain -ne $remoteMain) { throw 'Local main is not synchronized with origin/main. Review before publishing.' }
+    if ((Invoke-Git merge-base refs/remotes/origin/main main) -ne $remoteMain) {
+        throw 'Local main diverged from origin/main. Review before publishing.'
+    }
     Invoke-Git rev-parse --verify refs/heads/dev | Out-Null
     $devHead = Invoke-Git rev-parse dev
-    if ($devHead -eq (Invoke-Git merge-base main dev)) {
+    $devAlreadyPublished = $devHead -eq (Invoke-Git merge-base main dev)
+    if ($devAlreadyPublished -and $localMain -eq $remoteMain) {
         Write-Host 'Main is already current. Nothing to publish.'
         return
     }
-    $base = Invoke-Git merge-base main dev
-    if ($base -ne $localMain) { throw 'Dev is not based on current main. Rebase or review before publishing.' }
 
     # A former local history contains a credential. Never reconnect that history
     # to the public branch through an older task branch.
@@ -27,11 +28,13 @@ try {
     if (@(Invoke-Git rev-list main..dev) -contains $unsafeCommit) {
         throw 'Dev contains the archived credential-bearing history. Replay only the task changes onto current dev.'
     }
-    $oldOverride = $env:DASHBOARD_ALLOW_MAIN
-    try {
-        $env:DASHBOARD_ALLOW_MAIN = '1'
-        Invoke-Git merge --no-ff --no-edit dev | Out-Host
-    } finally { $env:DASHBOARD_ALLOW_MAIN = $oldOverride }
+    if (-not $devAlreadyPublished) {
+        $oldOverride = $env:DASHBOARD_ALLOW_MAIN
+        try {
+            $env:DASHBOARD_ALLOW_MAIN = '1'
+            Invoke-Git merge --no-ff --no-edit dev | Out-Host
+        } finally { $env:DASHBOARD_ALLOW_MAIN = $oldOverride }
+    }
 
     # Check the complete published tree, including files untouched by this merge.
     $pattern = '-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|github_pat_[A-Za-z0-9_]{30,}|gh[pousr]_[A-Za-z0-9]{30,}|sk-(proj-)?[A-Za-z0-9_-]{40,}|AIza[A-Za-z0-9_-]{30,}'
